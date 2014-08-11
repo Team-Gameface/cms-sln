@@ -493,16 +493,42 @@ namespace CMS.Loan_Management.Transaction.Controller
         {
             String ir = this.loanApplicationModel.selectInterestRate(this.loanApplication.getTypeOfLoan());
             double interest = 0;
+
+            int pdValue = this.loanApplication.getPaymentDurationValue();
+            String pdStatus = this.loanApplication.getDurationStatus();
+
             if (ir != String.Empty)
             {
                 String[] interestRate = ir.Split(' ');
                 if (interestRate[1] == "Php")
                 {
-                    interest = double.Parse(interestRate[0]);
+                    if (pdStatus == "week/s")
+                    {
+                        interest = (double.Parse(interestRate[0]) / 52) * pdValue;
+                    }
+                    else if (pdStatus == "month/s")
+                    {
+                        interest = (double.Parse(interestRate[0]) / 12) * pdValue;
+                    }
+                    else if (pdStatus == "year/s")
+                    {
+                        interest = double.Parse(interestRate[0]) * pdValue;
+                    }  
                 }
                 else if (interestRate[1] == "%")
                 {
-                    interest = this.loanApplication.getAmount() * (double.Parse(interestRate[0]) / 100);
+                    if (pdStatus == "week/s")
+                    {
+                        interest = this.loanApplication.getAmount() * (((double.Parse(interestRate[0]) / 100) / 52) * pdValue);
+                    }
+                    else if (pdStatus == "month/s")
+                    {
+                        interest = this.loanApplication.getAmount() * (((double.Parse(interestRate[0]) / 100) / 12) * pdValue);
+                    }
+                    else if (pdStatus == "year/s")
+                    {
+                        interest = this.loanApplication.getAmount() * (double.Parse(interestRate[0]) / 100) * pdValue;
+                    }
                 }
             }
             else { interest = 0; }
@@ -879,6 +905,7 @@ namespace CMS.Loan_Management.Transaction.Controller
                     this.loanApplication.btnComakerNextFunc();
                 }
             }
+            this.interestRateFunc();
         }
         
         public void btnCollateralPrevious(object args, EventArgs e)

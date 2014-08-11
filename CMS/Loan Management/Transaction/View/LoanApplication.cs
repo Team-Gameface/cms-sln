@@ -859,7 +859,11 @@ namespace CMS.Loan_Management.Transaction.View
 
         public String getDurationStatus()
         {
-            return this.cbDurationStatus.SelectedItem.ToString();
+            try
+            {
+                return this.cbDurationStatus.SelectedItem.ToString();
+            }
+            catch (Exception) { return ""; }
         }
 
         public String getTermsOfPayment()

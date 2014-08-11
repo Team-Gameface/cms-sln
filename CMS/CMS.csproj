@@ -151,7 +151,7 @@
     <Compile Include="Loan Management\Transaction\Controller\LoanApplicationController.cs" />
     <Compile Include="Loan Management\Transaction\Controller\MembershipApplicationController.cs" />
     <Compile Include="Loan Management\Transaction\Controller\ShareCapitalContributionController.cs" />
-    <Compile Include="Loan Management\Transaction\Controller\UpdateMemberController.cs" />
+    <Compile Include="Loan Management\Transaction\UpdateMemberController.cs" />
     <Compile Include="Loan Management\Transaction\Model\LoanAmnestyModel.cs" />
     <Compile Include="Loan Management\Transaction\Model\LoanApplicationModel.cs" />
     <Compile Include="Loan Management\Transaction\Model\MembershipApplicationModel.cs" />

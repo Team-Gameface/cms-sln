@@ -280,3 +280,4 @@ D:\CMS-SAD\CMS_PREDEFENSE-RC\cms-sln-master\CMS\obj\Debug\CMS.csproj.GenerateRes
 D:\CMS-SAD\CMS_PREDEFENSE-RC\cms-sln-master\CMS\obj\Debug\CMS.exe
 D:\CMS-SAD\CMS_PREDEFENSE-RC\cms-sln-master\CMS\obj\Debug\CMS.pdb
 D:\CMS-SAD\CMS_PREDEFENSE-RC\cms-sln-master\CMS\obj\Debug\CMS.csprojResolveAssemblyReference.cache
+C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.pdb

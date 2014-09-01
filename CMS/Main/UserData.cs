@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CMS.Main
 {
-    public class MainData
+    public class UserData
     {
         public static String userName;
         public static String userFirst;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,27 @@ namespace CMS.Main.View
             paymentForm.Dock = DockStyle.Fill;
             splitContainer.Panel2.Controls.Add(paymentForm);
             paymentForm.Hide();
+            setCompanyData();
+        }
+
+        public void setCompanyData()
+        {
+            String companyName = Main.CompanyData.CompanyName;
+            if (companyName != String.Empty)
+            {
+                lblCompanyName.Text = companyName;
+            }
+            byte[] imgData = Main.CompanyData.CompanyLogo;
+            if (imgData != null)
+            {
+                Image picture;
+                using (MemoryStream ms = new MemoryStream(imgData, 0, imgData.Length))
+                {
+                    ms.Write(imgData, 0, imgData.Length);
+                    picture = Image.FromStream(ms, true);
+                }
+                pictureLogo.Image = picture;
+            }
         }
 
         private void timerDateTime_Tick(object sender, EventArgs e)

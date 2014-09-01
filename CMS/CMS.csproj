@@ -195,7 +195,7 @@
     </Compile>
     <Compile Include="Main\Controller\MainController.cs" />
     <Compile Include="Main\Controller\PaymentController.cs" />
-    <Compile Include="Main\MainData.cs" />
+    <Compile Include="Main\UserData.cs" />
     <Compile Include="Main\Model\PaymentModel.cs" />
     <Compile Include="Main\View\BatchProcessAutomation.cs">
       <SubType>Form</SubType>
@@ -208,6 +208,13 @@
     </Compile>
     <Compile Include="Main\View\CMS.Designer.cs">
       <DependentUpon>CMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\CompanyData.cs" />
+    <Compile Include="Main\View\CompanyProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\View\CompanyProfile.Designer.cs">
+      <DependentUpon>CompanyProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\View\PaymentForm.cs">
       <SubType>UserControl</SubType>
@@ -375,6 +382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\View\CMS.resx">
       <DependentUpon>CMS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\View\CompanyProfile.resx">
+      <DependentUpon>CompanyProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\View\PaymentForm.resx">
       <DependentUpon>PaymentForm.cs</DependentUpon>

@@ -51,8 +51,8 @@ namespace CMS.Main.Controller
         public MainController(Main.View.CMS cms)
         {
             this.cms = cms;
-            this.cms.setUserName(Main.MainData.userName);
-            this.cms.setRole(Main.MainData.userAccountType);
+            this.cms.setUserName(Main.UserData.userName);
+            this.cms.setRole(Main.UserData.userAccountType);
             //this.cms.setBtnHomeEventHandler(this.btnHome);
             this.cms.setBtnLoanManagementEventHandler(this.btnLoanManagement);
             this.cms.setBtnPaymentsEventHandler(this.btnPayments);
@@ -118,11 +118,11 @@ namespace CMS.Main.Controller
 
         public void linkSignout(object args, EventArgs e)
         {
-            Main.MainData.userFirst = String.Empty;
-            Main.MainData.userLast = String.Empty;
-            Main.MainData.userMiddle = String.Empty;
-            Main.MainData.userName = String.Empty;
-            Main.MainData.userAccountType = String.Empty;
+            Main.UserData.userFirst = String.Empty;
+            Main.UserData.userLast = String.Empty;
+            Main.UserData.userMiddle = String.Empty;
+            Main.UserData.userName = String.Empty;
+            Main.UserData.userAccountType = String.Empty;
             this.Dispose();
             new Login().ShowDialog();
         }
@@ -132,11 +132,11 @@ namespace CMS.Main.Controller
             DialogResult dr = MessageBox.Show("You will be logged out of the system. Continue?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dr == DialogResult.Yes)
             {
-                Main.MainData.userFirst = String.Empty;
-                Main.MainData.userLast = String.Empty;
-                Main.MainData.userMiddle = String.Empty;
-                Main.MainData.userName = String.Empty;
-                Main.MainData.userAccountType = String.Empty;
+                Main.UserData.userFirst = String.Empty;
+                Main.UserData.userLast = String.Empty;
+                Main.UserData.userMiddle = String.Empty;
+                Main.UserData.userName = String.Empty;
+                Main.UserData.userAccountType = String.Empty;
                 this.Dispose();
                 new Login().ShowDialog();
             }

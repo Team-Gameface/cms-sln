@@ -71,6 +71,21 @@ namespace CMS
             return rowsAffected;
         }
 
+        public int executeNonQuery(String sql)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                cmd = new SqlCommand(sql, conn);
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return rowsAffected;
+        }
+
         /**
          * This method is used for executing select statements
          * and using SQLDataReader to read the data return.

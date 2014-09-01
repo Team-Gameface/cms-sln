@@ -30,5 +30,10 @@ namespace CMS.Main.View
         {
             new BatchProcessAutomation().Show();
         }
+
+        private void btnCompany_Click(object sender, EventArgs e)
+        {
+            new CompanyProfile().Show();
+        }
     }
 }

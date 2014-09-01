@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO;
 
 namespace CMS
 {
@@ -18,6 +19,45 @@ namespace CMS
         public Login()
         {
             InitializeComponent();
+            checkCompanyProfile();
+            setCompanyData();
+        }
+
+        public void checkCompanyProfile()
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT * FROM COMPANY WHERE Status = 1";
+            SqlDataReader reader = dal.executeReader(sql);
+            while(reader.Read())
+            {
+                Main.CompanyData.CompanyName = reader[1].ToString();
+                Main.CompanyData.AcreditationNo = reader[2].ToString();
+                Main.CompanyData.CompanyAddress = reader[3].ToString();
+                Main.CompanyData.CompanyLogo = (byte[])reader[4];
+                Main.CompanyData.TelephoneNo = reader[6].ToString();
+                Main.CompanyData.CellphoneNo = reader[7].ToString();
+                Main.CompanyData.Email = reader[8].ToString();
+            }
+        }
+
+        public void setCompanyData()
+        {
+            String companyName = Main.CompanyData.CompanyName;
+            if (companyName != String.Empty)
+            {
+                lblCompanyName.Text = companyName;
+            }
+            byte[] imgData = Main.CompanyData.CompanyLogo;
+            if (imgData != null)
+            {
+                Image picture;
+                using (MemoryStream ms = new MemoryStream(imgData, 0, imgData.Length))
+                {
+                    ms.Write(imgData, 0, imgData.Length);
+                    picture = Image.FromStream(ms, true);
+                }
+                pictureLogo.Image = picture;
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -29,7 +69,7 @@ namespace CMS
             {
                 MessageBox.Show("Login Successful.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                Main.MainData.userName = "Superuser";
+                Main.UserData.userName = "Superuser";
                 new Main.Controller.MainController(new Main.View.CMS());
                 this.Dispose();
             }
@@ -52,7 +92,7 @@ namespace CMS
                         MessageBox.Show("Login Successful.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
                         rd.Read();
-                        Main.MainData.userName = rd.GetString(4).ToString() + ", " + rd.GetString(2).ToString() + " " + rd.GetString(3).ToString();
+                        Main.UserData.userName = rd.GetString(4).ToString() + ", " + rd.GetString(2).ToString() + " " + rd.GetString(3).ToString();
                         new Main.Controller.MainController(new Main.View.CMS());
                         this.Dispose();
                     }

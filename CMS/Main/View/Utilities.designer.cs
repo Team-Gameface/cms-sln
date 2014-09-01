@@ -30,8 +30,8 @@
         {
             this.groupUtilities = new System.Windows.Forms.GroupBox();
             this.btnCompany = new System.Windows.Forms.Button();
-            this.btnBatchProcess = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnBatchProcess = new System.Windows.Forms.Button();
             this.groupUtilities.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +64,21 @@
             this.btnCompany.Text = "Company Profile";
             this.btnCompany.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnCompany.UseVisualStyleBackColor = false;
+            this.btnCompany.Click += new System.EventHandler(this.btnCompany_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Firebrick;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(691, 216);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(92, 32);
+            this.btnClose.TabIndex = 16;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnBatchProcess
             // 
@@ -82,20 +97,6 @@
             this.btnBatchProcess.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnBatchProcess.UseVisualStyleBackColor = false;
             this.btnBatchProcess.Click += new System.EventHandler(this.btnBatchProcess_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.Firebrick;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(691, 216);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(92, 32);
-            this.btnClose.TabIndex = 16;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // Utilities
             // 

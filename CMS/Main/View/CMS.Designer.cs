@@ -46,10 +46,10 @@
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCompanyName = new System.Windows.Forms.Label();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.panelCompany = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.panelHome = new System.Windows.Forms.Panel();
             this.lblUserWelcome = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -61,7 +61,7 @@
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             this.panelCompany.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.panelHome.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -273,16 +273,16 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Cooperative Management System";
             // 
-            // label1
+            // lblCompanyName
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(137, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(453, 68);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Company Name";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.lblCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F, System.Drawing.FontStyle.Bold);
+            this.lblCompanyName.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblCompanyName.Location = new System.Drawing.Point(137, 3);
+            this.lblCompanyName.Name = "lblCompanyName";
+            this.lblCompanyName.Size = new System.Drawing.Size(453, 68);
+            this.lblCompanyName.TabIndex = 11;
+            this.lblCompanyName.Text = "Company Name";
+            this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // splitContainer
             // 
@@ -309,9 +309,9 @@
             // panelCompany
             // 
             this.panelCompany.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCompany.Controls.Add(this.pictureBox2);
+            this.panelCompany.Controls.Add(this.pictureLogo);
             this.panelCompany.Controls.Add(this.label3);
-            this.panelCompany.Controls.Add(this.label1);
+            this.panelCompany.Controls.Add(this.lblCompanyName);
             this.panelCompany.Controls.Add(this.label2);
             this.panelCompany.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCompany.Location = new System.Drawing.Point(0, 0);
@@ -319,15 +319,16 @@
             this.panelCompany.Size = new System.Drawing.Size(611, 139);
             this.panelCompany.TabIndex = 17;
             // 
-            // pictureBox2
+            // pictureLogo
             // 
-            this.pictureBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(128, 128);
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
+            this.pictureLogo.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureLogo.Location = new System.Drawing.Point(3, 3);
+            this.pictureLogo.Name = "pictureLogo";
+            this.pictureLogo.Size = new System.Drawing.Size(128, 128);
+            this.pictureLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureLogo.TabIndex = 12;
+            this.pictureLogo.TabStop = false;
             // 
             // panelHome
             // 
@@ -389,7 +390,7 @@
             this.splitContainer.ResumeLayout(false);
             this.panelCompany.ResumeLayout(false);
             this.panelCompany.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.panelHome.ResumeLayout(false);
             this.panelHome.PerformLayout();
             this.ResumeLayout(false);
@@ -414,8 +415,8 @@
         private System.Windows.Forms.ToolStripStatusLabel lblDateTime;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureLogo;
+        private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.Panel panelHome;
         private System.Windows.Forms.Label lblUserWelcome;

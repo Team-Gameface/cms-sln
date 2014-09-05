@@ -33,19 +33,19 @@
             this.groupLogo = new System.Windows.Forms.GroupBox();
             this.lblPicture = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtCompanyName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtTelephone = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtCellphone = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtAccreditation = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtTelephone = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtCompanyAddress = new System.Windows.Forms.TextBox();
+            this.txtAccreditation = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCompanyName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.groupLogo.SuspendLayout();
@@ -117,59 +117,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Company Details";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Company Name";
-            // 
-            // txtCompanyName
-            // 
-            this.txtCompanyName.Location = new System.Drawing.Point(134, 24);
-            this.txtCompanyName.MaxLength = 50;
-            this.txtCompanyName.Name = "txtCompanyName";
-            this.txtCompanyName.Size = new System.Drawing.Size(337, 25);
-            this.txtCompanyName.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Accreditation No";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 89);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 17);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Company Address";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 27);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 17);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Telephone/Fax";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 60);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 17);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Email Address";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtCellphone);
@@ -184,23 +131,6 @@
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Contact";
-            // 
-            // txtTelephone
-            // 
-            this.txtTelephone.Location = new System.Drawing.Point(116, 24);
-            this.txtTelephone.MaxLength = 10;
-            this.txtTelephone.Name = "txtTelephone";
-            this.txtTelephone.Size = new System.Drawing.Size(134, 25);
-            this.txtTelephone.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(256, 27);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 17);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Cellphone";
             // 
             // txtCellphone
             // 
@@ -218,13 +148,40 @@
             this.txtEmail.Size = new System.Drawing.Size(346, 25);
             this.txtEmail.TabIndex = 9;
             // 
-            // txtAccreditation
+            // label8
             // 
-            this.txtAccreditation.Location = new System.Drawing.Point(134, 55);
-            this.txtAccreditation.MaxLength = 50;
-            this.txtAccreditation.Name = "txtAccreditation";
-            this.txtAccreditation.Size = new System.Drawing.Size(337, 25);
-            this.txtAccreditation.TabIndex = 4;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(9, 60);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(91, 17);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Email Address";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(256, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(66, 17);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Cellphone";
+            // 
+            // txtTelephone
+            // 
+            this.txtTelephone.Location = new System.Drawing.Point(116, 24);
+            this.txtTelephone.MaxLength = 10;
+            this.txtTelephone.Name = "txtTelephone";
+            this.txtTelephone.Size = new System.Drawing.Size(134, 25);
+            this.txtTelephone.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(93, 17);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Telephone/Fax";
             // 
             // txtCompanyAddress
             // 
@@ -234,6 +191,49 @@
             this.txtCompanyAddress.Name = "txtCompanyAddress";
             this.txtCompanyAddress.Size = new System.Drawing.Size(337, 64);
             this.txtCompanyAddress.TabIndex = 5;
+            // 
+            // txtAccreditation
+            // 
+            this.txtAccreditation.Location = new System.Drawing.Point(134, 55);
+            this.txtAccreditation.MaxLength = 50;
+            this.txtAccreditation.Name = "txtAccreditation";
+            this.txtAccreditation.Size = new System.Drawing.Size(337, 25);
+            this.txtAccreditation.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 89);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(115, 17);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Company Address";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Accreditation No";
+            // 
+            // txtCompanyName
+            // 
+            this.txtCompanyName.Location = new System.Drawing.Point(134, 24);
+            this.txtCompanyName.MaxLength = 50;
+            this.txtCompanyName.Name = "txtCompanyName";
+            this.txtCompanyName.Size = new System.Drawing.Size(337, 25);
+            this.txtCompanyName.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Company Name";
             // 
             // btnSave
             // 
@@ -267,6 +267,7 @@
             this.Name = "CompanyProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Company Profile";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CompanyProfile_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.groupLogo.ResumeLayout(false);
             this.groupLogo.PerformLayout();

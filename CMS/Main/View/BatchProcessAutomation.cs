@@ -13,8 +13,11 @@ namespace CMS.Main.View
 {
     public partial class BatchProcessAutomation : Form
     {
-        public BatchProcessAutomation()
+        Main.View.Utilities utilities;
+
+        public BatchProcessAutomation(Main.View.Utilities utilities)
         {
+            this.utilities = utilities;
             InitializeComponent();
         }
 
@@ -87,6 +90,11 @@ namespace CMS.Main.View
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void BatchProcessAutomation_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            utilities.batchOpen = false;
         }
     }
 }

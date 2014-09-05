@@ -16,12 +16,16 @@ namespace CMS.Main.View
     public partial class CompanyProfile : Form
     {
         byte[] imgData = null;
+        Main.View.CMS cms;
+        Main.View.Utilities utilities;
 
-        public CompanyProfile()
+        public CompanyProfile(Main.View.Utilities utilities, Main.View.CMS cms)
         {
+            this.utilities = utilities;
+            this.cms = cms;
             InitializeComponent();
             setCompanyData();
-            checkLogo();
+            checkLogo();            
         }
 
         public void setCompanyData()
@@ -78,11 +82,26 @@ namespace CMS.Main.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Boolean checkName = false;
+            Boolean checkAddress = false;
+            String errorMessage = "Update Failed!" + Environment.NewLine + Environment.NewLine;
             if (txtCompanyName.Text == String.Empty)
             {
-                MessageBox.Show("Please Specify Company Name.", "Company Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                checkName = false;
             }
             else
+            {
+                checkName = true;
+            }
+            if (txtCompanyAddress.Text == String.Empty)
+            {
+                checkAddress = false;
+            }
+            else
+            {
+                checkAddress = true;
+            }
+            if (checkName && checkAddress)
             {
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
                 String sql = "UPDATE COMPANY SET Status = 0";
@@ -100,6 +119,7 @@ namespace CMS.Main.View
                 if (result != 0)
                 {
                     MessageBox.Show("Company Profile Save Sucess.", "Company Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    updateCompanyData();
                     this.Close();
                 }
                 else
@@ -107,6 +127,27 @@ namespace CMS.Main.View
                     MessageBox.Show("Company Profile Save Failed.", "Company Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            else
+            { 
+                MessageBox.Show(errorMessage, "Company Profile", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+            }
+        }
+
+        public void updateCompanyData()
+        {
+            Main.CompanyData.CompanyName = txtCompanyName.Text.ToString();
+            Main.CompanyData.AcreditationNo = txtAccreditation.Text.ToString();
+            Main.CompanyData.CompanyAddress = txtCompanyAddress.Text.ToString();
+            Main.CompanyData.CompanyLogo = imgData;
+            Main.CompanyData.TelephoneNo = txtTelephone.Text.ToString();
+            Main.CompanyData.CellphoneNo = txtCellphone.Text.ToString();
+            Main.CompanyData.Email = txtEmail.Text.ToString();
+            this.cms.setCompanyData();
+        }
+
+        private void CompanyProfile_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            utilities.companyProfileOpen = false;
         }
     }
 }

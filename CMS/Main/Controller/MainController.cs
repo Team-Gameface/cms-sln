@@ -111,7 +111,7 @@ namespace CMS.Main.Controller
             if (!utilitiesOpen)
             {
                 utilitiesOpen = true;
-                utilities = new View.Utilities(this);
+                utilities = new View.Utilities(this, cms);
                 this.cms.setPanel2(utilities);
             }
         }

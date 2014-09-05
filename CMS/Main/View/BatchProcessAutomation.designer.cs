@@ -146,6 +146,7 @@
             this.Name = "BatchProcessAutomation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Batch Process Automation";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BatchProcessAutomation_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

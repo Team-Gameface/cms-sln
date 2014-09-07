@@ -18,7 +18,7 @@ namespace CMS.Savings.Maintenance.Controller
 
         public InterestRatesController(Maintenance.Model.InterestRatesModel interestRatesModel, Maintenance.View.InterestRates interestRates, SavingsMenu savingsMenu)
         {
-            this.interestRatesModel = interestRatesModel;
+            /*this.interestRatesModel = interestRatesModel;
             this.interestRates = interestRates;
             this.interestRates.setBtnAddEventHandler(this.btnAdd);
             this.interestRates.setBtnCancelEventHandler(this.btnCancel);
@@ -32,9 +32,9 @@ namespace CMS.Savings.Maintenance.Controller
             this.interestRates.MdiParent = savingsMenu;
             InterestId = 0;
             accountType = 0;
-            this.interestRates.Show();
+            this.interestRates.Show();*/
         }
-
+        /*
         public void btnAdd(object args, EventArgs e)
         {
             this.interestRates.initAccountType(this.interestRatesModel.selectAccountTypes());
@@ -396,5 +396,6 @@ namespace CMS.Savings.Maintenance.Controller
                 this.interestRates.removeColumns();
             }
         }
+         */
     }
 }

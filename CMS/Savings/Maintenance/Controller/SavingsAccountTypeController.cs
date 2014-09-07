@@ -115,6 +115,9 @@ namespace CMS.Savings.Maintenance.Controller
                 if (bool.Parse(selectedData.Cells["Interest Rate"].Value.ToString()))
                 {
                     this.savingsAccountType.setInterestRates();
+                    String[] details = this.savingsAccountTypeModel.selectInterestRate(TypeId);
+                    this.savingsAccountType.setInterestRate(details[0]);
+                    this.savingsAccountType.setComboInterest(details[1]);
                 }
                 if (bool.Parse(selectedData.Cells["Dormancy"].Value.ToString()))
                 {
@@ -126,10 +129,6 @@ namespace CMS.Savings.Maintenance.Controller
                     this.savingsAccountType.setComboDormancyPenalty(details[1]);
                     this.savingsAccountType.setNumDormancyChargeDuration(int.Parse(details[4]));
                     this.savingsAccountType.setComboDormancyChargeDuration(details[5]);
-                }
-                if (bool.Parse(selectedData.Cells["Time Deposit"].Value.ToString()))
-                {
-                    this.savingsAccountType.setTimeDeposit();
                 }
                 if (bool.Parse(selectedData.Cells["Status"].Value.ToString()))
                 {
@@ -212,6 +211,7 @@ namespace CMS.Savings.Maintenance.Controller
             Boolean checkAccountHolder = false;
             Boolean checkMaintainingBalance = false;
             Boolean checkDormancy = false;
+            Boolean checkInterest = false;
             if (isAdd)
             {
                 this.errorMessage += "Add Failed!" + Environment.NewLine + Environment.NewLine;
@@ -281,33 +281,25 @@ namespace CMS.Savings.Maintenance.Controller
                     this.savingsAccountType.setErrorAccountHolder();
                     checkAccountHolder = false;
                 }
-                if (this.savingsAccountType.getTimeDeposit())
+                if (this.savingsAccountType.getMaximumWithdrawal() != 0)
                 {
-                    this.savingsAccountTypeModel.MaxWith = this.savingsAccountType.getMaximumWithdrawal();
-                    checkMaxWith = true;
-                }
-                else
-                {
-                    if (this.savingsAccountType.getMaximumWithdrawal() != 0)
+                    if (this.savingsAccountType.getMaximumWithdrawal() < 0)
                     {
-                        if (this.savingsAccountType.getMaximumWithdrawal() < 0)
-                        {
-                            this.errorMessage += "Maximum Withdrawal cannot be less than 0." + Environment.NewLine;
-                            this.savingsAccountType.setErrorMaxWith();
-                            checkMaxWith = false;
-                        }
-                        else
-                        {
-                            this.savingsAccountTypeModel.MaxWith = this.savingsAccountType.getMaximumWithdrawal();
-                            checkMaxWith = true;
-                        }
-                    }                
-                    else
-                    {
-                        this.errorMessage += "Please Specify - Maximum Withdrawal." + Environment.NewLine;
+                        this.errorMessage += "Maximum Withdrawal cannot be less than 0." + Environment.NewLine;
                         this.savingsAccountType.setErrorMaxWith();
                         checkMaxWith = false;
                     }
+                    else
+                    {
+                        this.savingsAccountTypeModel.MaxWith = this.savingsAccountType.getMaximumWithdrawal();
+                        checkMaxWith = true;
+                    }
+                }                
+                else
+                {
+                    this.errorMessage += "Please Specify - Maximum Withdrawal." + Environment.NewLine;
+                    this.savingsAccountType.setErrorMaxWith();
+                    checkMaxWith = false;
                 }
                 if (this.savingsAccountType.getMaintainingBalance())
                 {
@@ -505,18 +497,54 @@ namespace CMS.Savings.Maintenance.Controller
                 if (this.savingsAccountType.getInterestRates())
                 {
                     this.savingsAccountTypeModel.isInterestRates = 1;
+                    Boolean checkInterestRate = false;
+                    Boolean checkInterestPer = false;
+                    if (this.savingsAccountType.getInterestRate() != 0)
+                    {
+                        if (this.savingsAccountType.getInterestRate() < 0)
+                        {
+                            this.errorMessage += "Please Specify - Interest Rate." + Environment.NewLine;
+                            this.savingsAccountType.setErrorInterestRate();
+                            checkInterestRate = false;
+                        }
+                        else
+                        {
+                            this.savingsAccountTypeModel.interestModel.InterestRate = this.savingsAccountType.getInterestRate();
+                            checkInterestRate = true;
+                        }
+                    }
+                    if (this.savingsAccountType.getComboInterest() == String.Empty)
+                    {
+                        this.errorMessage += "Please Specify - Interest Rate Per." + Environment.NewLine;
+                        this.savingsAccountType.setErrorPer();
+                        checkInterestPer = false;
+                    }
+                    else
+                    {
+                        this.savingsAccountTypeModel.interestModel.Per = this.savingsAccountType.getComboInterest();
+                        checkInterestPer = true;
+                    }
+                    if (this.savingsAccountType.getMaintainingBalance())
+                    {
+                        this.savingsAccountTypeModel.interestModel.MinRange = this.savingsAccountType.getMaintainingBalanceAmount();
+                    }
+                    else
+                    {
+                        this.savingsAccountTypeModel.interestModel.MinRange = 0;
+                    }
+                    if (checkInterestRate && checkInterestPer)
+                    {
+                        checkInterest = true;
+                    }
+                    else
+                    {
+                        checkInterest = false;
+                    }
                 }
                 else
                 {
                     this.savingsAccountTypeModel.isInterestRates = 0;
-                }
-                if (this.savingsAccountType.getTimeDeposit())
-                {
-                    this.savingsAccountTypeModel.isTimeDeposit = 1;
-                }
-                else
-                {
-                    this.savingsAccountTypeModel.isTimeDeposit = 0;
+                    checkInterest = true;
                 }
                 if (this.savingsAccountType.getStatus())
                 {
@@ -540,7 +568,7 @@ namespace CMS.Savings.Maintenance.Controller
                         }
                     }
                 }
-                if (checkName && checkInitDeposit && checkMaxWith && checkAccountHolder && checkMaintainingBalance && checkDormancy)
+                if (checkName && checkInitDeposit && checkMaxWith && checkAccountHolder && checkMaintainingBalance && checkDormancy && checkInterest)
                 {
                     if (isAdd)
                     {
@@ -555,6 +583,11 @@ namespace CMS.Savings.Maintenance.Controller
                             {
                                 this.savingsAccountTypeModel.dormancyModel.TypeId = this.savingsAccountTypeModel.getInsertId();
                                 this.savingsAccountTypeModel.insertDormancy();
+                            }
+                            if (this.savingsAccountTypeModel.isInterestRates == 1)
+                            {
+                                this.savingsAccountTypeModel.interestModel.TypeId = this.savingsAccountTypeModel.getInsertId();
+                                this.savingsAccountTypeModel.insertInterestRate();
                             }
                             if (this.savingsAccountType.checkArchivedState())
                             {
@@ -595,8 +628,15 @@ namespace CMS.Savings.Maintenance.Controller
                         {
                             if (this.savingsAccountTypeModel.isMaintainingBalance == 1)
                             {
-                                this.savingsAccountTypeModel.maintainingBalanceModel.AccountTypeId = this.savingsAccountTypeModel.getInsertId();
-                                this.savingsAccountTypeModel.updateMaintainingBalance(TypeId);
+                                if (this.savingsAccountTypeModel.checkMainBal(TypeId) == 1)
+                                {
+                                    this.savingsAccountTypeModel.updateMaintainingBalance(TypeId);
+                                }
+                                else
+                                {
+                                    this.savingsAccountTypeModel.maintainingBalanceModel.AccountTypeId = TypeId;
+                                    this.savingsAccountTypeModel.insertMaintainingBalance();
+                                }
                             }
                             else
                             {
@@ -604,12 +644,35 @@ namespace CMS.Savings.Maintenance.Controller
                             }
                             if (this.savingsAccountTypeModel.isDormancy == 1)
                             {
-                                this.savingsAccountTypeModel.dormancyModel.TypeId = this.savingsAccountTypeModel.getInsertId();
-                                this.savingsAccountTypeModel.updateDormancy(TypeId);
+                                if (this.savingsAccountTypeModel.checkDormancy(TypeId) == 1)
+                                {
+                                    this.savingsAccountTypeModel.updateDormancy(TypeId);
+                                }
+                                else
+                                {
+                                    this.savingsAccountTypeModel.dormancyModel.TypeId = TypeId;
+                                    this.savingsAccountTypeModel.insertDormancy();
+                                }
                             }
                             else
                             {
                                 this.savingsAccountTypeModel.deleteDormancy(TypeId);
+                            }
+                            if (this.savingsAccountTypeModel.isInterestRates == 1)
+                            {
+                                if (this.savingsAccountTypeModel.checkInterest(TypeId) == 1)
+                                {
+                                    this.savingsAccountTypeModel.updateInterestRate(TypeId);
+                                }
+                                else
+                                {
+                                    this.savingsAccountTypeModel.interestModel.TypeId = TypeId;
+                                    this.savingsAccountTypeModel.insertInterestRate();
+                                }
+                            }
+                            else
+                            {
+                                this.savingsAccountTypeModel.deleteInterestRate(TypeId);
                             }
                             if (this.savingsAccountType.checkArchivedState())
                             {

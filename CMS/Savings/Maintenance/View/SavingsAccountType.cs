@@ -28,7 +28,6 @@ namespace CMS.Savings.Maintenance.View
             checkMaintainingBalance.CheckState = CheckState.Unchecked;
             checkInterestRates.CheckState = CheckState.Unchecked;
             checkDormancy.CheckState = CheckState.Unchecked;
-            checkTimeDeposit.CheckState = CheckState.Unchecked;
             checkStatus.CheckState = CheckState.Unchecked;
 
             txtName.Enabled = false;
@@ -38,12 +37,12 @@ namespace CMS.Savings.Maintenance.View
             checkMaintainingBalance.Enabled = false;
             checkInterestRates.Enabled = false;
             checkDormancy.Enabled = false;
-            checkTimeDeposit.Enabled = false;
             checkStatus.Enabled = false;
             checkedMemberTypes.Items.Clear();
 
             disableDormancy();
             disableMaintainingBalance();
+            disableInterest();
 
             btnRetrieve.Visible = false;
             this.btnSave.Enabled = false;
@@ -67,7 +66,6 @@ namespace CMS.Savings.Maintenance.View
             checkMaintainingBalance.CheckState = CheckState.Unchecked;
             checkInterestRates.CheckState = CheckState.Unchecked;
             checkDormancy.CheckState = CheckState.Unchecked;
-            checkTimeDeposit.CheckState = CheckState.Unchecked;
             checkStatus.CheckState = CheckState.Unchecked;
 
             txtName.Enabled = true;
@@ -77,7 +75,6 @@ namespace CMS.Savings.Maintenance.View
             checkMaintainingBalance.Enabled = true;
             checkInterestRates.Enabled = true;
             checkDormancy.Enabled = true;
-            checkTimeDeposit.Enabled = true;
             checkStatus.Enabled = true;
             
             disableDormancy();
@@ -160,6 +157,22 @@ namespace CMS.Savings.Maintenance.View
             comboDormancyChargeDuration.Enabled = false;
         }
 
+        public void enableInterest()
+        {
+            txtInterestRate.Clear();
+            comboInterestRate.SelectedIndex = -1;
+            txtInterestRate.Enabled = true;
+            comboInterestRate.Enabled = true;
+        }
+
+        public void disableInterest()
+        {
+            txtInterestRate.Clear();
+            comboInterestRate.SelectedIndex = -1;
+            txtInterestRate.Enabled = false;
+            comboInterestRate.Enabled = false;
+        }
+
         public void setTextName(String s)
         {
             this.txtName.Text = s;
@@ -180,6 +193,20 @@ namespace CMS.Savings.Maintenance.View
             try
             {
                 return double.Parse(this.txtInitDeposit.Text);
+            }
+            catch (Exception) { return 0.00; }
+        }
+
+        public void setInterestRate(String s)
+        {
+            this.txtInterestRate.Text = s;
+        }
+
+        public double getInterestRate()
+        {
+            try
+            {
+                return double.Parse(this.txtInterestRate.Text);
             }
             catch (Exception) { return 0.00; }
         }
@@ -261,23 +288,6 @@ namespace CMS.Savings.Maintenance.View
             }
         }
 
-        public void setTimeDeposit()
-        {
-            this.checkTimeDeposit.CheckState = CheckState.Checked;
-        }
-
-        public Boolean getTimeDeposit()
-        {
-            if (this.checkTimeDeposit.CheckState == CheckState.Checked)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         public void setStatus()
         {
             this.checkStatus.CheckState = CheckState.Checked;
@@ -294,6 +304,25 @@ namespace CMS.Savings.Maintenance.View
                 return false;
             }
         }
+
+        //INTEREST RATE FIELDS
+        public void setComboInterest(String s)
+        {
+            comboInterestRate.SelectedItem = s;
+        }
+
+        public String getComboInterest()
+        {
+            if(this.comboInterestRate.SelectedIndex == -1)
+            {
+                return String.Empty;
+            }
+            else
+            {
+                return comboInterestRate.SelectedItem.ToString();
+            }
+        }
+
 
         //MAINTAINING BALANCE FIELDS
 
@@ -628,6 +657,16 @@ namespace CMS.Savings.Maintenance.View
             lblEvery.ForeColor = Color.Red;
         }
 
+        public void setErrorInterestRate()
+        {
+            lblRate.ForeColor = Color.Red;
+        }
+
+        public void setErrorPer()
+        {
+            lblPer.ForeColor = Color.Red;
+        }
+
         public void clearError()
         {
             lblName.ForeColor = SystemColors.ControlText;
@@ -640,6 +679,8 @@ namespace CMS.Savings.Maintenance.View
             lblDormancy.ForeColor = SystemColors.ControlText;
             lblPenaltyDormancy.ForeColor = SystemColors.ControlText;
             lblEvery.ForeColor = SystemColors.ControlText;
+            lblRate.ForeColor = SystemColors.ControlText;
+            lblPer.ForeColor = SystemColors.ControlText;
         }
 
         public void removeColumns()
@@ -734,32 +775,6 @@ namespace CMS.Savings.Maintenance.View
                 {
                     row.DefaultCellStyle = null;
                 }
-            }
-        }
-
-        private void checkTimeDeposit_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkTimeDeposit.Checked)
-            {
-                this.numAccountHolder.Value = 1;
-                this.txtMaxWith.Text = "0";
-                this.numAccountHolder.Enabled = false;
-                this.txtMaxWith.Enabled = false;
-                this.checkMaintainingBalance.CheckState = CheckState.Unchecked;
-                this.checkMaintainingBalance.Enabled = false;
-                this.checkDormancy.CheckState = CheckState.Unchecked;
-                this.checkDormancy.Enabled = false;
-            }
-            else
-            {
-                this.numAccountHolder.Value = 0;
-                this.txtMaxWith.Text = "0";
-                this.numAccountHolder.Enabled = true;
-                this.txtMaxWith.Enabled = true;
-                this.checkMaintainingBalance.CheckState = CheckState.Unchecked;
-                this.checkMaintainingBalance.Enabled = true;
-                this.checkDormancy.CheckState = CheckState.Unchecked;
-                this.checkDormancy.Enabled = true;
             }
         }
 
@@ -904,6 +919,61 @@ namespace CMS.Savings.Maintenance.View
             else this.txtMaintaningBalance.SelectionStart = txtMaintaningBalance.Text.Length - 3;
         }
 
+        private void checkInterestRates_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkInterestRates.CheckState == CheckState.Checked)
+            {
+                enableInterest();
+            }
+            else
+            {
+                disableInterest();
+            }
+        }
 
+        private void txtInterestRate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtInterestRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int length = this.txtInitDeposit.Text.Length;
+            if ((e.KeyChar < '0' || e.KeyChar > '9') && (e.KeyChar != '\b') && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                e.Handled = false;
+            }
+
+            if (e.KeyChar == '\b' && txtInitDeposit.SelectionStart == this.txtInitDeposit.Text.Length - 2)
+            {
+                this.txtInitDeposit.SelectionStart = this.txtInitDeposit.Text.Length - 3;
+            }
+
+            //if (e.KeyChar == '\b' && length % 4 == 0) 
+            //{
+            //  MessageBox.Show("hi");
+            //this.txtInitDeposit.SelectionStart = this.txtInitDeposit.Text.Length-2;
+            //} 
+
+            if (Char.IsDigit(e.KeyChar) && txtInitDeposit.Text.Length == 4)
+            {
+                this.txtInitDeposit.SelectionStart = this.txtInitDeposit.Text.Length - 3;
+            }
+
+            if (e.KeyChar == '.')
+            {
+                e.Handled = true;
+                this.txtInterestRate.Text = this.getInterestRate().ToString();
+                this.txtInterestRate.SelectionStart = this.txtInterestRate.Text.Length - 2;
+            }
+        }
     }
 }

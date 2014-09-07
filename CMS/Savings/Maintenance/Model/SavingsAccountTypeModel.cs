@@ -18,11 +18,11 @@ namespace CMS.Savings.Maintenance.Model
         public int isMaintainingBalance { get; set; }
         public int isDormancy { get; set; }
         public int isInterestRates { get; set; }
-        public int isTimeDeposit { get; set; }
         public int Status { get; set; }
         public List<MemberSavingsTypeModel> memberSavingsChecklist { get; set; }
         public MaintainingBalancesModel maintainingBalanceModel { get; set; }
         public DormancyModel dormancyModel { get; set; }
+        public InterestRatesModel interestModel { get; set; }
 
         public SavingsAccountTypeModel()
         {
@@ -33,17 +33,17 @@ namespace CMS.Savings.Maintenance.Model
             this.isMaintainingBalance = 0;
             this.isDormancy = 0;
             this.isInterestRates = 0;
-            this.isTimeDeposit = 0;
             this.Status = 0;
             this.memberSavingsChecklist = new List<MemberSavingsTypeModel>();
             this.maintainingBalanceModel = new MaintainingBalancesModel();
             this.dormancyModel = new DormancyModel();
+            this.interestModel = new InterestRatesModel();
         }
 
         public DataSet selectAccountTypes()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT s.AccountTypeId AS 'Account Type Id', SavingsTypeName AS 'Savings Type Name', InitialDeposit AS 'Initial Deposit', MaximumWithdrawal AS 'Maximum Withdrawal', NoOfAccountHolders AS 'No of Account Holders', isMaintainingBalance AS 'Maintaining Balance', isDormancy AS 'Dormancy', isInterestRate AS 'Interest Rate', isTimeDeposit AS 'Time Deposit', isArchived, DateCreated AS 'Date Created',	DateModified AS 'Last Modified', Status FROM SAVINGS_ACCOUNT_TYPE s WHERE isArchived = 0";
+            String sql = "SELECT s.AccountTypeId AS 'Account Type Id', SavingsTypeName AS 'Savings Type Name', InitialDeposit AS 'Initial Deposit', MaximumWithdrawal AS 'Maximum Withdrawal', NoOfAccountHolders AS 'No of Account Holders', isMaintainingBalance AS 'Maintaining Balance', isDormancy AS 'Dormancy', isInterestRate AS 'Interest Rate', isArchived, DateCreated AS 'Date Created',	DateModified AS 'Last Modified', Status FROM SAVINGS_ACCOUNT_TYPE s WHERE isArchived = 0";
             DataSet ds = dal.executeDataSet(sql);
             return ds;
         }
@@ -51,7 +51,7 @@ namespace CMS.Savings.Maintenance.Model
         public DataSet selectAccountTypesAll()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT s.AccountTypeId AS 'Account Type Id', SavingsTypeName AS 'Savings Type Name', InitialDeposit AS 'Initial Deposit', MaximumWithdrawal AS 'Maximum Withdrawal', NoOfAccountHolders AS 'No of Account Holders', isMaintainingBalance AS 'Maintaining Balance', isDormancy AS 'Dormancy', isInterestRate AS 'Interest Rate', isTimeDeposit AS 'Time Deposit', isArchived, DateCreated AS 'Date Created',	DateModified AS 'Last Modified', Status FROM SAVINGS_ACCOUNT_TYPE s";
+            String sql = "SELECT s.AccountTypeId AS 'Account Type Id', SavingsTypeName AS 'Savings Type Name', InitialDeposit AS 'Initial Deposit', MaximumWithdrawal AS 'Maximum Withdrawal', NoOfAccountHolders AS 'No of Account Holders', isMaintainingBalance AS 'Maintaining Balance', isDormancy AS 'Dormancy', isInterestRate AS 'Interest Rate', isArchived, DateCreated AS 'Date Created',	DateModified AS 'Last Modified', Status FROM SAVINGS_ACCOUNT_TYPE s";
             DataSet ds = dal.executeDataSet(sql);
             return ds;
         }
@@ -105,7 +105,7 @@ namespace CMS.Savings.Maintenance.Model
         public int insertSavingsAccount()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC insertSavingsAccountType @Name, @InitDeposit, @MaxWith, @AccountHolders, @isMaintainingBalance, @isDormancy, @isInterestRates, @isTimeDeposit, @Status";
+            String sql = "EXEC insertSavingsAccountType @Name, @InitDeposit, @MaxWith, @AccountHolders, @isMaintainingBalance, @isDormancy, @isInterestRates, @Status";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@Name", this.Name);
             parameters.Add("@InitDeposit", this.InitDeposit);
@@ -114,7 +114,6 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@isMaintainingBalance", this.isMaintainingBalance);
             parameters.Add("@isDormancy", this.isDormancy);
             parameters.Add("@isInterestRates", this.isInterestRates);
-            parameters.Add("@isTimeDeposit", this.isTimeDeposit);
             parameters.Add("@Status", this.Status);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             if (result == 1)
@@ -128,6 +127,42 @@ namespace CMS.Savings.Maintenance.Model
                     dal.executeNonQuery(s, param);
                 }
             }
+            return result;
+        }
+
+        public int insertInterestRate()
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "EXEC insertInterestRate @TypeId, @InterestRate, @Per, @MinRange";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@TypeId", this.interestModel.TypeId);
+            parameters.Add("@InterestRate", this.interestModel.InterestRate);
+            parameters.Add("@Per", this.interestModel.Per);
+            parameters.Add("@MinRange", this.interestModel.MinRange);
+            int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            return result;
+        }
+
+        public int updateInterestRate(int InterestId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "EXEC updateInterestRate @TypeId, @InterestRate, @Per, @MinRange";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@TypeId", this.interestModel.TypeId);
+            parameters.Add("@InterestRate", this.interestModel.InterestRate);
+            parameters.Add("@Per", this.interestModel.Per);
+            parameters.Add("@MinRange", this.interestModel.MinRange);
+            int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            return result;
+        }
+
+        public int deleteInterestRate(int TypeId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "DELETE FROM INTEREST_RATE WHERE AccountTypeId = @TypeId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@TypeId", TypeId);
+            int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             return result;
         }
         
@@ -216,7 +251,7 @@ namespace CMS.Savings.Maintenance.Model
         public int updateSavingsAccount(int TypeId)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC updateSavingsAccountType @Name, @InitDeposit, @MaxWith, @AccountHolders, @isMaintainingBalance, @isDormancy, @isInterestRates, @isTimeDeposit, @Status, @AccountTypeId";
+            String sql = "EXEC updateSavingsAccountType @Name, @InitDeposit, @MaxWith, @AccountHolders, @isMaintainingBalance, @isDormancy, @isInterestRates, @Status, @AccountTypeId";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@Name", this.Name);
             parameters.Add("@InitDeposit", this.InitDeposit);
@@ -225,7 +260,6 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@isMaintainingBalance", this.isMaintainingBalance);
             parameters.Add("@isDormancy", this.isDormancy);
             parameters.Add("@isInterestRates", this.isInterestRates);
-            parameters.Add("@isTimeDeposit", this.isTimeDeposit);
             parameters.Add("@Status", this.Status);
             parameters.Add("@AccountTypeId", TypeId);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
@@ -304,6 +338,68 @@ namespace CMS.Savings.Maintenance.Model
                 result[5] = read[6].ToString();
             }
             return result;
+        }
+
+        public String[] selectInterestRate(int TypeId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT * FROM INTEREST_RATE WHERE AccountTypeId = @TypeId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@TypeId", TypeId);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            String[] result = new String[6];
+            while (read.Read())
+            {
+                result[0] = read[1].ToString();
+                result[1] = read[2].ToString();
+                result[2] = read[3].ToString();
+            }
+            return result;
+        }
+
+        public int checkMainBal(int TypeId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT COUNT(*) FROM MAINTAINING_BALANCE WHERE SavingsAccountTypeId = @TypeId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@TypeId", TypeId);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = (int)read[0];
+            }
+            return i;
+        }
+
+        public int checkDormancy(int TypeId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT COUNT(*) FROM DORMANCY WHERE AccountTypeId = @TypeId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@TypeId", TypeId);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = (int)read[0];
+            }
+            return i;
+        }
+
+        public int checkInterest(int TypeId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT COUNT(*) FROM INTEREST_RATE WHERE AccountTypeId = @TypeId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@TypeId", TypeId);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = (int)read[0];
+            }
+            return i;
         }
     }
 }

@@ -31,12 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SavingsAccountType));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupInterest = new System.Windows.Forms.GroupBox();
+            this.lblRate = new System.Windows.Forms.Label();
+            this.lblPercent = new System.Windows.Forms.Label();
+            this.lblPer = new System.Windows.Forms.Label();
+            this.comboInterestRate = new System.Windows.Forms.ComboBox();
+            this.txtInterestRate = new System.Windows.Forms.TextBox();
+            this.contextMenuBlank = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboDormancyChargeDuration = new System.Windows.Forms.ComboBox();
             this.lblDormancy = new System.Windows.Forms.Label();
             this.lblEvery = new System.Windows.Forms.Label();
             this.txtDormancyPenalty = new System.Windows.Forms.TextBox();
-            this.contextMenuBlank = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.numDormancyChargeDuration = new System.Windows.Forms.NumericUpDown();
             this.comboDormancy = new System.Windows.Forms.ComboBox();
             this.comboDormancyPenalty = new System.Windows.Forms.ComboBox();
@@ -58,7 +64,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.checkStatus = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkTimeDeposit = new System.Windows.Forms.CheckBox();
             this.groupAvailable = new System.Windows.Forms.GroupBox();
             this.checkedMemberTypes = new System.Windows.Forms.CheckedListBox();
             this.txtInitDeposit = new System.Windows.Forms.TextBox();
@@ -78,6 +83,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupInterest.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDormancyChargeDuration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDormancy)).BeginInit();
@@ -92,6 +98,7 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.groupInterest);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.groupMain);
             this.groupBox1.Controls.Add(this.txtMaxWith);
@@ -101,7 +108,6 @@
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.checkStatus);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.checkTimeDeposit);
             this.groupBox1.Controls.Add(this.groupAvailable);
             this.groupBox1.Controls.Add(this.txtInitDeposit);
             this.groupBox1.Controls.Add(this.lblInitDeposit);
@@ -117,6 +123,86 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add/Edit Savings Account Type";
+            // 
+            // groupInterest
+            // 
+            this.groupInterest.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupInterest.Controls.Add(this.lblRate);
+            this.groupInterest.Controls.Add(this.lblPercent);
+            this.groupInterest.Controls.Add(this.lblPer);
+            this.groupInterest.Controls.Add(this.comboInterestRate);
+            this.groupInterest.Controls.Add(this.txtInterestRate);
+            this.groupInterest.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.groupInterest.Location = new System.Drawing.Point(9, 220);
+            this.groupInterest.Name = "groupInterest";
+            this.groupInterest.Size = new System.Drawing.Size(395, 59);
+            this.groupInterest.TabIndex = 29;
+            this.groupInterest.TabStop = false;
+            this.groupInterest.Text = "Interest Rate";
+            // 
+            // lblRate
+            // 
+            this.lblRate.AutoSize = true;
+            this.lblRate.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.lblRate.Location = new System.Drawing.Point(10, 27);
+            this.lblRate.Name = "lblRate";
+            this.lblRate.Size = new System.Drawing.Size(37, 17);
+            this.lblRate.TabIndex = 29;
+            this.lblRate.Text = "Rate:";
+            // 
+            // lblPercent
+            // 
+            this.lblPercent.AutoSize = true;
+            this.lblPercent.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPercent.Location = new System.Drawing.Point(169, 27);
+            this.lblPercent.Name = "lblPercent";
+            this.lblPercent.Size = new System.Drawing.Size(20, 19);
+            this.lblPercent.TabIndex = 17;
+            this.lblPercent.Text = "%";
+            // 
+            // lblPer
+            // 
+            this.lblPer.AutoSize = true;
+            this.lblPer.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPer.Location = new System.Drawing.Point(197, 27);
+            this.lblPer.Name = "lblPer";
+            this.lblPer.Size = new System.Drawing.Size(29, 19);
+            this.lblPer.TabIndex = 18;
+            this.lblPer.Text = "per";
+            // 
+            // comboInterestRate
+            // 
+            this.comboInterestRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboInterestRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboInterestRate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.comboInterestRate.FormattingEnabled = true;
+            this.comboInterestRate.Items.AddRange(new object[] {
+            "Monthly",
+            "Semi-Annually",
+            "Bi-Annually",
+            "Annually"});
+            this.comboInterestRate.Location = new System.Drawing.Point(232, 24);
+            this.comboInterestRate.Name = "comboInterestRate";
+            this.comboInterestRate.Size = new System.Drawing.Size(142, 25);
+            this.comboInterestRate.TabIndex = 19;
+            // 
+            // txtInterestRate
+            // 
+            this.txtInterestRate.ContextMenuStrip = this.contextMenuBlank;
+            this.txtInterestRate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtInterestRate.Location = new System.Drawing.Point(71, 24);
+            this.txtInterestRate.MaxLength = 7;
+            this.txtInterestRate.Name = "txtInterestRate";
+            this.txtInterestRate.Size = new System.Drawing.Size(92, 25);
+            this.txtInterestRate.TabIndex = 16;
+            this.txtInterestRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtInterestRate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInterestRate_KeyDown);
+            this.txtInterestRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInterestRate_KeyPress);
+            // 
+            // contextMenuBlank
+            // 
+            this.contextMenuBlank.Name = "contextMenuBlank";
+            this.contextMenuBlank.Size = new System.Drawing.Size(61, 4);
             // 
             // groupBox2
             // 
@@ -185,11 +271,6 @@
             this.txtDormancyPenalty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDormancyPenalty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInitDeposit_KeyDown);
             this.txtDormancyPenalty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInitDeposit_KeyPress);
-            // 
-            // contextMenuBlank
-            // 
-            this.contextMenuBlank.Name = "contextMenuBlank";
-            this.contextMenuBlank.Size = new System.Drawing.Size(61, 4);
             // 
             // numDormancyChargeDuration
             // 
@@ -371,7 +452,7 @@
             // 
             this.txtMaxWith.ContextMenuStrip = this.contextMenuBlank;
             this.txtMaxWith.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtMaxWith.Location = new System.Drawing.Point(226, 121);
+            this.txtMaxWith.Location = new System.Drawing.Point(226, 90);
             this.txtMaxWith.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMaxWith.MaxLength = 15;
             this.txtMaxWith.Name = "txtMaxWith";
@@ -386,7 +467,7 @@
             // 
             this.lblMaxWith.AutoSize = true;
             this.lblMaxWith.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblMaxWith.Location = new System.Drawing.Point(18, 124);
+            this.lblMaxWith.Location = new System.Drawing.Point(18, 93);
             this.lblMaxWith.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMaxWith.Name = "lblMaxWith";
             this.lblMaxWith.Size = new System.Drawing.Size(200, 19);
@@ -452,18 +533,6 @@
             this.label1.TabIndex = 41;
             this.label1.Text = "Status:";
             // 
-            // checkTimeDeposit
-            // 
-            this.checkTimeDeposit.AutoSize = true;
-            this.checkTimeDeposit.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.checkTimeDeposit.Location = new System.Drawing.Point(296, 59);
-            this.checkTimeDeposit.Name = "checkTimeDeposit";
-            this.checkTimeDeposit.Size = new System.Drawing.Size(108, 23);
-            this.checkTimeDeposit.TabIndex = 11;
-            this.checkTimeDeposit.Text = "Time Deposit";
-            this.checkTimeDeposit.UseVisualStyleBackColor = true;
-            this.checkTimeDeposit.CheckedChanged += new System.EventHandler(this.checkTimeDeposit_CheckedChanged);
-            // 
             // groupAvailable
             // 
             this.groupAvailable.Controls.Add(this.checkedMemberTypes);
@@ -488,7 +557,7 @@
             // 
             this.txtInitDeposit.ContextMenuStrip = this.contextMenuBlank;
             this.txtInitDeposit.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtInitDeposit.Location = new System.Drawing.Point(226, 88);
+            this.txtInitDeposit.Location = new System.Drawing.Point(226, 57);
             this.txtInitDeposit.MaxLength = 15;
             this.txtInitDeposit.Name = "txtInitDeposit";
             this.txtInitDeposit.Size = new System.Drawing.Size(178, 25);
@@ -502,7 +571,7 @@
             // 
             this.lblInitDeposit.AutoSize = true;
             this.lblInitDeposit.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblInitDeposit.Location = new System.Drawing.Point(18, 91);
+            this.lblInitDeposit.Location = new System.Drawing.Point(18, 60);
             this.lblInitDeposit.Name = "lblInitDeposit";
             this.lblInitDeposit.Size = new System.Drawing.Size(150, 19);
             this.lblInitDeposit.TabIndex = 12;
@@ -516,7 +585,7 @@
             this.groupRequirements.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
             this.groupRequirements.Location = new System.Drawing.Point(9, 158);
             this.groupRequirements.Name = "groupRequirements";
-            this.groupRequirements.Size = new System.Drawing.Size(395, 110);
+            this.groupRequirements.Size = new System.Drawing.Size(395, 56);
             this.groupRequirements.TabIndex = 16;
             this.groupRequirements.TabStop = false;
             this.groupRequirements.Text = "Requirements:";
@@ -525,7 +594,7 @@
             // 
             this.checkMaintainingBalance.AutoSize = true;
             this.checkMaintainingBalance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.checkMaintainingBalance.Location = new System.Drawing.Point(29, 24);
+            this.checkMaintainingBalance.Location = new System.Drawing.Point(126, 24);
             this.checkMaintainingBalance.Name = "checkMaintainingBalance";
             this.checkMaintainingBalance.Size = new System.Drawing.Size(151, 23);
             this.checkMaintainingBalance.TabIndex = 17;
@@ -537,18 +606,19 @@
             // 
             this.checkInterestRates.AutoSize = true;
             this.checkInterestRates.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.checkInterestRates.Location = new System.Drawing.Point(29, 82);
+            this.checkInterestRates.Location = new System.Drawing.Point(8, 24);
             this.checkInterestRates.Name = "checkInterestRates";
             this.checkInterestRates.Size = new System.Drawing.Size(112, 23);
             this.checkInterestRates.TabIndex = 19;
             this.checkInterestRates.Text = "Interest Rates";
             this.checkInterestRates.UseVisualStyleBackColor = true;
+            this.checkInterestRates.CheckedChanged += new System.EventHandler(this.checkInterestRates_CheckedChanged);
             // 
             // checkDormancy
             // 
             this.checkDormancy.AutoSize = true;
             this.checkDormancy.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.checkDormancy.Location = new System.Drawing.Point(29, 53);
+            this.checkDormancy.Location = new System.Drawing.Point(283, 23);
             this.checkDormancy.Name = "checkDormancy";
             this.checkDormancy.Size = new System.Drawing.Size(91, 23);
             this.checkDormancy.TabIndex = 18;
@@ -560,7 +630,7 @@
             // 
             this.numAccountHolder.ContextMenuStrip = this.contextMenuBlank;
             this.numAccountHolder.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.numAccountHolder.Location = new System.Drawing.Point(226, 57);
+            this.numAccountHolder.Location = new System.Drawing.Point(226, 123);
             this.numAccountHolder.Name = "numAccountHolder";
             this.numAccountHolder.Size = new System.Drawing.Size(53, 25);
             this.numAccountHolder.TabIndex = 10;
@@ -571,7 +641,7 @@
             // 
             this.lblAccountHolder.AutoSize = true;
             this.lblAccountHolder.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblAccountHolder.Location = new System.Drawing.Point(18, 61);
+            this.lblAccountHolder.Location = new System.Drawing.Point(18, 127);
             this.lblAccountHolder.Name = "lblAccountHolder";
             this.lblAccountHolder.Size = new System.Drawing.Size(154, 19);
             this.lblAccountHolder.TabIndex = 9;
@@ -703,6 +773,8 @@
             this.Text = "Savings Account Types";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupInterest.ResumeLayout(false);
+            this.groupInterest.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDormancyChargeDuration)).EndInit();
@@ -737,7 +809,6 @@
         private System.Windows.Forms.CheckedListBox checkedMemberTypes;
         private System.Windows.Forms.ContextMenuStrip contextMenuBlank;
         private System.Windows.Forms.DataGridView dataAccountType;
-        private System.Windows.Forms.CheckBox checkTimeDeposit;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkArchived;
         private System.Windows.Forms.Button btnDelete;
@@ -769,6 +840,12 @@
         private System.Windows.Forms.Label lblPenalty;
         private System.Windows.Forms.TextBox txtMaintaningBalance;
         private System.Windows.Forms.Label lblMaintainingBalance;
+        private System.Windows.Forms.GroupBox groupInterest;
+        private System.Windows.Forms.Label lblPercent;
+        private System.Windows.Forms.Label lblPer;
+        private System.Windows.Forms.ComboBox comboInterestRate;
+        private System.Windows.Forms.TextBox txtInterestRate;
+        private System.Windows.Forms.Label lblRate;
 
 
     }

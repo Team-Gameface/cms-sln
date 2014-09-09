@@ -11,28 +11,22 @@ using System.Windows.Forms;
 
 namespace CMS.Savings.Maintenance.View
 {
-    public partial class InterestRates : Form
+    public partial class TimeDepositInterestRates : Form
     {
-        public InterestRates()
+        public TimeDepositInterestRates()
         {
             InitializeComponent();
         }
 
         public void disableFunction()
         {
-            this.comboAccountType.SelectedIndex = -1;
             this.txtInterestRate.Clear();
-            this.comboInterestRate.SelectedIndex = -1;
             this.txtMinBal.Clear();
-            this.checkMaximum.CheckState = CheckState.Unchecked;
             this.txtMaxBal.Clear();
             this.Status.CheckState = CheckState.Unchecked;
 
-            this.comboAccountType.Enabled = false;
             this.txtInterestRate.Enabled = false;
-            this.comboInterestRate.Enabled = false;
             this.txtMinBal.Enabled = false;
-            this.checkMaximum.Enabled = false;
             this.txtMaxBal.Enabled = false;
             this.Status.Enabled = false;
             this.btnSave.Enabled = false;
@@ -48,19 +42,14 @@ namespace CMS.Savings.Maintenance.View
 
         public void enableFunction()
         {
-            this.comboAccountType.SelectedIndex = -1;
             this.txtInterestRate.Clear();
-            this.comboInterestRate.SelectedIndex = -1;
             this.txtMinBal.Clear();
-            this.checkMaximum.CheckState = CheckState.Unchecked;
             this.txtMaxBal.Clear();
             this.Status.CheckState = CheckState.Unchecked;
 
-            this.comboAccountType.Enabled = true;
             this.txtInterestRate.Enabled = true;
-            this.comboInterestRate.Enabled = true;
             this.txtMinBal.Enabled = true;
-            this.checkMaximum.Enabled = true;
+            this.txtMaxBal.Enabled = true;
             this.Status.Enabled = true;
             this.btnSave.Enabled = true;
             this.btnSave.BackColor = Color.Green;
@@ -72,38 +61,7 @@ namespace CMS.Savings.Maintenance.View
             this.btnEdit.Enabled = false;
             this.btnEdit.BackColor = Color.Gray;
         }
-
-        public void disableType()
-        {
-            this.comboAccountType.Enabled = false;
-        }
-
-        public void initAccountType(DataSet ds)
-        {
-            this.comboAccountType.DataSource = ds.Tables[0];
-            this.comboAccountType.ValueMember = "AccountTypeId";
-            this.comboAccountType.DisplayMember = "SavingsTypeName";
-        }
-
-        public void setAccountType(String s)
-        {
-            this.comboAccountType.DataSource = null;
-            this.comboAccountType.Items.Add(s);
-            this.comboAccountType.SelectedItem = s;
-        }
-
-        public int getAccountType()
-        {
-            if (this.comboAccountType.SelectedIndex == -1)
-            {
-                return 0;
-            }
-            else
-            {
-                return int.Parse(this.comboAccountType.SelectedValue.ToString());
-            }
-        }
-
+        
         public void setInterestRates(String s)
         {
             this.txtInterestRate.Text = s;
@@ -112,23 +70,6 @@ namespace CMS.Savings.Maintenance.View
         public double getInterestRates()
         {
             return double.Parse(this.txtInterestRate.Text.ToString());
-        }
-
-        public void setInterestRatesSchedule(String s)
-        {
-            this.comboInterestRate.SelectedItem = s;
-        }
-
-        public String getInterestRatesSchedule()
-        {
-            if (this.comboInterestRate.SelectedIndex == -1)
-            {
-                return String.Empty;
-            }
-            else
-            {
-                return this.comboInterestRate.SelectedItem.ToString();
-            }
         }
 
         public void setMinimumBalance(String s)
@@ -140,47 +81,21 @@ namespace CMS.Savings.Maintenance.View
         {
             try
             {
-                return double.Parse(this.txtMinBal.Text.ToString());
+                return double.Parse(this.txtMinBal.Text);
             }
             catch (Exception) { return 0.00; }
         }
 
-        private void checkMaximum_CheckedChanged(object sender, EventArgs e)
+        public void setMaximumBalance(String s)
         {
-            if (checkMaximum.CheckState == CheckState.Checked)
-            {
-                this.txtMaxBal.Enabled = true;
-            }
-            else
-            {
-                this.txtMaxBal.Enabled = false;
-                this.txtMaxBal.Clear();
-            }
-        }
-
-        public void setCheckMaxBal(String s)
-        {
-            this.checkMaximum.CheckState = CheckState.Checked;
             this.txtMaxBal.Text = s;
-        }
-
-        public Boolean getCheckMaximumBalance()
-        {
-            if (this.checkMaximum.CheckState == CheckState.Checked)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         public double getMaximumBalance()
         {
             try
             {
-                return double.Parse(this.txtMaxBal.Text.ToString());
+                return double.Parse(this.txtMaxBal.Text);
             }
             catch (Exception) { return 0.00; }
         }
@@ -205,7 +120,6 @@ namespace CMS.Savings.Maintenance.View
         public void interestRatesGrid(DataSet ds)
         {
             this.dataInterestRates.DataSource = ds.Tables[0];
-
         }
 
         public DataGridViewRow getSelected()
@@ -349,19 +263,9 @@ namespace CMS.Savings.Maintenance.View
             }
         }
 
-        public void setErrorAccountType()
-        {
-            lblAccountType.ForeColor = Color.Red;
-        }
-
         public void setErrorInterestRate()
         {
             lblInterestRate.ForeColor = Color.Red;
-        }
-
-        public void setErrorPer()
-        {
-            lblPer.ForeColor = Color.Red;
         }
 
         public void setErrorMinimum()
@@ -371,25 +275,21 @@ namespace CMS.Savings.Maintenance.View
 
         public void setErrorMaximum()
         {
-            checkMaximum.ForeColor = Color.Red;
+            lblMaximum.ForeColor = Color.Red;
         }
 
         public void clearError()
         {
-            lblAccountType.ForeColor = SystemColors.ControlText;
             lblInterestRate.ForeColor = SystemColors.ControlText;
-            lblPer.ForeColor = SystemColors.ControlText;
             lblMinimum.ForeColor = SystemColors.ControlText;
-            checkMaximum.ForeColor = SystemColors.ControlText;
+            lblMaximum.ForeColor = SystemColors.ControlText;
         }
 
         public void removeColumns()
         {
             dataInterestRates.Columns[0].Visible = false;
-            dataInterestRates.Columns[1].Visible = false;
-            dataInterestRates.Columns[6].Visible = false;
-            dataInterestRates.Columns[7].Visible = false;
-            dataInterestRates.Columns[8].Visible = false;
+            dataInterestRates.Columns[4].Visible = false;
+            dataInterestRates.Columns[5].Visible = false;
         }
 
         private void txtInterestRate_KeyDown(object sender, KeyEventArgs e)
@@ -403,7 +303,11 @@ namespace CMS.Savings.Maintenance.View
 
         private void txtMinBal_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.Modifiers == Keys.Control)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
 
         private void txtMaxBal_KeyDown(object sender, KeyEventArgs e)
@@ -415,7 +319,7 @@ namespace CMS.Savings.Maintenance.View
             }
         }
 
-        private void dataInterestRates_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        /*private void dataInterestRates_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridViewRowCollection rowCollection = dataInterestRates.Rows;
             foreach (DataGridViewRow row in rowCollection)
@@ -431,24 +335,7 @@ namespace CMS.Savings.Maintenance.View
                     row.DefaultCellStyle = null;
                 }
             }
-        }
-
-        public void checkArchived_CheckStateChanged(EventHandler e)
-        {
-            this.checkArchived.Click += e;
-        }
-
-        public bool checkArchivedState()
-        {
-            if (this.checkArchived.CheckState == CheckState.Checked)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        }*/
 
         public DataGridViewRowCollection getAllRows()
         {

@@ -52,7 +52,7 @@ namespace CMS.Savings
         
         public void itemInterestRates(object args, EventArgs e)
         {
-            Maintenance.Controller.InterestRatesController interestRatesController = new Maintenance.Controller.InterestRatesController(new Maintenance.Model.InterestRatesModel(), new Maintenance.View.InterestRates(), savingsMenu);
+            Maintenance.Controller.TimeDepositInterestRatesController interestRatesController = new Maintenance.Controller.TimeDepositInterestRatesController(new Maintenance.Model.TimeDepositInterestModel(), new Maintenance.View.TimeDepositInterestRates(), savingsMenu);
         }
 
         public void itemSavingsAccountTypes(object args, EventArgs e)

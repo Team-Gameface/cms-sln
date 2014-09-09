@@ -73,8 +73,8 @@
             // 
             this.maintenanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemSavingsAccountTypes,
-            this.itemInterestRates,
             this.toolStripSeparator3,
+            this.itemInterestRates,
             this.itemTimeDepositWithdrawal});
             this.maintenanceToolStripMenuItem.Image = global::CMS.Properties.Resources.Maintenance_SV;
             this.maintenanceToolStripMenuItem.Name = "maintenanceToolStripMenuItem";
@@ -85,26 +85,26 @@
             // 
             this.itemSavingsAccountTypes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemSavingsAccountTypes.Name = "itemSavingsAccountTypes";
-            this.itemSavingsAccountTypes.Size = new System.Drawing.Size(228, 22);
+            this.itemSavingsAccountTypes.Size = new System.Drawing.Size(236, 22);
             this.itemSavingsAccountTypes.Text = "Savings Account Types";
             // 
             // itemInterestRates
             // 
             this.itemInterestRates.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemInterestRates.Name = "itemInterestRates";
-            this.itemInterestRates.Size = new System.Drawing.Size(228, 22);
-            this.itemInterestRates.Text = "Interest Rates";
+            this.itemInterestRates.Size = new System.Drawing.Size(236, 22);
+            this.itemInterestRates.Text = "Time Deposit Interest Rates";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(225, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(233, 6);
             // 
             // itemTimeDepositWithdrawal
             // 
             this.itemTimeDepositWithdrawal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemTimeDepositWithdrawal.Name = "itemTimeDepositWithdrawal";
-            this.itemTimeDepositWithdrawal.Size = new System.Drawing.Size(228, 22);
+            this.itemTimeDepositWithdrawal.Size = new System.Drawing.Size(236, 22);
             this.itemTimeDepositWithdrawal.Text = "Early Withdrawal Penalties";
             // 
             // transactionToolStripMenuItem

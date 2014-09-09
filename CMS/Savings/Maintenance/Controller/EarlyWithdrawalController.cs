@@ -26,7 +26,6 @@ namespace CMS.Savings.Maintenance.Controller
             this.earlyWithdrawal.setBtnEditEventHandler(this.btnEdit);
             this.earlyWithdrawal.setBtnSaveEventHandler(this.btnSave);
             this.earlyWithdrawal.txtSearch_TextChanged(this.txtSearch);
-            this.earlyWithdrawal.checkArchived_CheckStateChanged(this.checkArchived);
             this.earlyWithdrawal.disableFunction();
             this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.selectEarlyWithdrawal());
             this.earlyWithdrawal.removeColumns();
@@ -37,7 +36,6 @@ namespace CMS.Savings.Maintenance.Controller
         public void btnAdd(object args, EventArgs e)
         {
             this.earlyWithdrawal.enableFunction();
-            this.earlyWithdrawal.initAccountType(this.earlyWithdrawalModel.selectAccountTypes());
             this.earlyWithdrawal.setStatus();
             isAdd = true;
             EarlyWithdrawalId = 0;
@@ -54,20 +52,17 @@ namespace CMS.Savings.Maintenance.Controller
             else
             {
                 this.earlyWithdrawal.enableFunction();
-                this.earlyWithdrawal.disableType();
                 this.EarlyWithdrawalId = int.Parse(selectedData.Cells["Early Withdrawal Id"].Value.ToString());
                 this.accountType = int.Parse(selectedData.Cells["Account Type Id"].Value.ToString());
-                this.earlyWithdrawal.setAccountType(selectedData.Cells["Account Type"].Value.ToString());
                 String[] penalty = selectedData.Cells["Penalty"].Value.ToString().Split(' ');
                 this.earlyWithdrawal.setTextPenalty(penalty[0]);
-                this.earlyWithdrawal.setComboPenalty(penalty[1]);
                 String[] duration = selectedData.Cells["Duration"].Value.ToString().Split(' ');
                 String durationStatus = String.Empty;
                 for (int i = 0; i < duration.Length; i++)
                 {
                     if (i == 0)
                     {
-                        this.earlyWithdrawal.setNumDuration(int.Parse(duration[0]));
+                        //this.earlyWithdrawal.setNumDuration(int.Parse(duration[0]));
                     }
                     else if (i == duration.Length - 1)
                     {
@@ -79,11 +74,6 @@ namespace CMS.Savings.Maintenance.Controller
                     }
                 }
                 String[] balance = selectedData.Cells["Balance Range"].Value.ToString().Split('-');
-                this.earlyWithdrawal.setMinimumBalance(balance[0]);
-                if (double.Parse(balance[1]) != 0)
-                {
-                    this.earlyWithdrawal.setCheckMaxBal(balance[1]);
-                }
                 if (bool.Parse(selectedData.Cells["Status"].Value.ToString()))
                 {
                     this.earlyWithdrawal.setStatus();
@@ -93,7 +83,7 @@ namespace CMS.Savings.Maintenance.Controller
         }
 
         public void btnSave(object args, EventArgs e)
-        {
+        {/*
             errorMessage = String.Empty;
             this.earlyWithdrawal.clearError();
             Boolean checkAccountType = false;
@@ -114,46 +104,6 @@ namespace CMS.Savings.Maintenance.Controller
             }
             try
             {
-                if (isAdd)
-                {
-                    if (this.earlyWithdrawal.getAccountType() == 0)
-                    {
-                        errorMessage += "Please Specify Account Type." + Environment.NewLine;
-                        this.earlyWithdrawal.setErrorAccountType();
-                        checkAccountType = false;
-                    }
-                    else
-                    {
-                        this.earlyWithdrawalModel.TypeId = this.earlyWithdrawal.getAccountType();
-                        checkAccountType = true;
-                    }
-                }
-                else
-                {
-                    checkAccountType = true;
-                }
-                if (this.earlyWithdrawal.getNumDuration() != 0)
-                {
-                    this.earlyWithdrawalModel.Duration = this.earlyWithdrawal.getNumDuration();
-                    checkDuration = true;
-                }
-                else
-                {
-                    errorMessage += "Please Specify Duration Unit." + Environment.NewLine;
-                    this.earlyWithdrawal.setErrorBalDuration();
-                    checkDuration = false;
-                }
-                if (this.earlyWithdrawal.getComboDuration() == String.Empty)
-                {
-                    errorMessage += "Please Specify Duration Span" + Environment.NewLine;
-                    this.earlyWithdrawal.setErrorBalDuration();
-                    checkDurationStatus = false;
-                }
-                else
-                {
-                    this.earlyWithdrawalModel.DurationStatus = this.earlyWithdrawal.getComboDuration();
-                    checkDurationStatus = true;
-                }
                 if (this.earlyWithdrawal.getTextPenalty() != 0)
                 {
                     if (isAdd)
@@ -386,7 +336,7 @@ namespace CMS.Savings.Maintenance.Controller
                 this.earlyWithdrawal.setErrorMinimum();
                 this.earlyWithdrawal.setErrorPenalty();
                 MessageBox.Show(this.errorMessage + "Invalid Input!" + Environment.NewLine + "Check Red Labels.", "Early Withdrawal", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
 
         public void btnCancel(object args, EventArgs e)
@@ -399,32 +349,8 @@ namespace CMS.Savings.Maintenance.Controller
             accountType = 0;
         }
 
-        public void checkArchived(object sender, EventArgs e)
-        {
-            if (this.earlyWithdrawal.checkArchivedState())
-            {
-                this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawalAll(this.earlyWithdrawal.getSearch()));
-                DataGridViewRowCollection dr = this.earlyWithdrawal.getAllRows();
-                int i = 0;
-                foreach (DataGridViewRow row in dr)
-                {
-                    if (bool.Parse(row.Cells["isArchived"].Value.ToString()))
-                    {
-                        this.earlyWithdrawal.setArchivedColor(i);
-                    }
-                    i++;
-                }
-                this.earlyWithdrawal.removeColumns();
-            }
-            else
-            {
-                this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawal(this.earlyWithdrawal.getSearch()));
-                this.earlyWithdrawal.removeColumns();
-            }
-        }
-
         private void txtSearch(object sender, EventArgs e)
-        {
+        {/*
             if (this.earlyWithdrawal.checkArchivedState())
             {
                 this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawalAll(this.earlyWithdrawal.getSearch()));
@@ -434,7 +360,7 @@ namespace CMS.Savings.Maintenance.Controller
             {
                 this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawal(this.earlyWithdrawal.getSearch()));
                 this.earlyWithdrawal.removeColumns();
-            }
+            }*/
         }
     }
 }

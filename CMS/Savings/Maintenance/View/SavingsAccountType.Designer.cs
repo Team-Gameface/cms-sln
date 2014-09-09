@@ -136,7 +136,7 @@
             this.groupInterest.Location = new System.Drawing.Point(9, 220);
             this.groupInterest.Name = "groupInterest";
             this.groupInterest.Size = new System.Drawing.Size(395, 59);
-            this.groupInterest.TabIndex = 29;
+            this.groupInterest.TabIndex = 15;
             this.groupInterest.TabStop = false;
             this.groupInterest.Text = "Interest Rate";
             // 
@@ -147,7 +147,7 @@
             this.lblRate.Location = new System.Drawing.Point(10, 27);
             this.lblRate.Name = "lblRate";
             this.lblRate.Size = new System.Drawing.Size(37, 17);
-            this.lblRate.TabIndex = 29;
+            this.lblRate.TabIndex = 16;
             this.lblRate.Text = "Rate:";
             // 
             // lblPercent
@@ -157,7 +157,7 @@
             this.lblPercent.Location = new System.Drawing.Point(169, 27);
             this.lblPercent.Name = "lblPercent";
             this.lblPercent.Size = new System.Drawing.Size(20, 19);
-            this.lblPercent.TabIndex = 17;
+            this.lblPercent.TabIndex = 18;
             this.lblPercent.Text = "%";
             // 
             // lblPer
@@ -167,7 +167,7 @@
             this.lblPer.Location = new System.Drawing.Point(197, 27);
             this.lblPer.Name = "lblPer";
             this.lblPer.Size = new System.Drawing.Size(29, 19);
-            this.lblPer.TabIndex = 18;
+            this.lblPer.TabIndex = 19;
             this.lblPer.Text = "per";
             // 
             // comboInterestRate
@@ -184,7 +184,7 @@
             this.comboInterestRate.Location = new System.Drawing.Point(232, 24);
             this.comboInterestRate.Name = "comboInterestRate";
             this.comboInterestRate.Size = new System.Drawing.Size(142, 25);
-            this.comboInterestRate.TabIndex = 19;
+            this.comboInterestRate.TabIndex = 20;
             // 
             // txtInterestRate
             // 
@@ -194,7 +194,7 @@
             this.txtInterestRate.MaxLength = 7;
             this.txtInterestRate.Name = "txtInterestRate";
             this.txtInterestRate.Size = new System.Drawing.Size(92, 25);
-            this.txtInterestRate.TabIndex = 16;
+            this.txtInterestRate.TabIndex = 17;
             this.txtInterestRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtInterestRate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInterestRate_KeyDown);
             this.txtInterestRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInterestRate_KeyPress);
@@ -220,7 +220,7 @@
             this.groupBox2.Location = new System.Drawing.Point(418, 158);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(244, 125);
-            this.groupBox2.TabIndex = 29;
+            this.groupBox2.TabIndex = 30;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dormancy:";
             // 
@@ -237,7 +237,7 @@
             this.comboDormancyChargeDuration.Location = new System.Drawing.Point(158, 94);
             this.comboDormancyChargeDuration.Name = "comboDormancyChargeDuration";
             this.comboDormancyChargeDuration.Size = new System.Drawing.Size(78, 25);
-            this.comboDormancyChargeDuration.TabIndex = 38;
+            this.comboDormancyChargeDuration.TabIndex = 39;
             // 
             // lblDormancy
             // 
@@ -246,7 +246,7 @@
             this.lblDormancy.Location = new System.Drawing.Point(14, 23);
             this.lblDormancy.Name = "lblDormancy";
             this.lblDormancy.Size = new System.Drawing.Size(61, 17);
-            this.lblDormancy.TabIndex = 30;
+            this.lblDormancy.TabIndex = 31;
             this.lblDormancy.Text = "Duration:";
             // 
             // lblEvery
@@ -256,7 +256,7 @@
             this.lblEvery.Location = new System.Drawing.Point(14, 95);
             this.lblEvery.Name = "lblEvery";
             this.lblEvery.Size = new System.Drawing.Size(91, 17);
-            this.lblEvery.TabIndex = 36;
+            this.lblEvery.TabIndex = 37;
             this.lblEvery.Text = "charged every";
             // 
             // txtDormancyPenalty
@@ -267,7 +267,7 @@
             this.txtDormancyPenalty.MaxLength = 7;
             this.txtDormancyPenalty.Name = "txtDormancyPenalty";
             this.txtDormancyPenalty.Size = new System.Drawing.Size(98, 24);
-            this.txtDormancyPenalty.TabIndex = 34;
+            this.txtDormancyPenalty.TabIndex = 35;
             this.txtDormancyPenalty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDormancyPenalty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInitDeposit_KeyDown);
             this.txtDormancyPenalty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInitDeposit_KeyPress);
@@ -279,7 +279,7 @@
             this.numDormancyChargeDuration.Location = new System.Drawing.Point(111, 95);
             this.numDormancyChargeDuration.Name = "numDormancyChargeDuration";
             this.numDormancyChargeDuration.Size = new System.Drawing.Size(41, 24);
-            this.numDormancyChargeDuration.TabIndex = 37;
+            this.numDormancyChargeDuration.TabIndex = 38;
             this.numDormancyChargeDuration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numAccountHolder_KeyDown);
             this.numDormancyChargeDuration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numAccountHolder_KeyPress);
             // 
@@ -296,7 +296,7 @@
             this.comboDormancy.Location = new System.Drawing.Point(130, 20);
             this.comboDormancy.Name = "comboDormancy";
             this.comboDormancy.Size = new System.Drawing.Size(106, 25);
-            this.comboDormancy.TabIndex = 32;
+            this.comboDormancy.TabIndex = 33;
             // 
             // comboDormancyPenalty
             // 
@@ -310,7 +310,7 @@
             this.comboDormancyPenalty.Location = new System.Drawing.Point(130, 67);
             this.comboDormancyPenalty.Name = "comboDormancyPenalty";
             this.comboDormancyPenalty.Size = new System.Drawing.Size(106, 25);
-            this.comboDormancyPenalty.TabIndex = 35;
+            this.comboDormancyPenalty.TabIndex = 36;
             // 
             // numDormancy
             // 
@@ -319,7 +319,7 @@
             this.numDormancy.Location = new System.Drawing.Point(81, 21);
             this.numDormancy.Name = "numDormancy";
             this.numDormancy.Size = new System.Drawing.Size(43, 24);
-            this.numDormancy.TabIndex = 31;
+            this.numDormancy.TabIndex = 32;
             this.numDormancy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numAccountHolder_KeyDown);
             this.numDormancy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numAccountHolder_KeyPress);
             // 
@@ -330,7 +330,7 @@
             this.lblPenaltyDormancy.Location = new System.Drawing.Point(12, 48);
             this.lblPenaltyDormancy.Name = "lblPenaltyDormancy";
             this.lblPenaltyDormancy.Size = new System.Drawing.Size(101, 17);
-            this.lblPenaltyDormancy.TabIndex = 33;
+            this.lblPenaltyDormancy.TabIndex = 34;
             this.lblPenaltyDormancy.Text = "Penalty Amount:";
             // 
             // groupMain
@@ -348,7 +348,7 @@
             this.groupMain.Location = new System.Drawing.Point(418, 26);
             this.groupMain.Name = "groupMain";
             this.groupMain.Size = new System.Drawing.Size(244, 124);
-            this.groupMain.TabIndex = 20;
+            this.groupMain.TabIndex = 21;
             this.groupMain.TabStop = false;
             this.groupMain.Text = "Maintaining Balance:";
             // 
@@ -359,7 +359,7 @@
             this.numMBalChargeDuration.Location = new System.Drawing.Point(108, 97);
             this.numMBalChargeDuration.Name = "numMBalChargeDuration";
             this.numMBalChargeDuration.Size = new System.Drawing.Size(44, 24);
-            this.numMBalChargeDuration.TabIndex = 27;
+            this.numMBalChargeDuration.TabIndex = 28;
             this.numMBalChargeDuration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numAccountHolder_KeyDown);
             this.numMBalChargeDuration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numAccountHolder_KeyPress);
             // 
@@ -377,7 +377,7 @@
             this.comboMBalChargeDuration.Location = new System.Drawing.Point(159, 96);
             this.comboMBalChargeDuration.Name = "comboMBalChargeDuration";
             this.comboMBalChargeDuration.Size = new System.Drawing.Size(77, 25);
-            this.comboMBalChargeDuration.TabIndex = 28;
+            this.comboMBalChargeDuration.TabIndex = 29;
             // 
             // comboMBalCharge
             // 
@@ -391,7 +391,7 @@
             this.comboMBalCharge.Location = new System.Drawing.Point(98, 66);
             this.comboMBalCharge.Name = "comboMBalCharge";
             this.comboMBalCharge.Size = new System.Drawing.Size(138, 25);
-            this.comboMBalCharge.TabIndex = 25;
+            this.comboMBalCharge.TabIndex = 26;
             // 
             // txtMBalCharge
             // 
@@ -401,7 +401,7 @@
             this.txtMBalCharge.MaxLength = 7;
             this.txtMBalCharge.Name = "txtMBalCharge";
             this.txtMBalCharge.Size = new System.Drawing.Size(66, 24);
-            this.txtMBalCharge.TabIndex = 24;
+            this.txtMBalCharge.TabIndex = 25;
             this.txtMBalCharge.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblCharge
@@ -411,7 +411,7 @@
             this.lblCharge.Location = new System.Drawing.Point(12, 99);
             this.lblCharge.Name = "lblCharge";
             this.lblCharge.Size = new System.Drawing.Size(91, 17);
-            this.lblCharge.TabIndex = 26;
+            this.lblCharge.TabIndex = 27;
             this.lblCharge.Text = "charged every";
             // 
             // lblPenalty
@@ -421,7 +421,7 @@
             this.lblPenalty.Location = new System.Drawing.Point(12, 46);
             this.lblPenalty.Name = "lblPenalty";
             this.lblPenalty.Size = new System.Drawing.Size(101, 17);
-            this.lblPenalty.TabIndex = 23;
+            this.lblPenalty.TabIndex = 24;
             this.lblPenalty.Text = "Penalty Amount:";
             // 
             // txtMaintaningBalance
@@ -432,7 +432,7 @@
             this.txtMaintaningBalance.MaxLength = 10;
             this.txtMaintaningBalance.Name = "txtMaintaningBalance";
             this.txtMaintaningBalance.Size = new System.Drawing.Size(155, 24);
-            this.txtMaintaningBalance.TabIndex = 22;
+            this.txtMaintaningBalance.TabIndex = 23;
             this.txtMaintaningBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtMaintaningBalance.TextChanged += new System.EventHandler(this.txtMaintaningBalance_TextChanged);
             this.txtMaintaningBalance.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInitDeposit_KeyDown);
@@ -445,7 +445,7 @@
             this.lblMaintainingBalance.Location = new System.Drawing.Point(12, 22);
             this.lblMaintainingBalance.Name = "lblMaintainingBalance";
             this.lblMaintainingBalance.Size = new System.Drawing.Size(56, 17);
-            this.lblMaintainingBalance.TabIndex = 21;
+            this.lblMaintainingBalance.TabIndex = 22;
             this.lblMaintainingBalance.Text = "Amount:";
             // 
             // txtMaxWith
@@ -482,7 +482,7 @@
             this.btnCancel.Location = new System.Drawing.Point(760, 284);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(92, 32);
-            this.btnCancel.TabIndex = 45;
+            this.btnCancel.TabIndex = 46;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             // 
@@ -494,7 +494,7 @@
             this.btnRetrieve.Location = new System.Drawing.Point(135, 287);
             this.btnRetrieve.Name = "btnRetrieve";
             this.btnRetrieve.Size = new System.Drawing.Size(92, 32);
-            this.btnRetrieve.TabIndex = 43;
+            this.btnRetrieve.TabIndex = 44;
             this.btnRetrieve.Text = "&Retrieve";
             this.btnRetrieve.UseVisualStyleBackColor = false;
             // 
@@ -507,7 +507,7 @@
             this.btnSave.Location = new System.Drawing.Point(662, 284);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(92, 32);
-            this.btnSave.TabIndex = 44;
+            this.btnSave.TabIndex = 45;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = false;
             // 
@@ -518,7 +518,7 @@
             this.checkStatus.Location = new System.Drawing.Point(62, 293);
             this.checkStatus.Name = "checkStatus";
             this.checkStatus.Size = new System.Drawing.Size(65, 23);
-            this.checkStatus.TabIndex = 42;
+            this.checkStatus.TabIndex = 43;
             this.checkStatus.Text = "Active";
             this.checkStatus.UseVisualStyleBackColor = true;
             // 
@@ -530,7 +530,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 19);
-            this.label1.TabIndex = 41;
+            this.label1.TabIndex = 42;
             this.label1.Text = "Status:";
             // 
             // groupAvailable
@@ -540,7 +540,7 @@
             this.groupAvailable.Location = new System.Drawing.Point(671, 13);
             this.groupAvailable.Name = "groupAvailable";
             this.groupAvailable.Size = new System.Drawing.Size(181, 255);
-            this.groupAvailable.TabIndex = 39;
+            this.groupAvailable.TabIndex = 40;
             this.groupAvailable.TabStop = false;
             this.groupAvailable.Text = "Applicable for:";
             // 
@@ -551,7 +551,7 @@
             this.checkedMemberTypes.Location = new System.Drawing.Point(6, 22);
             this.checkedMemberTypes.Name = "checkedMemberTypes";
             this.checkedMemberTypes.Size = new System.Drawing.Size(170, 224);
-            this.checkedMemberTypes.TabIndex = 40;
+            this.checkedMemberTypes.TabIndex = 41;
             // 
             // txtInitDeposit
             // 
@@ -586,7 +586,7 @@
             this.groupRequirements.Location = new System.Drawing.Point(9, 158);
             this.groupRequirements.Name = "groupRequirements";
             this.groupRequirements.Size = new System.Drawing.Size(395, 56);
-            this.groupRequirements.TabIndex = 16;
+            this.groupRequirements.TabIndex = 11;
             this.groupRequirements.TabStop = false;
             this.groupRequirements.Text = "Requirements:";
             // 
@@ -597,7 +597,7 @@
             this.checkMaintainingBalance.Location = new System.Drawing.Point(126, 24);
             this.checkMaintainingBalance.Name = "checkMaintainingBalance";
             this.checkMaintainingBalance.Size = new System.Drawing.Size(151, 23);
-            this.checkMaintainingBalance.TabIndex = 17;
+            this.checkMaintainingBalance.TabIndex = 13;
             this.checkMaintainingBalance.Text = "Maintaining Balance";
             this.checkMaintainingBalance.UseVisualStyleBackColor = true;
             this.checkMaintainingBalance.CheckedChanged += new System.EventHandler(this.checkMaintainingBalance_CheckedChanged);
@@ -609,7 +609,7 @@
             this.checkInterestRates.Location = new System.Drawing.Point(8, 24);
             this.checkInterestRates.Name = "checkInterestRates";
             this.checkInterestRates.Size = new System.Drawing.Size(112, 23);
-            this.checkInterestRates.TabIndex = 19;
+            this.checkInterestRates.TabIndex = 12;
             this.checkInterestRates.Text = "Interest Rates";
             this.checkInterestRates.UseVisualStyleBackColor = true;
             this.checkInterestRates.CheckedChanged += new System.EventHandler(this.checkInterestRates_CheckedChanged);
@@ -621,7 +621,7 @@
             this.checkDormancy.Location = new System.Drawing.Point(283, 23);
             this.checkDormancy.Name = "checkDormancy";
             this.checkDormancy.Size = new System.Drawing.Size(91, 23);
-            this.checkDormancy.TabIndex = 18;
+            this.checkDormancy.TabIndex = 14;
             this.checkDormancy.Text = "Dormancy";
             this.checkDormancy.UseVisualStyleBackColor = true;
             this.checkDormancy.CheckedChanged += new System.EventHandler(this.checkDormancy_CheckedChanged);

@@ -73,6 +73,11 @@ namespace CMS.Savings.Transaction.View
                 return null;
             }
         }
+        
+        public void setDate(String s)
+        {
+            this.txtDate.Text = s;
+        }
 
         public void setDepositAmount(String s)
         {
@@ -136,16 +141,6 @@ namespace CMS.Savings.Transaction.View
             return this.txtMaturityDate.Text;
         }
 
-        public void setAccountType(String s)
-        {
-            this.txtAccountType.Text = s;
-        }
-
-        public String getAccountType()
-        {
-            return this.txtAccountType.Text;
-        }
-
         public void setStatus(String s)
         {
             this.lblMaturityStatus.Text = s;
@@ -205,7 +200,6 @@ namespace CMS.Savings.Transaction.View
             this.txtAccountNo.Enabled = true;
             this.txtMemberName.Enabled = false;
             this.txtCertificateNo.Enabled = false;
-            this.txtAccountType.Clear();
             this.txtDepAmt.Clear();
             this.txtDeposit.Clear();
             this.txtMaturityDate.Clear();

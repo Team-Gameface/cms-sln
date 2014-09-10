@@ -53,16 +53,16 @@
             this.radioMemberName = new System.Windows.Forms.RadioButton();
             this.radioAccountNo = new System.Windows.Forms.RadioButton();
             this.groupWithdrawal = new System.Windows.Forms.GroupBox();
-            this.lblAccountType = new System.Windows.Forms.Label();
             this.lblDeposit = new System.Windows.Forms.Label();
             this.txtMaturityDate = new System.Windows.Forms.TextBox();
-            this.txtAccountType = new System.Windows.Forms.TextBox();
             this.txtDeposit = new System.Windows.Forms.TextBox();
             this.lblMaturityStatus = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblMaturity = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataTimeDeposit)).BeginInit();
             this.groupBreakdown.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -343,10 +343,10 @@
             // groupWithdrawal
             // 
             this.groupWithdrawal.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupWithdrawal.Controls.Add(this.lblAccountType);
+            this.groupWithdrawal.Controls.Add(this.label3);
+            this.groupWithdrawal.Controls.Add(this.txtDate);
             this.groupWithdrawal.Controls.Add(this.lblDeposit);
             this.groupWithdrawal.Controls.Add(this.txtMaturityDate);
-            this.groupWithdrawal.Controls.Add(this.txtAccountType);
             this.groupWithdrawal.Controls.Add(this.txtDeposit);
             this.groupWithdrawal.Controls.Add(this.lblMaturityStatus);
             this.groupWithdrawal.Controls.Add(this.label2);
@@ -359,21 +359,11 @@
             this.groupWithdrawal.TabStop = false;
             this.groupWithdrawal.Text = "TIme Deposit Account Details:";
             // 
-            // lblAccountType
-            // 
-            this.lblAccountType.AutoSize = true;
-            this.lblAccountType.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblAccountType.Location = new System.Drawing.Point(23, 23);
-            this.lblAccountType.Name = "lblAccountType";
-            this.lblAccountType.Size = new System.Drawing.Size(89, 17);
-            this.lblAccountType.TabIndex = 24;
-            this.lblAccountType.Text = "Account Type:";
-            // 
             // lblDeposit
             // 
             this.lblDeposit.AutoSize = true;
             this.lblDeposit.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblDeposit.Location = new System.Drawing.Point(9, 57);
+            this.lblDeposit.Location = new System.Drawing.Point(36, 54);
             this.lblDeposit.Name = "lblDeposit";
             this.lblDeposit.Size = new System.Drawing.Size(105, 17);
             this.lblDeposit.TabIndex = 26;
@@ -389,20 +379,10 @@
             this.txtMaturityDate.TabIndex = 28;
             this.txtMaturityDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtAccountType
-            // 
-            this.txtAccountType.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtAccountType.Location = new System.Drawing.Point(120, 20);
-            this.txtAccountType.Name = "txtAccountType";
-            this.txtAccountType.ReadOnly = true;
-            this.txtAccountType.Size = new System.Drawing.Size(181, 25);
-            this.txtAccountType.TabIndex = 25;
-            this.txtAccountType.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // txtDeposit
             // 
             this.txtDeposit.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtDeposit.Location = new System.Drawing.Point(120, 54);
+            this.txtDeposit.Location = new System.Drawing.Point(147, 51);
             this.txtDeposit.Name = "txtDeposit";
             this.txtDeposit.ReadOnly = true;
             this.txtDeposit.Size = new System.Drawing.Size(181, 25);
@@ -467,6 +447,26 @@
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label3.Location = new System.Drawing.Point(36, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 17);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Application Date";
+            // 
+            // txtDate
+            // 
+            this.txtDate.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtDate.Location = new System.Drawing.Point(147, 20);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.ReadOnly = true;
+            this.txtDate.Size = new System.Drawing.Size(181, 25);
+            this.txtDate.TabIndex = 32;
+            this.txtDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // TimeDepositWithdrawal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -521,7 +521,6 @@
         private System.Windows.Forms.TextBox txtDepAmt;
         private System.Windows.Forms.TextBox txtInterest;
         private System.Windows.Forms.GroupBox groupWithdrawal;
-        private System.Windows.Forms.Label lblAccountType;
         private System.Windows.Forms.Label lblDeposit;
         private System.Windows.Forms.TextBox txtDeposit;
         private System.Windows.Forms.Label lblMaturityStatus;
@@ -532,8 +531,9 @@
         public System.Windows.Forms.Label label7;
         public System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtMaturityDate;
-        private System.Windows.Forms.TextBox txtAccountType;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtDate;
     }
 }

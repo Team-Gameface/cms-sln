@@ -30,25 +30,96 @@ namespace CMS.Savings.Transaction.Model
             return ds;
         }
 
-        public SqlDataReader getTimeDepositDetails(String certificateNo)
+        public double getInterest(int TimeElapsed, double Principal)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT CertificateNo, SavingsTypeName, DepositAmount, Maturity, TIME_DEPOSIT.DateCreated,InterestRate,Per FROM TIME_DEPOSIT INNER JOIN INTEREST_RATE on TIME_DEPOSIT.AccountTypeId = INTEREST_RATE.AccountTypeId INNER JOIN SAVINGS_ACCOUNT_TYPE ON SAVINGS_ACCOUNT_TYPE.AccountTypeId = TIME_DEPOSIT.AccountTypeId WHERE CertificateNo = @certNo AND ((MinimumRange <= DepositAmount AND ISNULL(MaximumRange,9999999999999999.99) >= DepositAmount) OR (MinimumRange <= DepositAmount AND MaximumRange = null) OR (MinimumRange = 0 AND ISNULL(MaximumRange,9999999999999999.99) >= DepositAmount))";
+            String sql = "SELECT InterestRate FROM TIME_DEPOSIT_INTEREST WHERE Status = 1 AND NoDays <= @TimeElapsed AND (@Principal >= MinimumRange AND @Principal <= MaximumRange)";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
-            parameters.Add("@certNo", CertificateNo);
-            SqlDataReader ds = dal.executeReader(sql,parameters);
-            return ds;
+            parameters.Add("@TimeElapsed", TimeElapsed);
+            parameters.Add("@Principal", Principal);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            double d = 0;
+            while (read.Read())
+            {
+                d = double.Parse(read[0].ToString());
+            }
+            return d;
         }
 
-        public SqlDataReader getPenalty(double percentage, double amount)
+        public int getDaysElapsed(int TimeElapsed, double Principal)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT TOP 1 PenaltyValue, PenaltyStatus FROM EARLY_WITHDRAWAL WHERE BalanceDurationValue <= @percentage AND ((MinimumRange <= @DepositAmount AND MaximumRange >= @DepositAmount) OR (MinimumRange <= @DepositAmount AND MaximumRange = 0) OR (MinimumRange = 0 AND MaximumRange >= @DepositAmount)) ORDER BY BalanceDurationValue desc";
+            String sql = "SELECT NoDays FROM TIME_DEPOSIT_INTEREST WHERE Status = 1 AND NoDays <= @TimeElapsed AND (@Principal >= MinimumRange AND @Principal <= MaximumRange)";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
-            parameters.Add("@percentage", percentage);
-            parameters.Add("@DepositAmount", amount);
-            SqlDataReader ds = dal.executeReader(sql, parameters);
-            return ds;
+            parameters.Add("@TimeElapsed", TimeElapsed);
+            parameters.Add("@Principal", Principal);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = int.Parse(read[0].ToString());
+            }
+            return i;
+        }
+
+        public double getPenalty(double TimeElapsed)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT InterestReduction FROM EARLY_WITHDRAWAL WHERE Status = 1 AND TermsElapsedFrom <= @TimeElapsed AND TermsElapsedTo >= @TimeElapsed";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@TimeElapsed", TimeElapsed);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            double d = 0;
+            while (read.Read())
+            {
+                d = double.Parse(read[0].ToString());
+            }
+            return d;
+        }
+
+        public double getPrincipal(String certNo)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT DepositAmount FROM TIME_DEPOSIT WHERE CertificateNo = @certNo";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@certNo", certNo);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            double d = 0;
+            while (read.Read())
+            {
+                d = double.Parse(read[0].ToString());
+            }
+            return d;
+        }
+
+        public DateTime getStartDate(String certNo)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT DateCreated FROM TIME_DEPOSIT WHERE CertificateNo = @certNo";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@certNo", certNo);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            DateTime dt = DateTime.Now;
+            while (read.Read())
+            {
+                dt = DateTime.Parse(read[0].ToString());
+            }
+            return dt;
+        }
+
+        public DateTime getMaturityDate(String certNo)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT Maturity FROM TIME_DEPOSIT WHERE CertificateNo = @certNo";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@certNo", certNo);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            DateTime dt = DateTime.Now;
+            while (read.Read())
+            {
+                dt = DateTime.Parse(read[0].ToString());
+            }
+            return dt;
         }
 
         public DataSet searchTimeDepositAccountNo(String searchName)

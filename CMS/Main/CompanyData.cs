@@ -8,12 +8,12 @@ namespace CMS.Main
 {
     public class CompanyData
     {
-        public static String CompanyName;
-        public static String AcreditationNo;
-        public static String CompanyAddress;
+        public static String CompanyName = "Company Name";
+        public static String AcreditationNo = "Accreditation No";
+        public static String CompanyAddress = "Company Address";
         public static byte[] CompanyLogo;
-        public static String TelephoneNo;
-        public static String CellphoneNo;
-        public static String Email;
+        public static String TelephoneNo = "TelephoneNo";
+        public static String CellphoneNo = "CellphoneNo";
+        public static String Email = "Email";
     }
 }

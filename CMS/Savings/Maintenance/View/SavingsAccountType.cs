@@ -160,17 +160,13 @@ namespace CMS.Savings.Maintenance.View
         public void enableInterest()
         {
             txtInterestRate.Clear();
-            comboInterestRate.SelectedIndex = -1;
             txtInterestRate.Enabled = true;
-            comboInterestRate.Enabled = true;
         }
 
         public void disableInterest()
         {
             txtInterestRate.Clear();
-            comboInterestRate.SelectedIndex = -1;
             txtInterestRate.Enabled = false;
-            comboInterestRate.Enabled = false;
         }
 
         public void setTextName(String s)
@@ -306,23 +302,7 @@ namespace CMS.Savings.Maintenance.View
         }
 
         //INTEREST RATE FIELDS
-        public void setComboInterest(String s)
-        {
-            comboInterestRate.SelectedItem = s;
-        }
-
-        public String getComboInterest()
-        {
-            if(this.comboInterestRate.SelectedIndex == -1)
-            {
-                return String.Empty;
-            }
-            else
-            {
-                return comboInterestRate.SelectedItem.ToString();
-            }
-        }
-
+        
 
         //MAINTAINING BALANCE FIELDS
 
@@ -662,11 +642,6 @@ namespace CMS.Savings.Maintenance.View
             lblRate.ForeColor = Color.Red;
         }
 
-        public void setErrorPer()
-        {
-            lblPer.ForeColor = Color.Red;
-        }
-
         public void clearError()
         {
             lblName.ForeColor = SystemColors.ControlText;
@@ -680,7 +655,6 @@ namespace CMS.Savings.Maintenance.View
             lblPenaltyDormancy.ForeColor = SystemColors.ControlText;
             lblEvery.ForeColor = SystemColors.ControlText;
             lblRate.ForeColor = SystemColors.ControlText;
-            lblPer.ForeColor = SystemColors.ControlText;
         }
 
         public void removeColumns()

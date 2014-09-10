@@ -115,7 +115,7 @@ namespace CMS.Savings
         public void formClosing(object sender, FormClosingEventArgs e)
         {
             this.Dispose();
-            new Main.Controller.MainController(new Main.View.CMS());
+            new Main.Controller.MainController(new Main.View.CMSDashboard());
         }
     }
 }

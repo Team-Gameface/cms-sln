@@ -50,7 +50,7 @@ namespace CMS.Main.Controller
         double totalInterest = 0;
         Boolean hasInterest = false;
 
-        public PaymentController(Model.PaymentModel paymentModel, View.PaymentForm payment, Main.View.CMS cms, MainController mainController)
+        public PaymentController(Model.PaymentModel paymentModel, View.PaymentForm payment, Main.View.CMSDashboard cms, MainController mainController)
         {
             this.paymentModel = paymentModel;
             this.payment = payment;

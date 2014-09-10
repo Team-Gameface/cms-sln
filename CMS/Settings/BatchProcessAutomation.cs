@@ -5,19 +5,18 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32.TaskScheduler;
 
-namespace CMS.Main.View
+namespace CMS.Settings
 {
-    public partial class BatchProcessAutomation : Form
+    public partial class BatchProcessAutomation : UserControl
     {
-        Main.View.Utilities utilities;
+        Main.View.Settings settings;
 
-        public BatchProcessAutomation(Main.View.Utilities utilities)
+        public BatchProcessAutomation(Main.View.Settings settings)
         {
-            this.utilities = utilities;
+            this.settings = settings;
             InitializeComponent();
         }
 
@@ -94,7 +93,7 @@ namespace CMS.Main.View
 
         private void BatchProcessAutomation_FormClosed(object sender, FormClosedEventArgs e)
         {
-            utilities.batchOpen = false;
+            settings.batchOpen = false;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace CMS.Main.View
 {
-    partial class CMS
+    partial class CMSDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CMS));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CMSDashboard));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.linkSignout = new System.Windows.Forms.LinkLabel();
             this.btnSettings = new System.Windows.Forms.Button();

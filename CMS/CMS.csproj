@@ -230,36 +230,24 @@
     <Compile Include="Main\Controller\PaymentController.cs" />
     <Compile Include="Main\UserData.cs" />
     <Compile Include="Main\Model\PaymentModel.cs" />
-    <Compile Include="Main\View\BatchProcessAutomation.cs">
+    <Compile Include="Main\View\CMSDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\View\BatchProcessAutomation.designer.cs">
-      <DependentUpon>BatchProcessAutomation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Main\View\CMS.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main\View\CMS.Designer.cs">
-      <DependentUpon>CMS.cs</DependentUpon>
+    <Compile Include="Main\View\CMSDashboard.Designer.cs">
+      <DependentUpon>CMSDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\CompanyData.cs" />
-    <Compile Include="Main\View\CompanyProfile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main\View\CompanyProfile.Designer.cs">
-      <DependentUpon>CompanyProfile.cs</DependentUpon>
-    </Compile>
     <Compile Include="Main\View\PaymentForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Main\View\PaymentForm.designer.cs">
       <DependentUpon>PaymentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\View\Utilities.cs">
+    <Compile Include="Main\View\Settings.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Main\View\Utilities.designer.cs">
-      <DependentUpon>Utilities.cs</DependentUpon>
+    <Compile Include="Main\View\Settings.designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -379,6 +367,24 @@
     <Compile Include="Savings\Transaction\View\TimeDepositWithdrawal.Designer.cs">
       <DependentUpon>TimeDepositWithdrawal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings\BatchProcessAutomation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\BatchProcessAutomation.Designer.cs">
+      <DependentUpon>BatchProcessAutomation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\CompanyProfile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\CompanyProfile.Designer.cs">
+      <DependentUpon>CompanyProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\SavingsSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\SavingsSettings.Designer.cs">
+      <DependentUpon>SavingsSettings.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Loan Management\LoanManagementMenu.resx">
       <DependentUpon>LoanManagementMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -439,20 +445,14 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\View\BatchProcessAutomation.resx">
-      <DependentUpon>BatchProcessAutomation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\View\CMS.resx">
-      <DependentUpon>CMS.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\View\CompanyProfile.resx">
-      <DependentUpon>CompanyProfile.cs</DependentUpon>
+    <EmbeddedResource Include="Main\View\CMSDashboard.resx">
+      <DependentUpon>CMSDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\View\PaymentForm.resx">
       <DependentUpon>PaymentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\View\Utilities.resx">
-      <DependentUpon>Utilities.cs</DependentUpon>
+    <EmbeddedResource Include="Main\View\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Savings\Queries\View\StatementOfAccount.resx">
       <DependentUpon>StatementOfAccount.cs</DependentUpon>
@@ -500,6 +500,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Savings\Transaction\View\TimeDepositWithdrawal.resx">
       <DependentUpon>TimeDepositWithdrawal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\BatchProcessAutomation.resx">
+      <DependentUpon>BatchProcessAutomation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\CompanyProfile.resx">
+      <DependentUpon>CompanyProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\SavingsSettings.resx">
+      <DependentUpon>SavingsSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

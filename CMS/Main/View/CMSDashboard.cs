@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace CMS.Main.View
 {
-    public partial class CMS : Form
+    public partial class CMSDashboard : Form
     {
         Boolean isExpanded = true;
         Boolean isAutoCollapse = true;
 
         Main.View.PaymentForm paymentForm = new Main.View.PaymentForm();
 
-        public CMS()
+        public CMSDashboard()
         {
             InitializeComponent();
             paymentForm = new Main.View.PaymentForm();
@@ -142,6 +142,7 @@ namespace CMS.Main.View
 
         public void setPanel2(UserControl uc)
         {
+            uc.Dock = DockStyle.Fill;
             splitContainer.Panel2.Controls.Add(uc);
             panelHome.Hide();
             uc.Show();

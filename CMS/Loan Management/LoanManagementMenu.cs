@@ -121,7 +121,7 @@ namespace CMS.Loan_Management
         private void LoanManagementMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Dispose();
-            new Main.Controller.MainController(new Main.View.CMS());
+            new Main.Controller.MainController(new Main.View.CMSDashboard());
         }
     }
 }

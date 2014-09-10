@@ -1,31 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
-using System.IO;
+using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Configuration;
 
-namespace CMS.Main.View
+namespace CMS.Settings
 {
-    public partial class CompanyProfile : Form
+    public partial class CompanyProfile : UserControl
     {
         byte[] imgData = null;
-        Main.View.CMS cms;
-        Main.View.Utilities utilities;
+        Main.View.CMSDashboard cms;
+        Main.View.Settings settings;
 
-        public CompanyProfile(Main.View.Utilities utilities, Main.View.CMS cms)
+        public CompanyProfile(Main.View.Settings settings, Main.View.CMSDashboard cms)
         {
-            this.utilities = utilities;
+            this.settings = settings;
             this.cms = cms;
             InitializeComponent();
             setCompanyData();
-            checkLogo();            
+            checkLogo();
         }
 
         public void setCompanyData()
@@ -120,7 +118,6 @@ namespace CMS.Main.View
                 {
                     MessageBox.Show("Company Profile Save Sucess.", "Company Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     updateCompanyData();
-                    this.Close();
                 }
                 else
                 {
@@ -128,8 +125,8 @@ namespace CMS.Main.View
                 }
             }
             else
-            { 
-                MessageBox.Show(errorMessage, "Company Profile", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+            {
+                MessageBox.Show(errorMessage, "Company Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -147,7 +144,7 @@ namespace CMS.Main.View
 
         private void CompanyProfile_FormClosed(object sender, FormClosedEventArgs e)
         {
-            utilities.companyProfileOpen = false;
+            settings.companyProfileOpen = false;
         }
     }
 }

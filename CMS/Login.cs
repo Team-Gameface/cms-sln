@@ -70,7 +70,7 @@ namespace CMS
                 MessageBox.Show("Login Successful.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
                 Main.UserData.userName = "Superuser";
-                new Main.Controller.MainController(new Main.View.CMS());
+                new Main.Controller.MainController(new Main.View.CMSDashboard());
                 this.Dispose();
             }
             else
@@ -93,7 +93,7 @@ namespace CMS
                         this.Hide();
                         rd.Read();
                         Main.UserData.userName = rd.GetString(4).ToString() + ", " + rd.GetString(2).ToString() + " " + rd.GetString(3).ToString();
-                        new Main.Controller.MainController(new Main.View.CMS());
+                        new Main.Controller.MainController(new Main.View.CMSDashboard());
                         this.Dispose();
                     }
                     else

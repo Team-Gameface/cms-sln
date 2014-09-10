@@ -42,13 +42,13 @@ namespace CMS.Main.Controller
             }
         }
 
-        Main.View.CMS cms;
+        Main.View.CMSDashboard cms;
         Main.View.PaymentForm paymentForm;
-        Main.View.Utilities utilities;
+        Main.View.Settings utilities;
         public Boolean paymentOpen = false;
         public Boolean utilitiesOpen = false;
 
-        public MainController(Main.View.CMS cms)
+        public MainController(Main.View.CMSDashboard cms)
         {
             this.cms = cms;
             this.cms.setUserName(Main.UserData.userName);
@@ -111,7 +111,7 @@ namespace CMS.Main.Controller
             if (!utilitiesOpen)
             {
                 utilitiesOpen = true;
-                utilities = new View.Utilities(this, cms);
+                utilities = new View.Settings(this, cms);
                 this.cms.setPanel2(utilities);
             }
         }

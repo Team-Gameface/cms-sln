@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SavingsTransaction));
             this.label1 = new System.Windows.Forms.Label();
             this.txtAccountNo = new System.Windows.Forms.TextBox();
@@ -77,7 +79,7 @@
             this.txtAccountNo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtAccountNo.Location = new System.Drawing.Point(155, 24);
             this.txtAccountNo.Name = "txtAccountNo";
-            this.txtAccountNo.Size = new System.Drawing.Size(211, 25);
+            this.txtAccountNo.Size = new System.Drawing.Size(285, 25);
             this.txtAccountNo.TabIndex = 3;
             // 
             // dataMember
@@ -90,11 +92,13 @@
             this.dataMember.BackgroundColor = System.Drawing.Color.Silver;
             this.dataMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataMember.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataMember.Location = new System.Drawing.Point(6, 60);
+            this.dataMember.Location = new System.Drawing.Point(6, 66);
             this.dataMember.MultiSelect = false;
             this.dataMember.Name = "dataMember";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataMember.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataMember.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataMember.Size = new System.Drawing.Size(360, 317);
+            this.dataMember.Size = new System.Drawing.Size(464, 317);
             this.dataMember.TabIndex = 4;
             // 
             // lblTransaction
@@ -102,7 +106,7 @@
             this.lblTransaction.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTransaction.AutoSize = true;
             this.lblTransaction.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
-            this.lblTransaction.Location = new System.Drawing.Point(401, 293);
+            this.lblTransaction.Location = new System.Drawing.Point(501, 293);
             this.lblTransaction.Name = "lblTransaction";
             this.lblTransaction.Size = new System.Drawing.Size(119, 17);
             this.lblTransaction.TabIndex = 14;
@@ -140,7 +144,7 @@
             this.comboTransaction.Items.AddRange(new object[] {
             "Deposit",
             "Withdraw"});
-            this.comboTransaction.Location = new System.Drawing.Point(537, 290);
+            this.comboTransaction.Location = new System.Drawing.Point(629, 290);
             this.comboTransaction.Name = "comboTransaction";
             this.comboTransaction.Size = new System.Drawing.Size(193, 25);
             this.comboTransaction.TabIndex = 15;
@@ -182,7 +186,7 @@
             this.groupWithdrawal.Controls.Add(this.label2);
             this.groupWithdrawal.Controls.Add(this.lblAmount);
             this.groupWithdrawal.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
-            this.groupWithdrawal.Location = new System.Drawing.Point(402, 321);
+            this.groupWithdrawal.Location = new System.Drawing.Point(494, 321);
             this.groupWithdrawal.Name = "groupWithdrawal";
             this.groupWithdrawal.Size = new System.Drawing.Size(328, 125);
             this.groupWithdrawal.TabIndex = 16;
@@ -210,7 +214,7 @@
             this.groupAccount.Controls.Add(this.txtSavingsAccountNo);
             this.groupAccount.Controls.Add(this.lblSavingsAccount);
             this.groupAccount.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
-            this.groupAccount.Location = new System.Drawing.Point(402, 42);
+            this.groupAccount.Location = new System.Drawing.Point(494, 42);
             this.groupAccount.Name = "groupAccount";
             this.groupAccount.Size = new System.Drawing.Size(328, 242);
             this.groupAccount.TabIndex = 6;
@@ -273,6 +277,8 @@
             this.dataAccountHolder.Location = new System.Drawing.Point(10, 70);
             this.dataAccountHolder.MultiSelect = false;
             this.dataAccountHolder.Name = "dataAccountHolder";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataAccountHolder.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataAccountHolder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataAccountHolder.Size = new System.Drawing.Size(312, 95);
             this.dataAccountHolder.TabIndex = 10;
@@ -301,7 +307,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 16.25F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(241, 9);
+            this.label4.Location = new System.Drawing.Point(291, 9);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(266, 30);
@@ -315,7 +321,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 10.75F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(537, 452);
+            this.btnSave.Location = new System.Drawing.Point(629, 452);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(92, 32);
             this.btnSave.TabIndex = 22;
@@ -329,7 +335,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Segoe UI Semibold", 10.75F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(633, 452);
+            this.btnClear.Location = new System.Drawing.Point(725, 452);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(97, 32);
             this.btnClear.TabIndex = 23;
@@ -343,7 +349,7 @@
             this.btnPassbook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPassbook.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.btnPassbook.ForeColor = System.Drawing.Color.White;
-            this.btnPassbook.Location = new System.Drawing.Point(127, 437);
+            this.btnPassbook.Location = new System.Drawing.Point(182, 437);
             this.btnPassbook.Name = "btnPassbook";
             this.btnPassbook.Size = new System.Drawing.Size(142, 33);
             this.btnPassbook.TabIndex = 5;
@@ -359,7 +365,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.groupBox1.Location = new System.Drawing.Point(12, 42);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(372, 389);
+            this.groupBox1.Size = new System.Drawing.Size(476, 389);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Account:";
@@ -369,7 +375,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(749, 496);
+            this.ClientSize = new System.Drawing.Size(834, 496);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnPassbook);
             this.Controls.Add(this.btnClear);
@@ -382,7 +388,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MinimumSize = new System.Drawing.Size(765, 535);
+            this.MinimumSize = new System.Drawing.Size(850, 535);
             this.Name = "SavingsTransaction";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Savings Transaction";

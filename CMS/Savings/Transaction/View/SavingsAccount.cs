@@ -116,7 +116,7 @@ namespace CMS.Savings.Transaction.View
             else
             {
                 this.dataSavingsAccount.DataSource = ds.Tables[0];
-                this.dataSavingsAccount.Columns[2].Visible = false;
+                this.dataSavingsAccount.Columns[3].Visible = false;
             }
         }
 

@@ -74,7 +74,7 @@ namespace CMS.Savings.Transaction.View
         public void setDataMember(DataSet ds)
         {
             this.dataMember.DataSource = ds.Tables[0];
-            dataMember.Columns[2].Visible = false;
+            dataMember.Columns[3].Visible = false;
         }
 
         public DataGridViewRow getSelectedMember()

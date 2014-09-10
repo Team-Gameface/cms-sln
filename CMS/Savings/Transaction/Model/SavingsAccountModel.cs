@@ -31,7 +31,7 @@ namespace CMS.Savings.Transaction.Model
         public DataSet selectAccountType()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT AccountTypeId AS 'TypeId', SavingsTypeName AS 'SavingsType' FROM SAVINGS_ACCOUNT_TYPE WHERE isArchived = 0 AND Status = 1 AND isTimeDeposit = 0";
+            String sql = "SELECT AccountTypeId AS 'TypeId', SavingsTypeName AS 'SavingsType' FROM SAVINGS_ACCOUNT_TYPE WHERE isArchived = 0 AND Status = 1";
             DataSet ds = dal.executeDataSet(sql);
             return ds;
         }
@@ -49,7 +49,7 @@ namespace CMS.Savings.Transaction.Model
         public DataSet selectSavingsAccount()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT DISTINCT sa.SavingsAccountNo AS 'Account No', SavingsTypeName AS 'Savings Type', sa.AccountTypeId, Balance FROM SAVINGS_ACCOUNT sa INNER JOIN MEMBER_SAVINGS_ACCOUNT msa ON sa.SavingsAccountNo = msa.SavingsAccountNo INNER JOIN SAVINGS_ACCOUNT_TYPE sat ON sa.AccountTypeId = sat.AccountTypeId WHERE sa.Status = 1";
+            String sql = "SELECT DISTINCT sa.SavingsAccountNo AS 'Account No', CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName) AS 'Account Holder', SavingsTypeName AS 'Savings Type', sa.AccountTypeId, Balance FROM SAVINGS_ACCOUNT sa INNER JOIN MEMBER_SAVINGS_ACCOUNT msa ON sa.SavingsAccountNo = msa.SavingsAccountNo INNER JOIN SAVINGS_ACCOUNT_TYPE sat ON sa.AccountTypeId = sat.AccountTypeId INNER JOIN MEMBER m ON msa.MemberAccountNo = m.AccountNo WHERE sa.Status = 1";
             DataSet ds = dal.executeDataSet(sql);
             return ds;
         }
@@ -57,7 +57,7 @@ namespace CMS.Savings.Transaction.Model
         public DataSet searchSavingsAccount(String searchName)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT DISTINCT sa.SavingsAccountNo AS 'Account No', SavingsTypeName AS 'Savings Type', sa.AccountTypeId, Balance FROM SAVINGS_ACCOUNT sa INNER JOIN MEMBER_SAVINGS_ACCOUNT msa ON sa.SavingsAccountNo = msa.SavingsAccountNo INNER JOIN SAVINGS_ACCOUNT_TYPE sat ON sa.AccountTypeId = sat.AccountTypeId WHERE sa.Status = 1 AND sa.SavingsAccountNo LIKE(@searchName)";
+            String sql = "SELECT DISTINCT sa.SavingsAccountNo AS 'Account No', CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName) AS 'Account Holder', SavingsTypeName AS 'Savings Type', sa.AccountTypeId, Balance FROM SAVINGS_ACCOUNT sa INNER JOIN MEMBER_SAVINGS_ACCOUNT msa ON sa.SavingsAccountNo = msa.SavingsAccountNo INNER JOIN SAVINGS_ACCOUNT_TYPE sat ON sa.AccountTypeId = sat.AccountTypeId INNER JOIN MEMBER m ON msa.MemberAccountNo = m.AccountNo WHERE sa.Status = 1 AND sa.SavingsAccountNo LIKE(@searchName)";
             searchName = "%" + searchName + "%";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@searchName", searchName);

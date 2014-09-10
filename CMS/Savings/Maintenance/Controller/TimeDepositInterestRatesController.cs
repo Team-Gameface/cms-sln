@@ -61,6 +61,7 @@ namespace CMS.Savings.Maintenance.Controller
                 isAdd = false;
                 this.interestRates.enableFunction();
                 this.InterestId = int.Parse(selectedData.Cells["InterestId"].Value.ToString());
+                this.interestRates.setNoDays(int.Parse(selectedData.Cells["No of Days"].Value.ToString()));
                 this.interestRates.setInterestRates(selectedData.Cells["Interest Rate"].Value.ToString());
                 String[] balanceRange = selectedData.Cells["Balance Range"].Value.ToString().Split('-');
                 this.interestRates.setMinimumBalance(balanceRange[0]);
@@ -76,6 +77,7 @@ namespace CMS.Savings.Maintenance.Controller
         {
             this.errorMessage = String.Empty;
             this.interestRates.clearError();
+            Boolean checkDays = false;
             Boolean checkInterestRate = false;
             Boolean checkMinimumBalance = false;
             Boolean checkMaximumBalance = false;
@@ -90,13 +92,24 @@ namespace CMS.Savings.Maintenance.Controller
             }
             try
             {
+                if (this.interestRates.getNoDays() != 0)
+                {
+                    this.timeDepositModel.NoDays = this.interestRates.getNoDays();
+                    checkDays = true;
+                }
+                else
+                {
+                    errorMessage += "Please Specify - No of Days" + Environment.NewLine;
+                    this.interestRates.setErrorNumDays();
+                    checkDays = false;
+                }
                 if (this.interestRates.getInterestRates() != 0)
                 {
                     if (isAdd)
                     {
                         if (this.timeDepositModel.checkInterestRate(this.interestRates.getInterestRates()) > 0)
                         {
-                            errorMessage += "Interest Rate Already Exist For This Account Type." + Environment.NewLine;
+                            errorMessage += "Interest Rate Already Exist." + Environment.NewLine;
                             this.interestRates.setErrorInterestRate();
                             checkInterestRate = false;
                         }
@@ -110,7 +123,7 @@ namespace CMS.Savings.Maintenance.Controller
                     {
                         if (this.timeDepositModel.checkInterestRate(this.interestRates.getInterestRates(), this.InterestId) > 0)
                         {
-                            errorMessage += "Interest Rate Already Exist For This Account Type." + Environment.NewLine;
+                            errorMessage += "Interest Rate Already Exist." + Environment.NewLine;
                             this.interestRates.setErrorInterestRate();
                             checkInterestRate = false;
                         }
@@ -190,7 +203,7 @@ namespace CMS.Savings.Maintenance.Controller
                 {
                     this.timeDepositModel.Status = 0;
                 }
-                if (checkInterestRate && checkMinimumBalance && checkMaximumBalance && checkBalanceRange)
+                if (checkDays && checkInterestRate && checkMinimumBalance && checkMaximumBalance && checkBalanceRange)
                 {
                     if (isAdd)
                     {

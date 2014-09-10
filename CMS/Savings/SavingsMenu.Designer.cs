@@ -33,8 +33,8 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.maintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSavingsAccountTypes = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemInterestRates = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.itemInterestRates = new System.Windows.Forms.ToolStripMenuItem();
             this.itemTimeDepositWithdrawal = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemOpenAccount = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,26 +85,26 @@
             // 
             this.itemSavingsAccountTypes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemSavingsAccountTypes.Name = "itemSavingsAccountTypes";
-            this.itemSavingsAccountTypes.Size = new System.Drawing.Size(236, 22);
+            this.itemSavingsAccountTypes.Size = new System.Drawing.Size(255, 22);
             this.itemSavingsAccountTypes.Text = "Savings Account Types";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(252, 6);
             // 
             // itemInterestRates
             // 
             this.itemInterestRates.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemInterestRates.Name = "itemInterestRates";
-            this.itemInterestRates.Size = new System.Drawing.Size(236, 22);
-            this.itemInterestRates.Text = "Time Deposit Interest Rates";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(233, 6);
+            this.itemInterestRates.Size = new System.Drawing.Size(255, 22);
+            this.itemInterestRates.Text = "Time Deposit Terms and Rates";
             // 
             // itemTimeDepositWithdrawal
             // 
             this.itemTimeDepositWithdrawal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemTimeDepositWithdrawal.Name = "itemTimeDepositWithdrawal";
-            this.itemTimeDepositWithdrawal.Size = new System.Drawing.Size(236, 22);
+            this.itemTimeDepositWithdrawal.Size = new System.Drawing.Size(255, 22);
             this.itemTimeDepositWithdrawal.Text = "Early Withdrawal Penalties";
             // 
             // transactionToolStripMenuItem

@@ -21,11 +21,13 @@ namespace CMS.Savings.Maintenance.View
         public void disableFunction()
         {
             this.txtInterestRate.Clear();
+            this.numDays.Value = 0;
             this.txtMinBal.Clear();
             this.txtMaxBal.Clear();
             this.Status.CheckState = CheckState.Unchecked;
 
             this.txtInterestRate.Enabled = false;
+            this.numDays.Enabled = false;
             this.txtMinBal.Enabled = false;
             this.txtMaxBal.Enabled = false;
             this.Status.Enabled = false;
@@ -43,11 +45,13 @@ namespace CMS.Savings.Maintenance.View
         public void enableFunction()
         {
             this.txtInterestRate.Clear();
+            this.numDays.Value = 0;
             this.txtMinBal.Clear();
             this.txtMaxBal.Clear();
             this.Status.CheckState = CheckState.Unchecked;
 
             this.txtInterestRate.Enabled = true;
+            this.numDays.Enabled = true;
             this.txtMinBal.Enabled = true;
             this.txtMaxBal.Enabled = true;
             this.Status.Enabled = true;
@@ -62,6 +66,16 @@ namespace CMS.Savings.Maintenance.View
             this.btnEdit.BackColor = Color.Gray;
         }
         
+        public void setNoDays(int i)
+        {
+            this.numDays.Value = i;
+        }
+
+        public int getNoDays()
+        {
+            return int.Parse(this.numDays.Value.ToString());
+        }
+
         public void setInterestRates(String s)
         {
             this.txtInterestRate.Text = s;
@@ -263,6 +277,11 @@ namespace CMS.Savings.Maintenance.View
             }
         }
 
+        public void setErrorNumDays()
+        {
+            lblDays.ForeColor = Color.Red;
+        }
+
         public void setErrorInterestRate()
         {
             lblInterestRate.ForeColor = Color.Red;
@@ -280,6 +299,7 @@ namespace CMS.Savings.Maintenance.View
 
         public void clearError()
         {
+            lblDays.ForeColor = SystemColors.ControlText;
             lblInterestRate.ForeColor = SystemColors.ControlText;
             lblMinimum.ForeColor = SystemColors.ControlText;
             lblMaximum.ForeColor = SystemColors.ControlText;
@@ -288,8 +308,8 @@ namespace CMS.Savings.Maintenance.View
         public void removeColumns()
         {
             dataInterestRates.Columns[0].Visible = false;
-            dataInterestRates.Columns[4].Visible = false;
             dataInterestRates.Columns[5].Visible = false;
+            dataInterestRates.Columns[6].Visible = false;
         }
 
         private void txtInterestRate_KeyDown(object sender, KeyEventArgs e)

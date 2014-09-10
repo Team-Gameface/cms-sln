@@ -50,6 +50,9 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
+            this.itemStatementOfAccount = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemDailyTransactionLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemAgingTimeDeposits = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -169,12 +172,17 @@
             // 
             // queriesToolStripMenuItem
             // 
+            this.queriesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemStatementOfAccount});
             this.queriesToolStripMenuItem.Name = "queriesToolStripMenuItem";
             this.queriesToolStripMenuItem.Size = new System.Drawing.Size(65, 21);
             this.queriesToolStripMenuItem.Text = "Queries";
             // 
             // reportsToolStripMenuItem
             // 
+            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemDailyTransactionLog,
+            this.itemAgingTimeDeposits});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(60, 21);
             this.reportsToolStripMenuItem.Text = "Report";
@@ -208,6 +216,24 @@
             this.timerDateTime.Enabled = true;
             this.timerDateTime.Interval = 1000;
             this.timerDateTime.Tick += new System.EventHandler(this.timerDateTime_Tick);
+            // 
+            // itemStatementOfAccount
+            // 
+            this.itemStatementOfAccount.Name = "itemStatementOfAccount";
+            this.itemStatementOfAccount.Size = new System.Drawing.Size(200, 22);
+            this.itemStatementOfAccount.Text = "Statement of Account";
+            // 
+            // itemDailyTransactionLog
+            // 
+            this.itemDailyTransactionLog.Name = "itemDailyTransactionLog";
+            this.itemDailyTransactionLog.Size = new System.Drawing.Size(213, 22);
+            this.itemDailyTransactionLog.Text = "Daily Transaction Log";
+            // 
+            // itemAgingTimeDeposits
+            // 
+            this.itemAgingTimeDeposits.Name = "itemAgingTimeDeposits";
+            this.itemAgingTimeDeposits.Size = new System.Drawing.Size(213, 22);
+            this.itemAgingTimeDeposits.Text = "Aging of Time Deposits";
             // 
             // SavingsMenu
             // 
@@ -257,5 +283,8 @@
         private System.Windows.Forms.ToolStripMenuItem itemOpenAccount;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem itemMemberTermination;
+        private System.Windows.Forms.ToolStripMenuItem itemStatementOfAccount;
+        private System.Windows.Forms.ToolStripMenuItem itemDailyTransactionLog;
+        private System.Windows.Forms.ToolStripMenuItem itemAgingTimeDeposits;
     }
 }

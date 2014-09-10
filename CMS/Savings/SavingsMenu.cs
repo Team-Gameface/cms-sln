@@ -59,6 +59,21 @@ namespace CMS.Savings
             this.itemMemberTermination.Click += e;
         }
 
+        public void setItemDailyTransactionLogEventHandler(EventHandler e)
+        {
+            this.itemDailyTransactionLog.Click += e;
+        }
+
+        public void setItemAgingTimeDepositsEventHandler(EventHandler e)
+        {
+            this.itemAgingTimeDeposits.Click += e;
+        }
+
+        public void setItemStatementOfAccountEventHandler(EventHandler e)
+        {
+            this.itemStatementOfAccount.Click += e;
+        }
+
         private void timerDateTime_Tick(object sender, EventArgs e)
         {
             lblDateTime.Text = DateTime.Now.ToLongDateString() + ", " + DateTime.Now.ToLongTimeString();

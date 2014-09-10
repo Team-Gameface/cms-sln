@@ -46,6 +46,11 @@ namespace CMS.Savings
             this.savingsMenu.setItemTimeDepositAppEventHandler(this.itemTimeDepositApp);
             this.savingsMenu.setItemTimeDepositWithEventHandler(this.itemTimeDepositWith);
             this.savingsMenu.setItemMemberTerminationEventHandler(this.itemMemberTermination);
+            //queries
+            this.savingsMenu.setItemStatementOfAccountEventHandler(this.itemStatementOfAccount);
+            //reports
+            this.savingsMenu.setItemDailyTransactionLogEventHandler(this.itemDailyTransactionLog);
+            this.savingsMenu.setItemAgingTimeDepositsEventHandler(this.itemAgingTimeDeposits);
             this.savingsMenu.SavingsMenu_FormClosing(this.formClosing);
             this.savingsMenu.ShowDialog();
         }
@@ -89,6 +94,22 @@ namespace CMS.Savings
         public void itemMemberTermination(object args, EventArgs e)
         {
             Transaction.Controller.TerminationController terminationController = new Transaction.Controller.TerminationController(new Transaction.Model.TerminationModel(), new Transaction.View.MemberTermination(), this.savingsMenu);
+        }
+
+        //queries
+        public void itemStatementOfAccount(object args, EventArgs e)
+        {
+            Queries.Controller.StatementOfAccountController statementOfAccountController = new Queries.Controller.StatementOfAccountController(new Queries.Model.StatementOfAccountModel(), new Queries.View.StatementOfAccount(), this.savingsMenu);
+        }
+        
+        //reports
+        public void itemAgingTimeDeposits(object args, EventArgs e)
+        {
+            //  Reports.Controller.DailyTransactionLogController dailyTransactionLogController = new Reports.Controller.DailyTransactionLogController(new Reports.Model.DailyTransactionLogModel(), new Reports.View.DailyTransactionLog(), this.savingsMenu);
+        }
+        public void itemDailyTransactionLog(object args, EventArgs e)
+        {
+            Reports.Controller.DailyTransactionLogController dailyTransactionLogController = new Reports.Controller.DailyTransactionLogController(new Reports.Model.DailyTransactionLogModel(), new Reports.View.DailyTransactionLog(), this.savingsMenu);
         }
 
         public void formClosing(object sender, FormClosingEventArgs e)

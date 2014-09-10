@@ -83,6 +83,41 @@ namespace CMS.Loan_Management
             this.itemLoanAmnesty.Click += e;
         }
 
+        public void setPaymentHistoryEventHandler(EventHandler e)
+        {
+            this.itemPaymentHistory.Click += e;
+        }
+
+        public void setMemberInformationEventHandler(EventHandler e)
+        {
+            this.itemMemberInformation.Click += e;
+        }
+
+        public void setMemberStatisticsEventHandler(EventHandler e)
+        {
+            this.itemMemberStatistics.Click += e;
+        }
+
+        public void setLoanReleasesEventHandler(EventHandler e)
+        {
+            this.itemLoanReleases.Click += e;
+        }
+
+        public void setCollectionReportEventHandler(EventHandler e)
+        {
+            this.itemCollectionReport.Click += e;
+        }
+
+        public void setitemDelinquencyEventHandler(EventHandler e)
+        {
+            this.itemDelinquencySchedule.Click += e;
+        }
+
+        public void setAnnualFinancialReportEventHandler(EventHandler e)
+        {
+            this.itemAnnualFinancialReport.Click += e;
+        }
+
         private void LoanManagementMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Dispose();

@@ -50,6 +50,12 @@ namespace CMS.Loan_Management
             this.loanManagementMenu.setItemLoanApplicationEventHandler(this.itemLoanApp);
             this.loanManagementMenu.setItemCapitalContributionEventHandler(this.itemCapitalContribution);
             this.loanManagementMenu.setLoanAmnestyEventHandler(this.itemLoanAmnesty);
+            //queries
+            //reports
+            this.loanManagementMenu.setCollectionReportEventHandler(this.itemCollectionReport);
+            this.loanManagementMenu.setLoanReleasesEventHandler(this.itemLoanReleases);
+            this.loanManagementMenu.setitemDelinquencyEventHandler(this.itemScheduleOfDelinquents);
+
             this.loanManagementMenu.ShowDialog();
         }
 
@@ -118,6 +124,25 @@ namespace CMS.Loan_Management
         {
             Transaction.Controller.LoanAmnestyController loanAmnestyController = new Transaction.Controller.LoanAmnestyController(new Transaction.Model.LoanAmnestyModel(), new Transaction.View.LoanAmnesty(), loanManagementMenu);
         }
+
+        public void itemCollectionReport(object args, EventArgs e)
+        {
+            Reports.Controller.CollectionReportController collectionReportController = new Reports.Controller.CollectionReportController(new Reports.Model.CollectionReportModel(), new Reports.View.CollectionReport(), loanManagementMenu);
+        }
+
+        public void itemLoanReleases(object args, EventArgs e)
+        {
+            Reports.Controller.LoanReleasesController loanReleasesController = new Reports.Controller.LoanReleasesController(new Reports.Model.LoanReleasesModel(), new Reports.View.LoanReleases(), loanManagementMenu);
+        }
+
+        public void itemScheduleOfDelinquents(object args, EventArgs e)
+        {
+            Reports.Controller.ScheduleOfDelinquentsController scheduleOfDelinquentsController = new Reports.Controller.ScheduleOfDelinquentsController(new Reports.Model.ScheduleOfDelinquentsModel(), new Reports.View.ScheduleOfDelinquents(), loanManagementMenu);
+        }
+
+
+
+
 
         
     }

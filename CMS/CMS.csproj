@@ -154,6 +154,36 @@
     <Compile Include="Loan Management\Maintenance\View\ShareCapitalContribution.designer.cs">
       <DependentUpon>ShareCapitalContribution.cs</DependentUpon>
     </Compile>
+    <Compile Include="Loan Management\Queries\View\PaymentHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Queries\View\PaymentHistory.designer.cs">
+      <DependentUpon>PaymentHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Reports\Controller\CollectionReportController.cs" />
+    <Compile Include="Loan Management\Reports\Controller\LoanReleasesController.cs" />
+    <Compile Include="Loan Management\Reports\Controller\ScheduleOfDelinquentsController.cs" />
+    <Compile Include="Loan Management\Reports\Model\CollectionReportModel.cs" />
+    <Compile Include="Loan Management\Reports\Model\LoanReleasesModel.cs" />
+    <Compile Include="Loan Management\Reports\Model\ScheduleOfDelinquentsModel.cs" />
+    <Compile Include="Loan Management\Reports\View\CollectionReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\CollectionReport.designer.cs">
+      <DependentUpon>CollectionReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\LoanReleases.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\LoanReleases.designer.cs">
+      <DependentUpon>LoanReleases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\ScheduleOfDelinquents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\ScheduleOfDelinquents.designer.cs">
+      <DependentUpon>ScheduleOfDelinquents.cs</DependentUpon>
+    </Compile>
     <Compile Include="Loan Management\Transaction\Controller\LoanAmnestyController.cs" />
     <Compile Include="Loan Management\Transaction\Controller\LoanApplicationController.cs" />
     <Compile Include="Loan Management\Transaction\Controller\MembershipApplicationController.cs" />
@@ -241,6 +271,22 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Savings\Maintenance\Model\TimeDepositInterestModel.cs" />
+    <Compile Include="Savings\Queries\Controller\StatementOfAccountController.cs" />
+    <Compile Include="Savings\Queries\Model\StatementOfAccountModel.cs" />
+    <Compile Include="Savings\Queries\View\StatementOfAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Savings\Queries\View\StatementOfAccount.designer.cs">
+      <DependentUpon>StatementOfAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Savings\Reports\Controller\DailyTransactionLogController.cs" />
+    <Compile Include="Savings\Reports\Model\DailyTransactionLogModel.cs" />
+    <Compile Include="Savings\Reports\View\DailyTransactionLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Savings\Reports\View\DailyTransactionLog.designer.cs">
+      <DependentUpon>DailyTransactionLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Savings\Transaction\Controller\TerminationController.cs" />
     <Compile Include="Savings\Transaction\Model\TerminationModel.cs" />
     <Compile Include="Savings\Transaction\View\MemberTermination.cs">
@@ -367,6 +413,18 @@
     <EmbeddedResource Include="Loan Management\Maintenance\View\ShareCapitalContribution.resx">
       <DependentUpon>ShareCapitalContribution.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Queries\View\PaymentHistory.resx">
+      <DependentUpon>PaymentHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\View\CollectionReport.resx">
+      <DependentUpon>CollectionReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\View\LoanReleases.resx">
+      <DependentUpon>LoanReleases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\View\ScheduleOfDelinquents.resx">
+      <DependentUpon>ScheduleOfDelinquents.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Loan Management\Transaction\View\LoanAmnesty.resx">
       <DependentUpon>LoanAmnesty.cs</DependentUpon>
     </EmbeddedResource>
@@ -399,6 +457,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\View\Utilities.resx">
       <DependentUpon>Utilities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Savings\Queries\View\StatementOfAccount.resx">
+      <DependentUpon>StatementOfAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Savings\Reports\View\DailyTransactionLog.resx">
+      <DependentUpon>DailyTransactionLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Savings\Transaction\View\MemberTermination.resx">
       <DependentUpon>MemberTermination.cs</DependentUpon>
@@ -494,6 +558,10 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Loan Management\Queries\Controller\" />
+    <Folder Include="Loan Management\Queries\Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -53,6 +53,8 @@
             this.radioMemberName = new System.Windows.Forms.RadioButton();
             this.radioAccountNo = new System.Windows.Forms.RadioButton();
             this.groupWithdrawal = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDate = new System.Windows.Forms.TextBox();
             this.lblDeposit = new System.Windows.Forms.Label();
             this.txtMaturityDate = new System.Windows.Forms.TextBox();
             this.txtDeposit = new System.Windows.Forms.TextBox();
@@ -61,8 +63,6 @@
             this.lblMaturity = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtDate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataTimeDeposit)).BeginInit();
             this.groupBreakdown.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -359,6 +359,26 @@
             this.groupWithdrawal.TabStop = false;
             this.groupWithdrawal.Text = "TIme Deposit Account Details:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label3.Location = new System.Drawing.Point(36, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 17);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Application Date";
+            // 
+            // txtDate
+            // 
+            this.txtDate.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtDate.Location = new System.Drawing.Point(147, 20);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.ReadOnly = true;
+            this.txtDate.Size = new System.Drawing.Size(181, 25);
+            this.txtDate.TabIndex = 32;
+            this.txtDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // lblDeposit
             // 
             this.lblDeposit.AutoSize = true;
@@ -447,28 +467,9 @@
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.label3.Location = new System.Drawing.Point(36, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 17);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "Application Date";
-            // 
-            // txtDate
-            // 
-            this.txtDate.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtDate.Location = new System.Drawing.Point(147, 20);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.ReadOnly = true;
-            this.txtDate.Size = new System.Drawing.Size(181, 25);
-            this.txtDate.TabIndex = 32;
-            this.txtDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // TimeDepositWithdrawal
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;

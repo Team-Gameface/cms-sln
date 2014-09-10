@@ -84,7 +84,7 @@
             this.numDays.Location = new System.Drawing.Point(122, 55);
             this.numDays.Name = "numDays";
             this.numDays.Size = new System.Drawing.Size(92, 25);
-            this.numDays.TabIndex = 22;
+            this.numDays.TabIndex = 9;
             this.numDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblDays

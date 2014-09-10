@@ -117,7 +117,6 @@ namespace CMS.Savings.Maintenance.Controller
                     this.savingsAccountType.setInterestRates();
                     String[] details = this.savingsAccountTypeModel.selectInterestRate(TypeId);
                     this.savingsAccountType.setInterestRate(details[0]);
-                    this.savingsAccountType.setComboInterest(details[1]);
                 }
                 if (bool.Parse(selectedData.Cells["Dormancy"].Value.ToString()))
                 {
@@ -498,7 +497,6 @@ namespace CMS.Savings.Maintenance.Controller
                 {
                     this.savingsAccountTypeModel.isInterestRates = 1;
                     Boolean checkInterestRate = false;
-                    Boolean checkInterestPer = false;
                     if (this.savingsAccountType.getInterestRate() != 0)
                     {
                         if (this.savingsAccountType.getInterestRate() < 0)
@@ -513,17 +511,6 @@ namespace CMS.Savings.Maintenance.Controller
                             checkInterestRate = true;
                         }
                     }
-                    if (this.savingsAccountType.getComboInterest() == String.Empty)
-                    {
-                        this.errorMessage += "Please Specify - Interest Rate Per." + Environment.NewLine;
-                        this.savingsAccountType.setErrorPer();
-                        checkInterestPer = false;
-                    }
-                    else
-                    {
-                        this.savingsAccountTypeModel.interestModel.Per = this.savingsAccountType.getComboInterest();
-                        checkInterestPer = true;
-                    }
                     if (this.savingsAccountType.getMaintainingBalance())
                     {
                         this.savingsAccountTypeModel.interestModel.MinRange = this.savingsAccountType.getMaintainingBalanceAmount();
@@ -532,7 +519,7 @@ namespace CMS.Savings.Maintenance.Controller
                     {
                         this.savingsAccountTypeModel.interestModel.MinRange = 0;
                     }
-                    if (checkInterestRate && checkInterestPer)
+                    if (checkInterestRate)
                     {
                         checkInterest = true;
                     }

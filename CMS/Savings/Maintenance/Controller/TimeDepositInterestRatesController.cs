@@ -107,9 +107,9 @@ namespace CMS.Savings.Maintenance.Controller
                 {
                     if (isAdd)
                     {
-                        if (this.timeDepositModel.checkInterestRate(this.interestRates.getInterestRates()) > 0)
+                        if (this.timeDepositModel.checkInterestRate(this.interestRates.getInterestRates(), this.interestRates.getNoDays()) > 0)
                         {
-                            errorMessage += "Interest Rate Already Exist." + Environment.NewLine;
+                            errorMessage += "Interest Rate Already Exists for this No Of Days." + Environment.NewLine;
                             this.interestRates.setErrorInterestRate();
                             checkInterestRate = false;
                         }
@@ -121,9 +121,9 @@ namespace CMS.Savings.Maintenance.Controller
                     }
                     else
                     {
-                        if (this.timeDepositModel.checkInterestRate(this.interestRates.getInterestRates(), this.InterestId) > 0)
+                        if (this.timeDepositModel.checkInterestRate(this.interestRates.getInterestRates(), this.InterestId, this.interestRates.getNoDays()) > 0)
                         {
-                            errorMessage += "Interest Rate Already Exist." + Environment.NewLine;
+                            errorMessage += "Interest Rate Already Exists for this No Of Days." + Environment.NewLine;
                             this.interestRates.setErrorInterestRate();
                             checkInterestRate = false;
                         }
@@ -173,7 +173,7 @@ namespace CMS.Savings.Maintenance.Controller
                 }
                 if (isAdd)
                 {
-                    if (this.timeDepositModel.checkOverlap(this.interestRates.getMinimumBalance(), this.interestRates.getMaximumBalance()) > 0)
+                    if (this.timeDepositModel.checkOverlap(this.interestRates.getMinimumBalance(), this.interestRates.getMaximumBalance(), this.interestRates.getNoDays()) > 0)
                     {
                         errorMessage += "Balance Range Overlap Detected." + Environment.NewLine;
                         checkBalanceRange = false;
@@ -185,7 +185,7 @@ namespace CMS.Savings.Maintenance.Controller
                 }
                 else
                 {
-                    if (this.timeDepositModel.checkOverlap(this.interestRates.getMinimumBalance(), this.interestRates.getMaximumBalance(), this.InterestId) > 0)
+                    if (this.timeDepositModel.checkOverlap(this.interestRates.getMinimumBalance(), this.interestRates.getMaximumBalance(), this.InterestId, this.interestRates.getNoDays()) > 0)
                     {
                         errorMessage += "Balance Range Overlap Detected." + Environment.NewLine;
                         checkBalanceRange = false;

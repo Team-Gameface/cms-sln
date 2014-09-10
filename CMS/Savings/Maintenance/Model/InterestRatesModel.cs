@@ -13,7 +13,6 @@ namespace CMS.Savings.Maintenance.Model
     {
         public int TypeId { get; set; }
         public double InterestRate { get; set; }
-        public String Per { get; set; }
         public double MinRange { get; set; }
         public int Status { get; set; }
 
@@ -21,7 +20,6 @@ namespace CMS.Savings.Maintenance.Model
         {
             this.TypeId = 0;
             this.InterestRate = 0;
-            this.Per = String.Empty;
             this.MinRange = 0;
             this.Status = 0;
         }

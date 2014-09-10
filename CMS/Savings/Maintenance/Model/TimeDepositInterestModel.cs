@@ -29,7 +29,7 @@ namespace CMS.Savings.Maintenance.Model
         public DataSet selectTimeDepositInterest()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT InterestId, InterestRate AS 'Interest Rate', NoDays AS 'No of Days', CONCAT(MinimumRange, '-', MaximumRange) AS 'Balance Range', Status, DateCreated, DateModified FROM TIME_DEPOSIT_INTEREST";
+            String sql = "SELECT InterestId, NoDays AS 'No of Days', CONCAT(MinimumRange, '-', MaximumRange) AS 'Balance Range', InterestRate AS 'Interest Rate', Status, DateCreated, DateModified FROM TIME_DEPOSIT_INTEREST";
             DataSet ds = dal.executeDataSet(sql);
             return ds;
         }
@@ -37,7 +37,7 @@ namespace CMS.Savings.Maintenance.Model
         public DataSet selectTimeDepositInterest(String searchName)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT InterestId, InterestRate AS 'Interest Rate', NoDays AS 'No of Days', CONCAT(MinimumRange, '-', MaximumRange) AS 'Balance Range', Status, DateCreated, DateModified FROM TIME_DEPOSIT_INTEREST WHERE InterestRate LIKE(@SearchName)";
+            String sql = "SELECT InterestId, NoDays AS 'No of Days', CONCAT(MinimumRange, '-', MaximumRange) AS 'Balance Range', InterestRate AS 'Interest Rate', Status, DateCreated, DateModified FROM TIME_DEPOSIT_INTEREST WHERE InterestRate LIKE(@SearchName)";
             searchName = "%" + searchName + "%";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@SearchName", searchName);
@@ -74,12 +74,13 @@ namespace CMS.Savings.Maintenance.Model
             return result;
         }
 
-        public int checkInterestRate(double InterestRate)
+        public int checkInterestRate(double InterestRate, int Days)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT COUNT(*) FROM TIME_DEPOSIT_INTEREST WHERE InterestRate = @InterestRate AND Status = 1";
+            String sql = "SELECT COUNT(*) FROM TIME_DEPOSIT_INTEREST WHERE NoDays = @Days AND InterestRate = @InterestRate AND Status = 1";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@InterestRate", InterestRate);
+            parameters.Add("@Days", Days);
             SqlDataReader read = dal.executeReader(sql, parameters);
             int i = 0;
             while (read.Read())
@@ -89,13 +90,14 @@ namespace CMS.Savings.Maintenance.Model
             return i;
         }
 
-        public int checkInterestRate(double InterestRate, int Id)
+        public int checkInterestRate(double InterestRate, int Id, int Days)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT COUNT(*) FROM TIME_DEPOSIT_INTEREST WHERE InterestId != @InterestId AND InterestRate = @InterestRate AND Status = 1";
+            String sql = "SELECT COUNT(*) FROM TIME_DEPOSIT_INTEREST WHERE InterestId != @InterestId AND NoDays = @Days AND InterestRate = @InterestRate AND Status = 1";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@InterestRate", InterestRate);
             parameters.Add("@InterestId", Id);
+            parameters.Add("@Days", Days);
             SqlDataReader read = dal.executeReader(sql, parameters);
             int i = 0;
             while (read.Read())
@@ -105,13 +107,14 @@ namespace CMS.Savings.Maintenance.Model
             return i;
         }
 
-        public int checkOverlap(double MinimumRange, double MaximumRange)
+        public int checkOverlap(double MinimumRange, double MaximumRange, int Days)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT COUNT(*) FROM TIME_DEPOSIT_INTEREST WHERE Status = 1 AND ((@MinBal BETWEEN MinimumRange AND MaximumRange) OR (@MaxBal BETWEEN MinimumRange AND MaximumRange) OR (MinimumRange >= @MinBal AND MaximumRange <= @MaxBal))";
+            String sql = "SELECT COUNT(*) FROM TIME_DEPOSIT_INTEREST WHERE NoDays = @Days AND Status = 1 AND ((@MinBal BETWEEN MinimumRange AND MaximumRange) OR (@MaxBal BETWEEN MinimumRange AND MaximumRange) OR (MinimumRange >= @MinBal AND MaximumRange <= @MaxBal))";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@MinBal", MinimumRange);
             parameters.Add("@MaxBal", MaximumRange);
+            parameters.Add("@Days", Days);
             SqlDataReader read = dal.executeReader(sql, parameters);
             int i = 0;
             while (read.Read())
@@ -121,14 +124,15 @@ namespace CMS.Savings.Maintenance.Model
             return i;
         }
 
-        public int checkOverlap(double MinimumRange, double MaximumRange, int Id)
+        public int checkOverlap(double MinimumRange, double MaximumRange, int Id, int Days)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT COUNT(*) FROM TIME_DEPOSIT_INTEREST WHERE InterestId != @InterestId AND Status = 1 AND ((@MinBal BETWEEN MinimumRange AND MaximumRange) OR (@MaxBal BETWEEN MinimumRange AND MaximumRange) OR (MinimumRange >= @MinBal AND MaximumRange <= @MaxBal))";
+            String sql = "SELECT COUNT(*) FROM TIME_DEPOSIT_INTEREST WHERE InterestId != @InterestId AND NoDays = @Days AND Status = 1 AND ((@MinBal BETWEEN MinimumRange AND MaximumRange) OR (@MaxBal BETWEEN MinimumRange AND MaximumRange) OR (MinimumRange >= @MinBal AND MaximumRange <= @MaxBal))";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@MinBal", MinimumRange);
             parameters.Add("@MaxBal", MaximumRange);
             parameters.Add("@InterestId", Id);
+            parameters.Add("@Days", Days);
             SqlDataReader read = dal.executeReader(sql, parameters);
             int i = 0;
             while (read.Read())

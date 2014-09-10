@@ -133,11 +133,10 @@ namespace CMS.Savings.Maintenance.Model
         public int insertInterestRate()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC insertInterestRate @TypeId, @InterestRate, @Per, @MinRange";
+            String sql = "EXEC insertInterestRate @TypeId, @InterestRate, @MinRange";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@TypeId", this.interestModel.TypeId);
             parameters.Add("@InterestRate", this.interestModel.InterestRate);
-            parameters.Add("@Per", this.interestModel.Per);
             parameters.Add("@MinRange", this.interestModel.MinRange);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             return result;
@@ -146,11 +145,10 @@ namespace CMS.Savings.Maintenance.Model
         public int updateInterestRate(int InterestId)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC updateInterestRate @TypeId, @InterestRate, @Per, @MinRange";
+            String sql = "EXEC updateInterestRate @TypeId, @InterestRate, @MinRange";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@TypeId", this.interestModel.TypeId);
             parameters.Add("@InterestRate", this.interestModel.InterestRate);
-            parameters.Add("@Per", this.interestModel.Per);
             parameters.Add("@MinRange", this.interestModel.MinRange);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             return result;
@@ -352,7 +350,6 @@ namespace CMS.Savings.Maintenance.Model
             {
                 result[0] = read[1].ToString();
                 result[1] = read[2].ToString();
-                result[2] = read[3].ToString();
             }
             return result;
         }

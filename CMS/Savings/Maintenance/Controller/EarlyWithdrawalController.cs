@@ -14,7 +14,6 @@ namespace CMS.Savings.Maintenance.Controller
         Maintenance.View.EarlyWithdrawal earlyWithdrawal;
         String errorMessage = String.Empty;
         Boolean isAdd = false;
-        int accountType = 0;
         int EarlyWithdrawalId = 0;
 
         public EarlyWithdrawalController(Maintenance.Model.EarlyWithdrawalModel earlyWithdrawalModel, Maintenance.View.EarlyWithdrawal earlyWithdrawal, SavingsMenu savingsMenu)
@@ -39,7 +38,6 @@ namespace CMS.Savings.Maintenance.Controller
             this.earlyWithdrawal.setStatus();
             isAdd = true;
             EarlyWithdrawalId = 0;
-            accountType = 0;
         }
 
         public void btnEdit(object args, EventArgs e)
@@ -52,28 +50,13 @@ namespace CMS.Savings.Maintenance.Controller
             else
             {
                 this.earlyWithdrawal.enableFunction();
-                this.EarlyWithdrawalId = int.Parse(selectedData.Cells["Early Withdrawal Id"].Value.ToString());
-                this.accountType = int.Parse(selectedData.Cells["Account Type Id"].Value.ToString());
-                String[] penalty = selectedData.Cells["Penalty"].Value.ToString().Split(' ');
+                this.EarlyWithdrawalId = int.Parse(selectedData.Cells["EarlyWithdrawalId"].Value.ToString());
+                String[] from = selectedData.Cells["Term Elapsed From"].Value.ToString().Split('%');
+                this.earlyWithdrawal.setNumDurationFrom(int.Parse(from[0]));
+                String[] to = selectedData.Cells["Term Elapsed To"].Value.ToString().Split('%');
+                this.earlyWithdrawal.setNumDurationTo(int.Parse(to[0]));
+                String[] penalty = selectedData.Cells["Interest Reduction"].Value.ToString().Split('%');
                 this.earlyWithdrawal.setTextPenalty(penalty[0]);
-                String[] duration = selectedData.Cells["Duration"].Value.ToString().Split(' ');
-                String durationStatus = String.Empty;
-                for (int i = 0; i < duration.Length; i++)
-                {
-                    if (i == 0)
-                    {
-                        //this.earlyWithdrawal.setNumDuration(int.Parse(duration[0]));
-                    }
-                    else if (i == duration.Length - 1)
-                    {
-                        durationStatus += duration[i];
-                    }
-                    else
-                    {
-                        durationStatus += duration[i] + ' ';
-                    }
-                }
-                String[] balance = selectedData.Cells["Balance Range"].Value.ToString().Split('-');
                 if (bool.Parse(selectedData.Cells["Status"].Value.ToString()))
                 {
                     this.earlyWithdrawal.setStatus();
@@ -83,17 +66,13 @@ namespace CMS.Savings.Maintenance.Controller
         }
 
         public void btnSave(object args, EventArgs e)
-        {/*
+        {
             errorMessage = String.Empty;
             this.earlyWithdrawal.clearError();
-            Boolean checkAccountType = false;
-            Boolean checkDuration = false;
-            Boolean checkDurationStatus = false;
             Boolean checkPenalty = false;
-            Boolean checkPenaltyPer = false;
-            Boolean checkMinRange = false;
-            Boolean checkMaxRange = false;
-            Boolean checkBalanceRange = false;
+            Boolean checkElapsedFrom = false;
+            Boolean checkElapsedTo = false;
+            Boolean checkElapsedRange = false;
             if (isAdd)
             {
                 errorMessage += "Add Failed." + Environment.NewLine + Environment.NewLine;
@@ -104,143 +83,115 @@ namespace CMS.Savings.Maintenance.Controller
             }
             try
             {
-                if (this.earlyWithdrawal.getTextPenalty() != 0)
+                if (this.earlyWithdrawal.getNumDurationFrom() != 0)
                 {
-                    if (isAdd)
+                    if (this.earlyWithdrawal.getNumDurationFrom() > 0)
                     {
-                        if (this.earlyWithdrawalModel.checkPenalty(this.earlyWithdrawal.getAccountType(), this.earlyWithdrawal.getTextPenalty(), this.earlyWithdrawal.getComboPenalty(), 0, this.earlyWithdrawal.getNumDuration(), this.earlyWithdrawal.getComboDuration()) > 0)
-                        {
-                            errorMessage += "Penalty Value Already Exist For This Account Type." + Environment.NewLine;
-                            this.earlyWithdrawal.setErrorPenalty();
-                            checkPenalty = false;
-                        }
-                        else
-                        {
-                            this.earlyWithdrawalModel.Penalty = this.earlyWithdrawal.getTextPenalty();
-                            checkPenalty = true;
-                        }
+                        this.earlyWithdrawalModel.TermElapsedFrom = this.earlyWithdrawal.getNumDurationFrom();
+                        checkElapsedFrom = true;
                     }
                     else
                     {
-                        if (this.earlyWithdrawalModel.checkPenalty(this.accountType, this.earlyWithdrawal.getTextPenalty(), this.earlyWithdrawal.getComboPenalty(), this.EarlyWithdrawalId, this.earlyWithdrawal.getNumDuration(), this.earlyWithdrawal.getComboDuration()) > 0)
-                        {
-                            errorMessage += "Penalty Value Already Exist For This Account Type." + Environment.NewLine;
-                            this.earlyWithdrawal.setErrorPenalty();
-                            checkPenalty = false;
-                        }
-                        else
-                        {
-                            this.earlyWithdrawalModel.Penalty = this.earlyWithdrawal.getTextPenalty();
-                            checkPenalty = true;
-                        }
+                        errorMessage += "Please Specify - Elapsed Term From." + Environment.NewLine;
+                        this.earlyWithdrawal.setErrorDurationFrom();
+                        checkElapsedFrom = false;
                     }
                 }
                 else
                 {
-                    errorMessage += "Please Specify Amount - Penalty." + Environment.NewLine;
+                    errorMessage += "Please Specify - Elapsed Term From." + Environment.NewLine;
+                    checkElapsedFrom = false;
+                }
+                if (this.earlyWithdrawal.getNumDurationTo() != 0)
+                {
+                    if (this.earlyWithdrawal.getNumDurationTo() > 0)
+                    {
+                        if (this.earlyWithdrawal.getNumDurationTo() <= this.earlyWithdrawal.getNumDurationFrom())
+                        {
+                            errorMessage += "Elapsed Duration To Cannot be Less Than Elapsed Duration From." + Environment.NewLine;
+                            this.earlyWithdrawal.setErrorDurationTo();
+                            checkElapsedTo = false;
+                        }
+                        else
+                        {
+                            this.earlyWithdrawalModel.TermElapsedTo = this.earlyWithdrawal.getNumDurationTo();
+                            checkElapsedTo = true;
+                        }
+                    }
+                    else
+                    {
+                        errorMessage += "Please Specify - Elapsed Term To." + Environment.NewLine;
+                        this.earlyWithdrawal.setErrorDurationTo();
+                        checkElapsedFrom = false;
+                    }
+                }
+                if (this.earlyWithdrawal.getTextPenalty() != 0)
+                {
+                    if (this.earlyWithdrawal.getTextPenalty() > 0)
+                    {
+                        if (isAdd)
+                        {
+                            if (this.earlyWithdrawalModel.checkReduction(this.earlyWithdrawal.getTextPenalty()) > 0)
+                            {
+                                errorMessage += "Interest Reduction Rate Already Exists." + Environment.NewLine;
+                                this.earlyWithdrawal.setErrorPenalty();
+                            }
+                            else
+                            {
+                                this.earlyWithdrawalModel.InterestReduction = this.earlyWithdrawal.getTextPenalty();
+                                checkPenalty = true;
+                            }
+                        }
+                        else
+                        {
+                            if (this.earlyWithdrawalModel.checkReduction(this.earlyWithdrawal.getTextPenalty(), this.EarlyWithdrawalId) > 0)
+                            {
+                                errorMessage += "Interest Reduction Rate Already Exists." + Environment.NewLine;
+                                this.earlyWithdrawal.setErrorPenalty();
+                            }
+                            else
+                            {
+                                this.earlyWithdrawalModel.InterestReduction = this.earlyWithdrawal.getTextPenalty();
+                                checkPenalty = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        errorMessage += "Please Specify - Interest Reduction." + Environment.NewLine;
+                        this.earlyWithdrawal.setErrorPenalty();
+                        checkPenalty = false;
+                    }
+                }
+                else
+                {
+                    errorMessage += "Please Specify - Interest Reduction." + Environment.NewLine;
                     this.earlyWithdrawal.setErrorPenalty();
                     checkPenalty = false;
                 }
-                if (this.earlyWithdrawal.getComboPenalty() == String.Empty)
+                if (isAdd)
                 {
-                    errorMessage += "Please Specify Penalty Schedule." + Environment.NewLine;
-                    this.earlyWithdrawal.setErrorPenalty();
-                    checkPenaltyPer = false;
-                }
-                else
-                {
-                    this.earlyWithdrawalModel.Per = this.earlyWithdrawal.getComboPenalty();
-                    checkPenaltyPer = true;
-                }
-                if (this.earlyWithdrawal.getMinimumBalance() == 0)
-                {
-                    errorMessage += "Please Specify Amount - Minimum Range." + Environment.NewLine;
-                    this.earlyWithdrawal.setErrorMinimum();
-                    checkMinRange = false;
-                }
-                else
-                {
-                    this.earlyWithdrawalModel.MinRange = this.earlyWithdrawal.getMinimumBalance();
-                    checkMinRange = true;
-                }
-                if (this.earlyWithdrawal.getCheckMaximumBalance())
-                {
-                    if (this.earlyWithdrawal.getMaximumBalance() > 0)
+                    if (this.earlyWithdrawalModel.checkOverlap(this.earlyWithdrawal.getNumDurationFrom(), this.earlyWithdrawal.getNumDurationTo()) > 0)
                     {
-                        if (this.earlyWithdrawal.getMaximumBalance() <= this.earlyWithdrawal.getMinimumBalance())
-                        {
-                            errorMessage += "Maximum Balance Range Must Be Greater Than Minimum Balance Range." + Environment.NewLine;
-                            this.earlyWithdrawal.setErrorMaximum();
-                            checkMaxRange = false;
-                        }
-                        else
-                        {
-                            this.earlyWithdrawalModel.MaxRange = this.earlyWithdrawal.getMaximumBalance();
-                            checkMaxRange = true;
-                        }
+                        errorMessage += "Elapsed Term Overlap Detected" + Environment.NewLine;
+                        checkElapsedRange = false;
                     }
                     else
                     {
-                        errorMessage += "Please Specify Amount - Maximum Range." + Environment.NewLine;
-                        this.earlyWithdrawal.setErrorMaximum();
-                        checkMaxRange = false;
-                    }
-                    if (isAdd)
-                    {
-                        if (this.earlyWithdrawalModel.checkBalanceRange(this.earlyWithdrawal.getMinimumBalance(), this.earlyWithdrawal.getMaximumBalance(), this.earlyWithdrawal.getAccountType(), 0, this.earlyWithdrawal.getNumDuration(), this.earlyWithdrawal.getComboDuration()) > 0 || this.earlyWithdrawalModel.checkUnbracketed(this.earlyWithdrawal.getAccountType(), this.earlyWithdrawal.getMaximumBalance(), 0, this.earlyWithdrawal.getNumDuration(), this.earlyWithdrawal.getComboDuration()) > 0)
-                        {
-                            errorMessage += "Balance Range Overlap Detected." + Environment.NewLine;
-                            checkBalanceRange = false;
-                        }
-                        else
-                        {
-                            checkBalanceRange = true;
-                        }
-                    }
-                    else
-                    {
-                        if (this.earlyWithdrawalModel.checkBalanceRange(this.earlyWithdrawal.getMinimumBalance(), this.earlyWithdrawal.getMaximumBalance(), this.accountType, this.EarlyWithdrawalId, this.earlyWithdrawal.getNumDuration(), this.earlyWithdrawal.getComboDuration()) > 0 || this.earlyWithdrawalModel.checkUnbracketed(this.accountType, this.earlyWithdrawal.getMaximumBalance(), this.EarlyWithdrawalId, this.earlyWithdrawal.getNumDuration(), this.earlyWithdrawal.getComboDuration()) > 0)
-                        {
-                            errorMessage += "Balance Range Overlap Detected." + Environment.NewLine;
-                            checkBalanceRange = false;
-                        }
-                        else
-                        {
-                            checkBalanceRange = true;
-                        }
+                        checkElapsedRange = true;
                     }
                 }
                 else
                 {
-                    if (isAdd)
+                    if (this.earlyWithdrawalModel.checkOverlap(this.earlyWithdrawal.getNumDurationFrom(), this.earlyWithdrawal.getNumDurationTo(), this.EarlyWithdrawalId) > 0)
                     {
-                        if (this.earlyWithdrawalModel.checkBracketed(this.earlyWithdrawal.getAccountType(), this.earlyWithdrawal.getMinimumBalance(), 0, this.earlyWithdrawal.getNumDuration(), this.earlyWithdrawal.getComboDuration()) > 0 || this.earlyWithdrawalModel.checkUnbracketed(this.earlyWithdrawal.getAccountType(), this.earlyWithdrawal.getMinimumBalance(), 0, this.earlyWithdrawal.getNumDuration(), this.earlyWithdrawal.getComboDuration()) > 0)
-                        {
-                            errorMessage += "An Unbracketed Balance Already Defined As The Highest Penalty." + Environment.NewLine;
-                            this.earlyWithdrawalModel.MaxRange = 0;
-                            checkBalanceRange = false;
-                        }
-                        else
-                        {
-                            this.earlyWithdrawalModel.MaxRange = 0;
-                            checkBalanceRange = true;
-                        }
+                        errorMessage += "Elapsed Term Overlap Detected" + Environment.NewLine;
+                        checkElapsedRange = false;
                     }
                     else
                     {
-                        if (this.earlyWithdrawalModel.checkBracketed(this.accountType, this.earlyWithdrawal.getMinimumBalance(), this.EarlyWithdrawalId, this.earlyWithdrawal.getNumDuration(), this.earlyWithdrawal.getComboDuration()) > 0 || this.earlyWithdrawalModel.checkUnbracketed(this.accountType, this.earlyWithdrawal.getMinimumBalance(), this.EarlyWithdrawalId, this.earlyWithdrawal.getNumDuration(), this.earlyWithdrawal.getComboDuration()) > 0)
-                        {
-                            errorMessage += "An Unbracketed Balance Already Defined As The Highest Penalty." + Environment.NewLine;
-                            this.earlyWithdrawalModel.MaxRange = 0;
-                            checkBalanceRange = false;
-                        }
-                        else
-                        {
-                            this.earlyWithdrawalModel.MaxRange = 0;
-                            checkBalanceRange = true;
-                        }
+                        checkElapsedRange = true;
                     }
-                    checkMaxRange = true;
                 }
                 if (this.earlyWithdrawal.getStatus())
                 {
@@ -250,37 +201,19 @@ namespace CMS.Savings.Maintenance.Controller
                 {
                     this.earlyWithdrawalModel.Status = 0;
                 }
-                if (checkAccountType && checkDuration && checkDurationStatus && checkPenalty && checkPenaltyPer && checkMinRange && checkMaxRange && checkBalanceRange)
+                if (checkElapsedFrom && checkElapsedTo && checkPenalty && checkElapsedRange)
                 {
                     if (isAdd)
                     {
                         if (this.earlyWithdrawalModel.insertEarlyWithdrawal() == 1)
                         {
                             MessageBox.Show("Add Success.", "Early Withdrawal", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            if (this.earlyWithdrawal.checkArchivedState())
-                            {
-                                this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawalAll(this.earlyWithdrawal.getSearch()));
-                                DataGridViewRowCollection dr = this.earlyWithdrawal.getAllRows();
-                                int i = 0;
-                                foreach (DataGridViewRow row in dr)
-                                {
-                                    if (bool.Parse(row.Cells["isArchived"].Value.ToString()))
-                                    {
-                                        this.earlyWithdrawal.setArchivedColor(i);
-                                    }
-                                    i++;
-                                }
-                            }
-                            else
-                            {
-                                this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawal(this.earlyWithdrawal.getSearch()));
-                            }
+                            this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawal(this.earlyWithdrawal.getSearch()));
                             this.earlyWithdrawal.clearError();
                             this.earlyWithdrawal.removeColumns();
                             this.earlyWithdrawal.disableFunction();
                             isAdd = false;
                             EarlyWithdrawalId = 0;
-                            accountType = 0;
                         }
                         else
                         {
@@ -292,30 +225,12 @@ namespace CMS.Savings.Maintenance.Controller
                         if (this.earlyWithdrawalModel.updateEarlyWithdrawal(EarlyWithdrawalId) == 1)
                         {
                             MessageBox.Show("Update Success.", "Early Withdrawal", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            if (this.earlyWithdrawal.checkArchivedState())
-                            {
-                                this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawalAll(this.earlyWithdrawal.getSearch()));
-                                DataGridViewRowCollection dr = this.earlyWithdrawal.getAllRows();
-                                int i = 0;
-                                foreach (DataGridViewRow row in dr)
-                                {
-                                    if (bool.Parse(row.Cells["isArchived"].Value.ToString()))
-                                    {
-                                        this.earlyWithdrawal.setArchivedColor(i);
-                                    }
-                                    i++;
-                                }
-                            }
-                            else
-                            {
-                                this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawal(this.earlyWithdrawal.getSearch()));
-                            }
+                            this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawal(this.earlyWithdrawal.getSearch()));
                             this.earlyWithdrawal.clearError();
                             this.earlyWithdrawal.removeColumns();
                             this.earlyWithdrawal.disableFunction();
                             isAdd = false;
                             EarlyWithdrawalId = 0;
-                            accountType = 0;
                         }
                         else
                         {
@@ -331,12 +246,9 @@ namespace CMS.Savings.Maintenance.Controller
             catch (FormatException)
             {
                 this.earlyWithdrawal.clearError();
-                this.earlyWithdrawal.setErrorBalDuration();
-                this.earlyWithdrawal.setErrorMaximum();
-                this.earlyWithdrawal.setErrorMinimum();
                 this.earlyWithdrawal.setErrorPenalty();
                 MessageBox.Show(this.errorMessage + "Invalid Input!" + Environment.NewLine + "Check Red Labels.", "Early Withdrawal", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            }
         }
 
         public void btnCancel(object args, EventArgs e)
@@ -346,21 +258,11 @@ namespace CMS.Savings.Maintenance.Controller
             errorMessage = String.Empty;
             isAdd = false;
             EarlyWithdrawalId = 0;
-            accountType = 0;
         }
 
         private void txtSearch(object sender, EventArgs e)
-        {/*
-            if (this.earlyWithdrawal.checkArchivedState())
-            {
-                this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawalAll(this.earlyWithdrawal.getSearch()));
-                this.earlyWithdrawal.removeColumns();
-            }
-            else
-            {
-                this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawal(this.earlyWithdrawal.getSearch()));
-                this.earlyWithdrawal.removeColumns();
-            }*/
+        {
+            this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawal(this.earlyWithdrawal.getSearch()));
         }
     }
 }

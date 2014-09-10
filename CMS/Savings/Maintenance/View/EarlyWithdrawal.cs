@@ -171,11 +171,9 @@ namespace CMS.Savings.Maintenance.View
 
         public void removeColumns()
         {
-            /*dataTimeDeposit.Columns[0].Visible = false;
-            dataTimeDeposit.Columns[1].Visible = false;
-            dataTimeDeposit.Columns[7].Visible = false;
-            dataTimeDeposit.Columns[8].Visible = false;
-            dataTimeDeposit.Columns[9].Visible = false;*/
+            dataTimeDeposit.Columns[0].Visible = false;
+            dataTimeDeposit.Columns[5].Visible = false;
+            dataTimeDeposit.Columns[6].Visible = false;
         }
 
         private void txtPenalty_KeyPress(object sender, KeyPressEventArgs e)
@@ -246,36 +244,6 @@ namespace CMS.Savings.Maintenance.View
             {
                 e.Handled = true;
             }
-        }
-
-        private void dataTimeDeposit_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            DataGridViewRowCollection rowCollection = dataTimeDeposit.Rows;
-            foreach (DataGridViewRow row in rowCollection)
-            {
-                if (bool.Parse(row.Cells["isArchived"].Value.ToString()))
-                {
-                    row.DefaultCellStyle.BackColor = Color.Yellow;
-                    row.DefaultCellStyle.SelectionBackColor = Color.YellowGreen;
-                    row.DefaultCellStyle.SelectionForeColor = SystemColors.ControlText;
-                }
-                else
-                {
-                    row.DefaultCellStyle = null;
-                }
-            }
-        }
-
-        public DataGridViewRowCollection getAllRows()
-        {
-            return this.dataTimeDeposit.Rows;
-        }
-
-        public void setArchivedColor(int i)
-        {
-            dataTimeDeposit.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
-            dataTimeDeposit.Rows[i].DefaultCellStyle.SelectionBackColor = Color.YellowGreen;
-            dataTimeDeposit.Rows[i].DefaultCellStyle.SelectionForeColor = SystemColors.ControlText;
         }
 
         public void txtSearch_TextChanged(EventHandler e)

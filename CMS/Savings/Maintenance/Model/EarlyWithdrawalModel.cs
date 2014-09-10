@@ -11,136 +11,31 @@ namespace CMS.Savings.Maintenance.Model
 {
     class EarlyWithdrawalModel
     {
-        public int TypeId { get; set; }
-        public double Penalty { get; set; }
-        public String Per { get; set; }
-        public int Duration { get; set; }
-        public String DurationStatus { get; set; }
-        public double MinRange { get; set; }
-        public double MaxRange { get; set; }
+        public double InterestReduction { get; set; }
+        public int TermElapsedFrom { get; set; }
+        public int TermElapsedTo { get; set; }
         public int Status { get; set; }
 
         public EarlyWithdrawalModel()
         {
-            this.TypeId = 0;
-            this.Penalty = 0;
-            this.Per = String.Empty;
-            this.Duration = 0;
-            this.DurationStatus = String.Empty;
-            this.MinRange = 0;
-            this.MaxRange = 0;
+            this.InterestReduction = 0;
+            this.TermElapsedFrom = 0;
+            this.TermElapsedTo = 0;
             this.Status = 0;
-        }
-
-        public DataSet selectAccountTypes()
-        {
-            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT AccountTypeId, SavingsTypeName FROM SAVINGS_ACCOUNT_TYPE WHERE isTimeDeposit = 1 AND isArchived = 0";
-            DataSet ds = dal.executeDataSet(sql);
-            return ds;
         }
 
         public DataSet selectEarlyWithdrawal()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT EarlyWithdrawalId AS 'Early Withdrawal Id', t.AccountTypeId AS 'Account Type Id', SavingsTypeName AS 'Account Type',  CONCAT(BalanceDurationValue, ' ',  BalanceDurationStatus) AS 'Duration', CONCAT(PenaltyValue, ' ', PenaltyStatus) AS 'Penalty', CONCAT(MinimumRange, '-', MaximumRange) AS 'Balance Range', t.Status, isArchived, t.DateCreated AS 'Date Created', t.DateModified AS 'Last Modified' FROM EARLY_WITHDRAWAL t INNER JOIN SAVINGS_ACCOUNT_TYPE s ON t.AccountTypeId = s.AccountTypeId WHERE isArchived = 0";
+            String sql = "SELECT EarlyWithdrawalId, CONCAT(TermsElapsedFrom, '%') AS 'Term Elapsed From', CONCAT(TermsElapsedTo, '%') AS 'Term Elapsed To', CONCAT(InterestReduction, '%') AS 'Interest Reduction', Status, DateCreated, DateModified FROM EARLY_WITHDRAWAL";
             DataSet ds = dal.executeDataSet(sql);
             return ds;
-        }
-
-        public int checkPenalty(int savings, double penalty, String penaltyRate, int id, int balDuration, String balDurationStatus)
-        {
-            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT COUNT(*) FROM EARLY_WITHDRAWAL WHERE AccountTypeId = @savings AND PenaltyValue = @penalty AND PenaltyStatus = @penaltyRate AND EarlyWithdrawalId != @id AND BalanceDurationValue = @BalDuration AND BalanceDurationStatus = @BalDurationStatus";
-            Dictionary<String, Object> parameters = new Dictionary<string, object>();
-            parameters.Add("@savings", savings);
-            parameters.Add("@penalty", penalty);
-            parameters.Add("@penaltyRate", penaltyRate);
-            parameters.Add("@id", id);
-            parameters.Add("@BalDuration", balDuration);
-            parameters.Add("@BalDurationStatus", balDurationStatus);
-            SqlDataReader read = dal.executeReader(sql, parameters);
-            int i = 0;
-            while (read.Read())
-            {
-                i = (int)read[0];
-            }
-            return i;
-        }
-
-        public int checkBalanceRange(double MinBal, double MaxBal, int savings, int id, int balDuration, String balDurationStatus)
-        {
-            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT COUNT(*) FROM EARLY_WITHDRAWAL WHERE AccountTypeId = @savings AND EarlyWithdrawalId != @id AND MaximumRange != 0 AND Status = 1 AND BalanceDurationValue = @BalDuration AND BalanceDurationStatus = @BalDurationStatus AND ((@MinBal BETWEEN MinimumRange AND MaximumRange) OR (@MaxBal BETWEEN MinimumRange AND MaximumRange) OR (MinimumRange >= @MinBal AND MaximumRange <= @MaxBal))";
-            Dictionary<String, Object> parameters = new Dictionary<string, object>();
-            parameters.Add("@savings", savings);
-            parameters.Add("@id", id);
-            parameters.Add("@MinBal", MinBal);
-            parameters.Add("@MaxBal", MaxBal);
-            parameters.Add("@BalDuration", balDuration);
-            parameters.Add("@BalDurationStatus", balDurationStatus);
-            SqlDataReader read = dal.executeReader(sql, parameters);
-            int i = 0;
-            while (read.Read())
-            {
-                i = (int)read[0];
-            }
-            return i;
-        }
-
-        public int checkBracketed(int savings, double MinBal, int earlyWithdrawalId, int balDuration, String balDurationStatus)
-        {
-            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT COUNT(*) FROM EARLY_WITHDRAWAL WHERE EarlyWithdrawalId != @earlyWithdrawalId AND AccountTypeId = @savings AND Status = 1 AND BalanceDurationValue = @BalDuration AND BalanceDurationStatus = @BalDurationStatus AND (MaximumRange >= @MinBal OR MinimumRange >= @MinBal)";
-            Dictionary<String, Object> parameters = new Dictionary<string, object>();
-            parameters.Add("@earlyWithdrawalId", earlyWithdrawalId);
-            parameters.Add("@savings", savings);
-            parameters.Add("@MinBal", MinBal);
-            parameters.Add("@BalDuration", balDuration);
-            parameters.Add("@BalDurationStatus", balDurationStatus);
-            SqlDataReader read = dal.executeReader(sql, parameters);
-            int i = 0;
-            while (read.Read())
-            {
-                i = (int)read[0];
-            }
-            return i;
-        }
-
-        public int checkUnbracketed(int savings, double MinBal, int earlyWithdrawalId, int balDuration, String balDurationStatus)
-        {
-            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT COUNT(*) FROM EARLY_WITHDRAWAL WHERE EarlyWithdrawalId != @earlyWithdrawalId AND AccountTypeId = @savings AND Status = 1 AND BalanceDurationValue = @BalDuration AND BalanceDurationStatus = @BalDurationStatus AND MaximumRange = 0  AND MinimumRange <= @MinBal";
-            Dictionary<String, Object> parameters = new Dictionary<string, object>();
-            parameters.Add("@earlyWithdrawalId", earlyWithdrawalId);
-            parameters.Add("@savings", savings);
-            parameters.Add("@MinBal", MinBal);
-            parameters.Add("@BalDuration", balDuration);
-            parameters.Add("@BalDurationStatus", balDurationStatus);
-            SqlDataReader read = dal.executeReader(sql, parameters);
-            int i = 0;
-            while (read.Read())
-            {
-                i = (int)read[0];
-            }
-            return i;
         }
 
         public DataSet searchEarlyWithdrawal(String searchName)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT EarlyWithdrawalId AS 'Early Withdrawal Id', t.AccountTypeId AS 'Account Type Id', SavingsTypeName AS 'Account Type',  CONCAT(BalanceDurationValue, ' ',  BalanceDurationStatus) AS 'Duration', CONCAT(PenaltyValue, ' ', PenaltyStatus) AS 'Penalty', CONCAT(MinimumRange, '-', MaximumRange) AS 'Balance Range', t.Status, isArchived, t.DateCreated AS 'Date Created', t.DateModified AS 'Last Modified' FROM EARLY_WITHDRAWAL t INNER JOIN SAVINGS_ACCOUNT_TYPE s ON t.AccountTypeId = s.AccountTypeId WHERE isArchived = 0 AND SavingsTypeName LIKE(@searchName)";
-            searchName = "%" + searchName + "%";
-            Dictionary<String, Object> parameters = new Dictionary<string, object>();
-            parameters.Add("@searchName", searchName);
-            DataSet ds = dal.executeDataSet(sql, parameters);
-            return ds;
-        }
-
-        public DataSet searchEarlyWithdrawalAll(String searchName)
-        {
-            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT EarlyWithdrawalId AS 'Early Withdrawal Id', t.AccountTypeId AS 'Account Type Id', SavingsTypeName AS 'Account Type',  CONCAT(BalanceDurationValue, ' ',  BalanceDurationStatus) AS 'Duration', CONCAT(PenaltyValue, ' ', PenaltyStatus) AS 'Penalty', CONCAT(MinimumRange, '-', MaximumRange) AS 'Balance Range', t.Status, isArchived, t.DateCreated AS 'Date Created', t.DateModified AS 'Last Modified' FROM EARLY_WITHDRAWAL t INNER JOIN SAVINGS_ACCOUNT_TYPE s ON t.AccountTypeId = s.AccountTypeId WHERE SavingsTypeName LIKE(@searchName)";
+            String sql = "SELECT EarlyWithdrawalId, CONCAT(TermsElapsedFrom, '%') AS 'Term Elapsed From', CONCAT(TermsElapsedTo, '%') AS 'Term Elapsed To', CONCAT(InterestReduction, '%') AS 'Interest Reduction', Status, DateCreated, DateModified FROM EARLY_WITHDRAWAL WHERE InterestReduction LIKE(@searchName)";
             searchName = "%" + searchName + "%";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@searchName", searchName);
@@ -151,15 +46,11 @@ namespace CMS.Savings.Maintenance.Model
         public int insertEarlyWithdrawal()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC insertEarlyWithdrawal @TypeId, @Penalty, @Per, @Duration, @DurationStatus, @MinRange, @MaxRange, @Status";
+            String sql = "EXEC insertEarlyWithdrawal @InterestReduction, @TermElapsedFrom, @TermElapsedTo, @Status";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
-            parameters.Add("@TypeId", this.TypeId);
-            parameters.Add("@Penalty", this.Penalty);
-            parameters.Add("@Per", this.Per);
-            parameters.Add("@Duration", this.Duration);
-            parameters.Add("@DurationStatus", this.DurationStatus);
-            parameters.Add("@MinRange", this.MinRange);
-            parameters.Add("@MaxRange", this.MaxRange);
+            parameters.Add("@InterestReduction", this.InterestReduction);
+            parameters.Add("@TermElapsedFrom", this.TermElapsedFrom);
+            parameters.Add("@TermElapsedTo", this.TermElapsedTo);
             parameters.Add("@Status", this.Status);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             return result;
@@ -168,18 +59,79 @@ namespace CMS.Savings.Maintenance.Model
         public int updateEarlyWithdrawal(int EarlyWithdrawalId)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC updateEarlyWithdrawal @EarlyWithdrawalId, @Penalty, @Per, @Duration, @DurationStatus, @MinRange, @MaxRange, @Status";
+            String sql = "EXEC updateEarlyWithdrawal @InterestReduction, @TermElapsedFrom, @TermElapsedTo, @Status, @EarlyWithdrawalId";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
-            parameters.Add("@EarlyWithdrawalId", EarlyWithdrawalId);
-            parameters.Add("@Penalty", this.Penalty);
-            parameters.Add("@Per", this.Per);
-            parameters.Add("@Duration", this.Duration);
-            parameters.Add("@DurationStatus", this.DurationStatus);
-            parameters.Add("@MinRange", this.MinRange);
-            parameters.Add("@MaxRange", this.MaxRange);
+            parameters.Add("@InterestReduction", this.InterestReduction);
+            parameters.Add("@TermElapsedFrom", this.TermElapsedFrom);
+            parameters.Add("@TermElapsedTo", this.TermElapsedTo);
             parameters.Add("@Status", this.Status);
+            parameters.Add("@EarlyWithdrawalId", EarlyWithdrawalId);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             return result;
+        }
+
+        public int checkOverlap(int From, int To)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT COUNT(*) FROM EARLY_WITHDRAWAL WHERE Status = 1 AND ((@From BETWEEN TermsElapsedFrom AND TermsElapsedTo) OR (@To BETWEEN TermsElapsedFrom AND TermsElapsedTo) OR (TermsElapsedFrom >= @From AND TermsElapsedTo <= @To))";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@From", From);
+            parameters.Add("@To", To);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = (int)read[0];
+            }
+            return i;
+        }
+
+        public int checkOverlap(int From, int To, int Id)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT COUNT(*) FROM EARLY_WITHDRAWAL WHERE EarlyWithdrawalId != @Id AND Status = 1 AND ((@From BETWEEN TermsElapsedFrom AND TermsElapsedTo) OR (@To BETWEEN TermsElapsedFrom AND TermsElapsedTo) OR (TermsElapsedFrom >= @From AND TermsElapsedTo <= @To))";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@From", From);
+            parameters.Add("@To", To);
+            parameters.Add("@Id", Id);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = (int)read[0];
+            }
+            return i;
+        }
+
+        public int checkReduction(double Reduction)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT COUNT(*) FROM EARLY_WITHDRAWAL WHERE InterestReduction = @Reduction AND Status = 1";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@Reduction", Reduction);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = (int)read[0];
+            }
+            return i;
+        }
+
+        public int checkReduction(double Reduction, int Id)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT COUNT(*) FROM EARLY_WITHDRAWAL WHERE EarlyWithdrawalId != @Id AND InterestReduction = @Reduction AND Status = 1";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@Reduction", Reduction);
+            parameters.Add("@Id", Id);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = (int)read[0];
+            }
+            return i;
         }
     }
 }

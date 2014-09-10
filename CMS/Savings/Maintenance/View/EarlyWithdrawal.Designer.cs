@@ -255,7 +255,6 @@
             this.dataTimeDeposit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataTimeDeposit.Size = new System.Drawing.Size(540, 169);
             this.dataTimeDeposit.TabIndex = 3;
-            this.dataTimeDeposit.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataTimeDeposit_CellFormatting);
             // 
             // lblSearch
             // 

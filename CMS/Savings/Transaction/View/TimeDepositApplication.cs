@@ -19,13 +19,6 @@ namespace CMS.Savings.Transaction.View
             this.radioAccountNo.Checked = true;
         }
 
-        public void initAccountType(DataSet ds)
-        {
-            this.comboAccountType.DataSource = ds.Tables[0];
-            this.comboAccountType.DisplayMember = "SavingsTypeName";
-            this.comboAccountType.ValueMember = "AccountTypeId";
-        }
-
         private void radioAccountNo_CheckedChanged(object sender, EventArgs e)
         {
             if (this.radioAccountNo.Checked)
@@ -51,18 +44,6 @@ namespace CMS.Savings.Transaction.View
         public void setDataMember(DataSet ds)
         {
             this.dataMember.DataSource = ds.Tables[0];
-        }
-
-        public int getComboAccountType()
-        {
-            if (this.comboAccountType.SelectedIndex == -1)
-            {
-                return 0;
-            }
-            else
-            {
-                return int.Parse(this.comboAccountType.SelectedValue.ToString());
-            }
         }
 
         public DataGridViewRow getSelected()
@@ -125,11 +106,6 @@ namespace CMS.Savings.Transaction.View
         public void numDuration_ValueChanged(EventHandler e)
         {
             this.numDuration.ValueChanged += e;
-        }
-
-        public void comboAccountType_SelectedIndexChanged(EventHandler e)
-        {
-            this.comboAccountType.SelectedIndexChanged += e;
         }
 
         public void comboDuration_SelectedIndexChanged(EventHandler e)
@@ -213,11 +189,6 @@ namespace CMS.Savings.Transaction.View
             }
         }
 
-        public void setErrorAccountType()
-        {
-            this.lblAccountType.ForeColor = Color.Red;
-        }
-
         public void setErrorAmount()
         {
             this.lblDeposit.ForeColor = Color.Red;
@@ -230,7 +201,6 @@ namespace CMS.Savings.Transaction.View
 
         public void clearErrors()
         {
-            this.lblAccountType.ForeColor = SystemColors.ControlText;
             this.lblDeposit.ForeColor = SystemColors.ControlText;
             this.lblDuration.ForeColor = SystemColors.ControlText;
         }
@@ -243,7 +213,6 @@ namespace CMS.Savings.Transaction.View
             this.txtDeposit.Clear();
             this.numDuration.Value = 0;
             this.comboDuration.SelectedIndex = 0;
-            this.comboAccountType.SelectedIndex = 0;
             this.dateMaturity.Value = DateTime.Today;
         }
     }

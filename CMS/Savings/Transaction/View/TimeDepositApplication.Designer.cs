@@ -33,10 +33,8 @@
             this.dateMaturity = new System.Windows.Forms.DateTimePicker();
             this.contextMenuBlank = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dataMember = new System.Windows.Forms.DataGridView();
-            this.comboAccountType = new System.Windows.Forms.ComboBox();
             this.comboDuration = new System.Windows.Forms.ComboBox();
             this.numDuration = new System.Windows.Forms.NumericUpDown();
-            this.lblAccountType = new System.Windows.Forms.Label();
             this.lblDuration = new System.Windows.Forms.Label();
             this.lblMaturity = new System.Windows.Forms.Label();
             this.txtDeposit = new System.Windows.Forms.TextBox();
@@ -62,7 +60,7 @@
             this.dateMaturity.ContextMenuStrip = this.contextMenuBlank;
             this.dateMaturity.Enabled = false;
             this.dateMaturity.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.dateMaturity.Location = new System.Drawing.Point(41, 156);
+            this.dateMaturity.Location = new System.Drawing.Point(43, 104);
             this.dateMaturity.Name = "dateMaturity";
             this.dateMaturity.Size = new System.Drawing.Size(241, 25);
             this.dateMaturity.TabIndex = 17;
@@ -89,17 +87,6 @@
             this.dataMember.Size = new System.Drawing.Size(375, 303);
             this.dataMember.TabIndex = 7;
             // 
-            // comboAccountType
-            // 
-            this.comboAccountType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboAccountType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboAccountType.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.comboAccountType.FormattingEnabled = true;
-            this.comboAccountType.Location = new System.Drawing.Point(116, 42);
-            this.comboAccountType.Name = "comboAccountType";
-            this.comboAccountType.Size = new System.Drawing.Size(183, 25);
-            this.comboAccountType.TabIndex = 0;
-            // 
             // comboDuration
             // 
             this.comboDuration.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -108,10 +95,9 @@
             this.comboDuration.FormattingEnabled = true;
             this.comboDuration.Items.AddRange(new object[] {
             "Day/s",
-            "Week/s",
             "Month/s",
             "Year/s"});
-            this.comboDuration.Location = new System.Drawing.Point(193, 109);
+            this.comboDuration.Location = new System.Drawing.Point(195, 57);
             this.comboDuration.Name = "comboDuration";
             this.comboDuration.Size = new System.Drawing.Size(106, 25);
             this.comboDuration.TabIndex = 15;
@@ -120,29 +106,19 @@
             // 
             this.numDuration.ContextMenuStrip = this.contextMenuBlank;
             this.numDuration.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.numDuration.Location = new System.Drawing.Point(134, 109);
+            this.numDuration.Location = new System.Drawing.Point(120, 57);
             this.numDuration.Name = "numDuration";
-            this.numDuration.Size = new System.Drawing.Size(53, 25);
+            this.numDuration.Size = new System.Drawing.Size(69, 25);
             this.numDuration.TabIndex = 14;
             this.numDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numDuration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numDuration_KeyDown);
             this.numDuration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numDuration_KeyPress);
             // 
-            // lblAccountType
-            // 
-            this.lblAccountType.AutoSize = true;
-            this.lblAccountType.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblAccountType.Location = new System.Drawing.Point(21, 45);
-            this.lblAccountType.Name = "lblAccountType";
-            this.lblAccountType.Size = new System.Drawing.Size(89, 17);
-            this.lblAccountType.TabIndex = 9;
-            this.lblAccountType.Text = "Account Type:";
-            // 
             // lblDuration
             // 
             this.lblDuration.AutoSize = true;
             this.lblDuration.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblDuration.Location = new System.Drawing.Point(10, 112);
+            this.lblDuration.Location = new System.Drawing.Point(12, 60);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(102, 17);
             this.lblDuration.TabIndex = 13;
@@ -152,7 +128,7 @@
             // 
             this.lblMaturity.AutoSize = true;
             this.lblMaturity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic);
-            this.lblMaturity.Location = new System.Drawing.Point(38, 136);
+            this.lblMaturity.Location = new System.Drawing.Point(40, 84);
             this.lblMaturity.Name = "lblMaturity";
             this.lblMaturity.Size = new System.Drawing.Size(88, 17);
             this.lblMaturity.TabIndex = 16;
@@ -162,7 +138,7 @@
             // 
             this.txtDeposit.ContextMenuStrip = this.contextMenuBlank;
             this.txtDeposit.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtDeposit.Location = new System.Drawing.Point(118, 76);
+            this.txtDeposit.Location = new System.Drawing.Point(120, 24);
             this.txtDeposit.MaxLength = 10;
             this.txtDeposit.Name = "txtDeposit";
             this.txtDeposit.Size = new System.Drawing.Size(181, 25);
@@ -175,7 +151,7 @@
             // 
             this.lblDeposit.AutoSize = true;
             this.lblDeposit.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblDeposit.Location = new System.Drawing.Point(7, 79);
+            this.lblDeposit.Location = new System.Drawing.Point(9, 27);
             this.lblDeposit.Name = "lblDeposit";
             this.lblDeposit.Size = new System.Drawing.Size(105, 17);
             this.lblDeposit.TabIndex = 11;
@@ -266,7 +242,6 @@
             // groupWithdrawal
             // 
             this.groupWithdrawal.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupWithdrawal.Controls.Add(this.lblAccountType);
             this.groupWithdrawal.Controls.Add(this.lblDeposit);
             this.groupWithdrawal.Controls.Add(this.txtDeposit);
             this.groupWithdrawal.Controls.Add(this.lblMaturity);
@@ -274,11 +249,10 @@
             this.groupWithdrawal.Controls.Add(this.lblDuration);
             this.groupWithdrawal.Controls.Add(this.numDuration);
             this.groupWithdrawal.Controls.Add(this.comboDuration);
-            this.groupWithdrawal.Controls.Add(this.comboAccountType);
             this.groupWithdrawal.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.groupWithdrawal.Location = new System.Drawing.Point(393, 158);
             this.groupWithdrawal.Name = "groupWithdrawal";
-            this.groupWithdrawal.Size = new System.Drawing.Size(307, 211);
+            this.groupWithdrawal.Size = new System.Drawing.Size(307, 140);
             this.groupWithdrawal.TabIndex = 8;
             this.groupWithdrawal.TabStop = false;
             this.groupWithdrawal.Text = "TIme Deposit Account Details:";
@@ -345,10 +319,8 @@
 
         private System.Windows.Forms.DateTimePicker dateMaturity;
         private System.Windows.Forms.DataGridView dataMember;
-        private System.Windows.Forms.ComboBox comboAccountType;
         private System.Windows.Forms.ComboBox comboDuration;
         private System.Windows.Forms.NumericUpDown numDuration;
-        private System.Windows.Forms.Label lblAccountType;
         private System.Windows.Forms.Label lblDuration;
         private System.Windows.Forms.Label lblMaturity;
         private System.Windows.Forms.TextBox txtDeposit;

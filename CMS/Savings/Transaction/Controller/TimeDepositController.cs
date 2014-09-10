@@ -17,7 +17,6 @@ namespace CMS.Savings.Transaction.Controller
         {
             this.timeDepositModel = timeDepositModel;
             this.timeDeposit = timeDeposit;
-            this.timeDeposit.initAccountType(this.timeDepositModel.selectTimeDeposit());
             this.timeDeposit.setDataMember(this.timeDepositModel.selectMember());
             this.timeDeposit.txtAccountNo_TextChanged(this.txtAccountNo);
             this.timeDeposit.txtMemberName_TextChanged(this.txtMemberName);
@@ -99,26 +98,15 @@ namespace CMS.Savings.Transaction.Controller
         {
             this.timeDeposit.clearErrors();
             String errorMessage = String.Empty;
-            Boolean checkAccountType = false;
             Boolean checkAmount = false;
             Boolean checkDuration = false;
             Boolean checkAccount = false;
-            if (this.timeDeposit.getComboAccountType() == 0)
-            {
-                errorMessage += "Please Specify Account Type." + Environment.NewLine;
-                this.timeDeposit.setErrorAccountType();
-                checkAccountType = false;
-            }
-            else
-            {
-                this.timeDepositModel.AccountTypeId = this.timeDeposit.getComboAccountType();
-                checkAccountType = true;
-            }
             try
             {
-                if (this.timeDeposit.getAmount() < this.timeDepositModel.selectInitialDeposit(this.timeDeposit.getComboAccountType()))
+                double Amount = this.timeDepositModel.selectMinimumAmount();
+                if (this.timeDeposit.getAmount() < Amount)
                 {
-                    errorMessage += "Deposit Amount Cannot be Less Than Initial Deposit Specified for this Account Type." + Environment.NewLine;
+                    errorMessage += "Deposit Amount Cannot be Less Than " + Amount + "." + Environment.NewLine;
                     this.timeDeposit.setErrorAmount();
                     checkAmount = false;
                 }
@@ -156,7 +144,7 @@ namespace CMS.Savings.Transaction.Controller
                 this.timeDepositModel.AccountNo = row.Cells[0].Value.ToString();
                 checkAccount = true;
             }
-            if(checkAccount && checkAccountType && checkAmount && checkDuration)
+            if(checkAccount && checkAmount && checkDuration)
             {
                 this.timeDepositModel.CertificateNo = "TD-" + this.timeDepositModel.generateCertificateNo().ToString("D5");
                 if(this.timeDepositModel.insertSavingsTransaction() == 1)

@@ -85,6 +85,7 @@ namespace CMS.Main.View
             this.cbLoanType.DataSource = null;
             this.chbPayAll.Checked = false;
             this.chbPayAll.Enabled = true;
+            this.chbDeductToNext.Enabled = false;
         }
 
         public void clearTendered() 
@@ -648,6 +649,12 @@ namespace CMS.Main.View
             else return true;
         }
 
+        public Boolean getDeductToNextAmortization()
+        {
+            if (this.chbDeductToNext.Checked == true) { return true; }
+            else return false;
+        }
+
 
         public void setLoanAmortizationAmount(double d) 
         {
@@ -681,6 +688,11 @@ namespace CMS.Main.View
                 return double.Parse(this.txtPenalty.Text);
             }
             catch (Exception) { return 0; }
+        }
+
+        public double getAmortizationChange() 
+        {
+            return double.Parse(this.txtAMChange.Text.Substring(3));
         }
 
         public void setInterest(double d)
@@ -810,15 +822,14 @@ namespace CMS.Main.View
                             CultureInfo ph = new CultureInfo("en-PH");
                             this.txtAMChange.Text = change.ToString("c", ph);
                             this.btnSave.Enabled = true;
-
+                            this.chbDeductToNext.Enabled = true;
                         }
                         else
                         {
-                            MessageBox.Show("Insufficient amount.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            this.btnSave.Enabled = false;
-                            this.txtAMChange.Clear();
-                            this.txtAMAmountTendered.Clear();
-                            this.txtAMAmountTendered.Focus();
+                            double change = 0.00;
+                            CultureInfo ph = new CultureInfo("en-PH");
+                            this.txtAMChange.Text = change.ToString("c", ph);
+                            this.btnSave.Enabled = true;
                         }
                     }
                     catch (FormatException) { MessageBox.Show("Please enter right amount.", "INVALID INPUT", MessageBoxButtons.OK, MessageBoxIcon.Error); this.txtAmount.Clear(); }
@@ -850,6 +861,7 @@ namespace CMS.Main.View
                 {
                     this.classGridAmortization(this.paymentModel.selectAmortizations(this.dataLoan[0, row].Value.ToString(), this.getTypeOfLoan(), this.getLoanMaturityDate()));
                     this.clearSelectionDataAmortization();
+                    this.setPenaltyList("LOAN BALANCE: Php" + this.paymentModel.selectRemainingBalance(Convert.ToInt32(this.dataAmortization.Rows[0].Cells[4].Value)));
                 }
                 else
                 {

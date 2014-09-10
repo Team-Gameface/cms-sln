@@ -517,6 +517,12 @@ namespace CMS.Main.Controller
                     }
                 }
 
+                if (this.payment.getDeductToNextAmortization() == true) 
+                {
+                    double excessAmount = this.payment.getAmortizationChange();
+                    this.paymentModel.deductToNextAmortization(excessAmount, Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
+                }
+
                 MessageBox.Show("Transaction successful.", "Amortization Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.payment.classGridLoanSearch(this.paymentModel.selectActiveMemberWithLoan());
                 this.payment.clearLoanFields();

@@ -143,7 +143,7 @@ namespace CMS.Main.Model
         public DataSet selectActiveMemberWithLoan()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "Select distinct Member.AccountNo as 'Account No.', concat (Member.FirstName,' ',member.LastName) as 'Name', MEMBER_TYPE.Description from MEMBER, MEMBER_TYPE, LOAN_INFORMATION WHERE MEMBER.AccountNo = LOAN_INFORMATION.AccountNo and MEMBER.MemberTypeNo = MEMBER_TYPE.MemberTypeNo AND LOAN_INFORMATION.isCleared = 0 and Member.AccountNo not in (Select AccountNo from Termination);";
+            String sql = "Select distinct Member.AccountNo as 'Account No.', concat (Member.FirstName,' ',member.LastName) as 'Name', MEMBER_TYPE.Description, concat('Php',sum(LOAN_Amortization.Amount)) AS 'Total Loan Balance' from MEMBER, MEMBER_TYPE, LOAN_INFORMATION, LOAN_AMORTIZATION WHERE MEMBER.AccountNo = LOAN_INFORMATION.AccountNo and LOAN_INFORMATION.LoanApplicationId = LOAN_AMORTIZATION.LoanApplicationId and MEMBER.MemberTypeNo = MEMBER_TYPE.MemberTypeNo AND LOAN_INFORMATION.isCleared = 0 and LOAN_AMORTIZATION.isPaid = 0 and Member.AccountNo not in (Select AccountNo from Termination)group by Member.AccountNo, Member.FirstName, Member.LastName, Member_TYpe.Description;";
             String sqlct = "Select count(Member.AccountNo) from MEMBER, MEMBER_TYPE, LOAN_INFORMATION WHERE MEMBER.AccountNo = LOAN_INFORMATION.AccountNo and MEMBER.MemberTypeNo = MEMBER_TYPE.MemberTypeNo AND LOAN_INFORMATION.isCleared = 0;";
             DataSet ds = dal.executeDataSet(sql);
             checkEmpty = Convert.ToInt32(dal.executeScalar(sqlct));
@@ -326,6 +326,48 @@ namespace CMS.Main.Model
 
             return resultFinal;
         
+        }
+
+        public void deductToNextAmortization(double excess, int lappId) 
+        {
+            try
+            {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sqlSelect = "Select min(AmortizationId) from loan_amortization where LoanApplicationId = " + "'" + lappId + "' and isPaid = 0";
+            int amortizationId = Convert.ToInt32(dal.executeScalar(sqlSelect));
+
+            while (excess != 0)
+            {
+                    String selectAmount = "Select amount from loan_amortization where AmortizationId =" + "'" + amortizationId + "' and LoanApplicationId =" + "'" + lappId + "'";
+                    String sAmount = Convert.ToString(dal.executeScalar(selectAmount));
+                    if(sAmount.Equals(String.Empty))
+                    {
+                        MessageBox.Show("Change was deducted to all amortizations. Exceeding amount is Php" + excess);
+                        excess = 0;
+                        String sql6 = "Update LOAN_INFORMATION set isCleared = 1 where LoanApplicationId =" + "'" + lappId + "'";
+                        dal.executeScalar(sql6);
+                    }
+                    double amount = Convert.ToDouble(dal.executeScalar(selectAmount)) - excess;
+
+                    if (amount < 0 && excess!=0)
+                    {
+                        String updateAmortization = "Update LOAN_AMORTIZATION set isPaid = 1 where AmortizationId= " + "'" + amortizationId + "'";
+                        dal.executeScalar(updateAmortization);
+                        excess = amount*-1;
+                        amortizationId++;
+                    }
+                    else
+                    {
+                        String updateAmortization = "Update LOAN_AMORTIZATION set Amount = " + "'" + amount + "' where AmortizationId= " + "'" + amortizationId + "'";
+                        dal.executeScalar(updateAmortization);
+                        excess = 0;
+                    }
+            }
+
+            }
+            catch (Exception) { MessageBox.Show("Change was deducted to all amortizations. Exceeding amount is Php" + excess); }
+
+            
         }
 
         public void insertLoanPayment(String paymentType, String accountNo, int applicationId, double amount, double interest, double penalty, String duedate, Boolean hasInterest)

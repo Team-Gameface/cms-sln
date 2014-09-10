@@ -88,6 +88,7 @@
             this.btnMoveSelected = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.linkClosePayments = new System.Windows.Forms.Button();
+            this.chbDeductToNext = new System.Windows.Forms.CheckBox();
             this.groupPayment.SuspendLayout();
             this.groupSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSearch)).BeginInit();
@@ -321,6 +322,7 @@
             // groupLoan
             // 
             this.groupLoan.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupLoan.Controls.Add(this.chbDeductToNext);
             this.groupLoan.Controls.Add(this.label2);
             this.groupLoan.Controls.Add(this.txtInterest);
             this.groupLoan.Controls.Add(this.lblPenalty);
@@ -382,7 +384,7 @@
             // 
             this.txtAMChange.ContextMenuStrip = this.contextMenuBlank;
             this.txtAMChange.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.txtAMChange.Location = new System.Drawing.Point(761, 137);
+            this.txtAMChange.Location = new System.Drawing.Point(756, 102);
             this.txtAMChange.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAMChange.Name = "txtAMChange";
             this.txtAMChange.ReadOnly = true;
@@ -406,7 +408,7 @@
             // 
             this.lblCMChange.AutoSize = true;
             this.lblCMChange.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCMChange.Location = new System.Drawing.Point(757, 116);
+            this.lblCMChange.Location = new System.Drawing.Point(752, 81);
             this.lblCMChange.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCMChange.Name = "lblCMChange";
             this.lblCMChange.Size = new System.Drawing.Size(65, 20);
@@ -417,7 +419,7 @@
             // 
             this.txtAMAmountTendered.ContextMenuStrip = this.contextMenuBlank;
             this.txtAMAmountTendered.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.txtAMAmountTendered.Location = new System.Drawing.Point(761, 81);
+            this.txtAMAmountTendered.Location = new System.Drawing.Point(756, 46);
             this.txtAMAmountTendered.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAMAmountTendered.MaxLength = 7;
             this.txtAMAmountTendered.Name = "txtAMAmountTendered";
@@ -441,10 +443,10 @@
             // 
             this.lblCMAmountTendered.AutoSize = true;
             this.lblCMAmountTendered.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCMAmountTendered.Location = new System.Drawing.Point(757, 58);
+            this.lblCMAmountTendered.Location = new System.Drawing.Point(752, 23);
             this.lblCMAmountTendered.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCMAmountTendered.Name = "lblCMAmountTendered";
-            this.lblCMAmountTendered.Size = new System.Drawing.Size(136, 20);
+            this.lblCMAmountTendered.Size = new System.Drawing.Size(137, 20);
             this.lblCMAmountTendered.TabIndex = 30;
             this.lblCMAmountTendered.Text = "Amount Tendered:";
             // 
@@ -747,7 +749,7 @@
             this.label8.Location = new System.Drawing.Point(223, 288);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 40);
+            this.label8.Size = new System.Drawing.Size(78, 40);
             this.label8.TabIndex = 45;
             this.label8.Text = "Amount \r\nTendered:";
             // 
@@ -839,6 +841,18 @@
             this.linkClosePayments.TabIndex = 72;
             this.linkClosePayments.Text = "Close";
             this.linkClosePayments.UseVisualStyleBackColor = false;
+            // 
+            // chbDeductToNext
+            // 
+            this.chbDeductToNext.AutoSize = true;
+            this.chbDeductToNext.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbDeductToNext.ForeColor = System.Drawing.Color.ForestGreen;
+            this.chbDeductToNext.Location = new System.Drawing.Point(746, 145);
+            this.chbDeductToNext.Name = "chbDeductToNext";
+            this.chbDeductToNext.Size = new System.Drawing.Size(203, 17);
+            this.chbDeductToNext.TabIndex = 34;
+            this.chbDeductToNext.Text = "Deduct change to next amortization?";
+            this.chbDeductToNext.UseVisualStyleBackColor = true;
             // 
             // PaymentForm
             // 
@@ -934,6 +948,7 @@
         private System.Windows.Forms.Button btnMoveSelected;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button linkClosePayments;
+        private System.Windows.Forms.CheckBox chbDeductToNext;
 
 
 

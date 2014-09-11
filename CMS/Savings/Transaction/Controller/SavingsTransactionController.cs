@@ -47,7 +47,7 @@ namespace CMS.Savings.Transaction.Controller
             {
                 this.savingsTransaction.enableDetails();
                 this.savingsTransaction.setSavingsAccountNo(row.Cells[0].Value.ToString());
-                this.savingsTransaction.setAccountBalance(row.Cells[3].Value.ToString());
+                this.savingsTransaction.setAccountBalance(row.Cells[4].Value.ToString());
                 this.TypeId = int.Parse(row.Cells[3].Value.ToString());
                 this.savingsTransaction.setDataAccountHolder(this.savingsTransactionModel.selectAccountHolder(row.Cells[0].Value.ToString()));
             }

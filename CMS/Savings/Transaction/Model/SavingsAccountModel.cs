@@ -68,7 +68,7 @@ namespace CMS.Savings.Transaction.Model
         public DataSet selectMember(int TypeId)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT AccountNo, CONCAT(LastName, ', ', FirstName, ' ', MiddleName) AS 'Member Name' FROM MEMBER WHERE AccountNo NOT IN (SELECT MemberAccountNo FROM MEMBER_SAVINGS_ACCOUNT ms INNER JOIN SAVINGS_ACCOUNT s ON ms.SavingsAccountNo = s.SavingsAccountNo WHERE s.Status = 1) AND MemberTypeNo IN (SELECT MemberTypeNo FROM MEMBER_TYPE_SAVINGS_TYPE WHERE AccountTypeId = @TypeId) AND AccountNo NOT IN (SELECT AccountNo FROM TERMINATION)";
+            String sql = "SELECT m.AccountNo, CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName) AS 'Member Name' FROM SAVINGS_ACCOUNT sa INNER JOIN MEMBER_SAVINGS_ACCOUNT msa ON sa.SavingsAccountNo = msa.SavingsAccountNo INNER JOIN MEMBER m ON msa.MemberAccountNo = m.AccountNo WHERE m.Status = 1 AND MemberTypeNo IN (SELECT MemberTypeNo FROM MEMBER_TYPE_SAVINGS_TYPE WHERE AccountTypeId = @TypeId) AND AccountNo NOT IN (SELECT AccountNo FROM TERMINATION) GROUP BY m.AccountNo, m.MemberTypeNo, CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName) HAVING Count(sa.SavingsAccountNo) < (SELECT ISNULL(NoSavingsAccount, 1) FROM MEMBER_TYPE mt LEFT OUTER JOIN MEMBER_SAVINGS_ACCOUNT_SETTINGS ms ON mt.MemberTypeNo = ms.MemberTypeNo WHERE mt.MemberTypeNo = m.MemberTypeNo)";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@TypeId", TypeId);
             DataSet ds = dal.executeDataSet(sql, parameters);
@@ -78,7 +78,7 @@ namespace CMS.Savings.Transaction.Model
         public DataSet searchMember(int TypeId, String searchName)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT AccountNo, CONCAT(LastName, ', ', FirstName, ' ', MiddleName) AS 'Member Name' FROM MEMBER WHERE AccountNo NOT IN (SELECT MemberAccountNo FROM MEMBER_SAVINGS_ACCOUNT ms INNER JOIN SAVINGS_ACCOUNT s ON ms.SavingsAccountNo = s.SavingsAccountNo WHERE s.Status = 1) AND MemberTypeNo IN (SELECT MemberTypeNo FROM MEMBER_TYPE_SAVINGS_TYPE WHERE AccountTypeId = @TypeId) AND AccountNo NOT IN (SELECT AccountNo FROM TERMINATION) AND (LastName LIKE(@searchName) OR FirstName LIKE(@searchName) OR MiddleName LIKE(@searchName))";
+            String sql = "SELECT m.AccountNo, CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName) AS 'Member Name' FROM SAVINGS_ACCOUNT sa INNER JOIN MEMBER_SAVINGS_ACCOUNT msa ON sa.SavingsAccountNo = msa.SavingsAccountNo INNER JOIN MEMBER m ON msa.MemberAccountNo = m.AccountNo WHERE m.Status = 1 AND MemberTypeNo IN (SELECT MemberTypeNo FROM MEMBER_TYPE_SAVINGS_TYPE WHERE AccountTypeId = @TypeId) AND AccountNo NOT IN (SELECT AccountNo FROM TERMINATION) GROUP BY m.AccountNo, m.MemberTypeNo, CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName) HAVING Count(sa.SavingsAccountNo) < (SELECT ISNULL(NoSavingsAccount, 1) FROM MEMBER_TYPE mt LEFT OUTER JOIN MEMBER_SAVINGS_ACCOUNT_SETTINGS ms ON mt.MemberTypeNo = ms.MemberTypeNo WHERE mt.MemberTypeNo = m.MemberTypeNo) AND (LastName LIKE(@searchName) OR FirstName LIKE(@searchName) OR MiddleName LIKE(@searchName))";
             searchName = "%" + searchName + "%";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@TypeId", TypeId);

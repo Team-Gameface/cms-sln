@@ -98,7 +98,7 @@ namespace CMS.Settings
                         int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
                         if (result == 1)
                         {
-                            MessageBox.Show("Save Success.", "Savings Account Settings", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Save Success.", "Savings Account Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             dataMemberType.DataSource = selectSavingsSettings().Tables[0];
                             dataMemberType.Columns[0].Visible = false;
                         }

@@ -66,6 +66,7 @@
             this.btnSave.TabIndex = 128;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtCompanyAddress
             // 
@@ -235,6 +236,7 @@
             this.pictureLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureLogo.TabIndex = 13;
             this.pictureLogo.TabStop = false;
+            this.pictureLogo.Click += new System.EventHandler(this.pictureLogo_Click);
             // 
             // label3
             // 

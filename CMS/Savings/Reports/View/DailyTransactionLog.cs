@@ -28,6 +28,13 @@ namespace CMS.Savings.Reports.View
                 dateTo.Enabled = false;
         }
 
+        public void setReportDataSource(DataSet ds, Dictionary<String,Object> parameters)
+        {
+            DailyTransactionLogViewer dailyTransactionLogViewer = new DailyTransactionLogViewer(ds, parameters);
+            dailyTransactionLogViewer.Show();
+        }
+
+
         public String getDateFrom() {
 
             return dateFrom.Value.ToString("yyyy-MM-dd");

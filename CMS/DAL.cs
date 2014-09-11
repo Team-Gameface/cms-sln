@@ -52,6 +52,21 @@ namespace CMS
          * e.g. INSERT INTO Table VALUES (@Value1, @Value2)
          */
 
+        public int executeNonQuery(String sql)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                cmd = new SqlCommand(sql, conn);
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return rowsAffected;
+        }
+
         public int executeNonQuery(String sql, Dictionary<String, Object> parameters)
         {
             int rowsAffected = 0;
@@ -62,21 +77,6 @@ namespace CMS
                 {
                     cmd.Parameters.AddWithValue(row.Key, row.Value);
                 }
-                rowsAffected = cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-            return rowsAffected;
-        }
-
-        public int executeNonQuery(String sql)
-        {
-            int rowsAffected = 0;
-            try
-            {
-                cmd = new SqlCommand(sql, conn);
                 rowsAffected = cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -154,6 +154,8 @@ namespace CMS
             return ds;
         }
 
+
+
         public object executeScalar(String sql)
         {
             try
@@ -204,6 +206,26 @@ namespace CMS
                 ds = new DataSet();
                 adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(ds);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return ds;
+        }
+
+        public DataSet executeDataSet(String sql, Dictionary<String, Object> parameters, String src)
+        {
+            try
+            {
+                cmd = new SqlCommand(sql, conn);
+                foreach (KeyValuePair<String, Object> row in parameters)
+                {
+                    cmd.Parameters.AddWithValue(row.Key, row.Value);
+                }
+                ds = new DataSet();
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(ds,src);
             }
             catch (Exception e)
             {

@@ -51,6 +51,10 @@
     <ApplicationIcon>img\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=2.2.0.18504, Culture=neutral, PublicKeyToken=0d013ddd5178a2ae, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Microsoft.Win32.TaskScheduler.dll</HintPath>
@@ -264,12 +268,29 @@
       <DependentUpon>StatementOfAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Savings\Reports\Controller\DailyTransactionLogController.cs" />
+    <Compile Include="Savings\Reports\DailyTransactionLogReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyTransactionLogReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Savings\Reports\Model\DailyTransactionLogModel.cs" />
+    <Compile Include="Savings\Reports\SavingsTransactionLogDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SavingsTransactionLogDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Savings\Reports\View\DailyTransactionLog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Savings\Reports\View\DailyTransactionLog.designer.cs">
       <DependentUpon>DailyTransactionLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Savings\Reports\View\DailyTransactionLogViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Savings\Reports\View\DailyTransactionLogViewer.designer.cs">
+      <DependentUpon>DailyTransactionLogViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Savings\Transaction\Controller\TerminationController.cs" />
     <Compile Include="Savings\Transaction\Model\TerminationModel.cs" />
@@ -457,8 +478,15 @@
     <EmbeddedResource Include="Savings\Queries\View\StatementOfAccount.resx">
       <DependentUpon>StatementOfAccount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Savings\Reports\DailyTransactionLogReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyTransactionLogReport1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Savings\Reports\View\DailyTransactionLog.resx">
       <DependentUpon>DailyTransactionLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Savings\Reports\View\DailyTransactionLogViewer.resx">
+      <DependentUpon>DailyTransactionLogViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Savings\Transaction\View\MemberTermination.resx">
       <DependentUpon>MemberTermination.cs</DependentUpon>
@@ -519,6 +547,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Savings\Reports\SavingsTransactionLogDataSet.xsc">
+      <DependentUpon>SavingsTransactionLogDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Savings\Reports\SavingsTransactionLogDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SavingsTransactionLogDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Savings\Reports\SavingsTransactionLogDataSet.xss">
+      <DependentUpon>SavingsTransactionLogDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

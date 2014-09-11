@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -54,7 +56,33 @@ namespace CMS.Savings.Reports.Controller
             else
                 dailyTransactionLogModel.dateTo = String.Empty;
             dailyTransactionLogModel.checkedSavingsTypes = dailyTransactionLog.getCheckedTypes();
-            dailyTransactionLogModel.sortBy = dailyTransactionLog.getSortBy();
+
+            ArrayList savingsTypesNo = new ArrayList();
+
+            foreach (String s in dailyTransactionLogModel.checkedSavingsTypes)
+            {
+                foreach (KeyValuePair<int, string> pair in savingsTypes)
+                {
+                    if (s.Equals(pair.Value))
+                        savingsTypesNo.Add(pair.Key);
+                }
+            }
+
+            switch (dailyTransactionLog.getSortBy()) {
+
+                case "Transaction Time": dailyTransactionLogModel.sortBy = "TransactionDate";
+                    break;
+                case "Member Account No": dailyTransactionLogModel.sortBy = "st.SavingsAccountNo";
+                    break;
+                case "Member Name": dailyTransactionLogModel.sortBy = "CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName)";
+                    break;
+                case "OR No": dailyTransactionLogModel.sortBy = "TransactionID";
+                    break;
+                default: dailyTransactionLogModel.sortBy = String.Empty;
+                    break;
+            
+            }
+            
             dailyTransactionLogModel.order = dailyTransactionLog.getOrder();
 
             if (dailyTransactionLogModel.dateFrom == String.Empty)
@@ -79,7 +107,30 @@ namespace CMS.Savings.Reports.Controller
             { dailyTransactionLog.errorGroupBy(); hasError = 1; errors += "- Please select sorting method." + Environment.NewLine; }
 
             if (hasError == 0)
+            {
+                DataSet ds;
                 MessageBox.Show(dailyTransactionLogModel.dateFrom + " " + dailyTransactionLogModel.dateTo + dailyTransactionLogModel.sortBy + " " + dailyTransactionLogModel.order);
+                if (dailyTransactionLog.getDateToChecked())
+                    ds = dailyTransactionLogModel.listDailyTransactions(dailyTransactionLogModel.dateFrom, dailyTransactionLogModel.dateTo, savingsTypesNo, dailyTransactionLogModel.sortBy, dailyTransactionLogModel.order, "TableTransLog");
+                else
+                    ds = dailyTransactionLogModel.listDailyTransactions(dailyTransactionLogModel.dateFrom, savingsTypesNo, dailyTransactionLogModel.sortBy, dailyTransactionLogModel.order, "TableTransLog");
+
+                Dictionary<String,Object> parameters = new Dictionary<string,object>();
+                SqlDataReader dr = dailyTransactionLogModel.getCompanyProfile();
+                while (dr.Read())
+                {
+                    parameters.Add("@cooperativeName", dr["CompanyName"].ToString());
+                    MessageBox.Show(dr["CompanyName"].ToString());
+                    parameters.Add("@cooperativeAccreditationNo", dr["AccreditationNo"].ToString());
+                    parameters.Add("@cooperativeAddress", dr["CompanyAddress"].ToString());
+                    parameters.Add("@cooperativeContactDetails", dr["Telephone"].ToString() + "; " + dr["Cellphone"].ToString() + "; " + dr["Email"].ToString());
+                }
+                parameters.Add("@dateFrom",dailyTransactionLogModel.dateFrom);
+                parameters.Add("@dateTo",dailyTransactionLogModel.dateTo);
+                dailyTransactionLog.setReportDataSource(ds,parameters);
+                MessageBox.Show(ds.Tables[0].Rows.Count + " ");
+
+            }
             else
                 MessageBox.Show("Errors had been found." + Environment.NewLine + errors);
             

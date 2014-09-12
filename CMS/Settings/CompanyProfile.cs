@@ -21,6 +21,7 @@ namespace CMS.Settings
         {
             this.settings = settings;
             this.cms = cms;
+            imgData = Main.CompanyData.CompanyLogo;
             InitializeComponent();
             setCompanyData();
             checkLogo();
@@ -28,13 +29,30 @@ namespace CMS.Settings
 
         public void setCompanyData()
         {
-            txtCompanyName.Text = Main.CompanyData.CompanyName;
-            txtAccreditation.Text = Main.CompanyData.AcreditationNo;
-            txtCompanyAddress.Text = Main.CompanyData.CompanyAddress;
-            txtTelephone.Text = Main.CompanyData.TelephoneNo;
-            txtCellphone.Text = Main.CompanyData.CellphoneNo;
-            txtEmail.Text = Main.CompanyData.Email;
-            byte[] imgData = Main.CompanyData.CompanyLogo;
+            if (Main.CompanyData.CompanyName != String.Empty)
+            {
+                txtCompanyName.Text = Main.CompanyData.CompanyName;
+            }
+            if (Main.CompanyData.AcreditationNo != String.Empty)
+            {
+                txtAccreditation.Text = Main.CompanyData.AcreditationNo;
+            }
+            if (Main.CompanyData.CompanyAddress != String.Empty)
+            {
+                txtCompanyAddress.Text = Main.CompanyData.CompanyAddress;
+            }
+            if (Main.CompanyData.TelephoneNo != String.Empty)
+            {
+                txtTelephone.Text = Main.CompanyData.TelephoneNo;
+            }
+            if (Main.CompanyData.CellphoneNo != String.Empty)
+            {
+                txtCellphone.Text = Main.CompanyData.CellphoneNo;
+            }
+            if (Main.CompanyData.Email != String.Empty)
+            {
+                txtEmail.Text = Main.CompanyData.Email;
+            }
             if (imgData != null)
             {
                 Image picture;
@@ -140,11 +158,6 @@ namespace CMS.Settings
             Main.CompanyData.CellphoneNo = txtCellphone.Text.ToString();
             Main.CompanyData.Email = txtEmail.Text.ToString();
             this.cms.setCompanyData();
-        }
-
-        private void CompanyProfile_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            settings.companyProfileOpen = false;
         }
     }
 }

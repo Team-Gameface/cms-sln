@@ -26,17 +26,17 @@ namespace CMS
         public void checkCompanyProfile()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT * FROM COMPANY WHERE Status = 1";
+            String sql = "SELECT CompanyName, AccreditationNo, CompanyAddress, CompanyLogo, Telephone, Cellphone, Email FROM COMPANY WHERE Status = 1";
             SqlDataReader reader = dal.executeReader(sql);
             while(reader.Read())
             {
-                Main.CompanyData.CompanyName = reader[1].ToString();
-                Main.CompanyData.AcreditationNo = reader[2].ToString();
-                Main.CompanyData.CompanyAddress = reader[3].ToString();
-                Main.CompanyData.CompanyLogo = (byte[])reader[4];
-                Main.CompanyData.TelephoneNo = reader[6].ToString();
-                Main.CompanyData.CellphoneNo = reader[7].ToString();
-                Main.CompanyData.Email = reader[8].ToString();
+                Main.CompanyData.CompanyName = reader[0].ToString();
+                Main.CompanyData.AcreditationNo = reader[1].ToString();
+                Main.CompanyData.CompanyAddress = reader[2].ToString();
+                Main.CompanyData.CompanyLogo = (byte[])reader[3];
+                Main.CompanyData.TelephoneNo = reader[4].ToString();
+                Main.CompanyData.CellphoneNo = reader[5].ToString();
+                Main.CompanyData.Email = reader[6].ToString();
             }
         }
 

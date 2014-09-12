@@ -11,7 +11,7 @@ namespace CMS.Main
         public static String CompanyName = "Company Name";
         public static String AcreditationNo = "Accreditation No";
         public static String CompanyAddress = "Company Address";
-        public static byte[] CompanyLogo;
+        public static byte[] CompanyLogo = null;
         public static String TelephoneNo = "TelephoneNo";
         public static String CellphoneNo = "CellphoneNo";
         public static String Email = "Email";

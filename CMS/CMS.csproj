@@ -188,7 +188,7 @@
     <Compile Include="Loan Management\Transaction\Controller\LoanApplicationController.cs" />
     <Compile Include="Loan Management\Transaction\Controller\MembershipApplicationController.cs" />
     <Compile Include="Loan Management\Transaction\Controller\ShareCapitalContributionController.cs" />
-    <Compile Include="Loan Management\Transaction\UpdateMemberController.cs" />
+    <Compile Include="Loan Management\Transaction\Controller\UpdateMemberController.cs" />
     <Compile Include="Loan Management\Transaction\Model\LoanAmnestyModel.cs" />
     <Compile Include="Loan Management\Transaction\Model\LoanApplicationModel.cs" />
     <Compile Include="Loan Management\Transaction\Model\MembershipApplicationModel.cs" />
@@ -406,6 +406,12 @@
     <Compile Include="Settings\SavingsSettings.Designer.cs">
       <DependentUpon>SavingsSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings\UserManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\UserManagement.Designer.cs">
+      <DependentUpon>UserManagement.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Loan Management\LoanManagementMenu.resx">
       <DependentUpon>LoanManagementMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -537,6 +543,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings\SavingsSettings.resx">
       <DependentUpon>SavingsSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\UserManagement.resx">
+      <DependentUpon>UserManagement.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

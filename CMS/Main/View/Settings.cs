@@ -104,5 +104,29 @@ namespace CMS.Main.View
                 this.panelSettings.Controls.Add(s);
             }
         }
+
+        private void btnUserManagement_Click(object sender, EventArgs e)
+        {
+            if (batchOpen)
+            {
+                batchOpen = false;
+            }
+            if (companyProfileOpen)
+            {
+                companyProfileOpen = false;
+            }
+            if (savingsOpen)
+            {
+                savingsOpen = false;
+            }
+            if (!userOpen)
+            {
+                userOpen = true;
+                this.panelSettings.Controls.Clear();
+                CMS.Settings.UserManagement u = new CMS.Settings.UserManagement();
+                u.Dock = DockStyle.Fill;
+                this.panelSettings.Controls.Add(u);
+            }
+        }
     }
 }

@@ -92,7 +92,7 @@
             this.linkSignout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkSignout.ForeColor = System.Drawing.Color.White;
             this.linkSignout.LinkColor = System.Drawing.Color.WhiteSmoke;
-            this.linkSignout.Location = new System.Drawing.Point(109, 134);
+            this.linkSignout.Location = new System.Drawing.Point(109, 143);
             this.linkSignout.Name = "linkSignout";
             this.linkSignout.Size = new System.Drawing.Size(58, 17);
             this.linkSignout.TabIndex = 9;
@@ -150,18 +150,18 @@
             this.lblUserRole.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblUserRole.Location = new System.Drawing.Point(25, 113);
             this.lblUserRole.Name = "lblUserRole";
-            this.lblUserRole.Size = new System.Drawing.Size(142, 18);
+            this.lblUserRole.Size = new System.Drawing.Size(142, 26);
             this.lblUserRole.TabIndex = 8;
             this.lblUserRole.Text = "User Type";
             this.lblUserRole.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // lblUser
             // 
-            this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblUser.Location = new System.Drawing.Point(25, 76);
+            this.lblUser.Location = new System.Drawing.Point(6, 76);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(142, 37);
+            this.lblUser.Size = new System.Drawing.Size(161, 37);
             this.lblUser.TabIndex = 8;
             this.lblUser.Text = "USER NAME";
             this.lblUser.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -364,7 +364,7 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "Welcome";
             // 
-            // CMS
+            // CMSDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -375,7 +375,7 @@
             this.Controls.Add(this.panelMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "CMS";
+            this.Name = "CMSDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cooperative Management System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -33,7 +33,7 @@
             this.btnBatchProcess = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panelBoard = new System.Windows.Forms.Panel();
-            this.btnUserSettings = new System.Windows.Forms.Button();
+            this.btnUserManagement = new System.Windows.Forms.Button();
             this.btnSavingsSettings = new System.Windows.Forms.Button();
             this.panelSettings = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -117,7 +117,7 @@
             // panelBoard
             // 
             this.panelBoard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelBoard.Controls.Add(this.btnUserSettings);
+            this.panelBoard.Controls.Add(this.btnUserManagement);
             this.panelBoard.Controls.Add(this.btnSavingsSettings);
             this.panelBoard.Controls.Add(this.btnCompany);
             this.panelBoard.Controls.Add(this.btnBatchProcess);
@@ -128,22 +128,23 @@
             this.panelBoard.Size = new System.Drawing.Size(251, 530);
             this.panelBoard.TabIndex = 0;
             // 
-            // btnUserSettings
+            // btnUserManagement
             // 
-            this.btnUserSettings.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnUserSettings.BackColor = System.Drawing.Color.DarkViolet;
-            this.btnUserSettings.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnUserSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserSettings.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserSettings.ForeColor = System.Drawing.Color.White;
-            this.btnUserSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnUserSettings.Location = new System.Drawing.Point(12, 366);
-            this.btnUserSettings.Name = "btnUserSettings";
-            this.btnUserSettings.Size = new System.Drawing.Size(227, 111);
-            this.btnUserSettings.TabIndex = 4;
-            this.btnUserSettings.Text = "User Settings";
-            this.btnUserSettings.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnUserSettings.UseVisualStyleBackColor = false;
+            this.btnUserManagement.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUserManagement.BackColor = System.Drawing.Color.DarkViolet;
+            this.btnUserManagement.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUserManagement.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserManagement.ForeColor = System.Drawing.Color.White;
+            this.btnUserManagement.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnUserManagement.Location = new System.Drawing.Point(12, 366);
+            this.btnUserManagement.Name = "btnUserManagement";
+            this.btnUserManagement.Size = new System.Drawing.Size(227, 111);
+            this.btnUserManagement.TabIndex = 4;
+            this.btnUserManagement.Text = "User Management";
+            this.btnUserManagement.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnUserManagement.UseVisualStyleBackColor = false;
+            this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
             // 
             // btnSavingsSettings
             // 
@@ -197,7 +198,7 @@
         private System.Windows.Forms.Button btnBatchProcess;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button btnUserSettings;
+        private System.Windows.Forms.Button btnUserManagement;
         private System.Windows.Forms.Button btnSavingsSettings;
         private System.Windows.Forms.Panel panelBoard;
         private System.Windows.Forms.Panel panelSettings;

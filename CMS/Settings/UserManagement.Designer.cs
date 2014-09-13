@@ -158,7 +158,9 @@
             this.comboType.FormattingEnabled = true;
             this.comboType.Items.AddRange(new object[] {
             "Staff",
-            "Manager"});
+            "Manager",
+            "Chairman - Credit Committee",
+            "Chairman - Audit Committee"});
             this.comboType.Location = new System.Drawing.Point(96, 86);
             this.comboType.Name = "comboType";
             this.comboType.Size = new System.Drawing.Size(172, 25);

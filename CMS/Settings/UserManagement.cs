@@ -429,6 +429,14 @@ namespace CMS.Settings
             {
                 lblDetails.Text = "Manager - can access Maintenance and Transaction Modules with Full Control";
             }
+            else if (comboType.SelectedIndex == 2)
+            {
+                lblDetails.Text = "Chairman of Credit Committee - can access Maintenance and Transaction Modules with Full Control";
+            }
+            else if (comboType.SelectedIndex == 3)
+            {
+                lblDetails.Text = "Chairman of Audit Committee - can access Maintenance and Transaction Modules with Full Control";
+            }
             else
             {
                 lblDetails.ResetText();

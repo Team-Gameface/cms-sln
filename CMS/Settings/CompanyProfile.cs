@@ -101,7 +101,7 @@ namespace CMS.Settings
             Boolean checkName = false;
             Boolean checkAddress = false;
             String errorMessage = "Update Failed!" + Environment.NewLine + Environment.NewLine;
-            if (txtCompanyName.Text == String.Empty)
+            if (txtCompanyName.Text.Trim() == String.Empty)
             {
                 checkName = false;
             }
@@ -109,7 +109,7 @@ namespace CMS.Settings
             {
                 checkName = true;
             }
-            if (txtCompanyAddress.Text == String.Empty)
+            if (txtCompanyAddress.Text.Trim() == String.Empty)
             {
                 checkAddress = false;
             }
@@ -124,13 +124,13 @@ namespace CMS.Settings
                 int result = dal.executeNonQuery(sql);
                 sql = "EXEC insertCompany @CompanyName, @AccreditationNo, @CompanyAddress, @CompanyLogo, @Telephone, @Cellphone, @Email";
                 Dictionary<String, Object> parameters = new Dictionary<string, object>();
-                parameters.Add("@CompanyName", txtCompanyName.Text);
-                parameters.Add("@AccreditationNo", txtAccreditation.Text);
-                parameters.Add("@CompanyAddress", txtCompanyAddress.Text);
+                parameters.Add("@CompanyName", txtCompanyName.Text.Trim());
+                parameters.Add("@AccreditationNo", txtAccreditation.Text.Trim());
+                parameters.Add("@CompanyAddress", txtCompanyAddress.Text.Trim());
                 parameters.Add("@CompanyLogo", imgData);
-                parameters.Add("@Telephone", txtTelephone.Text);
-                parameters.Add("@Cellphone", txtCellphone.Text);
-                parameters.Add("@Email", txtEmail.Text);
+                parameters.Add("@Telephone", txtTelephone.Text.Trim());
+                parameters.Add("@Cellphone", txtCellphone.Text.Trim());
+                parameters.Add("@Email", txtEmail.Text.Trim());
                 result = dal.executeNonQuery(sql, parameters);
                 if (result != 0)
                 {

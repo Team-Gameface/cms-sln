@@ -47,6 +47,10 @@ namespace CMS
             {
                 lblCompanyName.Text = companyName;
             }
+            else
+            {
+                lblCompanyName.Text = "Company Name";
+            }
             byte[] imgData = Main.CompanyData.CompanyLogo;
             if (imgData != null)
             {

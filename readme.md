@@ -6,6 +6,10 @@ WHAT'S WORKING
 ============================================================
 - Maintenance (Complete Validation)
 - Transaction
+- Queries
+- Reports
+- Utilities
+- Settings
 
 HOW TO USE
 ============================================================

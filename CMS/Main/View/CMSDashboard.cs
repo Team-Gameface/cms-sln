@@ -35,6 +35,10 @@ namespace CMS.Main.View
             {
                 lblCompanyName.Text = companyName;
             }
+            else
+            {
+                lblCompanyName.Text = "Company Name";
+            }
             byte[] imgData = Main.CompanyData.CompanyLogo;
             if (imgData != null)
             {
@@ -122,6 +126,11 @@ namespace CMS.Main.View
         public void setBtnLoanManagementEventHandler(EventHandler e)
         {
             this.btnLoanManagement.Click += e;
+        }
+
+        public void setBtnUtitilitiesEventHandler(EventHandler e)
+        {
+            this.btnUtilities.Click += e;
         }
 
         public void setBtnSettingsEventHandler(EventHandler e)

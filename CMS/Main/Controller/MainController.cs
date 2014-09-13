@@ -44,9 +44,11 @@ namespace CMS.Main.Controller
 
         Main.View.CMSDashboard cms;
         Main.View.PaymentForm paymentForm;
-        Main.View.Settings utilities;
+        Main.View.Utilities utilities;
+        Main.View.Settings settings;
         public Boolean paymentOpen = false;
         public Boolean utilitiesOpen = false;
+        public Boolean settingsOpen = false;
 
         public MainController(Main.View.CMSDashboard cms)
         {
@@ -65,6 +67,7 @@ namespace CMS.Main.Controller
             this.cms.setBtnPaymentsEventHandler(this.btnPayments);
             this.cms.setBtnSavingsEventHandler(this.btnSavings);
             this.cms.setBtnSettingsEventHandler(this.btnSettings);
+            this.cms.setBtnUtitilitiesEventHandler(this.btnUtitilities);
             this.cms.setLinkSignOutEventHandler(this.linkSignout);
             this.cms.CMS_FormClosing(this.formClosing);
             this.updateMemberClass();
@@ -87,6 +90,12 @@ namespace CMS.Main.Controller
             Loan_Management.LoanManagementController loanController = new Loan_Management.LoanManagementController(new Loan_Management.LoanManagementMenu());
         }
 
+        public void btnSavings(object args, EventArgs e)
+        {
+            this.Dispose();
+            Savings.SavingsController savingsController = new Savings.SavingsController(new Savings.SavingsMenu());
+        }
+
         public void btnPayments(object args, EventArgs e)
         {
             if (utilitiesOpen)
@@ -94,18 +103,39 @@ namespace CMS.Main.Controller
                 utilities.Dispose();
                 utilitiesOpen = false;
             }
+            if (settingsOpen)
+            {
+                settings.Dispose();
+                settingsOpen = false;
+            }
             if (!paymentOpen)
             {
                 paymentOpen = true;
                 paymentForm = new View.PaymentForm();
+                paymentForm.Dock = DockStyle.Fill;
                 Controller.PaymentController paymentController = new Controller.PaymentController(new Model.PaymentModel(), paymentForm, cms, this);
             }
         }
 
-        public void btnSavings(object args, EventArgs e)
+        public void btnUtitilities(object args, EventArgs e)
         {
-            this.Dispose();
-            Savings.SavingsController savingsController = new Savings.SavingsController(new Savings.SavingsMenu());
+            if (paymentOpen)
+            {
+                paymentForm.Dispose();
+                paymentOpen = false;
+            }
+            if (settingsOpen)
+            {
+                settings.Dispose();
+                settingsOpen = false;
+            }
+            if (!utilitiesOpen)
+            {
+                utilitiesOpen = true;
+                utilities = new View.Utilities(this);
+                utilities.Dock = DockStyle.Fill;
+                this.cms.setPanel2(utilities);
+            }
         }
 
         public void btnSettings(object args, EventArgs e)
@@ -115,11 +145,17 @@ namespace CMS.Main.Controller
                 paymentForm.Dispose();
                 paymentOpen = false;
             }
-            if (!utilitiesOpen)
+            if (utilitiesOpen)
             {
-                utilitiesOpen = true;
-                utilities = new View.Settings(this, cms);
-                this.cms.setPanel2(utilities);
+                utilities.Dispose();
+                utilitiesOpen = false;
+            }
+            if (!settingsOpen)
+            {
+                settingsOpen = true;
+                settings = new View.Settings(this, this.cms);
+                settings.Dock = DockStyle.Fill;
+                this.cms.setPanel2(settings);
             }
         }
 

@@ -253,6 +253,12 @@
     <Compile Include="Main\View\Settings.designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\View\Utilities.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\View\Utilities.designer.cs">
+      <DependentUpon>Utilities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -480,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\View\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\View\Utilities.resx">
+      <DependentUpon>Utilities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Savings\Queries\View\StatementOfAccount.resx">
       <DependentUpon>StatementOfAccount.cs</DependentUpon>

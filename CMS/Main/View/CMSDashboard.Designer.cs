@@ -53,6 +53,7 @@
             this.panelHome = new System.Windows.Forms.Panel();
             this.lblUserWelcome = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnUtilities = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.statusMain.SuspendLayout();
@@ -68,6 +69,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.ForestGreen;
+            this.panelMenu.Controls.Add(this.btnUtilities);
             this.panelMenu.Controls.Add(this.linkSignout);
             this.panelMenu.Controls.Add(this.btnSettings);
             this.panelMenu.Controls.Add(this.btnLoanManagement);
@@ -82,7 +84,7 @@
             this.panelMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelMenu.Location = new System.Drawing.Point(611, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(173, 561);
+            this.panelMenu.Size = new System.Drawing.Size(173, 727);
             this.panelMenu.TabIndex = 1;
             this.panelMenu.MouseEnter += new System.EventHandler(this.panelMenu_MouseEnter);
             // 
@@ -109,7 +111,7 @@
             this.btnSettings.ForeColor = System.Drawing.Color.White;
             this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSettings.Location = new System.Drawing.Point(25, 397);
+            this.btnSettings.Location = new System.Drawing.Point(25, 473);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(142, 70);
             this.btnSettings.TabIndex = 6;
@@ -204,7 +206,7 @@
             // btnShow
             // 
             this.btnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnShow.Location = new System.Drawing.Point(0, 505);
+            this.btnShow.Location = new System.Drawing.Point(0, 671);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(26, 30);
             this.btnShow.TabIndex = 1;
@@ -220,7 +222,7 @@
             this.autoCollapse.CheckState = System.Windows.Forms.CheckState.Checked;
             this.autoCollapse.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoCollapse.ForeColor = System.Drawing.Color.White;
-            this.autoCollapse.Location = new System.Drawing.Point(6, 541);
+            this.autoCollapse.Location = new System.Drawing.Point(6, 707);
             this.autoCollapse.Name = "autoCollapse";
             this.autoCollapse.Size = new System.Drawing.Size(102, 19);
             this.autoCollapse.TabIndex = 0;
@@ -233,7 +235,7 @@
             this.statusMain.BackColor = System.Drawing.Color.WhiteSmoke;
             this.statusMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblDateTime});
-            this.statusMain.Location = new System.Drawing.Point(0, 539);
+            this.statusMain.Location = new System.Drawing.Point(0, 705);
             this.statusMain.Name = "statusMain";
             this.statusMain.Size = new System.Drawing.Size(611, 22);
             this.statusMain.TabIndex = 3;
@@ -302,7 +304,7 @@
             // 
             this.splitContainer.Panel2.Controls.Add(this.panelHome);
             this.splitContainer.Panel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.splitContainer.Size = new System.Drawing.Size(611, 539);
+            this.splitContainer.Size = new System.Drawing.Size(611, 705);
             this.splitContainer.SplitterDistance = 139;
             this.splitContainer.TabIndex = 17;
             // 
@@ -339,7 +341,7 @@
             this.panelHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHome.Location = new System.Drawing.Point(0, 0);
             this.panelHome.Name = "panelHome";
-            this.panelHome.Size = new System.Drawing.Size(611, 396);
+            this.panelHome.Size = new System.Drawing.Size(611, 562);
             this.panelHome.TabIndex = 0;
             // 
             // lblUserWelcome
@@ -364,17 +366,34 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "Welcome";
             // 
+            // btnUtilities
+            // 
+            this.btnUtilities.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnUtilities.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnUtilities.FlatAppearance.BorderSize = 0;
+            this.btnUtilities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUtilities.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUtilities.ForeColor = System.Drawing.Color.White;
+            this.btnUtilities.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnUtilities.Location = new System.Drawing.Point(25, 397);
+            this.btnUtilities.Name = "btnUtilities";
+            this.btnUtilities.Size = new System.Drawing.Size(142, 70);
+            this.btnUtilities.TabIndex = 10;
+            this.btnUtilities.Text = "Utilities";
+            this.btnUtilities.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnUtilities.UseVisualStyleBackColor = false;
+            // 
             // CMSDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(784, 727);
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.statusMain);
             this.Controls.Add(this.panelMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 766);
             this.Name = "CMSDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cooperative Management System";
@@ -423,6 +442,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblUserRole;
         private System.Windows.Forms.Panel panelCompany;
+        private System.Windows.Forms.Button btnUtilities;
 
     }
 }

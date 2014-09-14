@@ -418,6 +418,24 @@
     <Compile Include="Settings\UserManagement.Designer.cs">
       <DependentUpon>UserManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\View\AccountSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utilities\View\AccountSettings.Designer.cs">
+      <DependentUpon>AccountSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\View\AuditLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utilities\View\AuditLog.Designer.cs">
+      <DependentUpon>AuditLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\View\TimeDepositCalculator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\View\TimeDepositCalculator.Designer.cs">
+      <DependentUpon>TimeDepositCalculator.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Loan Management\LoanManagementMenu.resx">
       <DependentUpon>LoanManagementMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -555,6 +573,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings\UserManagement.resx">
       <DependentUpon>UserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\View\AccountSettings.resx">
+      <DependentUpon>AccountSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\View\AuditLog.resx">
+      <DependentUpon>AuditLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\View\TimeDepositCalculator.resx">
+      <DependentUpon>TimeDepositCalculator.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -42,7 +42,7 @@ namespace CMS.Savings.Transaction.Controller
             Boolean checkSavings = false;
             Boolean checkTimeDeposit = false;
             String errorMessage = "Cannot Terminate Member." + Environment.NewLine + Environment.NewLine;
-            if (this.termination.getSavings() != "None")
+            if (int.Parse(this.termination.getSavings()) > 0)
             {
                 checkSavings = false;
                 errorMessage += "Member has Active Savings Account." + Environment.NewLine + "Please Terminate Savings Account first." + Environment.NewLine;
@@ -152,7 +152,7 @@ namespace CMS.Savings.Transaction.Controller
             this.termination.selectAnotherMember();
             DataGridViewRow selectedData = this.termination.getSelected();
             accountNo = selectedData.Cells["Account No."].Value.ToString();
-            this.termination.setSavingsBalance(this.terminationModel.selectSavingsAccount(accountNo));
+            this.termination.setSavingsBalance(this.terminationModel.selectSavingsAccount(accountNo).ToString());
             this.termination.setTextTimeDeposit(this.terminationModel.selectMemberTimeDeposit(accountNo).ToString());
             double shareCapital = this.terminationModel.selectCurrentShareCapital(accountNo);
             this.termination.setShareCapitalBalance(shareCapital.ToString());

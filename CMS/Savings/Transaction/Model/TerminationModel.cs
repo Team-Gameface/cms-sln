@@ -171,19 +171,19 @@ namespace CMS.Savings.Transaction.Model
             return result;
         }
 
-        public String selectSavingsAccount(String accountNo)
+        public int selectSavingsAccount(String accountNo)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT sa.SavingsAccountNo FROM SAVINGS_ACCOUNT sa INNER JOIN MEMBER_SAVINGS_ACCOUNT ms ON sa.SavingsAccountNo = ms.SavingsAccountNo WHERE sa.Status = 1 AND ms.MemberAccountNo = @accountNo";
+            String sql = "SELECT COUNT(*) FROM SAVINGS_ACCOUNT sa INNER JOIN MEMBER_SAVINGS_ACCOUNT ms ON sa.SavingsAccountNo = ms.SavingsAccountNo WHERE sa.Status = 1 AND ms.MemberAccountNo = @accountNo";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@accountNo", accountNo);
             SqlDataReader read = dal.executeReader(sql, parameters);
-            String savingsAccountNo = "None";
+            int savingsAccount = 0;
             while (read.Read())
             {
-                savingsAccountNo = read[0].ToString();
+                savingsAccount = int.Parse(read[0].ToString());
             }
-            return savingsAccountNo;
+            return savingsAccount;
         }
 
         public double selectCurrentShareCapital(String accountNo)

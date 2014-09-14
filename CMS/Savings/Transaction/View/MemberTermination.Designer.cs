@@ -465,7 +465,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic);
-            this.label4.Location = new System.Drawing.Point(440, 327);
+            this.label4.Location = new System.Drawing.Point(425, 327);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(158, 17);
             this.label4.TabIndex = 23;
@@ -476,11 +476,11 @@
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic);
-            this.label12.Location = new System.Drawing.Point(460, 298);
+            this.label12.Location = new System.Drawing.Point(425, 298);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(138, 17);
+            this.label12.Size = new System.Drawing.Size(176, 17);
             this.label12.TabIndex = 21;
-            this.label12.Text = "Active Savings Account:";
+            this.label12.Text = "Number of Savings Account/s:";
             // 
             // label3
             // 

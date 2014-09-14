@@ -13,8 +13,8 @@ namespace CMS.Main.View
     {
         Controller.MainController main;
 
-        bool LoanCalcOpen = false;
-        bool TDCalcOpen = false;
+        public bool LoanCalcOpen = false;
+        public bool TDCalcOpen = false;
         bool accountOpen = false;
         bool auditOpen = false;
 
@@ -38,7 +38,7 @@ namespace CMS.Main.View
             if (!TDCalcOpen)
             {
                 TDCalcOpen = true;
-                //openTDCalcForm
+                CMS.Utilities.Controller.TimeDepositCalculatorController tdCalcController = new CMS.Utilities.Controller.TimeDepositCalculatorController(new CMS.Utilities.View.TimeDepositCalculator(), new CMS.Utilities.Model.TimeDepositCalculatorModel(), this);
             }
         }
 

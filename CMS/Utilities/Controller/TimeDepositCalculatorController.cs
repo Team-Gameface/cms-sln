@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace CMS.Utilities.Controller
 {
@@ -52,7 +54,43 @@ namespace CMS.Utilities.Controller
 
         public void btnCompute(object sender, EventArgs e)
         {
+            double principal = this.tdCalc.getPrincipal();
+            int noDays = this.tdCalc.getDuration();
+            try
+            {
+                this.tdCalc.setPrincipal(principal.ToString("N2", new CultureInfo("en-PH")));
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Invalid Amount", "Time Deposit Calculator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+            String converter = this.tdModel.getInterest(noDays, principal).ToString("#.##");
+            double interest = 0.00;
+            try
+            {
+                interest = Convert.ToDouble(converter);
+            }
+            catch (Exception) { }
+
+            int days = Convert.ToInt32(this.tdModel.getDaysElapsed(noDays, principal));
+            converter = (days / 360.00).ToString("#.##");
+            double multiplier = 0.00;
+            try
+            {
+                multiplier = Convert.ToDouble(converter);
+            }
+            catch (Exception) { }
+            converter = (principal * (interest / 100.00) * multiplier).ToString("#.##");
+            double interestEarned = 0.00;
+            try
+            {
+                interestEarned = Convert.ToDouble(converter);
+            }
+            catch (Exception) { }
+            this.tdCalc.setInterest(interestEarned.ToString("N2", new CultureInfo("en-PH")));
+            double total = this.tdCalc.getPrincipal() + interestEarned;
+            this.tdCalc.setTotal(total.ToString("N2", new CultureInfo("en-PH")));
         }
     }
 }

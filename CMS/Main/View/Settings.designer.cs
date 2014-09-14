@@ -29,18 +29,17 @@
         private void InitializeComponent()
         {
             this.btnCompany = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.btnBatchProcess = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panelBoard = new System.Windows.Forms.Panel();
-            this.btnUserManagement = new System.Windows.Forms.Button();
+            this.flowSwitchboard = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSavingsSettings = new System.Windows.Forms.Button();
+            this.btnUserManagement = new System.Windows.Forms.Button();
             this.panelSettings = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panelBoard.SuspendLayout();
+            this.flowSwitchboard.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCompany
@@ -53,7 +52,7 @@
             this.btnCompany.ForeColor = System.Drawing.Color.White;
             this.btnCompany.Image = global::CMS.Properties.Resources.CompanyProfile;
             this.btnCompany.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCompany.Location = new System.Drawing.Point(12, 249);
+            this.btnCompany.Location = new System.Drawing.Point(3, 237);
             this.btnCompany.Name = "btnCompany";
             this.btnCompany.Size = new System.Drawing.Size(227, 111);
             this.btnCompany.TabIndex = 3;
@@ -61,21 +60,6 @@
             this.btnCompany.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnCompany.UseVisualStyleBackColor = false;
             this.btnCompany.Click += new System.EventHandler(this.btnCompany_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClose.BackColor = System.Drawing.Color.Firebrick;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(21, 483);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(92, 32);
-            this.btnClose.TabIndex = 5;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnBatchProcess
             // 
@@ -87,7 +71,7 @@
             this.btnBatchProcess.ForeColor = System.Drawing.Color.White;
             this.btnBatchProcess.Image = global::CMS.Properties.Resources.BatchProcess;
             this.btnBatchProcess.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBatchProcess.Location = new System.Drawing.Point(12, 132);
+            this.btnBatchProcess.Location = new System.Drawing.Point(3, 120);
             this.btnBatchProcess.Name = "btnBatchProcess";
             this.btnBatchProcess.Size = new System.Drawing.Size(227, 111);
             this.btnBatchProcess.TabIndex = 2;
@@ -105,46 +89,27 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.panelBoard);
+            this.splitContainer1.Panel1.Controls.Add(this.flowSwitchboard);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panelSettings);
             this.splitContainer1.Size = new System.Drawing.Size(1000, 530);
-            this.splitContainer1.SplitterDistance = 251;
+            this.splitContainer1.SplitterDistance = 235;
             this.splitContainer1.TabIndex = 17;
             // 
-            // panelBoard
+            // flowSwitchboard
             // 
-            this.panelBoard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelBoard.Controls.Add(this.btnUserManagement);
-            this.panelBoard.Controls.Add(this.btnSavingsSettings);
-            this.panelBoard.Controls.Add(this.btnCompany);
-            this.panelBoard.Controls.Add(this.btnBatchProcess);
-            this.panelBoard.Controls.Add(this.btnClose);
-            this.panelBoard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelBoard.Location = new System.Drawing.Point(0, 0);
-            this.panelBoard.Name = "panelBoard";
-            this.panelBoard.Size = new System.Drawing.Size(251, 530);
-            this.panelBoard.TabIndex = 0;
-            // 
-            // btnUserManagement
-            // 
-            this.btnUserManagement.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnUserManagement.BackColor = System.Drawing.Color.DarkViolet;
-            this.btnUserManagement.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserManagement.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserManagement.ForeColor = System.Drawing.Color.White;
-            this.btnUserManagement.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnUserManagement.Location = new System.Drawing.Point(12, 366);
-            this.btnUserManagement.Name = "btnUserManagement";
-            this.btnUserManagement.Size = new System.Drawing.Size(227, 111);
-            this.btnUserManagement.TabIndex = 4;
-            this.btnUserManagement.Text = "User Management";
-            this.btnUserManagement.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnUserManagement.UseVisualStyleBackColor = false;
-            this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
+            this.flowSwitchboard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowSwitchboard.Controls.Add(this.btnSavingsSettings);
+            this.flowSwitchboard.Controls.Add(this.btnBatchProcess);
+            this.flowSwitchboard.Controls.Add(this.btnCompany);
+            this.flowSwitchboard.Controls.Add(this.btnUserManagement);
+            this.flowSwitchboard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowSwitchboard.Location = new System.Drawing.Point(0, 0);
+            this.flowSwitchboard.Name = "flowSwitchboard";
+            this.flowSwitchboard.Size = new System.Drawing.Size(235, 530);
+            this.flowSwitchboard.TabIndex = 0;
             // 
             // btnSavingsSettings
             // 
@@ -155,7 +120,7 @@
             this.btnSavingsSettings.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSavingsSettings.ForeColor = System.Drawing.Color.White;
             this.btnSavingsSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSavingsSettings.Location = new System.Drawing.Point(12, 15);
+            this.btnSavingsSettings.Location = new System.Drawing.Point(3, 3);
             this.btnSavingsSettings.Name = "btnSavingsSettings";
             this.btnSavingsSettings.Size = new System.Drawing.Size(227, 111);
             this.btnSavingsSettings.TabIndex = 1;
@@ -164,13 +129,31 @@
             this.btnSavingsSettings.UseVisualStyleBackColor = false;
             this.btnSavingsSettings.Click += new System.EventHandler(this.btnSavingsSettings_Click);
             // 
+            // btnUserManagement
+            // 
+            this.btnUserManagement.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUserManagement.BackColor = System.Drawing.Color.DarkViolet;
+            this.btnUserManagement.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUserManagement.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserManagement.ForeColor = System.Drawing.Color.White;
+            this.btnUserManagement.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnUserManagement.Location = new System.Drawing.Point(3, 354);
+            this.btnUserManagement.Name = "btnUserManagement";
+            this.btnUserManagement.Size = new System.Drawing.Size(227, 111);
+            this.btnUserManagement.TabIndex = 4;
+            this.btnUserManagement.Text = "User Management";
+            this.btnUserManagement.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnUserManagement.UseVisualStyleBackColor = false;
+            this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
+            // 
             // panelSettings
             // 
             this.panelSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSettings.Location = new System.Drawing.Point(0, 0);
             this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(745, 530);
+            this.panelSettings.Size = new System.Drawing.Size(761, 530);
             this.panelSettings.TabIndex = 0;
             // 
             // Settings
@@ -187,7 +170,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panelBoard.ResumeLayout(false);
+            this.flowSwitchboard.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -196,12 +179,11 @@
 
         private System.Windows.Forms.Button btnCompany;
         private System.Windows.Forms.Button btnBatchProcess;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btnUserManagement;
         private System.Windows.Forms.Button btnSavingsSettings;
-        private System.Windows.Forms.Panel panelBoard;
         private System.Windows.Forms.Panel panelSettings;
+        private System.Windows.Forms.FlowLayoutPanel flowSwitchboard;
 
     }
 }

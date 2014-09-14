@@ -418,6 +418,9 @@
     <Compile Include="Settings\UserManagement.Designer.cs">
       <DependentUpon>UserManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Controller\AccountSettingsController.cs" />
+    <Compile Include="Utilities\Controller\TimeDepositCalculatorController.cs" />
+    <Compile Include="Utilities\Model\TimeDepositCalculatorModel.cs" />
     <Compile Include="Utilities\View\AccountSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>

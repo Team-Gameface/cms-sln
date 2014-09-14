@@ -79,7 +79,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 10.75F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(520, 148);
+            this.btnSave.Location = new System.Drawing.Point(520, 195);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(92, 32);
             this.btnSave.TabIndex = 26;
@@ -97,7 +97,7 @@
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Location = new System.Drawing.Point(12, 304);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(716, 185);
+            this.groupBox1.Size = new System.Drawing.Size(716, 233);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add/Edit User";
@@ -108,7 +108,7 @@
             this.lblDetails.ForeColor = System.Drawing.Color.Firebrick;
             this.lblDetails.Location = new System.Drawing.Point(9, 153);
             this.lblDetails.Name = "lblDetails";
-            this.lblDetails.Size = new System.Drawing.Size(508, 24);
+            this.lblDetails.Size = new System.Drawing.Size(703, 39);
             this.lblDetails.TabIndex = 25;
             // 
             // btnCancel
@@ -116,7 +116,7 @@
             this.btnCancel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnCancel.Location = new System.Drawing.Point(618, 148);
+            this.btnCancel.Location = new System.Drawing.Point(618, 195);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(92, 32);
             this.btnCancel.TabIndex = 27;
@@ -163,7 +163,7 @@
             "Chairman - Audit Committee"});
             this.comboType.Location = new System.Drawing.Point(96, 86);
             this.comboType.Name = "comboType";
-            this.comboType.Size = new System.Drawing.Size(172, 25);
+            this.comboType.Size = new System.Drawing.Size(237, 25);
             this.comboType.TabIndex = 24;
             this.comboType.SelectedIndexChanged += new System.EventHandler(this.comboType_SelectedIndexChanged);
             // 
@@ -384,7 +384,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UserManagement";
-            this.Size = new System.Drawing.Size(734, 495);
+            this.Size = new System.Drawing.Size(734, 540);
             this.groupBox1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();

@@ -8,11 +8,14 @@ namespace CMS.Main
 {
     public class UserData
     {
-        public static String userId;
-        public static String userFirst;
-        public static String userMiddle;
-        public static String userLast;
-        public static String userPosition;
-        public static String userAccountType;
+        public static String userId = String.Empty;
+        public static String userFirst = String.Empty;
+        public static String userMiddle = String.Empty;
+        public static String userLast = String.Empty;
+        public static String userPosition = String.Empty;
+        public static String userAccountType = String.Empty;
+        public static String username = String.Empty;
+        public static String password = String.Empty;
+        public static byte[] picture = null;
     }
 }

@@ -33,7 +33,14 @@ namespace CMS
                 Main.CompanyData.CompanyName = reader[0].ToString();
                 Main.CompanyData.AcreditationNo = reader[1].ToString();
                 Main.CompanyData.CompanyAddress = reader[2].ToString();
-                Main.CompanyData.CompanyLogo = (byte[])reader[3];
+                try
+                {
+                    Main.CompanyData.CompanyLogo = (byte[])reader[3];
+                }
+                catch(Exception)
+                {
+                    Main.CompanyData.CompanyLogo = null;
+                }
                 Main.CompanyData.TelephoneNo = reader[4].ToString();
                 Main.CompanyData.CellphoneNo = reader[5].ToString();
                 Main.CompanyData.Email = reader[6].ToString();
@@ -77,7 +84,7 @@ namespace CMS
 
                 SqlCommand command = new SqlCommand();
                 command = conn.CreateCommand();
-                command.CommandText = @"SELECT UserId, FirstName, MiddleName, LastName, Position, UserType FROM SYSTEM_USERS WHERE Username = @username AND Password = @password";
+                command.CommandText = @"SELECT UserId, FirstName, MiddleName, LastName, Position, UserType, Username, Password, Picture FROM SYSTEM_USERS WHERE Username = @username AND Password = @password";
                 command.Parameters.AddWithValue("@username", username);
                 command.Parameters.AddWithValue("@password", password);
                 SqlDataReader rd = command.ExecuteReader();
@@ -92,6 +99,12 @@ namespace CMS
                     Main.UserData.userLast = rd.GetString(3).ToString();
                     Main.UserData.userPosition = rd.GetString(4).ToString();
                     Main.UserData.userAccountType = rd.GetString(5).ToString();
+                    Main.UserData.username = rd.GetString(6).ToString();
+                    Main.UserData.password = rd.GetString(7).ToString();
+                    if (rd[8].ToString() != String.Empty)
+                    {
+                        Main.UserData.picture = (byte[])rd[8];
+                    }
                     new Main.Controller.MainController(new Main.View.CMSDashboard());
                     this.Dispose();
                 }

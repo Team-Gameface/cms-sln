@@ -53,15 +53,7 @@ namespace CMS.Main.Controller
         public MainController(Main.View.CMSDashboard cms)
         {
             this.cms = cms;
-            if (Main.UserData.userAccountType != "Superuser")
-            {
-                this.cms.setUserName(Main.UserData.userLast + ", " + Main.UserData.userFirst + " " + Main.UserData.userMiddle);
-            }
-            else
-            {
-                this.cms.setUserName(Main.UserData.userPosition);
-            }
-            this.cms.setRole(Main.UserData.userAccountType);
+            setUser();
             //this.cms.setBtnHomeEventHandler(this.btnHome);
             this.cms.setBtnLoanManagementEventHandler(this.btnLoanManagement);
             this.cms.setBtnPaymentsEventHandler(this.btnPayments);
@@ -72,6 +64,20 @@ namespace CMS.Main.Controller
             this.cms.CMS_FormClosing(this.formClosing);
             this.updateMemberClass();
             this.cms.ShowDialog();
+        }
+
+        public void setUser()
+        {
+            if (Main.UserData.userAccountType != "Superuser")
+            {
+                this.cms.setUserName(Main.UserData.userLast + ", " + Main.UserData.userFirst);
+            }
+            else
+            {
+                this.cms.setUserName(Main.UserData.userPosition);
+            }
+            this.cms.setRole(Main.UserData.userAccountType);
+            this.cms.setPictureUser();
         }
 
         /*public void btnHome(object args, EventArgs e)

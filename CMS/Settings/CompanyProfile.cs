@@ -122,15 +122,28 @@ namespace CMS.Settings
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
                 String sql = "UPDATE COMPANY SET Status = 0";
                 int result = dal.executeNonQuery(sql);
-                sql = "EXEC insertCompany @CompanyName, @AccreditationNo, @CompanyAddress, @CompanyLogo, @Telephone, @Cellphone, @Email";
                 Dictionary<String, Object> parameters = new Dictionary<string, object>();
-                parameters.Add("@CompanyName", txtCompanyName.Text.Trim());
-                parameters.Add("@AccreditationNo", txtAccreditation.Text.Trim());
-                parameters.Add("@CompanyAddress", txtCompanyAddress.Text.Trim());
-                parameters.Add("@CompanyLogo", imgData);
-                parameters.Add("@Telephone", txtTelephone.Text.Trim());
-                parameters.Add("@Cellphone", txtCellphone.Text.Trim());
-                parameters.Add("@Email", txtEmail.Text.Trim());
+                if (imgData != null)
+                {
+                    sql = "EXEC insertCompany @CompanyName, @AccreditationNo, @CompanyAddress, @CompanyLogo, @Telephone, @Cellphone, @Email";
+                    parameters.Add("@CompanyName", txtCompanyName.Text.Trim());
+                    parameters.Add("@AccreditationNo", txtAccreditation.Text.Trim());
+                    parameters.Add("@CompanyAddress", txtCompanyAddress.Text.Trim());
+                    parameters.Add("@CompanyLogo", this.imgData);
+                    parameters.Add("@Telephone", txtTelephone.Text.Trim());
+                    parameters.Add("@Cellphone", txtCellphone.Text.Trim());
+                    parameters.Add("@Email", txtEmail.Text.Trim());
+                }
+                else
+                {
+                    sql = "EXEC insertCompanyNoLogo @CompanyName, @AccreditationNo, @CompanyAddress, @Telephone, @Cellphone, @Email";
+                    parameters.Add("@CompanyName", txtCompanyName.Text.Trim());
+                    parameters.Add("@AccreditationNo", txtAccreditation.Text.Trim());
+                    parameters.Add("@CompanyAddress", txtCompanyAddress.Text.Trim());
+                    parameters.Add("@Telephone", txtTelephone.Text.Trim());
+                    parameters.Add("@Cellphone", txtCellphone.Text.Trim());
+                    parameters.Add("@Email", txtEmail.Text.Trim());
+                }
                 result = dal.executeNonQuery(sql, parameters);
                 if (result != 0)
                 {

@@ -106,7 +106,20 @@ namespace CMS.Main.View
             this.lblUserRole.Text = s;
         }
 
-
+        public void setPictureUser()
+        {
+            byte[] imgData = Main.UserData.picture;
+            if (imgData != null)
+            {
+                Image picture;
+                using (MemoryStream ms = new MemoryStream(imgData, 0, imgData.Length))
+                {
+                    ms.Write(imgData, 0, imgData.Length);
+                    picture = Image.FromStream(ms, true);
+                }
+                pictureUser.Image = picture;
+            }
+        }
 
         /*public void setBtnHomeEventHandler(EventHandler e)
         {

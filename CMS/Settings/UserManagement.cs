@@ -110,11 +110,19 @@ namespace CMS.Settings
                 txtPosition.Text = row.Cells[2].Value.ToString();
                 txtUsername.Text = row.Cells[3].Value.ToString();
                 txtPassword.Text = row.Cells[4].Value.ToString();
-                if (row.Cells[6].Value.ToString() == "Staff")
+                if (row.Cells[5].Value.ToString() == "Staff")
                 {
                     comboType.SelectedIndex = 0;
                 }
                 else if (row.Cells[5].Value.ToString() == "Manager")
+                {
+                    comboType.SelectedIndex = 1;
+                }
+                else if (row.Cells[5].Value.ToString() == "Chairman - Credit Committee")
+                {
+                    comboType.SelectedIndex = 1;
+                }
+                else if (row.Cells[5].Value.ToString() == "Chairman - Audit Committee")
                 {
                     comboType.SelectedIndex = 1;
                 }
@@ -372,6 +380,14 @@ namespace CMS.Settings
             {
                 parameters.Add("@Type", "Manager");
             }
+            else if (comboType.SelectedIndex == 2)
+            {
+                parameters.Add("@Type", "Chairman - Credit Committee");
+            }
+            else if (comboType.SelectedIndex == 3)
+            {
+                parameters.Add("@Type", "Chairman - Audit Committee");
+            }
             int result = dal.executeNonQuery(sql, parameters);
             return result;
         }
@@ -395,6 +411,14 @@ namespace CMS.Settings
             else if (comboType.SelectedIndex == 1)
             {
                 parameters.Add("@Type", "Manager");
+            }
+            else if (comboType.SelectedIndex == 2)
+            {
+                parameters.Add("@Type", "Chairman - Credit Committee");
+            }
+            else if (comboType.SelectedIndex == 3)
+            {
+                parameters.Add("@Type", "Chairman - Audit Committee");
             }
             int result = dal.executeNonQuery(sql, parameters);
             return result;

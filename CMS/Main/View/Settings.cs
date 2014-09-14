@@ -27,12 +27,6 @@ namespace CMS.Main.View
             InitializeComponent();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-            mainController.utilitiesOpen = false;
-        }
-
         private void btnBatchProcess_Click(object sender, EventArgs e)
         {
             if (companyProfileOpen)

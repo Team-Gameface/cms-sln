@@ -9,6 +9,7 @@ namespace CMS.Savings.Transaction.Controller
 {
     class SavingsTransactionController
     {
+        Main.Logger logger = new Main.Logger();
         Model.SavingsTransactionModel savingsTransactionModel;
         View.SavingsTransaction savingsTransaction;
         int TypeId = 0;
@@ -192,6 +193,7 @@ namespace CMS.Savings.Transaction.Controller
                 if (this.savingsTransactionModel.insertSavingsTransaction() == 1)
                 {
                     MessageBox.Show("Transaction Success.", "Savings Transaction", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger(this.savingsTransaction.getComboTransaction() + "(" + this.savingsTransaction.getAmount() + ") - " + this.savingsTransactionModel.AccountNo);
                     this.savingsTransaction.clearAll();
                     this.savingsTransaction.setAccountBalance("0");
                     this.savingsTransaction.setDataMember(this.savingsTransactionModel.selectMember());
@@ -224,11 +226,26 @@ namespace CMS.Savings.Transaction.Controller
                 if (result == 1)
                 {
                     MessageBox.Show("New Passbook Generated.", "Savings Transaction", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Passbook Generated(" + newPassbook + ") - " + accountNo);
                 }
                 else
                 {
                     MessageBox.Show("Passbook Reissuance Failed.", "Savings Transaction", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Transaction - Savings Transaction";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
             }
         }
     }

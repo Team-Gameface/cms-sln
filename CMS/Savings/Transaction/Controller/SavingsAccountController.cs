@@ -10,6 +10,7 @@ namespace CMS.Savings.Transaction.Controller
 {
     class SavingsAccountController
     {
+        Main.Logger logger = new Main.Logger();
         Model.SavingsAccountModel savingsAccountModel;
         View.SavingsAccount openAccount;
         double initialDeposit = 0;
@@ -241,9 +242,10 @@ namespace CMS.Savings.Transaction.Controller
                 {
                     if (this.savingsAccountModel.insertSavingsAccount() == 1)
                     {
+                        MessageBox.Show("Save Success.", "Savings Account", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Open Account - " + this.openAccount.getAccountNo());
                         this.openAccount.setDataAccount(this.savingsAccountModel.selectSavingsAccount());
                         this.openAccount.disableFunction();
-                        MessageBox.Show("Save Success.", "Savings Account", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.openAccount.clearErrors();
                         this.savingsAccountModel.memberSavingsAccount.Clear();
                     }
@@ -254,12 +256,27 @@ namespace CMS.Savings.Transaction.Controller
                 }
                 else
                 {
-
+                    MessageBox.Show("Save Failed." + Environment.NewLine + Environment.NewLine + errorMessage, "Savings Account", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
                 MessageBox.Show("Save Failed." + Environment.NewLine + Environment.NewLine + errorMessage, "Savings Account", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Transaction - Savings Account";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
             }
         }
     }

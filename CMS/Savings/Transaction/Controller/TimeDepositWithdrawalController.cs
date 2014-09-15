@@ -12,6 +12,7 @@ namespace CMS.Savings.Transaction.Controller
 {
     class TimeDepositWithdrawalController
     {
+        Main.Logger logger = new Main.Logger();
         Model.TimeDepositWithdrawalModel timeDepositWithdrawalModel;
         View.TimeDepositWithdrawal timeDepositWithdrawal;
 
@@ -155,6 +156,7 @@ namespace CMS.Savings.Transaction.Controller
             if (this.timeDepositWithdrawalModel.insertTimeDepositDetails() == 1)
             {
                 MessageBox.Show("Transaction Success", "Time Deposit Withdrawal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                execLogger("Time Deposit Withdrawn - " + this.timeDepositWithdrawalModel.CertificateNo);
                 this.timeDepositWithdrawal.reset();
                 this.timeDepositWithdrawal.setDataTimeDeposit(this.timeDepositWithdrawalModel.selectTimeDeposit());
             }
@@ -162,6 +164,21 @@ namespace CMS.Savings.Transaction.Controller
             {
                 MessageBox.Show("Transaction Failed", "Time Deposit Withdrawal", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }           
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Savings Account Type";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
     }
 }

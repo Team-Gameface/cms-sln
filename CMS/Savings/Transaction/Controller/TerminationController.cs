@@ -12,6 +12,7 @@ namespace CMS.Savings.Transaction.Controller
 {
     class TerminationController
     {
+        Main.Logger logger = new Main.Logger();
         Savings.Transaction.Model.TerminationModel terminationModel;
         Savings.Transaction.View.MemberTermination termination;
 
@@ -84,6 +85,7 @@ namespace CMS.Savings.Transaction.Controller
                         if (this.terminationModel.clearLoans(accountNo) != 0)
                         {
                             MessageBox.Show("Member Termination Success.", "Membership Termination", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Terminate - " + accountNo);
                             this.termination.classGridSearch(this.terminationModel.selectActiveMember());
                             this.termination.clearFields();
                         }
@@ -509,6 +511,21 @@ namespace CMS.Savings.Transaction.Controller
             }
 
             totalBalance += totalPenalty;
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Transaction - Member Termination";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
     }
 }

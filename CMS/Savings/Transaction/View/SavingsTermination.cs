@@ -15,6 +15,7 @@ namespace CMS.Savings.Transaction.View
     public partial class SavingsTermination : Form
     {
         String AccountNo = String.Empty;
+        Main.Logger logger = new Main.Logger();
         Transaction.View.SavingsAccount savingsAccount;
         Transaction.Model.SavingsAccountModel savingsAccountModel;
 
@@ -130,6 +131,7 @@ namespace CMS.Savings.Transaction.View
                         setPassbookInactive();
                     }
                     MessageBox.Show("Termination Success.", "Savings Account Termination", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Terminate - " + this.AccountNo);
                     this.savingsAccount.setDataAccount(this.savingsAccountModel.selectSavingsAccount());
                     this.Dispose();
                 }
@@ -147,13 +149,14 @@ namespace CMS.Savings.Transaction.View
         public int withdrawSavings()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC insertSavingsTransaction @SavingsAccountNo, @TransactionMode, @Amount, @Representative, @SavingsPassbook";
+            String sql = "EXEC insertSavingsTransaction @SavingsAccountNo, @TransactionMode, @Amount, @Representative, @SavingsPassbook, @userId";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@SavingsAccountNo", this.AccountNo);
             parameters.Add("@TransactionMode", "Withdraw");
             parameters.Add("@Amount", txtBalance.Text);
             parameters.Add("@Representative", "");
             parameters.Add("@SavingsPassbook", this.selectActivePassbook());
+            parameters.Add("@userId", Main.UserData.userId);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             if (result == 1)
             {
@@ -187,6 +190,20 @@ namespace CMS.Savings.Transaction.View
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@PassbookNo", this.selectActivePassbook());
             dal.executeNonQuery(sql, parameters);
+        }
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Transaction - Savings Account";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
     }
 }

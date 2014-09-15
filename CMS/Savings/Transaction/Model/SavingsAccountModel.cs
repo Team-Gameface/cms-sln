@@ -138,13 +138,14 @@ namespace CMS.Savings.Transaction.Model
             parameters2.Add("@SavingsAccountNo", this.SavingsAccountNo);
             int result2 = Convert.ToInt32(dal.executeNonQuery(sql2, parameters2));
 
-            String sql3 = "EXEC insertSavingsTransaction @SavingsAccountNo, @TransactionMode, @Amount, @Representative, @SavingsPassbook";
+            String sql3 = "EXEC insertSavingsTransaction @SavingsAccountNo, @TransactionMode, @Amount, @Representative, @SavingsPassbook, @userId";
             Dictionary<String, Object> parameters3 = new Dictionary<string, object>();
             parameters3.Add("@SavingsAccountNo", this.SavingsAccountNo);
             parameters3.Add("@TransactionMode", "Deposit");
             parameters3.Add("@Amount", this.InitialDeposit);
             parameters3.Add("@Representative", String.Empty);
             parameters3.Add("@SavingsPassbook", this.PassbookNo);
+            parameters3.Add("@userId", Main.UserData.userId);
             int result3 = Convert.ToInt32(dal.executeNonQuery(sql3, parameters3));
             if (result == 1 && result2 == 1 && result3 == 1)
             {

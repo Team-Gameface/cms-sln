@@ -13,6 +13,7 @@ namespace CMS.Settings
 {
     public partial class UserManagement : UserControl
     {
+        Main.Logger logger = new Main.Logger();
         String userId = String.Empty;
         bool isAdd = false;
         
@@ -253,6 +254,7 @@ namespace CMS.Settings
                         isAdd = false;
                         userId = String.Empty;
                         setData(searchUsers(txtSearch.Text));
+                        execLogger("Add");
                     }
                     else
                     {
@@ -269,6 +271,7 @@ namespace CMS.Settings
                         isAdd = false;
                         userId = String.Empty;
                         setData(searchUsers(txtSearch.Text));
+                        execLogger("Update");
                     }
                     else
                     {
@@ -464,6 +467,21 @@ namespace CMS.Settings
             else
             {
                 lblDetails.ResetText();
+            }
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Settings - User Management";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
             }
         }
     }

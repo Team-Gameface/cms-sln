@@ -16,6 +16,8 @@ namespace CMS
 {
     public partial class Login : Form, IDisposable
     {
+        Main.Logger logger = new Main.Logger();
+
         public Login()
         {
             InitializeComponent();
@@ -105,6 +107,7 @@ namespace CMS
                     {
                         Main.UserData.picture = (byte[])rd[8];
                     }
+                    execLogger("User Log In");
                     new Main.Controller.MainController(new Main.View.CMSDashboard());
                     this.Dispose();
                 }
@@ -123,6 +126,21 @@ namespace CMS
         {
             this.Dispose();
             Environment.Exit(0);
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Login";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
     }
 }

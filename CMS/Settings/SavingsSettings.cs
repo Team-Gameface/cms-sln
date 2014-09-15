@@ -13,6 +13,7 @@ namespace CMS.Settings
 {
     public partial class SavingsSettings : UserControl
     {
+        Main.Logger logger = new Main.Logger();
         CMS.Main.View.Settings settings;
         int MemberTypeNo = 0;
         int NoAllowed = 0;
@@ -86,6 +87,7 @@ namespace CMS.Settings
                             MessageBox.Show("Save Success.", "Savings Account Settings", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dataMemberType.DataSource = selectSavingsSettings().Tables[0];
                             dataMemberType.Columns[0].Visible = false;
+                            execLogger("Update");
                         }
                     }
                     else
@@ -101,6 +103,7 @@ namespace CMS.Settings
                             MessageBox.Show("Save Success.", "Savings Account Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             dataMemberType.DataSource = selectSavingsSettings().Tables[0];
                             dataMemberType.Columns[0].Visible = false;
+                            execLogger("Update");
                         }
                     }
                 }
@@ -108,6 +111,21 @@ namespace CMS.Settings
                 {
                     MessageBox.Show("Save Failed.", "Savings Account Settings", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Settings - Savings Account Settings";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
             }
         }
     }

@@ -12,6 +12,7 @@ namespace CMS.Settings
 {
     public partial class BatchProcessAutomation : UserControl
     {
+        Main.Logger logger = new Main.Logger();
         Main.View.Settings settings;
 
         public BatchProcessAutomation(Main.View.Settings settings)
@@ -82,6 +83,7 @@ namespace CMS.Settings
                     ts.RootFolder.RegisterTaskDefinition(taskNameMaintainingBalance, tdMainBal);
                     ts.RootFolder.RegisterTaskDefinition(taskNameSavingsInterest, tdMainBal);
                     MessageBox.Show("Batch Process Automation Schedule Save Sucess.", "Batch Process Automation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Update");
                     this.Dispose();
                 }
                 catch (Exception ex)
@@ -91,9 +93,19 @@ namespace CMS.Settings
             }
         }
 
-        private void BatchProcessAutomation_FormClosed(object sender, FormClosedEventArgs e)
+        public void execLogger(String ModuleActivity)
         {
-            settings.batchOpen = false;
+            logger.clear();
+            logger.Module = "Settings - Batch Processing Automation";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
     }
 }

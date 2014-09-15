@@ -11,6 +11,7 @@ namespace CMS.Savings.Maintenance.Controller
 {
     class SavingsAccountTypeController
     {
+        Main.Logger logger = new Main.Logger();
         Maintenance.Model.SavingsAccountTypeModel savingsAccountTypeModel;
         Maintenance.View.SavingsAccountType savingsAccountType;
         Dictionary<int, string> memberTypes = new Dictionary<int, string>();
@@ -183,6 +184,7 @@ namespace CMS.Savings.Maintenance.Controller
                                 this.savingsAccountType.clearError();
                                 this.savingsAccountType.disableFunction();
                             }
+                            execLogger("Delete");
                             isAdd = false;
                             TypeId = 0;
                         }
@@ -601,6 +603,7 @@ namespace CMS.Savings.Maintenance.Controller
                                 this.savingsAccountType.disableFunction();
                             }
                             MessageBox.Show("Add Success.", "Savings Account Type", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Add");
                             isAdd = false;
                             TypeId = 0;
                         }
@@ -686,6 +689,7 @@ namespace CMS.Savings.Maintenance.Controller
                                 this.savingsAccountType.disableFunction();
                             }
                             MessageBox.Show("Update Success.", "Savings Account Type", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Update");
                             isAdd = false;
                             TypeId = 0;
                         }
@@ -778,9 +782,25 @@ namespace CMS.Savings.Maintenance.Controller
                         this.savingsAccountType.clearError();
                         this.savingsAccountType.disableFunction();
                     }
+                    execLogger("Retrieve");
                     isAdd = false;
                     TypeId = 0;
                 }
+            }
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Savings Account Type";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
             }
         }
     }

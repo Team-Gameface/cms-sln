@@ -42,6 +42,7 @@ namespace CMS.Main.Controller
             }
         }
 
+        Main.Logger logger = new Main.Logger();
         Main.View.CMSDashboard cms;
         Main.View.PaymentForm paymentForm;
         Main.View.Utilities utilities;
@@ -167,6 +168,7 @@ namespace CMS.Main.Controller
 
         public void linkSignout(object args, EventArgs e)
         {
+            execLogger("User Log Out");
             Main.UserData.userId = String.Empty;
             Main.UserData.userFirst = String.Empty;
             Main.UserData.userMiddle = String.Empty;
@@ -182,6 +184,7 @@ namespace CMS.Main.Controller
             DialogResult dr = MessageBox.Show("You will be logged out of the system. Continue?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dr == DialogResult.Yes)
             {
+                execLogger("User Log Out");
                 Main.UserData.userId = String.Empty;
                 Main.UserData.userFirst = String.Empty;
                 Main.UserData.userMiddle = String.Empty;
@@ -194,6 +197,21 @@ namespace CMS.Main.Controller
             else
             {
                 e.Cancel = true;
+            }
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "CMS Dashboard";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
             }
         }
     }

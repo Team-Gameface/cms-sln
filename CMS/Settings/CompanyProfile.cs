@@ -13,6 +13,7 @@ namespace CMS.Settings
 {
     public partial class CompanyProfile : UserControl
     {
+        Main.Logger logger = new Main.Logger();
         byte[] imgData = null;
         Main.View.CMSDashboard cms;
         Main.View.Settings settings;
@@ -149,6 +150,7 @@ namespace CMS.Settings
                 {
                     MessageBox.Show("Company Profile Save Sucess.", "Company Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     updateCompanyData();
+                    execLogger("Update");
                 }
                 else
                 {
@@ -171,6 +173,21 @@ namespace CMS.Settings
             Main.CompanyData.CellphoneNo = txtCellphone.Text.ToString();
             Main.CompanyData.Email = txtEmail.Text.ToString();
             this.cms.setCompanyData();
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Settings - Company Profile";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
     }
 }

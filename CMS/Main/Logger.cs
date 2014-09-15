@@ -28,5 +28,11 @@ namespace CMS.Main
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             return result;
         }
+
+        public void clear()
+        {
+            this.Activity = String.Empty;
+            this.Module = String.Empty;
+        }
     }
 }

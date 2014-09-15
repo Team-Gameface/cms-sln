@@ -10,6 +10,7 @@ namespace CMS.Utilities.Controller
 {
     class AccountSettingsController
     {
+        Main.Logger logger = new Main.Logger();
         View.AccountSettings accountSettings;
         Main.View.Utilities utilities;
         Main.Controller.MainController main;
@@ -56,6 +57,7 @@ namespace CMS.Utilities.Controller
                     setFields();
                     main.setUser();
                     accountSettings.reset();
+                    execLogger("Update");
                 }
                 else
                 {
@@ -71,6 +73,7 @@ namespace CMS.Utilities.Controller
                     setFields();
                     main.setUser();
                     accountSettings.reset();
+                    execLogger("Update");
                 }
                 else
                 {
@@ -122,6 +125,21 @@ namespace CMS.Utilities.Controller
             account[1] = Main.UserData.password;
             this.accountSettings.setAccount(account);
             this.accountSettings.setPicture(Main.UserData.picture);
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Utilities - Account Settings";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
     }
 }

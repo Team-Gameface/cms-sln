@@ -9,6 +9,7 @@ namespace CMS.Savings.Maintenance.Controller
 {
     class TimeDepositInterestRatesController
     {
+        Main.Logger logger = new Main.Logger();
         Maintenance.Model.TimeDepositInterestModel timeDepositModel;
         Maintenance.View.TimeDepositInterestRates interestRates;
         String errorMessage = String.Empty;
@@ -214,6 +215,7 @@ namespace CMS.Savings.Maintenance.Controller
                             this.interestRates.removeColumns();
                             this.interestRates.clearError();
                             this.interestRates.disableFunction();
+                            execLogger("Add");
                             isAdd = false;
                             InterestId = 0;
                         }
@@ -231,6 +233,7 @@ namespace CMS.Savings.Maintenance.Controller
                             this.interestRates.removeColumns();
                             this.interestRates.clearError();
                             this.interestRates.disableFunction();
+                            execLogger("Update");
                             isAdd = false;
                             InterestId = 0;
                         }
@@ -259,6 +262,21 @@ namespace CMS.Savings.Maintenance.Controller
         {
             this.interestRates.interestRatesGrid(this.timeDepositModel.selectTimeDepositInterest(this.interestRates.getSearch()));
             this.interestRates.removeColumns();
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Time Deposit Terms and Rates";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
     }
 }

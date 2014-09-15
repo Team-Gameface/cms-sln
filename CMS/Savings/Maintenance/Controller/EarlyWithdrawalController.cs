@@ -10,6 +10,7 @@ namespace CMS.Savings.Maintenance.Controller
 {
     class EarlyWithdrawalController
     {
+        Main.Logger logger = new Main.Logger();
         Maintenance.Model.EarlyWithdrawalModel earlyWithdrawalModel;
         Maintenance.View.EarlyWithdrawal earlyWithdrawal;
         String errorMessage = String.Empty;
@@ -212,6 +213,7 @@ namespace CMS.Savings.Maintenance.Controller
                             this.earlyWithdrawal.clearError();
                             this.earlyWithdrawal.removeColumns();
                             this.earlyWithdrawal.disableFunction();
+                            execLogger("Add");
                             isAdd = false;
                             EarlyWithdrawalId = 0;
                         }
@@ -229,6 +231,7 @@ namespace CMS.Savings.Maintenance.Controller
                             this.earlyWithdrawal.clearError();
                             this.earlyWithdrawal.removeColumns();
                             this.earlyWithdrawal.disableFunction();
+                            execLogger("Update");
                             isAdd = false;
                             EarlyWithdrawalId = 0;
                         }
@@ -263,6 +266,21 @@ namespace CMS.Savings.Maintenance.Controller
         private void txtSearch(object sender, EventArgs e)
         {
             this.earlyWithdrawal.timeDepositGrid(this.earlyWithdrawalModel.searchEarlyWithdrawal(this.earlyWithdrawal.getSearch()));
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Early Withdrawal Penalties";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
     }
 }

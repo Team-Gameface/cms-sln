@@ -33,14 +33,14 @@
             this.dateFrom = new System.Windows.Forms.DateTimePicker();
             this.dateTo = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkDate = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtUser = new System.Windows.Forms.TextBox();
-            this.comboType = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboType = new System.Windows.Forms.ComboBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.checkDate = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataLogs)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -51,8 +51,8 @@
             this.dataLogs.AllowUserToAddRows = false;
             this.dataLogs.AllowUserToDeleteRows = false;
             this.dataLogs.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dataLogs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataLogs.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataLogs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataLogs.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataLogs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataLogs.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataLogs.Location = new System.Drawing.Point(19, 170);
@@ -105,53 +105,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter Logs";
             // 
-            // label1
+            // label5
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 17);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "From";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 65);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 17);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "User Type";
             // 
-            // label2
+            // label4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(69, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 17);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "To";
-            // 
-            // checkDate
-            // 
-            this.checkDate.AutoSize = true;
-            this.checkDate.Location = new System.Drawing.Point(9, 13);
-            this.checkDate.Name = "checkDate";
-            this.checkDate.Size = new System.Drawing.Size(54, 21);
-            this.checkDate.TabIndex = 8;
-            this.checkDate.Text = "Date";
-            this.checkDate.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.checkDate);
-            this.panel1.Controls.Add(this.dateTo);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.dateFrom);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(519, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(235, 71);
-            this.panel1.TabIndex = 7;
-            // 
-            // txtUser
-            // 
-            this.txtUser.Location = new System.Drawing.Point(118, 31);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(229, 25);
-            this.txtUser.TabIndex = 4;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 17);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "User";
             // 
             // comboType
             // 
@@ -169,23 +139,53 @@
             this.comboType.Size = new System.Drawing.Size(229, 25);
             this.comboType.TabIndex = 6;
             // 
-            // label4
+            // txtUser
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 34);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 17);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "User";
+            this.txtUser.Location = new System.Drawing.Point(118, 31);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(229, 25);
+            this.txtUser.TabIndex = 4;
             // 
-            // label5
+            // panel1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 65);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 17);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "User Type";
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.checkDate);
+            this.panel1.Controls.Add(this.dateTo);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.dateFrom);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(519, 24);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(235, 71);
+            this.panel1.TabIndex = 7;
+            // 
+            // checkDate
+            // 
+            this.checkDate.AutoSize = true;
+            this.checkDate.Location = new System.Drawing.Point(9, 13);
+            this.checkDate.Name = "checkDate";
+            this.checkDate.Size = new System.Drawing.Size(54, 21);
+            this.checkDate.TabIndex = 8;
+            this.checkDate.Text = "Date";
+            this.checkDate.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(69, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 17);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "To";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(69, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 17);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "From";
             // 
             // AuditLog
             // 

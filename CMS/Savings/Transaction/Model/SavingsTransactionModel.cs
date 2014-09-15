@@ -104,13 +104,14 @@ namespace CMS.Savings.Transaction.Model
         public int insertSavingsTransaction()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC insertSavingsTransaction @SavingsAccountNo, @TransactionMode, @Amount, @Representative, @SavingsPassbook";
+            String sql = "EXEC insertSavingsTransaction @SavingsAccountNo, @TransactionMode, @Amount, @Representative, @SavingsPassbook, @TellerId";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@SavingsAccountNo", this.AccountNo);
             parameters.Add("@TransactionMode", this.TransactionMode);
             parameters.Add("@Amount", this.Amount);
             parameters.Add("@Representative", this.Representative);
             parameters.Add("@SavingsPassbook", this.PassbookNo);
+            parameters.Add("@TellerId", Main.UserData.userId);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             if (result == 1)
             {

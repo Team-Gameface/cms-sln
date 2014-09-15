@@ -48,16 +48,12 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.itemLoanApp = new System.Windows.Forms.ToolStripMenuItem();
             this.itemLoanAmnesty = new System.Windows.Forms.ToolStripMenuItem();
-            this.queriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemPaymentHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemMemberInformation = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemMemberStatistics = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.itemLoanReleases = new System.Windows.Forms.ToolStripMenuItem();
             this.itemCollectionReport = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDelinquencySchedule = new System.Windows.Forms.ToolStripMenuItem();
             this.itemAnnualFinancialReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemPaymentHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +63,6 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.maintenanceToolStripMenuItem,
             this.transactionToolStripMenuItem,
-            this.queriesToolStripMenuItem,
             this.reportToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -203,74 +198,47 @@
             this.itemLoanAmnesty.Size = new System.Drawing.Size(229, 22);
             this.itemLoanAmnesty.Text = "Loan Amnesty";
             // 
-            // queriesToolStripMenuItem
-            // 
-            this.queriesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemPaymentHistory,
-            this.itemMemberInformation});
-            this.queriesToolStripMenuItem.Name = "queriesToolStripMenuItem";
-            this.queriesToolStripMenuItem.Size = new System.Drawing.Size(65, 21);
-            this.queriesToolStripMenuItem.Text = "Queries";
-            // 
-            // itemPaymentHistory
-            // 
-            this.itemPaymentHistory.Name = "itemPaymentHistory";
-            this.itemPaymentHistory.Size = new System.Drawing.Size(202, 22);
-            this.itemPaymentHistory.Text = "Loan Payment History";
-            // 
-            // itemMemberInformation
-            // 
-            this.itemMemberInformation.Name = "itemMemberInformation";
-            this.itemMemberInformation.Size = new System.Drawing.Size(202, 22);
-            this.itemMemberInformation.Text = "Member Information";
-            // 
             // reportToolStripMenuItem
             // 
             this.reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemMemberStatistics,
-            this.toolStripSeparator3,
             this.itemLoanReleases,
+            this.itemPaymentHistory,
             this.itemCollectionReport,
             this.itemDelinquencySchedule,
             this.itemAnnualFinancialReport});
             this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(66, 21);
-            this.reportToolStripMenuItem.Text = "Reports";
-            // 
-            // itemMemberStatistics
-            // 
-            this.itemMemberStatistics.Name = "itemMemberStatistics";
-            this.itemMemberStatistics.Size = new System.Drawing.Size(212, 22);
-            this.itemMemberStatistics.Text = "Member Statistics";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(209, 6);
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(141, 21);
+            this.reportToolStripMenuItem.Text = "Queries and Reports";
             // 
             // itemLoanReleases
             // 
             this.itemLoanReleases.Name = "itemLoanReleases";
-            this.itemLoanReleases.Size = new System.Drawing.Size(212, 22);
+            this.itemLoanReleases.Size = new System.Drawing.Size(247, 22);
             this.itemLoanReleases.Text = "Loan Releases";
             // 
             // itemCollectionReport
             // 
             this.itemCollectionReport.Name = "itemCollectionReport";
-            this.itemCollectionReport.Size = new System.Drawing.Size(212, 22);
+            this.itemCollectionReport.Size = new System.Drawing.Size(247, 22);
             this.itemCollectionReport.Text = "Collection Report";
             // 
             // itemDelinquencySchedule
             // 
             this.itemDelinquencySchedule.Name = "itemDelinquencySchedule";
-            this.itemDelinquencySchedule.Size = new System.Drawing.Size(212, 22);
+            this.itemDelinquencySchedule.Size = new System.Drawing.Size(247, 22);
             this.itemDelinquencySchedule.Text = "Delinquency Schedule";
             // 
             // itemAnnualFinancialReport
             // 
             this.itemAnnualFinancialReport.Name = "itemAnnualFinancialReport";
-            this.itemAnnualFinancialReport.Size = new System.Drawing.Size(212, 22);
-            this.itemAnnualFinancialReport.Text = "Annual Financial Report";
+            this.itemAnnualFinancialReport.Size = new System.Drawing.Size(247, 22);
+            this.itemAnnualFinancialReport.Text = "Financial Performance Report";
+            // 
+            // itemPaymentHistory
+            // 
+            this.itemPaymentHistory.Name = "itemPaymentHistory";
+            this.itemPaymentHistory.Size = new System.Drawing.Size(247, 22);
+            this.itemPaymentHistory.Text = "Loan Payment History";
             // 
             // LoanManagementMenu
             // 
@@ -300,7 +268,6 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem maintenanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem queriesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemLoanTypes;
         private System.Windows.Forms.ToolStripMenuItem itemInterestRates;
@@ -318,13 +285,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem itemLoanAmnestyActivation;
         private System.Windows.Forms.ToolStripMenuItem itemLoanAmnesty;
-        private System.Windows.Forms.ToolStripMenuItem itemPaymentHistory;
         private System.Windows.Forms.ToolStripMenuItem itemLoanReleases;
         private System.Windows.Forms.ToolStripMenuItem itemDelinquencySchedule;
         private System.Windows.Forms.ToolStripMenuItem itemCollectionReport;
-        private System.Windows.Forms.ToolStripMenuItem itemMemberStatistics;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem itemAnnualFinancialReport;
-        private System.Windows.Forms.ToolStripMenuItem itemMemberInformation;
+        private System.Windows.Forms.ToolStripMenuItem itemPaymentHistory;
     }
 }

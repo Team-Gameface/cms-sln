@@ -163,14 +163,70 @@
     <Compile Include="Loan Management\Reports\Controller\CollectionReportController.cs" />
     <Compile Include="Loan Management\Reports\Controller\LoanReleasesController.cs" />
     <Compile Include="Loan Management\Reports\Controller\ScheduleOfDelinquentsController.cs" />
+    <Compile Include="Loan Management\Reports\FeeCollectionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeeCollectionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Reports\FeeCollectionsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeeCollectionsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Reports\LoanCollectionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoanCollectionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Reports\LoanCollectionsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoanCollectionsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Reports\LoanReleasesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoanReleasesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Reports\LoanReleasesReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoanReleasesReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Loan Management\Reports\Model\CollectionReportModel.cs" />
     <Compile Include="Loan Management\Reports\Model\LoanReleasesModel.cs" />
     <Compile Include="Loan Management\Reports\Model\ScheduleOfDelinquentsModel.cs" />
+    <Compile Include="Loan Management\Reports\ShareCollectionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShareCollectionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Reports\ShareCollectionsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShareCollectionsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Loan Management\Reports\View\CollectionReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Loan Management\Reports\View\CollectionReport.designer.cs">
       <DependentUpon>CollectionReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\FeeCollectionViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\FeeCollectionViewer.designer.cs">
+      <DependentUpon>FeeCollectionViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\LoanCollectionViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\LoanCollectionViewer.designer.cs">
+      <DependentUpon>LoanCollectionViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Loan Management\Reports\View\LoanReleases.cs">
       <SubType>Form</SubType>
@@ -178,17 +234,45 @@
     <Compile Include="Loan Management\Reports\View\LoanReleases.designer.cs">
       <DependentUpon>LoanReleases.cs</DependentUpon>
     </Compile>
+    <Compile Include="Loan Management\Reports\View\LoanReleasesViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\LoanReleasesViewer.designer.cs">
+      <DependentUpon>LoanReleasesViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Loan Management\Reports\View\ScheduleOfDelinquents.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Loan Management\Reports\View\ScheduleOfDelinquents.designer.cs">
       <DependentUpon>ScheduleOfDelinquents.cs</DependentUpon>
     </Compile>
+    <Compile Include="Loan Management\Reports\View\ShareCollectionViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\ShareCollectionViewer.designer.cs">
+      <DependentUpon>ShareCollectionViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Loan Management\Transaction\Controller\LoanAmnestyController.cs" />
     <Compile Include="Loan Management\Transaction\Controller\LoanApplicationController.cs" />
     <Compile Include="Loan Management\Transaction\Controller\MembershipApplicationController.cs" />
     <Compile Include="Loan Management\Transaction\Controller\ShareCapitalContributionController.cs" />
     <Compile Include="Loan Management\Transaction\Controller\UpdateMemberController.cs" />
+    <Compile Include="Loan Management\Transaction\LoanVoucher.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoanVoucher.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Transaction\LoanVoucherChargesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoanVoucherChargesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Transaction\LoanVoucherDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoanVoucherDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Loan Management\Transaction\Model\LoanAmnestyModel.cs" />
     <Compile Include="Loan Management\Transaction\Model\LoanApplicationModel.cs" />
     <Compile Include="Loan Management\Transaction\Model\MembershipApplicationModel.cs" />
@@ -224,6 +308,12 @@
     <Compile Include="Loan Management\Transaction\View\UpdateMember.designer.cs">
       <DependentUpon>UpdateMember.cs</DependentUpon>
     </Compile>
+    <Compile Include="Loan Management\Transaction\View\VoucherViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Transaction\View\VoucherViewer.Designer.cs">
+      <DependentUpon>VoucherViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +337,22 @@
     </Compile>
     <Compile Include="Main\View\PaymentForm.designer.cs">
       <DependentUpon>PaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\PaymentReceipt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentReceipt.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Main\ReceiptDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReceiptDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Main\View\ReceiptViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\View\ReceiptViewer.designer.cs">
+      <DependentUpon>ReceiptViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\View\Settings.cs">
       <SubType>UserControl</SubType>
@@ -280,6 +386,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DailyTransactionLogReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Savings\Reports\DataSetLogo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetLogo.xsd</DependentUpon>
     </Compile>
     <Compile Include="Savings\Reports\Model\DailyTransactionLogModel.cs" />
     <Compile Include="Savings\Reports\SavingsTransactionLogDataSet1.Designer.cs">
@@ -475,14 +586,46 @@
     <EmbeddedResource Include="Loan Management\Queries\View\PaymentHistory.resx">
       <DependentUpon>PaymentHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\FeeCollectionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FeeCollectionReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\LoanCollectionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>LoanCollectionReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\LoanReleasesReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>LoanReleasesReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\ShareCollectionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ShareCollectionReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Loan Management\Reports\View\CollectionReport.resx">
       <DependentUpon>CollectionReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\View\FeeCollectionViewer.resx">
+      <DependentUpon>FeeCollectionViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\View\LoanCollectionViewer.resx">
+      <DependentUpon>LoanCollectionViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Loan Management\Reports\View\LoanReleases.resx">
       <DependentUpon>LoanReleases.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\View\LoanReleasesViewer.resx">
+      <DependentUpon>LoanReleasesViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Loan Management\Reports\View\ScheduleOfDelinquents.resx">
       <DependentUpon>ScheduleOfDelinquents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\View\ShareCollectionViewer.resx">
+      <DependentUpon>ShareCollectionViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Transaction\LoanVoucher.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>LoanVoucher.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Loan Management\Transaction\View\LoanAmnesty.resx">
       <DependentUpon>LoanAmnesty.cs</DependentUpon>
@@ -499,6 +642,9 @@
     <EmbeddedResource Include="Loan Management\Transaction\View\UpdateMember.resx">
       <DependentUpon>UpdateMember.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Transaction\View\VoucherViewer.resx">
+      <DependentUpon>VoucherViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -507,6 +653,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\View\PaymentForm.resx">
       <DependentUpon>PaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\PaymentReceipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PaymentReceipt.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\View\ReceiptViewer.resx">
+      <DependentUpon>ReceiptViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\View\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
@@ -589,6 +742,83 @@
     <EmbeddedResource Include="Utilities\View\TimeDepositCalculator.resx">
       <DependentUpon>TimeDepositCalculator.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Loan Management\Reports\FeeCollectionsDataSet.xsc">
+      <DependentUpon>FeeCollectionsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\FeeCollectionsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FeeCollectionsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Loan Management\Reports\FeeCollectionsDataSet.xss">
+      <DependentUpon>FeeCollectionsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\LoanCollectionsDataSet.xsc">
+      <DependentUpon>LoanCollectionsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\LoanCollectionsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LoanCollectionsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Loan Management\Reports\LoanCollectionsDataSet.xss">
+      <DependentUpon>LoanCollectionsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\LoanReleasesDataSet.xsc">
+      <DependentUpon>LoanReleasesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\LoanReleasesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LoanReleasesDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Loan Management\Reports\LoanReleasesDataSet.xss">
+      <DependentUpon>LoanReleasesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\ShareCollectionsDataSet.xsc">
+      <DependentUpon>ShareCollectionsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\ShareCollectionsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ShareCollectionsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Loan Management\Reports\ShareCollectionsDataSet.xss">
+      <DependentUpon>ShareCollectionsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Transaction\LoanVoucherChargesDataSet.xsc">
+      <DependentUpon>LoanVoucherChargesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Transaction\LoanVoucherChargesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LoanVoucherChargesDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Loan Management\Transaction\LoanVoucherChargesDataSet.xss">
+      <DependentUpon>LoanVoucherChargesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Transaction\LoanVoucherDataSet.xsc">
+      <DependentUpon>LoanVoucherDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Transaction\LoanVoucherDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LoanVoucherDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Loan Management\Transaction\LoanVoucherDataSet.xss">
+      <DependentUpon>LoanVoucherDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Main\ReceiptDataSet.xsc">
+      <DependentUpon>ReceiptDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Main\ReceiptDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReceiptDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Main\ReceiptDataSet.xss">
+      <DependentUpon>ReceiptDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -598,6 +828,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Savings\Reports\DataSetLogo.xsc">
+      <DependentUpon>DataSetLogo.xsd</DependentUpon>
+    </None>
+    <None Include="Savings\Reports\DataSetLogo.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetLogo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Savings\Reports\DataSetLogo.xss">
+      <DependentUpon>DataSetLogo.xsd</DependentUpon>
+    </None>
     <None Include="Savings\Reports\SavingsTransactionLogDataSet.xsc">
       <DependentUpon>SavingsTransactionLogDataSet.xsd</DependentUpon>
     </None>

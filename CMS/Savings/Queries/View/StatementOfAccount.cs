@@ -27,7 +27,7 @@ namespace CMS.Savings.Queries.View
             dataMember.Columns[3].Visible = false;
             this.dataMember.Columns["Balance"].DefaultCellStyle.Format = "c";
             CultureInfo ph = new CultureInfo("en-PH");
-            this.dataTransactions.Columns["Balance"].DefaultCellStyle.FormatProvider = ph;
+            this.dataMember.Columns["Balance"].DefaultCellStyle.FormatProvider = ph;
         }
 
         public void setDataTransactions(DataSet ds)
@@ -51,20 +51,6 @@ namespace CMS.Savings.Queries.View
 
             this.btnSearch.Click += e;
         
-        }
-
-        public void setBtnPreviewEventHandler(EventHandler e)
-        {
-
-            this.btnPreview.Click += e;
-
-        }
-
-        public void setBtnPassbookEventHandler(EventHandler e)
-        {
-
-            this.btnPassbook.Click += e;
-
         }
 
         public void setTxtAccountNoEventHandler(EventHandler e)

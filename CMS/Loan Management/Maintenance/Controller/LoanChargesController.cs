@@ -15,7 +15,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
     {
         Maintenance.Model.LoanChargesModel loanChargeModel;
         Maintenance.View.LoanCharges loanCharge;
-
+        Main.Logger logger = new Main.Logger();
         String nameCopy = String.Empty;
         int chargeId = 0;
         Boolean isAdd = false;
@@ -37,6 +37,21 @@ namespace CMS.Loan_Management.Maintenance.Controller
             this.loanCharge.disableFunction();
             this.loanCharge.MdiParent = loanMenu;
             this.loanCharge.Show();
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Loan Charges";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
 
         public void btnSearch(object args, EventArgs e)
@@ -133,6 +148,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                         {
 
                             MessageBox.Show("Delete Success.", "Loan Charges", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Delete '" + selectedData.Cells["Charge Name"].Value.ToString() + "'");
                             if (this.loanCharge.checkArchivedState())
                             {
                                 this.loanCharge.requirementGrid(this.loanChargeModel.selectAllLoanCharge());
@@ -309,6 +325,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
                 if (countError==0 && this.loanChargeModel.insertloanCharge(chargeName, amount, amountStatus, loanTypeNo, Status) == 1)
                 {
                     MessageBox.Show("Add Success.", "Loan Charges", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Add '" + chargeName + "'");
+
                     if (this.loanCharge.checkArchivedState())
                     {
                         this.loanCharge.requirementGrid(this.loanChargeModel.selectAllLoanCharge());
@@ -344,6 +362,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                 if (countError==0 && this.loanChargeModel.updateloanCharge(chargeId, chargeName, amount, amountStatus, loanTypeNo, Status) != 0)
                 {
                     MessageBox.Show("Update Success.", "Loan Charges", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Update '" + chargeName + "'");
                     if (this.loanCharge.checkArchivedState())
                     {
                         this.loanCharge.requirementGrid(this.loanChargeModel.selectAllLoanCharge());
@@ -439,6 +458,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
                 {
                     this.loanChargeModel.retrieveLoanCharge(this.chargeId);
                     MessageBox.Show("Retrieve success!", "Loan Charges", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Retrieve '" + nameCopy + "'");
+
                 }
                 else
                 {

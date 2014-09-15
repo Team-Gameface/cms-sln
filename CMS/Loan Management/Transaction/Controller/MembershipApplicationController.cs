@@ -17,6 +17,7 @@ namespace CMS.Loan_Management.Transaction.Controller
         Transaction.View.MembershipApplication membershipApplication;
         Transaction.Model.UpdateMemberModel updateMemberModel;
         Transaction.View.UpdateMember updateMember;
+        Main.Logger logger = new Main.Logger();
         Dictionary<int, string> requirements = new Dictionary<int, string>();
         DataSet ds;
         int memberType = 0;
@@ -72,6 +73,22 @@ namespace CMS.Loan_Management.Transaction.Controller
             this.membershipApplication.Show();
             isNew = false;
         }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Transaction - Member Profile";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
+        }
+
 
         public void loadMemberTypes(object args, EventArgs e)
         {
@@ -573,6 +590,8 @@ namespace CMS.Loan_Management.Transaction.Controller
                         if (this.memberModel.insertLoanPassbook() == 1)
                         {
                             MessageBox.Show("Loan Passbook Generated", "Membership Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Loan Passbook Generated");
+
                         }
                     }
 
@@ -581,11 +600,14 @@ namespace CMS.Loan_Management.Transaction.Controller
                         this.memberModel.CapitalPassbook = int.Parse(this.membershipApplication.getCapitalPassbook());
                         if (this.memberModel.insertCapitalPassbook() == 1)
                         {
-                            MessageBox.Show("Capital Passbook Generated", "Membership Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Share Capital Passbook Generated", "Membership Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Share Capital Passbook Generated");
+
                         }
                     }
 
                     MessageBox.Show("Save Success!", "Membership Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Add member '" + this.memberModel.AccountNo + "'");
                     this.membershipApplication.resetAll();
                     this.updateMember.setDataMembers(this.updateMemberModel.selectMember());
                     this.membershipApplication.setAccountNo("CP" + "-" + this.memberModel.generateAccountNo().ToString("D5"));
@@ -617,6 +639,8 @@ namespace CMS.Loan_Management.Transaction.Controller
                         if (this.memberModel.insertLoanPassbook() == 1)
                         {
                             MessageBox.Show("Loan Passbook Generated", "Update Membership", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Loan Passbook Generated");
+
                         }
                     }
 
@@ -626,11 +650,14 @@ namespace CMS.Loan_Management.Transaction.Controller
                         if (this.memberModel.CapitalPassbook > oldSCap)
                         if (this.memberModel.insertCapitalPassbook() == 1)
                         {
-                            MessageBox.Show("Capital Passbook Generated", "Update Membership", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Share Capital Passbook Generated", "Update Membership", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Share Capital Passbook Generated");
+
                         }
                     }
 
                     MessageBox.Show("Save Success!", "Update Membership", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Update member '" + this.memberModel.AccountNo + "'");
                     this.updateMember.setDataMembers(this.updateMemberModel.selectMember());
                     this.membershipApplication.page2Prev();
                     this.updateMember.setDataMembers(this.updateMemberModel.selectMember());

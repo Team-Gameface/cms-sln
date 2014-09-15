@@ -12,7 +12,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
     {
         Maintenance.Model.ShareCapitalContributionModel model;
         Maintenance.View.ShareCapitalContribution view;
-
+        Main.Logger logger = new Main.Logger();
         Boolean isAdd = false;
         int TypeId = 0;
 
@@ -29,6 +29,21 @@ namespace CMS.Loan_Management.Maintenance.Controller
             this.view.disableFunction();
             this.view.MdiParent = loanMenu;
             this.view.Show();
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Minimum Share Capital Contribution";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
 
         public void checkArchived(object sender, EventArgs e)
@@ -156,6 +171,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     if (countError==0 && this.model.InsertMinCapitalContrib() == 1)
                     {
                         MessageBox.Show("Add Success.", "Add Share Capital", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Add for Member Type ID'" + this.model.comboAccountType + "'");
+
                         if (this.view.checkArchivedState())
                         {
                             this.view.capitalContributionGrid(this.model.SelectAllCapitalContribution());
@@ -190,6 +207,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     if (countError==0 && this.model.InsertMinCapitalContrib() == 1)
                     {
                         MessageBox.Show("Update Success.", "Update Share Capital", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Update for Member Type ID'" + this.model.comboAccountType + "'");
+
                         if (this.view.checkArchivedState())
                         {
                             this.view.capitalContributionGrid(this.model.SelectAllCapitalContribution());

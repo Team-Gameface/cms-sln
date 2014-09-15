@@ -16,7 +16,7 @@ namespace CMS.Loan_Management.Transaction.Controller
     {
         Transaction.Model.LoanAmnestyModel loanAmnestyModel;
         Transaction.View.LoanAmnesty loanAmnesty;
-
+        Main.Logger logger = new Main.Logger();
         String finalAccountNo = String.Empty;
         Boolean isDetailsPrevious = false;
 
@@ -46,6 +46,22 @@ namespace CMS.Loan_Management.Transaction.Controller
             this.loanAmnesty.clearSelectionActiveMember();
         }
 
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Transaction - Loan Amnesty";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
+        }
+
+
         public void btnSave(object sender, EventArgs e) 
         {
             int lappId = this.loanAmnesty.getApplicationId();
@@ -60,6 +76,7 @@ namespace CMS.Loan_Management.Transaction.Controller
             this.loanAmnestyModel.insertAmnesty(lappId, reason, penalty, interest, waivedPenaltyPerc, waivedInterestPerc, loanbal, date);
 
             MessageBox.Show("Loan amnesty transaction successful.","Loan Amnesty",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            execLogger("Processed for Loan ID '" + lappId + "'");
             this.loanAmnesty.disableFunction();
             this.showAmnestyMembers();
             finalAccountNo = String.Empty;

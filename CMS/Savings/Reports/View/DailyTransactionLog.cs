@@ -28,10 +28,11 @@ namespace CMS.Savings.Reports.View
                 dateTo.Enabled = false;
         }
 
-        public void setReportDataSource(DataSet ds, Dictionary<String,Object> parameters)
+        public void setReportDataSource(DataSet ds, DataSet dsCoop, String dateFrom, String dateTo)
         {
-            DailyTransactionLogViewer dailyTransactionLogViewer = new DailyTransactionLogViewer(ds, parameters);
-            dailyTransactionLogViewer.Show();
+            LoanReportViewer loanReleasesViewer = new LoanReportViewer(ds, dsCoop, dateFrom, dateTo);
+            loanReleasesViewer.Text = "Loan Releases";
+            loanReleasesViewer.Show();
         }
 
 
@@ -57,19 +58,6 @@ namespace CMS.Savings.Reports.View
                 return false;
         }
 
-        public void populateSavingsTypes(Dictionary<int, string> savingsTypes)
-        {
-            foreach (String s in savingsTypes.Values)
-            {
-                checkedListBoxSavingsTypes.Items.Add(s);
-            }
-        }
-
-        public CheckedListBox.CheckedItemCollection getCheckedTypes()
-        {
-
-            return checkedListBoxSavingsTypes.CheckedItems;
-        }
 
         public String getSortBy() {
             try
@@ -89,15 +77,6 @@ namespace CMS.Savings.Reports.View
         
         }
 
-        private void cbAllTypes_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbAllTypes.Checked)
-                for (int i = 0; i < checkedListBoxSavingsTypes.Items.Count; i++)
-                    checkedListBoxSavingsTypes.SetItemChecked(i,true);
-            else
-                for (int i = 0; i < checkedListBoxSavingsTypes.Items.Count; i++)
-                    checkedListBoxSavingsTypes.SetItemChecked(i, false);
-        }
 
         public void errorDateFrom() {
 
@@ -108,11 +87,6 @@ namespace CMS.Savings.Reports.View
         public void errorDateTo()
         {
            cbDateTo.ForeColor = Color.Red;
-        }
-
-        public void errorSavingsTypes()
-        {
-            lblSavingsTypes.ForeColor = Color.Red;
         }
 
         public void errorSortBy()
@@ -131,7 +105,6 @@ namespace CMS.Savings.Reports.View
 
             lblFrom.ForeColor = Color.Black;
             cbDateTo.ForeColor = Color.Black;
-            lblSavingsTypes.ForeColor = Color.Black;
             grpSort.ForeColor = Color.Black;
             rbAscending.ForeColor = Color.Black;
             rbDescending.ForeColor = Color.Black;

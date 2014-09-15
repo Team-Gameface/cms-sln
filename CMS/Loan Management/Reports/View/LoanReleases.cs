@@ -16,9 +16,15 @@ namespace CMS.Loan_Management.Reports.View
         {
             InitializeComponent();
             cbLoanTypesSort.Text = cbLoanTypesSort.Items[0].ToString();
-            rbNone.Checked = true;
 
         }
+
+        public void setReportDataSource(DataSet ds, DataSet dsCoop, String dateFrom, String dateTo)
+        {
+            LoanReleasesViewer loanReleasesViewer = new LoanReleasesViewer(ds, dsCoop, dateFrom, dateTo);
+            loanReleasesViewer.Show();
+        }
+
 
         public void populateLoanTypes(Dictionary<int, string> loanTypes)
         {
@@ -44,20 +50,6 @@ namespace CMS.Loan_Management.Reports.View
         {
 
             return dateTo.Value.ToString("yyyy-MM-dd");
-
-        }
-
-        public String getGroupBy()
-        {
-            
-            if (rbNone.Checked)
-                return "None";
-            else if (rbMember.Checked)
-                return "Member";
-            else if (rbLoanType.Checked)
-                return "Loan";
-            else
-                return String.Empty;
 
         }
 
@@ -109,12 +101,6 @@ namespace CMS.Loan_Management.Reports.View
             lblLoanTypes.ForeColor = Color.Red;
         }
 
-        public void errorLoanGroup()
-        {
-            grpGroupBy.ForeColor = Color.Red;
-
-        }
-
         public void errorLoanSortBy()
         {
             grpLoanTypesSort.ForeColor = Color.Red;
@@ -134,7 +120,6 @@ namespace CMS.Loan_Management.Reports.View
             lblTo.ForeColor = Color.Black;
             lblLoanTypes.ForeColor = Color.Black;
             grpLoanTypesSort.ForeColor = Color.Black;
-            grpGroupBy.ForeColor = Color.Black;
             rbLoanTypesAscending.ForeColor = Color.Black;
             rbLoanTypesDescending.ForeColor = Color.Black;
 

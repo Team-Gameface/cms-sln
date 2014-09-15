@@ -233,6 +233,22 @@ namespace CMS
             }
             return ds;
         }
+
+        public DataSet executeDataSet(String sql, String src)
+        {
+            try
+            {
+                cmd = new SqlCommand(sql, conn);
+                ds = new DataSet();
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(ds, src);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return ds;
+        }
         
         /**
          * The destructor closes the connection

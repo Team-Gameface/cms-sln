@@ -44,7 +44,7 @@ namespace CMS.Main.Controller
         Model.PaymentModel paymentModel;
         View.PaymentForm payment;
         MainController mainController;
-
+        Main.Logger logger = new Logger();
         Dictionary<int, string> fees = new Dictionary<int, string>();
 
         double totalPenalty = 0;
@@ -76,6 +76,20 @@ namespace CMS.Main.Controller
             this.payment.clearLoanFields();
         }
 
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Payment";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
+        }
 
 
         public void listOfFees()
@@ -518,7 +532,12 @@ namespace CMS.Main.Controller
 
                 if (this.paymentModel.insertPayment(paymentType, amount, accountNo, isFullyPaid, feeId) == 1)
                 {
+                    DataSet ds;
+                    ds = paymentModel.getReceiptDetails(this.paymentModel.ORNo);
+                    View.ReceiptViewer reciptViewer = new View.ReceiptViewer(ds, paymentModel.getCompanyProfile("dtLogo"));
+
                     MessageBox.Show("Transaction successful.", "Miscellaneous Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Processed Miscellaneous - OR# '" + this.paymentModel.ORNo + "'");
                     this.payment.classGridSearch(this.paymentModel.selectActiveMembershipUnpaid());
                     this.payment.totAmt = 0.00;
                     this.payment.clearLoanFields();
@@ -708,19 +727,31 @@ namespace CMS.Main.Controller
                 {
                     double excessAmount = this.payment.getAmortizationChange();
                     this.paymentModel.deductToNextAmortization(excessAmount, Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
+                    execLogger("Deducted next amortization from OR# '" + this.paymentModel.ORNo + "'");
+
                 }
 
                 if (this.payment.getAddToSavings() == true)
                 {
                     double excessAmount = this.payment.getAmortizationChange();
+                    execLogger("Added Svaings from OR# '" + this.paymentModel.ORNo + "'");
+
                 }
 
                 if (this.payment.getAddToShareCapital() == true)
                 {
                     double excessAmount = this.payment.getAmortizationChange();
+                    int result = this.paymentModel.insertContribution(accountNo, excessAmount);
+                    if (result > 0)
+                        execLogger("Added Share Capital from OR# '" + this.paymentModel.ORNo + "'");
+
                 }
+                DataSet ds;
+                ds = paymentModel.getReceiptDetails(this.paymentModel.ORNo);
+                View.ReceiptViewer receiptViewer = new View.ReceiptViewer(ds, paymentModel.getCompanyProfile("dtLogo"));
 
                 MessageBox.Show("Transaction successful.", "Amortization Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                execLogger("Processed Loan Payment - OR# '" + this.paymentModel.ORNo + "'");
                 this.payment.classGridLoanSearch(this.paymentModel.selectActiveMemberWithLoan());
                 this.payment.clearLoanFields();
                 totalPenalty = 0;

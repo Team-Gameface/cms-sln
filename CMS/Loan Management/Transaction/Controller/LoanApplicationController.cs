@@ -16,7 +16,7 @@ namespace CMS.Loan_Management.Transaction.Controller
         double loanBal = 0, totPen = 0;
         Transaction.Model.LoanApplicationModel loanApplicationModel;
         Transaction.View.LoanApplication loanApplication;
-
+        Main.Logger logger = new Main.Logger();
         Boolean isbtnDetailsPrevious = false;
         Boolean isAddEditCollateral = false;
         Boolean isAddEditComaker = false;
@@ -88,6 +88,22 @@ namespace CMS.Loan_Management.Transaction.Controller
             this.loanApplication.Show();
             this.loanApplication.clearSelectionActiveMember();
         }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Transaction - Loan Information";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
+        }
+
 
         public void loanBalInterestRateFunction() 
         {
@@ -1438,7 +1454,14 @@ namespace CMS.Loan_Management.Transaction.Controller
                 }
 
                 }
+
+                DataSet ds;
+                ds = this.loanApplicationModel.selectLoanDetails(this.loanApplicationModel.loanApplicationId);
+                View.VoucherViewer voucherViewer = new View.VoucherViewer(ds, this.loanApplicationModel.getCompanyProfile("dtLogo"), this.loanApplicationModel.selectCharges(this.loanApplicationModel.loanApplicationId,"dtCharges"));
+                MessageBox.Show("Charge: " + this.loanApplicationModel.selectCharges(this.loanApplicationModel.loanApplicationId, "dtCharges").Tables[0].Rows.Count.ToString());
                 MessageBox.Show("Loan processing successful", "LOAN INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                execLogger("Processed Loan for Account No. '" + finalAccountNo + "'");
                 this.loanApplication.disableFunction();
                 this.loanApplication.enableDataActiveMember();
                 this.loanApplication.clearSelectionActiveMember();

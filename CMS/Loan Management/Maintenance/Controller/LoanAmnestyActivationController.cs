@@ -14,7 +14,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
     {
         Maintenance.Model.LoanAmnestyActivationModel loanAmnestyModel;
         Maintenance.View.LoanAmnestyActivation loanAmnesty;
-
+        Main.Logger logger = new Main.Logger();
         Boolean isAdd = false;
 
         Dictionary<int, string> loanTypes = new Dictionary<int, string>();
@@ -33,6 +33,21 @@ namespace CMS.Loan_Management.Maintenance.Controller
             this.loanAmnesty.amnestyGrid(this.loanAmnestyModel.selectAmnesty());
             this.loanAmnesty.disableFunction();
             this.loanAmnesty.Show();
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Loan Amnesty Activation";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
 
         public void checkArchived(object sender, EventArgs e)
@@ -247,6 +262,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                 {
                     this.loanAmnestyModel.insertAmnesty(loanTypeId, dateFrom, dateTo, duration, durationStatus, waiveInterest, waivePenalty, status);
                     MessageBox.Show("Add Success.", "Activate Loan Amnesty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Activate");
                     isAdd = false;
                     if (this.loanAmnesty.checkArchivedState())
                     {
@@ -281,6 +297,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                 {
                     this.loanAmnestyModel.insertAmnesty(loanTypeId, dateFrom, dateTo, duration, durationStatus, waiveInterest, waivePenalty, status);
                     MessageBox.Show("Update Success.", "Activate Loan Amnesty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Update");
                     isAdd = false;
                     if (this.loanAmnesty.checkArchivedState())
                     {

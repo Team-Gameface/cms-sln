@@ -22,8 +22,6 @@ namespace CMS.Savings.Queries.Controller
             this.statementOfAccount.setBtnSearchEventHandler(this.btnSearch);
             this.statementOfAccount.setTxtAccountNoEventHandler(this.txtAccountNo);
             this.statementOfAccount.setTxtmemberNameEventHandler(this.txtMemberName);
-            this.statementOfAccount.setBtnPreviewEventHandler(this.btnPreview);
-            this.statementOfAccount.setBtnPassbookEventHandler(this.btnPassbook);
             this.statementOfAccount.MdiParent = savingsMenu;
             this.statementOfAccount.Show();
         

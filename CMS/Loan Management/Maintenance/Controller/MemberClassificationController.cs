@@ -14,7 +14,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
     {
         Maintenance.Model.MemberClassificationModel classificationModel;
         Maintenance.View.MemberClassification classification;
-
+        Main.Logger logger = new Main.Logger();
         int statusNo = 0;
         String oldName = String.Empty;
         String classificationName = String.Empty;
@@ -38,6 +38,20 @@ namespace CMS.Loan_Management.Maintenance.Controller
             this.classification.Show();
         }
 
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Delinquency Classifications";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
+        }
 
         
         public void clbMemberTypes() {
@@ -106,6 +120,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                         if (classificationModel.deleteClass(statusNo) == 1)
                         {
                             MessageBox.Show("Delete Success.", "Delinquency Classification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Delete '" + selectedData.Cells["Classification"].Value.ToString()+"'");
                             if (this.classification.checkArchivedState())
                             {
                                 this.classification.classGrid(this.classificationModel.selectAllClasses());
@@ -159,6 +174,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
             {
                 this.classificationModel.retrieveClass(this.statusNo);
                 MessageBox.Show("Retrieve Success.", "Delinquency Classification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                execLogger("Retrieve '" + classificationName + "'");
                 if (this.classification.checkArchivedState())
                 {
                     this.classification.classGrid(this.classificationModel.selectAllClasses());
@@ -364,6 +380,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     if (this.classificationModel.insertClass(classificationName, delValue, delUnit, delBasis, memberTypeNo, Status) != 0)
                     {
                         MessageBox.Show("Add Success.", "Delinquency Classification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Add '" + classificationName + "'");
                         if (this.classification.checkArchivedState())
                         {
                             this.classification.classGrid(this.classificationModel.selectAllClasses());
@@ -400,6 +417,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     if (this.classificationModel.updateClass(statusNo, classificationName, delValue, delUnit, delBasis, memberTypeNo, Status) != 0)
                     {
                         MessageBox.Show("Update Success.", "Delinquency Classification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Update '" + classificationName + "'");
                         statusNo = 0;
                         if (this.classification.checkArchivedState())
                         {

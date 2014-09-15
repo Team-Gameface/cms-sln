@@ -14,7 +14,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
     {
         Maintenance.Model.ScheduleOfFeesModel feesModel;
         Maintenance.View.ScheduleOfFees fees;
-
+        Main.Logger logger = new Main.Logger();
         int feeId = 0;
         Boolean isAdd = false;
         String oldName = String.Empty;
@@ -37,6 +37,21 @@ namespace CMS.Loan_Management.Maintenance.Controller
             this.fees.disableFunction();
             this.fees.MdiParent = loanManagementMenu;
             this.fees.Show();
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Miscellaneous Fee Schedule";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
 
         public void btnSearch(object args, EventArgs e)
@@ -151,6 +166,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
                         if (feesModel.deleteFee(feeId) == 1)
                         {
                             MessageBox.Show("Delete Success.", "Miscellaneous Fee Schedule", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Delete '" + selectedData.Cells["Description"].Value.ToString() + "'");
+
                             if (this.fees.checkArchivedState())
                             {
                                 this.fees.feeGrid(this.feesModel.selectAllFees());
@@ -274,6 +291,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     if (this.feesModel.insertFee(feeDesc, feeAmount, memberTypeNo, Status) != 0)
                     {
                         MessageBox.Show("Add Success.", "Miscellaneous Fee Schedule", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Add '" + feeDesc + "'");
+
                         if (this.fees.checkArchivedState())
                         {
                             this.fees.feeGrid(this.feesModel.selectAllFees());
@@ -312,6 +331,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     if (this.feesModel.updateFee(feeId, feeDesc, feeAmount, memberTypeNo, Status) != 0)
                     {
                         MessageBox.Show("Update Success.", "Miscellaneous Fee Schedule", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Update '" + feeDesc + "'");
+
                         if (this.fees.checkArchivedState())
                         {
                             this.fees.feeGrid(this.feesModel.selectAllFees());
@@ -380,6 +401,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
             {
                 this.feesModel.retrieveFee(feeId);
                 MessageBox.Show("Retrieve Success.", "Miscellaneous Fee Schedule", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                execLogger("Retrieve '" + feeDesc + "'");
+
                 if (this.fees.checkArchivedState())
                 {
                     this.fees.feeGrid(this.feesModel.selectAllFees());

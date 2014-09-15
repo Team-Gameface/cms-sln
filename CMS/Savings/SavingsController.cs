@@ -50,7 +50,6 @@ namespace CMS.Savings
             this.savingsMenu.setItemStatementOfAccountEventHandler(this.itemStatementOfAccount);
             //reports
             this.savingsMenu.setItemDailyTransactionLogEventHandler(this.itemDailyTransactionLog);
-            this.savingsMenu.setItemAgingTimeDepositsEventHandler(this.itemAgingTimeDeposits);
             this.savingsMenu.SavingsMenu_FormClosing(this.formClosing);
             this.savingsMenu.ShowDialog();
         }

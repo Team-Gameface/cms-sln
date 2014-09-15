@@ -26,6 +26,23 @@ namespace CMS.Loan_Management.Reports.View
 
         }
 
+        public void setReportDataSource(DataSet ds, DataSet dsCoop, String dateFrom, String dateTo, String type)
+        {
+            
+            switch (type)
+            {
+                case "Loan": LoanCollectionViewer loanCollectionViewer = new LoanCollectionViewer(ds, dsCoop, dateFrom, dateTo);
+                            loanCollectionViewer.Show();
+                             break;
+                case "Miscellaneous": FeeCollectionViewer feeCollectionViewer = new FeeCollectionViewer(ds, dsCoop, dateFrom, dateTo);
+                             feeCollectionViewer.Show();
+                             break;
+                case "Share": ShareCollectionViewer shareCollectionViewer = new ShareCollectionViewer(ds, dsCoop, dateFrom, dateTo);
+                             shareCollectionViewer.Show();
+                             break;
+            }
+        }
+
         private void cbDateTo_CheckedChanged(object sender, EventArgs e)
         {
             if (cbDateTo.Checked)
@@ -42,10 +59,7 @@ namespace CMS.Loan_Management.Reports.View
             {
                 rbLoanTypesAscending.Checked = false;
                 rbLoanTypesDescending.Checked = false;
-                cbAllLoanTypes.CheckState = CheckState.Unchecked;
                 cbLoanTypesSort.Text = cbLoanTypesSort.Items[0].ToString();
-                for (int i = 0; i < checkedListBoxLoanTypes.Items.Count; i++)
-                    checkedListBoxLoanTypes.SetItemChecked(i, false);
                 panelLoan.Visible = false;
             }
         }
@@ -58,10 +72,6 @@ namespace CMS.Loan_Management.Reports.View
             {
                 rbMiscFeesAscending.Checked = false;
                 rbMiscFeesDescending.Checked = false;
-                cbAllMiscFees.CheckState = CheckState.Unchecked;
-                cbMiscFeesSort.Text = cbMiscFeesSort.Items[0].ToString();
-                for (int i = 0; i < checkedListBoxMiscFees.Items.Count; i++)
-                    checkedListBoxMiscFees.SetItemChecked(i, false);
                 panelMiscFees.Visible = false;
             }
 
@@ -115,34 +125,6 @@ namespace CMS.Loan_Management.Reports.View
             else
                 return String.Empty;
 
-        }
-
-        public void populateLoanTypes(Dictionary<int, string> loanTypes)
-        {
-            foreach (String s in loanTypes.Values)
-            {
-                checkedListBoxLoanTypes.Items.Add(s);
-            }
-        }
-
-        public CheckedListBox.CheckedItemCollection getCheckedLoanTypes()
-        {
-
-            return checkedListBoxLoanTypes.CheckedItems;
-        }
-
-        public void populateMiscFees(Dictionary<int, string> miscFees)
-        {
-            foreach (String s in miscFees.Values)
-            {
-                checkedListBoxMiscFees.Items.Add(s);
-            }
-        }
-
-        public CheckedListBox.CheckedItemCollection getCheckedMiscFees()
-        {
-
-            return checkedListBoxMiscFees.CheckedItems;
         }
 
         public String getLoanSortBy()
@@ -208,26 +190,7 @@ namespace CMS.Loan_Management.Reports.View
 
         }
 
-        private void cbAllLoanTypes_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbAllLoanTypes.Checked)
-                for (int i = 0; i < checkedListBoxLoanTypes.Items.Count; i++)
-                    checkedListBoxLoanTypes.SetItemChecked(i, true);
-            else
-                for (int i = 0; i < checkedListBoxLoanTypes.Items.Count; i++)
-                    checkedListBoxLoanTypes.SetItemChecked(i, false);
-        }
-
-        private void cbAllMiscFees_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbAllMiscFees.Checked)
-                for (int i = 0; i < checkedListBoxMiscFees.Items.Count; i++)
-                    checkedListBoxMiscFees.SetItemChecked(i, true);
-            else
-                for (int i = 0; i < checkedListBoxMiscFees.Items.Count; i++)
-                    checkedListBoxMiscFees.SetItemChecked(i, false);
-        }
-
+       
         public void errorDateFrom()
         {
 
@@ -243,16 +206,6 @@ namespace CMS.Loan_Management.Reports.View
         public void errorTransType()
         {
             grpTransType.ForeColor = Color.Red;
-        }
-
-        public void errorLoanTypes()
-        {
-            lblLoanTypes.ForeColor = Color.Red;
-        }
-
-        public void errorMiscFees()
-        {
-            lblMiscFees.ForeColor = Color.Red;
         }
 
         public void errorLoanSortBy()
@@ -298,8 +251,6 @@ namespace CMS.Loan_Management.Reports.View
 
             lblFrom.ForeColor = Color.Black;
             cbDateTo.ForeColor = Color.Black;
-            lblLoanTypes.ForeColor = Color.Black;
-            lblMiscFees.ForeColor = Color.Black;
             grpShareSort.ForeColor = Color.Black;
             grpLoanTypesSort.ForeColor = Color.Black;
             grpMiscFeesSort.ForeColor = Color.Black;

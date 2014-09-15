@@ -517,7 +517,7 @@ namespace CMS.Main.View
 
         public double getTotalAmount() {
             String stotalAmount = this.txtTotalAmount.Text;
-            return double.Parse(stotalAmount.Substring(1));  
+            return double.Parse(stotalAmount.ToString(),NumberStyles.Currency);  
         }
 
 
@@ -615,7 +615,7 @@ namespace CMS.Main.View
                 {
                     double amountPaid = double.Parse(this.txtAmount.Text);
                     String stotalAmount = this.txtTotalAmount.Text;
-                    double totalAmount = double.Parse(stotalAmount.Substring(1));
+                    double totalAmount = double.Parse(stotalAmount.ToString(),NumberStyles.Currency);
                     
                     if (amountPaid >= totalAmount)
                     {
@@ -801,7 +801,7 @@ namespace CMS.Main.View
 
         public double getAmortizationChange() 
         {
-            return double.Parse(this.txtAMChange.Text.Substring(1));
+            return double.Parse(this.txtAMChange.Text,NumberStyles.Currency);
         }
 
         public double getAmountTendered() 

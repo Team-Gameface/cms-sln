@@ -13,7 +13,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
     {
         Maintenance.Model.MemberTypesModel memberTypesModel;
         Maintenance.View.MemberTypes memberTypes;
-
+        Main.Logger logger = new Main.Logger();
         int TypeNo = 0;
         String TypeName = String.Empty;
         String oldName = String.Empty;
@@ -34,6 +34,21 @@ namespace CMS.Loan_Management.Maintenance.Controller
             this.memberTypes.disableFunction();
             this.memberTypes.MdiParent = loanManagementMenu;
             this.memberTypes.Show();
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Member Types";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
 
         public void btnAdd(object args, EventArgs e)
@@ -71,6 +86,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                         if (memberTypesModel.deleteMemberTypes(TypeNo) > 0)
                         {
                             MessageBox.Show("Delete success!", "Member Types", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Delete '" + selectedData.Cells["Type Name"].Value.ToString() + "'");
                             if (this.memberTypes.checkArchivedState())
                             {
                                 this.memberTypes.memberTypeGrid(this.memberTypesModel.selectMemberTypesAll());
@@ -276,6 +292,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     if (this.memberTypesModel.insertMemberType(TypeName, ServiceLoan, ServiceSavings, ServiceShareCapital, MinAge, MaxAge, Status) != 0)
                     {
                         MessageBox.Show("Add success!", "Member Types", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Add '" + TypeName + "'");
                         if (this.memberTypes.checkArchivedState())
                         {
                             this.memberTypes.memberTypeGrid(this.memberTypesModel.selectMemberTypesAll());
@@ -313,6 +330,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     if (this.memberTypesModel.updateMemberType(TypeNo, TypeName, ServiceLoan, ServiceSavings, ServiceShareCapital, MinAge, MaxAge, Status) != 0 && !(insertError))
                     {
                         MessageBox.Show("Update success!", "Member Types", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Update '" + TypeName + "'");
                         if (this.memberTypes.checkArchivedState())
                         {
                             this.memberTypes.memberTypeGrid(this.memberTypesModel.selectMemberTypesAll());
@@ -385,6 +403,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
             {
                 this.memberTypesModel.retrieveMemberType(this.TypeNo);
                 MessageBox.Show("Retrieve success!", "Member Types", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                execLogger("Retrieve '" + TypeName + "'");
+
                 if (this.memberTypes.checkArchivedState())
                 {
                     this.memberTypes.memberTypeGrid(this.memberTypesModel.selectMemberTypesAll());

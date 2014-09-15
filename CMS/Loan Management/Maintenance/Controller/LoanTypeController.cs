@@ -14,7 +14,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
     {
         Maintenance.Model.LoanTypeModel loanAccountTypeModel;
         Maintenance.View.LoanTypes loanType;
-
+        Main.Logger logger = new Main.Logger();
         Boolean isAdd = false;
         int TypeId = 0;
         String nameCopy = String.Empty;
@@ -37,7 +37,20 @@ namespace CMS.Loan_Management.Maintenance.Controller
             this.loanType.MdiParent = loanMenu;
             this.loanType.Show();
         }
-
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Loan Types";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
+        }
 
         public void clbMemberTypes()
         {
@@ -165,6 +178,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                         if (this.loanAccountTypeModel.deleteLoanType(TypeId) > 0)
                         {
                             MessageBox.Show("Delete success!", "Loan Types", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Delete Loan Type '" + selectedData.Cells["Loan Type Name"].Value.ToString() + "'");
                             if (this.loanType.checkArchivedState())
                             {
                                 this.loanType.loanTypeGrid(this.loanAccountTypeModel.selectAllLoanTypes());
@@ -356,6 +370,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     if (countError==0 && this.loanAccountTypeModel.insertLoanType(memberTypeNo, Collateral, Status) == 1)
                     {
                         MessageBox.Show("Add success!", "Loan Types", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Add Loan Type '" + this.loanAccountTypeModel.Name + "'");
                         if (this.loanType.checkArchivedState())
                         {
                             this.loanType.loanTypeGrid(this.loanAccountTypeModel.selectAllLoanTypes());
@@ -392,6 +407,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     if (countError==0 && this.loanAccountTypeModel.updateLoanType(TypeId, memberTypeNo, Collateral, Status) == 1)
                     {
                         MessageBox.Show("Update Success.", "Loan Types", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Update Loan Type '" + this.loanAccountTypeModel.Name + "'");
                         if (this.loanType.checkArchivedState())
                         {
                             this.loanType.loanTypeGrid(this.loanAccountTypeModel.selectAllLoanTypes());
@@ -481,6 +497,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
             {
                 this.loanAccountTypeModel.retrieveLoanType(this.TypeId);
                 MessageBox.Show("Retrieve Success.", "Loan Penalty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                execLogger("Retrieve Loan Type '" + nameCopy + "'");
                 if (this.loanType.checkArchivedState())
                 {
                     this.loanType.loanTypeGrid(this.loanAccountTypeModel.selectAllLoanTypes());

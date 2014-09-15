@@ -13,6 +13,14 @@ namespace CMS.Loan_Management.Transaction.Model
 {
     class LoanApplicationModel
     {
+        public int loanApplicationId { get; set; }
+
+        public LoanApplicationModel(){
+
+            this.loanApplicationId = 0;
+    
+        }
+
         public double selectInterestByAccountNo(String accountNo)
         {
             try
@@ -23,6 +31,14 @@ namespace CMS.Loan_Management.Transaction.Model
                 return interest;
             }
             catch (Exception) { return 0; }
+        }
+
+        public DataSet getCompanyProfile(String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT TOP 1 CompanyName,AccreditationNo,CompanyAddress,CompanyLogo,Telephone,Cellphone,Email FROM COMPANY WHERE status = 1 ORDER BY dateCreated desc";
+            DataSet ds = dal.executeDataSet(sql, src);
+            return ds;
         }
 
         public double selectPenaltyByAccountNo(String accountNo)
@@ -236,6 +252,29 @@ namespace CMS.Loan_Management.Transaction.Model
             return ds;
 
         }
+
+        public DataSet selectLoanDetails(int LoanApplicationId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "Select li.DateCreated AS 'Date',li.AccountNo AS 'AccountNo',CONCAT(m.FirstName, ' ', m.MiddleName, ' ', m.LastName) AS 'Name', lt.LoanTypeName, CONCAT(PaymentDurationValue, ' ', PaymentDurationStatus) AS 'Duration', Terms, ApprovedAmount, LessCharges, LessLoanBalance, LessPenalties, LessInterest, NetLoanProceeds FROM LOAN_INFORMATION li INNER JOIN MEMBER m ON li.AccountNo = m.AccountNo INNER JOIN LOAN_TYPE lt ON lt.LoanTypeId = li.LoanTypeId WHERE li.LoanApplicationId = @loanApplicationId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@loanApplicationId", LoanApplicationId);
+            DataSet ds = dal.executeDataSet(sql, parameters);
+            return ds;
+
+        }
+
+        public DataSet selectCharges(int LoanApplicationId, String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "Select c.ChargeName AS 'ChargeName',c.Amount AS 'Amount' FROM CHARGES c INNER JOIN LOAN_TYPE_CHARGES ltc ON ltc.ChargeId = c.ChargeId INNER JOIN LOAN_INFORMATION li ON li.LoanTypeId = ltc.LoanTypeId WHERE li.LoanApplicationId = @loanApplicationId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@loanApplicationId", LoanApplicationId);
+            DataSet ds = dal.executeDataSet(sql, parameters,src);
+            return ds;
+
+        }
+
 
         public Boolean selectSavingsStatus(int memberTypeNo) 
         {
@@ -459,6 +498,7 @@ namespace CMS.Loan_Management.Transaction.Model
 
             String sql2 = "select max(LoanApplicationId) from Loan_Information";
             int loanApplicationId = Convert.ToInt32(dal.executeScalar(sql2));
+            this.loanApplicationId = loanApplicationId;
             return loanApplicationId;
 
         }

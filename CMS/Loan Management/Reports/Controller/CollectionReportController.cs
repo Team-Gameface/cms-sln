@@ -13,7 +13,7 @@ namespace CMS.Loan_Management.Reports.Controller
 
         Reports.Model.CollectionReportModel collectionReportModel;
         Reports.View.CollectionReport collectionReport;
-
+        Main.Logger logger = new Main.Logger();
         Dictionary<int, string> loanTypes = new Dictionary<int, string>();
         Dictionary<int, string> miscFees = new Dictionary<int, string>();
 
@@ -24,41 +24,25 @@ namespace CMS.Loan_Management.Reports.Controller
             this.collectionReport = collectionReport;
             this.collectionReport.MdiParent = loanMenu;
             this.collectionReport.setBtnPreviewEventHandler(this.btnPreview);
-            this.clbLoanTypes();
-            this.clbMiscFees();
             this.collectionReport.Show();
         }
 
-        public void clbLoanTypes() {
-
-            loanTypes.Clear();
-            DataTable ds = this.collectionReportModel.selectLoanTypes().Tables[0];
-            foreach (DataRow dr in ds.Rows)
-            {
-
-                loanTypes.Add(int.Parse(dr[0].ToString()), dr[1].ToString());
-
-            }
-            this.collectionReport.populateLoanTypes(loanTypes);
-        
-        
-        }
-
-        public void clbMiscFees()
+        public void execLogger(String ModuleActivity)
         {
-
-            miscFees.Clear();
-            DataTable ds = this.collectionReportModel.selectFees().Tables[0];
-            foreach (DataRow dr in ds.Rows)
+            logger.clear();
+            logger.Module = "Reports - Daily Transaction Log";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
             {
-
-                miscFees.Add(int.Parse(dr[0].ToString()), dr[1].ToString());
-
+                Console.WriteLine("Logged");
             }
-            this.collectionReport.populateMiscFees(miscFees);
-
-
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
+      
+        
 
         private void btnPreview(object sender, EventArgs e) {
 
@@ -77,18 +61,67 @@ namespace CMS.Loan_Management.Reports.Controller
             switch (this.collectionReportModel.transType) {
 
                 case "Loan": 
-                    this.collectionReportModel.checkedLoanTypes = this.collectionReport.getCheckedLoanTypes();
                     this.collectionReportModel.sortBy = this.collectionReport.getLoanSortBy();
+                    switch (this.collectionReport.getLoanSortBy()) {
+
+                        case "Transaction Time": this.collectionReportModel.sortBy = "p.PaymentDate";
+                                                 break;
+                        case "Member Account No": this.collectionReportModel.sortBy = "p.AccountNo";
+                                                 break;
+                        case "Member Name": this.collectionReportModel.sortBy = "CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName)";
+                                                 break;
+                        case "OR No": this.collectionReportModel.sortBy = "TransactionID";
+                                                 break;
+                        case "Loan Type": this.collectionReportModel.sortBy = "lt.LoanTypeName";
+                                                 break;
+                        default: this.collectionReportModel.sortBy = String.Empty;
+                                                 break;
+                    
+                    
+                    }
                     this.collectionReportModel.order = this.collectionReport.getLoanOrder();
                     break;
 
                 case "Miscellaneous": 
-                    this.collectionReportModel.checkedMiscFees = this.collectionReport.getCheckedMiscFees();
                     this.collectionReportModel.sortBy = this.collectionReport.getMiscFeesSortBy();
+                    MessageBox.Show(this.collectionReportModel.sortBy);
+                    switch (this.collectionReport.getMiscFeesSortBy())
+                    {
+
+                        case "Transaction Time": this.collectionReportModel.sortBy = "p.PaymentDate";
+                            break;
+                        case "Member Account No": this.collectionReportModel.sortBy = "p.AccountNo";
+                            break;
+                        case "Member Name": this.collectionReportModel.sortBy = "CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName)";
+                            break;
+                        case "OR No": this.collectionReportModel.sortBy = "TransactionID";
+                            break;
+                        case "Description": this.collectionReportModel.sortBy = "f.Description";
+                            break;
+                        default: this.collectionReportModel.sortBy = String.Empty;
+                            break;
+
+
+                    }
                     this.collectionReportModel.order = this.collectionReport.getMiscFeesOrder();
                     break;
                 case "Share": 
                     this.collectionReportModel.sortBy = this.collectionReport.getShareSortBy();
+                    switch (this.collectionReport.getShareSortBy())
+                    {
+
+                        case "Transaction Time": this.collectionReportModel.sortBy = "DateOfTransaction";
+                            break;
+                        case "Member Account No": this.collectionReportModel.sortBy = "accountNo";
+                            break;
+                        case "Member Name": this.collectionReportModel.sortBy = "CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName)";
+                            break;
+                        case "OR No": this.collectionReportModel.sortBy = "TransactionId";
+                            break;
+                        default: this.collectionReportModel.sortBy = String.Empty;
+                            break;
+
+                    }
                     this.collectionReportModel.order = this.collectionReport.getShareOrder();
                     break;
                              
@@ -118,8 +151,6 @@ namespace CMS.Loan_Management.Reports.Controller
             switch (this.collectionReportModel.transType) {
 
                 case "Loan": 
-                    if (collectionReportModel.checkedLoanTypes.Count == 0)
-                    { collectionReport.errorLoanTypes(); hasError = 1; errors += "- Please check at least one loan type." + Environment.NewLine; }
                     if (collectionReportModel.sortBy == String.Empty)
                     { collectionReport.errorLoanSortBy(); hasError = 1; errors += "- Please select field to sort." + Environment.NewLine; }
                     if (collectionReportModel.order == String.Empty)
@@ -127,8 +158,6 @@ namespace CMS.Loan_Management.Reports.Controller
                     break;
 
                 case "Miscellaneous":
-                    if (collectionReportModel.checkedMiscFees.Count == 0)
-                    { collectionReport.errorMiscFees(); hasError = 1; errors += "- Please check at least one miscellaneous fee." + Environment.NewLine; }
                     if (collectionReportModel.sortBy == String.Empty)
                     { collectionReport.errorMiscFeesSortBy(); hasError = 1; errors += "- Please select field to sort." + Environment.NewLine; }
                     if (collectionReportModel.order == String.Empty)
@@ -147,7 +176,40 @@ namespace CMS.Loan_Management.Reports.Controller
             }
 
             if (hasError == 0)
+            {
                 MessageBox.Show(collectionReportModel.dateFrom + " " + collectionReportModel.dateTo + collectionReportModel.transType + " " + collectionReportModel.sortBy + " " + collectionReportModel.order);
+                DataSet ds = null;
+                DataSet dsCoop = collectionReportModel.getCompanyProfile("dtLogo");
+                switch (this.collectionReportModel.transType)
+                {
+                    case "Loan": 
+                       
+                        if (collectionReport.getDateToChecked())
+                            ds = this.collectionReportModel.selectLoanCollections(this.collectionReportModel.dateFrom, this.collectionReportModel.dateTo, this.collectionReportModel.sortBy, this.collectionReportModel.order, "dtLoanCol");
+                        else
+                            ds = this.collectionReportModel.selectLoanCollections(this.collectionReportModel.dateFrom, this.collectionReportModel.sortBy, this.collectionReportModel.order, "dtLoanCol");
+                        break;
+             
+                    case "Miscellaneous":
+                         if (collectionReport.getDateToChecked())
+                             ds = this.collectionReportModel.selectFeeCollections(this.collectionReportModel.dateFrom, this.collectionReportModel.dateTo, this.collectionReportModel.sortBy, this.collectionReportModel.order, "dtFeeCol");
+                        else
+                             ds = this.collectionReportModel.selectFeeCollections(this.collectionReportModel.dateFrom, this.collectionReportModel.sortBy, this.collectionReportModel.order, "dtFeeCol");
+                        break;
+                    case "Share":
+                         if (collectionReport.getDateToChecked())
+                             ds = this.collectionReportModel.selectShareCollections(this.collectionReportModel.dateFrom, this.collectionReportModel.dateTo, this.collectionReportModel.sortBy, this.collectionReportModel.order, "dtShareCol");
+                        else
+                             ds = this.collectionReportModel.selectShareCollections(this.collectionReportModel.dateFrom, this.collectionReportModel.sortBy, this.collectionReportModel.order, "dtShareCol");
+                        break;
+                    default:
+                        break;
+
+                }
+
+                collectionReport.setReportDataSource(ds, dsCoop, collectionReportModel.dateFrom, collectionReportModel.dateTo, collectionReportModel.transType);
+                execLogger("Generated Report");
+            }
             else
                 MessageBox.Show("Errors had been found." + Environment.NewLine + errors);
             

@@ -1,6 +1,6 @@
 ﻿namespace CMS.Savings.Reports.View
 {
-    partial class DailyTransactionLogViewer
+    partial class LoanReportViewer
     {
         /// <summary>
         /// Required designer variable.

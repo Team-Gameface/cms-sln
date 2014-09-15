@@ -88,16 +88,6 @@ namespace CMS.Loan_Management
             this.itemPaymentHistory.Click += e;
         }
 
-        public void setMemberInformationEventHandler(EventHandler e)
-        {
-            this.itemMemberInformation.Click += e;
-        }
-
-        public void setMemberStatisticsEventHandler(EventHandler e)
-        {
-            this.itemMemberStatistics.Click += e;
-        }
-
         public void setLoanReleasesEventHandler(EventHandler e)
         {
             this.itemLoanReleases.Click += e;
@@ -122,6 +112,11 @@ namespace CMS.Loan_Management
         {
             this.Dispose();
             new Main.Controller.MainController(new Main.View.CMSDashboard());
+        }
+
+        private void itemMemberInformation_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

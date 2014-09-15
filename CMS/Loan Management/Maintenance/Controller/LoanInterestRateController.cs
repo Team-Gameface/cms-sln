@@ -11,7 +11,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
     {
         Maintenance.Model.LoanInterestRateModel interestModel;
         Maintenance.View.LoanInterestRate interestRate;
-
+        Main.Logger logger = new Main.Logger();
         Boolean isAdd = false;
         int TypeId = 0;
 
@@ -30,6 +30,21 @@ namespace CMS.Loan_Management.Maintenance.Controller
             this.interestRate.MdiParent = loanMenu;
             isAdd = false;
             this.interestRate.Show();
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Loan Interest Rates";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
 
         public void checkArchived(object sender, EventArgs e)
@@ -225,6 +240,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     {
                         this.interestModel.insertInterestRate();
                         MessageBox.Show("Add success.", "Loan Interest Rates", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Add for Loan Type ID '" + this.interestModel.LoanTypeId + "'");
                         if (this.interestRate.checkArchivedState())
                         {
                             this.interestRate.loanGrid(this.interestModel.selectAllInterestRates());
@@ -288,6 +304,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     {
                         this.interestModel.insertInterestRate();
                         MessageBox.Show("Update success!", "Loan Interest Rates", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Update for Loan Type ID '" + this.interestModel.LoanTypeId + "'");
                         if (this.interestRate.checkArchivedState())
                         {
                             this.interestRate.loanGrid(this.interestModel.selectAllInterestRates());

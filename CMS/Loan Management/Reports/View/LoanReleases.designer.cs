@@ -42,13 +42,8 @@
             this.rbLoanTypesDescending = new System.Windows.Forms.RadioButton();
             this.rbLoanTypesAscending = new System.Windows.Forms.RadioButton();
             this.cbAllLoanTypes = new System.Windows.Forms.CheckBox();
-            this.grpGroupBy = new System.Windows.Forms.GroupBox();
-            this.rbNone = new System.Windows.Forms.RadioButton();
-            this.rbMember = new System.Windows.Forms.RadioButton();
-            this.rbLoanType = new System.Windows.Forms.RadioButton();
             this.grpDatesTransaction.SuspendLayout();
             this.grpLoanTypesSort.SuspendLayout();
-            this.grpGroupBy.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -149,7 +144,7 @@
             this.grpLoanTypesSort.Controls.Add(this.rbLoanTypesDescending);
             this.grpLoanTypesSort.Controls.Add(this.rbLoanTypesAscending);
             this.grpLoanTypesSort.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.grpLoanTypesSort.Location = new System.Drawing.Point(18, 371);
+            this.grpLoanTypesSort.Location = new System.Drawing.Point(18, 354);
             this.grpLoanTypesSort.Name = "grpLoanTypesSort";
             this.grpLoanTypesSort.Size = new System.Drawing.Size(334, 83);
             this.grpLoanTypesSort.TabIndex = 36;
@@ -162,11 +157,11 @@
             this.cbLoanTypesSort.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbLoanTypesSort.FormattingEnabled = true;
             this.cbLoanTypesSort.Items.AddRange(new object[] {
-            "Transaction Time",
+            "Approval Date",
             "Member Account No",
             "Member Name",
             "Loan Type",
-            "OR Number"});
+            "Cash Voucher Number"});
             this.cbLoanTypesSort.Location = new System.Drawing.Point(11, 24);
             this.cbLoanTypesSort.Name = "cbLoanTypesSort";
             this.cbLoanTypesSort.Size = new System.Drawing.Size(200, 25);
@@ -206,52 +201,6 @@
             this.cbAllLoanTypes.UseVisualStyleBackColor = true;
             this.cbAllLoanTypes.CheckedChanged += new System.EventHandler(this.cbAllLoanTypes_CheckedChanged);
             // 
-            // grpGroupBy
-            // 
-            this.grpGroupBy.Controls.Add(this.rbNone);
-            this.grpGroupBy.Controls.Add(this.rbMember);
-            this.grpGroupBy.Controls.Add(this.rbLoanType);
-            this.grpGroupBy.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.grpGroupBy.Location = new System.Drawing.Point(18, 322);
-            this.grpGroupBy.Name = "grpGroupBy";
-            this.grpGroupBy.Size = new System.Drawing.Size(334, 43);
-            this.grpGroupBy.TabIndex = 36;
-            this.grpGroupBy.TabStop = false;
-            this.grpGroupBy.Text = "Group by:";
-            // 
-            // rbNone
-            // 
-            this.rbNone.AutoSize = true;
-            this.rbNone.Location = new System.Drawing.Point(79, 14);
-            this.rbNone.Name = "rbNone";
-            this.rbNone.Size = new System.Drawing.Size(60, 23);
-            this.rbNone.TabIndex = 26;
-            this.rbNone.TabStop = true;
-            this.rbNone.Text = "None";
-            this.rbNone.UseVisualStyleBackColor = true;
-            // 
-            // rbMember
-            // 
-            this.rbMember.AutoSize = true;
-            this.rbMember.Location = new System.Drawing.Point(153, 14);
-            this.rbMember.Name = "rbMember";
-            this.rbMember.Size = new System.Drawing.Size(79, 23);
-            this.rbMember.TabIndex = 26;
-            this.rbMember.TabStop = true;
-            this.rbMember.Text = "Member";
-            this.rbMember.UseVisualStyleBackColor = true;
-            // 
-            // rbLoanType
-            // 
-            this.rbLoanType.AutoSize = true;
-            this.rbLoanType.Location = new System.Drawing.Point(238, 14);
-            this.rbLoanType.Name = "rbLoanType";
-            this.rbLoanType.Size = new System.Drawing.Size(90, 23);
-            this.rbLoanType.TabIndex = 26;
-            this.rbLoanType.TabStop = true;
-            this.rbLoanType.Text = "Loan Type";
-            this.rbLoanType.UseVisualStyleBackColor = true;
-            // 
             // LoanReleases
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -259,7 +208,6 @@
             this.ClientSize = new System.Drawing.Size(367, 495);
             this.Controls.Add(this.lblLoanTypes);
             this.Controls.Add(this.checkedListBoxLoanTypes);
-            this.Controls.Add(this.grpGroupBy);
             this.Controls.Add(this.grpLoanTypesSort);
             this.Controls.Add(this.cbAllLoanTypes);
             this.Controls.Add(this.grpDatesTransaction);
@@ -271,8 +219,6 @@
             this.grpDatesTransaction.PerformLayout();
             this.grpLoanTypesSort.ResumeLayout(false);
             this.grpLoanTypesSort.PerformLayout();
-            this.grpGroupBy.ResumeLayout(false);
-            this.grpGroupBy.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,9 +240,5 @@
         private System.Windows.Forms.RadioButton rbLoanTypesDescending;
         private System.Windows.Forms.RadioButton rbLoanTypesAscending;
         private System.Windows.Forms.CheckBox cbAllLoanTypes;
-        private System.Windows.Forms.GroupBox grpGroupBy;
-        private System.Windows.Forms.RadioButton rbNone;
-        private System.Windows.Forms.RadioButton rbMember;
-        private System.Windows.Forms.RadioButton rbLoanType;
     }
 }

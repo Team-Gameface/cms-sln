@@ -38,8 +38,10 @@ namespace CMS.Main.Model
 
         public int checkEmpty = 0;
         public double amountPaid = 0.00;
+        public int ORNo { get; set; }
         public PaymentModel() { 
         
+             ORNo = 0;
         
         }
 
@@ -65,6 +67,14 @@ namespace CMS.Main.Model
                 return penalty;
             }
             catch (Exception) { return 0; }
+        }
+
+        public DataSet getCompanyProfile(String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT TOP 1 CompanyName,AccreditationNo,CompanyAddress,CompanyLogo,Telephone,Cellphone,Email FROM COMPANY WHERE status = 1 ORDER BY dateCreated desc";
+            DataSet ds = dal.executeDataSet(sql, src);
+            return ds;
         }
 
         public int selectAmortizationId(int applicationId, String duedate) 
@@ -347,69 +357,43 @@ namespace CMS.Main.Model
             return ds;
         }
 
-        public int insertPayment(String paymentType, double amount, String accountNo, int isFullyPaid, ArrayList feeId) {
+        public DataSet getReceiptDetails(int ORNo)
+        {
 
-            int id = 0;
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC insertPayment @PaymentType, @AmountPaid, @AccountNo, @isFullyPaid";
+            String sql = "EXEC getReceiptDetails @ORNo";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@ORNo", ORNo);
+            DataSet ds = dal.executeDataSet(sql, parameters);
+            return ds;
+        }
+
+        public int insertPayment(String paymentType, double amount, String accountNo, int isFullyPaid, ArrayList feeId)
+        {
+
+            int id = -1;
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "EXEC insertPayment @PaymentType, @AmountPaid, @AccountNo, @isFullyPaid; SELECT @@IDENTITY";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@PaymentType", paymentType);
             parameters.Add("@AmountPaid", amount);
             parameters.Add("@AccountNo", accountNo);
             parameters.Add("@isFullyPaid", isFullyPaid);
-            int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            id = Convert.ToInt32(dal.executeScalar(sql, parameters));
+            ORNo = id;
 
-            if (isFullyPaid == 1) {
+
+            if (isFullyPaid == 1)
+            {
                 String sqlUpdate = "Update Payment set isFullyPaid=1 where AccountNo=@AccountNo";
                 Dictionary<String, Object> parametersUpdate = new Dictionary<string, object>();
-                parametersUpdate.Add("@AccountNo",accountNo);
+                parametersUpdate.Add("@AccountNo", accountNo);
                 int resultUpdate = Convert.ToInt32(dal.executeNonQuery(sqlUpdate, parametersUpdate));
             }
-
-
-            SqlConnection con = null;
-            string ConnectionString = ConfigurationManager.ConnectionStrings["CMS"].ConnectionString;
-            con = new SqlConnection(ConnectionString);
-            con.Open();
-
-
-            SqlCommand command = new SqlCommand("Select ORNo from Payment where Amount=@Amount and AccountNo=@AccountNo ");
-            command.Connection = con;
-
-            command.Parameters.Add(
-                    new SqlParameter(
-                    "@Amount", // The name of the parameter to map
-                    System.Data.SqlDbType.VarChar, // SqlDbType values
-                    50, // The width of the parameter
-                    "Amount"));  // The name of the source column
-
-            command.Parameters.Add(
-                    new SqlParameter(
-                    "@AccountNo", // The name of the parameter to map
-                    System.Data.SqlDbType.VarChar, // SqlDbType values
-                    50, // The width of the parameter
-                    "AccountNo"));  // The name of the source column
-
-            // Fill the parameter with the value retrieved
-            // from the text field
-            command.Parameters["@Amount"].Value = amount;
-            command.Parameters["@AccountNo"].Value = accountNo;
-
-            SqlDataReader dr = command.ExecuteReader();
-            dr.Read();
-            id = dr.GetInt32(0);
-
-
-
             int resultFinal = 0;
 
 
-
-
-
-
-
-            if (result == 1)
+            if (id != -1)
             {
                 foreach (int i in feeId)
                 {
@@ -422,17 +406,9 @@ namespace CMS.Main.Model
 
             }
             else return 0;
-
-
-
-
-
-
-
             return resultFinal;
-        
-        }
 
+        }
         public double selectLastInterest(int applicationId) 
         {
             try
@@ -723,6 +699,7 @@ namespace CMS.Main.Model
 
             String selectMaxOR = "Select max(ORNo) from PAYMENT";
             int ORNo = Convert.ToInt32(dal.executeScalar(selectMaxOR));
+            this.ORNo = ORNo;
 
             String sql2 = "Update LOAN_AMORTIZATION set isPaid = "+"'"+isFullyPaid+"' where AmortizationId =" +"'"+amortizationId+"'";
             dal.executeScalar(sql2);
@@ -744,6 +721,18 @@ namespace CMS.Main.Model
             }
 
             return ORNo;
+
+        }
+
+        public int insertContribution(String accountNo, Double amount)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "EXEC insertContribution @accountNo, @amount";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@AccountNo", accountNo);
+            parameters.Add("@amount", amount);
+            int result = dal.executeNonQuery(sql, parameters);
+            return result;
 
         }
 

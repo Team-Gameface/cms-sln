@@ -15,7 +15,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
     {
         Maintenance.Model.PenaltiesModel penaltiesModel;
         Maintenance.View.Penalties penalties;
-
+        Main.Logger logger = new Main.Logger();
         String nameCopy = String.Empty;
         int penaltyId = 0;
         Boolean isAdd = false;
@@ -37,6 +37,21 @@ namespace CMS.Loan_Management.Maintenance.Controller
             this.penalties.disableFunction();
             this.penalties.MdiParent = loanMenu;
             this.penalties.Show();
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Maintenance - Loan Penalties";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
 
         public void btnSearch(object args, EventArgs e)
@@ -160,6 +175,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
                 {
                     this.penaltiesModel.retrievePenalty(this.penaltyId);
                     MessageBox.Show("Retrieve success!", "Loan Penalties", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Retrieve '" + nameCopy + "'");
+
                 }
                 else
                 {
@@ -232,6 +249,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
                         if (penaltiesModel.deletePenalties(penaltyId) == 1)
                         {
                             MessageBox.Show("Delete success!", "Loan Penalties", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            execLogger("Delete '" + selectedData.Cells["Penalty Name"].Value.ToString() + "'");
+
                             if (this.penalties.checkArchivedState())
                             {
                                 this.penalties.requirementGrid(this.penaltiesModel.selectAllPenalties());
@@ -451,6 +470,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
                 if (countError==0 && this.penaltiesModel.insertPenalties(chargeName, gracePeriod, amount, amountStatus, deduction, durationStatus, durationValue, loanTypeNo, Status) != 0)
                 {
                     MessageBox.Show("Add success!", "Loan Penalties", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Add '" + chargeName + "'");
+
                     if (this.penalties.checkArchivedState())
                     {
                         this.penalties.requirementGrid(this.penaltiesModel.selectAllPenalties());
@@ -486,6 +507,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
                 if (countError==0 && this.penaltiesModel.updatePenalties(penaltyId, chargeName, gracePeriod, amount, amountStatus, deduction, durationStatus, durationValue, loanTypeNo, Status) != 0)
                 {
                     MessageBox.Show("Update success!", "Loan Penalties", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Update '" + chargeName + "'");
+
                     if (this.penalties.checkArchivedState())
                     {
                         this.penalties.requirementGrid(this.penaltiesModel.selectAllPenalties());

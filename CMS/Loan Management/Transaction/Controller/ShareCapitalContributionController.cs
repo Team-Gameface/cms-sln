@@ -16,7 +16,7 @@ namespace CMS.Loan_Management.Transaction.Controller
 
         Loan_Management.Transaction.View.ShareCapitalContribution shareCapitalContribution;
         Loan_Management.Transaction.Model.ShareCapitalContributionModel shareModel;
-
+        Main.Logger logger = new Main.Logger();
 
         public ShareCapitalContributionController(Loan_Management.Transaction.Model.ShareCapitalContributionModel shareModel, Loan_Management.Transaction.View.ShareCapitalContribution shareCapitalContribution, Loan_Management.LoanManagementMenu loanMenu)
         {
@@ -32,6 +32,22 @@ namespace CMS.Loan_Management.Transaction.Controller
             this.shareCapitalContribution.clearAllFields();
             this.shareCapitalContribution.Show();
         }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Transaction - Share Capital Contribution";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
+        }
+
 
         public void btnSearch(object sender, EventArgs e) 
         {
@@ -85,11 +101,13 @@ namespace CMS.Loan_Management.Transaction.Controller
                 insertError = true;
                 MessageBox.Show("Please enter an amount.", "Share Capital Contribution", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+
             }
             if (!insertError)
                 if (this.shareModel.insertContribution() == 1) {
 
                 MessageBox.Show("Transaction Successful!", "Share Capital Contribution", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                execLogger("Processed for Account No. '" + this.shareModel.accountNo + "'");
                 this.shareCapitalContribution.shareGrid(this.shareModel.selectMembers());
                 this.shareCapitalContribution.clearAllFields();
                 }

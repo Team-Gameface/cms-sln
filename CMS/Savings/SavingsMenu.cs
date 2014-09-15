@@ -64,11 +64,7 @@ namespace CMS.Savings
             this.itemDailyTransactionLog.Click += e;
         }
 
-        public void setItemAgingTimeDepositsEventHandler(EventHandler e)
-        {
-            this.itemAgingTimeDeposits.Click += e;
-        }
-
+     
         public void setItemStatementOfAccountEventHandler(EventHandler e)
         {
             this.itemStatementOfAccount.Click += e;

@@ -120,7 +120,7 @@ namespace CMS.Loan_Management.Transaction.View
 
 
             //tpApproval-start
-
+            this.txtChargeList.Clear();
             this.clbCharges.Items.Clear();
             this.txtMaturityDate.Clear();
             this.txtAmount.Text = "0.00";
@@ -130,7 +130,6 @@ namespace CMS.Loan_Management.Transaction.View
             this.txtInterestRate.Text = "0.00";
             this.txtNetLoan.Text = "0.00";
             this.rtbLoanBalDetails.Clear();
-            this.chbLoanBalance.Checked = false;
 
             //tpApproval-end
            
@@ -895,10 +894,12 @@ namespace CMS.Loan_Management.Transaction.View
         public void addItemsAtCharges(Dictionary<int, string> charges)
         {
             this.clbCharges.Items.Clear();
+            this.txtChargeList.Clear();
 
             foreach (String s in charges.Values)
             {
                 this.clbCharges.Items.Add(s);
+                this.setChargeList(s);
             }
         }
 
@@ -907,15 +908,14 @@ namespace CMS.Loan_Management.Transaction.View
             return this.clbCharges.CheckedItems;
         }
 
-        public void clbCharges_MouseUp(MouseEventHandler e)
+        public void checkAllCheckBox() 
         {
-            clbCharges.MouseUp += e;
+            for (int i = 0; i < this.clbCharges.Items.Count; i++)
+            {
+                this.clbCharges.SetItemChecked(i, true);
+            }
         }
 
-        public void clbCharges_KeyPressed(KeyPressEventHandler e) 
-        {
-            clbCharges.KeyPress += e;
-        }
 
         //check/list box end
 
@@ -1527,12 +1527,6 @@ namespace CMS.Loan_Management.Transaction.View
             catch (Exception) { return 0; }
         }
 
-        public Boolean getIfLoanBalanceIsChecked()
-        {
-            if (chbLoanBalance.Checked == true) { return true; }
-            else return false;
-        }
-
         public void setPenalty(double d)
         {
             this.txtPenalty.Text = d.ToString("N", CultureInfo.InvariantCulture);
@@ -1581,6 +1575,12 @@ namespace CMS.Loan_Management.Transaction.View
         {
             this.rtbLoanBalDetails.AppendText(s);
             this.rtbLoanBalDetails.AppendText(Environment.NewLine);
+        }
+
+        public void setChargeList(String s)
+        {
+            this.txtChargeList.AppendText(s);
+            this.txtChargeList.AppendText(Environment.NewLine);
         }
 
         public Boolean getIfPenaltyListIsEmpty(String s)
@@ -1691,16 +1691,6 @@ namespace CMS.Loan_Management.Transaction.View
             
         }
 
-        public void chbLoanBalance_CheckChanged(EventHandler e) 
-        {
-            this.chbLoanBalance.CheckedChanged += e;
-        }
-
-        public Boolean getLoanBalanceStatus() 
-        {
-            if (this.chbLoanBalance.Checked == true) { return true; }
-            else { return false; }
-        }
     }
 
 

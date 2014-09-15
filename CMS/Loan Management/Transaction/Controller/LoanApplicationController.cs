@@ -13,6 +13,7 @@ namespace CMS.Loan_Management.Transaction.Controller
 {
     class LoanApplicationController
     {
+        double loanBal = 0, totPen = 0;
         Transaction.Model.LoanApplicationModel loanApplicationModel;
         Transaction.View.LoanApplication loanApplication;
 
@@ -29,6 +30,7 @@ namespace CMS.Loan_Management.Transaction.Controller
 
         String finalAccountNo = String.Empty;
         int finalMemberType = 0;
+        int loanAppId = 0;
 
         String accountNo = String.Empty;
         String memberName = String.Empty;
@@ -73,8 +75,6 @@ namespace CMS.Loan_Management.Transaction.Controller
             this.loanApplication.cbLoanType_SelectedIndexChanged(this.loanTypeSelected);
             this.loanApplication.dataActiveMember_CellClick(this.showShareCapitalAndSavings);
             this.loanApplication.activeMemberGrid(this.loanApplicationModel.selectActiveMemberWithLoan());
-            this.loanApplication.clbCharges_MouseUp(addChargesMouseUp);
-            this.loanApplication.clbCharges_KeyPressed(addChargesKeyPressed);
             this.loanApplication.amount_TextChanged(addNetLoan);
             this.loanApplication.dateApproved_ValueChanged(setMaturityDate);
             this.loanApplication.udPaymentDuration_ValueChanged(durationAndTermsChanged);
@@ -82,7 +82,6 @@ namespace CMS.Loan_Management.Transaction.Controller
             this.loanApplication.cbTerms_SelectedIndexChanged(durationAndTermsChanged);
             this.loanApplication.txtLoanAmount_Leave(loanAmountLeave);
             this.loanApplication.txtAmount_TextChanged(txtAmountChange);
-            this.loanApplication.chbLoanBalance_CheckChanged(loanBalance);
             this.loanApplication.disableFunction();
             this.loanApplication.enableDataActiveMember();
             this.loanApplication.MdiParent = loanMenu;
@@ -94,9 +93,16 @@ namespace CMS.Loan_Management.Transaction.Controller
         {
             totalInterest = 0;
 
+
             Dictionary<String, int> listOfInterestDates = new Dictionary<String, int>();
             Dictionary<String, int> finalListOfInterestDates = new Dictionary<String, int>();
             int lappId = Convert.ToInt32(this.loanApplication.dataAmortization.Rows[0].Cells[4].Value);
+            double lastInterest = this.loanApplicationModel.selectLastInterest(lappId);
+
+            if (lastInterest != 0)
+            {
+                totalInterest += lastInterest;
+            }
             String maturityDate = this.loanApplicationModel.selectMaturityDate(lappId);
             String interestDate = (DateTime.Parse(maturityDate).AddDays(1)).ToString();
             String[] interest = this.loanApplicationModel.selectInterestPerLoanType(this.loanApplication.getTypeOfLoan()).Split(' ');
@@ -264,177 +270,220 @@ namespace CMS.Loan_Management.Transaction.Controller
         {
             double totalPenalty = 0;
             int noOfLoanBalance = 0;
-
-            if (this.loanApplication.getLoanBalanceStatus())
-            {
                 int loanApplicationId = this.loanApplicationModel.selectUnclearedLoan(finalAccountNo);
 
                 if (loanApplicationId > 0)
                 {
-                    
-                    String[] loanType = this.loanApplicationModel.selectUnclearedLoanType(loanApplicationId).Split(' ');
-                    int loanTypeId = Convert.ToInt32(loanType[0]);
-                    this.loanApplication.classGridAmortization(this.loanApplicationModel.selectAmortizations(finalAccountNo, loanTypeId));
-
-                    foreach (DataGridViewRow rows in this.loanApplication.dataAmortization.Rows)
+                    loanAppId = loanApplicationId;
+                    if (this.loanApplicationModel.selectIfLoanIsAmnestized(loanApplicationId))
                     {
-                        noOfLoanBalance++;
+                        this.loanApplication.setPenaltyList("Amnestied");
+                        String[] money = this.loanApplicationModel.selectCurrentLoanBalance(loanApplicationId).Split(' ');
+                        double penalty = double.Parse(money[0]);
+                        double interest = double.Parse(money[1]);
+                        double loanBalance = double.Parse(money[2]) - penalty - interest;
+                        loanBal += loanBalance;
+                        totPen += penalty;
+                        totalInterest += interest;
+                        this.loanApplication.setLoanBalance(loanBalance + interest);
+                        this.loanApplication.setPenalty(penalty);
+                        String[] loanType = this.loanApplicationModel.selectUnclearedLoanType(loanApplicationId).Split(' ');
+                        int loanTypeId = Convert.ToInt32(loanType[0]);
+                        this.loanApplication.classGridAmortization(this.loanApplicationModel.selectAmortizations(finalAccountNo, loanTypeId));
                     }
-                    double grantedLoanAmount = this.loanApplicationModel.selectGrantedLoanAmount(loanApplicationId);
-                    double remainingBalance = this.loanApplicationModel.selectRemainingBalance(loanApplicationId);
-                    String maturityDate = this.loanApplicationModel.selectMaturityDate(loanApplicationId);
-
-                    this.loanApplication.setPenaltyList("Loan Type: " + loanType[1]);
-                    this.loanApplication.setPenaltyList("Loan Amount: " + grantedLoanAmount);
-                    this.loanApplication.setPenaltyList("Maturity Date: " + maturityDate);
-                    this.loanApplication.setPenaltyList("No. of Amortizations: " + noOfLoanBalance);
-                    this.loanApplication.setPenaltyList("Remaining Balance: " + remainingBalance);
-                    this.loanApplication.setPenaltyList("");
-                    this.loanApplication.setPenaltyList("INTERESTS:");
-                    loanBalInterestRateFunction();
-                    this.loanApplication.setPenaltyList("");
-                    this.loanApplication.setPenaltyList("PENALTIES:");
-                    this.loanApplication.setPenaltyList("");
-
-
-                    foreach (DataGridViewRow rows in this.loanApplication.dataAmortization.Rows)
+                    else
                     {
-                        DataSet ds2 = this.loanApplicationModel.selectMonthlyAmortization(loanApplicationId);
-                        double monthlyAmortization = double.Parse(ds2.Tables[0].Rows[0][0].ToString());
-                        String loanDurationStatus = ds2.Tables[0].Rows[0][1].ToString();
-                        if (loanDurationStatus == "week/s") { monthlyAmortization *= 4; }
-                        else if (loanDurationStatus == "year/s") { monthlyAmortization /= 12; }
-
-                        String dueDate = rows.Cells[3].Value.ToString();
-                        double amortizationAmount = double.Parse(rows.Cells[2].Value.ToString());
-
-                        DataSet ds = this.loanApplicationModel.selectPenaltiesPerLoanType(loanTypeId);
-                        if (ds.Tables[0].Rows.Count == 0 || DateTime.Parse(dueDate) > DateTime.Now)
+                        try
                         {
-                            this.loanApplication.setPenalty(0);
-                            this.loanApplication.setPenaltyList("No penalties - Amortization #" + rows.Cells[1].Value.ToString());
-                        }
+                            String[] loanType = this.loanApplicationModel.selectUnclearedLoanType(loanApplicationId).Split(' ');
+                            int loanTypeId = Convert.ToInt32(loanType[0]);
+                            this.loanApplication.classGridAmortization(this.loanApplicationModel.selectAmortizations(finalAccountNo, loanTypeId));
 
-                        else
-                        {
-                            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+
+                            int lappId = Convert.ToInt32(this.loanApplication.dataAmortization.Rows[0].Cells[4].Value);
+
+                            foreach (DataGridViewRow rows in this.loanApplication.dataAmortization.Rows)
                             {
-                                double initialPenalty = 0;
-                                String finalDate = String.Empty;
-                                String penaltyName = ds.Tables[0].Rows[i][0].ToString();
-                                int gracePeriod = int.Parse(ds.Tables[0].Rows[i][1].ToString());
-                                double amount = double.Parse(ds.Tables[0].Rows[i][2].ToString());
-                                String amountStatus = ds.Tables[0].Rows[i][3].ToString();
-                                String deductTo = ds.Tables[0].Rows[i][4].ToString();
-                                int duration = int.Parse(ds.Tables[0].Rows[i][5].ToString());
-                                String durationStatus = ds.Tables[0].Rows[i][6].ToString();
+                                noOfLoanBalance++;
+                            }
+                            double grantedLoanAmount = this.loanApplicationModel.selectGrantedLoanAmount(loanApplicationId);
+                            double remainingBalance = this.loanApplicationModel.selectRemainingBalance(loanApplicationId);
+                            String maturityDate = this.loanApplicationModel.selectMaturityDate(loanApplicationId);
 
-                                if (durationStatus == "week/s") { duration = duration * 7; }
-                                //TimeSpan diffDate = DateTime.Now.Subtract(DateTime.Parse(dueDate));
-                                //int totalDays = (int)diffDate.TotalDays;
-                                //totalDays -= gracePeriod;
-                                String newDate = (DateTime.Parse(dueDate).AddDays(gracePeriod)).ToString();
-
-                                if (amountStatus == "%") { amount = amount * 0.01; }
-
-                                finalDate = DateTime.Parse(newDate).AddDays(1).ToString();
-
-                                if (deductTo == "monthly amortization")
-                                {
-                                    if (durationStatus == "month/s")
-                                    {
-                                        for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
-                                        {
-                                            initialPenalty = amount * monthlyAmortization;
-                                            totalPenalty += initialPenalty;
-                                            this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
-                                        }
-                                    }
-                                    else
-                                    {
-                                        for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
-                                        {
-                                            initialPenalty = amount * monthlyAmortization;
-                                            totalPenalty += initialPenalty;
-                                            this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
-                                        }
-                                    }
-                                }
-                                else if (deductTo == "remaining balance")
-                                {
-                                    if (durationStatus == "month/s")
-                                    {
-                                        for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
-                                        {
-                                            initialPenalty = amount * remainingBalance;
-                                            totalPenalty += initialPenalty;
-                                            this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
-                                        }
-                                    }
-                                    else
-                                    {
-                                        for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
-                                        {
-                                            initialPenalty = amount * remainingBalance;
-                                            totalPenalty += initialPenalty;
-                                            this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
-                                        }
-                                    }
-                                }
-                                else if (deductTo == "granted loan amount")
-                                {
-                                    if (durationStatus == "month/s")
-                                    {
-                                        for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
-                                        {
-                                            initialPenalty = amount * grantedLoanAmount;
-                                            totalPenalty += initialPenalty;
-                                            this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
-                                        }
-                                    }
-                                    else
-                                    {
-                                        for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
-                                        {
-                                            initialPenalty = amount * grantedLoanAmount;
-                                            totalPenalty += initialPenalty;
-                                            this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
-                                        }
-                                    }
-                                }
-
-                                else if (deductTo == String.Empty)
-                                {
-                                    if (durationStatus == "month/s")
-                                    {
-                                        for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
-                                        {
-                                            initialPenalty = amount;
-                                            totalPenalty += initialPenalty;
-                                            this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
-                                        }
-                                    }
-                                    else
-                                    {
-                                        for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
-                                        {
-                                            initialPenalty = amount;
-                                            totalPenalty += initialPenalty;
-                                            this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
-                                        }
-                                    }
-                                }
-                            }//end for loop
-
-                            if (this.loanApplication.getIfPenaltyListIsEmpty("Amortization #" + rows.Cells[1].Value.ToString()))
+                            this.loanApplication.setPenaltyList("Loan Type: " + loanType[1]);
+                            this.loanApplication.setPenaltyList("Loan Amount: " + grantedLoanAmount);
+                            this.loanApplication.setPenaltyList("Maturity Date: " + maturityDate);
+                            this.loanApplication.setPenaltyList("No. of Amortizations: " + noOfLoanBalance);
+                            this.loanApplication.setPenaltyList("Remaining Balance: " + remainingBalance);
+                            this.loanApplication.setPenaltyList("");
+                            this.loanApplication.setPenaltyList("INTERESTS:");
+                            loanBalInterestRateFunction();
+                            this.loanApplication.setPenaltyList("");
+                            this.loanApplication.setPenaltyList("PENALTIES:");
+                            this.loanApplication.setPenaltyList("");
+                            double lastPenalty = this.loanApplicationModel.selectLastPenalty(lappId);
+                            if (lastPenalty != 0)
                             {
-                                this.loanApplication.setPenaltyList("No penalties - Amortization #" + rows.Cells[1].Value.ToString());
+                                DataSet penaltySet = this.loanApplicationModel.selectAmortizationWithPenalty(lappId);
+                                for (int i = 0; i < penaltySet.Tables[0].Rows.Count; i++)
+                                {
+                                    int amoId = Convert.ToInt32(penaltySet.Tables[0].Rows[i][0]);
+                                    double penalty = this.loanApplicationModel.selectAmortizationPenalty(amoId);
+                                }
+
+                                totalPenalty += lastPenalty;
                             }
 
-                        }//end else
+                            foreach (DataGridViewRow rows in this.loanApplication.dataAmortization.Rows)
+                            {
+                                DataSet ds2 = this.loanApplicationModel.selectMonthlyAmortization(loanApplicationId);
+                                double monthlyAmortization = double.Parse(ds2.Tables[0].Rows[0][0].ToString());
+                                String loanDurationStatus = ds2.Tables[0].Rows[0][1].ToString();
+                                if (loanDurationStatus == "week/s") { monthlyAmortization *= 4; }
+                                else if (loanDurationStatus == "year/s") { monthlyAmortization /= 12; }
 
-                        this.loanApplication.setPenalty(totalPenalty);
-                        this.loanApplication.setLoanBalance(remainingBalance+totalInterest);
+                                String dueDate = rows.Cells[3].Value.ToString();
+                                double amortizationAmount = double.Parse(rows.Cells[2].Value.ToString());
+
+                                DataSet ds = this.loanApplicationModel.selectPenaltiesPerLoanType(loanTypeId);
+                                if (ds.Tables[0].Rows.Count == 0 || DateTime.Parse(dueDate) > DateTime.Now)
+                                {
+                                    this.loanApplication.setPenalty(0);
+                                    this.loanApplication.setPenaltyList("No penalties - Amortization #" + rows.Cells[1].Value.ToString());
+                                }
+
+                                else
+                                {
+
+                                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                                    {
+                                        double initialPenalty = 0;
+                                        String finalDate = String.Empty;
+                                        String penaltyName = ds.Tables[0].Rows[i][0].ToString();
+                                        int gracePeriod = int.Parse(ds.Tables[0].Rows[i][1].ToString());
+                                        double amount = double.Parse(ds.Tables[0].Rows[i][2].ToString());
+                                        String amountStatus = ds.Tables[0].Rows[i][3].ToString();
+                                        String deductTo = ds.Tables[0].Rows[i][4].ToString();
+                                        int duration = int.Parse(ds.Tables[0].Rows[i][5].ToString());
+                                        String durationStatus = ds.Tables[0].Rows[i][6].ToString();
+
+                                        if (durationStatus == "week/s") { duration = duration * 7; }
+                                        //TimeSpan diffDate = DateTime.Now.Subtract(DateTime.Parse(dueDate));
+                                        //int totalDays = (int)diffDate.TotalDays;
+                                        //totalDays -= gracePeriod;
+                                        String newDate = (DateTime.Parse(dueDate).AddDays(gracePeriod)).ToString();
+
+                                        if (amountStatus == "%") { amount = amount * 0.01; }
+
+                                        finalDate = DateTime.Parse(newDate).AddDays(1).ToString();
+
+                                        if (deductTo == "monthly amortization")
+                                        {
+                                            if (durationStatus == "month/s")
+                                            {
+                                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
+                                                {
+                                                    initialPenalty = amount * monthlyAmortization;
+                                                    totalPenalty += initialPenalty;
+                                                    this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
+                                                }
+                                            }
+                                            else
+                                            {
+                                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
+                                                {
+                                                    initialPenalty = amount * monthlyAmortization;
+                                                    totalPenalty += initialPenalty;
+                                                    this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
+                                                }
+                                            }
+                                        }
+                                        else if (deductTo == "remaining balance")
+                                        {
+                                            if (durationStatus == "month/s")
+                                            {
+                                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
+                                                {
+                                                    initialPenalty = amount * remainingBalance;
+                                                    totalPenalty += initialPenalty;
+                                                    this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
+                                                }
+                                            }
+                                            else
+                                            {
+                                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
+                                                {
+                                                    initialPenalty = amount * remainingBalance;
+                                                    totalPenalty += initialPenalty;
+                                                    this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
+                                                }
+                                            }
+                                        }
+                                        else if (deductTo == "granted loan amount")
+                                        {
+                                            if (durationStatus == "month/s")
+                                            {
+                                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
+                                                {
+                                                    initialPenalty = amount * grantedLoanAmount;
+                                                    totalPenalty += initialPenalty;
+                                                    this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
+                                                }
+                                            }
+                                            else
+                                            {
+                                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
+                                                {
+                                                    initialPenalty = amount * grantedLoanAmount;
+                                                    totalPenalty += initialPenalty;
+                                                    this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
+                                                }
+                                            }
+                                        }
+
+                                        else if (deductTo == String.Empty)
+                                        {
+                                            if (durationStatus == "month/s")
+                                            {
+                                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
+                                                {
+                                                    initialPenalty = amount;
+                                                    totalPenalty += initialPenalty;
+                                                    this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
+                                                }
+                                            }
+                                            else
+                                            {
+                                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
+                                                {
+                                                    initialPenalty = amount;
+                                                    totalPenalty += initialPenalty;
+                                                    this.loanApplication.setPenaltyList(penaltyName + ": " + a + "- Php" + initialPenalty + " - Amortization #" + rows.Cells[1].Value.ToString());
+                                                }
+                                            }
+                                        }
+                                    }//end for loop
+
+                                    if (this.loanApplication.getIfPenaltyListIsEmpty("Amortization #" + rows.Cells[1].Value.ToString()))
+                                    {
+                                        this.loanApplication.setPenaltyList("No penalties - Amortization #" + rows.Cells[1].Value.ToString());
+                                    }
+
+                                }//end else
+
+                                this.loanApplication.setPenalty(totalPenalty);
+                                this.loanApplication.setLoanBalance(remainingBalance + totalInterest);
+                            }
+                            totPen += totalPenalty;
+                            loanBal += remainingBalance;
+                        }
+                        catch (Exception) 
+                        {
+                            this.loanApplication.setPenalty(totalPenalty += this.loanApplicationModel.selectPenaltyByAccountNo(this.finalAccountNo));
+                            totPen += totalPenalty;
+                            totalInterest += this.loanApplicationModel.selectInterestByAccountNo(this.finalAccountNo);
+                            this.loanApplication.setLoanBalance(totalInterest);
+                        }
                     }
                 }
 
@@ -442,19 +491,6 @@ namespace CMS.Loan_Management.Transaction.Controller
                 {
                     this.loanApplication.setPenaltyList("No loan balance.");
                 }
-            }
-            else
-            {
-                this.loanApplication.clearPenaltyList();
-                this.loanApplication.dataAmortization.DataSource = null;
-                this.loanApplication.setLoanBalance(0);
-                this.loanApplication.setPenalty(0);
-            }
-        }
-
-        public void loanBalance(object sender, EventArgs e) 
-        {
-            loanBalanceFunc();
         }
 
         public void txtAmountChange(object sender, EventArgs e) 
@@ -639,19 +675,6 @@ namespace CMS.Loan_Management.Transaction.Controller
             this.loanApplication.setNetLoan(netLoan);
         }
 
-        public void addChargesKeyPressed(object sender, KeyPressEventArgs e) 
-        {
-            if (e.KeyChar == ' ') 
-            {
-                addChargesFunc();
-            }
-        }
-
-        public void addChargesMouseUp(object sender, MouseEventArgs e)
-        {
-            addChargesFunc();
-        }
-
         public void showShareCapitalAndSavings(object args, DataGridViewCellEventArgs e) 
         {
             if (e.RowIndex >= 0)
@@ -820,6 +843,7 @@ namespace CMS.Loan_Management.Transaction.Controller
                         noOfComakers = 0;
 
                         finalAccountNo = String.Empty;
+                        loanAppId = 0;
                         finalMemberType = 0;
 
                         accountNo = String.Empty;
@@ -881,7 +905,9 @@ namespace CMS.Loan_Management.Transaction.Controller
 
             if(countError == 0)
             {
-
+                loanBalanceFunc();
+                this.loanApplication.checkAllCheckBox();
+                addChargesFunc();
                 if (isCollateral == 1)
                 {
                     this.loanApplication.btnDetailsNextFunc();
@@ -1201,6 +1227,7 @@ namespace CMS.Loan_Management.Transaction.Controller
                 noOfComakers = 0;
 
                 finalAccountNo = String.Empty;
+                loanAppId = 0;
                 finalMemberType = 0;
 
                 accountNo = String.Empty;
@@ -1307,9 +1334,13 @@ namespace CMS.Loan_Management.Transaction.Controller
                 String dateApproved = this.loanApplication.getDateOfApproval().ToString();
                 String dateMaturity = this.loanApplication.getMaturityDate();
                 String dateFiled = this.loanApplication.getDateOfFiling();
+                double lessCharges = this.loanApplication.getCharges();
+                double lessLoanBalance = this.loanApplication.getLoanBalance();
+                double lessPenalties = this.loanApplication.getPenalty();
+                double lessInterest = this.loanApplication.getInterestRate();
 
 
-                loanApplicationId = this.loanApplicationModel.insertLoanApplication(finalAccountNo, loanTypeId, purpose, paymentDurationStatus, paymentDurationValue, terms, loanAmount, approvedAmount, dateFiled, dateApproved, dateMaturity, netLoan);
+                loanApplicationId = this.loanApplicationModel.insertLoanApplication(finalAccountNo, loanTypeId, purpose, paymentDurationStatus, paymentDurationValue, terms, loanAmount, approvedAmount, dateFiled, dateApproved, dateMaturity, lessCharges, lessLoanBalance, lessPenalties, lessInterest, netLoan);
 
                     //loanAmortization
                 DateTime dueDate = this.loanApplication.getDateOfApproval();
@@ -1373,8 +1404,40 @@ namespace CMS.Loan_Management.Transaction.Controller
 
                 //insert comaker end
 
+                if(this.loanApplication.getLoanBalance()!=0){
+                if (this.loanApplication.getIfPenaltyListIsEmpty("Amnestied") == false)
+                {
+                    int ORNo = 0;
+                    int rowCount = this.loanApplication.dataAmortization.Rows.Count - 1;
+                    foreach (DataGridViewRow rows in this.loanApplication.dataAmortization.Rows)
+                    {
+                        if (rows.Index == rowCount) { this.loanApplicationModel.insertLoanPayment("Loan", finalAccountNo, Convert.ToInt32(rows.Cells[4].Value), loanBal, totalInterest, totPen, rows.Cells[3].Value.ToString(), false, 1, 0); }
+                        else { ORNo = this.loanApplicationModel.insertLoanPayment("Loan", finalAccountNo, Convert.ToInt32(rows.Cells[4].Value), loanBal, totalInterest, totPen, rows.Cells[3].Value.ToString(), false, 1, 1); }
+                        this.loanApplicationModel.insertAmortizationPayment(ORNo, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString(), double.Parse(rows.Cells[2].Value.ToString()));
+                    }
+                }
+                else
+                {
+                    int ORNo = 0;
+                    Boolean check = false;
+                    if (this.loanApplication.dataAmortization.Rows.Count ==0)
+                    {
+                        this.loanApplicationModel.insertRemainingPayment("Loan", loanAppId,finalAccountNo, totPen, totalInterest, false, 1);
+                        this.loanApplicationModel.clearLoan(loanAppId);
+                    }
 
+                    else
+                    {
+                        foreach (DataGridViewRow rows in this.loanApplication.dataAmortization.Rows)
+                        {
+                                if (!check) { ORNo = this.loanApplicationModel.insertLoanPayment("Loan", finalAccountNo, Convert.ToInt32(rows.Cells[4].Value), loanBal, totalInterest, totPen, rows.Cells[3].Value.ToString(), false, 1, 0); check = true; }
+                                    else { this.loanApplicationModel.insertLoanPayment("Loan", finalAccountNo, Convert.ToInt32(rows.Cells[4].Value), loanBal, totalInterest, totPen, rows.Cells[3].Value.ToString(), false, 1, 1); }
+                                    this.loanApplicationModel.insertAmortizationPayment(ORNo, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString(), Convert.ToDouble(rows.Cells[2].Value));                            
+                        }
+                    }
+                }
 
+                }
                 MessageBox.Show("Loan processing successful", "LOAN INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.loanApplication.disableFunction();
                 this.loanApplication.enableDataActiveMember();
@@ -1391,6 +1454,7 @@ namespace CMS.Loan_Management.Transaction.Controller
                 noOfComakers = 0;
 
                 finalAccountNo = String.Empty;
+                loanAppId = 0;
                 finalMemberType = 0;
 
                 accountNo = String.Empty;

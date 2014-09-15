@@ -16,6 +16,7 @@ namespace CMS.Main.View
         public double totAmt = 0.00;
         Model.PaymentModel paymentModel = new Model.PaymentModel();
 
+        double totalLoan = 0, totalInterest = 0, totalPenalty = 0;
         public PaymentForm()
         {
             InitializeComponent();
@@ -49,6 +50,25 @@ namespace CMS.Main.View
 
         public void clearLoanFields()
         {
+            this.setTotalLoanBalance(0);
+            this.setTotalPenalties(0);
+            this.setTotalInterest(0);
+            this.setSLTotalLoanBalance(0);
+            this.setSLTotalPenalties(0);
+            this.setSLTotalInterest(0);
+            this.lblTLB.Visible = true;
+            this.lblSL.Visible = true;
+            this.lblTotalLoanBalance.Visible = true;
+            this.lblSLTotalLoanBalance.Visible = true;
+            this.lblTP.Visible = true;
+            this.lblTotalPenalties.Visible = true;
+            this.lblSLTotalPenalties.Visible = true;
+            this.lblTI.Visible = true;
+            this.lblTotalInterest.Visible = true;
+            this.lblSLTotalInterest.Visible = true;
+            this.lblNTLB.Visible = true;
+            this.lblNetTotalLoanBalance.Visible = true;
+            this.lblSLNetTotalLoanBalance.Visible = true;
             this.btnMoveAll.Enabled = false;
             this.btnMoveBackAll.Enabled = false;
             this.btnMoveBackSelected.Enabled = false;
@@ -86,6 +106,13 @@ namespace CMS.Main.View
             this.chbPayAll.Checked = false;
             this.chbPayAll.Enabled = true;
             this.chbDeductToNext.Enabled = false;
+            this.rbAddToSavings.Enabled = false;
+            this.rbAddToShareCapital.Enabled = false;
+            this.rbNone.Enabled = false;
+            this.chbDeductToNext.Checked = false;
+            this.rbAddToSavings.Checked = false;
+            this.rbAddToShareCapital.Checked = false;
+            this.rbNone.Checked = false;
         }
 
         public void clearTendered() 
@@ -104,6 +131,19 @@ namespace CMS.Main.View
                 groupMembership.Show();
                 groupLoan.Hide();
                 groupUnpaidLoans.Hide();
+                this.lblSL.Visible = false;
+                this.lblTLB.Visible = false;
+                this.lblTotalLoanBalance.Visible = false;
+                this.lblTP.Visible = false;
+                this.lblTotalPenalties.Visible = false;
+                this.lblTI.Visible = false;
+                this.lblTotalInterest.Visible = false;
+                this.lblNTLB.Visible = false;
+                this.lblNetTotalLoanBalance.Visible = false;
+                this.lblSLTotalLoanBalance.Visible = false;
+                this.lblSLTotalPenalties.Visible = false;
+                this.lblSLTotalInterest.Visible = false;
+                this.lblSLNetTotalLoanBalance.Visible = false;
                 this.classGridSearch(this.paymentModel.selectActiveMembershipUnpaid());
                 if (this.paymentModel.checkEmpty != 0) this.noRowsSelected();
             }
@@ -204,7 +244,12 @@ namespace CMS.Main.View
             this.dataAmortization.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dataAmortization.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dataAmortization.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.dataAmortization.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dataAmortization.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;             
+        }
+
+        public void classGridAmortization2(DataSet ds)
+        {
+            this.dataAmortization2.DataSource = ds.Tables[0];
         }
 
         public DataGridViewRow getSelected()
@@ -427,6 +472,42 @@ namespace CMS.Main.View
 
         }
 
+        public void setSLTotalLoanBalance(double d)
+        {
+            this.lblSLTotalLoanBalance.Text = d.ToString("N", CultureInfo.InvariantCulture);
+        }
+
+        public void setTotalPenalties(double d)
+        {
+            this.lblTotalPenalties.Text = d.ToString("N", CultureInfo.InvariantCulture);
+        }
+
+        public void setSLTotalPenalties(double d)
+        {
+            this.lblSLTotalPenalties.Text = d.ToString("N", CultureInfo.InvariantCulture);
+        }
+
+        public void setTotalInterest(double d)
+        {
+            this.lblTotalInterest.Text = d.ToString("N", CultureInfo.InvariantCulture);
+        }
+
+        public void setSLTotalInterest(double d)
+        {
+            this.lblSLTotalInterest.Text = d.ToString("N", CultureInfo.InvariantCulture);
+        }
+
+        public void setNetTotalLoanBalance(double d)
+        {
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.lblNetTotalLoanBalance.Text = d.ToString("c", ph);
+        }
+
+        public void setSLNetTotalLoanBalance(double d)
+        {
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.lblSLNetTotalLoanBalance.Text = d.ToString("c", ph);
+        }
 
         public void setTotalAmount(double totalAmount)
         {
@@ -638,6 +719,22 @@ namespace CMS.Main.View
             this.txtPenaltyList.AppendText(Environment.NewLine);
         }
 
+        public double getAmountPenaltyList(int i) 
+        {
+            double amount = 0;
+            String[] penaltyList = this.txtPenaltyList.Lines;
+            for (int line = 0; line < penaltyList.Count(); line++) 
+            {
+                if (penaltyList[line].Contains("Amortization #"+i)) 
+                {
+                    String[] lineSplit = penaltyList[line].Split(' ');
+                    amount += double.Parse(lineSplit[4]);
+                }
+            }
+
+            return amount;
+        }
+
         public void clearPenaltyList() 
         {
             this.txtPenaltyList.Text = String.Empty;
@@ -655,12 +752,24 @@ namespace CMS.Main.View
             else return false;
         }
 
+        public Boolean getAddToSavings()
+        {
+            if (this.rbAddToSavings.Checked == true) { return true; }
+            else return false;
+        }
+
+        public Boolean getAddToShareCapital()
+        {
+            if (this.rbAddToShareCapital.Checked == true) { return true; }
+            else return false;
+        }
+
 
         public void setLoanAmortizationAmount(double d) 
         {
             double d1 = this.getLoanAmortizationAmount();
             d1 += d;
-            this.txtAmountDue.Text = d1.ToString();
+            this.txtAmountDue.Text = d1.ToString("N", CultureInfo.InvariantCulture);
         }
 
         public void resetLoanAmortizationAmount() 
@@ -678,7 +787,7 @@ namespace CMS.Main.View
 
         public void setPenalty(double d) 
         {
-            this.txtPenalty.Text = d.ToString();
+            this.txtPenalty.Text = d.ToString("N", CultureInfo.InvariantCulture);
         }
 
         public double getPenalty() 
@@ -692,12 +801,17 @@ namespace CMS.Main.View
 
         public double getAmortizationChange() 
         {
-            return double.Parse(this.txtAMChange.Text.Substring(3));
+            return double.Parse(this.txtAMChange.Text.Substring(1));
+        }
+
+        public double getAmountTendered() 
+        {
+            return double.Parse(this.txtAMAmountTendered.Text);
         }
 
         public void setInterest(double d)
         {
-            this.txtInterest.Text = d.ToString();
+            this.txtInterest.Text = d.ToString("N", CultureInfo.InvariantCulture);
         }
 
         public double getInterest()
@@ -720,7 +834,7 @@ namespace CMS.Main.View
 
         public void setTotalAmortization(double d) 
         {
-            this.txtTotalAmortization.Text = d.ToString();
+            this.txtTotalAmortization.Text = d.ToString("N", CultureInfo.InvariantCulture);
         }
 
         public void txtAmountDue_TextChanged(EventHandler e) 
@@ -743,12 +857,50 @@ namespace CMS.Main.View
         {
             if (e.RowIndex >= 0) 
             {
+                totalInterest = 0;
+                totalPenalty = 0;
                 int row = this.dataLoan.SelectedRows[0].Index;
                 this.addItemsAtTypeOfLoan(this.paymentModel.selectLoanType(this.dataLoan[0, row].Value.ToString()));
                 this.cbLoanType.Enabled = true;
                 this.cbLoanType.SelectedIndex = -1;
                 this.dataLoan.Enabled = false;
                 this.setCBLoanTypeSelectionChanged(this.getCBLoanTypeIndex);
+                DataGridViewRow selectedData = this.getSelectedLoan();
+                String accountNo = selectedData.Cells["Account No."].Value.ToString();
+
+                this.setTotalLoanBalance(this.paymentModel.selectTotalLoanBalance(accountNo));
+                DataSet ds = this.paymentModel.selectLoanType2(accountNo);
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    this.classGridAmortization2(this.paymentModel.selectAmortizations(accountNo, Convert.ToInt32(ds.Tables[0].Rows[i][0]), Convert.ToString(ds.Tables[0].Rows[i][1])));
+                    foreach (DataGridViewRow rows in this.dataAmortization2.Rows)
+                    {
+                        rows.Selected = true;
+                        (rows.Cells[0] as DataGridViewCheckBoxCell).Value = true;
+                        rows.Selected = false;
+                    }
+                    try
+                    {
+                        if (this.paymentModel.selectIfLoanIsAmnestized2(Convert.ToInt32(this.dataAmortization2.Rows[0].Cells[4].Value)) == true)
+                        {
+                            String[] penInt = this.paymentModel.selectCurrentLoanBalance(Convert.ToInt32(this.dataAmortization2.Rows[0].Cells[4].Value)).Split(' ');
+                            totalPenalty += Convert.ToDouble(penInt[0]);
+                            totalInterest += Convert.ToDouble(penInt[1]);
+                        }
+                        else
+                        {
+                            this.showPenaltiesAndInterests(Convert.ToInt32(ds.Tables[0].Rows[i][0]));
+                        }
+                    }
+                    catch (Exception) 
+                    {
+                        totalPenalty += this.paymentModel.selectPenaltyByAccountNo(accountNo);
+                        totalInterest += this.paymentModel.selectInterestByAccountNo(accountNo);
+                    }
+                    this.dataAmortization2.DataSource = null;
+                }
+                this.setTotalPenalties(totalPenalty);
+                this.setTotalInterest(totalInterest);
             }
         }
 
@@ -774,9 +926,9 @@ namespace CMS.Main.View
                 int cursorPosRight = tb.SelectionStart + tb.SelectionLength;
                 string result = tb.Text.Substring(0, cursorPosLeft) + e.KeyChar + tb.Text.Substring(cursorPosRight);
                 string[] parts = result.Split('.');
-                if (parts.Length > 1 || tb.TextLength > 5)
+                if (parts.Length > 1 || tb.TextLength > 9)
                 {
-                    if (parts[0].Length > 6 || parts[1].Length > 2 || parts.Length > 2)
+                    if (parts[0].Length > 10 || parts[1].Length > 2 || parts.Length > 2)
                     {
                         e.Handled = true;
                     }
@@ -822,14 +974,26 @@ namespace CMS.Main.View
                             CultureInfo ph = new CultureInfo("en-PH");
                             this.txtAMChange.Text = change.ToString("c", ph);
                             this.btnSave.Enabled = true;
-                            this.chbDeductToNext.Enabled = true;
+                            int i = this.dataAmortization.Rows.Count;
+                            if (amountPaid != totalAmount)
+                            {
+                                if (i != 0 && i!=1) { this.chbDeductToNext.Enabled = true; }
+                                this.rbAddToShareCapital.Enabled = true; this.rbAddToSavings.Enabled = true; this.rbNone.Enabled = true;
+                            }
                         }
                         else
                         {
-                            double change = 0.00;
-                            CultureInfo ph = new CultureInfo("en-PH");
-                            this.txtAMChange.Text = change.ToString("c", ph);
-                            this.btnSave.Enabled = true;
+                            if (this.getIfPenaltyListIsEmpty("Amnestied") == false) 
+                            {
+                                MessageBox.Show("Insufficient amount.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                double change = 0.00;
+                                CultureInfo ph = new CultureInfo("en-PH");
+                                this.txtAMChange.Text = change.ToString("c", ph);
+                                this.btnSave.Enabled = true;
+                            }
                         }
                     }
                     catch (FormatException) { MessageBox.Show("Please enter right amount.", "INVALID INPUT", MessageBoxButtons.OK, MessageBoxIcon.Error); this.txtAmount.Clear(); }
@@ -844,7 +1008,11 @@ namespace CMS.Main.View
 
 
         private void getCBLoanTypeIndex(object sender, EventArgs e) {
-
+            totalPenalty = 0;
+            totalInterest = 0;
+            this.setSLTotalLoanBalance(0);
+            this.setSLTotalInterest(0);
+            this.setSLTotalPenalties(0);
             this.dataAmortization.DataSource = null;
             this.txtAmountDue.Text = "0.00";
             this.txtPenalty.Text = "0.00";
@@ -859,15 +1027,81 @@ namespace CMS.Main.View
                 String[] isAmnestized = this.paymentModel.selectifLoanIsAmnestized(this.dataLoan[0, row].Value.ToString(), this.getTypeOfLoan(), this.getLoanMaturityDate()).Split(' ');
                 if (int.Parse(isAmnestized[0]) == 0)
                 {
-                    this.classGridAmortization(this.paymentModel.selectAmortizations(this.dataLoan[0, row].Value.ToString(), this.getTypeOfLoan(), this.getLoanMaturityDate()));
-                    this.clearSelectionDataAmortization();
-                    this.setPenaltyList("LOAN BALANCE: Php" + this.paymentModel.selectRemainingBalance(Convert.ToInt32(this.dataAmortization.Rows[0].Cells[4].Value)));
+                    try
+                    {
+                        this.classGridAmortization(this.paymentModel.selectAmortizations(this.dataLoan[0, row].Value.ToString(), this.getTypeOfLoan(), this.getLoanMaturityDate()));
+                        this.clearSelectionDataAmortization();
+                        this.setSLTotalLoanBalance(this.paymentModel.selectRemainingBalance(Convert.ToInt32(this.dataAmortization.Rows[0].Cells[4].Value)));
+                        this.classGridAmortization2(this.paymentModel.selectAmortizations(this.dataLoan[0, row].Value.ToString(), this.getTypeOfLoan(), this.getLoanMaturityDate()));
+                        foreach (DataGridViewRow rows in this.dataAmortization2.Rows)
+                        {
+                            rows.Selected = true;
+                            (rows.Cells[0] as DataGridViewCheckBoxCell).Value = true;
+                            rows.Selected = false;
+                        }
+                        try
+                        {
+                            if (this.paymentModel.selectIfLoanIsAmnestized2(Convert.ToInt32(this.dataAmortization2.Rows[0].Cells[4].Value)) == true)
+                            {
+                                String[] penInt = this.paymentModel.selectCurrentLoanBalance(Convert.ToInt32(this.dataAmortization2.Rows[0].Cells[4])).Split(' ');
+                                totalPenalty += Convert.ToDouble(penInt[0]);
+                                totalInterest += Convert.ToDouble(penInt[1]);
+                            }
+                            else
+                            {
+                                this.showPenaltiesAndInterests(this.getTypeOfLoan());
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            totalPenalty += this.paymentModel.selectPenaltyByAccountNo(this.dataLoan[0, row].Value.ToString());
+                            totalInterest += this.paymentModel.selectInterestByAccountNo(this.dataLoan[0, row].Value.ToString());
+                        }
+                        this.dataAmortization2.DataSource = null;
+                        this.setSLTotalInterest(totalInterest);
+                        this.setSLTotalPenalties(totalPenalty);
+                    }
+                    catch (Exception) 
+                    {
+                        DataGridViewRow selectedData = this.getSelectedLoan();
+                        String accountNo = selectedData.Cells["Account No."].Value.ToString();
+                        this.setSLTotalLoanBalance(this.paymentModel.selectRemainingBalanceWithout(accountNo, this.getLoanMaturityDate(), this.getTypeOfLoan()));
+                        this.setPenaltyList("");
+                        double lastPenalty = this.paymentModel.selectLastPenaltyWithoutApplicationId(accountNo, this.getTypeOfLoan(), this.getLoanMaturityDate());
+                        if (lastPenalty != 0)
+                        {
+                            this.setPenaltyList("PENALTIES:");
+                            DataSet penaltySet = this.paymentModel.selectAmortizationWithPenaltyWithoutApplicationId(accountNo, this.getTypeOfLoan(), this.getLoanMaturityDate());
+                            for (int ctr = 0; ctr < penaltySet.Tables[0].Rows.Count; ctr++)
+                            {
+                                int amoId = Convert.ToInt32(penaltySet.Tables[0].Rows[ctr][0]);
+                                double penalty = this.paymentModel.selectAmortizationPenalty(amoId);
+                                this.setPenaltyList("Amortization #" + amoId + " - Php " + penalty.ToString("N", CultureInfo.InvariantCulture));
+                            }
+                        }
+                        
+                        this.setPenalty(this.paymentModel.selectRemainingPenalties(accountNo, this.getTypeOfLoan(), this.getLoanMaturityDate()));
+                        this.setInterest(this.paymentModel.selectRemainingInterest(accountNo, this.getTypeOfLoan(), this.getLoanMaturityDate()));
+                        this.setSLTotalInterest(this.getInterest());
+                        this.setSLTotalPenalties(this.getPenalty());
+                    }
                 }
                 else
                 {
                     this.setPenaltyList("Amnestied");
                     this.chbPayAll.Enabled = false;
-                    this.setLoanAmortizationAmount(this.paymentModel.selectCurrentLoanBalance(int.Parse(isAmnestized[1])));
+                    String[] money = this.paymentModel.selectCurrentLoanBalance(int.Parse(isAmnestized[1])).Split(' ');
+                    double penalty = double.Parse(money[0]);
+                    double interest = double.Parse(money[1]);
+                    double loanBalance = double.Parse(money[2]) - penalty - interest;
+                    
+                    this.setSLTotalLoanBalance(loanBalance);
+                    this.setSLTotalInterest(interest);
+                    this.setSLTotalPenalties(penalty);
+
+                    this.setLoanAmortizationAmount(loanBalance);
+                    this.setInterest(interest);
+                    this.setPenalty(penalty);
 
                     this.classGridAmortization(this.paymentModel.selectAmortizations(this.dataLoan[0, row].Value.ToString(), this.getTypeOfLoan(), this.getLoanMaturityDate()));
                     this.clearSelectionDataAmortization();
@@ -884,6 +1118,12 @@ namespace CMS.Main.View
         private void dataAmortization_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             this.dataAmortization.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        public Boolean getPayAll() 
+        {
+            if (chbPayAll.Checked == true) { return true; }
+            else { return false; }
         }
 
         private void chbPayAll_CheckedChanged(object sender, EventArgs e)
@@ -924,6 +1164,385 @@ namespace CMS.Main.View
         public void setLinkClosePaymentEventHandler(EventHandler e)
         {
             this.linkClosePayments.Click += e;
+        }
+
+        public void setTotalLoanBalance(double d) 
+        {
+            this.lblTotalLoanBalance.Text = d.ToString("N",CultureInfo.InvariantCulture);
+        }
+
+        public void txtInterest_TextChanged(EventHandler e)
+        {
+            this.txtInterest.TextChanged += e;
+        }
+
+        private void lblTotalLoanBalance_TextChanged(object sender, EventArgs e)
+        {
+            double d1 = 0, d2 = 0, d3 = 0;
+            try
+            {
+               d1 = double.Parse(this.lblTotalLoanBalance.Text);
+            }
+            catch (Exception) { d1 = 0; }
+            try{
+
+                d2 = double.Parse(this.lblTotalPenalties.Text);
+            }
+            catch (Exception) { d2 = 0; }
+            try{
+                d3 = double.Parse(this.lblTotalInterest.Text);
+            }
+            catch (Exception) { d3 = 0; }
+
+            this.setNetTotalLoanBalance(d1+d2+d3);
+        }
+
+        private void lblSLTotalLoanBalance_TextChanged(object sender, EventArgs e)
+        {
+            double d1 = 0, d2 = 0, d3 = 0;
+            try
+            {
+                d1 = double.Parse(this.lblSLTotalLoanBalance.Text);
+            }
+            catch (Exception) { d1 = 0; }
+            try
+            {
+
+                d2 = double.Parse(this.lblSLTotalPenalties.Text);
+            }
+            catch (Exception) { d2 = 0; }
+            try
+            {
+                d3 = double.Parse(this.lblSLTotalInterest.Text);
+            }
+            catch (Exception) { d3 = 0; }
+
+            this.setSLNetTotalLoanBalance(d1 + d2 + d3);
+        }
+
+        
+        public void showPenaltiesAndInterests(int ltypeId) 
+        {
+            double lastInterest = this.paymentModel.selectLastInterest(Convert.ToInt32(this.dataAmortization2.Rows[0].Cells[4].Value));
+
+            if (lastInterest != 0)
+            {
+                totalInterest = lastInterest;
+            }
+
+
+                Dictionary<String, int> listOfInterestDates = new Dictionary<String, int>();
+                Dictionary<String, int> finalListOfInterestDates = new Dictionary<String, int>();
+                int lappId = Convert.ToInt32(this.dataAmortization2.Rows[0].Cells[4].Value);
+                String maturityDate = this.paymentModel.selectMaturityDate(lappId);
+                String interestDate = (DateTime.Parse(maturityDate).AddDays(1)).ToString();
+                String[] interest = this.paymentModel.selectInterestPerLoanType(ltypeId).Split(' ');
+
+                if (DateTime.Now > DateTime.Parse(maturityDate) && interest[0] != "")
+                {
+                    String interestRateStatus = interest[0];
+                    double interestRate = Convert.ToDouble(interest[1]);
+                    String per = interest[2];
+
+                    if (interestRateStatus == "%") { interestRate *= 0.01; }
+
+
+                    if (per == "month")
+                    {
+                        for (String a = interestDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(1)).ToString())
+                        {
+                            listOfInterestDates.Add(a, 0);
+                        }
+
+                        foreach (KeyValuePair<String, int> pair in listOfInterestDates)
+                        {
+                            String firstDate = DateTime.Parse(pair.Key).AddDays(-1).ToString();
+                            String secondDate = DateTime.Parse(pair.Key).AddMonths(1).ToString();
+                            int i = this.paymentModel.selectPaymentDatesWithInterestRates(lappId, firstDate, secondDate);
+
+                            if (i > 0)
+                            {
+                                finalListOfInterestDates.Add(pair.Key, 0);
+                            }
+                        }
+
+                        String last = String.Empty;
+                        try
+                        {
+                            last = finalListOfInterestDates.Keys.Last();
+                        }
+                        catch (Exception) { last = maturityDate; }
+                        foreach (KeyValuePair<String, int> pair in listOfInterestDates)
+                        {
+                            if (DateTime.Parse(pair.Key) > DateTime.Parse(last))
+                            {
+                                double finalInterest = 0;
+                                double grantedLoanAmount = this.paymentModel.selectGrantedLoanAmount(lappId);
+                                String[] paymentDur = this.paymentModel.selectPaymentDurationPerApplication(lappId).Split(' ');
+                                int pdValue = int.Parse(paymentDur[0]);
+                                String pdStatus = paymentDur[1];
+                                if (interestRateStatus == "%")
+                                {
+                                    if (pdStatus == "week/s")
+                                    {
+                                        finalInterest = grantedLoanAmount * ((interestRate / 4) * pdValue);
+                                    }
+                                    else if (pdStatus == "month/s")
+                                    {
+                                        finalInterest = grantedLoanAmount * interestRate * pdValue;
+                                    }
+                                    else if (pdStatus == "year/s")
+                                    {
+                                        finalInterest = grantedLoanAmount * interestRate * 12 * pdValue;
+                                    }
+                                }
+
+                                else if (interestRateStatus == "Php")
+                                {
+                                    if (pdStatus == "week/s")
+                                    {
+                                        finalInterest = (interestRate / 4) * pdValue;
+                                    }
+                                    else if (pdStatus == "month/s")
+                                    {
+                                        finalInterest = interestRate * pdValue;
+                                    }
+                                    else if (pdStatus == "year/s")
+                                    {
+                                        finalInterest = interestRate * 12 * pdValue;
+                                    }
+                                }
+                                totalInterest += finalInterest;
+                            }
+                        }
+
+                    }
+
+                    else if (per == "annum")
+                    {
+                        for (String a = interestDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddYears(1)).ToString())
+                        {
+                            listOfInterestDates.Add(a, 0);
+                        }
+
+                        foreach (KeyValuePair<String, int> pair in listOfInterestDates)
+                        {
+                            String firstDate = DateTime.Parse(pair.Key).AddDays(-1).ToString();
+                            String secondDate = DateTime.Parse(pair.Key).AddYears(1).ToString();
+                            int i = this.paymentModel.selectPaymentDatesWithInterestRates(lappId, firstDate, secondDate);
+
+                            if (i > 0)
+                            {
+                                finalListOfInterestDates.Add(pair.Key, 0);
+                            }
+                        }
+
+                        String last = String.Empty;
+                        try
+                        {
+                            last = finalListOfInterestDates.Keys.Last();
+                        }
+                        catch (Exception) { last = maturityDate; }
+                        foreach (KeyValuePair<String, int> pair in listOfInterestDates)
+                        {
+                            if (DateTime.Parse(pair.Key) > DateTime.Parse(last))
+                            {
+                                double finalInterest = 0;
+                                double grantedLoanAmount = this.paymentModel.selectGrantedLoanAmount(lappId);
+                                String[] paymentDur = this.paymentModel.selectPaymentDurationPerApplication(lappId).Split(' ');
+                                int pdValue = int.Parse(paymentDur[0]);
+                                String pdStatus = paymentDur[1];
+                                if (interestRateStatus == "%")
+                                {
+                                    if (pdStatus == "week/s")
+                                    {
+                                        finalInterest = grantedLoanAmount * ((interestRate / 52) * pdValue);
+                                    }
+                                    else if (pdStatus == "month/s")
+                                    {
+                                        finalInterest = grantedLoanAmount * ((interestRate / 12) * pdValue);
+                                    }
+                                    else if (pdStatus == "year/s")
+                                    {
+                                        finalInterest = grantedLoanAmount * interestRate * pdValue;
+                                    }
+                                }
+                                else if (interestRateStatus == "Php")
+                                {
+                                    if (pdStatus == "week/s")
+                                    {
+                                        finalInterest = (interestRate / 52) * pdValue;
+                                    }
+                                    else if (pdStatus == "month/s")
+                                    {
+                                        finalInterest = (interestRate / 12) * pdValue;
+                                    }
+                                    else if (pdStatus == "year/s")
+                                    {
+                                        finalInterest = interestRate * pdValue;
+                                    }
+                                }
+                                totalInterest += finalInterest;
+                            }
+                        }
+                    }
+                }
+            
+
+            int appId = Convert.ToInt32(this.dataAmortization2.Rows[0].Cells[4].Value);
+            double lastPenalty = this.paymentModel.selectLastPenalty(appId);
+            if (lastPenalty != 0)
+            {
+                DataSet penaltySet = this.paymentModel.selectAmortizationWithPenalty(appId);
+                for (int i = 0; i < penaltySet.Tables[0].Rows.Count; i++)
+                {
+                    int amoId = Convert.ToInt32(penaltySet.Tables[0].Rows[i][0]);
+                    double penalty = this.paymentModel.selectAmortizationPenalty(amoId);
+                }
+
+                totalPenalty += lastPenalty;
+            }
+
+            foreach (DataGridViewRow rows in this.dataAmortization2.Rows)
+            {
+                DataGridViewCheckBoxCell chk1 = rows.Cells[0] as DataGridViewCheckBoxCell;
+                if (Convert.ToBoolean(chk1.Value) == true)
+                {
+
+                    int loanApplicationId = Convert.ToInt32(rows.Cells[4].Value);
+                    DataSet ds2 = this.paymentModel.selectMonthlyAmortization(loanApplicationId);
+                    double monthlyAmortization = double.Parse(ds2.Tables[0].Rows[0][0].ToString());
+                    String loanDurationStatus = ds2.Tables[0].Rows[0][1].ToString();
+                    if (loanDurationStatus == "week/s") { monthlyAmortization *= 4; }
+                    else if (loanDurationStatus == "year/s") { monthlyAmortization /= 12; }
+                    double grantedLoanAmount = this.paymentModel.selectGrantedLoanAmount(loanApplicationId);
+                    double remainingBalance = this.paymentModel.selectRemainingBalance(loanApplicationId);
+                    String dueDate = rows.Cells[3].Value.ToString();
+
+                    double amortizationAmount = double.Parse(rows.Cells[2].Value.ToString());
+                    DataSet ds = this.paymentModel.selectPenaltiesPerLoanType(ltypeId);
+                    if (ds.Tables[0].Rows.Count == 0 || DateTime.Parse(dueDate) > DateTime.Now)
+                    {
+
+                    }
+
+                    else
+                    {
+                        double finalPenalty = 0;
+                        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                        {
+                            double initialPenalty = 0;
+                            String finalDate = String.Empty;
+                            String penaltyName = ds.Tables[0].Rows[i][0].ToString();
+                            int gracePeriod = int.Parse(ds.Tables[0].Rows[i][1].ToString());
+                            double amount = double.Parse(ds.Tables[0].Rows[i][2].ToString());
+                            String amountStatus = ds.Tables[0].Rows[i][3].ToString();
+                            String deductTo = ds.Tables[0].Rows[i][4].ToString();
+                            int duration = int.Parse(ds.Tables[0].Rows[i][5].ToString());
+                            String durationStatus = ds.Tables[0].Rows[i][6].ToString();
+
+                            if (durationStatus == "week/s") { duration = duration * 7; }
+                            //TimeSpan diffDate = DateTime.Now.Subtract(DateTime.Parse(dueDate));
+                            //int totalDays = (int)diffDate.TotalDays;
+                            //totalDays -= gracePeriod;
+                            String newDate = (DateTime.Parse(dueDate).AddDays(gracePeriod)).ToString();
+
+                            if (amountStatus == "%") { amount = amount * 0.01; }
+
+                            finalDate = DateTime.Parse(newDate).AddDays(1).ToString();
+
+                            if (deductTo == "monthly amortization")
+                            {
+                                if (durationStatus == "month/s")
+                                {
+                                    for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
+                                    {
+                                        initialPenalty = amount * monthlyAmortization;
+                                        finalPenalty += initialPenalty;
+                                        totalPenalty += initialPenalty;
+                                    }
+                                }
+                                else
+                                {
+                                    for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
+                                    {
+                                        initialPenalty = amount * monthlyAmortization;
+                                        finalPenalty += initialPenalty;
+                                        totalPenalty += initialPenalty;
+                                    }
+                                }
+                            }
+                            else if (deductTo == "remaining balance")
+                            {
+                                if (durationStatus == "month/s")
+                                {
+                                    for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
+                                    {
+                                        initialPenalty = amount * remainingBalance;
+                                        finalPenalty += initialPenalty;
+                                        totalPenalty += initialPenalty;
+                                    }
+                                }
+                                else
+                                {
+                                    for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
+                                    {
+                                        initialPenalty = amount * remainingBalance;
+                                        finalPenalty += initialPenalty;
+                                        totalPenalty += initialPenalty;
+                                    }
+                                }
+                            }
+                            else if (deductTo == "granted loan amount")
+                            {
+                                if (durationStatus == "month/s")
+                                {
+                                    for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
+                                    {
+                                        initialPenalty = amount * grantedLoanAmount;
+                                        finalPenalty += initialPenalty;
+                                        totalPenalty += initialPenalty;
+                                    }
+                                }
+                                else
+                                {
+                                    for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
+                                    {
+                                        initialPenalty = amount * grantedLoanAmount;
+                                        finalPenalty += initialPenalty;
+                                        totalPenalty += initialPenalty;
+                                    }
+                                }
+                            }
+
+                            else if (deductTo == String.Empty)
+                            {
+                                if (durationStatus == "month/s")
+                                {
+                                    for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
+                                    {
+                                        initialPenalty = amount;
+                                        finalPenalty += initialPenalty;
+                                        totalPenalty += initialPenalty;
+                                    }
+                                }
+                                else
+                                {
+                                    for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
+                                    {
+                                        initialPenalty = amount;
+                                        finalPenalty += initialPenalty;
+                                        totalPenalty += initialPenalty;
+                                    }
+                                }
+                            }
+                        }//end for loop
+
+
+                    }//end else
+                }
+            }
+
         }
     }
 }

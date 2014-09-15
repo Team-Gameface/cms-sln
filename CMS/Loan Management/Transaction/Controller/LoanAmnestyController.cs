@@ -163,6 +163,13 @@ namespace CMS.Loan_Management.Transaction.Controller
             totalPenalty = 0;
             totalInterest = 0;
 
+            double lastInterest = this.loanAmnestyModel.selectLastInterest(lappId);
+
+            if (lastInterest != 0)
+            {
+                totalInterest += lastInterest;
+            }
+
             Dictionary<String, int> listOfInterestDates = new Dictionary<String, int>();
             Dictionary<String, int> finalListOfInterestDates = new Dictionary<String, int>();
 
@@ -325,6 +332,18 @@ namespace CMS.Loan_Management.Transaction.Controller
 
             this.loanAmnesty.classGridAmortization(this.loanAmnestyModel.selectAmortizations(finalAccountNo, lappId));
 
+            double lastPenalty = this.loanAmnestyModel.selectLastPenalty(lappId);
+            if (lastPenalty != 0)
+            {
+                DataSet penaltySet = this.loanAmnestyModel.selectAmortizationWithPenalty(lappId);
+                for (int i = 0; i < penaltySet.Tables[0].Rows.Count; i++)
+                {
+                    int amoId = Convert.ToInt32(penaltySet.Tables[0].Rows[i][0]);
+                    double penalty = this.loanAmnestyModel.selectAmortizationPenalty(amoId);
+                }
+
+                totalPenalty += lastPenalty;
+            }
             foreach (DataGridViewRow rows in this.loanAmnesty.dataAmortization.Rows)
             {
                 DataSet ds2 = this.loanAmnestyModel.selectMonthlyAmortization(lappId);

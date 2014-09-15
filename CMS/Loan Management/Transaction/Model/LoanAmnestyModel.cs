@@ -13,6 +13,49 @@ namespace CMS.Loan_Management.Transaction.Model
 {
     class LoanAmnestyModel
     {
+        public double selectAmortizationPenalty(int amortizationId)
+        {
+            try
+            {
+                DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+                String sqlSelect = "Select Penalty from LOAN_AMORTIZATION where AmortizationId=" + "'" + amortizationId + "'";
+                double penalty = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                return penalty;
+            }
+            catch (Exception) { return 0; }
+        }
+
+        public DataSet selectAmortizationWithPenalty(int applicationId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sqlSelect = "Select AmortizationId from LOAN_AMORTIZATION where Penalty is NOT NULL AND LoanApplicationId=" + "'" + applicationId + "'";
+            DataSet ds = dal.executeDataSet(sqlSelect);
+            return ds;
+        }
+
+        public double selectLastPenalty(int applicationId)
+        {
+            try
+            {
+                DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+                String sqlSelect = "Select sum(Penalty) from LOAN_AMORTIZATION where LoanApplicationId=" + "'" + applicationId + "'";
+                double penalty = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                return penalty;
+            }
+            catch (Exception) { return 0; }
+        }
+        public double selectLastInterest(int applicationId)
+        {
+            try
+            {
+                DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+                String sqlSelect = "Select Interest from loan_information where LoanApplicationId = " + "'" + applicationId + "'";
+                double interest = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                return interest;
+            }
+            catch (Exception) { return 0; }
+        }
+
         public DataSet searchMemberByMemberName(String memberName, int duration, String durationStatus)
         {
 

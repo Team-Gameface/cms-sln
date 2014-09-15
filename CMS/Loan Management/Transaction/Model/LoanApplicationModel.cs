@@ -13,6 +13,89 @@ namespace CMS.Loan_Management.Transaction.Model
 {
     class LoanApplicationModel
     {
+        public double selectInterestByAccountNo(String accountNo)
+        {
+            try
+            {
+                DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+                String sqlSelect = "Select sum(Interest) from loan_information where AccountNo = " + "'" + accountNo + "'";
+                double interest = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                return interest;
+            }
+            catch (Exception) { return 0; }
+        }
+
+        public double selectPenaltyByAccountNo(String accountNo)
+        {
+            try
+            {
+                DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+                String sqlSelect = "Select sum(Penalty) from loan_information, loan_amortization where loan_information.loanapplicationid=loan_amortization.loanapplicationid and AccountNo = " + "'" + accountNo + "'";
+                double penalty = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                return penalty;
+            }
+            catch (Exception) { return 0; }
+        }
+
+        public String selectCurrentLoanBalance(int lappId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "Select concat(Penalty-(Penalty*(WaivedPenaltyPercentage/100)),' ',Interest-(Interest*(WaivedInterestPercentage/100)),' ', LoanBalance) from LOAN_INFORMATION_AMNESTY where LoanApplicationId = " + "'" + lappId + "'";
+            String bal = Convert.ToString(dal.executeScalar(sql));
+            return bal;
+        }
+
+        public Boolean selectIfLoanIsAmnestized(int lappId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "Select isAmnestized from LOAN_INFORMATION where LoanApplicationId = " + "'" + lappId + "'";
+            Boolean isAm = Convert.ToBoolean(dal.executeScalar(sql));
+            return isAm;
+        }
+
+        public double selectAmortizationPenalty(int amortizationId)
+        {
+            try
+            {
+                DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+                String sqlSelect = "Select Penalty from LOAN_AMORTIZATION where AmortizationId=" + "'" + amortizationId + "'";
+                double penalty = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                return penalty;
+            }
+            catch (Exception) { return 0; }
+        }
+
+        public DataSet selectAmortizationWithPenalty(int applicationId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sqlSelect = "Select AmortizationId from LOAN_AMORTIZATION where Penalty is NOT NULL AND LoanApplicationId=" + "'" + applicationId + "'";
+            DataSet ds = dal.executeDataSet(sqlSelect);
+            return ds;
+        }
+
+        public double selectLastPenalty(int applicationId)
+        {
+            try
+            {
+                DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+                String sqlSelect = "Select sum(Penalty) from LOAN_AMORTIZATION where LoanApplicationId=" + "'" + applicationId + "'";
+                double penalty = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                return penalty;
+            }
+            catch (Exception) { return 0; }
+        }
+        public double selectLastInterest(int applicationId)
+        {
+            try
+            {
+                DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+                String sqlSelect = "Select Interest from loan_information where LoanApplicationId = " + "'" + applicationId + "'";
+                double interest = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                return interest;
+            }
+            catch (Exception) { return 0; }
+        }
+
         public int selectIfThereIsAlreadyLoan(String accountNo)
         {
             try
@@ -350,11 +433,11 @@ namespace CMS.Loan_Management.Transaction.Model
             return ds;
         }
 
-        public int insertLoanApplication(String AccountNo, int LoanTypeId, String Purpose, String PaymentDurationStatus, int PaymentDurationValue, String Terms, double LoanAmount, double ApprovedAmount, String DateFiled, String DateApproved, String DateMaturity, double NetLoan)
+        public int insertLoanApplication(String AccountNo, int LoanTypeId, String Purpose, String PaymentDurationStatus, int PaymentDurationValue, String Terms, double LoanAmount, double ApprovedAmount, String DateFiled, String DateApproved, String DateMaturity,double LessCharges,double LessLoanBalance,double LessPenalties, double LessInterest, double NetLoan)
         {
 
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC insertLoanInformation @AccountNo,@LoanTypeId,@Purpose,@PaymentDurationStatus,@PaymentDurationValue,@Terms,@LoanAmount,@ApprovedAmount,@DateFiled,@DateApproved,@MaturityDate,@NetLoanProceeds";
+            String sql = "EXEC insertLoanInformation @AccountNo,@LoanTypeId,@Purpose,@PaymentDurationStatus,@PaymentDurationValue,@Terms,@LoanAmount,@ApprovedAmount,@DateFiled,@DateApproved,@MaturityDate,@LessCharges, @LessLoanBalance, @LessPenalties, @LessInterest,@NetLoanProceeds";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@AccountNo", AccountNo);
             parameters.Add("@LoanTypeId", LoanTypeId);
@@ -367,6 +450,10 @@ namespace CMS.Loan_Management.Transaction.Model
             parameters.Add("@DateFiled", DateFiled);
             parameters.Add("@DateApproved", DateApproved);
             parameters.Add("@MaturityDate", DateMaturity);
+            parameters.Add("@LessCharges", LessCharges);
+            parameters.Add("@LessLoanBalance", LessLoanBalance);
+            parameters.Add("@LessPenalties", LessPenalties);
+            parameters.Add("@LessInterest", LessInterest);
             parameters.Add("@NetLoanProceeds", NetLoan);
             dal.executeNonQuery(sql, parameters);
 
@@ -425,5 +512,89 @@ namespace CMS.Loan_Management.Transaction.Model
 
         }
 
+        public void insertRemainingPayment(String paymentType, int applicationId, String accountNo, double penalty, double interest, Boolean hasInterest, int isFullyPaid)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+
+            String sql = "EXEC insertAmortizationPayment @PaymentType, @AmountPaid, @Penalty, @Interest, @hasInterest, @AccountNo, @LoanApplicationId, @isFullyPaid";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@PaymentType", paymentType);
+            parameters.Add("@AmountPaid", 0);
+            parameters.Add("@Penalty", penalty);
+            parameters.Add("@Interest", interest);
+            parameters.Add("@hasInterest", hasInterest);
+            parameters.Add("@AccountNo", accountNo);
+            parameters.Add("@LoanApplicationId", applicationId);
+            parameters.Add("@isFullyPaid", isFullyPaid);
+            dal.executeNonQuery(sql, parameters);
+        }
+
+        public void insertAmortizationPayment(int ORNo, int applicationId, String duedate, double amount)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sqlSelect = "Select AmortizationId from loan_amortization where LoanApplicationId = " + "'" + applicationId + "' and AmortizationDueDate =" + "'" + duedate + "'";
+            int amortizationId = Convert.ToInt32(dal.executeScalar(sqlSelect));
+
+            String insertAmoPayment = "Insert into PAYMENT_AMORTIZATION(ORNo, AmortizationId, Amount) VALUES (" + "'" + ORNo + "'" + ", '" + amortizationId + "'" + ", '" + amount + "')";
+            dal.executeScalar(insertAmoPayment);
+        }
+
+        public void clearLoan(int applicationId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+
+            String update = "Update LOAN_INFORMATION set isCleared = 1, Interest = NULL where LoanApplicationId = " + "'" + applicationId + "'";
+            dal.executeScalar(update);
+
+            String updateAmo = "Update LOAN_AMORTIZATION set isPaid = 1, Penalty = NULL where LoanApplicationId = " + "'" + applicationId + "'";
+            dal.executeScalar(updateAmo);
+        }
+
+        public int insertLoanPayment(String paymentType, String accountNo, int applicationId, double amount, double interest, double penalty, String duedate, Boolean hasInterest, int isFullyPaid, int isPaid)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sqlSelect = "Select AmortizationId from loan_amortization where LoanApplicationId = " + "'" + applicationId + "' and AmortizationDueDate =" + "'" + duedate + "'";
+            int amortizationId = Convert.ToInt32(dal.executeScalar(sqlSelect));
+
+            if (isPaid == 0)
+            {
+                String sql = "EXEC insertAmortizationPayment @PaymentType, @AmountPaid, @Penalty, @Interest, @hasInterest, @AccountNo, @LoanApplicationId, @isFullyPaid";
+                Dictionary<String, Object> parameters = new Dictionary<string, object>();
+                parameters.Add("@PaymentType", paymentType);
+                parameters.Add("@AmountPaid", amount);
+                parameters.Add("@Penalty", penalty);
+                parameters.Add("@Interest", interest);
+                parameters.Add("@hasInterest", hasInterest);
+                parameters.Add("@AccountNo", accountNo);
+                parameters.Add("@LoanApplicationId", applicationId);
+                parameters.Add("@isFullyPaid", 0);
+                dal.executeNonQuery(sql, parameters);
+            }
+
+            String selectMaxOR = "Select max(ORNo) from PAYMENT";
+            int ORNo = Convert.ToInt32(dal.executeScalar(selectMaxOR));
+
+            String sql2 = "Update LOAN_AMORTIZATION set isPaid = " + "'" + isFullyPaid + "' where AmortizationId =" + "'" + amortizationId + "'";
+            dal.executeScalar(sql2);
+
+            String sql3 = "Select count(AmortizationId) from LOAN_AMORTIZATION, LOAN_INFORMATION WHERE Loan_information.loanapplicationid=loan_amortization.loanapplicationid and loan_amortization.isPaid = 1 and loan_amortization.Penalty IS NULL and loan_information.Interest is null and Loan_Information.LoanApplicationId= " + "'" + applicationId + "'";
+            int countPaid = Convert.ToInt32(dal.executeScalar(sql3));
+
+            String sql4 = "Select count(AmortizationId) from LOAN_AMORTIZATION WHERE LoanApplicationId= " + "'" + applicationId + "'";
+            int countAmortization = Convert.ToInt32(dal.executeScalar(sql4));
+
+            if (countPaid == countAmortization)
+            {
+                String sql5 = "Update PAYMENT set isFullyPaid = 1 where LoanApplicationId =" + "'" + applicationId + "'";
+                dal.executeScalar(sql5);
+
+                String sql6 = "Update LOAN_INFORMATION set isCleared = 1 where LoanApplicationId =" + "'" + applicationId + "'";
+                dal.executeScalar(sql6);
+
+            }
+
+            return ORNo;
+
+        }
     }
 }

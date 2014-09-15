@@ -148,7 +148,6 @@
             this.gbApprove = new System.Windows.Forms.GroupBox();
             this.txtMaturityDate = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chbLoanBalance = new System.Windows.Forms.CheckBox();
             this.txtInterestRate = new System.Windows.Forms.TextBox();
             this.lblInterestRate = new System.Windows.Forms.Label();
             this.txtPenalty = new System.Windows.Forms.TextBox();
@@ -176,6 +175,8 @@
             this.btnApplyLoan = new System.Windows.Forms.Button();
             this.lblNote = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtChargeList = new System.Windows.Forms.TextBox();
             this.tcLoanApp.SuspendLayout();
             this.tpPersonal.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -1546,6 +1547,7 @@
             // 
             this.gbApprove.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gbApprove.BackColor = System.Drawing.Color.Honeydew;
+            this.gbApprove.Controls.Add(this.txtChargeList);
             this.gbApprove.Controls.Add(this.txtMaturityDate);
             this.gbApprove.Controls.Add(this.panel1);
             this.gbApprove.Controls.Add(this.dataAmortization);
@@ -1579,7 +1581,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.chbLoanBalance);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txtInterestRate);
             this.panel1.Controls.Add(this.lblInterestRate);
             this.panel1.Controls.Add(this.txtPenalty);
@@ -1597,17 +1599,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(348, 273);
             this.panel1.TabIndex = 58;
-            // 
-            // chbLoanBalance
-            // 
-            this.chbLoanBalance.AutoSize = true;
-            this.chbLoanBalance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbLoanBalance.Location = new System.Drawing.Point(67, 109);
-            this.chbLoanBalance.Name = "chbLoanBalance";
-            this.chbLoanBalance.Size = new System.Drawing.Size(104, 21);
-            this.chbLoanBalance.TabIndex = 102;
-            this.chbLoanBalance.Text = "Loan Balance:";
-            this.chbLoanBalance.UseVisualStyleBackColor = true;
             // 
             // txtInterestRate
             // 
@@ -1678,7 +1669,7 @@
             // txtAmount
             // 
             this.txtAmount.Font = new System.Drawing.Font("Segoe UI", 10.75F);
-            this.txtAmount.Location = new System.Drawing.Point(165, 14);
+            this.txtAmount.Location = new System.Drawing.Point(165, 19);
             this.txtAmount.MaxLength = 20;
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(148, 27);
@@ -1753,11 +1744,10 @@
             this.dataAmortization.AllowUserToAddRows = false;
             this.dataAmortization.AllowUserToDeleteRows = false;
             this.dataAmortization.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataAmortization.Location = new System.Drawing.Point(61, 215);
+            this.dataAmortization.Location = new System.Drawing.Point(6, 216);
             this.dataAmortization.Name = "dataAmortization";
-            this.dataAmortization.Size = new System.Drawing.Size(240, 150);
+            this.dataAmortization.Size = new System.Drawing.Size(427, 150);
             this.dataAmortization.TabIndex = 95;
-            this.dataAmortization.Visible = false;
             // 
             // rtbLoanBalDetails
             // 
@@ -1790,6 +1780,7 @@
             this.clbCharges.Name = "clbCharges";
             this.clbCharges.Size = new System.Drawing.Size(318, 104);
             this.clbCharges.TabIndex = 88;
+            this.clbCharges.Visible = false;
             // 
             // lblMaturity
             // 
@@ -1807,9 +1798,9 @@
             this.lblAddCharges.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddCharges.Location = new System.Drawing.Point(22, 23);
             this.lblAddCharges.Name = "lblAddCharges";
-            this.lblAddCharges.Size = new System.Drawing.Size(89, 17);
+            this.lblAddCharges.Size = new System.Drawing.Size(60, 17);
             this.lblAddCharges.TabIndex = 87;
-            this.lblAddCharges.Text = "Add Charges:";
+            this.lblAddCharges.Text = "Charges:";
             // 
             // dateApproved
             // 
@@ -1900,6 +1891,28 @@
             this.label4.Size = new System.Drawing.Size(232, 30);
             this.label4.TabIndex = 0;
             this.label4.Text = "LOAN INFORMATION";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(95, 108);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(84, 17);
+            this.label8.TabIndex = 110;
+            this.label8.Text = "Loan Balance";
+            // 
+            // txtChargeList
+            // 
+            this.txtChargeList.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtChargeList.Location = new System.Drawing.Point(25, 43);
+            this.txtChargeList.Multiline = true;
+            this.txtChargeList.Name = "txtChargeList";
+            this.txtChargeList.ReadOnly = true;
+            this.txtChargeList.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtChargeList.Size = new System.Drawing.Size(318, 124);
+            this.txtChargeList.TabIndex = 97;
+            this.txtChargeList.WordWrap = false;
             // 
             // LoanApplication
             // 
@@ -2080,7 +2093,6 @@
         private System.Windows.Forms.Button btnApprovalPrevious;
         private System.Windows.Forms.TextBox txtMaturityDate;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox chbLoanBalance;
         private System.Windows.Forms.TextBox txtInterestRate;
         private System.Windows.Forms.Label lblInterestRate;
         private System.Windows.Forms.TextBox txtPenalty;
@@ -2104,6 +2116,8 @@
         private System.Windows.Forms.Label lblMaxNoOfComakers;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtClassification;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtChargeList;
 
     }
 }

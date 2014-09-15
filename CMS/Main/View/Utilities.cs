@@ -54,7 +54,7 @@ namespace CMS.Main.View
                 panelUtilities.Controls.Clear();
                 CMS.Utilities.View.AuditLog a = new CMS.Utilities.View.AuditLog();
                 a.Dock = DockStyle.Fill;
-                panelUtilities.Controls.Add(a);
+                CMS.Utilities.Controller.AuditLogController alc = new CMS.Utilities.Controller.AuditLogController(a, new CMS.Utilities.Model.AuditLogModel(), this);
             }
         }
 

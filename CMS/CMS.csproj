@@ -232,6 +232,7 @@
     </Compile>
     <Compile Include="Main\Controller\MainController.cs" />
     <Compile Include="Main\Controller\PaymentController.cs" />
+    <Compile Include="Main\Logger.cs" />
     <Compile Include="Main\UserData.cs" />
     <Compile Include="Main\Model\PaymentModel.cs" />
     <Compile Include="Main\View\CMSDashboard.cs">

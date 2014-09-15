@@ -436,8 +436,14 @@ namespace CMS.Settings
             while (read.Read())
             {
                 String[] id = read[0].ToString().Split('-');
-                i = int.Parse(id[1]);
+                String year = id[1].Remove(4, 3);
+                if (year == DateTime.Today.Year.ToString())
+                {
+                    String number = id[1].Remove(0, 4);
+                    i = int.Parse(number);
+                }
             }
+            MessageBox.Show(i.ToString());
             return i + 1;
         }
 

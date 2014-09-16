@@ -100,7 +100,6 @@
     <Compile Include="Loan Management\Maintenance\Controller\MemberTypesController.cs" />
     <Compile Include="Loan Management\Maintenance\Controller\PenaltiesController.cs" />
     <Compile Include="Loan Management\Maintenance\Controller\ScheduleOfFeesController.cs" />
-    <Compile Include="Loan Management\Maintenance\Controller\ShareCapitalContributionController.cs" />
     <Compile Include="Loan Management\Maintenance\Model\LoanAmnestyActivationModel.cs" />
     <Compile Include="Loan Management\Maintenance\Model\LoanChargesModel.cs" />
     <Compile Include="Loan Management\Maintenance\Model\LoanInterestRateModel.cs" />
@@ -109,7 +108,6 @@
     <Compile Include="Loan Management\Maintenance\Model\MemberTypesModel.cs" />
     <Compile Include="Loan Management\Maintenance\Model\PenaltiesModel.cs" />
     <Compile Include="Loan Management\Maintenance\Model\ScheduleOfFeesModel.cs" />
-    <Compile Include="Loan Management\Maintenance\Model\ShareCapitalContributionModel.cs" />
     <Compile Include="Loan Management\Maintenance\View\LoanAmnestyActivation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,12 +155,6 @@
     </Compile>
     <Compile Include="Loan Management\Maintenance\View\ScheduleOfFees.Designer.cs">
       <DependentUpon>ScheduleOfFees.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Loan Management\Maintenance\View\ShareCapitalContribution.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Loan Management\Maintenance\View\ShareCapitalContribution.designer.cs">
-      <DependentUpon>ShareCapitalContribution.cs</DependentUpon>
     </Compile>
     <Compile Include="Loan Management\Queries\View\PaymentHistory.cs">
       <SubType>Form</SubType>
@@ -648,9 +640,6 @@
     <EmbeddedResource Include="Loan Management\Maintenance\View\ScheduleOfFees.resx">
       <DependentUpon>ScheduleOfFees.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Loan Management\Maintenance\View\ShareCapitalContribution.resx">
-      <DependentUpon>ShareCapitalContribution.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Loan Management\Queries\View\PaymentHistory.resx">
       <DependentUpon>PaymentHistory.cs</DependentUpon>
     </EmbeddedResource>
@@ -765,6 +754,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Savings\Maintenance\View\EarlyWithdrawal.resx">
       <DependentUpon>EarlyWithdrawal.cs</DependentUpon>
@@ -1059,12 +1049,12 @@
     <Content Include="img\buttons\Savings.png" />
     <Content Include="img\icons\LM.ico" />
     <Content Include="img\icons\SV.ico" />
-    <Content Include="img\loanmenu-bg.jpg" />
+    <None Include="img\menu\loanmenu-bg.jpg" />
     <Content Include="img\menu\Maintenance-LM.png" />
     <Content Include="img\menu\Maintenance-SV.png" />
+    <None Include="img\menu\savingsmenu-bg.jpg" />
     <Content Include="img\menu\Transaction-LM.png" />
     <Content Include="img\menu\Transaction-SV.png" />
-    <Content Include="img\savingsmenu-bg.jpg" />
     <Content Include="img\signimg.jpg" />
   </ItemGroup>
   <ItemGroup>

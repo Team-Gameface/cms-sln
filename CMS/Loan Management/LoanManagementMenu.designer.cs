@@ -31,6 +31,23 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoanManagementMenu));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.maintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemMembership = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemMemberTypes = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemDeliquencyClassification = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemFeeSchedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.itemLoanTypes = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemInterestRates = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemLoanCharges = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemPenalties = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemLoanAmnestyActivation = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemMemberProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemCapitalContribution = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.itemLoanApp = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemLoanAmnesty = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemLoanReleases = new System.Windows.Forms.ToolStripMenuItem();
             this.itemPaymentHistory = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,24 +60,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.maintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemMembership = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemMemberTypes = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemDeliquencyClassification = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemFeeSchedule = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.itemLoanTypes = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemInterestRates = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemLoanCharges = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemPenalties = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemLoanAmnestyActivation = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemShareCapital = new System.Windows.Forms.ToolStripMenuItem();
-            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemMemberProfile = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemCapitalContribution = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.itemLoanApp = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemLoanAmnesty = new System.Windows.Forms.ToolStripMenuItem();
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
             this.lblTime = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
@@ -84,6 +83,142 @@
             this.menuStrip.Size = new System.Drawing.Size(784, 70);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
+            // 
+            // maintenanceToolStripMenuItem
+            // 
+            this.maintenanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemMembership,
+            this.toolStripSeparator1,
+            this.itemLoanTypes,
+            this.itemInterestRates,
+            this.itemLoanCharges,
+            this.itemPenalties,
+            this.itemLoanAmnestyActivation});
+            this.maintenanceToolStripMenuItem.Image = global::CMS.Properties.Resources.Maintenance_LM;
+            this.maintenanceToolStripMenuItem.Name = "maintenanceToolStripMenuItem";
+            this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(94, 58);
+            this.maintenanceToolStripMenuItem.Text = "Maintenance";
+            this.maintenanceToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.maintenanceToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            // 
+            // itemMembership
+            // 
+            this.itemMembership.BackColor = System.Drawing.Color.AliceBlue;
+            this.itemMembership.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemMemberTypes,
+            this.itemDeliquencyClassification,
+            this.itemFeeSchedule});
+            this.itemMembership.Name = "itemMembership";
+            this.itemMembership.Size = new System.Drawing.Size(217, 22);
+            this.itemMembership.Text = "Membership";
+            // 
+            // itemMemberTypes
+            // 
+            this.itemMemberTypes.Name = "itemMemberTypes";
+            this.itemMemberTypes.Size = new System.Drawing.Size(238, 22);
+            this.itemMemberTypes.Text = "Member Types";
+            // 
+            // itemDeliquencyClassification
+            // 
+            this.itemDeliquencyClassification.Name = "itemDeliquencyClassification";
+            this.itemDeliquencyClassification.Size = new System.Drawing.Size(238, 22);
+            this.itemDeliquencyClassification.Text = "Delinquency Classifications";
+            // 
+            // itemFeeSchedule
+            // 
+            this.itemFeeSchedule.Name = "itemFeeSchedule";
+            this.itemFeeSchedule.Size = new System.Drawing.Size(238, 22);
+            this.itemFeeSchedule.Text = "Miscellaneous Fee Schedule";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.BackColor = System.Drawing.Color.AliceBlue;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(214, 6);
+            // 
+            // itemLoanTypes
+            // 
+            this.itemLoanTypes.BackColor = System.Drawing.Color.AliceBlue;
+            this.itemLoanTypes.Name = "itemLoanTypes";
+            this.itemLoanTypes.Size = new System.Drawing.Size(217, 22);
+            this.itemLoanTypes.Text = "Loan Types";
+            // 
+            // itemInterestRates
+            // 
+            this.itemInterestRates.BackColor = System.Drawing.Color.AliceBlue;
+            this.itemInterestRates.Name = "itemInterestRates";
+            this.itemInterestRates.Size = new System.Drawing.Size(217, 22);
+            this.itemInterestRates.Text = "Loan Interest Rates";
+            // 
+            // itemLoanCharges
+            // 
+            this.itemLoanCharges.BackColor = System.Drawing.Color.AliceBlue;
+            this.itemLoanCharges.Name = "itemLoanCharges";
+            this.itemLoanCharges.Size = new System.Drawing.Size(217, 22);
+            this.itemLoanCharges.Text = "Loan Charges";
+            // 
+            // itemPenalties
+            // 
+            this.itemPenalties.BackColor = System.Drawing.Color.AliceBlue;
+            this.itemPenalties.Name = "itemPenalties";
+            this.itemPenalties.Size = new System.Drawing.Size(217, 22);
+            this.itemPenalties.Text = "Loan Penalties";
+            // 
+            // itemLoanAmnestyActivation
+            // 
+            this.itemLoanAmnestyActivation.BackColor = System.Drawing.Color.AliceBlue;
+            this.itemLoanAmnestyActivation.Name = "itemLoanAmnestyActivation";
+            this.itemLoanAmnestyActivation.Size = new System.Drawing.Size(217, 22);
+            this.itemLoanAmnestyActivation.Text = "Loan Amnesty Activation";
+            // 
+            // transactionToolStripMenuItem
+            // 
+            this.transactionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemMemberProfile,
+            this.itemCapitalContribution,
+            this.toolStripSeparator2,
+            this.itemLoanApp,
+            this.itemLoanAmnesty});
+            this.transactionToolStripMenuItem.Image = global::CMS.Properties.Resources.Transaction_LM;
+            this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(87, 58);
+            this.transactionToolStripMenuItem.Text = "Transaction";
+            this.transactionToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.transactionToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            // 
+            // itemMemberProfile
+            // 
+            this.itemMemberProfile.BackColor = System.Drawing.Color.AliceBlue;
+            this.itemMemberProfile.Name = "itemMemberProfile";
+            this.itemMemberProfile.Size = new System.Drawing.Size(229, 22);
+            this.itemMemberProfile.Text = "Member Profile";
+            // 
+            // itemCapitalContribution
+            // 
+            this.itemCapitalContribution.BackColor = System.Drawing.Color.AliceBlue;
+            this.itemCapitalContribution.Name = "itemCapitalContribution";
+            this.itemCapitalContribution.Size = new System.Drawing.Size(229, 22);
+            this.itemCapitalContribution.Text = "Share Capital Contribution";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.BackColor = System.Drawing.Color.AliceBlue;
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(226, 6);
+            // 
+            // itemLoanApp
+            // 
+            this.itemLoanApp.BackColor = System.Drawing.Color.AliceBlue;
+            this.itemLoanApp.Name = "itemLoanApp";
+            this.itemLoanApp.Size = new System.Drawing.Size(229, 22);
+            this.itemLoanApp.Text = "Loan Information";
+            // 
+            // itemLoanAmnesty
+            // 
+            this.itemLoanAmnesty.BackColor = System.Drawing.Color.AliceBlue;
+            this.itemLoanAmnesty.Name = "itemLoanAmnesty";
+            this.itemLoanAmnesty.Size = new System.Drawing.Size(229, 22);
+            this.itemLoanAmnesty.Text = "Loan Amnesty";
             // 
             // reportToolStripMenuItem
             // 
@@ -203,150 +338,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "active loans";
             // 
-            // maintenanceToolStripMenuItem
-            // 
-            this.maintenanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemMembership,
-            this.toolStripSeparator1,
-            this.itemLoanTypes,
-            this.itemInterestRates,
-            this.itemLoanCharges,
-            this.itemPenalties,
-            this.itemLoanAmnestyActivation,
-            this.itemShareCapital});
-            this.maintenanceToolStripMenuItem.Image = global::CMS.Properties.Resources.Maintenance_LM;
-            this.maintenanceToolStripMenuItem.Name = "maintenanceToolStripMenuItem";
-            this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(94, 58);
-            this.maintenanceToolStripMenuItem.Text = "Maintenance";
-            this.maintenanceToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.maintenanceToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
-            // 
-            // itemMembership
-            // 
-            this.itemMembership.BackColor = System.Drawing.Color.AliceBlue;
-            this.itemMembership.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemMemberTypes,
-            this.itemDeliquencyClassification,
-            this.itemFeeSchedule});
-            this.itemMembership.Name = "itemMembership";
-            this.itemMembership.Size = new System.Drawing.Size(287, 22);
-            this.itemMembership.Text = "Membership";
-            // 
-            // itemMemberTypes
-            // 
-            this.itemMemberTypes.Name = "itemMemberTypes";
-            this.itemMemberTypes.Size = new System.Drawing.Size(238, 22);
-            this.itemMemberTypes.Text = "Member Types";
-            // 
-            // itemDeliquencyClassification
-            // 
-            this.itemDeliquencyClassification.Name = "itemDeliquencyClassification";
-            this.itemDeliquencyClassification.Size = new System.Drawing.Size(238, 22);
-            this.itemDeliquencyClassification.Text = "Delinquency Classifications";
-            // 
-            // itemFeeSchedule
-            // 
-            this.itemFeeSchedule.Name = "itemFeeSchedule";
-            this.itemFeeSchedule.Size = new System.Drawing.Size(238, 22);
-            this.itemFeeSchedule.Text = "Miscellaneous Fee Schedule";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.BackColor = System.Drawing.Color.AliceBlue;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(284, 6);
-            // 
-            // itemLoanTypes
-            // 
-            this.itemLoanTypes.BackColor = System.Drawing.Color.AliceBlue;
-            this.itemLoanTypes.Name = "itemLoanTypes";
-            this.itemLoanTypes.Size = new System.Drawing.Size(287, 22);
-            this.itemLoanTypes.Text = "Loan Types";
-            // 
-            // itemInterestRates
-            // 
-            this.itemInterestRates.BackColor = System.Drawing.Color.AliceBlue;
-            this.itemInterestRates.Name = "itemInterestRates";
-            this.itemInterestRates.Size = new System.Drawing.Size(287, 22);
-            this.itemInterestRates.Text = "Loan Interest Rates";
-            // 
-            // itemLoanCharges
-            // 
-            this.itemLoanCharges.BackColor = System.Drawing.Color.AliceBlue;
-            this.itemLoanCharges.Name = "itemLoanCharges";
-            this.itemLoanCharges.Size = new System.Drawing.Size(287, 22);
-            this.itemLoanCharges.Text = "Loan Charges";
-            // 
-            // itemPenalties
-            // 
-            this.itemPenalties.BackColor = System.Drawing.Color.AliceBlue;
-            this.itemPenalties.Name = "itemPenalties";
-            this.itemPenalties.Size = new System.Drawing.Size(287, 22);
-            this.itemPenalties.Text = "Loan Penalties";
-            // 
-            // itemLoanAmnestyActivation
-            // 
-            this.itemLoanAmnestyActivation.BackColor = System.Drawing.Color.AliceBlue;
-            this.itemLoanAmnestyActivation.Name = "itemLoanAmnestyActivation";
-            this.itemLoanAmnestyActivation.Size = new System.Drawing.Size(287, 22);
-            this.itemLoanAmnestyActivation.Text = "Loan Amnesty Activation";
-            // 
-            // itemShareCapital
-            // 
-            this.itemShareCapital.BackColor = System.Drawing.Color.AliceBlue;
-            this.itemShareCapital.Name = "itemShareCapital";
-            this.itemShareCapital.Size = new System.Drawing.Size(287, 22);
-            this.itemShareCapital.Text = "Minimum Share Capital Contribution";
-            // 
-            // transactionToolStripMenuItem
-            // 
-            this.transactionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemMemberProfile,
-            this.itemCapitalContribution,
-            this.toolStripSeparator2,
-            this.itemLoanApp,
-            this.itemLoanAmnesty});
-            this.transactionToolStripMenuItem.Image = global::CMS.Properties.Resources.Transaction_LM;
-            this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(87, 58);
-            this.transactionToolStripMenuItem.Text = "Transaction";
-            this.transactionToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.transactionToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
-            // 
-            // itemMemberProfile
-            // 
-            this.itemMemberProfile.BackColor = System.Drawing.Color.AliceBlue;
-            this.itemMemberProfile.Name = "itemMemberProfile";
-            this.itemMemberProfile.Size = new System.Drawing.Size(229, 22);
-            this.itemMemberProfile.Text = "Member Profile";
-            // 
-            // itemCapitalContribution
-            // 
-            this.itemCapitalContribution.BackColor = System.Drawing.Color.AliceBlue;
-            this.itemCapitalContribution.Name = "itemCapitalContribution";
-            this.itemCapitalContribution.Size = new System.Drawing.Size(229, 22);
-            this.itemCapitalContribution.Text = "Share Capital Contribution";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.BackColor = System.Drawing.Color.AliceBlue;
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(226, 6);
-            // 
-            // itemLoanApp
-            // 
-            this.itemLoanApp.BackColor = System.Drawing.Color.AliceBlue;
-            this.itemLoanApp.Name = "itemLoanApp";
-            this.itemLoanApp.Size = new System.Drawing.Size(229, 22);
-            this.itemLoanApp.Text = "Loan Information";
-            // 
-            // itemLoanAmnesty
-            // 
-            this.itemLoanAmnesty.BackColor = System.Drawing.Color.AliceBlue;
-            this.itemLoanAmnesty.Name = "itemLoanAmnesty";
-            this.itemLoanAmnesty.Size = new System.Drawing.Size(229, 22);
-            this.itemLoanAmnesty.Text = "Loan Amnesty";
-            // 
             // timerDateTime
             // 
             this.timerDateTime.Enabled = true;
@@ -427,7 +418,6 @@
         private System.Windows.Forms.ToolStripMenuItem itemDeliquencyClassification;
         private System.Windows.Forms.ToolStripMenuItem itemFeeSchedule;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem itemShareCapital;
         private System.Windows.Forms.ToolStripMenuItem itemMemberProfile;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem itemLoanAmnestyActivation;

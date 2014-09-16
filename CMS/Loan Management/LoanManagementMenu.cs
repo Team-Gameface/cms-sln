@@ -42,11 +42,6 @@ namespace CMS.Loan_Management
             this.itemLoanAmnestyActivation.Click += e;
         }
 
-        public void setItemShareCapitalEventHandler(EventHandler e)
-        {
-            this.itemShareCapital.Click += e;
-        }
-
         public void setItemMemberTypesEventHandler(EventHandler e)
         {
             this.itemMemberTypes.Click += e;

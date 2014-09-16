@@ -326,6 +326,9 @@ C:\Users\ksj\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Savings.Tr
 C:\Users\ksj\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.csproj.GenerateResource.Cache
 C:\Users\ksj\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.exe
 C:\Users\ksj\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.pdb
+C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\CMS.exe.config
+C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\CMS.exe
+C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\CMS.pdb
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Loan_Management.LoanManagementMenu.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Loan_Management.Maintenance.View.LoanAmnestyActivation.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Loan_Management.Maintenance.View.LoanCharges.resources
@@ -335,7 +338,6 @@ C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Loan_Man
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Loan_Management.Maintenance.View.MemberTypes.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Loan_Management.Maintenance.View.Penalties.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Loan_Management.Maintenance.View.ScheduleOfFees.resources
-C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Loan_Management.Maintenance.View.ShareCapitalContribution.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Loan_Management.Reports.PaymentHistory.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Loan_Management.Reports.View.CollectionReport.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Loan_Management.Reports.View.FeeCollectionViewer.resources
@@ -361,6 +363,7 @@ C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Savings.
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Savings.Reports.View.DailyTransactionLog.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Savings.Reports.View.LoanReportViewer.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Savings.Transaction.View.MemberTermination.resources
+C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Properties.Resources.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Savings.Maintenance.View.EarlyWithdrawal.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Savings.Maintenance.View.TimeDepositInterestRates.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Savings.Maintenance.View.SavingsAccountType.resources
@@ -381,10 +384,5 @@ C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Utilitie
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Utilities.View.AuditLog.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Utilities.View.TimeDepositCalculator.resources
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.csproj.GenerateResource.Cache
-C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\CMS.exe.config
-C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.csprojResolveAssemblyReference.cache
-C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.Properties.Resources.resources
-C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\CMS.exe
-C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\CMS.pdb
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.exe
 C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\obj\Debug\CMS.pdb

@@ -40,7 +40,6 @@ namespace CMS.Loan_Management
             this.loanManagementMenu.setItemLoanInterestRateEventHandler(this.itemLoanInterestRate);
             this.loanManagementMenu.setItemLoanChargesEventHandler(this.itemLoanCharges);
             this.loanManagementMenu.setItemPenaltiesEventHandler(this.itemPenalties);
-            this.loanManagementMenu.setItemShareCapitalEventHandler(this.itemShareCapital);
             this.loanManagementMenu.setItemMemberTypesEventHandler(this.itemMemberType);
             this.loanManagementMenu.setItemDeliquencyClassification(this.itemDeliquencyClassification);
             this.loanManagementMenu.setItemFeeSchedule(this.itemFeeSchedule);
@@ -83,11 +82,6 @@ namespace CMS.Loan_Management
         public void itemLoanInterestRate(object args, EventArgs e)
         {
             Maintenance.Controller.LoanInterestRateController loanController = new Maintenance.Controller.LoanInterestRateController(new Maintenance.Model.LoanInterestRateModel(), new Maintenance.View.LoanInterestRate(), loanManagementMenu);
-        }
-
-        public void itemShareCapital(object args, EventArgs e)
-        {
-            Maintenance.Controller.ShareCapitalContributionController capitalContributionController = new Maintenance.Controller.ShareCapitalContributionController(new Maintenance.Model.ShareCapitalContributionModel(), new Maintenance.View.ShareCapitalContribution(), loanManagementMenu);
         }
 
         public void itemLoanCharges(object args, EventArgs e)

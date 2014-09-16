@@ -175,6 +175,7 @@ namespace CMS.Main.Controller
             Main.UserData.userLast = String.Empty;
             Main.UserData.userPosition = String.Empty;
             Main.UserData.userAccountType = String.Empty;
+            Main.UserData.picture = null;
             this.Dispose();
             new Login().ShowDialog();
         }
@@ -191,6 +192,7 @@ namespace CMS.Main.Controller
                 Main.UserData.userLast = String.Empty;
                 Main.UserData.userPosition = String.Empty;
                 Main.UserData.userAccountType = String.Empty;
+                Main.UserData.picture = null;
                 this.Dispose();
                 new Login().ShowDialog();
             }

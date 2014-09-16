@@ -16,12 +16,22 @@ namespace CMS.Loan_Management.Reports.View
     {
         ShareCollectionReport rpt = new ShareCollectionReport();
 
-        public ShareCollectionViewer(DataSet ds, DataSet dsCoop, String dateFrom, String dateTo)
+        public ShareCollectionViewer(DataSet ds, DataSet dsCoop, DataSet dsStaff, DataSet dsManager, DataSet dsChair, String dateFrom, String dateTo)
         {
             InitializeComponent();
             rpt.SetDataSource(ds.Tables[0]);
-            rpt.Subreports[0].SetDataSource(dsCoop.Tables[0]);
+            rpt.Subreports["CompanyHeader"].SetDataSource(dsCoop.Tables[0]);
+            rpt.Subreports["StaffSub"].SetDataSource(dsStaff.Tables[0]);
+            rpt.Subreports["ChairSub"].SetDataSource(dsChair.Tables[0]);
+            rpt.Subreports["ManagerSub"].SetDataSource(dsManager.Tables[0]);
             crViewer1.ReportSource = rpt;
+            CrystalDecisions.CrystalReports.Engine.TextObject txtReportHeader;
+
+            txtReportHeader = rpt.ReportDefinition.ReportObjects["Subtitle"] as TextObject;
+            if (dateTo.Length == 0)
+                txtReportHeader.Text = DateTime.Parse(dateFrom).ToString("MMMM dd, yyyy");
+            else
+                txtReportHeader.Text = "from " + DateTime.Parse(dateFrom).ToString("MMMM dd, yyyy") + " to " + DateTime.Parse(dateTo).ToString("MMMM dd, yyyy");
             this.Show();
         }
     }

@@ -10,7 +10,6 @@ namespace CMS.Savings.Transaction.Controller
 {
     class TimeDepositController
     {
-        Main.Logger logger = new Main.Logger();
         Model.TimeDepositModel timeDepositModel;
         View.TimeDepositApplication timeDeposit;
 
@@ -150,8 +149,10 @@ namespace CMS.Savings.Transaction.Controller
                 this.timeDepositModel.CertificateNo = "TD-" + this.timeDepositModel.generateCertificateNo().ToString("D5");
                 if(this.timeDepositModel.insertSavingsTransaction() == 1)
                 {
+                    DataSet ds = this.timeDepositModel.getDepositDetails("dtTimeDep");
+                    DataSet dsMgr = this.timeDepositModel.getManager("dtManager");
+                    View.TimeDepositCertificateViewer voucherViewer = new View.TimeDepositCertificateViewer(ds, this.timeDepositModel.getCompanyProfile("dtLogo"), dsMgr);
                     MessageBox.Show("Transaction Success.", "Time Deposit Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    execLogger("Time Deposit Applied(" + this.timeDepositModel.CertificateNo + ") - " + this.timeDepositModel.AccountNo);
                     this.timeDeposit.reset();
                     this.timeDeposit.setDataMember(this.timeDepositModel.selectMember());
                 }
@@ -163,21 +164,6 @@ namespace CMS.Savings.Transaction.Controller
             else
             {
                 MessageBox.Show("Transaction Failed." + Environment.NewLine + Environment.NewLine + errorMessage, "Time Deposit Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        public void execLogger(String ModuleActivity)
-        {
-            logger.clear();
-            logger.Module = "Transaction - Time Deposit Application";
-            logger.Activity = ModuleActivity;
-            if (logger.insertLog() > 0)
-            {
-                Console.WriteLine("Logged");
-            }
-            else
-            {
-                Console.WriteLine("Not Logged");
             }
         }
     }

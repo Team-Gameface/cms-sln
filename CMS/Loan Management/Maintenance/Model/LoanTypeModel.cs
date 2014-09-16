@@ -18,9 +18,8 @@ namespace CMS.Loan_Management.Maintenance.Model
         public int MaxValue { get; set; }
         public String MinStatus { get; set; }
         public String MaxStatus { get; set; }
-        public double MaxAmt { get; set; }
-        public String MaxAmtStatus { get; set; }
-        public String Deduction { get; set; }
+        public double MaxAmtFixed { get; set; }
+        public double MaxAmtShareCap { get; set; }
         public int Comakers { get; set; }
         public int collateralValue { get; set; }
         public CheckedListBox.CheckedItemCollection memberTypes { get; set; }
@@ -33,9 +32,8 @@ namespace CMS.Loan_Management.Maintenance.Model
             this.MaxValue = 0;
             this.MinStatus = String.Empty;
             this.MaxStatus = String.Empty;
-            this.MaxAmt = 0.00;
-            this.MaxAmtStatus = String.Empty; 
-            this.Deduction = String.Empty;
+            this.MaxAmtFixed = 0.00;
+            this.MaxAmtShareCap = 0.00; 
             this.Comakers = 0;
             this.collateralValue = 0;
             this.Status = 0;
@@ -85,7 +83,7 @@ namespace CMS.Loan_Management.Maintenance.Model
         public DataSet selectloanTypes()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT LoanTypeId as 'Loan Type Id', LoanTypeName as 'Loan Type Name', concat(MinimumPaymentDuration,' ',MinPDStatus) as 'Minimum Payment Duration', concat(MaximumPaymentDuration,' ',MaxPDStatus) as 'Maximum Payment Duration', concat(MaxLoanableAmt,' ',MaxLoanableAmtStatus) as 'Maximum Loan', Deduction, CoMaker, isCollateral, Status as 'Active', isArchived FROM LOAN_TYPE WHERE isArchived = 0";
+            String sql = "SELECT LoanTypeId as 'Loan Type Id', LoanTypeName as 'Loan Type Name', concat(MinimumPaymentDuration,' ',MinPDStatus) as 'Minimum Payment Duration', concat(MaximumPaymentDuration,' ',MaxPDStatus) as 'Maximum Payment Duration', MaxLoanableAmtFixed as 'Maximum Loan (Fixed)', MaxLoanableAmtShareCap as 'Maximum Loan (Share Capital)', CoMaker, isCollateral, Status as 'Active', isArchived FROM LOAN_TYPE WHERE isArchived = 0";
             DataSet ds = dal.executeDataSet(sql);            
             return ds;
         }
@@ -93,7 +91,7 @@ namespace CMS.Loan_Management.Maintenance.Model
         public DataSet selectAllLoanTypes()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT LoanTypeId as 'Loan Type Id', LoanTypeName as 'Loan Type Name', concat(MinimumPaymentDuration,' ',MinPDStatus) as 'Minimum Payment Duration', concat(MaximumPaymentDuration,' ',MaxPDStatus) as 'Maximum Payment Duration', concat(MaxLoanableAmt,' ',MaxLoanableAmtStatus) as 'Maximum Loan', Deduction, CoMaker, isCollateral, Status as 'Active', isArchived FROM LOAN_TYPE";
+            String sql = "SELECT LoanTypeId as 'Loan Type Id', LoanTypeName as 'Loan Type Name', concat(MinimumPaymentDuration,' ',MinPDStatus) as 'Minimum Payment Duration', concat(MaximumPaymentDuration,' ',MaxPDStatus) as 'Maximum Payment Duration', MaxLoanableAmtFixed as 'Maximum Loan (Fixed)', MaxLoanableAmtShareCap as 'Maximum Loan (Share Capital)', Deduction, CoMaker, isCollateral, Status as 'Active', isArchived FROM LOAN_TYPE";
             DataSet ds = dal.executeDataSet(sql);
             return ds;
         }
@@ -134,16 +132,15 @@ namespace CMS.Loan_Management.Maintenance.Model
             int id = 0;
 
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC insertLoanType @LoanTypeName, @MinimumPaymentDuration, @MinPDStatus, @MaximumPaymentDuration, @MaxPDStatus, @MaxLoanableAmt, @MaxLoanableAmtStatus, @Deduction, @CoMaker, @isCollateral, @Status, @isArchived";
+            String sql = "EXEC insertLoanType @LoanTypeName, @MinimumPaymentDuration, @MinPDStatus, @MaximumPaymentDuration, @MaxPDStatus, @MaxLoanableAmtFixed, @MaxLoanableAmtShareCap, @CoMaker, @isCollateral, @Status, @isArchived";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@LoanTypeName", this.Name);
             parameters.Add("@MinimumPaymentDuration", this.MinValue);
             parameters.Add("@MinPDStatus", this.MinStatus);
             parameters.Add("@MaximumPaymentDuration", this.MaxValue);
             parameters.Add("@MaxPDStatus", this.MaxStatus);
-            parameters.Add("@MaxLoanableAmt", this.MaxAmt);
-            parameters.Add("@MaxLoanableAmtStatus", this.MaxAmtStatus);
-            parameters.Add("@Deduction", this.Deduction);
+            parameters.Add("@MaxLoanableAmtFixed", this.MaxAmtFixed);
+            parameters.Add("@MaxLoanableAmtShareCap", this.MaxAmtShareCap);
             parameters.Add("@Comaker", this.Comakers);
             parameters.Add("@isCollateral", Collateral);
             parameters.Add("@Status", Status);
@@ -182,7 +179,7 @@ namespace CMS.Loan_Management.Maintenance.Model
             int resultInner = 0;
             int resultInner2 = 0;
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC updateLoanType @LoanTypeId, @LoanTypeName, @MinimumPaymentDuration, @MinPDStatus, @MaximumPaymentDuration, @MaxPDStatus, @MaxLoanableAmt, @MaxLoanableAmtStatus, @Deduction, @CoMaker, @isCollateral, @Status";
+            String sql = "EXEC updateLoanType @LoanTypeId, @LoanTypeName, @MinimumPaymentDuration, @MinPDStatus, @MaximumPaymentDuration, @MaxPDStatus, @MaxLoanableAmtFixed, @MaxLoanableAmtShareCap, @CoMaker, @isCollateral, @Status";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@LoanTypeId", loanTypeId);
             parameters.Add("@LoanTypeName", this.Name);
@@ -190,9 +187,8 @@ namespace CMS.Loan_Management.Maintenance.Model
             parameters.Add("@MinPDStatus", this.MinStatus);
             parameters.Add("@MaximumPaymentDuration", this.MaxValue);
             parameters.Add("@MaxPDStatus", this.MaxStatus);
-            parameters.Add("@MaxLoanableAmt", this.MaxAmt);
-            parameters.Add("@MaxLoanableAmtStatus", this.MaxAmtStatus);
-            parameters.Add("@Deduction", this.Deduction);
+            parameters.Add("@MaxLoanableAmtFixed", this.MaxAmtFixed);
+            parameters.Add("@MaxLoanableAmtShareCap", this.MaxAmtShareCap);
             parameters.Add("@CoMaker", this.Comakers);
             parameters.Add("@isCollateral", Collateral);
             parameters.Add("@Status", Status);

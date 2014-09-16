@@ -45,13 +45,11 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.chbStatus = new System.Windows.Forms.CheckBox();
             this.chbCollateral = new System.Windows.Forms.CheckBox();
-            this.cbDeduction = new System.Windows.Forms.ComboBox();
-            this.cbAmtStatus = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chbMaximumPaymentDur = new System.Windows.Forms.CheckBox();
             this.cbMaximumStatus = new System.Windows.Forms.ComboBox();
             this.cbMinimumStatus = new System.Windows.Forms.ComboBox();
             this.maximumUD = new System.Windows.Forms.NumericUpDown();
-            this.lblMaximumPaymentDur = new System.Windows.Forms.Label();
             this.minimumUD = new System.Windows.Forms.NumericUpDown();
             this.lblMinimumPaymentDur = new System.Windows.Forms.Label();
             this.comakersUD = new System.Windows.Forms.NumericUpDown();
@@ -62,6 +60,9 @@
             this.lblMaxLoanableAmt = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
+            this.txtTimesOfShareCap = new System.Windows.Forms.TextBox();
+            this.lblFixed = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -161,6 +162,9 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblFixed);
+            this.groupBox1.Controls.Add(this.txtTimesOfShareCap);
             this.groupBox1.Controls.Add(this.clbMemberType);
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.btnRetrieve);
@@ -168,8 +172,6 @@
             this.groupBox1.Controls.Add(this.lblStatus);
             this.groupBox1.Controls.Add(this.chbStatus);
             this.groupBox1.Controls.Add(this.chbCollateral);
-            this.groupBox1.Controls.Add(this.cbDeduction);
-            this.groupBox1.Controls.Add(this.cbAmtStatus);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.comakersUD);
             this.groupBox1.Controls.Add(this.gbAvailability);
@@ -266,41 +268,12 @@
             this.chbCollateral.Text = "Has Collateral?";
             this.chbCollateral.UseVisualStyleBackColor = true;
             // 
-            // cbDeduction
-            // 
-            this.cbDeduction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDeduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbDeduction.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.cbDeduction.FormattingEnabled = true;
-            this.cbDeduction.Items.AddRange(new object[] {
-            "Share Capital",
-            "Savings Balance"});
-            this.cbDeduction.Location = new System.Drawing.Point(477, 170);
-            this.cbDeduction.Name = "cbDeduction";
-            this.cbDeduction.Size = new System.Drawing.Size(186, 25);
-            this.cbDeduction.TabIndex = 23;
-            // 
-            // cbAmtStatus
-            // 
-            this.cbAmtStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAmtStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbAmtStatus.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.cbAmtStatus.FormattingEnabled = true;
-            this.cbAmtStatus.Items.AddRange(new object[] {
-            "Times",
-            "Php"});
-            this.cbAmtStatus.Location = new System.Drawing.Point(332, 170);
-            this.cbAmtStatus.Name = "cbAmtStatus";
-            this.cbAmtStatus.Size = new System.Drawing.Size(113, 25);
-            this.cbAmtStatus.TabIndex = 21;
-            this.cbAmtStatus.SelectedIndexChanged += new System.EventHandler(this.cbAmtStatus_SelectedIndexChanged);
-            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.chbMaximumPaymentDur);
             this.groupBox3.Controls.Add(this.cbMaximumStatus);
             this.groupBox3.Controls.Add(this.cbMinimumStatus);
             this.groupBox3.Controls.Add(this.maximumUD);
-            this.groupBox3.Controls.Add(this.lblMaximumPaymentDur);
             this.groupBox3.Controls.Add(this.minimumUD);
             this.groupBox3.Controls.Add(this.lblMinimumPaymentDur);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -310,6 +283,18 @@
             this.groupBox3.TabIndex = 85;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Allowable Payment Durations";
+            // 
+            // chbMaximumPaymentDur
+            // 
+            this.chbMaximumPaymentDur.AutoSize = true;
+            this.chbMaximumPaymentDur.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbMaximumPaymentDur.Location = new System.Drawing.Point(9, 52);
+            this.chbMaximumPaymentDur.Name = "chbMaximumPaymentDur";
+            this.chbMaximumPaymentDur.Size = new System.Drawing.Size(84, 21);
+            this.chbMaximumPaymentDur.TabIndex = 86;
+            this.chbMaximumPaymentDur.Text = "Maximum";
+            this.chbMaximumPaymentDur.UseVisualStyleBackColor = true;
+            this.chbMaximumPaymentDur.CheckedChanged += new System.EventHandler(this.chbMaximumPaymentDur_CheckedChanged);
             // 
             // cbMaximumStatus
             // 
@@ -350,16 +335,6 @@
             this.maximumUD.Size = new System.Drawing.Size(60, 25);
             this.maximumUD.TabIndex = 17;
             // 
-            // lblMaximumPaymentDur
-            // 
-            this.lblMaximumPaymentDur.AutoSize = true;
-            this.lblMaximumPaymentDur.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblMaximumPaymentDur.Location = new System.Drawing.Point(6, 53);
-            this.lblMaximumPaymentDur.Name = "lblMaximumPaymentDur";
-            this.lblMaximumPaymentDur.Size = new System.Drawing.Size(68, 17);
-            this.lblMaximumPaymentDur.TabIndex = 16;
-            this.lblMaximumPaymentDur.Text = "Maximum:";
-            // 
             // minimumUD
             // 
             this.minimumUD.ContextMenuStrip = this.contextMenuBlank;
@@ -373,7 +348,7 @@
             // 
             this.lblMinimumPaymentDur.AutoSize = true;
             this.lblMinimumPaymentDur.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblMinimumPaymentDur.Location = new System.Drawing.Point(6, 25);
+            this.lblMinimumPaymentDur.Location = new System.Drawing.Point(25, 25);
             this.lblMinimumPaymentDur.Name = "lblMinimumPaymentDur";
             this.lblMinimumPaymentDur.Size = new System.Drawing.Size(65, 17);
             this.lblMinimumPaymentDur.TabIndex = 13;
@@ -412,7 +387,7 @@
             // 
             this.txtMaxAmt.ContextMenuStrip = this.contextMenuBlank;
             this.txtMaxAmt.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtMaxAmt.Location = new System.Drawing.Point(172, 171);
+            this.txtMaxAmt.Location = new System.Drawing.Point(201, 171);
             this.txtMaxAmt.Name = "txtMaxAmt";
             this.txtMaxAmt.Size = new System.Drawing.Size(154, 25);
             this.txtMaxAmt.TabIndex = 20;
@@ -423,20 +398,20 @@
             // 
             this.lblOf.AutoSize = true;
             this.lblOf.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblOf.Location = new System.Drawing.Point(451, 174);
+            this.lblOf.Location = new System.Drawing.Point(465, 174);
             this.lblOf.Name = "lblOf";
-            this.lblOf.Size = new System.Drawing.Size(20, 17);
+            this.lblOf.Size = new System.Drawing.Size(147, 17);
             this.lblOf.TabIndex = 22;
-            this.lblOf.Text = "of";
+            this.lblOf.Text = "(Times of Share Capital)";
             // 
             // lblMaxLoanableAmt
             // 
             this.lblMaxLoanableAmt.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblMaxLoanableAmt.Location = new System.Drawing.Point(16, 174);
             this.lblMaxLoanableAmt.Name = "lblMaxLoanableAmt";
-            this.lblMaxLoanableAmt.Size = new System.Drawing.Size(150, 26);
+            this.lblMaxLoanableAmt.Size = new System.Drawing.Size(179, 26);
             this.lblMaxLoanableAmt.TabIndex = 19;
-            this.lblMaxLoanableAmt.Text = "Max. Loanable Amount:";
+            this.lblMaxLoanableAmt.Text = "Max. Loanable Amount: ";
             // 
             // txtName
             // 
@@ -456,6 +431,36 @@
             this.lblName.Size = new System.Drawing.Size(110, 17);
             this.lblName.TabIndex = 7;
             this.lblName.Text = "Loan Type Name:";
+            // 
+            // txtTimesOfShareCap
+            // 
+            this.txtTimesOfShareCap.ContextMenuStrip = this.contextMenuBlank;
+            this.txtTimesOfShareCap.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtTimesOfShareCap.Location = new System.Drawing.Point(412, 171);
+            this.txtTimesOfShareCap.Name = "txtTimesOfShareCap";
+            this.txtTimesOfShareCap.Size = new System.Drawing.Size(47, 25);
+            this.txtTimesOfShareCap.TabIndex = 86;
+            this.txtTimesOfShareCap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimesOfShareCap_KeyDown);
+            this.txtTimesOfShareCap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimesOfShareCap_KeyPress);
+            // 
+            // lblFixed
+            // 
+            this.lblFixed.AutoSize = true;
+            this.lblFixed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFixed.Location = new System.Drawing.Point(361, 174);
+            this.lblFixed.Name = "lblFixed";
+            this.lblFixed.Size = new System.Drawing.Size(46, 17);
+            this.lblFixed.TabIndex = 87;
+            this.lblFixed.Text = "(Fixed)";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label1.Location = new System.Drawing.Point(163, 174);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 26);
+            this.label1.TabIndex = 88;
+            this.label1.Text = "Php";
             // 
             // LoanTypes
             // 
@@ -504,13 +509,10 @@
         private System.Windows.Forms.CheckBox chbStatus;
         private System.Windows.Forms.CheckedListBox clbMemberType;
         private System.Windows.Forms.CheckBox chbCollateral;
-        private System.Windows.Forms.ComboBox cbDeduction;
-        private System.Windows.Forms.ComboBox cbAmtStatus;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox cbMaximumStatus;
         private System.Windows.Forms.ComboBox cbMinimumStatus;
         private System.Windows.Forms.NumericUpDown maximumUD;
-        public System.Windows.Forms.Label lblMaximumPaymentDur;
         private System.Windows.Forms.NumericUpDown minimumUD;
         public System.Windows.Forms.Label lblMinimumPaymentDur;
         private System.Windows.Forms.NumericUpDown comakersUD;
@@ -524,6 +526,10 @@
         private System.Windows.Forms.Button btnRetrieve;
         private System.Windows.Forms.Button btnSave;
         public System.Windows.Forms.Label gbAvailability;
+        public System.Windows.Forms.CheckBox chbMaximumPaymentDur;
+        private System.Windows.Forms.TextBox txtTimesOfShareCap;
+        public System.Windows.Forms.Label lblFixed;
+        public System.Windows.Forms.Label label1;
 
     }
 }

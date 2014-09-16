@@ -121,10 +121,19 @@ namespace CMS.Loan_Management.Reports.Controller
 
             if (hasError == 0)
             {
-                DataSet ds;
-                ds = loanReleasesModel.listDailyTransactions(loanReleasesModel.dateFrom, loanReleasesModel.dateTo, loanTypesNo, loanReleasesModel.sortBy, loanReleasesModel.order, "TableTransLog");
-                loanReleases.setReportDataSource(ds, loanReleasesModel.getCompanyProfile("dtLogo"), loanReleasesModel.dateFrom, loanReleasesModel.dateTo);
-                execLogger("Generated Report");
+                DataSet ds = loanReleasesModel.listDailyTransactions(loanReleasesModel.dateFrom, loanReleasesModel.dateTo, loanTypesNo, loanReleasesModel.sortBy, loanReleasesModel.order, "dtLoanReleases");
+                DataSet dsCoop = loanReleasesModel.getCompanyProfile("dtLogo");
+                DataSet dsStaff = loanReleasesModel.getStaff(Main.UserData.userId, "dtStaff");
+                DataSet dsMgr = loanReleasesModel.getManager("dtManager");
+                DataSet dsCredChair = loanReleasesModel.getChair("dtCreditChair");
+
+                if (ds.Tables[0].Rows.Count == 0)
+                    MessageBox.Show("No records to show.", "Loan Releases");
+                else
+                {
+                    loanReleases.setReportDataSource(ds, dsCoop, dsStaff, dsMgr, dsCredChair, loanReleasesModel.dateFrom, loanReleasesModel.dateTo);
+                    execLogger("Generated Report");
+                }
 
             }
             else

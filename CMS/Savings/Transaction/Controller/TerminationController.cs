@@ -12,7 +12,6 @@ namespace CMS.Savings.Transaction.Controller
 {
     class TerminationController
     {
-        Main.Logger logger = new Main.Logger();
         Savings.Transaction.Model.TerminationModel terminationModel;
         Savings.Transaction.View.MemberTermination termination;
 
@@ -85,7 +84,6 @@ namespace CMS.Savings.Transaction.Controller
                         if (this.terminationModel.clearLoans(accountNo) != 0)
                         {
                             MessageBox.Show("Member Termination Success.", "Membership Termination", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            execLogger("Terminate - " + accountNo);
                             this.termination.classGridSearch(this.terminationModel.selectActiveMember());
                             this.termination.clearFields();
                         }
@@ -174,7 +172,6 @@ namespace CMS.Savings.Transaction.Controller
             {
                 this.getInterestAndPenalty(int.Parse(setLoans.Tables[0].Rows[j][0].ToString()), int.Parse(setLoans.Tables[0].Rows[j][1].ToString()));
             }
-
             
             this.termination.setLoanBalance(totalBalance.ToString());           
             this.termination.setNetRefunds((shareCapital - totalBalance).ToString());
@@ -211,6 +208,13 @@ namespace CMS.Savings.Transaction.Controller
         {
             totalInterest = 0;
             totalPenalty = 0;
+
+            double lastInterest = this.terminationModel.selectLastInterest(lappId);
+
+            if (lastInterest != 0)
+            {
+                totalInterest += lastInterest;
+            }
 
             Dictionary<String, int> listOfInterestDates = new Dictionary<String, int>();
             Dictionary<String, int> finalListOfInterestDates = new Dictionary<String, int>();
@@ -371,6 +375,12 @@ namespace CMS.Savings.Transaction.Controller
 
             totalBalance += totalInterest;
 
+            double lastPenalty = this.terminationModel.selectLastPenalty(lappId);
+            if (lastPenalty != 0)
+            {
+                totalPenalty += lastPenalty;
+            }
+
             DataSet amorSet = this.terminationModel.selectAmortizations(accountNo, lappId);
 
             for (int j = 0; j < amorSet.Tables[0].Rows.Count; j++)
@@ -389,6 +399,7 @@ namespace CMS.Savings.Transaction.Controller
                 DataSet ds = this.terminationModel.selectPenaltiesPerLoanType(loanTypeId);
                 if (ds.Tables[0].Rows.Count == 0 || DateTime.Parse(dueDate) > DateTime.Now)
                 {
+                    totalBalance += totalPenalty;
                     totalPenalty = 0;
                 }
 
@@ -504,28 +515,11 @@ namespace CMS.Savings.Transaction.Controller
                     }//end for loop
 
 
-
-
                 }//end else
 
             }
 
             totalBalance += totalPenalty;
-        }
-
-        public void execLogger(String ModuleActivity)
-        {
-            logger.clear();
-            logger.Module = "Transaction - Member Termination";
-            logger.Activity = ModuleActivity;
-            if (logger.insertLog() > 0)
-            {
-                Console.WriteLine("Logged");
-            }
-            else
-            {
-                Console.WriteLine("Not Logged");
-            }
         }
     }
 }

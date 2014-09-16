@@ -47,6 +47,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.label3.Location = new System.Drawing.Point(12, 346);
@@ -57,6 +58,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.comboBox1.FormattingEnabled = true;
@@ -67,6 +69,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(4, 9);
@@ -78,6 +81,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.tbAccountNo);
             this.groupBox4.Controls.Add(this.tbAccountName);
@@ -93,6 +97,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.label4.Location = new System.Drawing.Point(45, 29);
@@ -103,6 +108,7 @@
             // 
             // tbAccountNo
             // 
+            this.tbAccountNo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbAccountNo.Enabled = false;
             this.tbAccountNo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.tbAccountNo.Location = new System.Drawing.Point(252, 26);
@@ -112,6 +118,7 @@
             // 
             // tbAccountName
             // 
+            this.tbAccountName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbAccountName.Enabled = false;
             this.tbAccountName.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.tbAccountName.Location = new System.Drawing.Point(252, 57);
@@ -121,6 +128,7 @@
             // 
             // rbAcctName
             // 
+            this.rbAcctName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbAcctName.AutoSize = true;
             this.rbAcctName.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.rbAcctName.Location = new System.Drawing.Point(119, 58);
@@ -133,6 +141,7 @@
             // 
             // rbAcctNo
             // 
+            this.rbAcctNo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbAcctNo.AutoSize = true;
             this.rbAcctNo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.rbAcctNo.Location = new System.Drawing.Point(119, 27);
@@ -147,6 +156,7 @@
             // 
             this.dataGridShare.AllowUserToAddRows = false;
             this.dataGridShare.AllowUserToDeleteRows = false;
+            this.dataGridShare.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridShare.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridShare.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridShare.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -158,6 +168,7 @@
             // 
             // btnPreview
             // 
+            this.btnPreview.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPreview.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -172,6 +183,7 @@
             // 
             // checkBox1
             // 
+            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.checkBox1.Location = new System.Drawing.Point(595, 345);

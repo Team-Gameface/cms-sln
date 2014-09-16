@@ -74,6 +74,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuditChairDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuditChairDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CreditChairDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreditChairDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DAL.cs" />
     <Compile Include="Loan Management\LoanManagementController.cs" />
     <Compile Include="Loan Management\LoanManagementMenu.cs">
@@ -162,6 +172,7 @@
     </Compile>
     <Compile Include="Loan Management\Reports\Controller\CollectionReportController.cs" />
     <Compile Include="Loan Management\Reports\Controller\LoanReleasesController.cs" />
+    <Compile Include="Loan Management\Reports\Controller\PerformanceReportController.cs" />
     <Compile Include="Loan Management\Reports\Controller\ScheduleOfDelinquentsController.cs" />
     <Compile Include="Loan Management\Reports\FeeCollectionReport.cs">
       <AutoGen>True</AutoGen>
@@ -196,9 +207,21 @@
       <DependentUpon>LoanReleasesReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Loan Management\Reports\MemberPopulationDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MemberPopulationDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Loan Management\Reports\Model\CollectionReportModel.cs" />
     <Compile Include="Loan Management\Reports\Model\LoanReleasesModel.cs" />
+    <Compile Include="Loan Management\Reports\Model\PerformanceReportModel.cs" />
     <Compile Include="Loan Management\Reports\Model\ScheduleOfDelinquentsModel.cs" />
+    <Compile Include="Loan Management\Reports\PerformanceReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PerformanceReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Loan Management\Reports\ShareCollectionReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -209,6 +232,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ShareCollectionsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Reports\TotalLoanReleasesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TotalLoanReleasesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Reports\TotalShareDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TotalShareDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Reports\TotalTimeDepositDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TotalTimeDepositDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Loan Management\Reports\View\CollectionReport.cs">
       <SubType>Form</SubType>
@@ -239,6 +277,12 @@
     </Compile>
     <Compile Include="Loan Management\Reports\View\LoanReleasesViewer.designer.cs">
       <DependentUpon>LoanReleasesViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\PerformanceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loan Management\Reports\View\PerformanceReport.Designer.cs">
+      <DependentUpon>PerformanceReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Loan Management\Reports\View\ScheduleOfDelinquents.cs">
       <SubType>Form</SubType>
@@ -342,6 +386,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PaymentReceipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Main\ReceiptDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -366,11 +411,12 @@
     <Compile Include="Main\View\Utilities.designer.cs">
       <DependentUpon>Utilities.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Include="ManagerDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
+      <DependentUpon>ManagerDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs" />
     <Compile Include="Savings\Maintenance\Model\TimeDepositInterestModel.cs" />
     <Compile Include="Savings\Queries\Controller\StatementOfAccountController.cs" />
     <Compile Include="Savings\Queries\Model\StatementOfAccountModel.cs" />
@@ -412,6 +458,17 @@
     </Compile>
     <Compile Include="Savings\Transaction\Controller\TerminationController.cs" />
     <Compile Include="Savings\Transaction\Model\TerminationModel.cs" />
+    <Compile Include="Savings\Transaction\TimeDepositCertificate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimeDepositCertificate.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Savings\Transaction\TimeDepositDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimeDepositDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Savings\Transaction\View\MemberTermination.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -500,6 +557,12 @@
     <Compile Include="Savings\Transaction\View\TimeDepositApplication.Designer.cs">
       <DependentUpon>TimeDepositApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Savings\Transaction\View\TimeDepositCertificateViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Savings\Transaction\View\TimeDepositCertificateViewer.designer.cs">
+      <DependentUpon>TimeDepositCertificateViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Savings\Transaction\View\TimeDepositWithdrawal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -529,6 +592,11 @@
     </Compile>
     <Compile Include="Settings\UserManagement.Designer.cs">
       <DependentUpon>UserManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Controller\AccountSettingsController.cs" />
     <Compile Include="Utilities\Controller\AuditLogController.cs" />
@@ -598,6 +666,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>LoanReleasesReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\PerformanceReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PerformanceReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Loan Management\Reports\ShareCollectionReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ShareCollectionReport.cs</LastGenOutput>
@@ -616,6 +688,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Loan Management\Reports\View\LoanReleasesViewer.resx">
       <DependentUpon>LoanReleasesViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loan Management\Reports\View\PerformanceReport.resx">
+      <DependentUpon>PerformanceReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Loan Management\Reports\View\ScheduleOfDelinquents.resx">
       <DependentUpon>ScheduleOfDelinquents.cs</DependentUpon>
@@ -680,13 +755,16 @@
     <EmbeddedResource Include="Savings\Reports\View\DailyTransactionLogViewer.resx">
       <DependentUpon>DailyTransactionLogViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Savings\Transaction\TimeDepositCertificate.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TimeDepositCertificate.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Savings\Transaction\View\MemberTermination.resx">
       <DependentUpon>MemberTermination.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Savings\Maintenance\View\EarlyWithdrawal.resx">
       <DependentUpon>EarlyWithdrawal.cs</DependentUpon>
@@ -718,6 +796,9 @@
     <EmbeddedResource Include="Savings\Transaction\View\TimeDepositApplication.resx">
       <DependentUpon>TimeDepositApplication.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Savings\Transaction\View\TimeDepositCertificateViewer.resx">
+      <DependentUpon>TimeDepositCertificateViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Savings\Transaction\View\TimeDepositWithdrawal.resx">
       <DependentUpon>TimeDepositWithdrawal.cs</DependentUpon>
     </EmbeddedResource>
@@ -742,6 +823,26 @@
     <EmbeddedResource Include="Utilities\View\TimeDepositCalculator.resx">
       <DependentUpon>TimeDepositCalculator.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="AuditChairDataSet.xsc">
+      <DependentUpon>AuditChairDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AuditChairDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AuditChairDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AuditChairDataSet.xss">
+      <DependentUpon>AuditChairDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CreditChairDataSet.xsc">
+      <DependentUpon>CreditChairDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CreditChairDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CreditChairDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CreditChairDataSet.xss">
+      <DependentUpon>CreditChairDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Loan Management\Reports\FeeCollectionsDataSet.xsc">
       <DependentUpon>FeeCollectionsDataSet.xsd</DependentUpon>
     </None>
@@ -775,6 +876,16 @@
     <None Include="Loan Management\Reports\LoanReleasesDataSet.xss">
       <DependentUpon>LoanReleasesDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Loan Management\Reports\MemberPopulationDataSet.xsc">
+      <DependentUpon>MemberPopulationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\MemberPopulationDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MemberPopulationDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Loan Management\Reports\MemberPopulationDataSet.xss">
+      <DependentUpon>MemberPopulationDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Loan Management\Reports\ShareCollectionsDataSet.xsc">
       <DependentUpon>ShareCollectionsDataSet.xsd</DependentUpon>
     </None>
@@ -785,6 +896,38 @@
     </None>
     <None Include="Loan Management\Reports\ShareCollectionsDataSet.xss">
       <DependentUpon>ShareCollectionsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\TotalLoanReleasesDataSet.xsc">
+      <DependentUpon>TotalLoanReleasesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\TotalLoanReleasesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TotalLoanReleasesDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Loan Management\Reports\TotalLoanReleasesDataSet.xss">
+      <DependentUpon>TotalLoanReleasesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\TotalShareDataSet.xsc">
+      <DependentUpon>TotalShareDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\TotalShareDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TotalShareDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Loan Management\Reports\TotalShareDataSet.xss">
+      <DependentUpon>TotalShareDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\TotalTimeDepositDataSet.xsc">
+      <DependentUpon>TotalTimeDepositDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Loan Management\Reports\TotalTimeDepositDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TotalTimeDepositDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Loan Management\Reports\TotalTimeDepositDataSet.xss">
+      <DependentUpon>TotalTimeDepositDataSet.xsd</DependentUpon>
     </None>
     <None Include="Loan Management\Transaction\LoanVoucherChargesDataSet.xsc">
       <DependentUpon>LoanVoucherChargesDataSet.xsd</DependentUpon>
@@ -819,6 +962,16 @@
     <None Include="Main\ReceiptDataSet.xss">
       <DependentUpon>ReceiptDataSet.xsd</DependentUpon>
     </None>
+    <None Include="ManagerDataSet.xsc">
+      <DependentUpon>ManagerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ManagerDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ManagerDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ManagerDataSet.xss">
+      <DependentUpon>ManagerDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -849,6 +1002,26 @@
     </None>
     <None Include="Savings\Reports\SavingsTransactionLogDataSet.xss">
       <DependentUpon>SavingsTransactionLogDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Savings\Transaction\TimeDepositDataSet.xsc">
+      <DependentUpon>TimeDepositDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Savings\Transaction\TimeDepositDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TimeDepositDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Savings\Transaction\TimeDepositDataSet.xss">
+      <DependentUpon>TimeDepositDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UserDataSet.xsc">
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UserDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UserDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UserDataSet.xss">
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -886,10 +1059,12 @@
     <Content Include="img\buttons\Savings.png" />
     <Content Include="img\icons\LM.ico" />
     <Content Include="img\icons\SV.ico" />
+    <Content Include="img\loanmenu-bg.jpg" />
     <Content Include="img\menu\Maintenance-LM.png" />
     <Content Include="img\menu\Maintenance-SV.png" />
     <Content Include="img\menu\Transaction-LM.png" />
     <Content Include="img\menu\Transaction-SV.png" />
+    <Content Include="img\savingsmenu-bg.jpg" />
     <Content Include="img\signimg.jpg" />
   </ItemGroup>
   <ItemGroup>

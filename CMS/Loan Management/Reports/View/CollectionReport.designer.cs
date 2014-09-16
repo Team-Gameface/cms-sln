@@ -67,6 +67,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 9);
@@ -78,6 +79,7 @@
             // 
             // btnPreview
             // 
+            this.btnPreview.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPreview.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -92,6 +94,7 @@
             // 
             // grpTransType
             // 
+            this.grpTransType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpTransType.Controls.Add(this.rbShare);
             this.grpTransType.Controls.Add(this.rbMiscFees);
             this.grpTransType.Controls.Add(this.rbLoan);
@@ -105,6 +108,7 @@
             // 
             // rbShare
             // 
+            this.rbShare.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbShare.AutoSize = true;
             this.rbShare.Location = new System.Drawing.Point(24, 76);
             this.rbShare.Name = "rbShare";
@@ -117,6 +121,7 @@
             // 
             // rbMiscFees
             // 
+            this.rbMiscFees.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbMiscFees.AutoSize = true;
             this.rbMiscFees.Location = new System.Drawing.Point(24, 51);
             this.rbMiscFees.Name = "rbMiscFees";
@@ -129,6 +134,7 @@
             // 
             // rbLoan
             // 
+            this.rbLoan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbLoan.AutoSize = true;
             this.rbLoan.Location = new System.Drawing.Point(24, 28);
             this.rbLoan.Name = "rbLoan";
@@ -141,6 +147,7 @@
             // 
             // grpLoanTypesSort
             // 
+            this.grpLoanTypesSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpLoanTypesSort.Controls.Add(this.cbLoanTypesSort);
             this.grpLoanTypesSort.Controls.Add(this.rbLoanTypesDescending);
             this.grpLoanTypesSort.Controls.Add(this.rbLoanTypesAscending);
@@ -154,6 +161,7 @@
             // 
             // cbLoanTypesSort
             // 
+            this.cbLoanTypesSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbLoanTypesSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLoanTypesSort.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbLoanTypesSort.FormattingEnabled = true;
@@ -170,6 +178,7 @@
             // 
             // rbLoanTypesDescending
             // 
+            this.rbLoanTypesDescending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbLoanTypesDescending.AutoSize = true;
             this.rbLoanTypesDescending.Location = new System.Drawing.Point(135, 55);
             this.rbLoanTypesDescending.Name = "rbLoanTypesDescending";
@@ -181,6 +190,7 @@
             // 
             // rbLoanTypesAscending
             // 
+            this.rbLoanTypesAscending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbLoanTypesAscending.AutoSize = true;
             this.rbLoanTypesAscending.Location = new System.Drawing.Point(23, 55);
             this.rbLoanTypesAscending.Name = "rbLoanTypesAscending";
@@ -192,6 +202,7 @@
             // 
             // panelLoan
             // 
+            this.panelLoan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelLoan.Controls.Add(this.grpLoanTypesSort);
             this.panelLoan.Location = new System.Drawing.Point(18, 255);
             this.panelLoan.Name = "panelLoan";
@@ -200,6 +211,7 @@
             // 
             // panelMiscFees
             // 
+            this.panelMiscFees.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelMiscFees.Controls.Add(this.grpMiscFeesSort);
             this.panelMiscFees.Location = new System.Drawing.Point(18, 255);
             this.panelMiscFees.Name = "panelMiscFees";
@@ -208,6 +220,7 @@
             // 
             // grpMiscFeesSort
             // 
+            this.grpMiscFeesSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpMiscFeesSort.Controls.Add(this.cbMiscFeesSort);
             this.grpMiscFeesSort.Controls.Add(this.rbMiscFeesDescending);
             this.grpMiscFeesSort.Controls.Add(this.rbMiscFeesAscending);
@@ -221,6 +234,7 @@
             // 
             // cbMiscFeesSort
             // 
+            this.cbMiscFeesSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbMiscFeesSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMiscFeesSort.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbMiscFeesSort.FormattingEnabled = true;
@@ -237,6 +251,7 @@
             // 
             // rbMiscFeesDescending
             // 
+            this.rbMiscFeesDescending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbMiscFeesDescending.AutoSize = true;
             this.rbMiscFeesDescending.Location = new System.Drawing.Point(135, 55);
             this.rbMiscFeesDescending.Name = "rbMiscFeesDescending";
@@ -248,6 +263,7 @@
             // 
             // rbMiscFeesAscending
             // 
+            this.rbMiscFeesAscending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbMiscFeesAscending.AutoSize = true;
             this.rbMiscFeesAscending.Location = new System.Drawing.Point(23, 55);
             this.rbMiscFeesAscending.Name = "rbMiscFeesAscending";
@@ -259,6 +275,7 @@
             // 
             // panelShare
             // 
+            this.panelShare.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelShare.Controls.Add(this.grpShareSort);
             this.panelShare.Location = new System.Drawing.Point(18, 256);
             this.panelShare.Name = "panelShare";
@@ -267,6 +284,7 @@
             // 
             // grpShareSort
             // 
+            this.grpShareSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpShareSort.Controls.Add(this.cbShareSort);
             this.grpShareSort.Controls.Add(this.rbShareDescending);
             this.grpShareSort.Controls.Add(this.rbShareAscending);
@@ -280,6 +298,7 @@
             // 
             // cbShareSort
             // 
+            this.cbShareSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbShareSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbShareSort.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbShareSort.FormattingEnabled = true;
@@ -295,6 +314,7 @@
             // 
             // rbShareDescending
             // 
+            this.rbShareDescending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbShareDescending.AutoSize = true;
             this.rbShareDescending.Location = new System.Drawing.Point(135, 55);
             this.rbShareDescending.Name = "rbShareDescending";
@@ -306,6 +326,7 @@
             // 
             // rbShareAscending
             // 
+            this.rbShareAscending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbShareAscending.AutoSize = true;
             this.rbShareAscending.Location = new System.Drawing.Point(23, 55);
             this.rbShareAscending.Name = "rbShareAscending";
@@ -317,6 +338,7 @@
             // 
             // grpDatesTransaction
             // 
+            this.grpDatesTransaction.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpDatesTransaction.Controls.Add(this.dateTo);
             this.grpDatesTransaction.Controls.Add(this.cbDateTo);
             this.grpDatesTransaction.Controls.Add(this.dateFrom);
@@ -331,6 +353,7 @@
             // 
             // dateTo
             // 
+            this.dateTo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTo.Location = new System.Drawing.Point(82, 53);
             this.dateTo.Name = "dateTo";
             this.dateTo.Size = new System.Drawing.Size(233, 25);
@@ -338,6 +361,7 @@
             // 
             // cbDateTo
             // 
+            this.cbDateTo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbDateTo.AutoSize = true;
             this.cbDateTo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbDateTo.Location = new System.Drawing.Point(7, 55);
@@ -350,6 +374,7 @@
             // 
             // dateFrom
             // 
+            this.dateFrom.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateFrom.Location = new System.Drawing.Point(82, 24);
             this.dateFrom.Name = "dateFrom";
             this.dateFrom.Size = new System.Drawing.Size(233, 25);
@@ -357,6 +382,7 @@
             // 
             // lblFrom
             // 
+            this.lblFrom.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblFrom.AutoSize = true;
             this.lblFrom.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblFrom.Location = new System.Drawing.Point(25, 32);

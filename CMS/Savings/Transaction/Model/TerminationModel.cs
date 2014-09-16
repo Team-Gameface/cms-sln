@@ -16,6 +16,30 @@ namespace CMS.Savings.Transaction.Model
     {
         public int checkEmpty = 0;
 
+        public double selectLastPenalty(int applicationId)
+        {
+            try
+            {
+                DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+                String sqlSelect = "Select sum(Penalty) from LOAN_AMORTIZATION where LoanApplicationId=" + "'" + applicationId + "'";
+                double penalty = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                return penalty;
+            }
+            catch (Exception) { return 0; }
+        }
+
+        public double selectLastInterest(int applicationId)
+        {
+            try
+            {
+                DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+                String sqlSelect = "Select Interest from loan_information where LoanApplicationId = " + "'" + applicationId + "'";
+                double interest = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                return interest;
+            }
+            catch (Exception) { return 0; }
+        }
+
         public DataSet selectPenaltiesPerLoanType(int loanTypeId)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
@@ -159,13 +183,13 @@ namespace CMS.Savings.Transaction.Model
         public int clearLoans(String accountNo1)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "UPDATE LOAN_AMORTIZATION SET isPaid = 1 WHERE LoanApplicationId IN (SELECT LoanApplicationId FROM LOAN_INFORMATION WHERE AccountNo = @AccountNo)";
+            String sql = "UPDATE LOAN_AMORTIZATION SET isPaid = 1, Penalty = NULL WHERE LoanApplicationId IN (SELECT LoanApplicationId FROM LOAN_INFORMATION WHERE AccountNo = @AccountNo)";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@AccountNo", accountNo1);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             if (result == 1)
             {
-                sql = "UPDATE LOAN_INFORMATION SET isCleared = 1 WHERE AccountNo = @AccountNo";
+                sql = "UPDATE LOAN_INFORMATION SET isCleared = 1, Interest = NULL WHERE AccountNo = @AccountNo";
                 result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             }
             return result;

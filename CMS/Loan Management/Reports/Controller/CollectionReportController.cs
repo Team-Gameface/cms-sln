@@ -180,6 +180,9 @@ namespace CMS.Loan_Management.Reports.Controller
                 MessageBox.Show(collectionReportModel.dateFrom + " " + collectionReportModel.dateTo + collectionReportModel.transType + " " + collectionReportModel.sortBy + " " + collectionReportModel.order);
                 DataSet ds = null;
                 DataSet dsCoop = collectionReportModel.getCompanyProfile("dtLogo");
+                DataSet dsStaff = collectionReportModel.getStaff(Main.UserData.userId, "dtStaff");
+                DataSet dsMgr = collectionReportModel.getManager("dtManager");
+                DataSet dsCredChair = collectionReportModel.getChair("dtCreditChair");
                 switch (this.collectionReportModel.transType)
                 {
                     case "Loan": 
@@ -207,8 +210,13 @@ namespace CMS.Loan_Management.Reports.Controller
 
                 }
 
-                collectionReport.setReportDataSource(ds, dsCoop, collectionReportModel.dateFrom, collectionReportModel.dateTo, collectionReportModel.transType);
-                execLogger("Generated Report");
+                if (ds.Tables[0].Rows.Count == 0)
+                    MessageBox.Show("No records to show.", "Collection Report");
+                else
+                {
+                    collectionReport.setReportDataSource(ds, dsCoop, dsStaff, dsMgr, dsCredChair, collectionReportModel.dateFrom, collectionReportModel.dateTo, collectionReportModel.transType);
+                    execLogger("Generated Report");
+                }
             }
             else
                 MessageBox.Show("Errors had been found." + Environment.NewLine + errors);

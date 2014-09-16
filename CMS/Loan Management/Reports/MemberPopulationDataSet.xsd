@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MemberPopulationDataSet" targetNamespace="http://tempuri.org/MemberPopulationDataSet.xsd" xmlns:mstns="http://tempuri.org/MemberPopulationDataSet.xsd" xmlns="http://tempuri.org/MemberPopulationDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MemberPopulationDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MemberPopulationDataSet" msprop:Generator_UserDSName="MemberPopulationDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtMemberPopulation" msprop:Generator_TableClassName="dtMemberPopulationDataTable" msprop:Generator_TableVarName="tabledtMemberPopulation" msprop:Generator_TablePropName="dtMemberPopulation" msprop:Generator_RowDeletingName="dtMemberPopulationRowDeleting" msprop:Generator_RowChangingName="dtMemberPopulationRowChanging" msprop:Generator_RowEvHandlerName="dtMemberPopulationRowChangeEventHandler" msprop:Generator_RowDeletedName="dtMemberPopulationRowDeleted" msprop:Generator_UserTableName="dtMemberPopulation" msprop:Generator_RowChangedName="dtMemberPopulationRowChanged" msprop:Generator_RowEvArgName="dtMemberPopulationRowChangeEvent" msprop:Generator_RowClassName="dtMemberPopulationRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="MembersPresent" msprop:Generator_ColumnVarNameInTable="columnMembersPresent" msprop:Generator_ColumnPropNameInRow="MembersPresent" msprop:Generator_ColumnPropNameInTable="MembersPresentColumn" msprop:Generator_UserColumnName="MembersPresent" type="xs:int" minOccurs="0" />
+              <xs:element name="MembersPrevious" msprop:Generator_ColumnVarNameInTable="columnMembersPrevious" msprop:Generator_ColumnPropNameInRow="MembersPrevious" msprop:Generator_ColumnPropNameInTable="MembersPreviousColumn" msprop:Generator_UserColumnName="MembersPrevious" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

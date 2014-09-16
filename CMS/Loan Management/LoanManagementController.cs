@@ -55,6 +55,7 @@ namespace CMS.Loan_Management
             this.loanManagementMenu.setCollectionReportEventHandler(this.itemCollectionReport);
             this.loanManagementMenu.setLoanReleasesEventHandler(this.itemLoanReleases);
             this.loanManagementMenu.setitemDelinquencyEventHandler(this.itemScheduleOfDelinquents);
+            this.loanManagementMenu.setAnnualFinancialReportEventHandler(this.itemFinancialReport);
 
             this.loanManagementMenu.ShowDialog();
         }
@@ -138,6 +139,11 @@ namespace CMS.Loan_Management
         public void itemScheduleOfDelinquents(object args, EventArgs e)
         {
             Reports.Controller.ScheduleOfDelinquentsController scheduleOfDelinquentsController = new Reports.Controller.ScheduleOfDelinquentsController(new Reports.Model.ScheduleOfDelinquentsModel(), new Reports.View.ScheduleOfDelinquents(), loanManagementMenu);
+        }
+
+        public void itemFinancialReport(object args, EventArgs e)
+        {
+            Reports.Controller.PerformanceReportController performanceReportController = new Reports.Controller.PerformanceReportController(new Reports.Model.PerformanceReportModel(), new Reports.View.PerformanceReport(), loanManagementMenu);
         }
 
 

@@ -16,7 +16,7 @@ namespace CMS.Loan_Management.Transaction.Controller
         double loanBal = 0, totPen = 0;
         Transaction.Model.LoanApplicationModel loanApplicationModel;
         Transaction.View.LoanApplication loanApplication;
-        Main.Logger logger = new Main.Logger();
+
         Boolean isbtnDetailsPrevious = false;
         Boolean isAddEditCollateral = false;
         Boolean isAddEditComaker = false;
@@ -88,22 +88,6 @@ namespace CMS.Loan_Management.Transaction.Controller
             this.loanApplication.Show();
             this.loanApplication.clearSelectionActiveMember();
         }
-
-        public void execLogger(String ModuleActivity)
-        {
-            logger.clear();
-            logger.Module = "Transaction - Loan Information";
-            logger.Activity = ModuleActivity;
-            if (logger.insertLog() > 0)
-            {
-                Console.WriteLine("Logged");
-            }
-            else
-            {
-                Console.WriteLine("Not Logged");
-            }
-        }
-
 
         public void loanBalInterestRateFunction() 
         {
@@ -735,28 +719,29 @@ namespace CMS.Loan_Management.Transaction.Controller
                 this.loanApplication.setBtnDetailsNext();
 
                 String paymentDuration = this.loanApplicationModel.selectPaymentDuration(selectedLoanTypeId);
-                this.loanApplication.setLblPaymentDuration(paymentDuration);
+                String[] newPD= paymentDuration.Split(' ');
+                String finalPD = "";
+                for (int ii = 0; ii < newPD.Count(); ii++) 
+                {
+                    if (newPD[ii] == "0") { newPD[ii] = ""; }
+                    finalPD += newPD[ii] + " ";
+                }
+                
+                this.loanApplication.setLblPaymentDuration(finalPD);
 
                     String maxLoanableAmount = this.loanApplicationModel.selectMaximumLoanableAmount(selectedLoanTypeId);
                     String[] amount = maxLoanableAmount.Split(' ');
-                    double initAmt = double.Parse(amount[0]);
-                    if(maxLoanableAmount.Contains("Times Share Capital"))
+                    double fixedAmt = double.Parse(amount[0]);
+                    double timesOfSC = double.Parse(amount[1]);
+                    double shareCapital = this.loanApplication.getCurrentShareCapital();
+                    if(timesOfSC*shareCapital > fixedAmt)
                     {
-                        double shareCapital = this.loanApplication.getCurrentShareCapital();
-                        double loanAmount = initAmt * shareCapital;
-                        this.loanApplication.setLblMaxAmount(loanAmount+"");
+                        this.loanApplication.setLblMaxAmount(fixedAmt+"");
                     }
 
-                    else if (maxLoanableAmount.Contains("Times Savings Balance"))
+                    else
                     {
-                        double savingsBalance = this.loanApplication.getCurrentTotalSavings();
-                        double loanAmount = initAmt * savingsBalance;
-                        this.loanApplication.setLblMaxAmount(loanAmount + "");
-                    }
-
-                    else if (maxLoanableAmount.Contains("Php"))
-                    {
-                        this.loanApplication.setLblMaxAmount(initAmt+"");
+                        this.loanApplication.setLblMaxAmount((timesOfSC*shareCapital)+"");
                     }
                 
             }
@@ -907,9 +892,16 @@ namespace CMS.Loan_Management.Transaction.Controller
                 else if (duration == "year/s") { value *= 48; }
                 String[] s = this.loanApplication.getLblPaymentDuration().Split(' ');
 
-                if (value < int.Parse(s[0]) || value > int.Parse(s[1])) { this.loanApplication.lblPaymentDuration.ForeColor = Color.Red; countError++; }
-            }
-            catch (Exception) { this.loanApplication.lblPaymentDuration.ForeColor = Color.Red; countError++; }
+                if (this.loanApplication.lblStatePaymentDuration.Text.Contains("infinity")) 
+                {
+                    if (value < int.Parse(s[0])) { this.loanApplication.lblPaymentDuration.ForeColor = Color.Red; countError++; }
+                }
+                else
+                {
+                    if (value < int.Parse(s[0]) || value > int.Parse(s[1])) { this.loanApplication.lblPaymentDuration.ForeColor = Color.Red; countError++; }
+                }
+           }
+           catch (Exception) { this.loanApplication.lblPaymentDuration.ForeColor = Color.Red; countError++; }
 
             try 
             {
@@ -1278,7 +1270,14 @@ namespace CMS.Loan_Management.Transaction.Controller
                 else if (duration == "year/s") { value *= 48; }
                 String[] s = this.loanApplication.getLblPaymentDuration().Split(' ');
 
-                if (value < int.Parse(s[0]) || value > int.Parse(s[1])) { this.loanApplication.lblPaymentDuration.ForeColor = Color.Red; countError++; }
+                if (this.loanApplication.lblStatePaymentDuration.Text.Contains("infinity"))
+                {
+                    if (value < int.Parse(s[0])) { this.loanApplication.lblPaymentDuration.ForeColor = Color.Red; countError++; }
+                }
+                else
+                {
+                    if (value < int.Parse(s[0]) || value > int.Parse(s[1])) { this.loanApplication.lblPaymentDuration.ForeColor = Color.Red; countError++; }
+                }
             }
             catch (Exception) { this.loanApplication.lblPaymentDuration.ForeColor = Color.Red; countError++; }
 
@@ -1454,14 +1453,7 @@ namespace CMS.Loan_Management.Transaction.Controller
                 }
 
                 }
-
-                DataSet ds;
-                ds = this.loanApplicationModel.selectLoanDetails(this.loanApplicationModel.loanApplicationId);
-                View.VoucherViewer voucherViewer = new View.VoucherViewer(ds, this.loanApplicationModel.getCompanyProfile("dtLogo"), this.loanApplicationModel.selectCharges(this.loanApplicationModel.loanApplicationId,"dtCharges"));
-                MessageBox.Show("Charge: " + this.loanApplicationModel.selectCharges(this.loanApplicationModel.loanApplicationId, "dtCharges").Tables[0].Rows.Count.ToString());
                 MessageBox.Show("Loan processing successful", "LOAN INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                execLogger("Processed Loan for Account No. '" + finalAccountNo + "'");
                 this.loanApplication.disableFunction();
                 this.loanApplication.enableDataActiveMember();
                 this.loanApplication.clearSelectionActiveMember();

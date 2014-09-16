@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SavingsMenu));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemDailyTransactionLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemStatementOfAccount = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerDateTime = new System.Windows.Forms.Timer(this.components);
             this.maintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSavingsAccountTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -44,19 +48,23 @@
             this.itemTimeDepositWith = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.itemMemberTermination = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemDailyTransactionLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timerDateTime = new System.Windows.Forms.Timer(this.components);
-            this.itemStatementOfAccount = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelMemberCount = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
-            this.statusStrip.SuspendLayout();
+            this.panelMemberCount.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
-            this.menuStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip.AutoSize = false;
+            this.menuStrip.BackColor = System.Drawing.Color.Snow;
             this.menuStrip.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.maintenanceToolStripMenuItem,
@@ -64,9 +72,40 @@
             this.reportsToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(15, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(784, 25);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(15, 2, 0, 10);
+            this.menuStrip.Size = new System.Drawing.Size(784, 70);
             this.menuStrip.TabIndex = 1;
+            // 
+            // reportsToolStripMenuItem
+            // 
+            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemDailyTransactionLog,
+            this.itemStatementOfAccount});
+            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(141, 58);
+            this.reportsToolStripMenuItem.Text = "Queries and Reports";
+            this.reportsToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.reportsToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            // 
+            // itemDailyTransactionLog
+            // 
+            this.itemDailyTransactionLog.BackColor = System.Drawing.Color.Snow;
+            this.itemDailyTransactionLog.Name = "itemDailyTransactionLog";
+            this.itemDailyTransactionLog.Size = new System.Drawing.Size(201, 22);
+            this.itemDailyTransactionLog.Text = "Daily Transaction Log";
+            // 
+            // itemStatementOfAccount
+            // 
+            this.itemStatementOfAccount.BackColor = System.Drawing.Color.Snow;
+            this.itemStatementOfAccount.Name = "itemStatementOfAccount";
+            this.itemStatementOfAccount.Size = new System.Drawing.Size(201, 22);
+            this.itemStatementOfAccount.Text = "Statement of Account";
+            // 
+            // timerDateTime
+            // 
+            this.timerDateTime.Enabled = true;
+            this.timerDateTime.Interval = 1000;
+            this.timerDateTime.Tick += new System.EventHandler(this.timerDateTime_Tick);
             // 
             // maintenanceToolStripMenuItem
             // 
@@ -77,11 +116,14 @@
             this.itemTimeDepositWithdrawal});
             this.maintenanceToolStripMenuItem.Image = global::CMS.Properties.Resources.Maintenance_SV;
             this.maintenanceToolStripMenuItem.Name = "maintenanceToolStripMenuItem";
-            this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(110, 21);
+            this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(94, 58);
             this.maintenanceToolStripMenuItem.Text = "Maintenance";
+            this.maintenanceToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.maintenanceToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
             // itemSavingsAccountTypes
             // 
+            this.itemSavingsAccountTypes.BackColor = System.Drawing.Color.Snow;
             this.itemSavingsAccountTypes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemSavingsAccountTypes.Name = "itemSavingsAccountTypes";
             this.itemSavingsAccountTypes.Size = new System.Drawing.Size(255, 22);
@@ -89,11 +131,13 @@
             // 
             // toolStripSeparator3
             // 
+            this.toolStripSeparator3.BackColor = System.Drawing.Color.Snow;
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(252, 6);
             // 
             // itemInterestRates
             // 
+            this.itemInterestRates.BackColor = System.Drawing.Color.Snow;
             this.itemInterestRates.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemInterestRates.Name = "itemInterestRates";
             this.itemInterestRates.Size = new System.Drawing.Size(255, 22);
@@ -101,6 +145,7 @@
             // 
             // itemTimeDepositWithdrawal
             // 
+            this.itemTimeDepositWithdrawal.BackColor = System.Drawing.Color.Snow;
             this.itemTimeDepositWithdrawal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemTimeDepositWithdrawal.Name = "itemTimeDepositWithdrawal";
             this.itemTimeDepositWithdrawal.Size = new System.Drawing.Size(255, 22);
@@ -108,6 +153,7 @@
             // 
             // transactionToolStripMenuItem
             // 
+            this.transactionToolStripMenuItem.AutoSize = false;
             this.transactionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemOpenAccount,
             this.itemSavingsAccountTrans,
@@ -118,11 +164,14 @@
             this.itemMemberTermination});
             this.transactionToolStripMenuItem.Image = global::CMS.Properties.Resources.Transaction_SV;
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(103, 21);
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(87, 62);
             this.transactionToolStripMenuItem.Text = "Transaction";
+            this.transactionToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.transactionToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
             // itemOpenAccount
             // 
+            this.itemOpenAccount.BackColor = System.Drawing.Color.Snow;
             this.itemOpenAccount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemOpenAccount.Name = "itemOpenAccount";
             this.itemOpenAccount.Size = new System.Drawing.Size(241, 22);
@@ -130,6 +179,7 @@
             // 
             // itemSavingsAccountTrans
             // 
+            this.itemSavingsAccountTrans.BackColor = System.Drawing.Color.Snow;
             this.itemSavingsAccountTrans.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemSavingsAccountTrans.Name = "itemSavingsAccountTrans";
             this.itemSavingsAccountTrans.Size = new System.Drawing.Size(241, 22);
@@ -137,11 +187,13 @@
             // 
             // toolStripSeparator1
             // 
+            this.toolStripSeparator1.BackColor = System.Drawing.Color.Snow;
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(238, 6);
             // 
             // itemTimeDepositApp
             // 
+            this.itemTimeDepositApp.BackColor = System.Drawing.Color.Snow;
             this.itemTimeDepositApp.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemTimeDepositApp.Name = "itemTimeDepositApp";
             this.itemTimeDepositApp.Size = new System.Drawing.Size(241, 22);
@@ -149,6 +201,7 @@
             // 
             // itemTimeDepositWith
             // 
+            this.itemTimeDepositWith.BackColor = System.Drawing.Color.Snow;
             this.itemTimeDepositWith.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemTimeDepositWith.Name = "itemTimeDepositWith";
             this.itemTimeDepositWith.Size = new System.Drawing.Size(241, 22);
@@ -156,67 +209,122 @@
             // 
             // toolStripSeparator2
             // 
+            this.toolStripSeparator2.BackColor = System.Drawing.Color.Snow;
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(238, 6);
             // 
             // itemMemberTermination
             // 
+            this.itemMemberTermination.BackColor = System.Drawing.Color.Snow;
             this.itemMemberTermination.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemMemberTermination.Name = "itemMemberTermination";
             this.itemMemberTermination.Size = new System.Drawing.Size(241, 22);
             this.itemMemberTermination.Text = "Member Termination";
             // 
-            // reportsToolStripMenuItem
+            // panelMemberCount
             // 
-            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemDailyTransactionLog,
-            this.itemStatementOfAccount});
-            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(141, 21);
-            this.reportsToolStripMenuItem.Text = "Queries and Reports";
+            this.panelMemberCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMemberCount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelMemberCount.BackColor = System.Drawing.Color.DarkBlue;
+            this.panelMemberCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMemberCount.Controls.Add(this.label2);
+            this.panelMemberCount.Controls.Add(this.label1);
+            this.panelMemberCount.Location = new System.Drawing.Point(488, 114);
+            this.panelMemberCount.Name = "panelMemberCount";
+            this.panelMemberCount.Size = new System.Drawing.Size(284, 146);
+            this.panelMemberCount.TabIndex = 6;
             // 
-            // itemDailyTransactionLog
+            // label2
             // 
-            this.itemDailyTransactionLog.Name = "itemDailyTransactionLog";
-            this.itemDailyTransactionLog.Size = new System.Drawing.Size(201, 22);
-            this.itemDailyTransactionLog.Text = "Daily Transaction Log";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Rockwell", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(253, 106);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "1000";
             // 
-            // statusStrip
+            // label1
             // 
-            this.statusStrip.BackColor = System.Drawing.Color.Tomato;
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblDateTime});
-            this.statusStrip.Location = new System.Drawing.Point(0, 540);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(784, 22);
-            this.statusStrip.TabIndex = 3;
-            this.statusStrip.Text = "statusStrip1";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(106, 103);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(173, 32);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "active accounts";
             // 
-            // lblDateTime
+            // panel1
             // 
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(61, 17);
-            this.lblDateTime.Text = "Date Time";
-            this.lblDateTime.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.DarkBlue;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Location = new System.Drawing.Point(488, 266);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(284, 146);
+            this.panel1.TabIndex = 6;
             // 
-            // timerDateTime
+            // label3
             // 
-            this.timerDateTime.Enabled = true;
-            this.timerDateTime.Interval = 1000;
-            this.timerDateTime.Tick += new System.EventHandler(this.timerDateTime_Tick);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Rockwell", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(253, 106);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "1000";
             // 
-            // itemStatementOfAccount
+            // label4
             // 
-            this.itemStatementOfAccount.Name = "itemStatementOfAccount";
-            this.itemStatementOfAccount.Size = new System.Drawing.Size(201, 22);
-            this.itemStatementOfAccount.Text = "Statement of Account";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(125, 103);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(154, 32);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "time deposits";
+            // 
+            // lblDate
+            // 
+            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDate.BackColor = System.Drawing.Color.Snow;
+            this.lblDate.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.Color.Black;
+            this.lblDate.Location = new System.Drawing.Point(434, 36);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(338, 25);
+            this.lblDate.TabIndex = 0;
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblTime
+            // 
+            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTime.BackColor = System.Drawing.Color.Snow;
+            this.lblTime.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.Color.Black;
+            this.lblTime.Location = new System.Drawing.Point(446, 0);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(326, 36);
+            this.lblTime.TabIndex = 0;
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SavingsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::CMS.Properties.Resources.savingsmenu_bg;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 562);
-            this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lblTime);
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.panelMemberCount);
             this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -228,12 +336,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Savings Menu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.SavingsMenu_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
+            this.panelMemberCount.ResumeLayout(false);
+            this.panelMemberCount.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -246,8 +356,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem itemTimeDepositApp;
         private System.Windows.Forms.ToolStripMenuItem itemTimeDepositWith;
-        private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel lblDateTime;
         private System.Windows.Forms.Timer timerDateTime;
         private System.Windows.Forms.ToolStripMenuItem maintenanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemSavingsAccountTypes;
@@ -259,5 +367,13 @@
         private System.Windows.Forms.ToolStripMenuItem itemMemberTermination;
         private System.Windows.Forms.ToolStripMenuItem itemDailyTransactionLog;
         private System.Windows.Forms.ToolStripMenuItem itemStatementOfAccount;
+        private System.Windows.Forms.Panel panelMemberCount;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblTime;
     }
 }

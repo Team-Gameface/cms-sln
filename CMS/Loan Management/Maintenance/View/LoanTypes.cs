@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace CMS.Loan_Management.Maintenance.View
 {
@@ -19,6 +20,8 @@ namespace CMS.Loan_Management.Maintenance.View
         }
 
         public void disableFunction() {
+            txtTimesOfShareCap.Clear();
+            txtTimesOfShareCap.Enabled = false;
             txtName.Clear();
             txtName.Enabled = false;
             minimumUD.Value = 0;
@@ -31,16 +34,13 @@ namespace CMS.Loan_Management.Maintenance.View
             cbMaximumStatus.Enabled = false;
             txtMaxAmt.Clear();
             txtMaxAmt.Enabled = false;
-            cbDeduction.SelectedIndex = -1;
-            cbDeduction.Enabled = false;
             comakersUD.Value = 0;
             comakersUD.Enabled = false;
-            cbAmtStatus.SelectedIndex = -1;
-            cbAmtStatus.Enabled = false;
             chbCollateral.CheckState = CheckState.Unchecked;
             chbCollateral.Enabled = false;
             chbStatus.CheckState = CheckState.Unchecked;
             chbStatus.Enabled = false;
+            chbMaximumPaymentDur.Enabled = false;
             clbMemberType.Enabled = false;
             clbMemberType.Items.Clear();
 
@@ -65,24 +65,22 @@ namespace CMS.Loan_Management.Maintenance.View
             minimumUD.Value = 0;
             minimumUD.Enabled = true;
             maximumUD.Value = 0;
-            maximumUD.Enabled = true;
+            maximumUD.Enabled = false;
             cbMinimumStatus.SelectedIndex = -1;
             cbMinimumStatus.Enabled = true;
             cbMaximumStatus.SelectedIndex = -1;
-            cbMaximumStatus.Enabled = true;
+            cbMaximumStatus.Enabled = false;
             txtMaxAmt.Clear();
             txtMaxAmt.Enabled = true;
-            cbAmtStatus.SelectedIndex = -1;
-            cbAmtStatus.Enabled = true;
-            cbDeduction.SelectedIndex = -1;
-            cbDeduction.Enabled = false;
+            txtTimesOfShareCap.Clear();
+            txtTimesOfShareCap.Enabled = true;
             comakersUD.Value = 0;
             comakersUD.Enabled = true;
             chbCollateral.CheckState = CheckState.Unchecked;
             chbCollateral.Enabled = true;
             chbStatus.Enabled = true;
             clbMemberType.Enabled = true;
-
+            chbMaximumPaymentDur.Enabled = true;
             btnRetrieve.Visible = false;
 
             this.btnAdd.Enabled = false;
@@ -95,31 +93,14 @@ namespace CMS.Loan_Management.Maintenance.View
             this.btnSave.BackColor = Color.Green;
             this.btnCancel.Enabled = true;
             this.btnCancel.BackColor = Color.WhiteSmoke;
+            
         
         }
 
-        public void enableDeduction() 
-        {
-            this.cbDeduction.Enabled = true;
-        }
-
-        public void disableDeduction() 
-        {
-            this.cbDeduction.Enabled = false;
-            this.cbDeduction.SelectedIndex = -1;
-        }
-
-        public Boolean getDeductionStatus() 
-        {
-            if (this.cbDeduction.Enabled == true) { return true; }
-            else { return false; }
-        }
-
-
-
         public void setAllLabelsToBlack() {
+            this.lblFixed.ForeColor = System.Drawing.Color.Black;
             this.lblComaker.ForeColor = System.Drawing.Color.Black;
-            this.lblMaximumPaymentDur.ForeColor = System.Drawing.Color.Black;
+            this.chbMaximumPaymentDur.ForeColor = System.Drawing.Color.Black;
             this.lblMaxLoanableAmt.ForeColor = System.Drawing.Color.Black;
             this.lblMinimumPaymentDur.ForeColor = System.Drawing.Color.Black;
             this.lblName.ForeColor = System.Drawing.Color.Black;
@@ -256,20 +237,12 @@ namespace CMS.Loan_Management.Maintenance.View
             catch (Exception) { return 0; }
         }
 
-        public void setMaximumAmountStatus(String s) {
-            this.cbAmtStatus.SelectedItem = s;
+        public void setTimesOfShareCap(double d) {
+            this.txtTimesOfShareCap.Text = d.ToString();
         }
 
-        public String getMaximumAmountStatus() {
-            return this.cbAmtStatus.SelectedItem.ToString();
-        }
-
-        public void setDeduction(String s) {
-            this.cbDeduction.SelectedItem = s;
-        }
-
-        public String getDeduction() {
-            return this.cbDeduction.SelectedItem.ToString();
+        public double getTimesOfShareCap() {
+            return double.Parse(this.txtTimesOfShareCap.Text);
         }
 
         public void setComakers(int i)
@@ -285,6 +258,11 @@ namespace CMS.Loan_Management.Maintenance.View
         public void setCollateral()
         {
             this.chbCollateral.CheckState = CheckState.Checked;
+        }
+
+        public void setMaximumPaymentDuration()
+        {
+            this.chbMaximumPaymentDur.CheckState = CheckState.Checked;
         }
 
         public Boolean getCollateral()
@@ -332,6 +310,10 @@ namespace CMS.Loan_Management.Maintenance.View
             this.dataGridView.DataSource = ds.Tables[0];
             this.dataGridView.Columns[0].Visible = false;
             this.dataGridView.Columns[9].Visible = false;
+            this.dataGridView.Columns[4].DefaultCellStyle.Format = "c";
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.dataGridView.Columns[4].DefaultCellStyle.FormatProvider = ph;
+
         }
 
         public DataGridViewRow getSelected()
@@ -507,18 +489,64 @@ namespace CMS.Loan_Management.Maintenance.View
             }
         }
 
-
-        private void cbAmtStatus_SelectedIndexChanged(object sender, EventArgs e)
+        private void chbMaximumPaymentDur_CheckedChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (cbAmtStatus.SelectedItem.ToString() == "Times") { this.enableDeduction(); }
-                else { this.disableDeduction(); }
-            }
-            catch (Exception) { }
+            if (chbMaximumPaymentDur.Checked == true) { maximumUD.Enabled = true; cbMaximumStatus.Enabled = true; }
+            else { maximumUD.Enabled = false; cbMaximumStatus.Enabled = false; cbMaximumStatus.SelectedIndex = -1; maximumUD.Value = 0; }
         }
 
+        public Boolean getMaximumPaymentDurationStatus() 
+        {
+            if (chbMaximumPaymentDur.Checked == true) { return true; }
+            else return false;
+        }
 
+        private void txtTimesOfShareCap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || e.KeyChar > '9') && (e.KeyChar != '\b') && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                e.Handled = false;
+            }
+            if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsNumber(e.KeyChar) || e.KeyChar == '.')
+            {
+
+                TextBox tb = sender as TextBox;
+                int cursorPosLeft = tb.SelectionStart;
+                int cursorPosRight = tb.SelectionStart + tb.SelectionLength;
+                string result = tb.Text.Substring(0, cursorPosLeft) + e.KeyChar + tb.Text.Substring(cursorPosRight);
+                string[] parts = result.Split('.');
+                if (parts.Length > 1 || tb.TextLength > 1)
+                {
+                    try
+                    {
+                        if (parts[0].Length > 2 || parts[1].Length > 2 || parts.Length > 2)
+                        {
+                            e.Handled = true;
+                        }
+                    }
+                    catch (Exception) { tb.Text = "0"; }
+                }
+            }   
+                
+
+        }
+
+        private void txtTimesOfShareCap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
 
     }
 }

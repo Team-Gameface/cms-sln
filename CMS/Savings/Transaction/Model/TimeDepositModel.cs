@@ -16,6 +16,8 @@ namespace CMS.Savings.Transaction.Model
         public double Amount { get; set; }
         public String Maturity { get; set; }
 
+
+
         public TimeDepositModel()
         {
             this.CertificateNo = String.Empty;
@@ -84,7 +86,7 @@ namespace CMS.Savings.Transaction.Model
         public int insertSavingsTransaction()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "EXEC insertTimeDeposit @CertificateNo, @AccountNo, @Amount, @Maturity";
+            String sql = "EXEC insertTimeDeposit @CertificateNo, @AccountNo, @Amount, @Maturity; SELECT @@IDENTITY";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@CertificateNo", this.CertificateNo);
             parameters.Add("@AccountNo", this.AccountNo);
@@ -92,6 +94,34 @@ namespace CMS.Savings.Transaction.Model
             parameters.Add("@Maturity", this.Maturity);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             return result;
+
         }
+
+        public DataSet getDepositDetails(String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT TOP 1 td.CertificateNo AS 'CertNo', td.AccountNo, CONCAT(m.FirstName, ' ', m.MiddleName, ' ', m.LastName) AS 'Name', td.Maturity, td.DepositAmount AS 'Amount', DATEDIFF(day, td.DateCreated, td.Maturity) AS 'TermDays', tdi.InterestRate  FROM TIME_DEPOSIT td INNER JOIN MEMBER m ON td.AccountNo = m.AccountNo, TIME_DEPOSIT_INTEREST tdi WHERE DATEDIFF(day, td.DateCreated, td.Maturity) >= NoDays AND td.DepositAmount >= tdi.MinimumRange AND td.DepositAmount <= MaximumRange AND CertificateNo = @CertNo ORDER BY NoDays desc";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@CertNo", this.CertificateNo);
+            DataSet ds = dal.executeDataSet(sql, parameters, src);
+            return ds;
+        }
+
+        public DataSet getCompanyProfile(String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT TOP 1 CompanyName,AccreditationNo,CompanyAddress,CompanyLogo,Telephone,Cellphone,Email FROM COMPANY WHERE status = 1 ORDER BY dateCreated desc";
+            DataSet ds = dal.executeDataSet(sql, src);
+            return ds;
+        }
+
+        public DataSet getManager(String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT TOP 1 CONCAT(FirstName,' ',MiddleName,' ',LastName) AS 'Name', Position FROM SYSTEM_USERS WHERE UserType = 'Manager' ORDER BY DateCreated desc";
+            DataSet ds = dal.executeDataSet(sql, src);
+            return ds;
+        }
+
     }
 }

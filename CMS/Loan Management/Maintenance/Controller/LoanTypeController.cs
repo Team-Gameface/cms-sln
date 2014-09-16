@@ -14,7 +14,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
     {
         Maintenance.Model.LoanTypeModel loanAccountTypeModel;
         Maintenance.View.LoanTypes loanType;
-        Main.Logger logger = new Main.Logger();
+
         Boolean isAdd = false;
         int TypeId = 0;
         String nameCopy = String.Empty;
@@ -37,20 +37,7 @@ namespace CMS.Loan_Management.Maintenance.Controller
             this.loanType.MdiParent = loanMenu;
             this.loanType.Show();
         }
-        public void execLogger(String ModuleActivity)
-        {
-            logger.clear();
-            logger.Module = "Maintenance - Loan Types";
-            logger.Activity = ModuleActivity;
-            if (logger.insertLog() > 0)
-            {
-                Console.WriteLine("Logged");
-            }
-            else
-            {
-                Console.WriteLine("Not Logged");
-            }
-        }
+
 
         public void clbMemberTypes()
         {
@@ -119,8 +106,8 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     nameCopy = LoanTypeName;
                     String[] arrMinPD = (selectedData.Cells["Minimum Payment Duration"].Value.ToString()).Split(' ');
                     String[] arrMaxPD = (selectedData.Cells["Maximum Payment Duration"].Value.ToString()).Split(' ');
-                    String[] arrMaxLoan = (selectedData.Cells["Maximum Loan"].Value.ToString()).Split(' ');
-                    String Deduction = selectedData.Cells["Deduction"].Value.ToString();
+                    double maxLoanFixed = double.Parse(selectedData.Cells["Maximum Loan (Fixed)"].Value.ToString());
+                    double maxLoanShareCap = double.Parse(selectedData.Cells["Maximum Loan (Share Capital)"].Value.ToString());
                     int coMaker = int.Parse(selectedData.Cells["CoMaker"].Value.ToString());
 
                     bool Collateral = bool.Parse(selectedData.Cells["isCollateral"].Value.ToString());
@@ -141,11 +128,18 @@ namespace CMS.Loan_Management.Maintenance.Controller
                    this.loanType.setTextName(LoanTypeName);
                    this.loanType.setMinimumPayment(int.Parse(arrMinPD[0]));
                    this.loanType.setMinimumStatus(arrMinPD[1]);
-                   this.loanType.setMaximumPayment(int.Parse(arrMaxPD[0]));
-                   this.loanType.setMaximumStatus(arrMaxPD[1]);
-                   this.loanType.setMaximumAmount(double.Parse(arrMaxLoan[0]));
-                   this.loanType.setMaximumAmountStatus(arrMaxLoan[1]);
-                   this.loanType.setDeduction(Deduction);
+                   if (arrMaxPD[1] == "infinity") 
+                   { 
+                   
+                   }
+                   else
+                   {
+                       this.loanType.setMaximumPaymentDuration();
+                       this.loanType.setMaximumPayment(int.Parse(arrMaxPD[0]));
+                       this.loanType.setMaximumStatus(arrMaxPD[1]);
+                   }
+                   this.loanType.setMaximumAmount(maxLoanFixed);
+                   this.loanType.setTimesOfShareCap(maxLoanShareCap);
                    this.loanType.setComakers(coMaker);
            
             }
@@ -178,7 +172,6 @@ namespace CMS.Loan_Management.Maintenance.Controller
                         if (this.loanAccountTypeModel.deleteLoanType(TypeId) > 0)
                         {
                             MessageBox.Show("Delete success!", "Loan Types", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            execLogger("Delete Loan Type '" + selectedData.Cells["Loan Type Name"].Value.ToString() + "'");
                             if (this.loanType.checkArchivedState())
                             {
                                 this.loanType.loanTypeGrid(this.loanAccountTypeModel.selectAllLoanTypes());
@@ -290,7 +283,13 @@ namespace CMS.Loan_Management.Maintenance.Controller
             if (memberTypeNo.Count == 0) { countError++; errorMessage += countError + ". Please check 1 or more member type.\n"; this.loanType.gbAvailability.ForeColor = System.Drawing.Color.Red; }
             if (this.loanAccountTypeModel.Comakers < 0) { countError++; errorMessage += countError + ". Minimum allowable payment duration must be >=0.\n"; this.loanType.lblComaker.ForeColor = System.Drawing.Color.Red; }
             if (this.loanAccountTypeModel.MinValue < 1) { countError++; errorMessage += countError + ". Please specify minimum allowable payment duration.\n"; this.loanType.lblMinimumPaymentDur.ForeColor = System.Drawing.Color.Red; }
-            if (this.loanAccountTypeModel.MaxValue < 1) { countError++; errorMessage += countError + ". Please specify maximum allowable payment duration.\n"; this.loanType.lblMaximumPaymentDur.ForeColor = System.Drawing.Color.Red; }
+            if (this.loanType.getMaximumPaymentDurationStatus() && this.loanAccountTypeModel.MaxValue < 1) { countError++; errorMessage += countError + ". Please specify maximum allowable payment duration.\n"; this.loanType.chbMaximumPaymentDur.ForeColor = System.Drawing.Color.Red; }
+
+            if (!this.loanType.getMaximumPaymentDurationStatus()) 
+            {
+                this.loanAccountTypeModel.MaxStatus = "infinity";
+                this.loanAccountTypeModel.MaxValue = 0;
+            }
 
             try
             {
@@ -298,71 +297,79 @@ namespace CMS.Loan_Management.Maintenance.Controller
             }
             catch (Exception) { countError++; errorMessage += countError + ". Please specify minimum payment duration status.\n"; this.loanType.lblMinimumPaymentDur.ForeColor = System.Drawing.Color.Red; }
 
-            try
-            {
-                this.loanAccountTypeModel.MaxStatus = this.loanType.getMaximumStatus();
-            }
-            catch (Exception) { countError++; errorMessage += countError + ". Please specify maximum payment duration status.\n"; this.loanType.lblMaximumPaymentDur.ForeColor = System.Drawing.Color.Red; }
-
-            try
-            {
-                this.loanAccountTypeModel.MaxAmtStatus = this.loanType.getMaximumAmountStatus();
-            }
-            catch (Exception) { countError++; errorMessage += countError + ". Please specify maximum loanable amount mode.\n"; this.loanType.lblMaxLoanableAmt.ForeColor = System.Drawing.Color.Red; }
-
-            if (this.loanType.getDeductionStatus())
+            if (this.loanType.getMaximumPaymentDurationStatus())
             {
                 try
                 {
-                    this.loanAccountTypeModel.Deduction = this.loanType.getDeduction();
+                    this.loanAccountTypeModel.MaxStatus = this.loanType.getMaximumStatus();
                 }
-                catch (Exception) { countError++; errorMessage += countError + ". Please specify maximum loanable amount deduction.\n"; this.loanType.lblOf.ForeColor = System.Drawing.Color.Red; }
+                catch (Exception) { countError++; errorMessage += countError + ". Please specify maximum payment duration status.\n"; this.loanType.chbMaximumPaymentDur.ForeColor = System.Drawing.Color.Red; }
+
+            }            
+
+            if (this.loanType.getMaximumPaymentDurationStatus())
+            {
+                if (this.loanAccountTypeModel.MinStatus == this.loanAccountTypeModel.MaxStatus)
+                {
+                    if (this.loanAccountTypeModel.MinValue > this.loanAccountTypeModel.MaxValue)
+                    {
+                        countError++; errorMessage += countError + ". Minimum allowable payment duration exceeds the maximum.\n";
+                        this.loanType.lblMinimumPaymentDur.ForeColor = System.Drawing.Color.Red;
+                        this.loanType.chbMaximumPaymentDur.ForeColor = System.Drawing.Color.Red;
+                    }
+
+                    else if (this.loanAccountTypeModel.MinValue == this.loanAccountTypeModel.MaxValue)
+                    {
+                        countError++; errorMessage += countError + ". Minimum allowable payment duration must be different from the maximum.\n";
+                        this.loanType.lblMinimumPaymentDur.ForeColor = System.Drawing.Color.Red;
+                        this.loanType.chbMaximumPaymentDur.ForeColor = System.Drawing.Color.Red;
+                    }
+
+                }
             }
 
-            if (this.loanAccountTypeModel.MinStatus == this.loanAccountTypeModel.MaxStatus)
+            else
             {
-                if (this.loanAccountTypeModel.MinValue > this.loanAccountTypeModel.MaxValue)
+                if (this.loanType.getMaximumPaymentDurationStatus())
                 {
-                    countError++; errorMessage += countError + ". Minimum allowable payment duration exceeds the maximum.\n";
-                    this.loanType.lblMinimumPaymentDur.ForeColor = System.Drawing.Color.Red;
-                    this.loanType.lblMaximumPaymentDur.ForeColor = System.Drawing.Color.Red;
+                    if ((this.loanAccountTypeModel.MinStatus == "month/s" && this.loanAccountTypeModel.MaxStatus == "week/s") || (this.loanAccountTypeModel.MinStatus == "year/s" && this.loanAccountTypeModel.MaxStatus == "month/s") || (this.loanAccountTypeModel.MinStatus == "year/s" && this.loanAccountTypeModel.MaxStatus == "week/s"))
+                    {
+                        countError++; errorMessage += countError + ". Minimum allowable payment duration exceeds the maximum.\n";
+                        this.loanType.lblMinimumPaymentDur.ForeColor = System.Drawing.Color.Red;
+                        this.loanType.chbMaximumPaymentDur.ForeColor = System.Drawing.Color.Red;
+                    }
                 }
 
-                else if (this.loanAccountTypeModel.MinValue == this.loanAccountTypeModel.MaxValue)
-                {
-                    countError++; errorMessage += countError + ". Minimum allowable payment duration must be different from the maximum.\n";
-                    this.loanType.lblMinimumPaymentDur.ForeColor = System.Drawing.Color.Red;
-                    this.loanType.lblMaximumPaymentDur.ForeColor = System.Drawing.Color.Red;
-                }
-
-            }   
-
-            else {
-
-                if ((this.loanAccountTypeModel.MinStatus == "month/s" && this.loanAccountTypeModel.MaxStatus == "week/s") || (this.loanAccountTypeModel.MinStatus == "year/s" && this.loanAccountTypeModel.MaxStatus == "month/s") || (this.loanAccountTypeModel.MinStatus == "year/s" && this.loanAccountTypeModel.MaxStatus == "week/s"))
-                {
-                    countError++; errorMessage += countError + ". Minimum allowable payment duration exceeds the maximum.\n";
-                    this.loanType.lblMinimumPaymentDur.ForeColor = System.Drawing.Color.Red;
-                    this.loanType.lblMaximumPaymentDur.ForeColor = System.Drawing.Color.Red;
-                }
-            
             }
 
 
                 try
                 {
-                    this.loanAccountTypeModel.MaxAmt = this.loanType.getMaximumAmount();
+                    this.loanAccountTypeModel.MaxAmtFixed = this.loanType.getMaximumAmount();
 
-                    if (this.loanAccountTypeModel.MaxAmt == 0)
+                    if (this.loanAccountTypeModel.MaxAmtFixed == 0)
                     {
-                        countError++; errorMessage += countError + ". Please specify maximum loanable amount.\n"; this.loanType.lblMaxLoanableAmt.ForeColor = System.Drawing.Color.Red;
-                    }
-                    if (this.loanAccountTypeModel.MaxAmt > 50 && this.loanAccountTypeModel.MaxAmtStatus == "Times")
-                    {
-                        countError++; errorMessage += countError + ". Maximum percentage loanable amount is 50 times.\n"; this.loanType.lblMaxLoanableAmt.ForeColor = System.Drawing.Color.Red;
+                        countError++; errorMessage += countError + ". Please specify maximum loanable amount (fixed).\n"; this.loanType.lblMaxLoanableAmt.ForeColor = System.Drawing.Color.Red; this.loanType.lblFixed.ForeColor = System.Drawing.Color.Red;
                     }
                 }
-                catch (FormatException) { countError++; errorMessage += countError + ". Please specify maximum loanable amount.\n"; this.loanType.lblMaxLoanableAmt.ForeColor = System.Drawing.Color.Red; }
+                catch (FormatException) { countError++; errorMessage += countError + ". Please specify maximum loanable amount (fixed).\n"; this.loanType.lblMaxLoanableAmt.ForeColor = System.Drawing.Color.Red; this.loanType.lblFixed.ForeColor = System.Drawing.Color.Red; }
+
+                try
+                {
+                    this.loanAccountTypeModel.MaxAmtShareCap = this.loanType.getTimesOfShareCap();
+
+                    if (this.loanAccountTypeModel.MaxAmtShareCap == 0)
+                    {
+                        countError++; errorMessage += countError + ". Please specify maximum loanable amount (times of Share Capital).\n"; this.loanType.lblMaxLoanableAmt.ForeColor = System.Drawing.Color.Red; this.loanType.lblOf.ForeColor = System.Drawing.Color.Red;
+                    }
+
+                    if (this.loanAccountTypeModel.MaxAmtShareCap > 50) 
+                    {
+                        countError++; errorMessage += countError + ". Maximum loanable amount (times of Share Capital) must be <= 50.\n"; this.loanType.lblMaxLoanableAmt.ForeColor = System.Drawing.Color.Red; this.loanType.lblOf.ForeColor = System.Drawing.Color.Red;
+                    }
+
+                }
+                catch (FormatException) { countError++; errorMessage += countError + ". Please specify maximum loanable amount (times Of Share Capital).\n"; this.loanType.lblMaxLoanableAmt.ForeColor = System.Drawing.Color.Red; this.loanType.lblOf.ForeColor = System.Drawing.Color.Red; }
 
 
                 if (isAdd)
@@ -370,7 +377,6 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     if (countError==0 && this.loanAccountTypeModel.insertLoanType(memberTypeNo, Collateral, Status) == 1)
                     {
                         MessageBox.Show("Add success!", "Loan Types", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        execLogger("Add Loan Type '" + this.loanAccountTypeModel.Name + "'");
                         if (this.loanType.checkArchivedState())
                         {
                             this.loanType.loanTypeGrid(this.loanAccountTypeModel.selectAllLoanTypes());
@@ -407,7 +413,6 @@ namespace CMS.Loan_Management.Maintenance.Controller
                     if (countError==0 && this.loanAccountTypeModel.updateLoanType(TypeId, memberTypeNo, Collateral, Status) == 1)
                     {
                         MessageBox.Show("Update Success.", "Loan Types", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        execLogger("Update Loan Type '" + this.loanAccountTypeModel.Name + "'");
                         if (this.loanType.checkArchivedState())
                         {
                             this.loanType.loanTypeGrid(this.loanAccountTypeModel.selectAllLoanTypes());
@@ -497,7 +502,6 @@ namespace CMS.Loan_Management.Maintenance.Controller
             {
                 this.loanAccountTypeModel.retrieveLoanType(this.TypeId);
                 MessageBox.Show("Retrieve Success.", "Loan Penalty", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                execLogger("Retrieve Loan Type '" + nameCopy + "'");
                 if (this.loanType.checkArchivedState())
                 {
                     this.loanType.loanTypeGrid(this.loanAccountTypeModel.selectAllLoanTypes());

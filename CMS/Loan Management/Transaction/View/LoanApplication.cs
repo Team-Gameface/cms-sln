@@ -1124,19 +1124,31 @@ namespace CMS.Loan_Management.Transaction.View
 
         public String getLblPaymentDuration() 
         {
-            String[] s = this.lblStatePaymentDuration.Text.Split(' ');
-            int from = int.Parse(s[4]);
-            int to = int.Parse(s[7]);
-            String sFrom = s[5];
-            String sTo = s[8];
+            if (this.lblStatePaymentDuration.Text.Contains("infinity"))
+            {
+                String[] s = this.lblStatePaymentDuration.Text.Split(' ');
+                int from = int.Parse(s[4]);
+                String sFrom = s[5];
+                if (sFrom == "month/s") { from *= 4; }
+                else if (sFrom == "year/s") { from *= 48; }
+                return from+"";
+            }
+            else
+            {
+                String[] s = this.lblStatePaymentDuration.Text.Split(' ');
+                int from = int.Parse(s[4]);
+                int to = int.Parse(s[7]);
+                String sFrom = s[5];
+                String sTo = s[8];
 
-            if (sFrom == "month/s") { from *= 4; }
-            else if (sFrom == "year/s") { from *= 48; }
-            if (sTo == "month/s") { to *= 4; }
-            else if (sTo == "year/s") { to *= 48; }
+                if (sFrom == "month/s") { from *= 4; }
+                else if (sFrom == "year/s") { from *= 48; }
+                if (sTo == "month/s") { to *= 4; }
+                else if (sTo == "year/s") { to *= 48; }
 
-            return from + " " + to;
-
+                return from + " " + to;
+            }
+            
         }
 
         public void setLabelLimit(int i)

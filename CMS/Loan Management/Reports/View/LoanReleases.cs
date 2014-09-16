@@ -19,9 +19,9 @@ namespace CMS.Loan_Management.Reports.View
 
         }
 
-        public void setReportDataSource(DataSet ds, DataSet dsCoop, String dateFrom, String dateTo)
+        public void setReportDataSource(DataSet ds, DataSet dsCoop, DataSet dsStaff, DataSet dsManager, DataSet dsChair, String dateFrom, String dateTo)
         {
-            LoanReleasesViewer loanReleasesViewer = new LoanReleasesViewer(ds, dsCoop, dateFrom, dateTo);
+            LoanReleasesViewer loanReleasesViewer = new LoanReleasesViewer(ds, dsCoop, dsStaff, dsManager, dsChair, dateFrom, dateTo);
             loanReleasesViewer.Show();
         }
 

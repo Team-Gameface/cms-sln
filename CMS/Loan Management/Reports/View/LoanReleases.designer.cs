@@ -48,6 +48,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 9);
@@ -59,6 +60,7 @@
             // 
             // btnPreview
             // 
+            this.btnPreview.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPreview.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -73,6 +75,7 @@
             // 
             // grpDatesTransaction
             // 
+            this.grpDatesTransaction.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpDatesTransaction.Controls.Add(this.dateTo);
             this.grpDatesTransaction.Controls.Add(this.dateFrom);
             this.grpDatesTransaction.Controls.Add(this.lblTo);
@@ -87,6 +90,7 @@
             // 
             // dateTo
             // 
+            this.dateTo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTo.Location = new System.Drawing.Point(82, 53);
             this.dateTo.Name = "dateTo";
             this.dateTo.Size = new System.Drawing.Size(233, 25);
@@ -94,6 +98,7 @@
             // 
             // dateFrom
             // 
+            this.dateFrom.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateFrom.Location = new System.Drawing.Point(82, 24);
             this.dateFrom.Name = "dateFrom";
             this.dateFrom.Size = new System.Drawing.Size(233, 25);
@@ -101,6 +106,7 @@
             // 
             // lblTo
             // 
+            this.lblTo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTo.AutoSize = true;
             this.lblTo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblTo.Location = new System.Drawing.Point(25, 59);
@@ -111,6 +117,7 @@
             // 
             // lblFrom
             // 
+            this.lblFrom.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblFrom.AutoSize = true;
             this.lblFrom.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblFrom.Location = new System.Drawing.Point(25, 32);
@@ -121,6 +128,7 @@
             // 
             // lblLoanTypes
             // 
+            this.lblLoanTypes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblLoanTypes.AutoSize = true;
             this.lblLoanTypes.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblLoanTypes.Location = new System.Drawing.Point(15, 148);
@@ -131,6 +139,7 @@
             // 
             // checkedListBoxLoanTypes
             // 
+            this.checkedListBoxLoanTypes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkedListBoxLoanTypes.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.checkedListBoxLoanTypes.FormattingEnabled = true;
             this.checkedListBoxLoanTypes.Location = new System.Drawing.Point(18, 172);
@@ -140,6 +149,7 @@
             // 
             // grpLoanTypesSort
             // 
+            this.grpLoanTypesSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpLoanTypesSort.Controls.Add(this.cbLoanTypesSort);
             this.grpLoanTypesSort.Controls.Add(this.rbLoanTypesDescending);
             this.grpLoanTypesSort.Controls.Add(this.rbLoanTypesAscending);
@@ -153,6 +163,7 @@
             // 
             // cbLoanTypesSort
             // 
+            this.cbLoanTypesSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbLoanTypesSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLoanTypesSort.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbLoanTypesSort.FormattingEnabled = true;
@@ -169,6 +180,7 @@
             // 
             // rbLoanTypesDescending
             // 
+            this.rbLoanTypesDescending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbLoanTypesDescending.AutoSize = true;
             this.rbLoanTypesDescending.Location = new System.Drawing.Point(225, 53);
             this.rbLoanTypesDescending.Name = "rbLoanTypesDescending";
@@ -180,6 +192,7 @@
             // 
             // rbLoanTypesAscending
             // 
+            this.rbLoanTypesAscending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbLoanTypesAscending.AutoSize = true;
             this.rbLoanTypesAscending.Location = new System.Drawing.Point(225, 24);
             this.rbLoanTypesAscending.Name = "rbLoanTypesAscending";
@@ -191,6 +204,7 @@
             // 
             // cbAllLoanTypes
             // 
+            this.cbAllLoanTypes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbAllLoanTypes.AutoSize = true;
             this.cbAllLoanTypes.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbAllLoanTypes.Location = new System.Drawing.Point(272, 146);

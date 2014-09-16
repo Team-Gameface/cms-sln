@@ -132,5 +132,32 @@ namespace CMS.Loan_Management.Reports.Model
             return ds;
         }
 
+        public DataSet getStaff(String userId, String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT CONCAT(FirstName,' ',MiddleName,' ',LastName) AS 'Name', Position FROM SYSTEM_USERS WHERE NOT (UserType = 'Superuser') AND UserId = @UserId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@UserId", userId);
+            DataSet ds = dal.executeDataSet(sql, parameters, src);
+            return ds;
+        }
+
+        public DataSet getManager(String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT TOP 1 CONCAT(FirstName,' ',MiddleName,' ',LastName) AS 'Name', Position FROM SYSTEM_USERS WHERE UserType = 'Manager' ORDER BY DateCreated desc";
+            DataSet ds = dal.executeDataSet(sql, src);
+            return ds;
+        }
+
+        public DataSet getChair(String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT TOP 1 CONCAT(FirstName,' ',MiddleName,' ',LastName) AS 'Name', Position FROM SYSTEM_USERS WHERE UserType = 'Chairman - Credit Committee' ORDER BY DateCreated desc";
+            DataSet ds = dal.executeDataSet(sql, src);
+            return ds;
+        }
+
+
     }
 }

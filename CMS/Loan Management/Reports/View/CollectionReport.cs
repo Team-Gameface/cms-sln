@@ -26,18 +26,18 @@ namespace CMS.Loan_Management.Reports.View
 
         }
 
-        public void setReportDataSource(DataSet ds, DataSet dsCoop, String dateFrom, String dateTo, String type)
+        public void setReportDataSource(DataSet ds, DataSet dsCoop, DataSet dsStaff, DataSet dsChair, DataSet dsMgr, String dateFrom, String dateTo, String type)
         {
             
             switch (type)
             {
-                case "Loan": LoanCollectionViewer loanCollectionViewer = new LoanCollectionViewer(ds, dsCoop, dateFrom, dateTo);
+                case "Loan": LoanCollectionViewer loanCollectionViewer = new LoanCollectionViewer(ds, dsCoop, dsStaff, dsChair, dsMgr, dateFrom, dateTo);
                             loanCollectionViewer.Show();
                              break;
-                case "Miscellaneous": FeeCollectionViewer feeCollectionViewer = new FeeCollectionViewer(ds, dsCoop, dateFrom, dateTo);
+                case "Miscellaneous": FeeCollectionViewer feeCollectionViewer = new FeeCollectionViewer(ds, dsCoop, dsStaff, dsChair, dsMgr, dateFrom, dateTo);
                              feeCollectionViewer.Show();
                              break;
-                case "Share": ShareCollectionViewer shareCollectionViewer = new ShareCollectionViewer(ds, dsCoop, dateFrom, dateTo);
+                case "Share": ShareCollectionViewer shareCollectionViewer = new ShareCollectionViewer(ds, dsCoop, dsStaff, dsChair, dsMgr, dateFrom, dateTo);
                              shareCollectionViewer.Show();
                              break;
             }

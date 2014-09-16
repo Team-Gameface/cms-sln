@@ -734,8 +734,19 @@ namespace CMS.Main.Controller
                 if (this.payment.getAddToSavings() == true)
                 {
                     double excessAmount = this.payment.getAmortizationChange();
-                    execLogger("Added Svaings from OR# '" + this.paymentModel.ORNo + "'");
-
+                    if (this.paymentModel.countSavingsAccount(accountNo) > 1)
+                    {
+                        new View.SavingsAccountSelection(this.paymentModel, this.paymentModel.selectSavingsAccounts(accountNo), excessAmount);
+                    }
+                    else
+                    {
+                        String savingsAccountNo = this.paymentModel.selectSavingsAccount(accountNo);
+                        int result = this.paymentModel.insertSavingsTransaction(savingsAccountNo, excessAmount);
+                        if (result > 0)
+                        {
+                            execLogger("Added Savings from OR# '" + this.paymentModel.ORNo + "'");
+                        }
+                    }
                 }
 
                 if (this.payment.getAddToShareCapital() == true)

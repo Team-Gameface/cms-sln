@@ -391,6 +391,12 @@
     <Compile Include="Main\View\ReceiptViewer.designer.cs">
       <DependentUpon>ReceiptViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\View\SavingsAccountSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\View\SavingsAccountSelection.Designer.cs">
+      <DependentUpon>SavingsAccountSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\View\Settings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -408,7 +414,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ManagerDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Savings\Maintenance\Model\TimeDepositInterestModel.cs" />
     <Compile Include="Savings\Queries\Controller\StatementOfAccountController.cs" />
     <Compile Include="Savings\Queries\Model\StatementOfAccountModel.cs" />
@@ -724,6 +734,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\View\ReceiptViewer.resx">
       <DependentUpon>ReceiptViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\View\SavingsAccountSelection.resx">
+      <DependentUpon>SavingsAccountSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\View\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>

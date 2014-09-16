@@ -12,7 +12,7 @@ using System.Configuration;
 
 namespace CMS.Main.Model
 {
-    class PaymentModel
+    public class PaymentModel
     {
         public void Dispose()
         {
@@ -736,5 +736,82 @@ namespace CMS.Main.Model
 
         }
 
+        public int insertSavingsTransaction(String AccountNo, double Amount)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "EXEC insertSavingsTransaction @SavingsAccountNo, @TransactionMode, @Amount, @Representative, @SavingsPassbook, @TellerId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@SavingsAccountNo", AccountNo);
+            parameters.Add("@TransactionMode", "Deposit");
+            parameters.Add("@Amount", Amount);
+            parameters.Add("@Representative", "");
+            parameters.Add("@SavingsPassbook", this.selectActivePassbook(AccountNo));
+            parameters.Add("@TellerId", Main.UserData.userId);
+            int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            if (result == 1)
+            {
+                String sql2 = "UPDATE SAVINGS_ACCOUNT SET Balance = Balance + @Amount WHERE SavingsAccountNo = @SavingsAccountNo";
+                Dictionary<String, Object> parameters2 = new Dictionary<string, object>();
+                parameters2.Add("@SavingsAccountNo", AccountNo);
+                parameters2.Add("@Amount", Amount);
+                dal.executeNonQuery(sql2, parameters2);
+            }
+            return result;
+        }
+
+        public int selectActivePassbook(String accountNo)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT SavingsPassbookNo FROM MEMBER_SAVINGS_PASSBOOK WHERE SavingsAccountNo = @accountNo AND Status = 1";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@accountNo", accountNo);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = int.Parse(read[0].ToString());
+            }
+            return i;
+        }
+
+        public int countSavingsAccount(String accountNo)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT COUNT(*) FROM SAVINGS_ACCOUNT sa INNER JOIN MEMBER_SAVINGS_ACCOUNT msa ON sa.SavingsAccountNo = msa.SavingsAccountNo WHERE msa.MemberAccountNo = @accountNo";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@accountNo", accountNo);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = int.Parse(read[0].ToString());
+            }
+            return i;
+        }
+
+        public DataSet selectSavingsAccounts(String accountNo)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT sa.SavingsAccountNo FROM SAVINGS_ACCOUNT sa INNER JOIN MEMBER_SAVINGS_ACCOUNT msa ON sa.SavingsAccountNo = msa.SavingsAccountNo WHERE msa.MemberAccountNo = @accountNo";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@accountNo", accountNo);
+            DataSet ds = dal.executeDataSet(sql, parameters);
+            return ds;
+        }
+
+        public String selectSavingsAccount(String accountNo)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT sa.SavingsAccountNo FROM SAVINGS_ACCOUNT sa INNER JOIN MEMBER_SAVINGS_ACCOUNT msa ON sa.SavingsAccountNo = msa.SavingsAccountNo WHERE msa.MemberAccountNo = @accountNo";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@accountNo", accountNo);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            String s = String.Empty;
+            while (read.Read())
+            {
+                s = read[0].ToString();
+            }
+            return s;
+        }
     }
 }

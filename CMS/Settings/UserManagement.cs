@@ -104,28 +104,27 @@ namespace CMS.Settings
                 enableFunction();
                 isAdd = false;
                 userId = row.Cells[0].Value.ToString();
-                String[] name = row.Cells[1].Value.ToString().Split(' ');
-                txtLastName.Text = name[0].TrimEnd(',');
-                txtFirstName.Text = name[1];
-                txtMiddleName.Text = name[2];
-                txtPosition.Text = row.Cells[2].Value.ToString();
-                txtUsername.Text = row.Cells[3].Value.ToString();
-                txtPassword.Text = row.Cells[4].Value.ToString();
-                if (row.Cells[5].Value.ToString() == "Staff")
+                txtLastName.Text = row.Cells[2].Value.ToString();
+                txtFirstName.Text = row.Cells[3].Value.ToString();
+                txtMiddleName.Text = row.Cells[4].Value.ToString();
+                txtPosition.Text = row.Cells[5].Value.ToString();
+                txtUsername.Text = row.Cells[6].Value.ToString();
+                txtPassword.Text = row.Cells[7].Value.ToString();
+                if (row.Cells[8].Value.ToString() == "Staff")
                 {
                     comboType.SelectedIndex = 0;
                 }
-                else if (row.Cells[5].Value.ToString() == "Manager")
+                else if (row.Cells[8].Value.ToString() == "Manager")
                 {
                     comboType.SelectedIndex = 1;
                 }
-                else if (row.Cells[5].Value.ToString() == "Chairman - Credit Committee")
+                else if (row.Cells[8].Value.ToString() == "Chairman - Credit Committee")
                 {
-                    comboType.SelectedIndex = 1;
+                    comboType.SelectedIndex = 2;
                 }
-                else if (row.Cells[5].Value.ToString() == "Chairman - Audit Committee")
+                else if (row.Cells[8].Value.ToString() == "Chairman - Audit Committee")
                 {
-                    comboType.SelectedIndex = 1;
+                    comboType.SelectedIndex = 3;
                 }
                 else
                 {
@@ -307,13 +306,16 @@ namespace CMS.Settings
         {
             dataUser.DataSource = ds.Tables[0];
             dataUser.Columns[0].Visible = false;
+            dataUser.Columns[2].Visible = false;
+            dataUser.Columns[3].Visible = false;
             dataUser.Columns[4].Visible = false;
+            dataUser.Columns[7].Visible = false;
         }
 
         public DataSet selectUsers()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT UserId, CONCAT(LastName, ', ', FirstName, ' ', MiddleName) AS 'Name', Position, Username, Password, UserType AS 'User Type', DateCreated, DateModified FROM SYSTEM_USERS WHERE UserId NOT IN('SU-0000000', @Id)";
+            String sql = "SELECT UserId, CONCAT(LastName, ', ', FirstName, ' ', MiddleName) AS 'Name', LastName, FirstName, MiddleName, Position, Username, Password, UserType AS 'User Type', DateCreated, DateModified FROM SYSTEM_USERS WHERE UserId NOT IN('SU-0000000', @Id)";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@Id", Main.UserData.userId);
             DataSet ds = dal.executeDataSet(sql, parameters);
@@ -323,7 +325,7 @@ namespace CMS.Settings
         public DataSet searchUsers(String searchName)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT UserId, CONCAT(LastName, ', ', FirstName, ' ', MiddleName) AS 'Name', Position, Username, Password, UserType AS 'User Type', DateCreated, DateModified FROM SYSTEM_USERS WHERE UserId NOT IN('SU-0000000', @Id) AND (FirstName LIKE(@searchName) OR MiddleName LIKE(@searchName) OR LastName LIKE(@searchName))";
+            String sql = "SELECT UserId, CONCAT(LastName, ', ', FirstName, ' ', MiddleName) AS 'Name', LastName, FirstName, MiddleName, Position, Username, Password, UserType AS 'User Type', DateCreated, DateModified FROM SYSTEM_USERS WHERE UserId NOT IN('SU-0000000', @Id) AND (FirstName LIKE(@searchName) OR MiddleName LIKE(@searchName) OR LastName LIKE(@searchName))";
             searchName = "%" + searchName + "%";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@Id", Main.UserData.userId);

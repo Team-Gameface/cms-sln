@@ -308,10 +308,13 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.dateTermination);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SavingsTermination";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SavingsTermination";
+            this.TopMost = true;
             this.groupDetails.ResumeLayout(false);
             this.groupDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSavingsAccount)).EndInit();

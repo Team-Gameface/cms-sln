@@ -345,12 +345,15 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupSignature);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SignatureCard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Signature Card";
+            this.TopMost = true;
             this.groupSignature.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgSignature3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSignature2)).EndInit();

@@ -58,7 +58,10 @@ namespace CMS.Savings.Transaction.Controller
         {
             if (Main.UserData.userAccountType == "Staff")
             {
-                new View.PasswordAuthentication().Show();
+                isAdd = false;
+                savingsAccountNo = String.Empty;
+                DataGridViewRow row = this.openAccount.getSelectedAccount();
+                new View.PasswordAuthentication(row.Cells[0].Value.ToString(), this.openAccount, this.savingsAccountModel).Show();
             }
             else
             {

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace CMS.Savings
 {
-    class SavingsController : IDisposable
+    public class SavingsController : IDisposable
     {
         public void Dispose()
         {
@@ -92,7 +92,14 @@ namespace CMS.Savings
 
         public void itemMemberTermination(object args, EventArgs e)
         {
-            Transaction.Controller.TerminationController terminationController = new Transaction.Controller.TerminationController(new Transaction.Model.TerminationModel(), new Transaction.View.MemberTermination(), this.savingsMenu);
+            if (Main.UserData.userAccountType == "Staff")
+            {
+                new Transaction.View.PasswordAuthentication(this.savingsMenu).Show();
+            }
+            else
+            {
+                Transaction.Controller.TerminationController terminationController = new Transaction.Controller.TerminationController(new Transaction.Model.TerminationModel(), new Transaction.View.MemberTermination(), this.savingsMenu);
+            }
         }
 
         //queries

@@ -15,6 +15,15 @@ namespace CMS.Savings
         public SavingsMenu()
         {
             InitializeComponent();
+            setAccess();
+        }
+
+        public void setAccess()
+        {
+            if (Main.UserData.userAccountType == "Staff")
+            {
+                menuMaintenance.Dispose();
+            }
         }
 
         public void setItemSavingsAccountTypesEventHandler(EventHandler e)

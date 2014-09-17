@@ -54,6 +54,7 @@
             this.panelHome = new System.Windows.Forms.Panel();
             this.lblUserWelcome = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.panelSwitchboard = new System.Windows.Forms.FlowLayoutPanel();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.statusMain.SuspendLayout();
@@ -64,19 +65,16 @@
             this.panelCompany.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.panelHome.SuspendLayout();
+            this.panelSwitchboard.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.ForestGreen;
-            this.panelMenu.Controls.Add(this.btnUtilities);
+            this.panelMenu.Controls.Add(this.panelSwitchboard);
             this.panelMenu.Controls.Add(this.linkSignout);
-            this.panelMenu.Controls.Add(this.btnSettings);
-            this.panelMenu.Controls.Add(this.btnLoanManagement);
             this.panelMenu.Controls.Add(this.lblUserRole);
             this.panelMenu.Controls.Add(this.lblUser);
-            this.panelMenu.Controls.Add(this.btnSavings);
-            this.panelMenu.Controls.Add(this.btnPayments);
             this.panelMenu.Controls.Add(this.btnShow);
             this.panelMenu.Controls.Add(this.autoCollapse);
             this.panelMenu.Controls.Add(this.pictureUser);
@@ -97,7 +95,7 @@
             this.btnUtilities.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUtilities.ForeColor = System.Drawing.Color.White;
             this.btnUtilities.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnUtilities.Location = new System.Drawing.Point(28, 464);
+            this.btnUtilities.Location = new System.Drawing.Point(3, 231);
             this.btnUtilities.Name = "btnUtilities";
             this.btnUtilities.Size = new System.Drawing.Size(142, 70);
             this.btnUtilities.TabIndex = 10;
@@ -128,7 +126,7 @@
             this.btnSettings.ForeColor = System.Drawing.Color.White;
             this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSettings.Location = new System.Drawing.Point(28, 540);
+            this.btnSettings.Location = new System.Drawing.Point(3, 307);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(142, 70);
             this.btnSettings.TabIndex = 6;
@@ -146,7 +144,7 @@
             this.btnLoanManagement.ForeColor = System.Drawing.Color.White;
             this.btnLoanManagement.Image = ((System.Drawing.Image)(resources.GetObject("btnLoanManagement.Image")));
             this.btnLoanManagement.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLoanManagement.Location = new System.Drawing.Point(28, 236);
+            this.btnLoanManagement.Location = new System.Drawing.Point(3, 3);
             this.btnLoanManagement.Name = "btnLoanManagement";
             this.btnLoanManagement.Size = new System.Drawing.Size(142, 70);
             this.btnLoanManagement.TabIndex = 5;
@@ -185,7 +183,7 @@
             this.btnSavings.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSavings.ForeColor = System.Drawing.Color.White;
             this.btnSavings.Image = ((System.Drawing.Image)(resources.GetObject("btnSavings.Image")));
-            this.btnSavings.Location = new System.Drawing.Point(28, 312);
+            this.btnSavings.Location = new System.Drawing.Point(3, 79);
             this.btnSavings.Name = "btnSavings";
             this.btnSavings.Size = new System.Drawing.Size(142, 70);
             this.btnSavings.TabIndex = 4;
@@ -203,7 +201,7 @@
             this.btnPayments.ForeColor = System.Drawing.Color.White;
             this.btnPayments.Image = ((System.Drawing.Image)(resources.GetObject("btnPayments.Image")));
             this.btnPayments.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPayments.Location = new System.Drawing.Point(28, 388);
+            this.btnPayments.Location = new System.Drawing.Point(3, 155);
             this.btnPayments.Name = "btnPayments";
             this.btnPayments.Size = new System.Drawing.Size(142, 70);
             this.btnPayments.TabIndex = 2;
@@ -385,6 +383,18 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "Welcome";
             // 
+            // panelSwitchboard
+            // 
+            this.panelSwitchboard.Controls.Add(this.btnLoanManagement);
+            this.panelSwitchboard.Controls.Add(this.btnSavings);
+            this.panelSwitchboard.Controls.Add(this.btnPayments);
+            this.panelSwitchboard.Controls.Add(this.btnUtilities);
+            this.panelSwitchboard.Controls.Add(this.btnSettings);
+            this.panelSwitchboard.Location = new System.Drawing.Point(22, 240);
+            this.panelSwitchboard.Name = "panelSwitchboard";
+            this.panelSwitchboard.Size = new System.Drawing.Size(148, 425);
+            this.panelSwitchboard.TabIndex = 17;
+            // 
             // CMSDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -414,6 +424,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.panelHome.ResumeLayout(false);
             this.panelHome.PerformLayout();
+            this.panelSwitchboard.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -445,6 +456,7 @@
         private System.Windows.Forms.Panel panelCompany;
         private System.Windows.Forms.Button btnUtilities;
         private System.Windows.Forms.PictureBox pictureUser;
+        private System.Windows.Forms.FlowLayoutPanel panelSwitchboard;
 
     }
 }

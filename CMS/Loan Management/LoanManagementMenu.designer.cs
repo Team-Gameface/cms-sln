@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoanManagementMenu));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.maintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMaintenance = new System.Windows.Forms.ToolStripMenuItem();
             this.itemMembership = new System.Windows.Forms.ToolStripMenuItem();
             this.itemMemberTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDeliquencyClassification = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,7 +42,7 @@
             this.itemLoanCharges = new System.Windows.Forms.ToolStripMenuItem();
             this.itemPenalties = new System.Windows.Forms.ToolStripMenuItem();
             this.itemLoanAmnestyActivation = new System.Windows.Forms.ToolStripMenuItem();
-            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTransaction = new System.Windows.Forms.ToolStripMenuItem();
             this.itemMemberProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.itemCapitalContribution = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -74,8 +74,8 @@
             this.menuStrip.BackColor = System.Drawing.Color.AliceBlue;
             this.menuStrip.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.maintenanceToolStripMenuItem,
-            this.transactionToolStripMenuItem,
+            this.menuMaintenance,
+            this.menuTransaction,
             this.reportToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -84,9 +84,9 @@
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
-            // maintenanceToolStripMenuItem
+            // menuMaintenance
             // 
-            this.maintenanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuMaintenance.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemMembership,
             this.toolStripSeparator1,
             this.itemLoanTypes,
@@ -94,12 +94,12 @@
             this.itemLoanCharges,
             this.itemPenalties,
             this.itemLoanAmnestyActivation});
-            this.maintenanceToolStripMenuItem.Image = global::CMS.Properties.Resources.Maintenance_LM;
-            this.maintenanceToolStripMenuItem.Name = "maintenanceToolStripMenuItem";
-            this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(94, 58);
-            this.maintenanceToolStripMenuItem.Text = "Maintenance";
-            this.maintenanceToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.maintenanceToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuMaintenance.Image = global::CMS.Properties.Resources.Maintenance_LM;
+            this.menuMaintenance.Name = "menuMaintenance";
+            this.menuMaintenance.Size = new System.Drawing.Size(94, 58);
+            this.menuMaintenance.Text = "Maintenance";
+            this.menuMaintenance.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.menuMaintenance.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
             // itemMembership
             // 
@@ -171,20 +171,20 @@
             this.itemLoanAmnestyActivation.Size = new System.Drawing.Size(217, 22);
             this.itemLoanAmnestyActivation.Text = "Loan Amnesty Activation";
             // 
-            // transactionToolStripMenuItem
+            // menuTransaction
             // 
-            this.transactionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuTransaction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemMemberProfile,
             this.itemCapitalContribution,
             this.toolStripSeparator2,
             this.itemLoanApp,
             this.itemLoanAmnesty});
-            this.transactionToolStripMenuItem.Image = global::CMS.Properties.Resources.Transaction_LM;
-            this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(87, 58);
-            this.transactionToolStripMenuItem.Text = "Transaction";
-            this.transactionToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.transactionToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuTransaction.Image = global::CMS.Properties.Resources.Transaction_LM;
+            this.menuTransaction.Name = "menuTransaction";
+            this.menuTransaction.Size = new System.Drawing.Size(87, 58);
+            this.menuTransaction.Text = "Transaction";
+            this.menuTransaction.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.menuTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
             // itemMemberProfile
             // 
@@ -404,8 +404,8 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem maintenanceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuMaintenance;
+        private System.Windows.Forms.ToolStripMenuItem menuTransaction;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemLoanTypes;
         private System.Windows.Forms.ToolStripMenuItem itemInterestRates;

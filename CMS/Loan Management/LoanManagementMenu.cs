@@ -15,6 +15,15 @@ namespace CMS.Loan_Management
         public LoanManagementMenu()
         {
             InitializeComponent();
+            setAccess();
+        }
+
+        public void setAccess()
+        {
+            if (Main.UserData.userAccountType == "Staff")
+            {
+                menuMaintenance.Dispose();
+            }
         }
 
         public void setItemLoanTypesEventHandler(EventHandler e)

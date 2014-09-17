@@ -26,6 +26,15 @@ namespace CMS.Main.View
             splitContainer.Panel2.Controls.Add(paymentForm);
             paymentForm.Hide();
             setCompanyData();
+            setAccess();
+        }
+
+        public void setAccess()
+        {
+            if (Main.UserData.userAccountType == "Staff")
+            {
+                this.panelSwitchboard.Controls.Remove(btnSettings);
+            }
         }
 
         public void setCompanyData()

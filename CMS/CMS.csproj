@@ -523,6 +523,12 @@
     <Compile Include="Savings\Transaction\Model\SavingsTransactionModel.cs" />
     <Compile Include="Savings\Transaction\Model\TimeDepositModel.cs" />
     <Compile Include="Savings\Transaction\Model\TimeDepositWithdrawalModel.cs" />
+    <Compile Include="Savings\Transaction\View\PasswordAuthentication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Savings\Transaction\View\PasswordAuthentication.Designer.cs">
+      <DependentUpon>PasswordAuthentication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Savings\Transaction\View\SavingsAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -780,6 +786,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Savings\SavingsMenu.resx">
       <DependentUpon>SavingsMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Savings\Transaction\View\PasswordAuthentication.resx">
+      <DependentUpon>PasswordAuthentication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Savings\Transaction\View\SavingsAccount.resx">
       <DependentUpon>SavingsAccount.cs</DependentUpon>

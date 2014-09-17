@@ -56,16 +56,23 @@ namespace CMS.Savings.Transaction.Controller
 
         public void btnTerminate(object sender, EventArgs e)
         {
-            isAdd = false;
-            savingsAccountNo = String.Empty;
-            DataGridViewRow row = this.openAccount.getSelectedAccount();
-            if (row == null)
+            if (Main.UserData.userAccountType == "Staff")
             {
-                MessageBox.Show("No Row Selected.", "Savings Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new View.PasswordAuthentication().Show();
             }
             else
             {
-                new View.SavingsTermination(row.Cells[0].Value.ToString(), this.openAccount, this.savingsAccountModel).Show();
+                isAdd = false;
+                savingsAccountNo = String.Empty;
+                DataGridViewRow row = this.openAccount.getSelectedAccount();
+                if (row == null)
+                {
+                    MessageBox.Show("No Row Selected.", "Savings Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    new View.SavingsTermination(row.Cells[0].Value.ToString(), this.openAccount, this.savingsAccountModel).Show();
+                }
             }
         }
 

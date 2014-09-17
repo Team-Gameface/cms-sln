@@ -22,8 +22,6 @@ namespace CMS.Main.View
 
         public Settings(Controller.MainController mainController, View.CMSDashboard cms)
         {
-            this.mainController = mainController;
-            this.cms = cms;
             InitializeComponent();
         }
 

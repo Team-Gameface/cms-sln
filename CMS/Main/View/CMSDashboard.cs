@@ -106,9 +106,7 @@ namespace CMS.Main.View
 
         public void setUserName(String s)
         {
-            this.lblUser.Text = s;
-            this.lblUserWelcome.Text = s + "!";
-            
+            this.lblUser.Text = s;            
         }
 
         public void setRole(String s) {
@@ -130,10 +128,10 @@ namespace CMS.Main.View
             }
         }
 
-        /*public void setBtnHomeEventHandler(EventHandler e)
+        public void setBtnHomeEventHandler(EventHandler e)
         {
             this.btnHome.Click += e;
-        }*/
+        }
 
         public void setBtnPaymentsEventHandler(EventHandler e)
         {

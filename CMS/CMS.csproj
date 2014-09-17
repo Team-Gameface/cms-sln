@@ -368,6 +368,12 @@
       <DependentUpon>CMSDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\CompanyData.cs" />
+    <Compile Include="Main\View\Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\View\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\View\PaymentForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -730,6 +736,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\View\CMSDashboard.resx">
       <DependentUpon>CMSDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\View\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\View\PaymentForm.resx">
       <DependentUpon>PaymentForm.cs</DependentUpon>

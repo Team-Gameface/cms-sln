@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CMSDashboard));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelSwitchboard = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnHome = new System.Windows.Forms.Button();
             this.btnLoanManagement = new System.Windows.Forms.Button();
             this.btnSavings = new System.Windows.Forms.Button();
             this.btnPayments = new System.Windows.Forms.Button();
@@ -53,9 +54,6 @@
             this.panelCompany = new System.Windows.Forms.Panel();
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.panelHome = new System.Windows.Forms.Panel();
-            this.lblUserWelcome = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnHome = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelSwitchboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -66,7 +64,6 @@
             this.splitContainer.SuspendLayout();
             this.panelCompany.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
-            this.panelHome.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -99,6 +96,23 @@
             this.panelSwitchboard.Name = "panelSwitchboard";
             this.panelSwitchboard.Size = new System.Drawing.Size(148, 469);
             this.panelSwitchboard.TabIndex = 11;
+            // 
+            // btnHome
+            // 
+            this.btnHome.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btnHome.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnHome.Location = new System.Drawing.Point(3, 3);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(142, 70);
+            this.btnHome.TabIndex = 12;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnHome.UseVisualStyleBackColor = false;
             // 
             // btnLoanManagement
             // 
@@ -367,52 +381,11 @@
             // 
             this.panelHome.AutoScroll = true;
             this.panelHome.BackColor = System.Drawing.Color.Honeydew;
-            this.panelHome.Controls.Add(this.lblUserWelcome);
-            this.panelHome.Controls.Add(this.label5);
             this.panelHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHome.Location = new System.Drawing.Point(0, 0);
             this.panelHome.Name = "panelHome";
             this.panelHome.Size = new System.Drawing.Size(611, 564);
             this.panelHome.TabIndex = 0;
-            // 
-            // lblUserWelcome
-            // 
-            this.lblUserWelcome.AutoSize = true;
-            this.lblUserWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserWelcome.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.lblUserWelcome.Location = new System.Drawing.Point(175, 7);
-            this.lblUserWelcome.Name = "lblUserWelcome";
-            this.lblUserWelcome.Size = new System.Drawing.Size(84, 37);
-            this.lblUserWelcome.TabIndex = 16;
-            this.lblUserWelcome.Text = "User";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label5.Location = new System.Drawing.Point(12, 7);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(150, 37);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Welcome";
-            // 
-            // btnHome
-            // 
-            this.btnHome.BackColor = System.Drawing.Color.DarkSalmon;
-            this.btnHome.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnHome.FlatAppearance.BorderSize = 0;
-            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHome.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.ForeColor = System.Drawing.Color.White;
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHome.Location = new System.Drawing.Point(3, 3);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(142, 70);
-            this.btnHome.TabIndex = 12;
-            this.btnHome.Text = "Home";
-            this.btnHome.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnHome.UseVisualStyleBackColor = false;
             // 
             // CMSDashboard
             // 
@@ -442,8 +415,6 @@
             this.panelCompany.ResumeLayout(false);
             this.panelCompany.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
-            this.panelHome.ResumeLayout(false);
-            this.panelHome.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -469,8 +440,6 @@
         private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.Panel panelHome;
-        private System.Windows.Forms.Label lblUserWelcome;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblUserRole;
         private System.Windows.Forms.Panel panelCompany;
         private System.Windows.Forms.Button btnUtilities;

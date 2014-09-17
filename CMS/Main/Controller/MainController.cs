@@ -44,9 +44,11 @@ namespace CMS.Main.Controller
 
         Main.Logger logger = new Main.Logger();
         Main.View.CMSDashboard cms;
+        Main.View.Home home;
         Main.View.PaymentForm paymentForm;
         Main.View.Utilities utilities;
         Main.View.Settings settings;
+        public Boolean homeOpen = false;
         public Boolean paymentOpen = false;
         public Boolean utilitiesOpen = false;
         public Boolean settingsOpen = false;
@@ -55,7 +57,11 @@ namespace CMS.Main.Controller
         {
             this.cms = cms;
             setUser();
-            //this.cms.setBtnHomeEventHandler(this.btnHome);
+            homeOpen = true;
+            home = new View.Home();
+            home.Dock = DockStyle.Fill;
+            this.cms.setPanel2(home);
+            this.cms.setBtnHomeEventHandler(this.btnHome);
             this.cms.setBtnLoanManagementEventHandler(this.btnLoanManagement);
             this.cms.setBtnPaymentsEventHandler(this.btnPayments);
             this.cms.setBtnSavingsEventHandler(this.btnSavings);
@@ -63,7 +69,6 @@ namespace CMS.Main.Controller
             this.cms.setBtnUtitilitiesEventHandler(this.btnUtitilities);
             this.cms.setLinkSignOutEventHandler(this.linkSignout);
             this.cms.CMS_FormClosing(this.formClosing);
-            this.updateMemberClass();
             this.cms.ShowDialog();
         }
 
@@ -81,14 +86,30 @@ namespace CMS.Main.Controller
             this.cms.setPictureUser();
         }
 
-        /*public void btnHome(object args, EventArgs e)
+        public void btnHome(object args, EventArgs e)
         {
-            
-        }*/
-
-        public void updateMemberClass()
-        {
-            
+            if (paymentOpen)
+            {
+                paymentForm.Dispose();
+                paymentOpen = false;
+            }
+            if (settingsOpen)
+            {
+                settings.Dispose();
+                settingsOpen = false;
+            }
+            if (utilitiesOpen)
+            {
+                utilities.Dispose();
+                utilitiesOpen = false;
+            }
+            if (!homeOpen)
+            {
+                homeOpen = true;
+                home = new View.Home();
+                home.Dock = DockStyle.Fill;
+                this.cms.setPanel2(home);
+            }
         }
 
         public void btnLoanManagement(object args, EventArgs e)
@@ -105,6 +126,11 @@ namespace CMS.Main.Controller
 
         public void btnPayments(object args, EventArgs e)
         {
+            if (homeOpen)
+            {
+                home.Dispose();
+                homeOpen = false;
+            }
             if (utilitiesOpen)
             {
                 utilities.Dispose();
@@ -126,6 +152,11 @@ namespace CMS.Main.Controller
 
         public void btnUtitilities(object args, EventArgs e)
         {
+            if (homeOpen)
+            {
+                home.Dispose();
+                homeOpen = false;
+            }
             if (paymentOpen)
             {
                 paymentForm.Dispose();
@@ -147,6 +178,11 @@ namespace CMS.Main.Controller
 
         public void btnSettings(object args, EventArgs e)
         {
+            if (homeOpen)
+            {
+                home.Dispose();
+                homeOpen = false;
+            }
             if (paymentOpen)
             {
                 paymentForm.Dispose();
@@ -168,16 +204,20 @@ namespace CMS.Main.Controller
 
         public void linkSignout(object args, EventArgs e)
         {
-            execLogger("User Log Out");
-            Main.UserData.userId = String.Empty;
-            Main.UserData.userFirst = String.Empty;
-            Main.UserData.userMiddle = String.Empty;
-            Main.UserData.userLast = String.Empty;
-            Main.UserData.userPosition = String.Empty;
-            Main.UserData.userAccountType = String.Empty;
-            Main.UserData.picture = null;
-            this.Dispose();
-            new Login().ShowDialog();
+            DialogResult dr = MessageBox.Show("You will be logged out of the system. Continue?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dr == DialogResult.Yes)
+            {
+                execLogger("User Log Out");
+                Main.UserData.userId = String.Empty;
+                Main.UserData.userFirst = String.Empty;
+                Main.UserData.userMiddle = String.Empty;
+                Main.UserData.userLast = String.Empty;
+                Main.UserData.userPosition = String.Empty;
+                Main.UserData.userAccountType = String.Empty;
+                Main.UserData.picture = null;
+                this.Dispose();
+                new Login().ShowDialog();
+            }
         }
 
         public void formClosing(object sender, FormClosingEventArgs e)

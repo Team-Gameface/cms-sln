@@ -232,7 +232,49 @@ namespace CMS.Settings
             }
             if (comboType.SelectedIndex != -1)
             {
-                checkType = true;
+                if (comboType.SelectedIndex == 0)
+                {
+                    checkType = true;
+                }
+                else if (comboType.SelectedIndex == 1)
+                {
+                    if (checkManagerExists(this.userId) > 0)
+                    {
+                        errorMessage += "There can only be one Manager" + Environment.NewLine;
+                        checkType = false;
+                        lblUserType.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        checkType = true;
+                    }
+                }
+                else if (comboType.SelectedIndex == 2)
+                {
+                    if (checkCreditChairmanExists(this.userId) > 0)
+                    {
+                        errorMessage += "There can only be one Chairman - Credit Committee" + Environment.NewLine;
+                        checkType = false;
+                        lblUserType.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        checkType = true;
+                    }
+                }
+                else if (comboType.SelectedIndex == 3)
+                {
+                    if (checkAuditChairmanExists(this.userId) > 0)
+                    {
+                        errorMessage += "There can only be one Chairman - Audit Committee" + Environment.NewLine;
+                        checkType = false;
+                        lblUserType.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        checkType = true;
+                    }
+                }
             }
             else
             {
@@ -349,6 +391,51 @@ namespace CMS.Settings
             return i;
         }
 
+        public int checkManagerExists(String UserId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT COUNT(*) FROM SYSTEM_USERS WHERE UserType = 'Manager' AND UserId != @userId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@userId", UserId);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = int.Parse(read[0].ToString());
+            }
+            return i;
+        }
+
+        public int checkCreditChairmanExists(String UserId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT COUNT(*) FROM SYSTEM_USERS WHERE UserType = 'Chairman - Credit Committee' AND UserId != @userId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@userId", UserId);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = int.Parse(read[0].ToString());
+            }
+            return i;
+        }
+
+        public int checkAuditChairmanExists(String UserId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT COUNT(*) FROM SYSTEM_USERS WHERE UserType = 'Chairman - Audit Committee' AND UserId != @userId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@userId", UserId);
+            SqlDataReader read = dal.executeReader(sql, parameters);
+            int i = 0;
+            while (read.Read())
+            {
+                i = int.Parse(read[0].ToString());
+            }
+            return i;
+        }
+
         public int checkExists(String searchName, String Id)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
@@ -445,7 +532,6 @@ namespace CMS.Settings
                     i = int.Parse(number);
                 }
             }
-            MessageBox.Show(i.ToString());
             return i + 1;
         }
 
@@ -458,7 +544,7 @@ namespace CMS.Settings
         {
             if (comboType.SelectedIndex == 0)
             {
-                lblDetails.Text = "Staff - can access Maintenance and Transaction Modules with Limited Control";
+                lblDetails.Text = "Staff - can access only Transaction Modules with Limited Control";
             }
             else if (comboType.SelectedIndex == 1)
             {

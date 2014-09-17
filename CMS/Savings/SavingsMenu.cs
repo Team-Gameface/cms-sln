@@ -81,30 +81,13 @@ namespace CMS.Savings
 
         private void timerDateTime_Tick(object sender, EventArgs e)
         {
-            lblDate.Text = DateTime.Now.ToLongDateString(); 
-            lblTime.Text = DateTime.Now.ToLongTimeString();
+            statusDateTime.Text = DateTime.Now.ToLongDateString() + ", " + DateTime.Now.ToString("h:mm:ss tt"); 
         }
 
         public void SavingsMenu_FormClosing(FormClosingEventHandler e)
         {
             this.FormClosing += e;
         }
-
-        private void SavingsMenu_Load(object sender, EventArgs e)
-        {
-            MdiClient ctlMDI;
-            foreach (Control ctl in this.Controls) {
-
-                try {
-
-                    ctlMDI = (MdiClient)ctl;
-                    ctlMDI.BackgroundImage = CMS.Properties.Resources.savingsmenu_bg;
-                }catch(InvalidCastException){
-                }
-                
-             }
-            
-        }
-            }
-        }
+    }
+}
 

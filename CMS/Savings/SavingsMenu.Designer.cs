@@ -48,9 +48,11 @@
             this.itemDailyTransactionLog = new System.Windows.Forms.ToolStripMenuItem();
             this.itemStatementOfAccount = new System.Windows.Forms.ToolStripMenuItem();
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
-            this.lblDate = new System.Windows.Forms.Label();
-            this.lblTime = new System.Windows.Forms.Label();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.statusDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -213,29 +215,33 @@
             this.timerDateTime.Interval = 1000;
             this.timerDateTime.Tick += new System.EventHandler(this.timerDateTime_Tick);
             // 
-            // lblDate
+            // statusStrip
             // 
-            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDate.BackColor = System.Drawing.Color.Snow;
-            this.lblDate.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.ForeColor = System.Drawing.Color.Black;
-            this.lblDate.Location = new System.Drawing.Point(434, 36);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(338, 25);
-            this.lblDate.TabIndex = 0;
-            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.statusStrip.BackColor = System.Drawing.Color.Firebrick;
+            this.statusStrip.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.progressBar,
+            this.statusDateTime});
+            this.statusStrip.Location = new System.Drawing.Point(0, 532);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(784, 30);
+            this.statusStrip.TabIndex = 3;
+            this.statusStrip.Text = "statusStrip1";
             // 
-            // lblTime
+            // progressBar
             // 
-            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTime.BackColor = System.Drawing.Color.Snow;
-            this.lblTime.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.ForeColor = System.Drawing.Color.Black;
-            this.lblTime.Location = new System.Drawing.Point(446, 0);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(326, 36);
-            this.lblTime.TabIndex = 0;
-            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.progressBar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(100, 24);
+            // 
+            // statusDateTime
+            // 
+            this.statusDateTime.ForeColor = System.Drawing.Color.White;
+            this.statusDateTime.Name = "statusDateTime";
+            this.statusDateTime.Size = new System.Drawing.Size(667, 25);
+            this.statusDateTime.Spring = true;
+            this.statusDateTime.Text = "DateTime";
+            this.statusDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SavingsMenu
             // 
@@ -244,9 +250,9 @@
             this.BackgroundImage = global::CMS.Properties.Resources.savingsmenu_bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 562);
-            this.Controls.Add(this.lblTime);
-            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -257,10 +263,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Savings Menu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.SavingsMenu_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -284,7 +292,8 @@
         private System.Windows.Forms.ToolStripMenuItem itemMemberTermination;
         private System.Windows.Forms.ToolStripMenuItem itemDailyTransactionLog;
         private System.Windows.Forms.ToolStripMenuItem itemStatementOfAccount;
-        private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripProgressBar progressBar;
+        private System.Windows.Forms.ToolStripStatusLabel statusDateTime;
     }
 }

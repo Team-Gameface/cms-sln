@@ -63,7 +63,7 @@ namespace CMS.Main.View
 
         private void timerDateTime_Tick(object sender, EventArgs e)
         {
-            lblDateTime.Text = DateTime.Now.ToLongDateString() + ", " + DateTime.Now.ToLongTimeString(); 
+            lblDateTime.Text = DateTime.Now.ToLongDateString() + ", " + DateTime.Now.ToString("h:mm:ss tt"); 
         }
 
         private void btnShow_Click(object sender, EventArgs e)

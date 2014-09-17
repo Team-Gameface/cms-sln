@@ -45,7 +45,6 @@
             this.autoCollapse = new System.Windows.Forms.CheckBox();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.statusMain = new System.Windows.Forms.StatusStrip();
-            this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,6 +53,8 @@
             this.panelCompany = new System.Windows.Forms.Panel();
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.panelHome = new System.Windows.Forms.Panel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelMenu.SuspendLayout();
             this.panelSwitchboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -277,20 +278,15 @@
             // 
             // statusMain
             // 
-            this.statusMain.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.statusMain.BackColor = System.Drawing.Color.Firebrick;
+            this.statusMain.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripProgressBar1,
             this.lblDateTime});
-            this.statusMain.Location = new System.Drawing.Point(0, 707);
+            this.statusMain.Location = new System.Drawing.Point(0, 694);
             this.statusMain.Name = "statusMain";
-            this.statusMain.Size = new System.Drawing.Size(611, 22);
+            this.statusMain.Size = new System.Drawing.Size(611, 35);
             this.statusMain.TabIndex = 3;
-            // 
-            // lblDateTime
-            // 
-            this.lblDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(80, 17);
-            this.lblDateTime.Text = "Date Time";
             // 
             // timerDateTime
             // 
@@ -349,7 +345,7 @@
             // 
             this.splitContainer.Panel2.Controls.Add(this.panelHome);
             this.splitContainer.Panel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.splitContainer.Size = new System.Drawing.Size(611, 707);
+            this.splitContainer.Size = new System.Drawing.Size(611, 694);
             this.splitContainer.SplitterDistance = 139;
             this.splitContainer.TabIndex = 17;
             // 
@@ -384,8 +380,23 @@
             this.panelHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHome.Location = new System.Drawing.Point(0, 0);
             this.panelHome.Name = "panelHome";
-            this.panelHome.Size = new System.Drawing.Size(611, 564);
+            this.panelHome.Size = new System.Drawing.Size(611, 551);
             this.panelHome.TabIndex = 0;
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 29);
+            // 
+            // lblDateTime
+            // 
+            this.lblDateTime.ForeColor = System.Drawing.Color.White;
+            this.lblDateTime.Name = "lblDateTime";
+            this.lblDateTime.Size = new System.Drawing.Size(494, 30);
+            this.lblDateTime.Spring = true;
+            this.lblDateTime.Text = "DateTime";
+            this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CMSDashboard
             // 
@@ -433,7 +444,6 @@
         private System.Windows.Forms.CheckBox autoCollapse;
         private System.Windows.Forms.LinkLabel linkSignout;
         private System.Windows.Forms.Label lblUser;
-        private System.Windows.Forms.ToolStripStatusLabel lblDateTime;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureLogo;
@@ -446,6 +456,8 @@
         private System.Windows.Forms.PictureBox pictureUser;
         private System.Windows.Forms.FlowLayoutPanel panelSwitchboard;
         private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripStatusLabel lblDateTime;
 
     }
 }

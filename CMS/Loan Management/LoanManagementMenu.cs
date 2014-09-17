@@ -118,31 +118,9 @@ namespace CMS.Loan_Management
             new Main.Controller.MainController(new Main.View.CMSDashboard());
         }
 
-        private void LoanManagementMenu_Load(object sender, EventArgs e)
-        {
-            MdiClient ctlMDI;
-            foreach (Control ctl in this.Controls)
-            {
-
-                try
-                {
-
-                    ctlMDI = (MdiClient)ctl;
-                    ctlMDI.BackgroundImage = CMS.Properties.Resources.loanmenu_bg;
-                }
-                catch (InvalidCastException)
-                {
-                }
-
-            }
-        }
-
         private void timerDateTime_Tick(object sender, EventArgs e)
         {
-            lblDate.Text = DateTime.Now.ToLongDateString();
-            lblTime.Text = DateTime.Now.ToLongTimeString();
+            statusDateTime.Text = DateTime.Now.ToLongDateString() + ", " + DateTime.Now.ToString("h:mm:ss tt"); 
         }
-
-
     }
 }

@@ -57,7 +57,7 @@
             this.label6.Location = new System.Drawing.Point(3, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(394, 25);
+            this.label6.Size = new System.Drawing.Size(395, 25);
             this.label6.TabIndex = 37;
             this.label6.Text = "Reports - Schedule of Delinquent Accounts";
             // 
@@ -259,7 +259,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(405, 521);
+            this.ClientSize = new System.Drawing.Size(417, 521);
             this.Controls.Add(this.grpGroupBy);
             this.Controls.Add(this.cbAgeBracket);
             this.Controls.Add(this.grpLoanTypesSort);

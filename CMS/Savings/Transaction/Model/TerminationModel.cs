@@ -112,11 +112,11 @@ namespace CMS.Savings.Transaction.Model
             return mdate;
         }
 
-        public double selectLoanBalanceFromAmnestied(int lappid)
+        public String selectLoanBalanceFromAmnestied(int lappid)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "Select LoanBalance from LOAN_INFORMATION_AMNESTY where LoanApplicationId= "+"'"+lappid+"'";
-            double totalbal = Convert.ToDouble(dal.executeScalar(sql));
+            String sql = "Select concat(LoanBalance-(Penalty-(Penalty*(WaivedPenaltyPercentage/100)))-(Interest-(Interest*(WaivedInterestPercentage/100))),' ',Penalty-(Penalty*(WaivedPenaltyPercentage/100)),' ',Interest-(Interest*(WaivedInterestPercentage/100))) from LOAN_INFORMATION_AMNESTY where LoanApplicationId= " + "'" + lappid + "'";
+            String totalbal = Convert.ToString(dal.executeScalar(sql));
             return totalbal;
         }
 
@@ -180,7 +180,7 @@ namespace CMS.Savings.Transaction.Model
             return result;
         }
 
-        public int clearLoans(String accountNo1)
+        public int clearLoans(String accountNo1,int[] loanApplicationId, double[] loanBalance, double[] loanPenalty, double[] loanInterest)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "UPDATE LOAN_AMORTIZATION SET isPaid = 1, Penalty = NULL WHERE LoanApplicationId IN (SELECT LoanApplicationId FROM LOAN_INFORMATION WHERE AccountNo = @AccountNo)";
@@ -192,7 +192,30 @@ namespace CMS.Savings.Transaction.Model
                 sql = "UPDATE LOAN_INFORMATION SET isCleared = 1, Interest = NULL WHERE AccountNo = @AccountNo";
                 result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             }
+
+            for (int i = 0; i < loanApplicationId.Count(); i++) 
+            {
+                this.insertLoanPayment(accountNo1,loanApplicationId[i],loanBalance[i],loanInterest[i],loanPenalty[i]);
+            }
+
             return result;
+        }
+
+        public void insertLoanPayment(String accountNo, int applicationId, double amount, double interest, double penalty)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+
+                String sql = "EXEC insertAmortizationPayment @PaymentType, @AmountPaid, @Penalty, @Interest, @hasInterest, @AccountNo, @LoanApplicationId, @isFullyPaid";
+                Dictionary<String, Object> parameters = new Dictionary<string, object>();
+                parameters.Add("@PaymentType", "Loan");
+                parameters.Add("@AmountPaid", amount);
+                parameters.Add("@Penalty", penalty);
+                parameters.Add("@Interest", interest);
+                parameters.Add("@hasInterest", false);
+                parameters.Add("@AccountNo", accountNo);
+                parameters.Add("@LoanApplicationId", applicationId);
+                parameters.Add("@isFullyPaid", 1);
+                dal.executeNonQuery(sql, parameters);
         }
 
         public int selectSavingsAccount(String accountNo)
@@ -239,10 +262,10 @@ namespace CMS.Savings.Transaction.Model
             return timeDeposit;
         }
 
-        public double selectRemainingBalance(String accountNo)
+        public double selectRemainingBalance(int applicationId)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "Select sum(LOAN_AMORTIZATION.Amount) from LOAN_AMORTIZATION, LOAN_INFORMATION where LOAN_INFORMATION.LoanApplicationId = LOAN_AMORTIZATION.LoanApplicationId and LOAN_INFORMATION.isAmnestized = 0 and LOAN_AMORTIZATION.isPaid = 0 and LOAN_INFORMATION.AccountNo = " + "'" + accountNo + "'";
+            String sql = "Select sum(LOAN_AMORTIZATION.Amount) from LOAN_AMORTIZATION, LOAN_INFORMATION where LOAN_INFORMATION.LoanApplicationId = LOAN_AMORTIZATION.LoanApplicationId and LOAN_INFORMATION.isAmnestized = 0 and LOAN_AMORTIZATION.isPaid = 0 and LOAN_INFORMATION.LoanApplicationId = " + "'" + applicationId + "'";
            double amount = 0.00;
            try
            {

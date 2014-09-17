@@ -15,10 +15,16 @@ namespace CMS.Savings.Transaction.Controller
         Savings.Transaction.Model.TerminationModel terminationModel;
         Savings.Transaction.View.MemberTermination termination;
 
-        double totalPenalty = 0;
-        double totalInterest = 0;
-        double totalBalance = 0;
-        String accountNo = String.Empty;
+        public double totalPenalty = 0;
+        public double totalInterest = 0;
+        public double totalBalance = 0;
+        public static int totalAppId = 0;
+        public double[] arrBalance = new double[totalAppId];
+        public double[] arrInterest = new double[totalAppId];
+        public double[] arrPenalty = new double[totalAppId];
+        public int[] arrAppId = new int[totalAppId];
+        public String accountNo = String.Empty;
+        
 
         public TerminationController(Transaction.Model.TerminationModel terminationModel, Transaction.View.MemberTermination termination, SavingsMenu savingsMenu)
         {
@@ -81,11 +87,20 @@ namespace CMS.Savings.Transaction.Controller
                 {
                     if (this.terminationModel.insertTermination(reason, details, accountNo) != 0)
                     {
-                        if (this.terminationModel.clearLoans(accountNo) != 0)
+                        if (this.terminationModel.clearLoans(accountNo, arrAppId, arrBalance, arrPenalty, arrInterest) != 0)
                         {
                             MessageBox.Show("Member Termination Success.", "Membership Termination", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.termination.classGridSearch(this.terminationModel.selectActiveMember());
                             this.termination.clearFields();
+                            totalPenalty = 0;
+                            totalBalance = 0;
+                            totalInterest = 0;
+                            totalAppId = 0;
+                            arrBalance = new double[totalAppId];
+                            arrInterest = new double[totalAppId];
+                            arrPenalty = new double[totalAppId];
+                            arrAppId = new int[totalAppId];
+                            accountNo = String.Empty;
                         }
                         else
                         {
@@ -107,6 +122,15 @@ namespace CMS.Savings.Transaction.Controller
         public void btnCancel(object args, EventArgs e)
         {
             this.termination.clearFields();
+            totalPenalty = 0;
+            totalBalance = 0;
+            totalInterest = 0;
+            totalAppId = 0;
+            arrBalance = new double[totalAppId];
+            arrInterest = new double[totalAppId];
+            arrPenalty = new double[totalAppId];
+            arrAppId = new int[totalAppId];
+            accountNo = String.Empty;
         }
 
         public void btnSearchMember(object args, EventArgs e)
@@ -157,20 +181,40 @@ namespace CMS.Savings.Transaction.Controller
             double shareCapital = this.terminationModel.selectCurrentShareCapital(accountNo);
             this.termination.setShareCapitalBalance(shareCapital.ToString());
                 //this.terminationModel.selectRemainingBalance(accountNo);
-            double balFromRegLoans = this.terminationModel.selectRemainingBalance(accountNo);
-            totalBalance += balFromRegLoans;
+
 
             DataSet setAmnestizedLoans = this.terminationModel.selectUnpaidAmnestiedLoans(accountNo);
+            DataSet setLoans = this.terminationModel.selectUnpaidLoans(accountNo);
+            int ctr = 0;
+            totalAppId = setAmnestizedLoans.Tables[0].Rows.Count + setLoans.Tables[0].Rows.Count;
+            arrBalance = new double[totalAppId];
+            arrPenalty = new double[totalAppId];
+            arrInterest = new double[totalAppId];
+            arrAppId = new int[totalAppId];
 
             for (int i = 0; i < setAmnestizedLoans.Tables[0].Rows.Count; i++) 
             {
-                totalBalance +=this.terminationModel.selectLoanBalanceFromAmnestied(int.Parse(setAmnestizedLoans.Tables[0].Rows[i][0].ToString()));
+                String[] amnestyBal = this.terminationModel.selectLoanBalanceFromAmnestied(int.Parse(setAmnestizedLoans.Tables[0].Rows[i][0].ToString())).Split(' ');
+                totalBalance +=Convert.ToDouble(amnestyBal[0]);
+                totalBalance +=Convert.ToDouble(amnestyBal[1]);
+                totalBalance += Convert.ToDouble(amnestyBal[2]);
+                arrAppId[ctr] = int.Parse(setAmnestizedLoans.Tables[0].Rows[i][0].ToString());
+                arrBalance[ctr] = Convert.ToDouble(amnestyBal[0]);
+                arrPenalty[ctr] = Convert.ToDouble(amnestyBal[1]);
+                arrInterest[ctr] = Convert.ToDouble(amnestyBal[2]);
+                ctr++;
             }
 
-            DataSet setLoans = this.terminationModel.selectUnpaidLoans(accountNo);
             for (int j = 0; j < setLoans.Tables[0].Rows.Count; j++)
             {
-                this.getInterestAndPenalty(int.Parse(setLoans.Tables[0].Rows[j][0].ToString()), int.Parse(setLoans.Tables[0].Rows[j][1].ToString()));
+                double balFromRegLoans = this.terminationModel.selectRemainingBalance(int.Parse(setLoans.Tables[0].Rows[j][0].ToString()));
+                totalBalance += balFromRegLoans;
+                arrBalance[ctr] = balFromRegLoans;
+                String[] penint = this.getInterestAndPenalty(int.Parse(setLoans.Tables[0].Rows[j][0].ToString()), int.Parse(setLoans.Tables[0].Rows[j][1].ToString())).Split(' ');
+                arrPenalty[ctr] = double.Parse(penint[0]);
+                arrInterest[ctr] = double.Parse(penint[1]);
+                arrAppId[ctr] = int.Parse(setLoans.Tables[0].Rows[j][1].ToString());
+                ctr++;
             }
             
             this.termination.setLoanBalance(totalBalance.ToString());           
@@ -204,16 +248,19 @@ namespace CMS.Savings.Transaction.Controller
             }
         }
 
-        public void getInterestAndPenalty(int lappId, int loanTypeId) 
+        public String getInterestAndPenalty(int lappId, int loanTypeId) 
         {
             totalInterest = 0;
             totalPenalty = 0;
+
+            double miniInterest = 0, miniPenalty = 0;
 
             double lastInterest = this.terminationModel.selectLastInterest(lappId);
 
             if (lastInterest != 0)
             {
                 totalInterest += lastInterest;
+                miniInterest += lastInterest;
             }
 
             Dictionary<String, int> listOfInterestDates = new Dictionary<String, int>();
@@ -298,6 +345,7 @@ namespace CMS.Savings.Transaction.Controller
                                 }
                             }
                             totalInterest += finalInterest;
+                            miniInterest += finalInterest;
                         }
                     }
 
@@ -368,6 +416,7 @@ namespace CMS.Savings.Transaction.Controller
                                 }
                             }
                             totalInterest += finalInterest;
+                            miniInterest += finalInterest;
                         }
                     }
                 }
@@ -379,6 +428,7 @@ namespace CMS.Savings.Transaction.Controller
             if (lastPenalty != 0)
             {
                 totalPenalty += lastPenalty;
+                miniPenalty += lastPenalty;
             }
 
             DataSet amorSet = this.terminationModel.selectAmortizations(accountNo, lappId);
@@ -399,8 +449,8 @@ namespace CMS.Savings.Transaction.Controller
                 DataSet ds = this.terminationModel.selectPenaltiesPerLoanType(loanTypeId);
                 if (ds.Tables[0].Rows.Count == 0 || DateTime.Parse(dueDate) > DateTime.Now)
                 {
-                    totalBalance += totalPenalty;
-                    totalPenalty = 0;
+                    totalPenalty += 0;
+                    miniPenalty += 0;
                 }
 
                 else
@@ -435,6 +485,7 @@ namespace CMS.Savings.Transaction.Controller
                                 {
                                     initialPenalty = amount * monthlyAmortization;
                                     totalPenalty += initialPenalty;
+                                    miniInterest += initialPenalty;
 
                                 }
                             }
@@ -444,7 +495,7 @@ namespace CMS.Savings.Transaction.Controller
                                 {
                                     initialPenalty = amount * monthlyAmortization;
                                     totalPenalty += initialPenalty;
-
+                                    miniInterest += initialPenalty;
                                 }
                             }
                         }
@@ -456,7 +507,7 @@ namespace CMS.Savings.Transaction.Controller
                                 {
                                     initialPenalty = amount * remainingBalance;
                                     totalPenalty += initialPenalty;
-
+                                    miniPenalty += initialPenalty;
                                 }
                             }
                             else
@@ -465,7 +516,7 @@ namespace CMS.Savings.Transaction.Controller
                                 {
                                     initialPenalty = amount * remainingBalance;
                                     totalPenalty += initialPenalty;
-
+                                    miniInterest += initialPenalty;
                                 }
                             }
                         }
@@ -477,7 +528,7 @@ namespace CMS.Savings.Transaction.Controller
                                 {
                                     initialPenalty = amount * grantedLoanAmount;
                                     totalPenalty += initialPenalty;
-
+                                    miniInterest += initialPenalty;
                                 }
                             }
                             else
@@ -486,7 +537,7 @@ namespace CMS.Savings.Transaction.Controller
                                 {
                                     initialPenalty = amount * grantedLoanAmount;
                                     totalPenalty += initialPenalty;
-
+                                    miniInterest += initialPenalty;
                                 }
                             }
                         }
@@ -499,7 +550,7 @@ namespace CMS.Savings.Transaction.Controller
                                 {
                                     initialPenalty = amount;
                                     totalPenalty += initialPenalty;
-
+                                    miniPenalty += initialPenalty;
                                 }
                             }
                             else
@@ -508,7 +559,7 @@ namespace CMS.Savings.Transaction.Controller
                                 {
                                     initialPenalty = amount;
                                     totalPenalty += initialPenalty;
-
+                                    miniInterest += initialPenalty;
                                 }
                             }
                         }
@@ -520,6 +571,7 @@ namespace CMS.Savings.Transaction.Controller
             }
 
             totalBalance += totalPenalty;
+            return miniPenalty + " " + miniInterest;
         }
     }
 }

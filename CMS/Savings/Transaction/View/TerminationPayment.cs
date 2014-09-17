@@ -12,6 +12,7 @@ namespace CMS.Savings.Transaction.View
 {
     public partial class TerminationPayment : Form
     {
+        Controller.TerminationController terminationController;
         View.MemberTermination termination;
         Model.TerminationModel terminationModel;
         String accountNo = String.Empty;
@@ -46,9 +47,13 @@ namespace CMS.Savings.Transaction.View
         {
             if (this.terminationModel.insertTermination(reason, details, accountNo) == 1)
             {
-                if (this.terminationModel.clearLoans(accountNo) == 1)
+                if (this.terminationModel.clearLoans(accountNo, terminationController.arrAppId, terminationController.arrBalance, terminationController.arrPenalty, terminationController.arrInterest) == 1)
                 {
                     MessageBox.Show("Member Termination Success.", "Membership Termination", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    terminationController.totalPenalty = 0;
+                    terminationController.totalInterest = 0;
+                    terminationController.totalBalance = 0;
+                    terminationController.accountNo = String.Empty;
                     this.termination.classGridSearch(this.terminationModel.selectActiveMember());
                     this.termination.clearFields();
                     this.Dispose();

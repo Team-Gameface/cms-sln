@@ -69,7 +69,7 @@
             // 
             // panelMenu
             // 
-            this.panelMenu.BackColor = System.Drawing.Color.ForestGreen;
+            this.panelMenu.BackColor = System.Drawing.Color.LimeGreen;
             this.panelMenu.Controls.Add(this.panelSwitchboard);
             this.panelMenu.Controls.Add(this.linkSignout);
             this.panelMenu.Controls.Add(this.lblUserRole);
@@ -100,13 +100,13 @@
             // 
             // btnHome
             // 
-            this.btnHome.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnHome.BackColor = System.Drawing.Color.ForestGreen;
             this.btnHome.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHome.FlatAppearance.BorderSize = 0;
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.ForeColor = System.Drawing.Color.White;
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
             this.btnHome.Location = new System.Drawing.Point(3, 3);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(142, 70);
@@ -170,12 +170,13 @@
             // 
             // btnUtilities
             // 
-            this.btnUtilities.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnUtilities.BackColor = System.Drawing.Color.DarkCyan;
             this.btnUtilities.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnUtilities.FlatAppearance.BorderSize = 0;
             this.btnUtilities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUtilities.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUtilities.ForeColor = System.Drawing.Color.White;
+            this.btnUtilities.Image = ((System.Drawing.Image)(resources.GetObject("btnUtilities.Image")));
             this.btnUtilities.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnUtilities.Location = new System.Drawing.Point(3, 307);
             this.btnUtilities.Name = "btnUtilities";
@@ -193,6 +194,7 @@
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSettings.ForeColor = System.Drawing.Color.White;
+            this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSettings.Location = new System.Drawing.Point(3, 383);
             this.btnSettings.Name = "btnSettings";
@@ -240,6 +242,8 @@
             // btnShow
             // 
             this.btnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShow.ForeColor = System.Drawing.Color.White;
             this.btnShow.Location = new System.Drawing.Point(0, 673);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(26, 30);
@@ -277,7 +281,7 @@
             // 
             // statusMain
             // 
-            this.statusMain.BackColor = System.Drawing.Color.Firebrick;
+            this.statusMain.BackColor = System.Drawing.Color.ForestGreen;
             this.statusMain.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1,
@@ -297,7 +301,7 @@
             // 
             this.lblDateTime.ForeColor = System.Drawing.Color.White;
             this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(463, 30);
+            this.lblDateTime.Size = new System.Drawing.Size(494, 30);
             this.lblDateTime.Spring = true;
             this.lblDateTime.Text = "DateTime";
             this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -312,7 +316,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(138, 103);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(281, 25);
@@ -323,7 +327,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(137, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(378, 32);
@@ -333,7 +337,7 @@
             // lblCompanyName
             // 
             this.lblCompanyName.Font = new System.Drawing.Font("Segoe UI Semibold", 23.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompanyName.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblCompanyName.ForeColor = System.Drawing.Color.White;
             this.lblCompanyName.Location = new System.Drawing.Point(137, 3);
             this.lblCompanyName.Name = "lblCompanyName";
             this.lblCompanyName.Size = new System.Drawing.Size(453, 68);
@@ -343,7 +347,7 @@
             // 
             // splitContainer
             // 
-            this.splitContainer.BackColor = System.Drawing.Color.Honeydew;
+            this.splitContainer.BackColor = System.Drawing.Color.ForestGreen;
             this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer.IsSplitterFixed = true;
@@ -365,7 +369,7 @@
             // 
             // panelCompany
             // 
-            this.panelCompany.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCompany.BackColor = System.Drawing.Color.ForestGreen;
             this.panelCompany.Controls.Add(this.pictureLogo);
             this.panelCompany.Controls.Add(this.label3);
             this.panelCompany.Controls.Add(this.lblCompanyName);

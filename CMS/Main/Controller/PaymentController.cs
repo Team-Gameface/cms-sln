@@ -63,7 +63,6 @@ namespace CMS.Main.Controller
             this.payment.setBtnMoveBackSelectedEventHandler(this.btnMoveBackSelected);
             this.payment.setBtnMoveSelectedEventHandler(this.btnMoveSelected);
             this.payment.setBtnSaveEventHandler(this.btnSave);
-            this.payment.setLinkClosePaymentEventHandler(this.linkClosePayments);
             this.payment.dataAmortization_CellValueChanged(this.showPenalties);
             this.payment.txtAmountDue_TextChanged(this.showTotalAmortization);
             this.payment.txtInterest_TextChanged(this.showTotalAmortization);
@@ -768,12 +767,6 @@ namespace CMS.Main.Controller
                 totalPenalty = 0;
                 totalInterest = 0;
             }
-        }
-
-        public void linkClosePayments(object sender, EventArgs e)
-        {
-            mainController.paymentOpen = false;
-            this.Dispose();
         }
 
         public void searchMember(object args, EventArgs e) {

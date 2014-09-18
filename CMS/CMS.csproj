@@ -1157,24 +1157,24 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="img\buttons\BatchProcess.png" />
-    <Content Include="img\buttons\CompanyProfile.png" />
-    <Content Include="img\buttons\LM.png" />
+    <None Include="img\buttons\Dashboard\Utilities.png" />
+    <Content Include="img\buttons\Settings\BatchProcess.png" />
+    <Content Include="img\buttons\Settings\CompanyProfile.png" />
+    <None Include="img\buttons\Dashboard\Home.png" />
+    <None Include="img\buttons\Dashboard\Settings.png" />
+    <None Include="img\buttons\Settings\UserManagement.png" />
+    <None Include="img\buttons\Settings\SavingsAccount.png" />
+    <None Include="img\buttons\Utilities\Calculator.png" />
+    <None Include="img\buttons\Utilities\AuditLog.png" />
+    <None Include="img\buttons\Utilities\AccountSettings.png" />
     <Content Include="img\defaultimg.jpg" />
-    <Content Include="img\buttons\Utilities.png" />
     <None Include="img\login_splash.png" />
     <Content Include="img\icon.ico" />
-    <Content Include="img\buttons\Loan_Management.png" />
-    <Content Include="img\buttons\Payments.png" />
-    <Content Include="img\buttons\Savings.png" />
+    <Content Include="img\buttons\Dashboard\Loan_Management.png" />
+    <Content Include="img\buttons\Dashboard\Payments.png" />
+    <Content Include="img\buttons\Dashboard\Savings.png" />
     <Content Include="img\icons\LM.ico" />
     <Content Include="img\icons\SV.ico" />
-    <None Include="img\menu\loanmenu-bg.jpg" />
-    <Content Include="img\menu\Maintenance-LM.png" />
-    <Content Include="img\menu\Maintenance-SV.png" />
-    <None Include="img\menu\savingsmenu-bg.jpg" />
-    <Content Include="img\menu\Transaction-LM.png" />
-    <Content Include="img\menu\Transaction-SV.png" />
     <Content Include="img\signimg.jpg" />
   </ItemGroup>
   <ItemGroup>

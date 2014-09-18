@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblTimeDeposit = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblTimeDeposit = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblSavings = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.lblSavings = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblLoans = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.lblLoans = new System.Windows.Forms.Label();
             this.panelMemberCount = new System.Windows.Forms.Panel();
-            this.lblMembers = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblMembers = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
@@ -60,6 +60,17 @@
             this.panel2.Size = new System.Drawing.Size(284, 146);
             this.panel2.TabIndex = 12;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(59, 106);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(220, 32);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "active time deposits";
+            // 
             // lblTimeDeposit
             // 
             this.lblTimeDeposit.AutoSize = true;
@@ -71,17 +82,6 @@
             this.lblTimeDeposit.TabIndex = 13;
             this.lblTimeDeposit.Text = "0000";
             this.lblTimeDeposit.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(59, 106);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(220, 32);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "active time deposits";
             // 
             // panel3
             // 
@@ -96,6 +96,17 @@
             this.panel3.Size = new System.Drawing.Size(284, 146);
             this.panel3.TabIndex = 6;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(24, 106);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(255, 32);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "active savings accounts";
+            // 
             // lblSavings
             // 
             this.lblSavings.AutoSize = true;
@@ -107,17 +118,6 @@
             this.lblSavings.TabIndex = 7;
             this.lblSavings.Text = "0000";
             this.lblSavings.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(24, 106);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(255, 32);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "active savings accounts";
             // 
             // panel1
             // 
@@ -131,6 +131,17 @@
             this.panel1.Size = new System.Drawing.Size(284, 146);
             this.panel1.TabIndex = 9;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(144, 106);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(135, 32);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "active loans";
+            // 
             // lblLoans
             // 
             this.lblLoans.AutoSize = true;
@@ -142,17 +153,6 @@
             this.lblLoans.TabIndex = 10;
             this.lblLoans.Text = "0000";
             this.lblLoans.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(144, 106);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(135, 32);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "active loans";
             // 
             // panelMemberCount
             // 
@@ -167,6 +167,17 @@
             this.panelMemberCount.Size = new System.Drawing.Size(284, 146);
             this.panelMemberCount.TabIndex = 3;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(114, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(165, 32);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "total members";
+            // 
             // lblMembers
             // 
             this.lblMembers.AutoSize = true;
@@ -179,23 +190,12 @@
             this.lblMembers.Text = "0000";
             this.lblMembers.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(114, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 32);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "total members";
-            // 
             // lblUser
             // 
             this.lblUser.AutoSize = true;
             this.lblUser.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.lblUser.Location = new System.Drawing.Point(154, 10);
+            this.lblUser.Location = new System.Drawing.Point(145, 10);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(84, 45);
             this.lblUser.TabIndex = 2;
@@ -206,7 +206,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label5.Location = new System.Drawing.Point(12, 10);
+            this.label5.Location = new System.Drawing.Point(3, 10);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(146, 45);
             this.label5.TabIndex = 1;
@@ -216,6 +216,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);

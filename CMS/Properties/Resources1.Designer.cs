@@ -143,6 +143,16 @@ namespace CMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LoanBackground {
+            get {
+                object obj = ResourceManager.GetObject("LoanBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap login_splash {
             get {
                 object obj = ResourceManager.GetObject("login_splash", resourceCulture);
@@ -176,6 +186,16 @@ namespace CMS.Properties {
         internal static System.Drawing.Bitmap SavingsAccount {
             get {
                 object obj = ResourceManager.GetObject("SavingsAccount", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SavingsBackground {
+            get {
+                object obj = ResourceManager.GetObject("SavingsBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

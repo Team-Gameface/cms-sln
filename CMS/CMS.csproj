@@ -1186,6 +1186,8 @@
     <Content Include="img\buttons\Dashboard\Savings.png" />
     <Content Include="img\icons\LM.ico" />
     <Content Include="img\icons\SV.ico" />
+    <Content Include="img\menu\LoanBackground.png" />
+    <Content Include="img\menu\SavingsBackground.png" />
     <Content Include="img\signimg.jpg" />
   </ItemGroup>
   <ItemGroup>

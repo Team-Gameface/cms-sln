@@ -402,6 +402,11 @@
     <Compile Include="Main\Controller\MainController.cs" />
     <Compile Include="Main\Controller\PaymentController.cs" />
     <Compile Include="Main\Logger.cs" />
+    <Compile Include="Main\TellerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TellerDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Main\UserData.cs" />
     <Compile Include="Main\Model\PaymentModel.cs" />
     <Compile Include="Main\View\CMSDashboard.cs">
@@ -1082,6 +1087,16 @@
     </None>
     <None Include="Main\ReceiptDataSet.xss">
       <DependentUpon>ReceiptDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Main\TellerDataSet.xsc">
+      <DependentUpon>TellerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Main\TellerDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TellerDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Main\TellerDataSet.xss">
+      <DependentUpon>TellerDataSet.xsd</DependentUpon>
     </None>
     <None Include="ManagerDataSet.xsc">
       <DependentUpon>ManagerDataSet.xsd</DependentUpon>

@@ -35,7 +35,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SavingsAccount));
             this.comboAccountType = new System.Windows.Forms.ComboBox();
             this.btnBackward = new System.Windows.Forms.Button();
-            this.btnForward = new System.Windows.Forms.Button();
             this.txtInitialDeposit = new System.Windows.Forms.TextBox();
             this.contextMenuBlank = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lblInitialDeposit = new System.Windows.Forms.Label();
@@ -54,15 +53,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupSavingsAccount = new System.Windows.Forms.GroupBox();
             this.dataDepositor = new System.Windows.Forms.DataGridView();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.dataMember = new System.Windows.Forms.DataGridView();
             this.dataSavingsAccount = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearchAccount = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.btnTerminate = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnForward = new System.Windows.Forms.Button();
             this.groupWithdrawMode.SuspendLayout();
             this.groupSavingsAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataDepositor)).BeginInit();
@@ -88,27 +88,13 @@
             this.btnBackward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBackward.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btnBackward.ForeColor = System.Drawing.Color.White;
+            this.btnBackward.Image = global::CMS.Properties.Resources.Previous;
             this.btnBackward.Location = new System.Drawing.Point(426, 188);
             this.btnBackward.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBackward.Name = "btnBackward";
             this.btnBackward.Size = new System.Drawing.Size(37, 36);
             this.btnBackward.TabIndex = 11;
-            this.btnBackward.Text = "<";
             this.btnBackward.UseVisualStyleBackColor = false;
-            // 
-            // btnForward
-            // 
-            this.btnForward.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnForward.ForeColor = System.Drawing.Color.White;
-            this.btnForward.Location = new System.Drawing.Point(426, 142);
-            this.btnForward.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(37, 36);
-            this.btnForward.TabIndex = 10;
-            this.btnForward.Text = ">";
-            this.btnForward.UseVisualStyleBackColor = false;
             // 
             // txtInitialDeposit
             // 
@@ -343,37 +329,6 @@
             this.dataDepositor.Size = new System.Drawing.Size(411, 105);
             this.dataDepositor.TabIndex = 19;
             // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.Green;
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Image = global::CMS.Properties.Resources.Save;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(783, 310);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 35);
-            this.btnSave.TabIndex = 27;
-            this.btnSave.Text = "&Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Image = global::CMS.Properties.Resources.Cancel;
-            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(783, 351);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 35);
-            this.btnCancel.TabIndex = 28;
-            this.btnCancel.Text = "&Cancel";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            // 
             // dataMember
             // 
             this.dataMember.AllowUserToAddRows = false;
@@ -444,6 +399,34 @@
             this.txtSearchAccount.Size = new System.Drawing.Size(254, 29);
             this.txtSearchAccount.TabIndex = 2;
             // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(13, 9);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(259, 45);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Savings Account";
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.Green;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Image = global::CMS.Properties.Resources.Save;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(783, 310);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(100, 35);
+            this.btnSave.TabIndex = 27;
+            this.btnSave.Text = "&Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            // 
             // btnTerminate
             // 
             this.btnTerminate.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -476,17 +459,34 @@
             this.btnOpen.Text = "&Open";
             this.btnOpen.UseVisualStyleBackColor = false;
             // 
-            // label5
+            // btnCancel
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(13, 9);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(259, 45);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Savings Account";
+            this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Image = global::CMS.Properties.Resources.Cancel;
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(783, 351);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(100, 35);
+            this.btnCancel.TabIndex = 28;
+            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            // 
+            // btnForward
+            // 
+            this.btnForward.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnForward.ForeColor = System.Drawing.Color.White;
+            this.btnForward.Image = global::CMS.Properties.Resources.Next;
+            this.btnForward.Location = new System.Drawing.Point(426, 142);
+            this.btnForward.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(37, 36);
+            this.btnForward.TabIndex = 10;
+            this.btnForward.UseVisualStyleBackColor = false;
             // 
             // SavingsAccount
             // 

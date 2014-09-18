@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 
-namespace CMS.Loan_Management.Reports.Controller
+namespace CMS.Loan_Management.Queries.Controller
 {
     class LoanStatusController
     {
-        Reports.Model.LoanStatusModel loanStatusModel;
-        Reports.View.LoanStatus loanStatus;
+        Queries.Model.LoanStatusModel loanStatusModel;
+        Queries.View.LoanStatus loanStatus;
         Main.Logger logger = new Main.Logger();
 
 
-        public LoanStatusController(Reports.Model.LoanStatusModel loanStatusModel, Reports.View.LoanStatus loanStatus, Loan_Management.LoanManagementMenu loanMenu)
+        public LoanStatusController(Queries.Model.LoanStatusModel loanStatusModel, Queries.View.LoanStatus loanStatus, Loan_Management.LoanManagementMenu loanMenu)
         {
             this.loanStatusModel = loanStatusModel;
             this.loanStatus = loanStatus;
@@ -80,7 +80,7 @@ namespace CMS.Loan_Management.Reports.Controller
 
             public void btnCollateral (object sender, EventArgs e){
             
-                Reports.Controller.CollateralComakerController CollateralComakerController = new CollateralComakerController(new Reports.Model.CollateralComakerModel(), new Reports.View.CollateralComaker(),this.loanStatusModel.loanApplicationId);
+                Queries.Controller.CollateralComakerController CollateralComakerController = new CollateralComakerController(new Queries.Model.CollateralComakerModel(), new Queries.View.CollateralComaker(),this.loanStatusModel.loanApplicationId);
             
             }
         

@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 
-namespace CMS.Loan_Management.Reports.Controller
+namespace CMS.Loan_Management.Queries.Controller
 {
     class CollateralComakerController
     {
-        Reports.Model.CollateralComakerModel collateralComakerModel;
-        Reports.View.CollateralComaker collateralComaker;
+        Queries.Model.CollateralComakerModel collateralComakerModel;
+        Queries.View.CollateralComaker collateralComaker;
 
 
-        public CollateralComakerController(Reports.Model.CollateralComakerModel collateralComakerModel, Reports.View.CollateralComaker collateralComaker, int loanApplicationId) 
+        public CollateralComakerController(Queries.Model.CollateralComakerModel collateralComakerModel, Queries.View.CollateralComaker collateralComaker, int loanApplicationId) 
         {
 
             this.collateralComaker = collateralComaker;

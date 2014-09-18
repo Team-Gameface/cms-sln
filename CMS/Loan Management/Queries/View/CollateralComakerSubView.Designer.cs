@@ -1,4 +1,4 @@
-﻿namespace CMS.Loan_Management.Reports.View
+﻿namespace CMS.Loan_Management.Queries.View
 {
     partial class CollateralComaker
     {

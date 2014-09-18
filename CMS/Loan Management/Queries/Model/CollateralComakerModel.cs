@@ -9,7 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace CMS.Loan_Management.Reports.Model
+namespace CMS.Loan_Management.Queries.Model
 {
     class CollateralComakerModel
     {

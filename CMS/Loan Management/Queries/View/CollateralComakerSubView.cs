@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace CMS.Loan_Management.Reports.View
+namespace CMS.Loan_Management.Queries.View
 {
     public partial class CollateralComaker : Form
     {

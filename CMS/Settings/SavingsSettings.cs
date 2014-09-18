@@ -24,6 +24,7 @@ namespace CMS.Settings
             InitializeComponent();
             dataMemberType.DataSource = selectSavingsSettings().Tables[0];
             dataMemberType.Columns[0].Visible = false;
+            dataMemberType.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             numAllowed.Enabled = false;
         }
 

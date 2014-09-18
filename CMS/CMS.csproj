@@ -1169,6 +1169,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="img\buttons\Dashboard\Utilities.png" />
+    <None Include="img\buttons\All\Save.png" />
+    <None Include="img\buttons\All\Cancel.png" />
+    <None Include="img\buttons\All\Add.png" />
+    <None Include="img\buttons\All\Delete.png" />
+    <None Include="img\buttons\All\Edit.png" />
     <Content Include="img\buttons\Settings\BatchProcess.png" />
     <Content Include="img\buttons\Settings\CompanyProfile.png" />
     <None Include="img\buttons\Dashboard\Home.png" />

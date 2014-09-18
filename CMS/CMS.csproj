@@ -59,11 +59,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Microsoft.Win32.TaskScheduler.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,6 +75,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuditChairDataSet.Designer.cs">
@@ -356,7 +361,14 @@
     <Compile Include="Loan_Management\Transaction\Model\LoanApplicationModel.cs" />
     <Compile Include="Loan_Management\Transaction\Model\MembershipApplicationModel.cs" />
     <Compile Include="Loan_Management\Transaction\Model\ShareCapitalContributionModel.cs" />
+    <Compile Include="Loan_Management\Transaction\Model\SignatureModel.cs" />
     <Compile Include="Loan_Management\Transaction\Model\UpdateMemberModel.cs" />
+    <Compile Include="Loan_Management\Transaction\View\CaptureSignature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loan_Management\Transaction\View\CaptureSignature.Designer.cs">
+      <DependentUpon>CaptureSignature.cs</DependentUpon>
+    </Compile>
     <Compile Include="Loan_Management\Transaction\View\LoanAmnesty.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -380,6 +392,9 @@
     </Compile>
     <Compile Include="Loan_Management\Transaction\View\ShareCapitalContribution.designer.cs">
       <DependentUpon>ShareCapitalContribution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loan_Management\Transaction\View\SignatureArea.xaml.cs">
+      <DependentUpon>SignatureArea.xaml</DependentUpon>
     </Compile>
     <Compile Include="Loan_Management\Transaction\View\UpdateMember.cs">
       <SubType>Form</SubType>
@@ -781,6 +796,9 @@
     <EmbeddedResource Include="Loan_Management\Transaction\LoanVoucher.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>LoanVoucher.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loan_Management\Transaction\View\CaptureSignature.resx">
+      <DependentUpon>CaptureSignature.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Loan_Management\Transaction\View\LoanAmnesty.resx">
       <DependentUpon>LoanAmnesty.cs</DependentUpon>
@@ -1191,6 +1209,7 @@
     <None Include="img\buttons\All\Edit.png" />
     <None Include="img\buttons\All\Compute.png" />
     <None Include="img\buttons\All\Retrieve.png" />
+    <None Include="img\buttons\All\OpenAccount.png" />
     <Content Include="img\buttons\Settings\BatchProcess.png" />
     <Content Include="img\buttons\Settings\CompanyProfile.png" />
     <None Include="img\buttons\Dashboard\Home.png" />
@@ -1217,7 +1236,12 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Page Include="Loan_Management\Transaction\View\SignatureArea.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

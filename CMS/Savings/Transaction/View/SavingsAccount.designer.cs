@@ -52,14 +52,14 @@
             this.lblAccountNo = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.groupSavingsAccount = new System.Windows.Forms.GroupBox();
-            this.btnTerminate = new System.Windows.Forms.Button();
-            this.btnOpen = new System.Windows.Forms.Button();
             this.dataSavingsAccount = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearchAccount = new System.Windows.Forms.TextBox();
+            this.btnTerminate = new System.Windows.Forms.Button();
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataDepositor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataMember)).BeginInit();
             this.groupWithdrawMode.SuspendLayout();
@@ -331,40 +331,14 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Search by Member Name:";
             // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.Green;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 10.75F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(640, 243);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(97, 32);
-            this.btnSave.TabIndex = 27;
-            this.btnSave.Text = "&Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.75F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(640, 281);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(97, 32);
-            this.btnCancel.TabIndex = 28;
-            this.btnCancel.Text = "&Cancel";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            // 
             // groupSavingsAccount
             // 
             this.groupSavingsAccount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupSavingsAccount.Controls.Add(this.btnSave);
+            this.groupSavingsAccount.Controls.Add(this.btnCancel);
             this.groupSavingsAccount.Controls.Add(this.label1);
             this.groupSavingsAccount.Controls.Add(this.lblAccountType);
-            this.groupSavingsAccount.Controls.Add(this.btnSave);
             this.groupSavingsAccount.Controls.Add(this.lblDepositor);
-            this.groupSavingsAccount.Controls.Add(this.btnCancel);
             this.groupSavingsAccount.Controls.Add(this.lblInitialDeposit);
             this.groupSavingsAccount.Controls.Add(this.txtInitialDeposit);
             this.groupSavingsAccount.Controls.Add(this.dataMember);
@@ -387,34 +361,6 @@
             this.groupSavingsAccount.TabIndex = 6;
             this.groupSavingsAccount.TabStop = false;
             this.groupSavingsAccount.Text = "Open/Modify Savings Account";
-            // 
-            // btnTerminate
-            // 
-            this.btnTerminate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnTerminate.BackColor = System.Drawing.Color.Firebrick;
-            this.btnTerminate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTerminate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTerminate.ForeColor = System.Drawing.Color.White;
-            this.btnTerminate.Location = new System.Drawing.Point(670, 193);
-            this.btnTerminate.Name = "btnTerminate";
-            this.btnTerminate.Size = new System.Drawing.Size(92, 32);
-            this.btnTerminate.TabIndex = 5;
-            this.btnTerminate.Text = "&Terminate";
-            this.btnTerminate.UseVisualStyleBackColor = false;
-            // 
-            // btnOpen
-            // 
-            this.btnOpen.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnOpen.BackColor = System.Drawing.Color.Green;
-            this.btnOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpen.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.btnOpen.ForeColor = System.Drawing.Color.White;
-            this.btnOpen.Location = new System.Drawing.Point(572, 193);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(92, 32);
-            this.btnOpen.TabIndex = 4;
-            this.btnOpen.Text = "&Open";
-            this.btnOpen.UseVisualStyleBackColor = false;
             // 
             // dataSavingsAccount
             // 
@@ -454,17 +400,79 @@
             this.txtSearchAccount.Size = new System.Drawing.Size(254, 29);
             this.txtSearchAccount.TabIndex = 2;
             // 
+            // btnTerminate
+            // 
+            this.btnTerminate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnTerminate.BackColor = System.Drawing.Color.Firebrick;
+            this.btnTerminate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTerminate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.btnTerminate.ForeColor = System.Drawing.Color.White;
+            this.btnTerminate.Image = global::CMS.Properties.Resources.Delete;
+            this.btnTerminate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTerminate.Location = new System.Drawing.Point(663, 193);
+            this.btnTerminate.Name = "btnTerminate";
+            this.btnTerminate.Size = new System.Drawing.Size(100, 35);
+            this.btnTerminate.TabIndex = 8;
+            this.btnTerminate.Text = "&Close";
+            this.btnTerminate.UseVisualStyleBackColor = false;
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnOpen.BackColor = System.Drawing.Color.Green;
+            this.btnOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpen.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.btnOpen.ForeColor = System.Drawing.Color.White;
+            this.btnOpen.Image = global::CMS.Properties.Resources.Add;
+            this.btnOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOpen.Location = new System.Drawing.Point(557, 193);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(100, 35);
+            this.btnOpen.TabIndex = 7;
+            this.btnOpen.Text = "&Open";
+            this.btnOpen.UseVisualStyleBackColor = false;
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.Green;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Image = global::CMS.Properties.Resources.Save;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(637, 239);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(100, 35);
+            this.btnSave.TabIndex = 49;
+            this.btnSave.Text = "&Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Image = global::CMS.Properties.Resources.Cancel;
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(637, 280);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(100, 35);
+            this.btnCancel.TabIndex = 50;
+            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            // 
             // SavingsAccount
             // 
-            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(774, 561);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnOpen);
-            this.Controls.Add(this.txtSearchAccount);
             this.Controls.Add(this.btnTerminate);
+            this.Controls.Add(this.btnOpen);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtSearchAccount);
             this.Controls.Add(this.dataSavingsAccount);
             this.Controls.Add(this.groupSavingsAccount);
             this.Controls.Add(this.label4);
@@ -511,13 +519,13 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuBlank;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupSavingsAccount;
-        private System.Windows.Forms.Button btnTerminate;
-        private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.DataGridView dataSavingsAccount;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSearchAccount;
+        private System.Windows.Forms.Button btnTerminate;
+        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

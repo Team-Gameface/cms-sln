@@ -16,12 +16,12 @@ namespace CMS.Loan_Management.Transaction.View
     public partial class MembershipApplication : Form
     {
         byte[] imgData = null;
-        byte[] acctHolderSign1 = null;
-        byte[] acctHolderSign2 = null;
-        byte[] acctHolderSign3 = null;
-        byte[] guardianSign1 = null;
-        byte[] guardianSign2 = null;
-        byte[] guardianSign3 = null;
+        public byte[] acctHolderSign1 { get; set; }
+        public byte[] acctHolderSign2 { get; set; }
+        public byte[] acctHolderSign3 { get; set; }
+        public byte[] guardianSign1 { get; set; }
+        public byte[] guardianSign2 { get; set; }
+        public byte[] guardianSign3 { get; set; }
         DataTable dt = new DataTable();
         int age = 0;
 
@@ -29,6 +29,12 @@ namespace CMS.Loan_Management.Transaction.View
         {
             InitializeComponent();
             dateBirth.MaxDate = new DateTime(DateTime.Today.Year, 12, 31);
+            acctHolderSign1 = null;
+            acctHolderSign2 = null;
+            acctHolderSign3 = null;
+            guardianSign1 = null;
+            guardianSign2 = null;
+            guardianSign3 = null;
             lblPicture.Visible = false;
             disableMinorFeatures();
         }
@@ -837,6 +843,7 @@ namespace CMS.Loan_Management.Transaction.View
         {
             if (this.acctholder1.Image == null)
             {
+                MessageBox.Show("A1 null");
                 return null;
             }
             else
@@ -855,6 +862,8 @@ namespace CMS.Loan_Management.Transaction.View
         {
             if (this.acctholder2.Image == null)
             {
+                MessageBox.Show("A2 null");
+
                 return null;
             }
             else
@@ -873,6 +882,8 @@ namespace CMS.Loan_Management.Transaction.View
         {
             if (this.acctholder3.Image == null)
             {
+                MessageBox.Show("A3 null");
+
                 return null;
             }
             else
@@ -891,6 +902,8 @@ namespace CMS.Loan_Management.Transaction.View
         {
             if (this.guardian1.Image == null)
             {
+                MessageBox.Show("G1 null");
+
                 return null;
             }
             else
@@ -909,6 +922,8 @@ namespace CMS.Loan_Management.Transaction.View
         {
             if (this.guardian2.Image == null)
             {
+                MessageBox.Show("G2 null");
+
                 return null;
             }
             else
@@ -927,6 +942,8 @@ namespace CMS.Loan_Management.Transaction.View
         {
             if (this.guardian3.Image == null)
             {
+                MessageBox.Show("G3 null");
+
                 return null;
             }
             else
@@ -1277,110 +1294,36 @@ namespace CMS.Loan_Management.Transaction.View
 
        private void acctholder1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openDialog = new OpenFileDialog();
-            openDialog.Title = "Choose Specimen Image";
-            openDialog.Filter = "Image Files (*.jpg, *.bmp, *.png) | *.jpg; *.bmp; *.png";
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
-                this.acctholder1.Image = Image.FromFile(openDialog.FileName);
-                String imgPath = openDialog.FileName;
-                FileInfo fInfo = new FileInfo(imgPath);
-                long numBytes = fInfo.Length;
-                FileStream fStream = new FileStream(imgPath, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fStream);
-                this.acctHolderSign1 = br.ReadBytes((int)numBytes);
-            }
-            openDialog.Dispose();
+            CaptureSignature cSignAcct1 = new CaptureSignature(this, this.acctholder1, this.acctHolderSign1);
         }
 
         private void acctholder2_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openDialog = new OpenFileDialog();
-            openDialog.Title = "Choose Specimen Image";
-            openDialog.Filter = "Image Files (*.jpg, *.bmp, *.png) | *.jpg; *.bmp; *.png";
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
-                this.acctholder2.Image = Image.FromFile(openDialog.FileName);
-                String imgPath = openDialog.FileName;
-                FileInfo fInfo = new FileInfo(imgPath);
-                long numBytes = fInfo.Length;
-                FileStream fStream = new FileStream(imgPath, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fStream);
-                this.acctHolderSign2 = br.ReadBytes((int)numBytes);
-            }
-            openDialog.Dispose();
+            CaptureSignature cSignAcct2 = new CaptureSignature(this, this.acctholder2, this.acctHolderSign2);
+
         }
 
         private void acctholder3_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openDialog = new OpenFileDialog();
-            openDialog.Title = "Choose Specimen Image";
-            openDialog.Filter = "Image Files (*.jpg, *.bmp, *.png) | *.jpg; *.bmp; *.png";
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
-                this.acctholder3.Image = Image.FromFile(openDialog.FileName);
-                String imgPath = openDialog.FileName;
-                FileInfo fInfo = new FileInfo(imgPath);
-                long numBytes = fInfo.Length;
-                FileStream fStream = new FileStream(imgPath, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fStream);
-                this.acctHolderSign3 = br.ReadBytes((int)numBytes);
-            }
-            openDialog.Dispose();
+            CaptureSignature cSignAcct3 = new CaptureSignature(this, this.acctholder3, this.acctHolderSign3);
+
         }
 
         private void guardian1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openDialog = new OpenFileDialog();
-            openDialog.Title = "Choose Specimen Image";
-            openDialog.Filter = "Image Files (*.jpg, *.bmp, *.png) | *.jpg; *.bmp; *.png";
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
-                this.guardian1.Image = Image.FromFile(openDialog.FileName);
-                String imgPath = openDialog.FileName;
-                FileInfo fInfo = new FileInfo(imgPath);
-                long numBytes = fInfo.Length;
-                FileStream fStream = new FileStream(imgPath, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fStream);
-                this.guardianSign1 = br.ReadBytes((int)numBytes);
-            }
-            openDialog.Dispose();
+            CaptureSignature cSignGuardian1 = new CaptureSignature(this, this.guardian1, this.guardianSign1);
+
         }
 
         private void guardian2_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openDialog = new OpenFileDialog();
-            openDialog.Title = "Choose Specimen Image";
-            openDialog.Filter = "Image Files (*.jpg, *.bmp, *.png) | *.jpg; *.bmp; *.png";
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
-                this.guardian2.Image = Image.FromFile(openDialog.FileName);
-                String imgPath = openDialog.FileName;
-                FileInfo fInfo = new FileInfo(imgPath);
-                long numBytes = fInfo.Length;
-                FileStream fStream = new FileStream(imgPath, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fStream);
-                this.guardianSign2 = br.ReadBytes((int)numBytes);
-            }
-            openDialog.Dispose();
+            CaptureSignature cSignGuardian2 = new CaptureSignature(this, this.guardian1, this.guardianSign2);
+
         }
 
         private void guardian3_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openDialog = new OpenFileDialog();
-            openDialog.Title = "Choose Specimen Image";
-            openDialog.Filter = "Image Files (*.jpg, *.bmp, *.png) | *.jpg; *.bmp; *.png";
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
-                this.guardian3.Image = Image.FromFile(openDialog.FileName);
-                String imgPath = openDialog.FileName;
-                FileInfo fInfo = new FileInfo(imgPath);
-                long numBytes = fInfo.Length;
-                FileStream fStream = new FileStream(imgPath, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fStream);
-                this.guardianSign3 = br.ReadBytes((int)numBytes);
-            }
-            openDialog.Dispose();
+            CaptureSignature cSignGuardian3 = new CaptureSignature(this, this.guardian1, this.guardianSign3);
         }
 
         private void txtTelephone_KeyPress(object sender, KeyPressEventArgs e)

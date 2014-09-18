@@ -189,7 +189,7 @@ namespace CMS.Main.Controller
             if (!settingsOpen)
             {
                 settingsOpen = true;
-                settings = new View.Settings(this, this.cms);
+                settings = new View.Settings(this.cms);
                 settings.Dock = DockStyle.Fill;
                 this.cms.setPanel2(settings);
             }

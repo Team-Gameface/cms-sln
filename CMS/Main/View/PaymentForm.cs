@@ -16,7 +16,7 @@ namespace CMS.Main.View
         public double totAmt = 0.00;
         Model.PaymentModel paymentModel = new Model.PaymentModel();
 
-        double totalLoan = 0, totalInterest = 0, totalPenalty = 0;
+        double totalInterest = 0, totalPenalty = 0;
         public PaymentForm()
         {
             InitializeComponent();

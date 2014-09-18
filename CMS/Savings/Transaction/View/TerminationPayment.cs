@@ -20,9 +20,10 @@ namespace CMS.Savings.Transaction.View
         String details = String.Empty;
         double netRefunds = 0;
 
-        public TerminationPayment(String accountNo, String reason, String details, double netRefunds, View.MemberTermination termination, Model.TerminationModel terminationModel)
+        public TerminationPayment(String accountNo, String reason, String details, double netRefunds, View.MemberTermination termination, Model.TerminationModel terminationModel, Controller.TerminationController terminationController)
         {
             InitializeComponent();
+            this.terminationController = terminationController;
             this.termination = termination;
             this.terminationModel = terminationModel;
             this.accountNo = accountNo;

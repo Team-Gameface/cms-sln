@@ -12,7 +12,6 @@ namespace CMS.Main.View
 {
     public partial class Settings : UserControl
     {
-        Controller.MainController mainController;
         View.CMSDashboard cms;
 
         public Boolean savingsOpen = false;
@@ -20,8 +19,9 @@ namespace CMS.Main.View
         public Boolean companyProfileOpen = false;
         public Boolean userOpen = false;
 
-        public Settings(Controller.MainController mainController, View.CMSDashboard cms)
+        public Settings(View.CMSDashboard cms)
         {
+            this.cms = cms;
             InitializeComponent();
         }
 

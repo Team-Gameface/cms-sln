@@ -375,9 +375,5 @@ namespace CMS.Savings.Transaction.View
         {
             this.btnSave.Enabled = true;
         }
-
-
-
-
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeDepositCalculator));
             this.groupBreakdown = new System.Windows.Forms.GroupBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
@@ -37,13 +38,13 @@
             this.txtInterest = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnCompute = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.lblDuration = new System.Windows.Forms.Label();
             this.numDuration = new System.Windows.Forms.NumericUpDown();
             this.comboDuration = new System.Windows.Forms.ComboBox();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnCompute = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBreakdown.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -64,7 +65,7 @@
             this.groupBreakdown.Location = new System.Drawing.Point(38, 220);
             this.groupBreakdown.Name = "groupBreakdown";
             this.groupBreakdown.Size = new System.Drawing.Size(379, 158);
-            this.groupBreakdown.TabIndex = 9;
+            this.groupBreakdown.TabIndex = 10;
             this.groupBreakdown.TabStop = false;
             this.groupBreakdown.Text = "Maturity Details:";
             // 
@@ -75,7 +76,7 @@
             this.lblTotal.Location = new System.Drawing.Point(17, 114);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(133, 25);
-            this.lblTotal.TabIndex = 15;
+            this.lblTotal.TabIndex = 16;
             this.lblTotal.Text = "Total Amount:";
             // 
             // txtTotal
@@ -86,7 +87,7 @@
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(194, 33);
-            this.txtTotal.TabIndex = 16;
+            this.txtTotal.TabIndex = 17;
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label5
@@ -96,7 +97,7 @@
             this.label5.Location = new System.Drawing.Point(43, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(150, 21);
-            this.label5.TabIndex = 12;
+            this.label5.TabIndex = 13;
             this.label5.Text = "add: Interest Earned:";
             // 
             // label6
@@ -106,7 +107,7 @@
             this.label6.Location = new System.Drawing.Point(18, 31);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(133, 21);
-            this.label6.TabIndex = 10;
+            this.label6.TabIndex = 11;
             this.label6.Text = "Principal Amount:";
             // 
             // txtDepAmt
@@ -117,7 +118,7 @@
             this.txtDepAmt.Name = "txtDepAmt";
             this.txtDepAmt.ReadOnly = true;
             this.txtDepAmt.Size = new System.Drawing.Size(160, 29);
-            this.txtDepAmt.TabIndex = 11;
+            this.txtDepAmt.TabIndex = 12;
             this.txtDepAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtInterest
@@ -128,7 +129,7 @@
             this.txtInterest.Name = "txtInterest";
             this.txtInterest.ReadOnly = true;
             this.txtInterest.Size = new System.Drawing.Size(121, 29);
-            this.txtInterest.TabIndex = 13;
+            this.txtInterest.TabIndex = 14;
             this.txtInterest.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label23
@@ -138,7 +139,7 @@
             this.label23.Location = new System.Drawing.Point(8, 53);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(364, 55);
-            this.label23.TabIndex = 14;
+            this.label23.TabIndex = 15;
             this.label23.Text = "____________________";
             // 
             // groupBox1
@@ -155,9 +156,39 @@
             this.groupBox1.Location = new System.Drawing.Point(38, 68);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(379, 146);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Time Deposit Details:";
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Image = global::CMS.Properties.Resources.Cancel;
+            this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClear.Location = new System.Drawing.Point(242, 98);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(115, 35);
+            this.btnClear.TabIndex = 9;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            // 
+            // btnCompute
+            // 
+            this.btnCompute.BackColor = System.Drawing.Color.Green;
+            this.btnCompute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompute.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompute.ForeColor = System.Drawing.Color.White;
+            this.btnCompute.Image = global::CMS.Properties.Resources.Compute;
+            this.btnCompute.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCompute.Location = new System.Drawing.Point(114, 98);
+            this.btnCompute.Name = "btnCompute";
+            this.btnCompute.Size = new System.Drawing.Size(115, 35);
+            this.btnCompute.TabIndex = 8;
+            this.btnCompute.Text = "Compute";
+            this.btnCompute.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -166,7 +197,7 @@
             this.label1.Location = new System.Drawing.Point(18, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 21);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 3;
             this.label1.Text = "Deposit Amount:";
             // 
             // txtAmount
@@ -176,7 +207,7 @@
             this.txtAmount.MaxLength = 10;
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(181, 29);
-            this.txtAmount.TabIndex = 3;
+            this.txtAmount.TabIndex = 4;
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblDuration
@@ -186,7 +217,7 @@
             this.lblDuration.Location = new System.Drawing.Point(18, 66);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(123, 21);
-            this.lblDuration.TabIndex = 4;
+            this.lblDuration.TabIndex = 5;
             this.lblDuration.Text = "Terms/Duration:";
             // 
             // numDuration
@@ -195,7 +226,7 @@
             this.numDuration.Location = new System.Drawing.Point(176, 63);
             this.numDuration.Name = "numDuration";
             this.numDuration.Size = new System.Drawing.Size(69, 29);
-            this.numDuration.TabIndex = 5;
+            this.numDuration.TabIndex = 6;
             this.numDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // comboDuration
@@ -211,37 +242,7 @@
             this.comboDuration.Location = new System.Drawing.Point(251, 63);
             this.comboDuration.Name = "comboDuration";
             this.comboDuration.Size = new System.Drawing.Size(106, 29);
-            this.comboDuration.TabIndex = 6;
-            // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Image = global::CMS.Properties.Resources.Cancel;
-            this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClear.Location = new System.Drawing.Point(242, 98);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(115, 35);
-            this.btnClear.TabIndex = 18;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = false;
-            // 
-            // btnCompute
-            // 
-            this.btnCompute.BackColor = System.Drawing.Color.Green;
-            this.btnCompute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCompute.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCompute.ForeColor = System.Drawing.Color.White;
-            this.btnCompute.Image = global::CMS.Properties.Resources.Compute;
-            this.btnCompute.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompute.Location = new System.Drawing.Point(114, 98);
-            this.btnCompute.Name = "btnCompute";
-            this.btnCompute.Size = new System.Drawing.Size(115, 35);
-            this.btnCompute.TabIndex = 17;
-            this.btnCompute.Text = "Compute";
-            this.btnCompute.UseVisualStyleBackColor = false;
+            this.comboDuration.TabIndex = 7;
             // 
             // label3
             // 
@@ -251,7 +252,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(368, 45);
-            this.label3.TabIndex = 19;
+            this.label3.TabIndex = 1;
             this.label3.Text = "Time Deposit Calculator";
             // 
             // TimeDepositCalculator
@@ -264,6 +265,7 @@
             this.Controls.Add(this.groupBreakdown);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

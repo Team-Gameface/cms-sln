@@ -117,4 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAMQOAADEDgAAAAAAAAAA
+        AAD/////////////////////////////////////////////////////////////////////////////
+        /////////////9TO/v9WQP//VkD//1ZA////////qp7+/1ZA//9aRP//lYb+//////9rWP//VkD//1ZA
+        //+/tv7////////////Gvv7/SDD//5+S/v8iBP///////4+A//9dSP//YUz//3Ng////////VkD//4+A
+        //9zYP//qp7+////////////xr7+/0Us//99bP//HgD///////+PgP//PiT//0w0//9zYP///////1ZA
+        //+PgP//c2D//6qe/v///////////9vW/v9zYP//c2D//3Ng////////uK7+/3Ng//9zYP//ppr+////
+        //+EdP//c2D//3Ng///Jwv7/////////////////////////////////////////////////////////
+        ////////////////////////////////////////xr7+/x4A//8zGP//HgD///////+PgP//HgD//x4A
+        //9zYP///////zog//8sEP//Nxz//6qe/v///////////8a+/v9WQP//uK7+/zog////////j4D//3Ng
+        //+PgP//c2D///////9FLP//eWj//1ZA//+qnv7////////////Gvv7/HgD//0gw//8eAP///////4+A
+        //8eAP//HgD//3Ng////////RSz//1M8//83HP//qp7+////////////6eb+/6qe/v+qnv7/qp7+////
+        ///Uzv7/qp7+/6qe/v/Jwv7//////7Sq/v+qnv7/qp7+/97a/v////////////f2/v/i3v7/4t7+/+Le
+        /v/i3v7/4t7+/+Le/v/i3v7/4t7+/+Le/v/i3v7/4t7+/+Le/v/39v7////////////Gvv7/HgD//x4A
+        //8eAP//HgD//x4A//8eAP//HgD//1ZA//8eAP//VkD//zog//8sEP//xr7+////////////xr7+/x4A
+        //8eAP//HgD//x4A//8eAP//HgD//yUI//+PgP//JQj//4+A//9dSP//OiD//8a+/v///////////8a+
+        /v8eAP//HgD//x4A//8eAP//HgD//x4A//8sEP//nI7+/0gw//95aP//hHT//zcc///Gvv7/////////
+        ///i3v7/j4D//4+A//+PgP//j4D//4+A//+PgP//j4D//4+A//+PgP//j4D//4+A//+PgP//4t7+////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////AABtMwAAV2kAAG93AABvdwAAU2gAAGxcAAAuMAAAYzoAAHJvAABhbQAAaWwAACAoAAA2KQAA
+        VEkAAGVjAABvbA==
+</value>
+  </data>
 </root>

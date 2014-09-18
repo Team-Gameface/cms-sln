@@ -120,4 +120,29 @@
   <metadata name="contextMenuBlank.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAMQOAADEDgAAAAAAAAAA
+        AAD/////////////////////////////////////////////////////////////////////////////
+        //////////////7Ozv//QED//0BA//9AQP///////p6e//9AQP//RET//oaG////////WFj//0BA//9A
+        QP/+trb////////////+vr7//zAw//6Skv//BAT///////+AgP//SEj//0xM//9gYP///////0BA//+A
+        gP//YGD//p6e/////////////r6+//8sLP//bGz//wAA////////gID//yQk//80NP//YGD///////9A
+        QP//gID//2Bg//6env////////////7W1v//YGD//2Bg//9gYP///////q6u//9gYP//YGD//pqa////
+        ////dHT//2Bg//9gYP/+wsL/////////////////////////////////////////////////////////
+        /////////////////////////////////////////r6+//8AAP//GBj//wAA////////gID//wAA//8A
+        AP//YGD///////8gIP//EBD//xwc//6env////////////6+vv//QED//q6u//8gIP///////4CA//9g
+        YP//gID//2Bg////////LCz//2ho//9AQP/+np7////////////+vr7//wAA//8wMP//AAD///////+A
+        gP//AAD//wAA//9gYP///////yws//88PP//HBz//p6e/////////////ubm//6env/+np7//p6e////
+        ///+zs7//p6e//6env/+wsL///////6qqv/+np7//p6e//7a2v////////////729v/+3t7//t7e//7e
+        3v/+3t7//t7e//7e3v/+3t7//t7e//7e3v/+3t7//t7e//7e3v/+9vb////////////+vr7//wAA//8A
+        AP//AAD//wAA//8AAP//AAD//wAA//9AQP//AAD//0BA//8gIP//EBD//r6+/////////////r6+//8A
+        AP//AAD//wAA//8AAP//AAD//wAA//8ICP//gID//wgI//+AgP//SEj//yAg//6+vv////////////6+
+        vv//AAD//wAA//8AAP//AAD//wAA//8AAP//EBD//o6O//8wMP//aGj//3R0//8cHP/+vr7/////////
+        ///+3t7//4CA//+AgP//gID//4CA//+AgP//gID//4CA//+AgP//gID//4CA//+AgP//gID//t7e////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////AABtMwAAV2kAAG93AABvdwAAU2gAAGxcAAAuMAAAYzoAAHJvAABhbQAAaWwAACAoAAA2KQAA
+        VEkAAGVjAABvbA==
+</value>
+  </data>
 </root>

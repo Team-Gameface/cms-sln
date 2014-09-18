@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoanCalculator));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateApproved = new System.Windows.Forms.DateTimePicker();
             this.lblDateApproval = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnCompute = new System.Windows.Forms.Button();
             this.lblStatePaymentDuration = new System.Windows.Forms.Label();
             this.cbTerms = new System.Windows.Forms.ComboBox();
             this.cbDurationStatus = new System.Windows.Forms.ComboBox();
@@ -61,10 +64,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblCharges = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnCompute = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udPaymentDuration)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -113,6 +114,36 @@
             this.lblDateApproval.Size = new System.Drawing.Size(45, 21);
             this.lblDateApproval.TabIndex = 7;
             this.lblDateApproval.Text = "Date:";
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Image = global::CMS.Properties.Resources.Cancel;
+            this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClear.Location = new System.Drawing.Point(442, 136);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(115, 35);
+            this.btnClear.TabIndex = 16;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            // 
+            // btnCompute
+            // 
+            this.btnCompute.BackColor = System.Drawing.Color.Green;
+            this.btnCompute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompute.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompute.ForeColor = System.Drawing.Color.White;
+            this.btnCompute.Image = global::CMS.Properties.Resources.Compute;
+            this.btnCompute.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCompute.Location = new System.Drawing.Point(321, 136);
+            this.btnCompute.Name = "btnCompute";
+            this.btnCompute.Size = new System.Drawing.Size(115, 35);
+            this.btnCompute.TabIndex = 15;
+            this.btnCompute.Text = "Compute";
+            this.btnCompute.UseVisualStyleBackColor = false;
             // 
             // lblStatePaymentDuration
             // 
@@ -438,6 +469,16 @@
             this.label8.TabIndex = 24;
             this.label8.Text = "____________________________";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 30.75F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(25, 199);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(500, 55);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "____________________________";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -449,46 +490,6 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Loan Calculator";
             // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Image = global::CMS.Properties.Resources.Cancel;
-            this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClear.Location = new System.Drawing.Point(442, 136);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(115, 35);
-            this.btnClear.TabIndex = 16;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = false;
-            // 
-            // btnCompute
-            // 
-            this.btnCompute.BackColor = System.Drawing.Color.Green;
-            this.btnCompute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCompute.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCompute.ForeColor = System.Drawing.Color.White;
-            this.btnCompute.Image = global::CMS.Properties.Resources.Compute;
-            this.btnCompute.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompute.Location = new System.Drawing.Point(321, 136);
-            this.btnCompute.Name = "btnCompute";
-            this.btnCompute.Size = new System.Drawing.Size(115, 35);
-            this.btnCompute.TabIndex = 15;
-            this.btnCompute.Text = "Compute";
-            this.btnCompute.UseVisualStyleBackColor = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 30.75F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(25, 199);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(500, 55);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "____________________________";
-            // 
             // LoanCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -498,6 +499,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoanCalculator";

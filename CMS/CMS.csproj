@@ -1206,7 +1206,9 @@
     <Content Include="img\buttons\Dashboard\Payments.png" />
     <Content Include="img\buttons\Dashboard\Savings.png" />
     <Content Include="img\icons\LM.ico" />
+    <Content Include="img\icons\LoanCalc.ico" />
     <Content Include="img\icons\SV.ico" />
+    <Content Include="img\icons\TDCalc.ico" />
     <Content Include="img\menu\LoanBackground.png" />
     <Content Include="img\menu\SavingsBackground.png" />
     <Content Include="img\signimg.jpg" />

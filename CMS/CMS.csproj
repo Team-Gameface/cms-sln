@@ -172,12 +172,6 @@
     <Compile Include="Loan Management\Queries\View\LoanStatus.designer.cs">
       <DependentUpon>LoanStatus.cs</DependentUpon>
     </Compile>
-    <Compile Include="Loan Management\Queries\View\PaymentHistory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Loan Management\Queries\View\PaymentHistory.designer.cs">
-      <DependentUpon>PaymentHistory.cs</DependentUpon>
-    </Compile>
     <Compile Include="Loan Management\Reports\Controller\CollectionReportController.cs" />
     <Compile Include="Loan Management\Reports\Controller\LoanReleasesController.cs" />
     <Compile Include="Loan Management\Reports\Controller\PerformanceReportController.cs" />
@@ -716,9 +710,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Loan Management\Queries\View\LoanStatus.resx">
       <DependentUpon>LoanStatus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Loan Management\Queries\View\PaymentHistory.resx">
-      <DependentUpon>PaymentHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Loan Management\Reports\FeeCollectionReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -58,6 +58,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusDateTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -217,8 +218,9 @@
             // reportToolStripMenuItem
             // 
             this.reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemLoanReleases,
             this.itemPaymentHistory,
+            this.toolStripSeparator3,
+            this.itemLoanReleases,
             this.itemCollectionReport,
             this.itemDelinquencySchedule,
             this.itemAnnualFinancialReport});
@@ -240,7 +242,7 @@
             this.itemPaymentHistory.BackColor = System.Drawing.Color.AliceBlue;
             this.itemPaymentHistory.Name = "itemPaymentHistory";
             this.itemPaymentHistory.Size = new System.Drawing.Size(247, 22);
-            this.itemPaymentHistory.Text = "Loan Status History";
+            this.itemPaymentHistory.Text = "Loan Status";
             // 
             // itemCollectionReport
             // 
@@ -296,6 +298,11 @@
             this.statusDateTime.Spring = true;
             this.statusDateTime.Text = "DateTime";
             this.statusDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(244, 6);
             // 
             // LoanManagementMenu
             // 
@@ -356,5 +363,6 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripProgressBar progressBar;
         private System.Windows.Forms.ToolStripStatusLabel statusDateTime;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }

@@ -50,6 +50,7 @@ namespace CMS.Loan_Management
             this.loanManagementMenu.setItemCapitalContributionEventHandler(this.itemCapitalContribution);
             this.loanManagementMenu.setLoanAmnestyEventHandler(this.itemLoanAmnesty);
             //queries
+            this.loanManagementMenu.setPaymentHistoryEventHandler(this.itemLoanStatus);
             //reports
             this.loanManagementMenu.setCollectionReportEventHandler(this.itemCollectionReport);
             this.loanManagementMenu.setLoanReleasesEventHandler(this.itemLoanReleases);
@@ -119,6 +120,13 @@ namespace CMS.Loan_Management
         {
             Transaction.Controller.LoanAmnestyController loanAmnestyController = new Transaction.Controller.LoanAmnestyController(new Transaction.Model.LoanAmnestyModel(), new Transaction.View.LoanAmnesty(), loanManagementMenu);
         }
+
+        //queries and reports
+        public void itemLoanStatus(object args, EventArgs e)
+        {
+            Queries.Controller.LoanStatusController loanStatusController = new Queries.Controller.LoanStatusController(new Queries.Model.LoanStatusModel(), new Queries.View.LoanStatus(), this.loanManagementMenu);
+        }
+
 
         public void itemCollectionReport(object args, EventArgs e)
         {

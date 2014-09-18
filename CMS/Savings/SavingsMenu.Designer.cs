@@ -51,6 +51,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusDateTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -187,8 +188,9 @@
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemDailyTransactionLog,
-            this.itemStatementOfAccount});
+            this.itemStatementOfAccount,
+            this.toolStripSeparator4,
+            this.itemDailyTransactionLog});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(141, 58);
             this.reportsToolStripMenuItem.Text = "Queries and Reports";
@@ -243,6 +245,11 @@
             this.statusDateTime.Text = "DateTime";
             this.statusDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(198, 6);
+            // 
             // SavingsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -295,5 +302,6 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripProgressBar progressBar;
         private System.Windows.Forms.ToolStripStatusLabel statusDateTime;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }

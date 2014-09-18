@@ -120,6 +120,7 @@ namespace CMS.Loan_Management.Transaction.View
 
 
             //tpApproval-start
+            this.chbLoanBalance.Checked = false;
             this.txtChargeList.Clear();
             this.clbCharges.Items.Clear();
             this.txtMaturityDate.Clear();
@@ -133,6 +134,18 @@ namespace CMS.Loan_Management.Transaction.View
 
             //tpApproval-end
            
+        }
+
+
+        public void chbLoanBalance_CheckChanged(EventHandler e)
+        {
+            this.chbLoanBalance.CheckedChanged += e;
+        }
+
+        public Boolean getLoanBalanceStatus()
+        {
+            if (this.chbLoanBalance.Checked == true) { return true; }
+            else { return false; }
         }
 
         public void disableSavings() 

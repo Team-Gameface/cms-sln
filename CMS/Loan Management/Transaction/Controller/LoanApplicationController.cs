@@ -63,6 +63,7 @@ namespace CMS.Loan_Management.Transaction.Controller
             this.loanApplication.setBtnSaveCollateralEventHandler(this.btnSaveCollateral);
             this.loanApplication.setBtnDeleteCollateralEventHandler(this.btnDeleteCollateral);
             this.loanApplication.setBtnCancelCollateralEventHandler(this.btnCancelCollateral);
+            this.loanApplication.chbLoanBalance_CheckChanged(loanBalance);
             this.loanApplication.setBtnEditComakerEventHandler(this.btnEditComaker);
             this.loanApplication.setBtnSaveComakerEventHandler(this.btnSaveComaker);
             this.loanApplication.setBtnCancelComakerEventHandler(this.btnCancelComaker);
@@ -87,6 +88,20 @@ namespace CMS.Loan_Management.Transaction.Controller
             this.loanApplication.MdiParent = loanMenu;
             this.loanApplication.Show();
             this.loanApplication.clearSelectionActiveMember();
+        }
+
+
+        public void loanBalance(object sender, EventArgs e)
+        {
+            if (this.loanApplication.getLoanBalanceStatus())
+            {
+                loanBalanceFunc();
+            }
+            else 
+            {
+                this.loanApplication.setLoanBalance(0);
+                this.loanApplication.clearPenaltyList();
+            }
         }
 
         public void loanBalInterestRateFunction() 
@@ -913,7 +928,6 @@ namespace CMS.Loan_Management.Transaction.Controller
 
             if(countError == 0)
             {
-                loanBalanceFunc();
                 this.loanApplication.checkAllCheckBox();
                 addChargesFunc();
                 if (isCollateral == 1)

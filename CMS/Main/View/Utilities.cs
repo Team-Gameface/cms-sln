@@ -29,7 +29,7 @@ namespace CMS.Main.View
             if (!LoanCalcOpen)
             {
                 LoanCalcOpen = true;
-                //openLoanCalcForm
+                CMS.Utilities.Controller.LoanCalculatorController tdCalcController = new CMS.Utilities.Controller.LoanCalculatorController(new CMS.Utilities.View.LoanCalculator(), new CMS.Utilities.Model.LoanCalculatorModel(), this);
             }
         }
 

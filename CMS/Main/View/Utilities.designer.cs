@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.flowSwitchBoard = new System.Windows.Forms.FlowLayoutPanel();
-            this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.panelUtilities = new System.Windows.Forms.Panel();
-            this.btnAccount = new System.Windows.Forms.Button();
             this.btnLoanCalc = new System.Windows.Forms.Button();
             this.btnTimeDepositCalc = new System.Windows.Forms.Button();
             this.btnAudit = new System.Windows.Forms.Button();
+            this.btnAccount = new System.Windows.Forms.Button();
+            this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.panelUtilities = new System.Windows.Forms.Panel();
             this.flowSwitchBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -55,51 +55,6 @@
             this.flowSwitchBoard.Size = new System.Drawing.Size(175, 530);
             this.flowSwitchBoard.TabIndex = 12;
             // 
-            // splitContainer
-            // 
-            this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer.Name = "splitContainer";
-            // 
-            // splitContainer.Panel1
-            // 
-            this.splitContainer.Panel1.Controls.Add(this.flowSwitchBoard);
-            // 
-            // splitContainer.Panel2
-            // 
-            this.splitContainer.Panel2.Controls.Add(this.panelUtilities);
-            this.splitContainer.Size = new System.Drawing.Size(1000, 530);
-            this.splitContainer.SplitterDistance = 175;
-            this.splitContainer.TabIndex = 13;
-            // 
-            // panelUtilities
-            // 
-            this.panelUtilities.BackColor = System.Drawing.Color.Honeydew;
-            this.panelUtilities.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelUtilities.Location = new System.Drawing.Point(0, 0);
-            this.panelUtilities.Name = "panelUtilities";
-            this.panelUtilities.Size = new System.Drawing.Size(821, 530);
-            this.panelUtilities.TabIndex = 0;
-            // 
-            // btnAccount
-            // 
-            this.btnAccount.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAccount.BackColor = System.Drawing.Color.DarkGoldenrod;
-            this.btnAccount.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccount.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccount.ForeColor = System.Drawing.Color.White;
-            this.btnAccount.Image = global::CMS.Properties.Resources.AccountSettings;
-            this.btnAccount.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAccount.Location = new System.Drawing.Point(3, 261);
-            this.btnAccount.Name = "btnAccount";
-            this.btnAccount.Size = new System.Drawing.Size(170, 80);
-            this.btnAccount.TabIndex = 19;
-            this.btnAccount.Text = "Account Settings";
-            this.btnAccount.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnAccount.UseVisualStyleBackColor = false;
-            // 
             // btnLoanCalc
             // 
             this.btnLoanCalc.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -117,6 +72,7 @@
             this.btnLoanCalc.Text = "Loan Calculator";
             this.btnLoanCalc.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnLoanCalc.UseVisualStyleBackColor = false;
+            this.btnLoanCalc.Click += new System.EventHandler(this.btnLoanCalc_Click);
             // 
             // btnTimeDepositCalc
             // 
@@ -155,6 +111,52 @@
             this.btnAudit.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnAudit.UseVisualStyleBackColor = false;
             this.btnAudit.Click += new System.EventHandler(this.btnAudit_Click);
+            // 
+            // btnAccount
+            // 
+            this.btnAccount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAccount.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnAccount.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccount.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccount.ForeColor = System.Drawing.Color.White;
+            this.btnAccount.Image = global::CMS.Properties.Resources.AccountSettings;
+            this.btnAccount.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAccount.Location = new System.Drawing.Point(3, 261);
+            this.btnAccount.Name = "btnAccount";
+            this.btnAccount.Size = new System.Drawing.Size(170, 80);
+            this.btnAccount.TabIndex = 19;
+            this.btnAccount.Text = "Account Settings";
+            this.btnAccount.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnAccount.UseVisualStyleBackColor = false;
+            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
+            // 
+            // splitContainer
+            // 
+            this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer.Name = "splitContainer";
+            // 
+            // splitContainer.Panel1
+            // 
+            this.splitContainer.Panel1.Controls.Add(this.flowSwitchBoard);
+            // 
+            // splitContainer.Panel2
+            // 
+            this.splitContainer.Panel2.Controls.Add(this.panelUtilities);
+            this.splitContainer.Size = new System.Drawing.Size(1000, 530);
+            this.splitContainer.SplitterDistance = 175;
+            this.splitContainer.TabIndex = 13;
+            // 
+            // panelUtilities
+            // 
+            this.panelUtilities.BackColor = System.Drawing.Color.Honeydew;
+            this.panelUtilities.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelUtilities.Location = new System.Drawing.Point(0, 0);
+            this.panelUtilities.Name = "panelUtilities";
+            this.panelUtilities.Size = new System.Drawing.Size(821, 530);
+            this.panelUtilities.TabIndex = 0;
             // 
             // Utilities
             // 

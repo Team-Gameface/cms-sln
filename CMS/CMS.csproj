@@ -657,8 +657,10 @@
     </Compile>
     <Compile Include="Utilities\Controller\AccountSettingsController.cs" />
     <Compile Include="Utilities\Controller\AuditLogController.cs" />
+    <Compile Include="Utilities\Controller\LoanCalculatorController.cs" />
     <Compile Include="Utilities\Controller\TimeDepositCalculatorController.cs" />
     <Compile Include="Utilities\Model\AuditLogModel.cs" />
+    <Compile Include="Utilities\Model\LoanCalculatorModel.cs" />
     <Compile Include="Utilities\Model\TimeDepositCalculatorModel.cs" />
     <Compile Include="Utilities\View\AccountSettings.cs">
       <SubType>UserControl</SubType>
@@ -671,6 +673,12 @@
     </Compile>
     <Compile Include="Utilities\View\AuditLog.Designer.cs">
       <DependentUpon>AuditLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\View\LoanCalculator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\View\LoanCalculator.designer.cs">
+      <DependentUpon>LoanCalculator.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\View\TimeDepositCalculator.cs">
       <SubType>Form</SubType>
@@ -896,6 +904,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Utilities\View\AuditLog.resx">
       <DependentUpon>AuditLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\View\LoanCalculator.resx">
+      <DependentUpon>LoanCalculator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utilities\View\TimeDepositCalculator.resx">
       <DependentUpon>TimeDepositCalculator.cs</DependentUpon>

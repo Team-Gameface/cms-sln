@@ -182,7 +182,7 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(377, 67);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(118, 21);
+            this.label6.Size = new System.Drawing.Size(117, 21);
             this.label6.TabIndex = 13;
             this.label6.Text = "Account Type:";
             // 
@@ -273,6 +273,7 @@
             this.Controls.Add(this.btnSearch);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StatementOfAccount";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Statement of Account";
             ((System.ComponentModel.ISupportInitialize)(this.dataTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataMember)).EndInit();

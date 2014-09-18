@@ -194,6 +194,7 @@
             this.Controls.Add(this.grpDatesTransaction);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DailyTransactionLog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Daily Transaction Log";
             this.grpDatesTransaction.ResumeLayout(false);
             this.grpDatesTransaction.PerformLayout();

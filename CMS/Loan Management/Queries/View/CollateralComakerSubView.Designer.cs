@@ -172,6 +172,7 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CollateralComaker";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Collaterals & Co-makers";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCollateral)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridComaker)).EndInit();

@@ -52,7 +52,7 @@
             this.label6.Location = new System.Drawing.Point(3, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(394, 25);
+            this.label6.Size = new System.Drawing.Size(395, 25);
             this.label6.TabIndex = 37;
             this.label6.Text = "Reports - Schedule of Delinquent Accounts";
             // 
@@ -219,6 +219,7 @@
             this.Controls.Add(this.label6);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ScheduleOfDelinquents";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Schedule of Delinquent Accounts";
             this.grpLoanTypesSort.ResumeLayout(false);
             this.grpLoanTypesSort.PerformLayout();

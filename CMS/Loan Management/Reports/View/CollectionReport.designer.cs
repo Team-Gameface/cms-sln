@@ -73,7 +73,7 @@
             this.label1.Location = new System.Drawing.Point(13, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(303, 25);
+            this.label1.Size = new System.Drawing.Size(305, 25);
             this.label1.TabIndex = 12;
             this.label1.Text = "Reports - Daily Collection Report";
             // 
@@ -405,6 +405,7 @@
             this.Controls.Add(this.panelLoan);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CollectionReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Daily Collection Report";
             this.grpTransType.ResumeLayout(false);
             this.grpTransType.PerformLayout();

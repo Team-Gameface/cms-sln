@@ -70,7 +70,7 @@
             this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(303, 25);
+            this.label1.Size = new System.Drawing.Size(305, 25);
             this.label1.TabIndex = 13;
             this.label1.Text = "Reports - Daily Collection Report";
             // 
@@ -119,6 +119,7 @@
             this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.label1);
             this.Name = "PerformanceReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Performance Report";
             ((System.ComponentModel.ISupportInitialize)(this.numReportYear)).EndInit();
             this.panelMiscFees.ResumeLayout(false);

@@ -363,6 +363,7 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoanStatus";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Loan Status";
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();

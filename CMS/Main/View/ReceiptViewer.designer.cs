@@ -43,7 +43,7 @@
             this.crViewer1.ShowGroupTreeButton = false;
             this.crViewer1.ShowLogo = false;
             this.crViewer1.ShowParameterPanelButton = false;
-            this.crViewer1.Size = new System.Drawing.Size(484, 612);
+            this.crViewer1.Size = new System.Drawing.Size(484, 611);
             this.crViewer1.TabIndex = 3;
             this.crViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
@@ -51,10 +51,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 612);
+            this.ClientSize = new System.Drawing.Size(484, 611);
             this.Controls.Add(this.crViewer1);
             this.MaximumSize = new System.Drawing.Size(500, 650);
             this.Name = "ReceiptViewer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Official Receipt";
             this.ResumeLayout(false);
 

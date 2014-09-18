@@ -95,9 +95,9 @@
             this.lblDays.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDays.Location = new System.Drawing.Point(30, 57);
             this.lblDays.Name = "lblDays";
-            this.lblDays.Size = new System.Drawing.Size(90, 21);
+            this.lblDays.Size = new System.Drawing.Size(87, 21);
             this.lblDays.TabIndex = 7;
-            this.lblDays.Text = "No of Days:";
+            this.lblDays.Text = "No of Days";
             // 
             // btnSave
             // 
@@ -135,9 +135,9 @@
             this.lblMaximum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaximum.Location = new System.Drawing.Point(34, 66);
             this.lblMaximum.Name = "lblMaximum";
-            this.lblMaximum.Size = new System.Drawing.Size(83, 21);
+            this.lblMaximum.Size = new System.Drawing.Size(80, 21);
             this.lblMaximum.TabIndex = 15;
-            this.lblMaximum.Text = "Maximum:";
+            this.lblMaximum.Text = "Maximum";
             // 
             // lblMinimum
             // 
@@ -145,9 +145,9 @@
             this.lblMinimum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMinimum.Location = new System.Drawing.Point(34, 31);
             this.lblMinimum.Name = "lblMinimum";
-            this.lblMinimum.Size = new System.Drawing.Size(81, 21);
+            this.lblMinimum.Size = new System.Drawing.Size(78, 21);
             this.lblMinimum.TabIndex = 13;
-            this.lblMinimum.Text = "Minimum:";
+            this.lblMinimum.Text = "Minimum";
             // 
             // txtMaxBal
             // 
@@ -190,9 +190,9 @@
             this.label4.Location = new System.Drawing.Point(7, 139);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 21);
+            this.label4.Size = new System.Drawing.Size(53, 21);
             this.label4.TabIndex = 17;
-            this.label4.Text = "Status:";
+            this.label4.Text = "Status";
             // 
             // btnCancel
             // 
@@ -249,9 +249,9 @@
             this.lblInterestRate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInterestRate.Location = new System.Drawing.Point(30, 94);
             this.lblInterestRate.Name = "lblInterestRate";
-            this.lblInterestRate.Size = new System.Drawing.Size(100, 21);
+            this.lblInterestRate.Size = new System.Drawing.Size(97, 21);
             this.lblInterestRate.TabIndex = 9;
-            this.lblInterestRate.Text = "Interest Rate:";
+            this.lblInterestRate.Text = "Interest Rate";
             // 
             // lblSearch
             // 
@@ -260,9 +260,9 @@
             this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearch.Location = new System.Drawing.Point(35, 68);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(172, 21);
+            this.lblSearch.Size = new System.Drawing.Size(169, 21);
             this.lblSearch.TabIndex = 1;
-            this.lblSearch.Text = "Search by Interest Rate:";
+            this.lblSearch.Text = "Search by Interest Rate";
             // 
             // txtSearch
             // 

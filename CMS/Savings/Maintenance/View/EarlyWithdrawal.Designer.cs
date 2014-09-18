@@ -95,9 +95,9 @@
             this.lblPenalty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPenalty.Location = new System.Drawing.Point(340, 73);
             this.lblPenalty.Name = "lblPenalty";
-            this.lblPenalty.Size = new System.Drawing.Size(139, 21);
+            this.lblPenalty.Size = new System.Drawing.Size(136, 21);
             this.lblPenalty.TabIndex = 14;
-            this.lblPenalty.Text = "Interest Reduction:";
+            this.lblPenalty.Text = "Interest Reduction";
             // 
             // groupBox1
             // 
@@ -244,9 +244,9 @@
             this.label4.Location = new System.Drawing.Point(7, 139);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 21);
+            this.label4.Size = new System.Drawing.Size(53, 21);
             this.label4.TabIndex = 17;
-            this.label4.Text = "Status:";
+            this.label4.Text = "Status";
             // 
             // dataTimeDeposit
             // 
@@ -281,9 +281,9 @@
             this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearch.Location = new System.Drawing.Point(17, 68);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(211, 21);
+            this.lblSearch.Size = new System.Drawing.Size(208, 21);
             this.lblSearch.TabIndex = 1;
-            this.lblSearch.Text = "Search by Interest Reduction:";
+            this.lblSearch.Text = "Search by Interest Reduction";
             // 
             // txtSearch
             // 

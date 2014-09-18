@@ -40,14 +40,10 @@ namespace CMS.Savings.Transaction.View
             this.radioAnd.Enabled = true;
             this.radioOr.Enabled = true;
             this.btnSave.Enabled = true;
-            this.btnSave.BackColor = Color.Green;
             this.btnCancel.Enabled = true;
-            this.btnCancel.BackColor = Color.WhiteSmoke;
 
             this.btnOpen.Enabled = false;
-            this.btnOpen.BackColor = Color.Gray;
             this.btnTerminate.Enabled = false;
-            this.btnTerminate.BackColor = Color.Gray;
         }
 
         public void disableFunction()
@@ -71,15 +67,10 @@ namespace CMS.Savings.Transaction.View
             this.radioAnd.Enabled = false;
             this.radioOr.Enabled = false;
             this.btnSave.Enabled = false;
-            this.btnSave.BackColor = Color.Gray;
             this.btnCancel.Enabled = false;
-            this.btnCancel.BackColor = Color.Gray;
-            this.btnCancel.ForeColor = Color.Black;
 
             this.btnOpen.Enabled = true;
-            this.btnOpen.BackColor = Color.Green;
             this.btnTerminate.Enabled = true;
-            this.btnTerminate.BackColor = Color.Firebrick;
         }
 
         public void txtSearchTextChanged(EventHandler e)

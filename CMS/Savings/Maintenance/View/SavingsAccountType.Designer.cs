@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SavingsAccountType));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -40,6 +39,7 @@
             this.txtInterestRate = new System.Windows.Forms.TextBox();
             this.contextMenuBlank = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnCancel = new System.Windows.Forms.Button();
+            this.lblAccountHolder = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboDormancyChargeDuration = new System.Windows.Forms.ComboBox();
             this.lblDormancy = new System.Windows.Forms.Label();
@@ -73,7 +73,6 @@
             this.checkInterestRates = new System.Windows.Forms.CheckBox();
             this.checkDormancy = new System.Windows.Forms.CheckBox();
             this.numAccountHolder = new System.Windows.Forms.NumericUpDown();
-            this.lblAccountHolder = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.dataAccountType = new System.Windows.Forms.DataGridView();
@@ -159,9 +158,9 @@
             this.lblRate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRate.Location = new System.Drawing.Point(10, 27);
             this.lblRate.Name = "lblRate";
-            this.lblRate.Size = new System.Drawing.Size(44, 21);
+            this.lblRate.Size = new System.Drawing.Size(41, 21);
             this.lblRate.TabIndex = 20;
-            this.lblRate.Text = "Rate:";
+            this.lblRate.Text = "Rate";
             // 
             // lblPercent
             // 
@@ -206,6 +205,16 @@
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             // 
+            // lblAccountHolder
+            // 
+            this.lblAccountHolder.AutoSize = true;
+            this.lblAccountHolder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccountHolder.Location = new System.Drawing.Point(13, 143);
+            this.lblAccountHolder.Name = "lblAccountHolder";
+            this.lblAccountHolder.Size = new System.Drawing.Size(170, 21);
+            this.lblAccountHolder.TabIndex = 13;
+            this.lblAccountHolder.Text = "No. of Account Holders";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.comboDormancyChargeDuration);
@@ -223,7 +232,7 @@
             this.groupBox2.Size = new System.Drawing.Size(317, 148);
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Dormancy:";
+            this.groupBox2.Text = "Dormancy";
             // 
             // comboDormancyChargeDuration
             // 
@@ -246,9 +255,9 @@
             this.lblDormancy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDormancy.Location = new System.Drawing.Point(23, 23);
             this.lblDormancy.Name = "lblDormancy";
-            this.lblDormancy.Size = new System.Drawing.Size(74, 21);
+            this.lblDormancy.Size = new System.Drawing.Size(71, 21);
             this.lblDormancy.TabIndex = 33;
-            this.lblDormancy.Text = "Duration:";
+            this.lblDormancy.Text = "Duration";
             // 
             // lblEvery
             // 
@@ -330,9 +339,9 @@
             this.lblPenaltyDormancy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPenaltyDormancy.Location = new System.Drawing.Point(15, 54);
             this.lblPenaltyDormancy.Name = "lblPenaltyDormancy";
-            this.lblPenaltyDormancy.Size = new System.Drawing.Size(124, 21);
+            this.lblPenaltyDormancy.Size = new System.Drawing.Size(121, 21);
             this.lblPenaltyDormancy.TabIndex = 36;
-            this.lblPenaltyDormancy.Text = "Penalty Amount:";
+            this.lblPenaltyDormancy.Text = "Penalty Amount";
             // 
             // groupMain
             // 
@@ -350,7 +359,7 @@
             this.groupMain.Size = new System.Drawing.Size(316, 164);
             this.groupMain.TabIndex = 23;
             this.groupMain.TabStop = false;
-            this.groupMain.Text = "Maintaining Balance:";
+            this.groupMain.Text = "Maintaining Balance";
             // 
             // numMBalChargeDuration
             // 
@@ -420,9 +429,9 @@
             this.lblPenalty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPenalty.Location = new System.Drawing.Point(14, 60);
             this.lblPenalty.Name = "lblPenalty";
-            this.lblPenalty.Size = new System.Drawing.Size(124, 21);
+            this.lblPenalty.Size = new System.Drawing.Size(121, 21);
             this.lblPenalty.TabIndex = 26;
-            this.lblPenalty.Text = "Penalty Amount:";
+            this.lblPenalty.Text = "Penalty Amount";
             // 
             // txtMaintaningBalance
             // 
@@ -444,9 +453,9 @@
             this.lblMaintainingBalance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaintainingBalance.Location = new System.Drawing.Point(14, 31);
             this.lblMaintainingBalance.Name = "lblMaintainingBalance";
-            this.lblMaintainingBalance.Size = new System.Drawing.Size(69, 21);
+            this.lblMaintainingBalance.Size = new System.Drawing.Size(66, 21);
             this.lblMaintainingBalance.TabIndex = 24;
-            this.lblMaintainingBalance.Text = "Amount:";
+            this.lblMaintainingBalance.Text = "Amount";
             // 
             // txtMaxWith
             // 
@@ -470,9 +479,9 @@
             this.lblMaxWith.Location = new System.Drawing.Point(13, 107);
             this.lblMaxWith.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMaxWith.Name = "lblMaxWith";
-            this.lblMaxWith.Size = new System.Drawing.Size(227, 21);
+            this.lblMaxWith.Size = new System.Drawing.Size(224, 21);
             this.lblMaxWith.TabIndex = 11;
-            this.lblMaxWith.Text = "Maximum Withdrawal Amount:";
+            this.lblMaxWith.Text = "Maximum Withdrawal Amount";
             // 
             // btnRetrieve
             // 
@@ -507,9 +516,9 @@
             this.label1.Location = new System.Drawing.Point(7, 318);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 21);
+            this.label1.Size = new System.Drawing.Size(53, 21);
             this.label1.TabIndex = 44;
-            this.label1.Text = "Status:";
+            this.label1.Text = "Status";
             // 
             // groupAvailable
             // 
@@ -520,7 +529,7 @@
             this.groupAvailable.Size = new System.Drawing.Size(225, 277);
             this.groupAvailable.TabIndex = 42;
             this.groupAvailable.TabStop = false;
-            this.groupAvailable.Text = "Applicable for:";
+            this.groupAvailable.Text = "Applicable for";
             // 
             // checkedMemberTypes
             // 
@@ -551,9 +560,9 @@
             this.lblInitDeposit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInitDeposit.Location = new System.Drawing.Point(13, 70);
             this.lblInitDeposit.Name = "lblInitDeposit";
-            this.lblInitDeposit.Size = new System.Drawing.Size(168, 21);
+            this.lblInitDeposit.Size = new System.Drawing.Size(165, 21);
             this.lblInitDeposit.TabIndex = 9;
-            this.lblInitDeposit.Text = "Initial Deposit Amount:";
+            this.lblInitDeposit.Text = "Initial Deposit Amount";
             // 
             // groupRequirements
             // 
@@ -566,7 +575,7 @@
             this.groupRequirements.Size = new System.Drawing.Size(417, 56);
             this.groupRequirements.TabIndex = 15;
             this.groupRequirements.TabStop = false;
-            this.groupRequirements.Text = "Requirements:";
+            this.groupRequirements.Text = "Requirements";
             // 
             // checkMaintainingBalance
             // 
@@ -615,16 +624,6 @@
             this.numAccountHolder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numAccountHolder_KeyDown);
             this.numAccountHolder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numAccountHolder_KeyPress);
             // 
-            // lblAccountHolder
-            // 
-            this.lblAccountHolder.AutoSize = true;
-            this.lblAccountHolder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAccountHolder.Location = new System.Drawing.Point(13, 143);
-            this.lblAccountHolder.Name = "lblAccountHolder";
-            this.lblAccountHolder.Size = new System.Drawing.Size(173, 21);
-            this.lblAccountHolder.TabIndex = 13;
-            this.lblAccountHolder.Text = "No. of Account Holders:";
-            // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -640,9 +639,9 @@
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(13, 35);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(152, 21);
+            this.lblName.Size = new System.Drawing.Size(149, 21);
             this.lblName.TabIndex = 7;
-            this.lblName.Text = "Account Type Name:";
+            this.lblName.Text = "Account Type Name";
             // 
             // dataAccountType
             // 
@@ -662,14 +661,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataAccountType.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataAccountType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataAccountType.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataAccountType.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataAccountType.Location = new System.Drawing.Point(12, 64);
             this.dataAccountType.MultiSelect = false;

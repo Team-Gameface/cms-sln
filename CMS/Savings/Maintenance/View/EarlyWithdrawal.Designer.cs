@@ -64,10 +64,12 @@
             // 
             this.numDurationFrom.ContextMenuStrip = this.contextMenuBlank;
             this.numDurationFrom.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDurationFrom.ForeColor = System.Drawing.SystemColors.ControlText;
             this.numDurationFrom.Location = new System.Drawing.Point(96, 30);
             this.numDurationFrom.Name = "numDurationFrom";
             this.numDurationFrom.Size = new System.Drawing.Size(47, 29);
             this.numDurationFrom.TabIndex = 9;
+            this.numDurationFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numDurationFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numDuration_KeyDown);
             this.numDurationFrom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numDuration_KeyPress);
             // 
@@ -80,6 +82,7 @@
             // 
             this.txtPenalty.ContextMenuStrip = this.contextMenuBlank;
             this.txtPenalty.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPenalty.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtPenalty.Location = new System.Drawing.Point(485, 70);
             this.txtPenalty.MaxLength = 10;
             this.txtPenalty.Name = "txtPenalty";
@@ -93,6 +96,7 @@
             // 
             this.lblPenalty.AutoSize = true;
             this.lblPenalty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPenalty.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblPenalty.Location = new System.Drawing.Point(340, 73);
             this.lblPenalty.Name = "lblPenalty";
             this.lblPenalty.Size = new System.Drawing.Size(136, 21);
@@ -111,6 +115,7 @@
             this.groupBox1.Controls.Add(this.lblPenalty);
             this.groupBox1.Controls.Add(this.txtPenalty);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox1.Location = new System.Drawing.Point(12, 316);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(645, 173);
@@ -153,6 +158,7 @@
             // 
             this.lblPercent.AutoSize = true;
             this.lblPercent.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPercent.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblPercent.Location = new System.Drawing.Point(607, 73);
             this.lblPercent.Name = "lblPercent";
             this.lblPercent.Size = new System.Drawing.Size(23, 21);
@@ -168,6 +174,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.numDurationFrom);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox2.Location = new System.Drawing.Point(12, 28);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(309, 94);
@@ -179,6 +186,7 @@
             // 
             this.lblTo.AutoSize = true;
             this.lblTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblTo.Location = new System.Drawing.Point(16, 63);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(27, 21);
@@ -189,6 +197,7 @@
             // 
             this.lblFrom.AutoSize = true;
             this.lblFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFrom.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblFrom.Location = new System.Drawing.Point(16, 32);
             this.lblFrom.Name = "lblFrom";
             this.lblFrom.Size = new System.Drawing.Size(47, 21);
@@ -199,6 +208,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(149, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 21);
@@ -209,10 +219,12 @@
             // 
             this.numDurationTo.ContextMenuStrip = this.contextMenuBlank;
             this.numDurationTo.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDurationTo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.numDurationTo.Location = new System.Drawing.Point(96, 61);
             this.numDurationTo.Name = "numDurationTo";
             this.numDurationTo.Size = new System.Drawing.Size(47, 29);
             this.numDurationTo.TabIndex = 12;
+            this.numDurationTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numDurationTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numDurationTo_KeyDown);
             this.numDurationTo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numDurationTo_KeyPress);
             // 
@@ -220,6 +232,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(149, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(145, 21);
@@ -229,10 +242,12 @@
             // Status
             // 
             this.Status.AutoSize = true;
+            this.Status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Status.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Status.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Status.Location = new System.Drawing.Point(70, 138);
             this.Status.Name = "Status";
-            this.Status.Size = new System.Drawing.Size(70, 25);
+            this.Status.Size = new System.Drawing.Size(67, 25);
             this.Status.TabIndex = 18;
             this.Status.Text = "Active";
             this.Status.UseVisualStyleBackColor = true;
@@ -241,6 +256,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label4.Location = new System.Drawing.Point(7, 139);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
@@ -289,6 +305,7 @@
             // 
             this.txtSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtSearch.Location = new System.Drawing.Point(313, 65);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(344, 29);
@@ -331,6 +348,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Firebrick;
             this.label5.Location = new System.Drawing.Point(13, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
@@ -343,7 +361,7 @@
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Snow;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(669, 501);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnEdit);

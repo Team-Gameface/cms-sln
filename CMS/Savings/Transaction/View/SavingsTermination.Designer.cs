@@ -80,6 +80,7 @@
             // 
             this.lblAccountNo.AutoSize = true;
             this.lblAccountNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccountNo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblAccountNo.Location = new System.Drawing.Point(15, 27);
             this.lblAccountNo.Name = "lblAccountNo";
             this.lblAccountNo.Size = new System.Drawing.Size(128, 21);
@@ -90,6 +91,7 @@
             // 
             this.txtAccountNo.Enabled = false;
             this.txtAccountNo.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccountNo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtAccountNo.Location = new System.Drawing.Point(189, 24);
             this.txtAccountNo.Name = "txtAccountNo";
             this.txtAccountNo.Size = new System.Drawing.Size(174, 29);
@@ -99,6 +101,7 @@
             // 
             this.lblBalance.AutoSize = true;
             this.lblBalance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBalance.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblBalance.Location = new System.Drawing.Point(15, 62);
             this.lblBalance.Name = "lblBalance";
             this.lblBalance.Size = new System.Drawing.Size(120, 21);
@@ -109,6 +112,7 @@
             // 
             this.txtBalance.Enabled = false;
             this.txtBalance.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBalance.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtBalance.Location = new System.Drawing.Point(189, 59);
             this.txtBalance.Name = "txtBalance";
             this.txtBalance.Size = new System.Drawing.Size(174, 29);
@@ -117,10 +121,11 @@
             // lblAccountHolder
             // 
             this.lblAccountHolder.AutoSize = true;
-            this.lblAccountHolder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccountHolder.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccountHolder.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblAccountHolder.Location = new System.Drawing.Point(15, 130);
             this.lblAccountHolder.Name = "lblAccountHolder";
-            this.lblAccountHolder.Size = new System.Drawing.Size(130, 21);
+            this.lblAccountHolder.Size = new System.Drawing.Size(140, 21);
             this.lblAccountHolder.TabIndex = 11;
             this.lblAccountHolder.Text = "Account Holder/s";
             // 
@@ -135,6 +140,7 @@
             this.groupDetails.Controls.Add(this.txtBalance);
             this.groupDetails.Controls.Add(this.lblBalance);
             this.groupDetails.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupDetails.ForeColor = System.Drawing.Color.Firebrick;
             this.groupDetails.Location = new System.Drawing.Point(12, 81);
             this.groupDetails.Name = "groupDetails";
             this.groupDetails.Size = new System.Drawing.Size(369, 284);
@@ -146,6 +152,7 @@
             // 
             this.lblAccountType.AutoSize = true;
             this.lblAccountType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccountType.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblAccountType.Location = new System.Drawing.Point(15, 97);
             this.lblAccountType.Name = "lblAccountType";
             this.lblAccountType.Size = new System.Drawing.Size(103, 21);
@@ -156,6 +163,7 @@
             // 
             this.txtAccountType.Enabled = false;
             this.txtAccountType.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccountType.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtAccountType.Location = new System.Drawing.Point(189, 94);
             this.txtAccountType.Name = "txtAccountType";
             this.txtAccountType.Size = new System.Drawing.Size(174, 29);
@@ -189,10 +197,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(130, 44);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Firebrick;
+            this.label1.Location = new System.Drawing.Point(64, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(410, 25);
+            this.label1.Size = new System.Drawing.Size(523, 32);
             this.label1.TabIndex = 3;
             this.label1.Text = "Savings Account will be Terminated. Continue?";
             // 
@@ -205,6 +214,7 @@
             this.groupReason.Controls.Add(this.radioReCreate);
             this.groupReason.Controls.Add(this.radioVoluntary);
             this.groupReason.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupReason.ForeColor = System.Drawing.Color.Firebrick;
             this.groupReason.Location = new System.Drawing.Point(387, 81);
             this.groupReason.Name = "groupReason";
             this.groupReason.Size = new System.Drawing.Size(253, 211);
@@ -216,6 +226,7 @@
             // 
             this.txtSpecify.Enabled = false;
             this.txtSpecify.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSpecify.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtSpecify.Location = new System.Drawing.Point(13, 165);
             this.txtSpecify.Name = "txtSpecify";
             this.txtSpecify.Size = new System.Drawing.Size(234, 29);
@@ -225,6 +236,7 @@
             // 
             this.lblSpecify.AutoSize = true;
             this.lblSpecify.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpecify.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblSpecify.Location = new System.Drawing.Point(91, 136);
             this.lblSpecify.Name = "lblSpecify";
             this.lblSpecify.Size = new System.Drawing.Size(61, 21);
@@ -234,10 +246,12 @@
             // radioOthers
             // 
             this.radioOthers.AutoSize = true;
+            this.radioOthers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioOthers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioOthers.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioOthers.Location = new System.Drawing.Point(10, 134);
             this.radioOthers.Name = "radioOthers";
-            this.radioOthers.Size = new System.Drawing.Size(75, 25);
+            this.radioOthers.Size = new System.Drawing.Size(74, 25);
             this.radioOthers.TabIndex = 17;
             this.radioOthers.TabStop = true;
             this.radioOthers.Text = "Others";
@@ -247,10 +261,12 @@
             // radioForced
             // 
             this.radioForced.AutoSize = true;
+            this.radioForced.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioForced.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioForced.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioForced.Location = new System.Drawing.Point(10, 103);
             this.radioForced.Name = "radioForced";
-            this.radioForced.Size = new System.Drawing.Size(163, 25);
+            this.radioForced.Size = new System.Drawing.Size(162, 25);
             this.radioForced.TabIndex = 16;
             this.radioForced.TabStop = true;
             this.radioForced.Text = "Forced Termination";
@@ -259,10 +275,12 @@
             // radioReCreate
             // 
             this.radioReCreate.AutoSize = true;
+            this.radioReCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioReCreate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioReCreate.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioReCreate.Location = new System.Drawing.Point(10, 41);
             this.radioReCreate.Name = "radioReCreate";
-            this.radioReCreate.Size = new System.Drawing.Size(229, 25);
+            this.radioReCreate.Size = new System.Drawing.Size(228, 25);
             this.radioReCreate.TabIndex = 14;
             this.radioReCreate.TabStop = true;
             this.radioReCreate.Text = "Savings Account Re-Creation";
@@ -271,10 +289,12 @@
             // radioVoluntary
             // 
             this.radioVoluntary.AutoSize = true;
+            this.radioVoluntary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioVoluntary.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioVoluntary.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioVoluntary.Location = new System.Drawing.Point(10, 72);
             this.radioVoluntary.Name = "radioVoluntary";
-            this.radioVoluntary.Size = new System.Drawing.Size(96, 25);
+            this.radioVoluntary.Size = new System.Drawing.Size(95, 25);
             this.radioVoluntary.TabIndex = 15;
             this.radioVoluntary.TabStop = true;
             this.radioVoluntary.Text = "Voluntary";
@@ -319,6 +339,7 @@
             this.AcceptButton = this.btnProceed;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(654, 381);
             this.Controls.Add(this.btnProceed);
             this.Controls.Add(this.groupReason);

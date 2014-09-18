@@ -66,6 +66,7 @@
             this.groupSignature.Controls.Add(this.imgSignature2);
             this.groupSignature.Controls.Add(this.imgSignature1);
             this.groupSignature.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupSignature.ForeColor = System.Drawing.Color.Firebrick;
             this.groupSignature.Location = new System.Drawing.Point(12, 282);
             this.groupSignature.Name = "groupSignature";
             this.groupSignature.Size = new System.Drawing.Size(603, 134);
@@ -144,6 +145,7 @@
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.imgPicture);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(603, 264);
@@ -155,6 +157,7 @@
             // 
             this.lblAccountNo.AutoSize = true;
             this.lblAccountNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccountNo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblAccountNo.Location = new System.Drawing.Point(186, 31);
             this.lblAccountNo.Name = "lblAccountNo";
             this.lblAccountNo.Size = new System.Drawing.Size(128, 21);
@@ -165,6 +168,7 @@
             // 
             this.txtAccountNo.Enabled = false;
             this.txtAccountNo.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccountNo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtAccountNo.Location = new System.Drawing.Point(323, 28);
             this.txtAccountNo.Name = "txtAccountNo";
             this.txtAccountNo.Size = new System.Drawing.Size(172, 29);
@@ -174,6 +178,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblName.Location = new System.Drawing.Point(15, 66);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(115, 21);
@@ -184,6 +189,7 @@
             // 
             this.txtGender.Enabled = false;
             this.txtGender.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGender.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtGender.Location = new System.Drawing.Point(368, 162);
             this.txtGender.Name = "txtGender";
             this.txtGender.Size = new System.Drawing.Size(127, 29);
@@ -193,6 +199,7 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddress.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblAddress.Location = new System.Drawing.Point(15, 101);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(66, 21);
@@ -203,6 +210,7 @@
             // 
             this.txtEmail.Enabled = false;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtEmail.Location = new System.Drawing.Point(398, 197);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(199, 29);
@@ -212,6 +220,7 @@
             // 
             this.txtMobile.Enabled = false;
             this.txtMobile.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMobile.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMobile.Location = new System.Drawing.Point(273, 197);
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(119, 29);
@@ -221,6 +230,7 @@
             // 
             this.txtLandline.Enabled = false;
             this.txtLandline.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLandline.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtLandline.Location = new System.Drawing.Point(148, 197);
             this.txtLandline.Name = "txtLandline";
             this.txtLandline.Size = new System.Drawing.Size(119, 29);
@@ -230,6 +240,7 @@
             // 
             this.lblBirthdate.AutoSize = true;
             this.lblBirthdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBirthdate.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblBirthdate.Location = new System.Drawing.Point(15, 165);
             this.lblBirthdate.Name = "lblBirthdate";
             this.lblBirthdate.Size = new System.Drawing.Size(77, 21);
@@ -250,6 +261,7 @@
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGender.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblGender.Location = new System.Drawing.Point(294, 165);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(61, 21);
@@ -260,6 +272,7 @@
             // 
             this.txtAddress.Enabled = false;
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtAddress.Location = new System.Drawing.Point(148, 98);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
@@ -270,6 +283,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(442, 229);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 17);
@@ -281,6 +295,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(295, 229);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 17);
@@ -292,6 +307,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(168, 229);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 17);
@@ -303,6 +319,7 @@
             // 
             this.lblContact.AutoSize = true;
             this.lblContact.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContact.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblContact.Location = new System.Drawing.Point(15, 197);
             this.lblContact.Name = "lblContact";
             this.lblContact.Size = new System.Drawing.Size(92, 42);
@@ -314,6 +331,7 @@
             // 
             this.txtName.Enabled = false;
             this.txtName.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtName.Location = new System.Drawing.Point(148, 63);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(347, 29);
@@ -323,7 +341,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(629, 426);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupSignature);

@@ -116,6 +116,7 @@
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.lblName);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox1.Location = new System.Drawing.Point(12, 254);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(990, 354);
@@ -145,6 +146,7 @@
             this.groupInterest.Controls.Add(this.lblPercent);
             this.groupInterest.Controls.Add(this.txtInterestRate);
             this.groupInterest.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupInterest.ForeColor = System.Drawing.Color.Firebrick;
             this.groupInterest.Location = new System.Drawing.Point(13, 238);
             this.groupInterest.Name = "groupInterest";
             this.groupInterest.Size = new System.Drawing.Size(417, 59);
@@ -156,6 +158,7 @@
             // 
             this.lblRate.AutoSize = true;
             this.lblRate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRate.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblRate.Location = new System.Drawing.Point(10, 27);
             this.lblRate.Name = "lblRate";
             this.lblRate.Size = new System.Drawing.Size(41, 21);
@@ -166,6 +169,7 @@
             // 
             this.lblPercent.AutoSize = true;
             this.lblPercent.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPercent.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblPercent.Location = new System.Drawing.Point(235, 27);
             this.lblPercent.Name = "lblPercent";
             this.lblPercent.Size = new System.Drawing.Size(101, 21);
@@ -176,6 +180,7 @@
             // 
             this.txtInterestRate.ContextMenuStrip = this.contextMenuBlank;
             this.txtInterestRate.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInterestRate.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtInterestRate.Location = new System.Drawing.Point(133, 24);
             this.txtInterestRate.MaxLength = 7;
             this.txtInterestRate.Name = "txtInterestRate";
@@ -209,6 +214,7 @@
             // 
             this.lblAccountHolder.AutoSize = true;
             this.lblAccountHolder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccountHolder.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblAccountHolder.Location = new System.Drawing.Point(13, 143);
             this.lblAccountHolder.Name = "lblAccountHolder";
             this.lblAccountHolder.Size = new System.Drawing.Size(170, 21);
@@ -227,6 +233,7 @@
             this.groupBox2.Controls.Add(this.numDormancy);
             this.groupBox2.Controls.Add(this.lblPenaltyDormancy);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox2.Location = new System.Drawing.Point(436, 200);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(317, 148);
@@ -239,6 +246,7 @@
             this.comboDormancyChargeDuration.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboDormancyChargeDuration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboDormancyChargeDuration.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboDormancyChargeDuration.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboDormancyChargeDuration.FormattingEnabled = true;
             this.comboDormancyChargeDuration.Items.AddRange(new object[] {
             "Day/s",
@@ -253,6 +261,7 @@
             // 
             this.lblDormancy.AutoSize = true;
             this.lblDormancy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDormancy.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblDormancy.Location = new System.Drawing.Point(23, 23);
             this.lblDormancy.Name = "lblDormancy";
             this.lblDormancy.Size = new System.Drawing.Size(71, 21);
@@ -263,6 +272,7 @@
             // 
             this.lblEvery.AutoSize = true;
             this.lblEvery.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEvery.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblEvery.Location = new System.Drawing.Point(23, 116);
             this.lblEvery.Name = "lblEvery";
             this.lblEvery.Size = new System.Drawing.Size(108, 21);
@@ -273,6 +283,7 @@
             // 
             this.txtDormancyPenalty.ContextMenuStrip = this.contextMenuBlank;
             this.txtDormancyPenalty.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDormancyPenalty.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtDormancyPenalty.Location = new System.Drawing.Point(27, 78);
             this.txtDormancyPenalty.MaxLength = 7;
             this.txtDormancyPenalty.Name = "txtDormancyPenalty";
@@ -286,6 +297,7 @@
             // 
             this.numDormancyChargeDuration.ContextMenuStrip = this.contextMenuBlank;
             this.numDormancyChargeDuration.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDormancyChargeDuration.ForeColor = System.Drawing.SystemColors.ControlText;
             this.numDormancyChargeDuration.Location = new System.Drawing.Point(137, 113);
             this.numDormancyChargeDuration.Name = "numDormancyChargeDuration";
             this.numDormancyChargeDuration.Size = new System.Drawing.Size(52, 29);
@@ -298,6 +310,7 @@
             this.comboDormancy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboDormancy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboDormancy.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboDormancy.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboDormancy.FormattingEnabled = true;
             this.comboDormancy.Items.AddRange(new object[] {
             "Day/s",
@@ -313,6 +326,7 @@
             this.comboDormancyPenalty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboDormancyPenalty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboDormancyPenalty.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboDormancyPenalty.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboDormancyPenalty.FormattingEnabled = true;
             this.comboDormancyPenalty.Items.AddRange(new object[] {
             "Php",
@@ -326,6 +340,7 @@
             // 
             this.numDormancy.ContextMenuStrip = this.contextMenuBlank;
             this.numDormancy.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDormancy.ForeColor = System.Drawing.SystemColors.ControlText;
             this.numDormancy.Location = new System.Drawing.Point(137, 21);
             this.numDormancy.Name = "numDormancy";
             this.numDormancy.Size = new System.Drawing.Size(52, 29);
@@ -337,6 +352,7 @@
             // 
             this.lblPenaltyDormancy.AutoSize = true;
             this.lblPenaltyDormancy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPenaltyDormancy.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblPenaltyDormancy.Location = new System.Drawing.Point(15, 54);
             this.lblPenaltyDormancy.Name = "lblPenaltyDormancy";
             this.lblPenaltyDormancy.Size = new System.Drawing.Size(121, 21);
@@ -354,6 +370,7 @@
             this.groupMain.Controls.Add(this.txtMaintaningBalance);
             this.groupMain.Controls.Add(this.lblMaintainingBalance);
             this.groupMain.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupMain.ForeColor = System.Drawing.Color.Firebrick;
             this.groupMain.Location = new System.Drawing.Point(437, 30);
             this.groupMain.Name = "groupMain";
             this.groupMain.Size = new System.Drawing.Size(316, 164);
@@ -365,6 +382,7 @@
             // 
             this.numMBalChargeDuration.ContextMenuStrip = this.contextMenuBlank;
             this.numMBalChargeDuration.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numMBalChargeDuration.ForeColor = System.Drawing.SystemColors.ControlText;
             this.numMBalChargeDuration.Location = new System.Drawing.Point(136, 119);
             this.numMBalChargeDuration.Name = "numMBalChargeDuration";
             this.numMBalChargeDuration.Size = new System.Drawing.Size(52, 29);
@@ -377,6 +395,7 @@
             this.comboMBalChargeDuration.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMBalChargeDuration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboMBalChargeDuration.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboMBalChargeDuration.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboMBalChargeDuration.FormattingEnabled = true;
             this.comboMBalChargeDuration.Items.AddRange(new object[] {
             "day/s",
@@ -393,6 +412,7 @@
             this.comboMBalCharge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMBalCharge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboMBalCharge.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboMBalCharge.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboMBalCharge.FormattingEnabled = true;
             this.comboMBalCharge.Items.AddRange(new object[] {
             "Pesos (Php)",
@@ -406,6 +426,7 @@
             // 
             this.txtMBalCharge.ContextMenuStrip = this.contextMenuBlank;
             this.txtMBalCharge.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMBalCharge.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMBalCharge.Location = new System.Drawing.Point(26, 84);
             this.txtMBalCharge.MaxLength = 7;
             this.txtMBalCharge.Name = "txtMBalCharge";
@@ -417,6 +438,7 @@
             // 
             this.lblCharge.AutoSize = true;
             this.lblCharge.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCharge.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblCharge.Location = new System.Drawing.Point(22, 122);
             this.lblCharge.Name = "lblCharge";
             this.lblCharge.Size = new System.Drawing.Size(108, 21);
@@ -427,6 +449,7 @@
             // 
             this.lblPenalty.AutoSize = true;
             this.lblPenalty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPenalty.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblPenalty.Location = new System.Drawing.Point(14, 60);
             this.lblPenalty.Name = "lblPenalty";
             this.lblPenalty.Size = new System.Drawing.Size(121, 21);
@@ -437,6 +460,7 @@
             // 
             this.txtMaintaningBalance.ContextMenuStrip = this.contextMenuBlank;
             this.txtMaintaningBalance.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaintaningBalance.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMaintaningBalance.Location = new System.Drawing.Point(111, 28);
             this.txtMaintaningBalance.MaxLength = 10;
             this.txtMaintaningBalance.Name = "txtMaintaningBalance";
@@ -451,6 +475,7 @@
             // 
             this.lblMaintainingBalance.AutoSize = true;
             this.lblMaintainingBalance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaintainingBalance.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblMaintainingBalance.Location = new System.Drawing.Point(14, 31);
             this.lblMaintainingBalance.Name = "lblMaintainingBalance";
             this.lblMaintainingBalance.Size = new System.Drawing.Size(66, 21);
@@ -461,6 +486,7 @@
             // 
             this.txtMaxWith.ContextMenuStrip = this.contextMenuBlank;
             this.txtMaxWith.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaxWith.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMaxWith.Location = new System.Drawing.Point(252, 104);
             this.txtMaxWith.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMaxWith.MaxLength = 15;
@@ -476,6 +502,7 @@
             // 
             this.lblMaxWith.AutoSize = true;
             this.lblMaxWith.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaxWith.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblMaxWith.Location = new System.Drawing.Point(13, 107);
             this.lblMaxWith.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMaxWith.Name = "lblMaxWith";
@@ -501,10 +528,12 @@
             // checkStatus
             // 
             this.checkStatus.AutoSize = true;
+            this.checkStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkStatus.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkStatus.ForeColor = System.Drawing.SystemColors.ControlText;
             this.checkStatus.Location = new System.Drawing.Point(70, 317);
             this.checkStatus.Name = "checkStatus";
-            this.checkStatus.Size = new System.Drawing.Size(70, 25);
+            this.checkStatus.Size = new System.Drawing.Size(67, 25);
             this.checkStatus.TabIndex = 45;
             this.checkStatus.Text = "Active";
             this.checkStatus.UseVisualStyleBackColor = true;
@@ -513,6 +542,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(7, 318);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -524,6 +554,7 @@
             // 
             this.groupAvailable.Controls.Add(this.checkedMemberTypes);
             this.groupAvailable.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupAvailable.ForeColor = System.Drawing.Color.Firebrick;
             this.groupAvailable.Location = new System.Drawing.Point(759, 30);
             this.groupAvailable.Name = "groupAvailable";
             this.groupAvailable.Size = new System.Drawing.Size(225, 277);
@@ -534,6 +565,7 @@
             // checkedMemberTypes
             // 
             this.checkedMemberTypes.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedMemberTypes.ForeColor = System.Drawing.SystemColors.ControlText;
             this.checkedMemberTypes.FormattingEnabled = true;
             this.checkedMemberTypes.Location = new System.Drawing.Point(6, 22);
             this.checkedMemberTypes.Name = "checkedMemberTypes";
@@ -544,6 +576,7 @@
             // 
             this.txtInitDeposit.ContextMenuStrip = this.contextMenuBlank;
             this.txtInitDeposit.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInitDeposit.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtInitDeposit.Location = new System.Drawing.Point(252, 67);
             this.txtInitDeposit.MaxLength = 15;
             this.txtInitDeposit.Name = "txtInitDeposit";
@@ -558,6 +591,7 @@
             // 
             this.lblInitDeposit.AutoSize = true;
             this.lblInitDeposit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInitDeposit.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblInitDeposit.Location = new System.Drawing.Point(13, 70);
             this.lblInitDeposit.Name = "lblInitDeposit";
             this.lblInitDeposit.Size = new System.Drawing.Size(165, 21);
@@ -570,6 +604,7 @@
             this.groupRequirements.Controls.Add(this.checkInterestRates);
             this.groupRequirements.Controls.Add(this.checkDormancy);
             this.groupRequirements.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupRequirements.ForeColor = System.Drawing.Color.Firebrick;
             this.groupRequirements.Location = new System.Drawing.Point(13, 176);
             this.groupRequirements.Name = "groupRequirements";
             this.groupRequirements.Size = new System.Drawing.Size(417, 56);
@@ -580,10 +615,12 @@
             // checkMaintainingBalance
             // 
             this.checkMaintainingBalance.AutoSize = true;
+            this.checkMaintainingBalance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkMaintainingBalance.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkMaintainingBalance.ForeColor = System.Drawing.SystemColors.ControlText;
             this.checkMaintainingBalance.Location = new System.Drawing.Point(133, 24);
             this.checkMaintainingBalance.Name = "checkMaintainingBalance";
-            this.checkMaintainingBalance.Size = new System.Drawing.Size(169, 25);
+            this.checkMaintainingBalance.Size = new System.Drawing.Size(166, 25);
             this.checkMaintainingBalance.TabIndex = 17;
             this.checkMaintainingBalance.Text = "Maintaining Balance";
             this.checkMaintainingBalance.UseVisualStyleBackColor = true;
@@ -592,10 +629,12 @@
             // checkInterestRates
             // 
             this.checkInterestRates.AutoSize = true;
+            this.checkInterestRates.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkInterestRates.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkInterestRates.ForeColor = System.Drawing.SystemColors.ControlText;
             this.checkInterestRates.Location = new System.Drawing.Point(6, 24);
             this.checkInterestRates.Name = "checkInterestRates";
-            this.checkInterestRates.Size = new System.Drawing.Size(121, 25);
+            this.checkInterestRates.Size = new System.Drawing.Size(118, 25);
             this.checkInterestRates.TabIndex = 16;
             this.checkInterestRates.Text = "Interest Rates";
             this.checkInterestRates.UseVisualStyleBackColor = true;
@@ -604,10 +643,12 @@
             // checkDormancy
             // 
             this.checkDormancy.AutoSize = true;
+            this.checkDormancy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkDormancy.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkDormancy.ForeColor = System.Drawing.SystemColors.ControlText;
             this.checkDormancy.Location = new System.Drawing.Point(308, 24);
             this.checkDormancy.Name = "checkDormancy";
-            this.checkDormancy.Size = new System.Drawing.Size(98, 25);
+            this.checkDormancy.Size = new System.Drawing.Size(95, 25);
             this.checkDormancy.TabIndex = 18;
             this.checkDormancy.Text = "Dormancy";
             this.checkDormancy.UseVisualStyleBackColor = true;
@@ -617,6 +658,7 @@
             // 
             this.numAccountHolder.ContextMenuStrip = this.contextMenuBlank;
             this.numAccountHolder.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numAccountHolder.ForeColor = System.Drawing.SystemColors.ControlText;
             this.numAccountHolder.Location = new System.Drawing.Point(252, 141);
             this.numAccountHolder.Name = "numAccountHolder";
             this.numAccountHolder.Size = new System.Drawing.Size(53, 29);
@@ -627,6 +669,7 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtName.Location = new System.Drawing.Point(252, 32);
             this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
@@ -637,6 +680,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblName.Location = new System.Drawing.Point(13, 35);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(149, 21);
@@ -675,10 +719,11 @@
             this.checkArchived.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkArchived.AutoSize = true;
             this.checkArchived.BackColor = System.Drawing.Color.Yellow;
+            this.checkArchived.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkArchived.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkArchived.Location = new System.Drawing.Point(21, 219);
             this.checkArchived.Name = "checkArchived";
-            this.checkArchived.Size = new System.Drawing.Size(126, 25);
+            this.checkArchived.Size = new System.Drawing.Size(123, 25);
             this.checkArchived.TabIndex = 2;
             this.checkArchived.Text = "Show Archives";
             this.checkArchived.UseVisualStyleBackColor = false;
@@ -736,6 +781,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Firebrick;
             this.label5.Location = new System.Drawing.Point(13, 10);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
@@ -748,7 +794,7 @@
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Snow;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1014, 621);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnDelete);

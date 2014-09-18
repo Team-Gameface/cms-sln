@@ -69,6 +69,7 @@
             // 
             this.txtLoanBalance.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtLoanBalance.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoanBalance.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtLoanBalance.Location = new System.Drawing.Point(159, 144);
             this.txtLoanBalance.Name = "txtLoanBalance";
             this.txtLoanBalance.ReadOnly = true;
@@ -80,6 +81,7 @@
             // 
             this.txtPayment.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPayment.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPayment.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtPayment.Location = new System.Drawing.Point(159, 179);
             this.txtPayment.Name = "txtPayment";
             this.txtPayment.Size = new System.Drawing.Size(173, 29);
@@ -124,6 +126,7 @@
             // 
             this.txtAccountNo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtAccountNo.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccountNo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtAccountNo.Location = new System.Drawing.Point(159, 109);
             this.txtAccountNo.Name = "txtAccountNo";
             this.txtAccountNo.ReadOnly = true;
@@ -135,6 +138,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Firebrick;
             this.label5.Location = new System.Drawing.Point(13, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
@@ -183,6 +187,7 @@
             this.AcceptButton = this.btnProceed;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(344, 281);
             this.Controls.Add(this.btnProceed);
             this.Controls.Add(this.btnCancel);

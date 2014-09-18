@@ -60,6 +60,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Firebrick;
             this.label4.Location = new System.Drawing.Point(4, 9);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
@@ -122,6 +123,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Firebrick;
             this.label5.Location = new System.Drawing.Point(444, 140);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(186, 25);
@@ -132,6 +134,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label7.Location = new System.Drawing.Point(331, 29);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(70, 21);
@@ -142,6 +145,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label6.Location = new System.Drawing.Point(26, 59);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(114, 21);
@@ -152,6 +156,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(26, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(144, 21);
@@ -162,6 +167,7 @@
             // 
             this.lblBalance.AutoSize = true;
             this.lblBalance.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBalance.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblBalance.Location = new System.Drawing.Point(407, 29);
             this.lblBalance.Name = "lblBalance";
             this.lblBalance.Size = new System.Drawing.Size(0, 21);
@@ -171,6 +177,7 @@
             // 
             this.lblAccountHolders.AutoSize = true;
             this.lblAccountHolders.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccountHolders.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblAccountHolders.Location = new System.Drawing.Point(192, 89);
             this.lblAccountHolders.Name = "lblAccountHolders";
             this.lblAccountHolders.Size = new System.Drawing.Size(0, 21);
@@ -180,6 +187,7 @@
             // 
             this.lblAcctType.AutoSize = true;
             this.lblAcctType.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcctType.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblAcctType.Location = new System.Drawing.Point(192, 29);
             this.lblAcctType.Name = "lblAcctType";
             this.lblAcctType.Size = new System.Drawing.Size(0, 21);
@@ -189,6 +197,7 @@
             // 
             this.lblAccountNo.AutoSize = true;
             this.lblAccountNo.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccountNo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblAccountNo.Location = new System.Drawing.Point(192, 59);
             this.lblAccountNo.Name = "lblAccountNo";
             this.lblAccountNo.Size = new System.Drawing.Size(0, 21);
@@ -198,6 +207,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(26, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(160, 21);
@@ -207,6 +217,7 @@
             // txtAccountNo
             // 
             this.txtAccountNo.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccountNo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtAccountNo.Location = new System.Drawing.Point(176, 31);
             this.txtAccountNo.Name = "txtAccountNo";
             this.txtAccountNo.Size = new System.Drawing.Size(244, 29);
@@ -215,6 +226,7 @@
             // txtMemberName
             // 
             this.txtMemberName.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMemberName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMemberName.Location = new System.Drawing.Point(176, 66);
             this.txtMemberName.Name = "txtMemberName";
             this.txtMemberName.Size = new System.Drawing.Size(244, 29);
@@ -223,10 +235,12 @@
             // rbMemberName
             // 
             this.rbMemberName.AutoSize = true;
+            this.rbMemberName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbMemberName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMemberName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rbMemberName.Location = new System.Drawing.Point(21, 67);
             this.rbMemberName.Name = "rbMemberName";
-            this.rbMemberName.Size = new System.Drawing.Size(133, 25);
+            this.rbMemberName.Size = new System.Drawing.Size(132, 25);
             this.rbMemberName.TabIndex = 5;
             this.rbMemberName.TabStop = true;
             this.rbMemberName.Text = "Member Name";
@@ -236,10 +250,12 @@
             // rbAccountNo
             // 
             this.rbAccountNo.AutoSize = true;
+            this.rbAccountNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbAccountNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbAccountNo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rbAccountNo.Location = new System.Drawing.Point(21, 32);
             this.rbAccountNo.Name = "rbAccountNo";
-            this.rbAccountNo.Size = new System.Drawing.Size(146, 25);
+            this.rbAccountNo.Size = new System.Drawing.Size(145, 25);
             this.rbAccountNo.TabIndex = 3;
             this.rbAccountNo.TabStop = true;
             this.rbAccountNo.Text = "Account Number";
@@ -254,6 +270,7 @@
             this.groupBox1.Controls.Add(this.txtMemberName);
             this.groupBox1.Controls.Add(this.txtAccountNo);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox1.Location = new System.Drawing.Point(12, 57);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(426, 105);
@@ -273,6 +290,7 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox2.Location = new System.Drawing.Point(444, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(536, 125);
@@ -283,7 +301,7 @@
             // StatementOfAccount
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.Snow;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(994, 486);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

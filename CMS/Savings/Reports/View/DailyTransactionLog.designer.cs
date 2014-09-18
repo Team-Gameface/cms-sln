@@ -47,7 +47,9 @@
             // lblFrom
             // 
             this.lblFrom.AutoSize = true;
+            this.lblFrom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFrom.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblFrom.Location = new System.Drawing.Point(34, 47);
             this.lblFrom.Name = "lblFrom";
             this.lblFrom.Size = new System.Drawing.Size(47, 21);
@@ -67,10 +69,12 @@
             // cbDateTo
             // 
             this.cbDateTo.AutoSize = true;
+            this.cbDateTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbDateTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDateTo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbDateTo.Location = new System.Drawing.Point(204, 46);
             this.cbDateTo.Name = "cbDateTo";
-            this.cbDateTo.Size = new System.Drawing.Size(46, 25);
+            this.cbDateTo.Size = new System.Drawing.Size(43, 25);
             this.cbDateTo.TabIndex = 23;
             this.cbDateTo.Text = "To";
             this.cbDateTo.UseVisualStyleBackColor = true;
@@ -93,6 +97,7 @@
             this.grpDatesTransaction.Controls.Add(this.dateFrom);
             this.grpDatesTransaction.Controls.Add(this.lblFrom);
             this.grpDatesTransaction.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpDatesTransaction.ForeColor = System.Drawing.Color.Firebrick;
             this.grpDatesTransaction.Location = new System.Drawing.Point(50, 77);
             this.grpDatesTransaction.Name = "grpDatesTransaction";
             this.grpDatesTransaction.Size = new System.Drawing.Size(409, 90);
@@ -103,10 +108,12 @@
             // rbAscending
             // 
             this.rbAscending.AutoSize = true;
+            this.rbAscending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbAscending.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbAscending.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rbAscending.Location = new System.Drawing.Point(256, 32);
             this.rbAscending.Name = "rbAscending";
-            this.rbAscending.Size = new System.Drawing.Size(100, 25);
+            this.rbAscending.Size = new System.Drawing.Size(99, 25);
             this.rbAscending.TabIndex = 26;
             this.rbAscending.TabStop = true;
             this.rbAscending.Text = "Ascending";
@@ -115,10 +122,12 @@
             // rbDescending
             // 
             this.rbDescending.AutoSize = true;
+            this.rbDescending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbDescending.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDescending.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rbDescending.Location = new System.Drawing.Point(256, 63);
             this.rbDescending.Name = "rbDescending";
-            this.rbDescending.Size = new System.Drawing.Size(109, 25);
+            this.rbDescending.Size = new System.Drawing.Size(108, 25);
             this.rbDescending.TabIndex = 26;
             this.rbDescending.TabStop = true;
             this.rbDescending.Text = "Descending";
@@ -129,6 +138,7 @@
             this.cbSortBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSortBy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbSortBy.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSortBy.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbSortBy.FormattingEnabled = true;
             this.cbSortBy.Items.AddRange(new object[] {
             "Transaction Time",
@@ -147,6 +157,7 @@
             this.grpSort.Controls.Add(this.rbDescending);
             this.grpSort.Controls.Add(this.rbAscending);
             this.grpSort.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpSort.ForeColor = System.Drawing.Color.Firebrick;
             this.grpSort.Location = new System.Drawing.Point(50, 173);
             this.grpSort.Name = "grpSort";
             this.grpSort.Size = new System.Drawing.Size(409, 99);
@@ -159,6 +170,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Firebrick;
             this.label4.Location = new System.Drawing.Point(13, 9);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
@@ -186,7 +198,7 @@
             // DailyTransactionLog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.Snow;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(504, 341);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.grpSort);

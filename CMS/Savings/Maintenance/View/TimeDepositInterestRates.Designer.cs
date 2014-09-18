@@ -73,6 +73,7 @@
             this.groupBox1.Controls.Add(this.txtInterestRate);
             this.groupBox1.Controls.Add(this.lblInterestRate);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox1.Location = new System.Drawing.Point(30, 316);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(645, 173);
@@ -83,6 +84,7 @@
             // numDays
             // 
             this.numDays.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDays.ForeColor = System.Drawing.SystemColors.ControlText;
             this.numDays.Location = new System.Drawing.Point(151, 55);
             this.numDays.Name = "numDays";
             this.numDays.Size = new System.Drawing.Size(92, 29);
@@ -93,6 +95,7 @@
             // 
             this.lblDays.AutoSize = true;
             this.lblDays.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDays.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblDays.Location = new System.Drawing.Point(30, 57);
             this.lblDays.Name = "lblDays";
             this.lblDays.Size = new System.Drawing.Size(87, 21);
@@ -122,6 +125,7 @@
             this.groupBox2.Controls.Add(this.txtMaxBal);
             this.groupBox2.Controls.Add(this.txtMinBal);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox2.Location = new System.Drawing.Point(301, 27);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(308, 99);
@@ -133,6 +137,7 @@
             // 
             this.lblMaximum.AutoSize = true;
             this.lblMaximum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaximum.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblMaximum.Location = new System.Drawing.Point(34, 66);
             this.lblMaximum.Name = "lblMaximum";
             this.lblMaximum.Size = new System.Drawing.Size(80, 21);
@@ -143,6 +148,7 @@
             // 
             this.lblMinimum.AutoSize = true;
             this.lblMinimum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMinimum.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblMinimum.Location = new System.Drawing.Point(34, 31);
             this.lblMinimum.Name = "lblMinimum";
             this.lblMinimum.Size = new System.Drawing.Size(78, 21);
@@ -154,6 +160,7 @@
             this.txtMaxBal.ContextMenuStrip = this.contextMenuBlank;
             this.txtMaxBal.Enabled = false;
             this.txtMaxBal.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaxBal.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMaxBal.Location = new System.Drawing.Point(123, 63);
             this.txtMaxBal.MaxLength = 25;
             this.txtMaxBal.Name = "txtMaxBal";
@@ -173,6 +180,7 @@
             // 
             this.txtMinBal.ContextMenuStrip = this.contextMenuBlank;
             this.txtMinBal.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMinBal.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMinBal.Location = new System.Drawing.Point(123, 28);
             this.txtMinBal.MaxLength = 25;
             this.txtMinBal.Name = "txtMinBal";
@@ -187,6 +195,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label4.Location = new System.Drawing.Point(7, 139);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
@@ -213,6 +222,7 @@
             // 
             this.lblPercent.AutoSize = true;
             this.lblPercent.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPercent.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblPercent.Location = new System.Drawing.Point(249, 96);
             this.lblPercent.Name = "lblPercent";
             this.lblPercent.Size = new System.Drawing.Size(20, 19);
@@ -222,10 +232,12 @@
             // Status
             // 
             this.Status.AutoSize = true;
+            this.Status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Status.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Status.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Status.Location = new System.Drawing.Point(70, 138);
             this.Status.Name = "Status";
-            this.Status.Size = new System.Drawing.Size(70, 25);
+            this.Status.Size = new System.Drawing.Size(67, 25);
             this.Status.TabIndex = 18;
             this.Status.Text = "Active";
             this.Status.UseVisualStyleBackColor = true;
@@ -234,6 +246,7 @@
             // 
             this.txtInterestRate.ContextMenuStrip = this.contextMenuBlank;
             this.txtInterestRate.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInterestRate.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtInterestRate.Location = new System.Drawing.Point(151, 90);
             this.txtInterestRate.MaxLength = 7;
             this.txtInterestRate.Name = "txtInterestRate";
@@ -247,6 +260,7 @@
             // 
             this.lblInterestRate.AutoSize = true;
             this.lblInterestRate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInterestRate.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblInterestRate.Location = new System.Drawing.Point(30, 94);
             this.lblInterestRate.Name = "lblInterestRate";
             this.lblInterestRate.Size = new System.Drawing.Size(97, 21);
@@ -258,6 +272,7 @@
             this.lblSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblSearch.Location = new System.Drawing.Point(35, 68);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(169, 21);
@@ -268,6 +283,7 @@
             // 
             this.txtSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtSearch.Location = new System.Drawing.Point(331, 65);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(344, 29);
@@ -277,6 +293,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Firebrick;
             this.label5.Location = new System.Drawing.Point(13, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
@@ -347,7 +364,7 @@
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Snow;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(704, 501);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);

@@ -101,6 +101,7 @@
             this.comboDuration.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboDuration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboDuration.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboDuration.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboDuration.FormattingEnabled = true;
             this.comboDuration.Items.AddRange(new object[] {
             "Day/s",
@@ -115,6 +116,7 @@
             // 
             this.numDuration.ContextMenuStrip = this.contextMenuBlank;
             this.numDuration.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDuration.ForeColor = System.Drawing.SystemColors.ControlText;
             this.numDuration.Location = new System.Drawing.Point(144, 63);
             this.numDuration.Name = "numDuration";
             this.numDuration.Size = new System.Drawing.Size(69, 29);
@@ -127,6 +129,7 @@
             // 
             this.lblDuration.AutoSize = true;
             this.lblDuration.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDuration.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblDuration.Location = new System.Drawing.Point(15, 65);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(120, 21);
@@ -137,6 +140,7 @@
             // 
             this.lblMaturity.AutoSize = true;
             this.lblMaturity.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaturity.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblMaturity.Location = new System.Drawing.Point(43, 109);
             this.lblMaturity.Name = "lblMaturity";
             this.lblMaturity.Size = new System.Drawing.Size(105, 21);
@@ -147,6 +151,7 @@
             // 
             this.txtDeposit.ContextMenuStrip = this.contextMenuBlank;
             this.txtDeposit.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeposit.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtDeposit.Location = new System.Drawing.Point(144, 28);
             this.txtDeposit.MaxLength = 10;
             this.txtDeposit.Name = "txtDeposit";
@@ -160,6 +165,7 @@
             // 
             this.lblDeposit.AutoSize = true;
             this.lblDeposit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeposit.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblDeposit.Location = new System.Drawing.Point(15, 31);
             this.lblDeposit.Name = "lblDeposit";
             this.lblDeposit.Size = new System.Drawing.Size(123, 21);
@@ -175,6 +181,7 @@
             this.groupBox4.Controls.Add(this.radioMemberName);
             this.groupBox4.Controls.Add(this.radioAccountNo);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox4.Location = new System.Drawing.Point(12, 57);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(742, 104);
@@ -186,6 +193,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(44, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 21);
@@ -196,6 +204,7 @@
             // 
             this.txtAccountNo.Enabled = false;
             this.txtAccountNo.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccountNo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtAccountNo.Location = new System.Drawing.Point(320, 28);
             this.txtAccountNo.Name = "txtAccountNo";
             this.txtAccountNo.Size = new System.Drawing.Size(365, 29);
@@ -205,6 +214,7 @@
             // 
             this.txtMemberName.Enabled = false;
             this.txtMemberName.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMemberName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMemberName.Location = new System.Drawing.Point(320, 63);
             this.txtMemberName.Name = "txtMemberName";
             this.txtMemberName.Size = new System.Drawing.Size(365, 29);
@@ -213,10 +223,12 @@
             // radioMemberName
             // 
             this.radioMemberName.AutoSize = true;
+            this.radioMemberName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioMemberName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioMemberName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioMemberName.Location = new System.Drawing.Point(135, 64);
             this.radioMemberName.Name = "radioMemberName";
-            this.radioMemberName.Size = new System.Drawing.Size(133, 25);
+            this.radioMemberName.Size = new System.Drawing.Size(132, 25);
             this.radioMemberName.TabIndex = 6;
             this.radioMemberName.TabStop = true;
             this.radioMemberName.Text = "Member Name";
@@ -226,10 +238,12 @@
             // radioAccountNo
             // 
             this.radioAccountNo.AutoSize = true;
+            this.radioAccountNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioAccountNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioAccountNo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioAccountNo.Location = new System.Drawing.Point(135, 29);
             this.radioAccountNo.Name = "radioAccountNo";
-            this.radioAccountNo.Size = new System.Drawing.Size(146, 25);
+            this.radioAccountNo.Size = new System.Drawing.Size(145, 25);
             this.radioAccountNo.TabIndex = 4;
             this.radioAccountNo.TabStop = true;
             this.radioAccountNo.Text = "Account Number";
@@ -247,6 +261,7 @@
             this.groupWithdrawal.Controls.Add(this.numDuration);
             this.groupWithdrawal.Controls.Add(this.comboDuration);
             this.groupWithdrawal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupWithdrawal.ForeColor = System.Drawing.Color.Firebrick;
             this.groupWithdrawal.Location = new System.Drawing.Point(393, 167);
             this.groupWithdrawal.Name = "groupWithdrawal";
             this.groupWithdrawal.Size = new System.Drawing.Size(361, 179);
@@ -259,6 +274,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Firebrick;
             this.label5.Location = new System.Drawing.Point(13, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
@@ -304,7 +320,7 @@
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Snow;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(764, 481);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClear);

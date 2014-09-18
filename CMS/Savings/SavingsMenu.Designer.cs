@@ -34,26 +34,26 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusDateTime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuMaintenance = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSavingsAccountTypes = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.itemInterestRates = new System.Windows.Forms.ToolStripMenuItem();
             this.itemTimeDepositWithdrawal = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTransaction = new System.Windows.Forms.ToolStripMenuItem();
             this.itemOpenAccount = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSavingsAccountTrans = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.itemTimeDepositApp = new System.Windows.Forms.ToolStripMenuItem();
             this.itemTimeDepositWith = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.itemMemberTermination = new System.Windows.Forms.ToolStripMenuItem();
             this.menuQueriesReports = new System.Windows.Forms.ToolStripMenuItem();
             this.itemStatementOfAccount = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.itemDailyTransactionLog = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // timerDateTime
@@ -90,23 +90,23 @@
             this.statusDateTime.Text = "DateTime";
             this.statusDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuMaintenance,
             this.menuTransaction,
             this.menuQueriesReports});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 29);
-            this.menuStrip1.TabIndex = 5;
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(784, 29);
+            this.menuStrip.TabIndex = 7;
             // 
             // menuMaintenance
             // 
             this.menuMaintenance.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemSavingsAccountTypes,
-            this.toolStripSeparator9,
+            this.toolStripSeparator1,
             this.itemInterestRates,
             this.itemTimeDepositWithdrawal});
             this.menuMaintenance.Name = "menuMaintenance";
@@ -120,10 +120,10 @@
             this.itemSavingsAccountTypes.Size = new System.Drawing.Size(276, 24);
             this.itemSavingsAccountTypes.Text = "Savings Account Type";
             // 
-            // toolStripSeparator9
+            // toolStripSeparator1
             // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(273, 6);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(273, 6);
             // 
             // itemInterestRates
             // 
@@ -144,10 +144,10 @@
             this.menuTransaction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemOpenAccount,
             this.itemSavingsAccountTrans,
-            this.toolStripSeparator7,
+            this.toolStripSeparator2,
             this.itemTimeDepositApp,
             this.itemTimeDepositWith,
-            this.toolStripSeparator8,
+            this.toolStripSeparator3,
             this.itemMemberTermination});
             this.menuTransaction.Name = "menuTransaction";
             this.menuTransaction.Size = new System.Drawing.Size(125, 25);
@@ -167,10 +167,10 @@
             this.itemSavingsAccountTrans.Size = new System.Drawing.Size(264, 24);
             this.itemSavingsAccountTrans.Text = "Savings Account Transaction";
             // 
-            // toolStripSeparator7
+            // toolStripSeparator2
             // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(261, 6);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(261, 6);
             // 
             // itemTimeDepositApp
             // 
@@ -186,10 +186,10 @@
             this.itemTimeDepositWith.Size = new System.Drawing.Size(264, 24);
             this.itemTimeDepositWith.Text = "Time Deposit Withdrawal";
             // 
-            // toolStripSeparator8
+            // toolStripSeparator3
             // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(261, 6);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(261, 6);
             // 
             // itemMemberTermination
             // 
@@ -202,7 +202,7 @@
             // 
             this.menuQueriesReports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemStatementOfAccount,
-            this.toolStripSeparator5,
+            this.toolStripSeparator4,
             this.itemDailyTransactionLog});
             this.menuQueriesReports.Name = "menuQueriesReports";
             this.menuQueriesReports.Size = new System.Drawing.Size(186, 25);
@@ -210,19 +210,21 @@
             // 
             // itemStatementOfAccount
             // 
+            this.itemStatementOfAccount.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemStatementOfAccount.Name = "itemStatementOfAccount";
-            this.itemStatementOfAccount.Size = new System.Drawing.Size(226, 26);
+            this.itemStatementOfAccount.Size = new System.Drawing.Size(222, 24);
             this.itemStatementOfAccount.Text = "Statement of Account";
             // 
-            // toolStripSeparator5
+            // toolStripSeparator4
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(223, 6);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(219, 6);
             // 
             // itemDailyTransactionLog
             // 
+            this.itemDailyTransactionLog.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemDailyTransactionLog.Name = "itemDailyTransactionLog";
-            this.itemDailyTransactionLog.Size = new System.Drawing.Size(226, 26);
+            this.itemDailyTransactionLog.Size = new System.Drawing.Size(222, 24);
             this.itemDailyTransactionLog.Text = "Daily Transaction Log";
             // 
             // SavingsMenu
@@ -233,11 +235,12 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "SavingsMenu";
@@ -246,8 +249,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,23 +262,23 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripProgressBar progressBar;
         private System.Windows.Forms.ToolStripStatusLabel statusDateTime;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuMaintenance;
         private System.Windows.Forms.ToolStripMenuItem itemSavingsAccountTypes;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem itemInterestRates;
         private System.Windows.Forms.ToolStripMenuItem itemTimeDepositWithdrawal;
         private System.Windows.Forms.ToolStripMenuItem menuTransaction;
         private System.Windows.Forms.ToolStripMenuItem itemOpenAccount;
         private System.Windows.Forms.ToolStripMenuItem itemSavingsAccountTrans;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem itemTimeDepositApp;
         private System.Windows.Forms.ToolStripMenuItem itemTimeDepositWith;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem itemMemberTermination;
         private System.Windows.Forms.ToolStripMenuItem menuQueriesReports;
         private System.Windows.Forms.ToolStripMenuItem itemStatementOfAccount;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem itemDailyTransactionLog;
     }
 }

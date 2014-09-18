@@ -34,7 +34,20 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusDateTime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.menuQueriesReports = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemPaymentHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.itemLoanReleases = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemCollectionReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemDelinquencySchedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemAnnualFinancialReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTransaction = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemMemberProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemCapitalContribution = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.itemLoanApp = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemLoanAmnesty = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMaintenance = new System.Windows.Forms.ToolStripMenuItem();
             this.membershipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemMemberTypes = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,21 +59,8 @@
             this.itemLoanCharges = new System.Windows.Forms.ToolStripMenuItem();
             this.itemPenalties = new System.Windows.Forms.ToolStripMenuItem();
             this.itemLoanAmnestyActivation = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTransaction = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemMemberProfile = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemCapitalContribution = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.itemLoanApp = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemLoanAmnesty = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuQueriesReports = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemPaymentHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.itemLoanReleases = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemCollectionReport = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemDelinquencySchedule = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemAnnualFinancialReport = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // timerDateTime
@@ -97,18 +97,115 @@
             this.statusDateTime.Text = "DateTime";
             this.statusDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuMaintenance,
             this.menuTransaction,
             this.menuQueriesReports});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 29);
-            this.menuStrip1.TabIndex = 6;
-            this.menuStrip1.Text = "menuStrip";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(784, 29);
+            this.menuStrip.TabIndex = 8;
+            // 
+            // menuQueriesReports
+            // 
+            this.menuQueriesReports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemPaymentHistory,
+            this.toolStripSeparator6,
+            this.itemLoanReleases,
+            this.itemCollectionReport,
+            this.itemDelinquencySchedule,
+            this.itemAnnualFinancialReport});
+            this.menuQueriesReports.Name = "menuQueriesReports";
+            this.menuQueriesReports.Size = new System.Drawing.Size(186, 25);
+            this.menuQueriesReports.Text = "&QUERIES AND REPORTS";
+            // 
+            // itemPaymentHistory
+            // 
+            this.itemPaymentHistory.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemPaymentHistory.Name = "itemPaymentHistory";
+            this.itemPaymentHistory.Size = new System.Drawing.Size(269, 24);
+            this.itemPaymentHistory.Text = "Loan Status";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(266, 6);
+            // 
+            // itemLoanReleases
+            // 
+            this.itemLoanReleases.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemLoanReleases.Name = "itemLoanReleases";
+            this.itemLoanReleases.Size = new System.Drawing.Size(269, 24);
+            this.itemLoanReleases.Text = "Loan Releases";
+            // 
+            // itemCollectionReport
+            // 
+            this.itemCollectionReport.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemCollectionReport.Name = "itemCollectionReport";
+            this.itemCollectionReport.Size = new System.Drawing.Size(269, 24);
+            this.itemCollectionReport.Text = "Collection Report";
+            // 
+            // itemDelinquencySchedule
+            // 
+            this.itemDelinquencySchedule.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemDelinquencySchedule.Name = "itemDelinquencySchedule";
+            this.itemDelinquencySchedule.Size = new System.Drawing.Size(269, 24);
+            this.itemDelinquencySchedule.Text = "Deliquency Schedule";
+            // 
+            // itemAnnualFinancialReport
+            // 
+            this.itemAnnualFinancialReport.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemAnnualFinancialReport.Name = "itemAnnualFinancialReport";
+            this.itemAnnualFinancialReport.Size = new System.Drawing.Size(269, 24);
+            this.itemAnnualFinancialReport.Text = "Financial Performance Report";
+            // 
+            // menuTransaction
+            // 
+            this.menuTransaction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemMemberProfile,
+            this.itemCapitalContribution,
+            this.toolStripSeparator5,
+            this.itemLoanApp,
+            this.itemLoanAmnesty});
+            this.menuTransaction.Name = "menuTransaction";
+            this.menuTransaction.Size = new System.Drawing.Size(125, 25);
+            this.menuTransaction.Text = "&TRANSACTION";
+            // 
+            // itemMemberProfile
+            // 
+            this.itemMemberProfile.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemMemberProfile.Name = "itemMemberProfile";
+            this.itemMemberProfile.Size = new System.Drawing.Size(250, 24);
+            this.itemMemberProfile.Text = "Member Profile";
+            // 
+            // itemCapitalContribution
+            // 
+            this.itemCapitalContribution.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemCapitalContribution.Name = "itemCapitalContribution";
+            this.itemCapitalContribution.Size = new System.Drawing.Size(250, 24);
+            this.itemCapitalContribution.Text = "Share Capital Contribution";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(247, 6);
+            // 
+            // itemLoanApp
+            // 
+            this.itemLoanApp.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemLoanApp.Name = "itemLoanApp";
+            this.itemLoanApp.Size = new System.Drawing.Size(250, 24);
+            this.itemLoanApp.Text = "Loan Information";
+            // 
+            // itemLoanAmnesty
+            // 
+            this.itemLoanAmnesty.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemLoanAmnesty.Name = "itemLoanAmnesty";
+            this.itemLoanAmnesty.Size = new System.Drawing.Size(250, 24);
+            this.itemLoanAmnesty.Text = "Loan Amnesty";
             // 
             // menuMaintenance
             // 
@@ -196,104 +293,6 @@
             this.itemLoanAmnestyActivation.Size = new System.Drawing.Size(241, 24);
             this.itemLoanAmnestyActivation.Text = "Loan Amnesty Activation";
             // 
-            // menuTransaction
-            // 
-            this.menuTransaction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemMemberProfile,
-            this.itemCapitalContribution,
-            this.toolStripSeparator5,
-            this.itemLoanApp,
-            this.itemLoanAmnesty});
-            this.menuTransaction.Name = "menuTransaction";
-            this.menuTransaction.Size = new System.Drawing.Size(125, 25);
-            this.menuTransaction.Text = "&TRANSACTION";
-            // 
-            // itemMemberProfile
-            // 
-            this.itemMemberProfile.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemMemberProfile.Name = "itemMemberProfile";
-            this.itemMemberProfile.Size = new System.Drawing.Size(250, 24);
-            this.itemMemberProfile.Text = "Member Profile";
-            // 
-            // itemCapitalContribution
-            // 
-            this.itemCapitalContribution.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemCapitalContribution.Name = "itemCapitalContribution";
-            this.itemCapitalContribution.Size = new System.Drawing.Size(250, 24);
-            this.itemCapitalContribution.Text = "Share Capital Contribution";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(247, 6);
-            // 
-            // itemLoanApp
-            // 
-            this.itemLoanApp.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemLoanApp.Name = "itemLoanApp";
-            this.itemLoanApp.Size = new System.Drawing.Size(250, 24);
-            this.itemLoanApp.Text = "Loan Information";
-            // 
-            // itemLoanAmnesty
-            // 
-            this.itemLoanAmnesty.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemLoanAmnesty.Name = "itemLoanAmnesty";
-            this.itemLoanAmnesty.Size = new System.Drawing.Size(250, 24);
-            this.itemLoanAmnesty.Text = "Loan Amnesty";
-            // 
-            // menuQueriesReports
-            // 
-            this.menuQueriesReports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemPaymentHistory,
-            this.toolStripSeparator6,
-            this.itemLoanReleases,
-            this.itemCollectionReport,
-            this.itemDelinquencySchedule,
-            this.itemAnnualFinancialReport});
-            this.menuQueriesReports.Name = "menuQueriesReports";
-            this.menuQueriesReports.Size = new System.Drawing.Size(186, 25);
-            this.menuQueriesReports.Text = "&QUERIES AND REPORTS";
-            // 
-            // itemPaymentHistory
-            // 
-            this.itemPaymentHistory.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemPaymentHistory.Name = "itemPaymentHistory";
-            this.itemPaymentHistory.Size = new System.Drawing.Size(269, 24);
-            this.itemPaymentHistory.Text = "Loan Status";
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(266, 6);
-            // 
-            // itemLoanReleases
-            // 
-            this.itemLoanReleases.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemLoanReleases.Name = "itemLoanReleases";
-            this.itemLoanReleases.Size = new System.Drawing.Size(269, 24);
-            this.itemLoanReleases.Text = "Loan Releases";
-            // 
-            // itemCollectionReport
-            // 
-            this.itemCollectionReport.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemCollectionReport.Name = "itemCollectionReport";
-            this.itemCollectionReport.Size = new System.Drawing.Size(269, 24);
-            this.itemCollectionReport.Text = "Collection Report";
-            // 
-            // itemDelinquencySchedule
-            // 
-            this.itemDelinquencySchedule.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemDelinquencySchedule.Name = "itemDelinquencySchedule";
-            this.itemDelinquencySchedule.Size = new System.Drawing.Size(269, 24);
-            this.itemDelinquencySchedule.Text = "Deliquency Schedule";
-            // 
-            // itemAnnualFinancialReport
-            // 
-            this.itemAnnualFinancialReport.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemAnnualFinancialReport.Name = "itemAnnualFinancialReport";
-            this.itemAnnualFinancialReport.Size = new System.Drawing.Size(269, 24);
-            this.itemAnnualFinancialReport.Text = "Financial Performance Report";
-            // 
             // LoanManagementMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -303,11 +302,12 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LoanManagementMenu";
             this.Text = "Loan Management Menu";
@@ -315,8 +315,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoanManagementMenu_FormClosing);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,10 +328,8 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripProgressBar progressBar;
         private System.Windows.Forms.ToolStripStatusLabel statusDateTime;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuMaintenance;
-        private System.Windows.Forms.ToolStripMenuItem menuTransaction;
-        private System.Windows.Forms.ToolStripMenuItem menuQueriesReports;
         private System.Windows.Forms.ToolStripMenuItem membershipToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemMemberTypes;
         private System.Windows.Forms.ToolStripMenuItem itemDeliquencyClassification;
@@ -342,11 +340,13 @@
         private System.Windows.Forms.ToolStripMenuItem itemLoanCharges;
         private System.Windows.Forms.ToolStripMenuItem itemPenalties;
         private System.Windows.Forms.ToolStripMenuItem itemLoanAmnestyActivation;
+        private System.Windows.Forms.ToolStripMenuItem menuTransaction;
         private System.Windows.Forms.ToolStripMenuItem itemMemberProfile;
         private System.Windows.Forms.ToolStripMenuItem itemCapitalContribution;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem itemLoanApp;
         private System.Windows.Forms.ToolStripMenuItem itemLoanAmnesty;
+        private System.Windows.Forms.ToolStripMenuItem menuQueriesReports;
         private System.Windows.Forms.ToolStripMenuItem itemPaymentHistory;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem itemLoanReleases;

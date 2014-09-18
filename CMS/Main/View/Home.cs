@@ -56,7 +56,7 @@ namespace CMS.Main.View
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sqlSelect = "SELECT COUNT(*) FROM TIME_DEPOSIT WHERE Status = 1";
             int total = Convert.ToInt32(dal.executeScalar(sqlSelect));
-            lblLoans.Text = total.ToString("D4");
+            lblTimeDeposit.Text = total.ToString("D4");
         }
     }
 }

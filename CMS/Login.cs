@@ -23,6 +23,7 @@ namespace CMS
             InitializeComponent();
             checkCompanyProfile();
             setCompanyData();
+            lblInvalid.Visible = false;
         }
 
         public void checkCompanyProfile()
@@ -92,7 +93,8 @@ namespace CMS
                 SqlDataReader rd = command.ExecuteReader();
                 if (rd.HasRows)
                 {
-                    MessageBox.Show("Login Successful.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblInvalid.Visible = false;
+                    MessageBox.Show("Login Success.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
                     rd.Read();
                     Main.UserData.userId = rd.GetString(0).ToString();
@@ -113,12 +115,12 @@ namespace CMS
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Username/Password", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    lblInvalid.Visible = true;
                 }
             }
-            catch (SqlException sqle)
+            catch (SqlException)
             {
-                MessageBox.Show(sqle.Message);
+                lblInvalid.Visible = true;
             }
         }
 

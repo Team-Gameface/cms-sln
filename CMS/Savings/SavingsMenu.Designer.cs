@@ -78,7 +78,6 @@
             this.toolStripSeparator3,
             this.itemInterestRates,
             this.itemTimeDepositWithdrawal});
-            this.menuMaintenance.Image = global::CMS.Properties.Resources.Maintenance_SV;
             this.menuMaintenance.Name = "menuMaintenance";
             this.menuMaintenance.Size = new System.Drawing.Size(94, 58);
             this.menuMaintenance.Text = "Maintenance";
@@ -126,7 +125,6 @@
             this.itemTimeDepositWith,
             this.toolStripSeparator2,
             this.itemMemberTermination});
-            this.menuTransaction.Image = global::CMS.Properties.Resources.Transaction_SV;
             this.menuTransaction.Name = "menuTransaction";
             this.menuTransaction.Size = new System.Drawing.Size(87, 62);
             this.menuTransaction.Text = "Transaction";
@@ -254,7 +252,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::CMS.Properties.Resources.savingsmenu_bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.statusStrip);

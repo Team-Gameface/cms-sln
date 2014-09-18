@@ -89,7 +89,6 @@
             this.itemLoanCharges,
             this.itemPenalties,
             this.itemLoanAmnestyActivation});
-            this.menuMaintenance.Image = global::CMS.Properties.Resources.Maintenance_LM;
             this.menuMaintenance.Name = "menuMaintenance";
             this.menuMaintenance.Size = new System.Drawing.Size(94, 58);
             this.menuMaintenance.Text = "Maintenance";
@@ -174,7 +173,6 @@
             this.toolStripSeparator2,
             this.itemLoanApp,
             this.itemLoanAmnesty});
-            this.menuTransaction.Image = global::CMS.Properties.Resources.Transaction_LM;
             this.menuTransaction.Name = "menuTransaction";
             this.menuTransaction.Size = new System.Drawing.Size(87, 58);
             this.menuTransaction.Text = "Transaction";
@@ -309,7 +307,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::CMS.Properties.Resources.loanmenu_bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.statusStrip);

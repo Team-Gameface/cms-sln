@@ -74,14 +74,7 @@ namespace CMS.Main.Controller
 
         public void setUser()
         {
-            if (Main.UserData.userAccountType != "Superuser")
-            {
-                this.cms.setUserName(Main.UserData.userLast + ", " + Main.UserData.userFirst);
-            }
-            else
-            {
-                this.cms.setUserName(Main.UserData.userPosition);
-            }
+            this.cms.setUserName(Main.UserData.userLast + ", " + Main.UserData.userFirst);
             this.cms.setRole(Main.UserData.userAccountType);
             this.cms.setPictureUser();
         }

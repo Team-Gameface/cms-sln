@@ -45,6 +45,8 @@
             this.autoCollapse = new System.Windows.Forms.CheckBox();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.statusMain = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,8 +55,6 @@
             this.panelCompany = new System.Windows.Forms.Panel();
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.panelHome = new System.Windows.Forms.Panel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelMenu.SuspendLayout();
             this.panelSwitchboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -100,7 +100,7 @@
             // 
             // btnHome
             // 
-            this.btnHome.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btnHome.BackColor = System.Drawing.Color.LimeGreen;
             this.btnHome.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHome.FlatAppearance.BorderSize = 0;
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -117,7 +117,7 @@
             // 
             // btnLoanManagement
             // 
-            this.btnLoanManagement.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnLoanManagement.BackColor = System.Drawing.Color.MediumBlue;
             this.btnLoanManagement.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnLoanManagement.FlatAppearance.BorderSize = 0;
             this.btnLoanManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -135,7 +135,7 @@
             // 
             // btnSavings
             // 
-            this.btnSavings.BackColor = System.Drawing.Color.MediumBlue;
+            this.btnSavings.BackColor = System.Drawing.Color.Firebrick;
             this.btnSavings.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSavings.FlatAppearance.BorderSize = 0;
             this.btnSavings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -193,7 +193,6 @@
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSettings.ForeColor = System.Drawing.Color.White;
-            this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSettings.Location = new System.Drawing.Point(3, 383);
             this.btnSettings.Name = "btnSettings";
@@ -206,19 +205,19 @@
             // linkSignout
             // 
             this.linkSignout.AutoSize = true;
-            this.linkSignout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkSignout.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkSignout.ForeColor = System.Drawing.Color.White;
             this.linkSignout.LinkColor = System.Drawing.Color.WhiteSmoke;
             this.linkSignout.Location = new System.Drawing.Point(112, 178);
             this.linkSignout.Name = "linkSignout";
-            this.linkSignout.Size = new System.Drawing.Size(58, 17);
+            this.linkSignout.Size = new System.Drawing.Size(57, 17);
             this.linkSignout.TabIndex = 10;
             this.linkSignout.TabStop = true;
             this.linkSignout.Text = "Sign Out";
             // 
             // lblUserRole
             // 
-            this.lblUserRole.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserRole.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserRole.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblUserRole.Location = new System.Drawing.Point(28, 148);
             this.lblUserRole.Name = "lblUserRole";
@@ -255,11 +254,11 @@
             this.autoCollapse.AutoSize = true;
             this.autoCollapse.Checked = true;
             this.autoCollapse.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.autoCollapse.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoCollapse.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoCollapse.ForeColor = System.Drawing.Color.White;
             this.autoCollapse.Location = new System.Drawing.Point(6, 709);
             this.autoCollapse.Name = "autoCollapse";
-            this.autoCollapse.Size = new System.Drawing.Size(102, 19);
+            this.autoCollapse.Size = new System.Drawing.Size(101, 19);
             this.autoCollapse.TabIndex = 19;
             this.autoCollapse.Text = "Auto-Collapse";
             this.autoCollapse.UseVisualStyleBackColor = true;
@@ -279,7 +278,7 @@
             // statusMain
             // 
             this.statusMain.BackColor = System.Drawing.Color.Firebrick;
-            this.statusMain.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusMain.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1,
             this.lblDateTime});
@@ -287,6 +286,21 @@
             this.statusMain.Name = "statusMain";
             this.statusMain.Size = new System.Drawing.Size(611, 35);
             this.statusMain.TabIndex = 3;
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 29);
+            // 
+            // lblDateTime
+            // 
+            this.lblDateTime.ForeColor = System.Drawing.Color.White;
+            this.lblDateTime.Name = "lblDateTime";
+            this.lblDateTime.Size = new System.Drawing.Size(463, 30);
+            this.lblDateTime.Spring = true;
+            this.lblDateTime.Text = "DateTime";
+            this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // timerDateTime
             // 
@@ -297,28 +311,28 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkGoldenrod;
             this.label3.Location = new System.Drawing.Point(138, 103);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(288, 24);
+            this.label3.Size = new System.Drawing.Size(281, 25);
             this.label3.TabIndex = 14;
             this.label3.Text = "(Savings and Loan Management)";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.ForestGreen;
             this.label2.Location = new System.Drawing.Point(137, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(375, 29);
+            this.label2.Size = new System.Drawing.Size(378, 32);
             this.label2.TabIndex = 13;
             this.label2.Text = "Cooperative Management System";
             // 
             // lblCompanyName
             // 
-            this.lblCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F, System.Drawing.FontStyle.Bold);
+            this.lblCompanyName.Font = new System.Drawing.Font("Segoe UI Semibold", 23.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompanyName.ForeColor = System.Drawing.Color.DarkRed;
             this.lblCompanyName.Location = new System.Drawing.Point(137, 3);
             this.lblCompanyName.Name = "lblCompanyName";
@@ -382,21 +396,6 @@
             this.panelHome.Name = "panelHome";
             this.panelHome.Size = new System.Drawing.Size(611, 551);
             this.panelHome.TabIndex = 0;
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 29);
-            // 
-            // lblDateTime
-            // 
-            this.lblDateTime.ForeColor = System.Drawing.Color.White;
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(494, 30);
-            this.lblDateTime.Spring = true;
-            this.lblDateTime.Text = "DateTime";
-            this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CMSDashboard
             // 

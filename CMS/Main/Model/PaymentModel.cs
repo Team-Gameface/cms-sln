@@ -45,6 +45,30 @@ namespace CMS.Main.Model
         
         }
 
+        public int selectMinAmortId(int loanApplicationId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sqlSelect = "Select min(AmortizationId) from LOAN_AMORTIZATION where LoanApplicationId =" + "'" +loanApplicationId + "'";
+            int id = Convert.ToInt32(dal.executeDataSet(sqlSelect));
+            return id;
+        }
+
+        public int selectApplicationId(String accountNo, int loanTypeId, String duedate)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sqlSelect = "Select LoanApplicationId from loan_information where loan_information.accountNo=" + "'" + accountNo + "' and loan_information.loantypeid=" + "'" + loanTypeId + "' and loan_information.maturitydate =" + "'" + duedate + "'";
+            int id = Convert.ToInt32(dal.executeDataSet(sqlSelect));
+            return id;
+        }
+
+        public String selectMaxOR()
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "Select concat(Amount,' ',Penalty,' ',Interest) from PAYMENT where ORNo = (Select max(ORNo) from Payment)";
+            String bal = Convert.ToString(dal.executeScalar(sql));
+            return bal;
+        }
+
         public double selectInterestByAccountNo(String accountNo) 
         {
             try
@@ -514,30 +538,48 @@ namespace CMS.Main.Model
             {
                     String selectAmount = "Select amount from loan_amortization where AmortizationId =" + "'" + amortizationId + "' and LoanApplicationId =" + "'" + lappId + "'";
                     String sAmount = Convert.ToString(dal.executeScalar(selectAmount));
-                    if(sAmount.Equals(String.Empty))
+                    if (sAmount.Equals(String.Empty))
                     {
                         MessageBox.Show("Change was deducted to all amortizations. Exceeding amount is Php" + excess);
+                        String selectAmountMaxORNo = "Select amount from PAYMENT where ORNo=(Select max(ORNo) from Payment)";
+                        double am = Convert.ToDouble(dal.executeScalar(selectAmountMaxORNo));
+                        am = am - excess;
+                        String updatePayment = "Update payment set Amount =" + "'" + am + "'" + " where ORNo=(Select max(ORNo) from Payment)";
+                        dal.executeScalar(updatePayment);
                         excess = 0;
                         String sql6 = "Update LOAN_INFORMATION set isCleared = 1 where LoanApplicationId =" + "'" + lappId + "'";
                         dal.executeScalar(sql6);
                     }
-                    double amount = Convert.ToDouble(dal.executeScalar(selectAmount)) - excess;
-                    String selectMaxOR = "Select max(ORNo) from PAYMENT";
-                    int ORNo = Convert.ToInt32(dal.executeScalar(selectMaxOR));
-                    String insertAmoPayment = "Insert into PAYMENT_AMORTIZATION(ORNo, AmortizationId, Amount) VALUES (" + "'" + ORNo + "'" + ", '" + amortizationId + "'" + ", '" + excess + "')";
-                    dal.executeScalar(insertAmoPayment);
-                    if (amount < 0 && excess!=0)
-                    {
-                        String updateAmortization = "Update LOAN_AMORTIZATION set isPaid = 1 where AmortizationId= " + "'" + amortizationId + "'";
-                        dal.executeScalar(updateAmortization);
-                        excess = amount*-1;
-                        amortizationId++;
-                    }
                     else
                     {
-                        String updateAmortization = "Update LOAN_AMORTIZATION set Amount = " + "'" + amount + "' where AmortizationId= " + "'" + amortizationId + "'";
-                        dal.executeScalar(updateAmortization);
-                        excess = 0;
+                        double amount1 = Convert.ToDouble(dal.executeScalar(selectAmount));
+                        double amount = Convert.ToDouble(dal.executeScalar(selectAmount))-excess;
+                        String selectMaxOR = "Select max(ORNo) from PAYMENT";
+                        int ORNo = Convert.ToInt32(dal.executeScalar(selectMaxOR));
+                        String insertAmoPayment = String.Empty;
+                        if (excess > amount)
+                        {
+                            insertAmoPayment = "Insert into PAYMENT_AMORTIZATION(ORNo, AmortizationId, Amount) VALUES (" + "'" + ORNo + "'" + ", '" + amortizationId + "'" + ", '" + amount1 + "')";
+                        }
+                        else 
+                        {
+                            insertAmoPayment = "Insert into PAYMENT_AMORTIZATION(ORNo, AmortizationId, Amount) VALUES (" + "'" + ORNo + "'" + ", '" + amortizationId + "'" + ", '" + excess + "')";
+                        }
+
+                        dal.executeScalar(insertAmoPayment);
+                        if (amount < 0 && excess != 0)
+                        {
+                            String updateAmortization = "Update LOAN_AMORTIZATION set isPaid = 1 where AmortizationId= " + "'" + amortizationId + "'";
+                            dal.executeScalar(updateAmortization);
+                            excess = amount * -1;
+                            amortizationId++;
+                        }
+                        else
+                        {
+                            String updateAmortization = "Update LOAN_AMORTIZATION set Amount = " + "'" + amount + "' where AmortizationId= " + "'" + amortizationId + "'";
+                            dal.executeScalar(updateAmortization);
+                            excess = 0;
+                        }
                     }
             }
 
@@ -658,7 +700,7 @@ namespace CMS.Main.Model
             return toPenalty + " " + toInterest;
         }
 
-        public void insertRemainingPayment(String paymentType, String accountNo, int loanTypeId, String maturity, double penalty, double interest, Boolean hasInterest, int isFullyPaid) 
+        public int insertRemainingPayment(String paymentType, String accountNo, int loanTypeId, String maturity, double penalty, double interest, Boolean hasInterest, int isFullyPaid) 
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String selectapp = "Select loanApplicationId from LOAN_INFORMATION where ACCOUNTNo=" + "'" + accountNo + "' and LoanTypeId =" + "'" + loanTypeId + "' and MaturityDate=" + "'" + maturity + "'";
@@ -675,6 +717,11 @@ namespace CMS.Main.Model
             parameters.Add("@LoanApplicationId", applicationId);
             parameters.Add("@isFullyPaid", isFullyPaid);
             dal.executeNonQuery(sql, parameters);
+
+            String selectMaxOR = "Select max(ORNo) from PAYMENT";
+            int ORNo = Convert.ToInt32(dal.executeScalar(selectMaxOR));
+            this.ORNo = ORNo;
+            return ORNo;
         }
         public int insertLoanPayment(String paymentType, String accountNo, int applicationId, double amount, double interest, double penalty, String duedate, Boolean hasInterest, int isFullyPaid, int isPaid)
         {
@@ -812,6 +859,13 @@ namespace CMS.Main.Model
                 s = read[0].ToString();
             }
             return s;
+        }
+
+        public void insertPaymentBalance(int ORNo, double balance, double penalty, double interest) 
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "Insert into PAYMENT_BALANCE values ("+"'"+ORNo+"'"+","+"'"+balance+"'"+","+"'"+penalty+"'"+","+"'"+interest+"')";
+            dal.executeScalar(sql);
         }
     }
 }

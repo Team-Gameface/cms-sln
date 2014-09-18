@@ -16,14 +16,14 @@ namespace CMS.Loan_Management.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ScheduleOfDelinquentReport : ReportClass {
+    public class FeeCollectionReport : ReportClass {
         
-        public ScheduleOfDelinquentReport() {
+        public FeeCollectionReport() {
         }
         
         public override string ResourceName {
             get {
-                return "ScheduleOfDelinquentReport.rpt";
+                return "FeeCollectionReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace CMS.Loan_Management.Reports {
         
         public override string FullResourceName {
             get {
-                return "CMS.Loan Management.Reports.ScheduleOfDelinquentReport.rpt";
+                return "CMS.Loan_Management.Reports.FeeCollectionReport.rpt";
             }
             set {
                 // Do nothing
@@ -106,9 +106,9 @@ namespace CMS.Loan_Management.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedScheduleOfDelinquentReport : Component, ICachedReport {
+    public class CachedFeeCollectionReport : Component, ICachedReport {
         
-        public CachedScheduleOfDelinquentReport() {
+        public CachedFeeCollectionReport() {
         }
         
         [Browsable(false)]
@@ -145,7 +145,7 @@ namespace CMS.Loan_Management.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ScheduleOfDelinquentReport rpt = new ScheduleOfDelinquentReport();
+            FeeCollectionReport rpt = new FeeCollectionReport();
             rpt.Site = this.Site;
             return rpt;
         }

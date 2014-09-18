@@ -16,14 +16,14 @@ namespace CMS.Loan_Management.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ShareCollectionReport : ReportClass {
+    public class LoanReleasesReport : ReportClass {
         
-        public ShareCollectionReport() {
+        public LoanReleasesReport() {
         }
         
         public override string ResourceName {
             get {
-                return "ShareCollectionReport.rpt";
+                return "LoanReleasesReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace CMS.Loan_Management.Reports {
         
         public override string FullResourceName {
             get {
-                return "CMS.Loan Management.Reports.ShareCollectionReport.rpt";
+                return "CMS.Loan_Management.Reports.LoanReleasesReport.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace CMS.Loan_Management.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace CMS.Loan_Management.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,33 +82,17 @@ namespace CMS.Loan_Management.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[6];
+                return this.ReportDefinition.Sections[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedShareCollectionReport : Component, ICachedReport {
+    public class CachedLoanReleasesReport : Component, ICachedReport {
         
-        public CachedShareCollectionReport() {
+        public CachedLoanReleasesReport() {
         }
         
         [Browsable(false)]
@@ -145,7 +129,7 @@ namespace CMS.Loan_Management.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ShareCollectionReport rpt = new ShareCollectionReport();
+            LoanReleasesReport rpt = new LoanReleasesReport();
             rpt.Site = this.Site;
             return rpt;
         }

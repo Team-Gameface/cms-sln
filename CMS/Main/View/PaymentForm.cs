@@ -241,10 +241,13 @@ namespace CMS.Main.View
         {
             this.dataAmortization.DataSource = ds.Tables[0];
             this.dataAmortization.Columns[4].Visible = false;
+            this.dataAmortization.Columns[2].DefaultCellStyle.Format = "c";
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.dataAmortization.Columns[2].DefaultCellStyle.FormatProvider = ph;
             this.dataAmortization.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dataAmortization.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dataAmortization.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.dataAmortization.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;             
+            this.dataAmortization.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         public void classGridAmortization2(DataSet ds)
@@ -477,6 +480,11 @@ namespace CMS.Main.View
             this.lblSLTotalLoanBalance.Text = d.ToString("N", CultureInfo.InvariantCulture);
         }
 
+        public double getSLTotalLoanBalance() 
+        {
+            return double.Parse(this.lblSLTotalLoanBalance.Text);
+        }
+
         public void setTotalPenalties(double d)
         {
             this.lblTotalPenalties.Text = d.ToString("N", CultureInfo.InvariantCulture);
@@ -487,6 +495,11 @@ namespace CMS.Main.View
             this.lblSLTotalPenalties.Text = d.ToString("N", CultureInfo.InvariantCulture);
         }
 
+        public double getSLTotalPenalties()
+        {
+            return double.Parse(this.lblSLTotalPenalties.Text);
+        }
+
         public void setTotalInterest(double d)
         {
             this.lblTotalInterest.Text = d.ToString("N", CultureInfo.InvariantCulture);
@@ -495,6 +508,18 @@ namespace CMS.Main.View
         public void setSLTotalInterest(double d)
         {
             this.lblSLTotalInterest.Text = d.ToString("N", CultureInfo.InvariantCulture);
+        }
+
+        public double getSLTotalInterest()
+        {
+            return double.Parse(this.lblSLTotalInterest.Text);
+        }
+
+        public double getChange() 
+        {
+            String change = this.txtAMChange.Text;
+            String newChange = change.Substring(1);
+            return double.Parse(newChange);
         }
 
         public void setNetTotalLoanBalance(double d)
@@ -1067,18 +1092,22 @@ namespace CMS.Main.View
                         String accountNo = selectedData.Cells["Account No."].Value.ToString();
                         this.setSLTotalLoanBalance(this.paymentModel.selectRemainingBalanceWithout(accountNo, this.getLoanMaturityDate(), this.getTypeOfLoan()));
                         this.setPenaltyList("");
+
                         double lastPenalty = this.paymentModel.selectLastPenaltyWithoutApplicationId(accountNo, this.getTypeOfLoan(), this.getLoanMaturityDate());
+                        int appId = this.paymentModel.selectApplicationId(accountNo, this.getTypeOfLoan(), this.getLoanMaturityDate());
                         if (lastPenalty != 0)
                         {
                             this.setPenaltyList("PENALTIES:");
                             DataSet penaltySet = this.paymentModel.selectAmortizationWithPenaltyWithoutApplicationId(accountNo, this.getTypeOfLoan(), this.getLoanMaturityDate());
                             for (int ctr = 0; ctr < penaltySet.Tables[0].Rows.Count; ctr++)
                             {
+                                int minAmoId = this.paymentModel.selectMinAmortId(appId);
                                 int amoId = Convert.ToInt32(penaltySet.Tables[0].Rows[ctr][0]);
                                 double penalty = this.paymentModel.selectAmortizationPenalty(amoId);
-                                this.setPenaltyList("Amortization #" + amoId + " - Php " + penalty.ToString("N", CultureInfo.InvariantCulture));
+                                this.setPenaltyList("Amortization #" + (amoId-minAmoId+1) + " - Php " + penalty.ToString("N", CultureInfo.InvariantCulture));
                             }
                         }
+                         
                         
                         this.setPenalty(this.paymentModel.selectRemainingPenalties(accountNo, this.getTypeOfLoan(), this.getLoanMaturityDate()));
                         this.setInterest(this.paymentModel.selectRemainingInterest(accountNo, this.getTypeOfLoan(), this.getLoanMaturityDate()));
@@ -1142,12 +1171,27 @@ namespace CMS.Main.View
 
             else 
             {
-                foreach (DataGridViewRow rows in this.dataAmortization.Rows)
+                this.txtPenaltyList.Clear();
+                this.setLoanAmortizationAmount(0);
+                this.setPenalty(0);
+                this.setInterest(0);
+                this.txtAMAmountTendered.Clear();
+
+                try
+                {
+                    int row = this.dataLoan.SelectedRows[0].Index;
+                    this.dataAmortization.DataSource = null;
+                    this.classGridAmortization(this.paymentModel.selectAmortizations(this.dataLoan[0, row].Value.ToString(), this.getTypeOfLoan(), this.getLoanMaturityDate()));
+                    this.clearSelectionDataAmortization();
+                }
+                catch (Exception) { }
+               
+                /*foreach (DataGridViewRow rows in this.dataAmortization.Rows)
                 {
                     rows.Selected = true;
                     (rows.Cells[0] as DataGridViewCheckBoxCell).Value = false;
                     rows.Selected = false;
-                }
+                }*/
             }
         }
 
@@ -1159,6 +1203,11 @@ namespace CMS.Main.View
         public void txtMemberName_TextChanged(EventHandler e)
         {
             this.txtMemberName.TextChanged += e;
+        }
+
+        public void setLinkClosePaymentEventHandler(EventHandler e)
+        {
+            this.linkClosePayments.Click += e;
         }
 
         public void setTotalLoanBalance(double d) 

@@ -63,6 +63,7 @@ namespace CMS.Main.Controller
             this.payment.setBtnMoveBackSelectedEventHandler(this.btnMoveBackSelected);
             this.payment.setBtnMoveSelectedEventHandler(this.btnMoveSelected);
             this.payment.setBtnSaveEventHandler(this.btnSave);
+            this.payment.setLinkClosePaymentEventHandler(this.linkClosePayments);
             this.payment.dataAmortization_CellValueChanged(this.showPenalties);
             this.payment.txtAmountDue_TextChanged(this.showTotalAmortization);
             this.payment.txtInterest_TextChanged(this.showTotalAmortization);
@@ -547,7 +548,7 @@ namespace CMS.Main.Controller
                 }
             }
 
-            else 
+            else
             {
                 DataGridViewRow selectedDataLoan = this.payment.getSelectedLoan();
                 String accountNo = selectedDataLoan.Cells["Account No."].Value.ToString();
@@ -559,214 +560,258 @@ namespace CMS.Main.Controller
                 double interest = this.payment.getInterest();
                 double penalty = this.payment.getPenalty();
                 double toInterest = 0, toPenalty = 0;
+                double change = this.payment.getChange();
+                double slBalance = this.payment.getSLTotalLoanBalance();
+                double slPenalty = this.payment.getSLTotalPenalties();
+                double slInterest = this.payment.getSLTotalInterest();
+
                 this.paymentModel.amountPaid = paidAmount;
                 int isfullyPaid = 0;
 
-                if (this.payment.getIfPenaltyListIsEmpty("Amnestied") == true)
+                if (this.payment.getDeductToNextAmortization())
                 {
-
-                    if (amortizationAmount == 0)
+                    foreach (DataGridViewRow rows in this.payment.dataAmortization.Rows)
                     {
-                        if (amount > paidAmount)
+                        if ((Boolean)(rows.Cells[0] as DataGridViewCheckBoxCell).Value == false)
                         {
-                            String penInt = this.paymentModel.deductPenaltyAndInterest(paidAmount, accountNo, this.payment.getTypeOfLoan(), this.payment.getLoanMaturityDate());
-                            String[] pi = penInt.Split(' ');
-                            toPenalty += double.Parse(pi[0]);
-                            toInterest += double.Parse(pi[1]);
+                            if (change >= double.Parse(rows.Cells[2].Value.ToString()))
+                            {
+                                MessageBox.Show("Change is still >= of unchecked amortization amount. Please check them.","Loan Payment",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                break;
+                            }
                         }
+                    }
+                }
+
+                else
+                {
+                    if (this.payment.getIfPenaltyListIsEmpty("Amnestied") == true)
+                    {
+
+                        if (amortizationAmount == 0)
+                        {
+                            if (amount > paidAmount)
+                            {
+                                String penInt = this.paymentModel.deductPenaltyAndInterest(paidAmount, accountNo, this.payment.getTypeOfLoan(), this.payment.getLoanMaturityDate());
+                                String[] pi = penInt.Split(' ');
+                                toPenalty += double.Parse(pi[0]);
+                                toInterest += double.Parse(pi[1]);
+                            }
+                            else
+                            {
+                                this.paymentModel.clearLoan(accountNo, this.payment.getTypeOfLoan(), this.payment.getLoanMaturityDate());
+                                isfullyPaid = 1;
+                                toPenalty += penalty;
+                                toInterest += interest;
+                            }
+                        }
+
+                        else if (amortizationAmount != 0 && paidAmount < amortizationAmount)
+                        {
+                            interest = 0;
+                            penalty = 0;
+                            //update amortization amount
+                            double pAmount = paidAmount;
+
+                            foreach (DataGridViewRow rows in this.payment.dataAmortization.Rows)
+                            {
+                                if ((Boolean)(rows.Cells[0] as DataGridViewCheckBoxCell).Value == true)
+                                {
+                                    double amoAmount = Convert.ToDouble(rows.Cells[2].Value);
+                                    if (pAmount > 0)
+                                    {
+                                        if (pAmount >= amoAmount)
+                                        {
+                                            this.paymentModel.updateAmortizationAmount(Convert.ToDouble(rows.Cells[2].Value), Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString());
+                                            pAmount -= amoAmount;
+                                        }
+                                        else
+                                        {
+                                            this.paymentModel.updateAmortizationAmount(amoAmount - pAmount, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString());
+                                            pAmount = 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        else if (amortizationAmount != 0 && paidAmount < amount && paidAmount >= amortizationAmount)
+                        {
+                            double piAmount = paidAmount - amortizationAmount;
+                            //less sa penalty
+                            //insert sa LOAN_AMORTIZATION.Penalty or LOAN_INFORMATION.Interest
+
+                            foreach (DataGridViewRow rows in this.payment.dataAmortization.Rows)
+                            {
+                                if ((Boolean)(rows.Cells[0] as DataGridViewCheckBoxCell).Value == true)
+                                {
+                                    double penaltyAmount = this.payment.getAmountPenaltyList(int.Parse(rows.Cells[1].Value.ToString()));
+                                    if (piAmount > 0)
+                                    {
+                                        if (penaltyAmount > piAmount) { penaltyAmount -= piAmount; toPenalty += piAmount; piAmount = 0; this.paymentModel.insertAmortizationPenalty(penaltyAmount, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString()); }
+                                        else { piAmount -= penaltyAmount; toPenalty += penaltyAmount; }
+                                    }
+                                    else if (piAmount == 0)
+                                    {
+                                        this.paymentModel.insertAmortizationPenalty(penaltyAmount, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString());
+                                    }
+
+                                }
+                            }
+
+                            if (piAmount > 0)
+                            {
+                                double inte = interest;
+                                inte -= piAmount;
+                                toInterest += piAmount;
+                                this.paymentModel.insertLoanInterest(inte, Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
+                            }
+                            else
+                            {
+                                this.paymentModel.insertLoanInterest(interest, Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
+                            }
+                        }
+
                         else
                         {
-                            this.paymentModel.clearLoan(accountNo, this.payment.getTypeOfLoan(), this.payment.getLoanMaturityDate());
-                            isfullyPaid = 1;
-                            toPenalty += penalty;
-                            toInterest += interest;
+                            toInterest = interest;
+                            toPenalty = penalty;
+
+                            if (paidAmount >= amount && this.payment.getDeductToNextAmortization() == false)
+                            {
+                                nadagdag = paidAmount - amount;
+                                this.paymentModel.updateLoanInterest(Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
+                            }
+                            if (this.payment.getDeductToNextAmortization())
+                            {
+                                this.paymentModel.updateLoanInterest(Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
+                            }
                         }
                     }
 
-                    else if (amortizationAmount != 0 && paidAmount < amortizationAmount)
+                    /*foreach (DataGridViewRow rows in this.payment.dataAmortization.Rows)
                     {
-                        interest = 0;
-                        penalty = 0;
-                        //update amortization amount
-                        double pAmount = paidAmount;
+                        if ((Boolean)(rows.Cells[0] as DataGridViewCheckBoxCell).Value == true)
+                        {
+                            double penaltyAmount = this.payment.getAmountPenaltyList(int.Parse(rows.Cells[1].Value.ToString()));
+                            this.paymentModel.insertPenaltyAmount(penaltyAmount, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString());
+                        }
+                    }*/
 
+                    if (this.payment.getIfPenaltyListIsEmpty("Amnestied") == false)
+                    {
+                        int ORNo = 0;
+                        int rowCount = this.payment.dataAmortization.Rows.Count - 1;
                         foreach (DataGridViewRow rows in this.payment.dataAmortization.Rows)
                         {
-                            if ((Boolean)(rows.Cells[0] as DataGridViewCheckBoxCell).Value == true)
+                            if (this.payment.dataAmortization.Rows.Count == 1) { ORNo = this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), amountDue, interest, penalty, rows.Cells[3].Value.ToString(), hasInterest, 1, 0); }
+                            else if (rows.Index == rowCount) { this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), amountDue, interest, penalty, rows.Cells[3].Value.ToString(), hasInterest, 1, 0); }
+                            else { ORNo = this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), amountDue, interest, penalty, rows.Cells[3].Value.ToString(), hasInterest, 1, 1); }
+                            this.paymentModel.insertAmortizationPayment(ORNo, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString(), double.Parse(rows.Cells[2].Value.ToString()));
+                        }
+                    }
+                    else
+                    {
+                        int ORNo = 0;
+                        double pAmount = paidAmount;
+
+                        if (amortizationAmount == 0)
+                        {
+                            ORNo = this.paymentModel.insertRemainingPayment(paymentType, accountNo, this.payment.getTypeOfLoan(), this.payment.getLoanMaturityDate(), toPenalty, toInterest, hasInterest, isfullyPaid);
+                        }
+
+                        else
+                        {
+                            foreach (DataGridViewRow rows in this.payment.dataAmortization.Rows)
                             {
-                                double amoAmount = Convert.ToDouble(rows.Cells[2].Value);
-                                if (pAmount > 0)
+                                if ((Boolean)(rows.Cells[0] as DataGridViewCheckBoxCell).Value == true)
                                 {
-                                    if (pAmount >= amoAmount)
+                                    double amoAmount = double.Parse(rows.Cells[2].Value.ToString());
+                                    if (pAmount > 0 && amoAmount <= pAmount)
                                     {
-                                        this.paymentModel.updateAmortizationAmount(Convert.ToDouble(rows.Cells[2].Value), Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString());
+                                        if (pAmount == paidAmount)
+                                        {
+                                            ORNo = this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), pAmount - nadagdag - toInterest - toPenalty, toInterest, toPenalty, rows.Cells[3].Value.ToString(), hasInterest, 1, 0);
+                                        }
+                                        else { this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), pAmount - nadagdag - toInterest - toPenalty, toInterest, toPenalty, rows.Cells[3].Value.ToString(), hasInterest, 1, 1); }
+                                        this.paymentModel.insertAmortizationPayment(ORNo, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString(), amoAmount);
                                         pAmount -= amoAmount;
                                     }
-                                    else
+                                    else if (pAmount > 0 && amoAmount > pAmount)
                                     {
-                                        this.paymentModel.updateAmortizationAmount(amoAmount - pAmount, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString());
+                                        if (pAmount == paidAmount) { ORNo = this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), pAmount, toInterest, toPenalty, rows.Cells[3].Value.ToString(), false, 0, 0); }
+                                        else { this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), pAmount, toInterest, toPenalty, rows.Cells[3].Value.ToString(), false, 0, 1); }
+                                        this.paymentModel.insertAmortizationPayment(ORNo, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString(), pAmount);
                                         pAmount = 0;
                                     }
                                 }
                             }
+
+
                         }
                     }
 
-                    else if (amortizationAmount != 0 && paidAmount < amount && paidAmount >= amortizationAmount)
+                    if (this.payment.getDeductToNextAmortization() == true)
                     {
-                        double piAmount = paidAmount - amortizationAmount;
-                        //less sa penalty
-                        //insert sa LOAN_AMORTIZATION.Penalty or LOAN_INFORMATION.Interest
+                        double excessAmount = this.payment.getAmortizationChange();
+                        this.paymentModel.deductToNextAmortization(excessAmount, Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
+                        execLogger("Deducted next amortization from OR# '" + this.paymentModel.ORNo + "'");
 
-                        foreach (DataGridViewRow rows in this.payment.dataAmortization.Rows)
+                    }
+
+                    if (this.payment.getAddToSavings() == true)
+                    {
+                        double excessAmount = this.payment.getAmortizationChange();
+                        if (this.paymentModel.countSavingsAccount(accountNo) > 1)
                         {
-                            if ((Boolean)(rows.Cells[0] as DataGridViewCheckBoxCell).Value == true)
+                            new View.SavingsAccountSelection(this.paymentModel, this.paymentModel.selectSavingsAccounts(accountNo), excessAmount);
+                        }
+                        else
+                        {
+                            String savingsAccountNo = this.paymentModel.selectSavingsAccount(accountNo);
+                            int result = this.paymentModel.insertSavingsTransaction(savingsAccountNo, excessAmount);
+                            if (result > 0)
                             {
-                                double penaltyAmount = this.payment.getAmountPenaltyList(int.Parse(rows.Cells[1].Value.ToString()));
-                                if (piAmount > 0)
-                                {
-                                    if (penaltyAmount > piAmount) { penaltyAmount -= piAmount; toPenalty += piAmount; piAmount = 0; this.paymentModel.insertAmortizationPenalty(penaltyAmount, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString()); }
-                                    else { piAmount -= penaltyAmount; toPenalty += penaltyAmount; }
-                                }
-                                else if (piAmount == 0) 
-                                {
-                                    this.paymentModel.insertAmortizationPenalty(penaltyAmount, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString());
-                                }
-
-                            }
-                        }
-
-                        if (piAmount > 0)
-                        {
-                            double inte = interest;
-                            inte -= piAmount;
-                            toInterest += piAmount;
-                            this.paymentModel.insertLoanInterest(inte, Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
-                        }
-                        else 
-                        {
-                            this.paymentModel.insertLoanInterest(interest, Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
-                        }
-                    }
-
-                    else 
-                    {
-                        toInterest = interest;
-                        toPenalty = penalty;
-
-                        if (paidAmount >= amount && this.payment.getDeductToNextAmortization() == false) 
-                        {
-                            nadagdag = paidAmount-amount;
-                            this.paymentModel.updateLoanInterest(Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
-                        }
-                        if (this.payment.getDeductToNextAmortization()) 
-                        {
-                            this.paymentModel.updateLoanInterest(Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
-                        }
-                    }
-                }
-
-                /*foreach (DataGridViewRow rows in this.payment.dataAmortization.Rows)
-                {
-                    if ((Boolean)(rows.Cells[0] as DataGridViewCheckBoxCell).Value == true)
-                    {
-                        double penaltyAmount = this.payment.getAmountPenaltyList(int.Parse(rows.Cells[1].Value.ToString()));
-                        this.paymentModel.insertPenaltyAmount(penaltyAmount, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString());
-                    }
-                }*/
-
-                if (this.payment.getIfPenaltyListIsEmpty("Amnestied") == false) 
-                {
-                    int ORNo = 0;
-                    int rowCount = this.payment.dataAmortization.Rows.Count - 1;
-                    foreach (DataGridViewRow rows in this.payment.dataAmortization.Rows)
-                    {
-                        if (rows.Index == rowCount) { this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), amount, interest, penalty, rows.Cells[3].Value.ToString(), hasInterest, 1, 0); }
-                        else { ORNo = this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), amountDue, interest, penalty, rows.Cells[3].Value.ToString(), hasInterest, 1, 1); }
-                        this.paymentModel.insertAmortizationPayment(ORNo, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString(), double.Parse(rows.Cells[2].Value.ToString()));
-                    }
-                }
-                else
-                {
-                    int ORNo = 0;
-                    double pAmount = paidAmount;
-
-                    if (amortizationAmount == 0) 
-                    {
-                        this.paymentModel.insertRemainingPayment(paymentType, accountNo, this.payment.getTypeOfLoan(), this.payment.getLoanMaturityDate(), toPenalty, toInterest, hasInterest, isfullyPaid);
-                    }
-
-                    else
-                    {
-                        foreach (DataGridViewRow rows in this.payment.dataAmortization.Rows)
-                        {
-                            if ((Boolean)(rows.Cells[0] as DataGridViewCheckBoxCell).Value == true)
-                            {
-                                double amoAmount = double.Parse(rows.Cells[2].Value.ToString());
-                                if (pAmount > 0 && amoAmount <= pAmount)
-                                {
-                                    if (pAmount == paidAmount) { ORNo = this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), pAmount-nadagdag-toInterest - toPenalty, toInterest, toPenalty, rows.Cells[3].Value.ToString(), hasInterest, 1, 0); }
-                                    else { this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), pAmount-nadagdag-toInterest-toPenalty, toInterest, toPenalty, rows.Cells[3].Value.ToString(), hasInterest, 1, 1); }
-                                    this.paymentModel.insertAmortizationPayment(ORNo, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString(), amoAmount);
-                                    pAmount -= amoAmount;
-                                }
-                                else if (pAmount > 0 && amoAmount > pAmount)
-                                {
-                                    if (pAmount == paidAmount) { ORNo = this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), pAmount, toInterest, toPenalty, rows.Cells[3].Value.ToString(), hasInterest, 0, 0); }
-                                    else { this.paymentModel.insertLoanPayment(paymentType, accountNo, Convert.ToInt32(rows.Cells[4].Value), pAmount, toInterest, toPenalty, rows.Cells[3].Value.ToString(), hasInterest, 0, 1); }
-                                    this.paymentModel.insertAmortizationPayment(ORNo, Convert.ToInt32(rows.Cells[4].Value), rows.Cells[3].Value.ToString(), pAmount);
-                                    pAmount = 0;
-                                }
+                                execLogger("Added Savings from OR# '" + this.paymentModel.ORNo + "'");
                             }
                         }
                     }
-                }
 
-                if (this.payment.getDeductToNextAmortization() == true) 
-                {
-                    double excessAmount = this.payment.getAmortizationChange();
-                    this.paymentModel.deductToNextAmortization(excessAmount, Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
-                    execLogger("Deducted next amortization from OR# '" + this.paymentModel.ORNo + "'");
-
-                }
-
-                if (this.payment.getAddToSavings() == true)
-                {
-                    double excessAmount = this.payment.getAmortizationChange();
-                    if (this.paymentModel.countSavingsAccount(accountNo) > 1)
+                    if (this.payment.getAddToShareCapital() == true)
                     {
-                        new View.SavingsAccountSelection(this.paymentModel, this.paymentModel.selectSavingsAccounts(accountNo), excessAmount).ShowDialog();
-                    }
-                    else
-                    {
-                        String savingsAccountNo = this.paymentModel.selectSavingsAccount(accountNo);
-                        int result = this.paymentModel.insertSavingsTransaction(savingsAccountNo, excessAmount);
+                        double excessAmount = this.payment.getAmortizationChange();
+                        int result = this.paymentModel.insertContribution(accountNo, excessAmount);
                         if (result > 0)
                         {
-                            execLogger("Added Savings from OR# '" + this.paymentModel.ORNo + "'");
+                            execLogger("Added Share Capital from OR# '" + this.paymentModel.ORNo + "'");
                         }
+
                     }
+
+                    String[] bal = this.paymentModel.selectMaxOR().Split(' ');
+                    double recentAmt = double.Parse(bal[0]);
+                    double recentPen = double.Parse(bal[1]);
+                    double recentInt = double.Parse(bal[2]);
+
+                    this.paymentModel.insertPaymentBalance(this.paymentModel.ORNo, slBalance - recentAmt, slPenalty - recentPen, slInterest - recentInt);
+                    DataSet ds;
+                    ds = paymentModel.getReceiptDetails(this.paymentModel.ORNo);
+                    View.ReceiptViewer receiptViewer = new View.ReceiptViewer(ds, paymentModel.getCompanyProfile("dtLogo"));
+
+                    MessageBox.Show("Transaction successful.", "Amortization Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    execLogger("Processed Loan Payment - OR# '" + this.paymentModel.ORNo + "'");
+                    this.payment.classGridLoanSearch(this.paymentModel.selectActiveMemberWithLoan());
+                    this.payment.clearLoanFields();
+                    totalPenalty = 0;
+                    totalInterest = 0;
                 }
-
-                if (this.payment.getAddToShareCapital() == true)
-                {
-                    double excessAmount = this.payment.getAmortizationChange();
-                    int result = this.paymentModel.insertContribution(accountNo, excessAmount);
-                    if (result > 0)
-                        execLogger("Added Share Capital from OR# '" + this.paymentModel.ORNo + "'");
-
-                }
-                DataSet ds;
-                ds = paymentModel.getReceiptDetails(this.paymentModel.ORNo);
-                View.ReceiptViewer receiptViewer = new View.ReceiptViewer(ds, paymentModel.getCompanyProfile("dtLogo"));
-
-                MessageBox.Show("Transaction successful.", "Amortization Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                execLogger("Processed Loan Payment - OR# '" + this.paymentModel.ORNo + "'");
-                this.payment.classGridLoanSearch(this.paymentModel.selectActiveMemberWithLoan());
-                this.payment.clearLoanFields();
-                totalPenalty = 0;
-                totalInterest = 0;
             }
+        }
+
+        public void linkClosePayments(object sender, EventArgs e)
+        {
+            mainController.paymentOpen = false;
+            this.Dispose();
         }
 
         public void searchMember(object args, EventArgs e) {

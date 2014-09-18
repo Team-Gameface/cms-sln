@@ -16,14 +16,14 @@ namespace CMS.Loan_Management.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class FeeCollectionReport : ReportClass {
+    public class LoanCollectionReport : ReportClass {
         
-        public FeeCollectionReport() {
+        public LoanCollectionReport() {
         }
         
         public override string ResourceName {
             get {
-                return "FeeCollectionReport.rpt";
+                return "LoanCollectionReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace CMS.Loan_Management.Reports {
         
         public override string FullResourceName {
             get {
-                return "CMS.Loan Management.Reports.FeeCollectionReport.rpt";
+                return "CMS.Loan_Management.Reports.LoanCollectionReport.rpt";
             }
             set {
                 // Do nothing
@@ -106,9 +106,9 @@ namespace CMS.Loan_Management.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedFeeCollectionReport : Component, ICachedReport {
+    public class CachedLoanCollectionReport : Component, ICachedReport {
         
-        public CachedFeeCollectionReport() {
+        public CachedLoanCollectionReport() {
         }
         
         [Browsable(false)]
@@ -145,7 +145,7 @@ namespace CMS.Loan_Management.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            FeeCollectionReport rpt = new FeeCollectionReport();
+            LoanCollectionReport rpt = new LoanCollectionReport();
             rpt.Site = this.Site;
             return rpt;
         }

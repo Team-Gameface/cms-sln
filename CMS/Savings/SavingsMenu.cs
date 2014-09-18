@@ -72,7 +72,6 @@ namespace CMS.Savings
         {
             this.itemDailyTransactionLog.Click += e;
         }
-
      
         public void setItemStatementOfAccountEventHandler(EventHandler e)
         {

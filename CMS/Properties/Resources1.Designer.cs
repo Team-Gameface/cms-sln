@@ -133,6 +133,16 @@ namespace CMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Compute {
+            get {
+                object obj = ResourceManager.GetObject("Compute", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap defaultimg {
             get {
                 object obj = ResourceManager.GetObject("defaultimg", resourceCulture);

@@ -32,14 +32,10 @@ namespace CMS.Savings.Maintenance.View
             this.txtMaxBal.Enabled = false;
             this.Status.Enabled = false;
             this.btnSave.Enabled = false;
-            this.btnSave.BackColor = Color.Gray;
             this.btnCancel.Enabled = false;
-            this.btnCancel.BackColor = Color.Gray;
 
             this.btnAdd.Enabled = true;
-            this.btnAdd.BackColor = Color.Green;
             this.btnEdit.Enabled = true;
-            this.btnEdit.BackColor = Color.RoyalBlue;
         }
 
         public void enableFunction()
@@ -56,14 +52,10 @@ namespace CMS.Savings.Maintenance.View
             this.txtMaxBal.Enabled = true;
             this.Status.Enabled = true;
             this.btnSave.Enabled = true;
-            this.btnSave.BackColor = Color.Green;
             this.btnCancel.Enabled = true;
-            this.btnCancel.BackColor = Color.WhiteSmoke;
 
             this.btnAdd.Enabled = false;
-            this.btnAdd.BackColor = Color.Gray;
             this.btnEdit.Enabled = false;
-            this.btnEdit.BackColor = Color.Gray;
         }
         
         public void setNoDays(int i)
@@ -308,8 +300,18 @@ namespace CMS.Savings.Maintenance.View
         public void removeColumns()
         {
             dataInterestRates.Columns[0].Visible = false;
-            dataInterestRates.Columns[5].Visible = false;
             dataInterestRates.Columns[6].Visible = false;
+            dataInterestRates.Columns[7].Visible = false;
+            dataInterestRates.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataInterestRates.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataInterestRates.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataInterestRates.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataInterestRates.Columns[2].DefaultCellStyle.Format = "c";
+            dataInterestRates.Columns[3].DefaultCellStyle.Format = "c";
+            dataInterestRates.Columns[4].DefaultCellStyle.Format = "p";
+            CultureInfo ph = new CultureInfo("en-PH");
+            dataInterestRates.Columns[2].DefaultCellStyle.FormatProvider = ph;
+            dataInterestRates.Columns[3].DefaultCellStyle.FormatProvider = ph;
         }
 
         private void txtInterestRate_KeyDown(object sender, KeyEventArgs e)

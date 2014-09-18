@@ -64,9 +64,8 @@ namespace CMS.Savings.Maintenance.Controller
                 this.InterestId = int.Parse(selectedData.Cells["InterestId"].Value.ToString());
                 this.interestRates.setNoDays(int.Parse(selectedData.Cells["No of Days"].Value.ToString()));
                 this.interestRates.setInterestRates(selectedData.Cells["Interest Rate"].Value.ToString());
-                String[] balanceRange = selectedData.Cells["Balance Range"].Value.ToString().Split('-');
-                this.interestRates.setMinimumBalance(balanceRange[0]);
-                this.interestRates.setMaximumBalance(balanceRange[1]);
+                this.interestRates.setMinimumBalance(selectedData.Cells["Minimum Range"].Value.ToString());
+                this.interestRates.setMaximumBalance(selectedData.Cells["Maximum Range"].Value.ToString());
                 if (bool.Parse(selectedData.Cells["Status"].Value.ToString()))
                 {
                     this.interestRates.setStatus();

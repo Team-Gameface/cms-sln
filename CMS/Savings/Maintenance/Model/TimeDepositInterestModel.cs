@@ -29,7 +29,7 @@ namespace CMS.Savings.Maintenance.Model
         public DataSet selectTimeDepositInterest()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT InterestId, NoDays AS 'No of Days', CONCAT(MinimumRange, '-', MaximumRange) AS 'Balance Range', InterestRate AS 'Interest Rate', Status, DateCreated, DateModified FROM TIME_DEPOSIT_INTEREST";
+            String sql = "SELECT InterestId, NoDays AS 'No of Days', MinimumRange AS 'Minimum Range', MaximumRange AS 'Maximum Range', InterestRate AS 'Interest Rate', Status, DateCreated, DateModified FROM TIME_DEPOSIT_INTEREST";
             DataSet ds = dal.executeDataSet(sql);
             return ds;
         }
@@ -37,7 +37,7 @@ namespace CMS.Savings.Maintenance.Model
         public DataSet selectTimeDepositInterest(String searchName)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT InterestId, NoDays AS 'No of Days', CONCAT(MinimumRange, '-', MaximumRange) AS 'Balance Range', InterestRate AS 'Interest Rate', Status, DateCreated, DateModified FROM TIME_DEPOSIT_INTEREST WHERE InterestRate LIKE(@SearchName)";
+            String sql = "SELECT InterestId, NoDays AS 'No of Days', MinimumRange AS 'Minimum Range', MaximumRange AS 'Maximum Range', InterestRate AS 'Interest Rate', Status, DateCreated, DateModified FROM TIME_DEPOSIT_INTEREST WHERE InterestRate LIKE(@SearchName)";
             searchName = "%" + searchName + "%";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@SearchName", searchName);

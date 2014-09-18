@@ -30,14 +30,10 @@ namespace CMS.Savings.Maintenance.View
             numDurationTo.Enabled = false;
             Status.Enabled = false;
             this.btnSave.Enabled = false;
-            this.btnSave.BackColor = Color.Gray;
             this.btnCancel.Enabled = false;
-            this.btnCancel.BackColor = Color.Gray;
 
             this.btnAdd.Enabled = true;
-            this.btnAdd.BackColor = Color.Green;
             this.btnEdit.Enabled = true;
-            this.btnEdit.BackColor = Color.RoyalBlue;
         }
 
         public void enableFunction()
@@ -53,14 +49,10 @@ namespace CMS.Savings.Maintenance.View
 
             Status.Enabled = true;
             this.btnSave.Enabled = true;
-            this.btnSave.BackColor = Color.Green;
             this.btnCancel.Enabled = true;
-            this.btnCancel.BackColor = Color.WhiteSmoke;
 
             this.btnAdd.Enabled = false;
-            this.btnAdd.BackColor = Color.Gray;
             this.btnEdit.Enabled = false;
-            this.btnEdit.BackColor = Color.Gray;
         }
 
         public void setTextPenalty(String s)
@@ -174,6 +166,9 @@ namespace CMS.Savings.Maintenance.View
             dataTimeDeposit.Columns[0].Visible = false;
             dataTimeDeposit.Columns[5].Visible = false;
             dataTimeDeposit.Columns[6].Visible = false;
+            dataTimeDeposit.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataTimeDeposit.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataTimeDeposit.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void txtPenalty_KeyPress(object sender, KeyPressEventArgs e)

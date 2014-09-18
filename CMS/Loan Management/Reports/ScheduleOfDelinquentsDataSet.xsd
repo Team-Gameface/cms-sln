@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ScheduleOfDelinquentsDataSet" targetNamespace="http://tempuri.org/ScheduleOfDelinquentsDataSet.xsd" xmlns:mstns="http://tempuri.org/ScheduleOfDelinquentsDataSet.xsd" xmlns="http://tempuri.org/ScheduleOfDelinquentsDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ScheduleOfDelinquentsDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ScheduleOfDelinquentsDataSet" msprop:Generator_UserDSName="ScheduleOfDelinquentsDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtDelinquents" msprop:Generator_TableClassName="dtDelinquentsDataTable" msprop:Generator_TableVarName="tabledtDelinquents" msprop:Generator_RowChangedName="dtDelinquentsRowChanged" msprop:Generator_TablePropName="dtDelinquents" msprop:Generator_RowDeletingName="dtDelinquentsRowDeleting" msprop:Generator_RowChangingName="dtDelinquentsRowChanging" msprop:Generator_RowEvHandlerName="dtDelinquentsRowChangeEventHandler" msprop:Generator_RowDeletedName="dtDelinquentsRowDeleted" msprop:Generator_RowClassName="dtDelinquentsRow" msprop:Generator_UserTableName="dtDelinquents" msprop:Generator_RowEvArgName="dtDelinquentsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AccountNo" msprop:Generator_ColumnVarNameInTable="columnAccountNo" msprop:Generator_ColumnPropNameInRow="AccountNo" msprop:Generator_ColumnPropNameInTable="AccountNoColumn" msprop:Generator_UserColumnName="AccountNo" type="xs:string" minOccurs="0" />
+              <xs:element name="MemberName" msprop:Generator_ColumnVarNameInTable="columnMemberName" msprop:Generator_ColumnPropNameInRow="MemberName" msprop:Generator_ColumnPropNameInTable="MemberNameColumn" msprop:Generator_UserColumnName="MemberName" type="xs:string" minOccurs="0" />
+              <xs:element name="DateApproved" msprop:Generator_ColumnVarNameInTable="columnDateApproved" msprop:Generator_ColumnPropNameInRow="DateApproved" msprop:Generator_ColumnPropNameInTable="DateApprovedColumn" msprop:Generator_UserColumnName="DateApproved" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LoanTypeName" msprop:Generator_ColumnVarNameInTable="columnLoanTypeName" msprop:Generator_ColumnPropNameInRow="LoanTypeName" msprop:Generator_ColumnPropNameInTable="LoanTypeNameColumn" msprop:Generator_UserColumnName="LoanTypeName" type="xs:string" minOccurs="0" />
+              <xs:element name="MaturityDate" msprop:Generator_ColumnVarNameInTable="columnMaturityDate" msprop:Generator_ColumnPropNameInRow="MaturityDate" msprop:Generator_ColumnPropNameInTable="MaturityDateColumn" msprop:Generator_UserColumnName="MaturityDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Balance" msprop:Generator_ColumnVarNameInTable="columnBalance" msprop:Generator_ColumnPropNameInRow="Balance" msprop:Generator_ColumnPropNameInTable="BalanceColumn" msprop:Generator_UserColumnName="Balance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AgeCategory" msprop:Generator_ColumnVarNameInTable="columnAgeCategory" msprop:Generator_ColumnPropNameInRow="AgeCategory" msprop:Generator_ColumnPropNameInTable="AgeCategoryColumn" msprop:Generator_UserColumnName="AgeCategory" type="xs:string" minOccurs="0" />
+              <xs:element name="ShareCapitalBalance" msprop:Generator_ColumnVarNameInTable="columnShareCapitalBalance" msprop:Generator_ColumnPropNameInRow="ShareCapitalBalance" msprop:Generator_ColumnPropNameInTable="ShareCapitalBalanceColumn" msprop:Generator_UserColumnName="ShareCapitalBalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ExposedAmount" msprop:Generator_ColumnVarNameInTable="columnExposedAmount" msprop:Generator_ColumnPropNameInRow="ExposedAmount" msprop:Generator_ColumnPropNameInTable="ExposedAmountColumn" msprop:Generator_UserColumnName="ExposedAmount" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

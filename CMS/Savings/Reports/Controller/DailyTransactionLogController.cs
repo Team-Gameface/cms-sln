@@ -101,9 +101,17 @@ namespace CMS.Savings.Reports.Controller
                     ds = dailyTransactionLogModel.listDailyTransactions(dailyTransactionLogModel.dateFrom, dailyTransactionLogModel.sortBy, dailyTransactionLogModel.order, "TableTransLog");
 
                 DataSet dsCoop = dailyTransactionLogModel.getCompanyProfile("dtLogo");
-                dailyTransactionLog.setReportDataSource(ds, dsCoop, dailyTransactionLogModel.dateFrom, dailyTransactionLogModel.dateTo);
-                execLogger("Generated Report");
+                DataSet dsStaff = dailyTransactionLogModel.getStaff(Main.UserData.userId, "dtStaff");
+                DataSet dsMgr = dailyTransactionLogModel.getManager("dtManager");
+                DataSet dsCredChair = dailyTransactionLogModel.getChair("dtCreditChair");
 
+                if (ds.Tables[0].Rows.Count == 0)
+                    MessageBox.Show("No records to show.", "Daily Transaction Log");
+                else
+                {
+                    dailyTransactionLog.setReportDataSource(ds, dsCoop, dsStaff, dsCredChair, dsMgr, dailyTransactionLogModel.dateFrom, dailyTransactionLogModel.dateTo);
+                    execLogger("Generated Report");
+                }
             }
             else
                 MessageBox.Show("Errors had been found." + Environment.NewLine + errors);

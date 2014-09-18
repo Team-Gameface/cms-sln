@@ -84,7 +84,6 @@ namespace CMS.Loan_Management.Reports.Controller
 
                 case "Miscellaneous": 
                     this.collectionReportModel.sortBy = this.collectionReport.getMiscFeesSortBy();
-                    MessageBox.Show(this.collectionReportModel.sortBy);
                     switch (this.collectionReport.getMiscFeesSortBy())
                     {
 
@@ -177,7 +176,6 @@ namespace CMS.Loan_Management.Reports.Controller
 
             if (hasError == 0)
             {
-                MessageBox.Show(collectionReportModel.dateFrom + " " + collectionReportModel.dateTo + collectionReportModel.transType + " " + collectionReportModel.sortBy + " " + collectionReportModel.order);
                 DataSet ds = null;
                 DataSet dsCoop = collectionReportModel.getCompanyProfile("dtLogo");
                 DataSet dsStaff = collectionReportModel.getStaff(Main.UserData.userId, "dtStaff");

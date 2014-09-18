@@ -46,6 +46,7 @@
             // 
             // btnPreview
             // 
+            this.btnPreview.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPreview.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -60,6 +61,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 9);
@@ -71,6 +73,7 @@
             // 
             // lblFrom
             // 
+            this.lblFrom.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblFrom.AutoSize = true;
             this.lblFrom.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblFrom.Location = new System.Drawing.Point(8, 34);
@@ -81,6 +84,7 @@
             // 
             // dateFrom
             // 
+            this.dateFrom.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateFrom.Location = new System.Drawing.Point(55, 28);
             this.dateFrom.Name = "dateFrom";
@@ -90,6 +94,7 @@
             // 
             // cbDateTo
             // 
+            this.cbDateTo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbDateTo.AutoSize = true;
             this.cbDateTo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbDateTo.Location = new System.Drawing.Point(180, 30);
@@ -102,6 +107,7 @@
             // 
             // dateTo
             // 
+            this.dateTo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTo.Location = new System.Drawing.Point(231, 28);
             this.dateTo.Name = "dateTo";
@@ -110,6 +116,7 @@
             // 
             // grpDatesTransaction
             // 
+            this.grpDatesTransaction.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpDatesTransaction.Controls.Add(this.dateTo);
             this.grpDatesTransaction.Controls.Add(this.cbDateTo);
             this.grpDatesTransaction.Controls.Add(this.dateFrom);
@@ -124,6 +131,7 @@
             // 
             // rbAscending
             // 
+            this.rbAscending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbAscending.AutoSize = true;
             this.rbAscending.Location = new System.Drawing.Point(217, 24);
             this.rbAscending.Name = "rbAscending";
@@ -135,6 +143,7 @@
             // 
             // rbDescending
             // 
+            this.rbDescending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbDescending.AutoSize = true;
             this.rbDescending.Location = new System.Drawing.Point(217, 48);
             this.rbDescending.Name = "rbDescending";
@@ -146,6 +155,7 @@
             // 
             // cbSortBy
             // 
+            this.cbSortBy.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbSortBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSortBy.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbSortBy.FormattingEnabled = true;
@@ -161,6 +171,7 @@
             // 
             // grpSort
             // 
+            this.grpSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpSort.Controls.Add(this.cbSortBy);
             this.grpSort.Controls.Add(this.rbDescending);
             this.grpSort.Controls.Add(this.rbAscending);

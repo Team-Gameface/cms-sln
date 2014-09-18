@@ -28,11 +28,13 @@ namespace CMS.Savings.Reports.View
                 dateTo.Enabled = false;
         }
 
-        public void setReportDataSource(DataSet ds, DataSet dsCoop, String dateFrom, String dateTo)
+        public void setReportDataSource(DataSet ds, DataSet dsCoop, DataSet dsStaff, DataSet dsChair, DataSet dsManager, String dateFrom, String dateTo)
         {
-            LoanReportViewer loanReleasesViewer = new LoanReportViewer(ds, dsCoop, dateFrom, dateTo);
-            loanReleasesViewer.Text = "Loan Releases";
-            loanReleasesViewer.Show();
+            
+                LoanReportViewer loanReleasesViewer = new LoanReportViewer(ds, dsCoop, dsStaff, dsChair, dsManager, dateFrom, dateTo);
+                loanReleasesViewer.Show();
+ 
+            
         }
 
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace CMS.Loan_Management.Reports.Controller
 
         Reports.Model.ScheduleOfDelinquentsModel scheduleOfDelinquentsModel;
         Reports.View.ScheduleOfDelinquents scheduleOfDelinquents;
+        Main.Logger logger = new Main.Logger();
 
         Dictionary<int, string> loanTypes = new Dictionary<int, string>();
 
@@ -24,6 +26,21 @@ namespace CMS.Loan_Management.Reports.Controller
             this.scheduleOfDelinquents.setBtnPreviewEventHandler(this.btnPreview);
             this.clbLoanTypes();
             this.scheduleOfDelinquents.Show();
+        }
+
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Transaction - Share Capital Contribution";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
         }
 
         public void clbLoanTypes()
@@ -56,16 +73,28 @@ namespace CMS.Loan_Management.Reports.Controller
             this.scheduleOfDelinquentsModel.checkedLoanTypes = this.scheduleOfDelinquents.getCheckedLoanTypes();
             this.scheduleOfDelinquentsModel.sortBy = this.scheduleOfDelinquents.getSortBy();
             this.scheduleOfDelinquentsModel.order = this.scheduleOfDelinquents.getOrder();
-            this.scheduleOfDelinquentsModel.groupBy = this.scheduleOfDelinquents.getGroupBy();
+
+
+            switch (scheduleOfDelinquents.getSortBy())
+            {
+
+
+                case "Member Account No": scheduleOfDelinquentsModel.sortBy = "LOAN_INFORMATION.AccountNo";
+                    break;
+                case "Member Name": scheduleOfDelinquentsModel.sortBy = "CONCAT(MEMBER.LastName, ', ', MEMBER.FirstName, ' ', MEMBER.MiddleName)";
+                    break;
+                case "Loan Type": scheduleOfDelinquentsModel.sortBy = "LOAN_TYPE.LoanTypeName";
+                    break;
+                default: scheduleOfDelinquentsModel.sortBy = String.Empty;
+                    break;
+
+            }
 
             if (scheduleOfDelinquentsModel.dateFrom == String.Empty)
             { scheduleOfDelinquents.errorDateFrom(); hasError = 1; errors += "- Start Date is empty." + Environment.NewLine; }
 
             if (scheduleOfDelinquents.getAgeFilterChecked() && scheduleOfDelinquentsModel.ageBracket == String.Empty)
             { scheduleOfDelinquents.errorDateFrom(); hasError = 1; errors += "- Please select Loan Age Bracket." + Environment.NewLine; }
-
-            if (scheduleOfDelinquentsModel.groupBy == String.Empty)
-            { scheduleOfDelinquents.errorLoanGroup(); hasError = 1; errors += "- Please select a grouping method." + Environment.NewLine; }
 
             if (scheduleOfDelinquentsModel.checkedLoanTypes.Count == 0)
             { scheduleOfDelinquents.errorLoanTypes(); hasError = 1; errors += "- Please check at least one loan type." + Environment.NewLine; }
@@ -75,11 +104,24 @@ namespace CMS.Loan_Management.Reports.Controller
             { scheduleOfDelinquents.errorLoanOrder(); hasError = 1; errors += "- Please select sorting method." + Environment.NewLine; }
 
 
+
+
             if (hasError == 0)
             {
-                MessageBox.Show(scheduleOfDelinquentsModel.dateFrom + " " + scheduleOfDelinquentsModel.ageBracket + scheduleOfDelinquentsModel.groupBy + " " + scheduleOfDelinquentsModel.sortBy + " " + scheduleOfDelinquentsModel.order);
+                  ArrayList loanTypesNo = new ArrayList();
 
-                DataSet deliquentLoan = this.scheduleOfDelinquentsModel.selectDeliquentLoans(scheduleOfDelinquentsModel.dateFrom);
+                  foreach (String s in scheduleOfDelinquentsModel.checkedLoanTypes)
+                    {
+                        foreach (KeyValuePair<int, string> pair in loanTypes)
+                        {
+                            if (s.Equals(pair.Value))
+                                loanTypesNo.Add(pair.Key);
+                        }
+                     }
+            
+
+
+                DataSet deliquentLoan = this.scheduleOfDelinquentsModel.selectDeliquentLoans(scheduleOfDelinquentsModel.dateFrom, loanTypesNo, this.scheduleOfDelinquentsModel.sortBy, this.scheduleOfDelinquentsModel.order);
                 int ctr = 0;
                 int countResult = deliquentLoan.Tables[0].Rows.Count;
                 double[] balance = new double[countResult];
@@ -149,6 +191,21 @@ namespace CMS.Loan_Management.Reports.Controller
                     String loanTypeName = deliquentLoan.Tables[0].Rows[j][3].ToString();
                     String maturityDate = Convert.ToDateTime(deliquentLoan.Tables[0].Rows[j][6]).ToString("MM/dd/yyyy");
                     String dateApproved = Convert.ToDateTime(deliquentLoan.Tables[0].Rows[j][5]).ToString("MM/dd/yyyy");
+                    
+                    bool isInsert = false;
+
+                    if (scheduleOfDelinquents.getAgeFilterChecked())
+                    {
+                        if (scheduleOfDelinquentsModel.ageBracket == ageCategory[j])
+                            isInsert = true;
+                        else
+                            isInsert = false;
+                    }
+                    else
+                        isInsert = true;
+
+                    if (isInsert)
+                    {
 
                     DataRow dr = dt.NewRow();
                     dr["AccountNo"] = accountNo;
@@ -161,8 +218,25 @@ namespace CMS.Loan_Management.Reports.Controller
                     dr["ShareCapitalBalance"] = shareCapBal[j];
                     dr["ExposedAmount"] = exposedAmt[j];
                     dt.Rows.Add(dr);
+
+                    }
                 }
                 finalSetOfDeliquentAccounts.Tables.Add(dt);
+
+                DataSet dsCoop = scheduleOfDelinquentsModel.getCompanyProfile("dtLogo");
+                DataSet dsStaff = scheduleOfDelinquentsModel.getStaff(Main.UserData.userId, "dtStaff");
+                DataSet dsMgr = scheduleOfDelinquentsModel.getManager("dtManager");
+                DataSet dsCredChair = scheduleOfDelinquentsModel.getChair("dtCreditChair");
+
+                if (finalSetOfDeliquentAccounts.Tables[0].Rows.Count == 0)
+                    MessageBox.Show("No records to show.", "Loan Releases");
+                else
+                {
+                    scheduleOfDelinquents.setReportDataSource(finalSetOfDeliquentAccounts, dsCoop, dsStaff, dsMgr, dsCredChair, scheduleOfDelinquentsModel.dateFrom);
+                    execLogger("Generated Report");
+                }
+
+
             }
             else
                 MessageBox.Show("Errors had been found." + Environment.NewLine + errors);
@@ -199,7 +273,7 @@ namespace CMS.Loan_Management.Reports.Controller
 
                 if (per == "month")
                 {
-                    for (String a = interestDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(1)).ToString())
+                    for (String a = interestDate; DateTime.Parse(a) <= DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom); a = (DateTime.Parse(a).AddMonths(1)).ToString())
                     {
                         listOfInterestDates.Add(a, 0);
                     }
@@ -270,7 +344,7 @@ namespace CMS.Loan_Management.Reports.Controller
 
                 else if (per == "annum")
                 {
-                    for (String a = interestDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddYears(1)).ToString())
+                    for (String a = interestDate; DateTime.Parse(a) <= DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom); a = (DateTime.Parse(a).AddYears(1)).ToString())
                     {
                         listOfInterestDates.Add(a, 0);
                     }
@@ -361,7 +435,7 @@ namespace CMS.Loan_Management.Reports.Controller
                 double amortizationAmount = double.Parse(amorSet.Tables[0].Rows[j][2].ToString());
 
                 DataSet ds = this.scheduleOfDelinquentsModel.selectPenaltiesPerLoanType(loanTypeId);
-                if (ds.Tables[0].Rows.Count == 0 || DateTime.Parse(dueDate) > DateTime.Now)
+                if (ds.Tables[0].Rows.Count == 0 || DateTime.Parse(dueDate) > DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom))
                 {
                     miniPenalty += 0;
                 }
@@ -394,7 +468,7 @@ namespace CMS.Loan_Management.Reports.Controller
                         {
                             if (durationStatus == "month/s")
                             {
-                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
+                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom); a = (DateTime.Parse(a).AddMonths(duration)).ToString())
                                 {
                                     initialPenalty = amount * monthlyAmortization;
                                     miniInterest += initialPenalty;
@@ -403,7 +477,7 @@ namespace CMS.Loan_Management.Reports.Controller
                             }
                             else
                             {
-                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
+                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom); a = (DateTime.Parse(a).AddDays(duration)).ToString())
                                 {
                                     initialPenalty = amount * monthlyAmortization;
                                     miniInterest += initialPenalty;
@@ -414,7 +488,7 @@ namespace CMS.Loan_Management.Reports.Controller
                         {
                             if (durationStatus == "month/s")
                             {
-                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
+                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom); a = (DateTime.Parse(a).AddMonths(duration)).ToString())
                                 {
                                     initialPenalty = amount * remainingBalance;
                                     miniPenalty += initialPenalty;
@@ -422,7 +496,7 @@ namespace CMS.Loan_Management.Reports.Controller
                             }
                             else
                             {
-                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
+                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom); a = (DateTime.Parse(a).AddDays(duration)).ToString())
                                 {
                                     initialPenalty = amount * remainingBalance;
                                     miniInterest += initialPenalty;
@@ -433,7 +507,7 @@ namespace CMS.Loan_Management.Reports.Controller
                         {
                             if (durationStatus == "month/s")
                             {
-                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
+                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom); a = (DateTime.Parse(a).AddMonths(duration)).ToString())
                                 {
                                     initialPenalty = amount * grantedLoanAmount;
                                     miniInterest += initialPenalty;
@@ -441,7 +515,7 @@ namespace CMS.Loan_Management.Reports.Controller
                             }
                             else
                             {
-                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
+                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom); a = (DateTime.Parse(a).AddDays(duration)).ToString())
                                 {
                                     initialPenalty = amount * grantedLoanAmount;
                                     miniInterest += initialPenalty;
@@ -453,7 +527,7 @@ namespace CMS.Loan_Management.Reports.Controller
                         {
                             if (durationStatus == "month/s")
                             {
-                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(duration)).ToString())
+                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom); a = (DateTime.Parse(a).AddMonths(duration)).ToString())
                                 {
                                     initialPenalty = amount;
                                     miniPenalty += initialPenalty;
@@ -461,7 +535,7 @@ namespace CMS.Loan_Management.Reports.Controller
                             }
                             else
                             {
-                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddDays(duration)).ToString())
+                                for (String a = finalDate; DateTime.Parse(a) <= DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom); a = (DateTime.Parse(a).AddDays(duration)).ToString())
                                 {
                                     initialPenalty = amount;
                                     miniInterest += initialPenalty;

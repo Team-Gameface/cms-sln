@@ -405,7 +405,7 @@
             this.Controls.Add(this.panelLoan);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CollectionReport";
-            this.Text = "Collection Report";
+            this.Text = "Daily Collection Report";
             this.grpTransType.ResumeLayout(false);
             this.grpTransType.PerformLayout();
             this.grpLoanTypesSort.ResumeLayout(false);

@@ -20,12 +20,16 @@ namespace CMS.Savings.Reports.View
     {
 
         DailyTransactionLogReport rpt = new DailyTransactionLogReport();
-        
-        public LoanReportViewer(DataSet ds, DataSet dsCoop, String dateFrom, String dateTo)
+
+        public LoanReportViewer(DataSet ds, DataSet dsCoop, DataSet dsStaff, DataSet dsChair, DataSet dsManager, String dateFrom, String dateTo)
         {
             InitializeComponent();
             rpt.SetDataSource(ds.Tables[0]);
-            rpt.Subreports[0].SetDataSource(dsCoop.Tables[0]);
+            rpt.Subreports["CompanyHeader"].SetDataSource(dsCoop.Tables[0]);
+            rpt.Subreports["StaffSub"].SetDataSource(dsStaff.Tables[0]);
+            rpt.Subreports["ChairSub"].SetDataSource(dsChair.Tables[0]);
+            rpt.Subreports["ManagerSub"].SetDataSource(dsManager.Tables[0]);
+
             crViewer1.ReportSource = rpt;
             CrystalDecisions.CrystalReports.Engine.TextObject txtReportHeader;
 

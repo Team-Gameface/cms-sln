@@ -379,7 +379,7 @@ namespace CMS.Loan_Management.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public dtTotalLoanReleasesRow AdddtTotalLoanReleasesRow(string Description, string TotalPresent, string TotalPrevious) {
+            public dtTotalLoanReleasesRow AdddtTotalLoanReleasesRow(string Description, decimal TotalPresent, decimal TotalPrevious) {
                 dtTotalLoanReleasesRow rowdtTotalLoanReleasesRow = ((dtTotalLoanReleasesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Description,
@@ -417,9 +417,9 @@ namespace CMS.Loan_Management.Reports {
             private void InitClass() {
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
-                this.columnTotalPresent = new global::System.Data.DataColumn("TotalPresent", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnTotalPresent = new global::System.Data.DataColumn("TotalPresent", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalPresent);
-                this.columnTotalPrevious = new global::System.Data.DataColumn("TotalPrevious", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnTotalPrevious = new global::System.Data.DataColumn("TotalPrevious", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalPrevious);
             }
             
@@ -579,10 +579,10 @@ namespace CMS.Loan_Management.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TotalPresent {
+            public decimal TotalPresent {
                 get {
                     try {
-                        return ((string)(this[this.tabledtTotalLoanReleases.TotalPresentColumn]));
+                        return ((decimal)(this[this.tabledtTotalLoanReleases.TotalPresentColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TotalPresent\' in table \'dtTotalLoanReleases\' is DBNull.", e);
@@ -595,10 +595,10 @@ namespace CMS.Loan_Management.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TotalPrevious {
+            public decimal TotalPrevious {
                 get {
                     try {
-                        return ((string)(this[this.tabledtTotalLoanReleases.TotalPreviousColumn]));
+                        return ((decimal)(this[this.tabledtTotalLoanReleases.TotalPreviousColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TotalPrevious\' in table \'dtTotalLoanReleases\' is DBNull.", e);

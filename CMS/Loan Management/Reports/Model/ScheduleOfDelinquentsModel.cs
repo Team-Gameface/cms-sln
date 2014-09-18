@@ -30,6 +30,41 @@ namespace CMS.Loan_Management.Reports.Model
             this.order = String.Empty;
         
         }
+
+
+        public DataSet getCompanyProfile(String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT TOP 1 CompanyName,AccreditationNo,CompanyAddress,CompanyLogo,Telephone,Cellphone,Email FROM COMPANY WHERE status = 1 ORDER BY dateCreated desc";
+            DataSet ds = dal.executeDataSet(sql, src);
+            return ds;
+        }
+
+        public DataSet getStaff(String userId, String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT CONCAT(FirstName,' ',MiddleName,' ',LastName) AS 'Name', Position FROM SYSTEM_USERS WHERE NOT (UserType = 'Superuser') AND UserId = @UserId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@UserId", userId);
+            DataSet ds = dal.executeDataSet(sql, parameters, src);
+            return ds;
+        }
+
+        public DataSet getManager(String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT TOP 1 CONCAT(FirstName,' ',MiddleName,' ',LastName) AS 'Name', Position FROM SYSTEM_USERS WHERE UserType = 'Manager' ORDER BY DateCreated desc";
+            DataSet ds = dal.executeDataSet(sql, src);
+            return ds;
+        }
+
+        public DataSet getChair(String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT TOP 1 CONCAT(FirstName,' ',MiddleName,' ',LastName) AS 'Name', Position FROM SYSTEM_USERS WHERE UserType = 'Chairman - Credit Committee' ORDER BY DateCreated desc";
+            DataSet ds = dal.executeDataSet(sql, src);
+            return ds;
+        }
         
         public double selectShareCapital(String accountNo)
         {
@@ -161,10 +196,20 @@ namespace CMS.Loan_Management.Reports.Model
             return totalbal;
         }
 
-        public DataSet selectDeliquentLoans(String date)
+        public DataSet selectDeliquentLoans(String date, ArrayList loanTypes, String sortBy, String order)
         {
+            String inLoanTypes = String.Empty;
+
+            foreach (int i in loanTypes)
+            {
+
+                inLoanTypes += "," + i.ToString();
+
+            }
+            inLoanTypes = inLoanTypes.Substring(1);
+
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "Select LOAN_INFORMATION.AccountNo, concat(Member.LastName,', ',Member.FirstName,' ',Member.MiddleName),LOAN_TYPE.LoanTypeId, Loan_Type.LoanTypeName, LOAN_INFORMATION.LoanApplicationId,LOAN_INFORMATION.DateApproved, LOAN_INFORMATION.MaturityDate from LOAN_INFORMATION, MEMBER, LOAN_TYPE where Member.AccountNo = Loan_Information.AccountNo and Loan_Type.LoanTypeId=Loan_Information.LoanTypeId and Loan_Information.isCleared = 0 and MaturityDate<" + "'" + date + "'";
+            String sql = "Select LOAN_INFORMATION.AccountNo, concat(Member.LastName,', ',Member.FirstName,' ',Member.MiddleName),LOAN_TYPE.LoanTypeId, Loan_Type.LoanTypeName, LOAN_INFORMATION.LoanApplicationId,LOAN_INFORMATION.DateApproved, LOAN_INFORMATION.MaturityDate from LOAN_INFORMATION, MEMBER, LOAN_TYPE where Member.AccountNo = Loan_Information.AccountNo and Loan_Type.LoanTypeId=Loan_Information.LoanTypeId and Loan_Information.isCleared = 0 and MaturityDate<" + "'" + date + "' AND LOAN_INFORMATION.LoanTypeId IN (" + inLoanTypes + ") ORDER BY " + sortBy + " " + order;
             DataSet ds = dal.executeDataSet(sql);
             return ds;
         }

@@ -17,7 +17,12 @@ namespace CMS.Loan_Management.Reports.View
             InitializeComponent();
             cbLoanTypesSort.Text = cbLoanTypesSort.Items[0].ToString();
             cbAgeBracket.Enabled = false;
-            rbNone.Checked = true;
+        }
+
+        public void setReportDataSource(DataSet ds, DataSet dsCoop, DataSet dsStaff, DataSet dsManager, DataSet dsChair, String dateFrom)
+        {
+            ScheduleOfDelinquentsViewer scheduleOfDelinquentsViewer = new ScheduleOfDelinquentsViewer(ds, dsCoop, dsStaff, dsManager, dsChair, dateFrom);
+            scheduleOfDelinquentsViewer.Show();
         }
 
         public void populateLoanTypes(Dictionary<int, string> loanTypes)
@@ -59,19 +64,7 @@ namespace CMS.Loan_Management.Reports.View
         }
 
 
-         public String getGroupBy()
-        {
-            
-            if (rbNone.Checked)
-                return "None";
-            else if (rbAge.Checked)
-                return "Age";
-            else if (rbLoanType.Checked)
-                return "Loan";
-            else
-                return String.Empty;
-
-        }
+       
 
         public String getSortBy()
         {
@@ -136,12 +129,7 @@ namespace CMS.Loan_Management.Reports.View
             lblLoanTypes.ForeColor = Color.Red;
         }
 
-        public void errorLoanGroup()
-        {
-            grpGroupBy.ForeColor = Color.Red;
-
-        }
-
+       
         public void errorLoanSortBy()
         {
             grpLoanTypesSort.ForeColor = Color.Red;
@@ -161,7 +149,6 @@ namespace CMS.Loan_Management.Reports.View
             cbAge.ForeColor = Color.Black;
             lblLoanTypes.ForeColor = Color.Black;
             grpLoanTypesSort.ForeColor = Color.Black;
-            grpGroupBy.ForeColor = Color.Black;
             rbLoanTypesAscending.ForeColor = Color.Black;
             rbLoanTypesDescending.ForeColor = Color.Black;
 

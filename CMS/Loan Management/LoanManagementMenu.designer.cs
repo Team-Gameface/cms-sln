@@ -240,7 +240,7 @@
             this.itemPaymentHistory.BackColor = System.Drawing.Color.AliceBlue;
             this.itemPaymentHistory.Name = "itemPaymentHistory";
             this.itemPaymentHistory.Size = new System.Drawing.Size(247, 22);
-            this.itemPaymentHistory.Text = "Loan Payment History";
+            this.itemPaymentHistory.Text = "Loan Status History";
             // 
             // itemCollectionReport
             // 

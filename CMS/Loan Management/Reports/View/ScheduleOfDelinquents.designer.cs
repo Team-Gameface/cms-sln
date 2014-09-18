@@ -42,12 +42,7 @@
             this.rbLoanTypesAscending = new System.Windows.Forms.RadioButton();
             this.btnPreview = new System.Windows.Forms.Button();
             this.cbAgeBracket = new System.Windows.Forms.ComboBox();
-            this.grpGroupBy = new System.Windows.Forms.GroupBox();
-            this.rbNone = new System.Windows.Forms.RadioButton();
-            this.rbLoanType = new System.Windows.Forms.RadioButton();
-            this.rbAge = new System.Windows.Forms.RadioButton();
             this.grpLoanTypesSort.SuspendLayout();
-            this.grpGroupBy.SuspendLayout();
             this.SuspendLayout();
             // 
             // label6
@@ -57,7 +52,7 @@
             this.label6.Location = new System.Drawing.Point(3, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(395, 25);
+            this.label6.Size = new System.Drawing.Size(394, 25);
             this.label6.TabIndex = 37;
             this.label6.Text = "Reports - Schedule of Delinquent Accounts";
             // 
@@ -128,9 +123,9 @@
             this.grpLoanTypesSort.Controls.Add(this.rbLoanTypesDescending);
             this.grpLoanTypesSort.Controls.Add(this.rbLoanTypesAscending);
             this.grpLoanTypesSort.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.grpLoanTypesSort.Location = new System.Drawing.Point(16, 395);
+            this.grpLoanTypesSort.Location = new System.Drawing.Point(16, 361);
             this.grpLoanTypesSort.Name = "grpLoanTypesSort";
-            this.grpLoanTypesSort.Size = new System.Drawing.Size(377, 83);
+            this.grpLoanTypesSort.Size = new System.Drawing.Size(377, 88);
             this.grpLoanTypesSort.TabIndex = 47;
             this.grpLoanTypesSort.TabStop = false;
             this.grpLoanTypesSort.Text = "Sort by:";
@@ -143,9 +138,7 @@
             this.cbLoanTypesSort.Items.AddRange(new object[] {
             "Member Account No",
             "Member Name",
-            "Loan Type",
-            "Age",
-            "Balance"});
+            "Loan Type"});
             this.cbLoanTypesSort.Location = new System.Drawing.Point(16, 24);
             this.cbLoanTypesSort.Name = "cbLoanTypesSort";
             this.cbLoanTypesSort.Size = new System.Drawing.Size(210, 25);
@@ -209,58 +202,11 @@
             this.cbAgeBracket.Size = new System.Drawing.Size(264, 25);
             this.cbAgeBracket.TabIndex = 48;
             // 
-            // grpGroupBy
-            // 
-            this.grpGroupBy.Controls.Add(this.rbNone);
-            this.grpGroupBy.Controls.Add(this.rbLoanType);
-            this.grpGroupBy.Controls.Add(this.rbAge);
-            this.grpGroupBy.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.grpGroupBy.Location = new System.Drawing.Point(16, 340);
-            this.grpGroupBy.Name = "grpGroupBy";
-            this.grpGroupBy.Size = new System.Drawing.Size(377, 43);
-            this.grpGroupBy.TabIndex = 49;
-            this.grpGroupBy.TabStop = false;
-            this.grpGroupBy.Text = "Group by:";
-            // 
-            // rbNone
-            // 
-            this.rbNone.AutoSize = true;
-            this.rbNone.Location = new System.Drawing.Point(79, 14);
-            this.rbNone.Name = "rbNone";
-            this.rbNone.Size = new System.Drawing.Size(60, 23);
-            this.rbNone.TabIndex = 26;
-            this.rbNone.TabStop = true;
-            this.rbNone.Text = "None";
-            this.rbNone.UseVisualStyleBackColor = true;
-            // 
-            // rbLoanType
-            // 
-            this.rbLoanType.AutoSize = true;
-            this.rbLoanType.Location = new System.Drawing.Point(159, 14);
-            this.rbLoanType.Name = "rbLoanType";
-            this.rbLoanType.Size = new System.Drawing.Size(90, 23);
-            this.rbLoanType.TabIndex = 26;
-            this.rbLoanType.TabStop = true;
-            this.rbLoanType.Text = "Loan Type";
-            this.rbLoanType.UseVisualStyleBackColor = true;
-            // 
-            // rbAge
-            // 
-            this.rbAge.AutoSize = true;
-            this.rbAge.Location = new System.Drawing.Point(264, 14);
-            this.rbAge.Name = "rbAge";
-            this.rbAge.Size = new System.Drawing.Size(51, 23);
-            this.rbAge.TabIndex = 26;
-            this.rbAge.TabStop = true;
-            this.rbAge.Text = "Age";
-            this.rbAge.UseVisualStyleBackColor = true;
-            // 
             // ScheduleOfDelinquents
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(417, 521);
-            this.Controls.Add(this.grpGroupBy);
+            this.ClientSize = new System.Drawing.Size(405, 521);
             this.Controls.Add(this.cbAgeBracket);
             this.Controls.Add(this.grpLoanTypesSort);
             this.Controls.Add(this.btnPreview);
@@ -276,8 +222,6 @@
             this.Text = "Schedule of Delinquent Accounts";
             this.grpLoanTypesSort.ResumeLayout(false);
             this.grpLoanTypesSort.PerformLayout();
-            this.grpGroupBy.ResumeLayout(false);
-            this.grpGroupBy.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,9 +242,5 @@
         private System.Windows.Forms.RadioButton rbLoanTypesAscending;
         private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.ComboBox cbAgeBracket;
-        private System.Windows.Forms.GroupBox grpGroupBy;
-        private System.Windows.Forms.RadioButton rbNone;
-        private System.Windows.Forms.RadioButton rbLoanType;
-        private System.Windows.Forms.RadioButton rbAge;
     }
 }

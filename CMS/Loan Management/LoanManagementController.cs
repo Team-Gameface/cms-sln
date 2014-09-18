@@ -137,13 +137,7 @@ namespace CMS.Loan_Management
 
         public void itemFinancialReport(object args, EventArgs e)
         {
-            Reports.Controller.PerformanceReportController performanceReportController = new Reports.Controller.PerformanceReportController(new Reports.Model.PerformanceReportModel(), new Reports.View.PerformanceReport(), loanManagementMenu);
+            Reports.Controller.PerformanceReportController performanceReportController = new Reports.Controller.PerformanceReportController(new Reports.Model.PerformanceReportModel(), new Reports.View.PerformanceReportViewer(), this.loanManagementMenu);
         }
-
-
-
-
-
-        
     }
 }

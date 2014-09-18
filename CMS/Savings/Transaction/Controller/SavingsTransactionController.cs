@@ -63,7 +63,7 @@ namespace CMS.Savings.Transaction.Controller
             }
             else
             {
-                new View.SignatureCard(row.Cells[0].Value.ToString()).Show();
+                new View.SignatureCard(row.Cells[0].Value.ToString()).ShowDialog();
             }
         }
 

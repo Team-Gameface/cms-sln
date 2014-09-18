@@ -40,23 +40,28 @@
             this.crViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crViewer1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.crViewer1.Location = new System.Drawing.Point(0, 0);
+            this.crViewer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.crViewer1.Name = "crViewer1";
             this.crViewer1.ShowGroupTreeButton = false;
             this.crViewer1.ShowLogo = false;
             this.crViewer1.ShowParameterPanelButton = false;
-            this.crViewer1.Size = new System.Drawing.Size(784, 562);
+            this.crViewer1.Size = new System.Drawing.Size(784, 561);
             this.crViewer1.TabIndex = 5;
             this.crViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // TimeDepositCertificateViewer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.crViewer1);
+            this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "TimeDepositCertificateViewer";
             this.Text = "Time Deposit Certificate";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }

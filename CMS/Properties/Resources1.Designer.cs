@@ -213,9 +213,29 @@ namespace CMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Passbook {
+            get {
+                object obj = ResourceManager.GetObject("Passbook", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Payments {
             get {
                 object obj = ResourceManager.GetObject("Payments", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Proceed {
+            get {
+                object obj = ResourceManager.GetObject("Proceed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -306,6 +326,16 @@ namespace CMS.Properties {
         internal static System.Drawing.Bitmap Utilities {
             get {
                 object obj = ResourceManager.GetObject("Utilities", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ViewSignature {
+            get {
+                object obj = ResourceManager.GetObject("ViewSignature", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

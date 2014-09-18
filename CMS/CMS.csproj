@@ -1209,7 +1209,9 @@
     <None Include="img\buttons\All\Edit.png" />
     <None Include="img\buttons\All\Compute.png" />
     <None Include="img\buttons\All\Retrieve.png" />
-    <None Include="img\buttons\All\OpenAccount.png" />
+    <Content Include="img\buttons\All\Passbook.png" />
+    <Content Include="img\buttons\All\Proceed.png" />
+    <Content Include="img\buttons\All\ViewSignature.png" />
     <Content Include="img\buttons\Settings\BatchProcess.png" />
     <Content Include="img\buttons\Settings\CompanyProfile.png" />
     <None Include="img\buttons\Dashboard\Home.png" />

@@ -52,7 +52,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblContact = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.btnClose = new System.Windows.Forms.Button();
             this.groupSignature.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSignature3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSignature2)).BeginInit();
@@ -66,20 +65,20 @@
             this.groupSignature.Controls.Add(this.imgSignature3);
             this.groupSignature.Controls.Add(this.imgSignature2);
             this.groupSignature.Controls.Add(this.imgSignature1);
-            this.groupSignature.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
-            this.groupSignature.Location = new System.Drawing.Point(12, 254);
+            this.groupSignature.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupSignature.Location = new System.Drawing.Point(12, 282);
             this.groupSignature.Name = "groupSignature";
-            this.groupSignature.Size = new System.Drawing.Size(543, 126);
+            this.groupSignature.Size = new System.Drawing.Size(603, 134);
             this.groupSignature.TabIndex = 19;
             this.groupSignature.TabStop = false;
-            this.groupSignature.Text = "Signature Specimens:";
+            this.groupSignature.Text = "Signature Specimens";
             // 
             // imgSignature3
             // 
             this.imgSignature3.BackgroundImage = global::CMS.Properties.Resources.signimg;
             this.imgSignature3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.imgSignature3.Enabled = false;
-            this.imgSignature3.Location = new System.Drawing.Point(374, 28);
+            this.imgSignature3.Location = new System.Drawing.Point(404, 28);
             this.imgSignature3.Name = "imgSignature3";
             this.imgSignature3.Size = new System.Drawing.Size(163, 90);
             this.imgSignature3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -91,7 +90,7 @@
             this.imgSignature2.BackgroundImage = global::CMS.Properties.Resources.signimg;
             this.imgSignature2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.imgSignature2.Enabled = false;
-            this.imgSignature2.Location = new System.Drawing.Point(190, 28);
+            this.imgSignature2.Location = new System.Drawing.Point(235, 28);
             this.imgSignature2.Name = "imgSignature2";
             this.imgSignature2.Size = new System.Drawing.Size(163, 90);
             this.imgSignature2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -103,7 +102,7 @@
             this.imgSignature1.BackgroundImage = global::CMS.Properties.Resources.signimg;
             this.imgSignature1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.imgSignature1.Enabled = false;
-            this.imgSignature1.Location = new System.Drawing.Point(9, 28);
+            this.imgSignature1.Location = new System.Drawing.Point(66, 28);
             this.imgSignature1.Name = "imgSignature1";
             this.imgSignature1.Size = new System.Drawing.Size(163, 90);
             this.imgSignature1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -117,7 +116,7 @@
             this.imgPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imgPicture.Enabled = false;
             this.imgPicture.InitialImage = null;
-            this.imgPicture.Location = new System.Drawing.Point(441, 28);
+            this.imgPicture.Location = new System.Drawing.Point(501, 28);
             this.imgPicture.Name = "imgPicture";
             this.imgPicture.Size = new System.Drawing.Size(96, 96);
             this.imgPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -144,135 +143,136 @@
             this.groupBox1.Controls.Add(this.lblContact);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.imgPicture);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(543, 236);
+            this.groupBox1.Size = new System.Drawing.Size(603, 264);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Member Details:";
+            this.groupBox1.Text = "Member Details";
             // 
             // lblAccountNo
             // 
             this.lblAccountNo.AutoSize = true;
-            this.lblAccountNo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblAccountNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAccountNo.Location = new System.Drawing.Point(186, 31);
             this.lblAccountNo.Name = "lblAccountNo";
-            this.lblAccountNo.Size = new System.Drawing.Size(109, 17);
+            this.lblAccountNo.Size = new System.Drawing.Size(128, 21);
             this.lblAccountNo.TabIndex = 2;
-            this.lblAccountNo.Text = "Account Number:";
+            this.lblAccountNo.Text = "Account Number";
             // 
             // txtAccountNo
             // 
             this.txtAccountNo.Enabled = false;
-            this.txtAccountNo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtAccountNo.Location = new System.Drawing.Point(308, 28);
+            this.txtAccountNo.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccountNo.Location = new System.Drawing.Point(323, 28);
             this.txtAccountNo.Name = "txtAccountNo";
-            this.txtAccountNo.Size = new System.Drawing.Size(127, 25);
+            this.txtAccountNo.Size = new System.Drawing.Size(172, 29);
             this.txtAccountNo.TabIndex = 3;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblName.Location = new System.Drawing.Point(6, 62);
+            this.lblName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(15, 66);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(100, 17);
+            this.lblName.Size = new System.Drawing.Size(115, 21);
             this.lblName.TabIndex = 4;
-            this.lblName.Text = "Member Name:";
+            this.lblName.Text = "Member Name";
             // 
             // txtGender
             // 
             this.txtGender.Enabled = false;
-            this.txtGender.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtGender.Location = new System.Drawing.Point(348, 154);
+            this.txtGender.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGender.Location = new System.Drawing.Point(368, 162);
             this.txtGender.Name = "txtGender";
-            this.txtGender.Size = new System.Drawing.Size(87, 25);
+            this.txtGender.Size = new System.Drawing.Size(127, 29);
             this.txtGender.TabIndex = 11;
             // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblAddress.Location = new System.Drawing.Point(48, 90);
+            this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddress.Location = new System.Drawing.Point(15, 101);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(59, 17);
+            this.lblAddress.Size = new System.Drawing.Size(66, 21);
             this.lblAddress.TabIndex = 6;
-            this.lblAddress.Text = "Address:";
+            this.lblAddress.Text = "Address";
             // 
             // txtEmail
             // 
             this.txtEmail.Enabled = false;
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtEmail.Location = new System.Drawing.Point(364, 186);
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(398, 197);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(173, 25);
+            this.txtEmail.Size = new System.Drawing.Size(199, 29);
             this.txtEmail.TabIndex = 15;
             // 
             // txtMobile
             // 
             this.txtMobile.Enabled = false;
-            this.txtMobile.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtMobile.Location = new System.Drawing.Point(239, 186);
+            this.txtMobile.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMobile.Location = new System.Drawing.Point(273, 197);
             this.txtMobile.Name = "txtMobile";
-            this.txtMobile.Size = new System.Drawing.Size(119, 25);
+            this.txtMobile.Size = new System.Drawing.Size(119, 29);
             this.txtMobile.TabIndex = 14;
             // 
             // txtLandline
             // 
             this.txtLandline.Enabled = false;
-            this.txtLandline.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtLandline.Location = new System.Drawing.Point(114, 186);
+            this.txtLandline.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLandline.Location = new System.Drawing.Point(148, 197);
             this.txtLandline.Name = "txtLandline";
-            this.txtLandline.Size = new System.Drawing.Size(119, 25);
+            this.txtLandline.Size = new System.Drawing.Size(119, 29);
             this.txtLandline.TabIndex = 13;
             // 
             // lblBirthdate
             // 
             this.lblBirthdate.AutoSize = true;
-            this.lblBirthdate.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblBirthdate.Location = new System.Drawing.Point(37, 154);
+            this.lblBirthdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBirthdate.Location = new System.Drawing.Point(15, 165);
             this.lblBirthdate.Name = "lblBirthdate";
-            this.lblBirthdate.Size = new System.Drawing.Size(67, 17);
+            this.lblBirthdate.Size = new System.Drawing.Size(77, 21);
             this.lblBirthdate.TabIndex = 8;
-            this.lblBirthdate.Text = "Birth date:";
+            this.lblBirthdate.Text = "Birth date";
             // 
             // dateBirth
             // 
             this.dateBirth.Enabled = false;
+            this.dateBirth.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateBirth.Location = new System.Drawing.Point(114, 154);
+            this.dateBirth.Location = new System.Drawing.Point(148, 162);
             this.dateBirth.Name = "dateBirth";
-            this.dateBirth.Size = new System.Drawing.Size(119, 25);
+            this.dateBirth.Size = new System.Drawing.Size(140, 29);
             this.dateBirth.TabIndex = 9;
             // 
             // lblGender
             // 
             this.lblGender.AutoSize = true;
-            this.lblGender.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblGender.Location = new System.Drawing.Point(282, 157);
+            this.lblGender.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGender.Location = new System.Drawing.Point(294, 165);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(54, 17);
+            this.lblGender.Size = new System.Drawing.Size(61, 21);
             this.lblGender.TabIndex = 10;
-            this.lblGender.Text = "Gender:";
+            this.lblGender.Text = "Gender";
             // 
             // txtAddress
             // 
             this.txtAddress.Enabled = false;
-            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtAddress.Location = new System.Drawing.Point(114, 90);
+            this.txtAddress.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.Location = new System.Drawing.Point(148, 98);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(321, 58);
+            this.txtAddress.Size = new System.Drawing.Size(347, 58);
             this.txtAddress.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.75F, System.Drawing.FontStyle.Italic);
-            this.label3.Location = new System.Drawing.Point(410, 214);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(442, 229);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 15);
+            this.label3.Size = new System.Drawing.Size(89, 17);
             this.label3.TabIndex = 18;
             this.label3.Text = "E-mail Address";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -280,10 +280,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.75F, System.Drawing.FontStyle.Italic);
-            this.label2.Location = new System.Drawing.Point(270, 214);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(295, 229);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 15);
+            this.label2.Size = new System.Drawing.Size(45, 17);
             this.label2.TabIndex = 17;
             this.label2.Text = "Mobile";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -291,10 +291,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.75F, System.Drawing.FontStyle.Italic);
-            this.label1.Location = new System.Drawing.Point(140, 214);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(168, 229);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 15);
+            this.label1.Size = new System.Drawing.Size(54, 17);
             this.label1.TabIndex = 16;
             this.label1.Text = "Landline";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -302,46 +302,29 @@
             // lblContact
             // 
             this.lblContact.AutoSize = true;
-            this.lblContact.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblContact.Location = new System.Drawing.Point(25, 180);
+            this.lblContact.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContact.Location = new System.Drawing.Point(15, 197);
             this.lblContact.Name = "lblContact";
-            this.lblContact.Size = new System.Drawing.Size(78, 34);
+            this.lblContact.Size = new System.Drawing.Size(92, 42);
             this.lblContact.TabIndex = 12;
-            this.lblContact.Text = "Contact \r\nInformation:";
+            this.lblContact.Text = "Contact \r\nInformation";
             this.lblContact.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtName
             // 
             this.txtName.Enabled = false;
-            this.txtName.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtName.Location = new System.Drawing.Point(114, 59);
+            this.txtName.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Location = new System.Drawing.Point(148, 63);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(321, 25);
+            this.txtName.Size = new System.Drawing.Size(347, 29);
             this.txtName.TabIndex = 5;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClose.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 10.75F, System.Drawing.FontStyle.Bold);
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(458, 384);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(97, 32);
-            this.btnClose.TabIndex = 20;
-            this.btnClose.Text = "&Close";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // SignatureCard
             // 
-            this.AcceptButton = this.btnClose;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(570, 420);
-            this.Controls.Add(this.btnClose);
+            this.ClientSize = new System.Drawing.Size(629, 426);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupSignature);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -385,7 +368,6 @@
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label lblContact;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.TextBox txtMobile;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label3;

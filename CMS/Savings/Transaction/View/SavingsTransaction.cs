@@ -75,6 +75,10 @@ namespace CMS.Savings.Transaction.View
         {
             this.dataMember.DataSource = ds.Tables[0];
             dataMember.Columns[3].Visible = false;
+            dataMember.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataMember.Columns[4].DefaultCellStyle.Format = "c";
+            CultureInfo ph = new CultureInfo("en-PH");
+            dataMember.Columns[4].DefaultCellStyle.FormatProvider = ph;
         }
 
         public DataGridViewRow getSelectedMember()
@@ -132,7 +136,14 @@ namespace CMS.Savings.Transaction.View
 
         public void setAccountBalance(String s)
         {
-            this.txtAccountBalance.Text = s;
+            double amount = 0;
+            try
+            {
+                amount = double.Parse(s);
+            }
+            catch (Exception) { }
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.txtAccountBalance.Text = amount.ToString("c", ph);
         }
 
         public double getAccountBalance()

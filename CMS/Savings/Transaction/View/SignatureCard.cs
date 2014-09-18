@@ -150,10 +150,5 @@ namespace CMS.Savings.Transaction.View
                 }
             }
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
     }
 }

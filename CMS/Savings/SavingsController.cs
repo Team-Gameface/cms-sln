@@ -94,7 +94,7 @@ namespace CMS.Savings
         {
             if (Main.UserData.userAccountType == "Staff")
             {
-                new Transaction.View.PasswordAuthentication(this.savingsMenu).Show();
+                new Transaction.View.PasswordAuthentication(this.savingsMenu).ShowDialog();
             }
             else
             {

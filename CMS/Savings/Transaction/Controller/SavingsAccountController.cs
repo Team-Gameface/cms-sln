@@ -61,7 +61,7 @@ namespace CMS.Savings.Transaction.Controller
                 isAdd = false;
                 savingsAccountNo = String.Empty;
                 DataGridViewRow row = this.openAccount.getSelectedAccount();
-                new View.PasswordAuthentication(row.Cells[0].Value.ToString(), this.openAccount, this.savingsAccountModel).Show();
+                new View.PasswordAuthentication(row.Cells[0].Value.ToString(), this.openAccount, this.savingsAccountModel).ShowDialog();
             }
             else
             {
@@ -74,7 +74,7 @@ namespace CMS.Savings.Transaction.Controller
                 }
                 else
                 {
-                    new View.SavingsTermination(row.Cells[0].Value.ToString(), this.openAccount, this.savingsAccountModel).Show();
+                    new View.SavingsTermination(row.Cells[0].Value.ToString(), this.openAccount, this.savingsAccountModel).ShowDialog();
                 }
             }
         }

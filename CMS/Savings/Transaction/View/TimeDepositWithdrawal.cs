@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +61,7 @@ namespace CMS.Savings.Transaction.View
         public void setDataTimeDeposit(DataSet ds)
         {
             this.dataTimeDeposit.DataSource = ds.Tables[0];
+            this.dataTimeDeposit.Columns[3].Visible = false;
         }
 
         public DataGridViewRow getSelected()
@@ -81,8 +83,15 @@ namespace CMS.Savings.Transaction.View
 
         public void setDepositAmount(String s)
         {
-            this.txtDeposit.Text = s;
-            this.txtDepAmt.Text = s;
+            double amount = 0;
+            try
+            {
+                amount = double.Parse(s);
+            }
+            catch (Exception) { }
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.txtDeposit.Text = amount.ToString("c", ph);
+            this.txtDepAmt.Text = amount.ToString("c", ph);
         }
 
         public double getDepositAmount()
@@ -92,7 +101,14 @@ namespace CMS.Savings.Transaction.View
 
         public void setInterest(String s)
         {
-            this.txtInterest.Text = s;
+            double amount = 0;
+            try
+            {
+                amount = double.Parse(s);
+            }
+            catch (Exception) { }
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.txtInterest.Text = amount.ToString("c", ph);
         }
 
         public double getInterest(String s)
@@ -103,7 +119,14 @@ namespace CMS.Savings.Transaction.View
 
         public void setGross(String s)
         {
-            this.txtGross.Text = s;
+            double amount = 0;
+            try
+            {
+                amount = double.Parse(s);
+            }
+            catch (Exception) { }
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.txtGross.Text = amount.ToString("c", ph);
         }
 
         public double getGross()
@@ -113,7 +136,14 @@ namespace CMS.Savings.Transaction.View
 
         public void setPenalty(String s)
         {
-            this.txtPenalty.Text = s;
+            double amount = 0;
+            try
+            {
+                amount = double.Parse(s);
+            }
+            catch (Exception) { }
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.txtPenalty.Text = amount.ToString("c", ph);
         }
 
         public double getPenalty()
@@ -123,7 +153,14 @@ namespace CMS.Savings.Transaction.View
 
         public void setTotal(String s)
         {
-            this.txtTotal.Text = s.ToString();
+            double amount = 0;
+            try
+            {
+                amount = double.Parse(s);
+            }
+            catch (Exception) { }
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.txtTotal.Text = amount.ToString("c", ph);
         }
 
         public double getTotal()

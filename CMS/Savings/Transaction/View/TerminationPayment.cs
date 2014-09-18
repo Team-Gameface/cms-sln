@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,8 @@ namespace CMS.Savings.Transaction.View
         public void setDetails()
         {
             txtAccountNo.Text = this.accountNo;
-            txtLoanBalance.Text = this.netRefunds.ToString();
+            CultureInfo ph = new CultureInfo("en-PH");
+            txtLoanBalance.Text = this.netRefunds.ToString("c", ph);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

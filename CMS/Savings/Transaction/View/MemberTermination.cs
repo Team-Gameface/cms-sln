@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -135,7 +136,14 @@ namespace CMS.Savings.Transaction.View
 
         public void setShareCapitalBalance(String s)
         {
-            this.txtSCapBalance.Text = s;
+            double amount = 0;
+            try
+            {
+                amount = double.Parse(s);
+            }
+            catch (Exception) { }
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.txtSCapBalance.Text = amount.ToString("c", ph);
         }
 
         public void setSavingsBalance(String s)
@@ -145,12 +153,26 @@ namespace CMS.Savings.Transaction.View
 
         public void setLoanBalance(String s)
         {
-            this.txtLoanBalance.Text = s;
+            double amount = 0;
+            try
+            {
+                amount = double.Parse(s);
+            }
+            catch (Exception) { }
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.txtLoanBalance.Text = amount.ToString("c", ph);
         }
 
-        public void setNetRefunds(String s) {
-
-            this.txtNetRefunds.Text = s;
+        public void setNetRefunds(String s)
+        {
+            double amount = 0;
+            try
+            {
+                amount = double.Parse(s);
+            }
+            catch (Exception) { }
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.txtNetRefunds.Text = amount.ToString("c", ph);
         }
 
         public void restrictTerminate() {
@@ -222,15 +244,10 @@ namespace CMS.Savings.Transaction.View
         public bool getSearchType()
         {
             bool check = false;
-
             if (rbAccountNo.Checked) check = false;
             if (rbMemberName.Checked) check = true;
-
             return check;
-
         }
-
-        
 
         public String getSearch()
         {
@@ -244,8 +261,6 @@ namespace CMS.Savings.Transaction.View
             {
                 searchName = this.txtMemberName.Text;
             }
-
-
             return searchName;
         }
 
@@ -253,14 +268,12 @@ namespace CMS.Savings.Transaction.View
 
         private void rbAccountNo_CheckedChanged(object sender, EventArgs e)
         {
-
             if (rbAccountNo.Checked)
             {
                 txtAccountNo.Enabled = true;
                 txtMemberName.Clear();
                 txtMemberName.Enabled = false;
-            }
-            
+            }   
         }
 
         private void rbMemberName_CheckedChanged(object sender, EventArgs e)

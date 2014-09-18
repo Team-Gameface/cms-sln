@@ -19,7 +19,6 @@ namespace CMS.Savings.Queries.Controller
             this.statementOfAccount = statementOfAccount;
             this.statementOfAccount.setDataMember(this.statementOfAccountModel.selectMember());
             this.statementOfAccount.dataMember_CellContentClick(this.dataMemberCellClick);
-            this.statementOfAccount.setBtnSearchEventHandler(this.btnSearch);
             this.statementOfAccount.setTxtAccountNoEventHandler(this.txtAccountNo);
             this.statementOfAccount.setTxtmemberNameEventHandler(this.txtMemberName);
             this.statementOfAccount.MdiParent = savingsMenu;
@@ -53,17 +52,6 @@ namespace CMS.Savings.Queries.Controller
         private void txtMemberName(object sender, EventArgs e)
         {
             this.statementOfAccount.setDataMember(this.statementOfAccountModel.searchMemberName(statementOfAccount.getSearchMember()));
-        }
-
-
-        private void btnSearch(object sender, EventArgs e)
-        {
-
-            if (statementOfAccount.getSearchType())
-                this.statementOfAccount.setDataMember(this.statementOfAccountModel.searchAccount(statementOfAccount.getSearchAccount()));
-            else
-                this.statementOfAccount.setDataMember(this.statementOfAccountModel.searchMemberName(statementOfAccount.getSearchMember()));
-
         }
 
         private void btnPreview(object sender, EventArgs e)

@@ -80,7 +80,7 @@ namespace CMS.Savings.Transaction.Controller
                     DialogResult dr = MessageBox.Show("Member still has to pay " + netRefunds.ToString("c", ph) + " to continue termination. Proceed?", "Member Termination", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
                     if (dr == DialogResult.Yes)
                     {
-                        new View.TerminationPayment(accountNo, reason, details, netRefunds, this.termination, this.terminationModel, this).Show();
+                        new View.TerminationPayment(accountNo, reason, details, netRefunds, this.termination, this.terminationModel, this).ShowDialog();
                     }
                 }
                 else

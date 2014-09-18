@@ -1211,6 +1211,7 @@
     <None Include="img\buttons\All\Retrieve.png" />
     <Content Include="img\buttons\All\Passbook.png" />
     <Content Include="img\buttons\All\Proceed.png" />
+    <None Include="img\buttons\All\ReportView.png" />
     <Content Include="img\buttons\All\ViewSignature.png" />
     <Content Include="img\buttons\Settings\BatchProcess.png" />
     <Content Include="img\buttons\Settings\CompanyProfile.png" />

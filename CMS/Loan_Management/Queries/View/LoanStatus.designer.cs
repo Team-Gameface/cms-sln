@@ -64,7 +64,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 9);
+            this.label1.Location = new System.Drawing.Point(13, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(201, 25);
@@ -80,9 +80,9 @@
             this.groupBox4.Controls.Add(this.rbAcctName);
             this.groupBox4.Controls.Add(this.rbAcctNo);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox4.Location = new System.Drawing.Point(9, 41);
+            this.groupBox4.Location = new System.Drawing.Point(18, 47);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(674, 93);
+            this.groupBox4.Size = new System.Drawing.Size(995, 93);
             this.groupBox4.TabIndex = 37;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Search Loan:";
@@ -92,7 +92,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.label4.Location = new System.Drawing.Point(45, 31);
+            this.label4.Location = new System.Drawing.Point(205, 31);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 17);
             this.label4.TabIndex = 2;
@@ -103,7 +103,7 @@
             this.tbAccountNo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbAccountNo.Enabled = false;
             this.tbAccountNo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.tbAccountNo.Location = new System.Drawing.Point(252, 28);
+            this.tbAccountNo.Location = new System.Drawing.Point(412, 28);
             this.tbAccountNo.Name = "tbAccountNo";
             this.tbAccountNo.Size = new System.Drawing.Size(321, 25);
             this.tbAccountNo.TabIndex = 4;
@@ -113,7 +113,7 @@
             this.tbAccountName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbAccountName.Enabled = false;
             this.tbAccountName.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.tbAccountName.Location = new System.Drawing.Point(252, 59);
+            this.tbAccountName.Location = new System.Drawing.Point(412, 59);
             this.tbAccountName.Name = "tbAccountName";
             this.tbAccountName.Size = new System.Drawing.Size(321, 25);
             this.tbAccountName.TabIndex = 6;
@@ -123,7 +123,7 @@
             this.rbAcctName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbAcctName.AutoSize = true;
             this.rbAcctName.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.rbAcctName.Location = new System.Drawing.Point(119, 60);
+            this.rbAcctName.Location = new System.Drawing.Point(279, 60);
             this.rbAcctName.Name = "rbAcctName";
             this.rbAcctName.Size = new System.Drawing.Size(118, 21);
             this.rbAcctName.TabIndex = 5;
@@ -137,7 +137,7 @@
             this.rbAcctNo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbAcctNo.AutoSize = true;
             this.rbAcctNo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.rbAcctNo.Location = new System.Drawing.Point(119, 29);
+            this.rbAcctNo.Location = new System.Drawing.Point(279, 29);
             this.rbAcctNo.Name = "rbAcctNo";
             this.rbAcctNo.Size = new System.Drawing.Size(127, 21);
             this.rbAcctNo.TabIndex = 3;
@@ -151,10 +151,11 @@
             this.dataGridLoan.AllowUserToAddRows = false;
             this.dataGridLoan.AllowUserToDeleteRows = false;
             this.dataGridLoan.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dataGridLoan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridLoan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridLoan.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridLoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridLoan.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridLoan.Location = new System.Drawing.Point(9, 163);
+            this.dataGridLoan.Location = new System.Drawing.Point(18, 163);
             this.dataGridLoan.Name = "dataGridLoan";
             this.dataGridLoan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridLoan.Size = new System.Drawing.Size(382, 181);
@@ -165,13 +166,14 @@
             this.dataGridPayment.AllowUserToAddRows = false;
             this.dataGridPayment.AllowUserToDeleteRows = false;
             this.dataGridPayment.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dataGridPayment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridPayment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridPayment.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridPayment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridPayment.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridPayment.Location = new System.Drawing.Point(397, 163);
+            this.dataGridPayment.Location = new System.Drawing.Point(406, 163);
             this.dataGridPayment.Name = "dataGridPayment";
             this.dataGridPayment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridPayment.Size = new System.Drawing.Size(286, 181);
+            this.dataGridPayment.Size = new System.Drawing.Size(607, 181);
             this.dataGridPayment.TabIndex = 38;
             // 
             // groupBox1
@@ -190,7 +192,7 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(9, 350);
+            this.groupBox1.Location = new System.Drawing.Point(176, 350);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(674, 93);
             this.groupBox1.TabIndex = 37;
@@ -331,7 +333,7 @@
             this.btnCollaterals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCollaterals.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnCollaterals.ForeColor = System.Drawing.Color.White;
-            this.btnCollaterals.Location = new System.Drawing.Point(442, 457);
+            this.btnCollaterals.Location = new System.Drawing.Point(609, 457);
             this.btnCollaterals.Name = "btnCollaterals";
             this.btnCollaterals.Size = new System.Drawing.Size(241, 32);
             this.btnCollaterals.TabIndex = 40;
@@ -343,7 +345,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.label2.Location = new System.Drawing.Point(394, 143);
+            this.label2.Location = new System.Drawing.Point(403, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 17);
             this.label2.TabIndex = 2;
@@ -353,7 +355,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(690, 501);
+            this.ClientSize = new System.Drawing.Size(1025, 501);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCollaterals);
             this.Controls.Add(this.groupBox1);

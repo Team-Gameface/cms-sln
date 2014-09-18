@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace CMS.Loan_Management.Queries.View
 {
@@ -56,6 +57,7 @@ namespace CMS.Loan_Management.Queries.View
         {
             this.dataGridLoan.DataSource = ds.Tables[0];
             dataGridLoan.Columns[0].Visible = false;
+            dataGridLoan.Columns[1].Visible = false;
         }
 
         public DataGridViewRow getSelected()
@@ -66,6 +68,19 @@ namespace CMS.Loan_Management.Queries.View
         public void paymentGrid(DataSet ds)
         {
             this.dataGridPayment.DataSource = ds.Tables[0];
+            this.dataGridPayment.Columns[2].DefaultCellStyle.Format = "c";
+            this.dataGridPayment.Columns[3].DefaultCellStyle.Format = "c";
+            this.dataGridPayment.Columns[4].DefaultCellStyle.Format = "c";
+            this.dataGridPayment.Columns[5].DefaultCellStyle.Format = "c";
+            this.dataGridPayment.Columns[6].DefaultCellStyle.Format = "c";
+            this.dataGridPayment.Columns[7].DefaultCellStyle.Format = "c";
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.dataGridPayment.Columns[2].DefaultCellStyle.FormatProvider = ph;
+            this.dataGridPayment.Columns[3].DefaultCellStyle.FormatProvider = ph;
+            this.dataGridPayment.Columns[4].DefaultCellStyle.FormatProvider = ph;
+            this.dataGridPayment.Columns[5].DefaultCellStyle.FormatProvider = ph;
+            this.dataGridPayment.Columns[6].DefaultCellStyle.FormatProvider = ph;
+            this.dataGridPayment.Columns[7].DefaultCellStyle.FormatProvider = ph;
         }
 
         public String getAccountNo() {
@@ -96,11 +111,10 @@ namespace CMS.Loan_Management.Queries.View
             lblMaturity.Text = s;
         }
 
-        public void setLoanAmount(String s)
+        public void setLoanAmount(double d)
         {
-
-
-            lblAmt.Text = s;
+            CultureInfo ph = new CultureInfo("en-PH");
+            lblAmt.Text = d.ToString("c",ph);
         }
 
         public void setAmortizations(String s)
@@ -117,9 +131,10 @@ namespace CMS.Loan_Management.Queries.View
             lblStatus.Text = s;
         }
 
-        public void setBalance(String s)
+        public void setBalance(double d)
         {
-            lblBalance.Text = s;
+            CultureInfo ph = new CultureInfo("en-PH");
+            lblBalance.Text = d.ToString("c", ph);
         }
 
         private void rbAcctNo_CheckedChanged(object sender, EventArgs e)

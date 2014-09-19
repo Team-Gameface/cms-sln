@@ -6,7 +6,7 @@
              mc:Ignorable="d" Height="300" Width="400">
     <Grid Background="DarkGray">
         <InkCanvas x:Name="signatureCanvas" HorizontalAlignment="Left" Height="242" Margin="10,10,0,0" VerticalAlignment="Top" Width="380"/>
-        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="315,265,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Click="btnClear_Click"/>
+        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="308,265,0,0" VerticalAlignment="Top" Width="82" Click="btnClear_Click" Background="Red" FontFamily="Segoe UI Semilight" Foreground="White" BorderThickness="0" BorderBrush="White" Height="25"/>
 
     </Grid>
 </UserControl>

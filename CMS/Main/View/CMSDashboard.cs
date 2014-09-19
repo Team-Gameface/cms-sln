@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CMS.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -70,13 +71,13 @@ namespace CMS.Main.View
         {
             if (!isExpanded)
             {
-                btnShow.Text = ">";
+                btnShow.Image = Resources.Next;
                 panelMenu.Width = 173;
                 isExpanded = true;
             }
             else
             {
-                btnShow.Text = "<";
+                btnShow.Image = Resources.Previous;
                 panelMenu.Width = 25;
                 isExpanded = false;
             }
@@ -98,7 +99,7 @@ namespace CMS.Main.View
         {
             if (isAutoCollapse)
             {
-                btnShow.Text = ">";
+                btnShow.Image = Resources.Next;
                 panelMenu.Width = 173;
                 isExpanded = true;
             }

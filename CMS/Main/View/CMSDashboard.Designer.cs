@@ -242,13 +242,14 @@
             // btnShow
             // 
             this.btnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnShow.FlatAppearance.BorderSize = 0;
             this.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShow.ForeColor = System.Drawing.Color.White;
+            this.btnShow.Image = global::CMS.Properties.Resources.Next;
             this.btnShow.Location = new System.Drawing.Point(0, 673);
             this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(26, 30);
+            this.btnShow.Size = new System.Drawing.Size(30, 30);
             this.btnShow.TabIndex = 18;
-            this.btnShow.Text = ">";
             this.btnShow.UseVisualStyleBackColor = true;
             this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 

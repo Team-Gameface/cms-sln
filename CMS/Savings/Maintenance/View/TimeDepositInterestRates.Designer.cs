@@ -86,6 +86,11 @@
             this.numDays.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numDays.ForeColor = System.Drawing.SystemColors.ControlText;
             this.numDays.Location = new System.Drawing.Point(151, 55);
+            this.numDays.Maximum = new decimal(new int[] {
+            365,
+            0,
+            0,
+            0});
             this.numDays.Name = "numDays";
             this.numDays.Size = new System.Drawing.Size(92, 29);
             this.numDays.TabIndex = 8;

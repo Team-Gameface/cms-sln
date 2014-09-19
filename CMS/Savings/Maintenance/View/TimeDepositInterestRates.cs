@@ -308,7 +308,6 @@ namespace CMS.Savings.Maintenance.View
             dataInterestRates.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataInterestRates.Columns[2].DefaultCellStyle.Format = "c";
             dataInterestRates.Columns[3].DefaultCellStyle.Format = "c";
-            dataInterestRates.Columns[4].DefaultCellStyle.Format = "p";
             CultureInfo ph = new CultureInfo("en-PH");
             dataInterestRates.Columns[2].DefaultCellStyle.FormatProvider = ph;
             dataInterestRates.Columns[3].DefaultCellStyle.FormatProvider = ph;

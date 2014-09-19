@@ -26,7 +26,7 @@ namespace CMS.Loan_Management.Transaction.Model
         public DataSet selectMembers() {
 
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "Select m.AccountNo as 'Account No.', concat(m.FirstName,' ',m.MiddleName,' ',m.LastName) as 'Name', SUM(h.ShareCapital) AS 'Balance' from Member m inner join MEMBER_TYPE t on m.MemberTypeNo = t.MemberTypeNo full join MEMBER_SHARECAPITAL h on m.AccountNo = h.accountNo where m.Status = 1 and t.hasShareCapital = 1 group by m.AccountNo, m.FirstName, m.LastName, m.MiddleName";
+            String sql = "Select m.AccountNo as 'Account No.', concat(m.FirstName,' ',m.MiddleName,' ',m.LastName) as 'Name', ISNULL(SUM(h.ShareCapital), 0) AS 'Balance' from Member m inner join MEMBER_TYPE t on m.MemberTypeNo = t.MemberTypeNo full join MEMBER_SHARECAPITAL h on m.AccountNo = h.accountNo where m.Status = 1 and t.hasShareCapital = 1 group by m.AccountNo, m.FirstName, m.LastName, m.MiddleName";
             DataSet ds = dal.executeDataSet(sql);
             return ds;
         
@@ -35,7 +35,7 @@ namespace CMS.Loan_Management.Transaction.Model
         public DataSet searchMemberByName(String Name)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "Select m.AccountNo as 'Account No.', concat(m.FirstName,' ',m.MiddleName,' ',m.LastName) as 'Name', SUM(h.ShareCapital) AS 'Balance' from Member m inner join MEMBER_TYPE t on m.MemberTypeNo = t.MemberTypeNo full join MEMBER_SHARECAPITAL h on m.AccountNo = h.accountNo  where m.Status = 1 and hasShareCapital = 1 and concat(m.FirstName,' ',m.MiddleName,' ',m.LastName) like(@MemberName) group by m.AccountNo, m.FirstName, m.LastName, m.MiddleName";
+            String sql = "Select m.AccountNo as 'Account No.', concat(m.FirstName,' ',m.MiddleName,' ',m.LastName) as 'Name', ISNULL(SUM(h.ShareCapital), 0) AS 'Balance' from Member m inner join MEMBER_TYPE t on m.MemberTypeNo = t.MemberTypeNo full join MEMBER_SHARECAPITAL h on m.AccountNo = h.accountNo  where m.Status = 1 and hasShareCapital = 1 and concat(m.FirstName,' ',m.MiddleName,' ',m.LastName) like(@MemberName) group by m.AccountNo, m.FirstName, m.LastName, m.MiddleName";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             Name = "%" + Name + "%";
             parameters.Add("@MemberName", Name);

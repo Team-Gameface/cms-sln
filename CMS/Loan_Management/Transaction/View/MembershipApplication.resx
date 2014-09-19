@@ -121,6 +121,24 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnLoanGenerate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAL1JREFUOE9jGAVUAv/+/UsB4vlA3A7EEf///xeASsEBUIwFKOcDxDVAdgNIHUxC
+        Acj5DqThAMh/D8QFYAVAABQKAPIfQ2QhAKpHA2T7ZCADZGINEB8Hy0IBkN8PxCFA/BsqBBI7DaQqQBjI
+        Xg5zmgeIA8SLgbgEiEEan4M0gACIDcTdUDmQmtVAHAKU4oA6EgKAAiJAiRwgXg/EMA0gDAqb7SA2UI0E
+        VDl+AFRoANQAcslkIDaBCo8C6gMGBgA/P/mX1Y1bMgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnShareGenerate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAL1JREFUOE9jGAVUAv/+/UsB4vlA3A7EEf///xeASsEBUIwFKOcDxDVAdgNIHUxC
+        Acj5DqThAMh/D8QFYAVAABQKAPIfQ2QhAKpHA2T7ZCADZGINEB8Hy0IBkN8PxCFA/BsqBBI7DaQqQBjI
+        Xg5zmgeIA8SLgbgEiEEan4M0gACIDcTdUDmQmtVAHAKU4oA6EgKAAiJAiRwgXg/EMA0gDAqb7SA2UI0E
+        VDl+AFRoANQAcslkIDaBCo8C6gMGBgA/P/mX1Y1bMgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAEAIAAwAgAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAAlw

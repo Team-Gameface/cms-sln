@@ -1566,6 +1566,6 @@ namespace CMS.Loan_Management.Transaction.View
                 this.txtGross.SelectionStart = txtGross.Text.Length - 1;
             }
             else this.txtGross.SelectionStart = txtGross.Text.Length - 3;
-        }  
+        }
     }
 }

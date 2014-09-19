@@ -99,7 +99,7 @@ namespace CMS.Loan_Management.Transaction.View
         {
             CultureInfo ph = new CultureInfo("en-PH");
             this.dataGridShare.DataSource = ds.Tables[0];
-            this.dataGridShare.Columns["Balance"].DefaultCellStyle.NullValue = "Php 0.00";
+            this.dataGridShare.Columns["Balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridShare.Columns["Balance"].DefaultCellStyle.Format = "c";
             this.dataGridShare.Columns["Balance"].DefaultCellStyle.FormatProvider = ph;
         }

@@ -279,7 +279,7 @@ namespace CMS.Main {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class dtReceiptDataTable : global::System.Data.TypedTableBase<dtReceiptRow> {
             
-            private global::System.Data.DataColumn columnORNo;
+            private global::System.Data.DataColumn columnOR;
             
             private global::System.Data.DataColumn columnTime;
             
@@ -326,9 +326,9 @@ namespace CMS.Main {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ORNoColumn {
+            public global::System.Data.DataColumn ORColumn {
                 get {
-                    return this.columnORNo;
+                    return this.columnOR;
                 }
             }
             
@@ -409,10 +409,10 @@ namespace CMS.Main {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public dtReceiptRow AdddtReceiptRow(int ORNo, System.DateTime Time, string AccountNo, string Name, string Particulars, decimal Amount) {
+            public dtReceiptRow AdddtReceiptRow(int OR, System.DateTime Time, string AccountNo, string Name, string Particulars, decimal Amount) {
                 dtReceiptRow rowdtReceiptRow = ((dtReceiptRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ORNo,
+                        OR,
                         Time,
                         AccountNo,
                         Name,
@@ -440,7 +440,7 @@ namespace CMS.Main {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnORNo = base.Columns["ORNo"];
+                this.columnOR = base.Columns["OR"];
                 this.columnTime = base.Columns["Time"];
                 this.columnAccountNo = base.Columns["AccountNo"];
                 this.columnName = base.Columns["Name"];
@@ -451,8 +451,8 @@ namespace CMS.Main {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnORNo = new global::System.Data.DataColumn("ORNo", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnORNo);
+                this.columnOR = new global::System.Data.DataColumn("OR", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOR);
                 this.columnTime = new global::System.Data.DataColumn("Time", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTime);
                 this.columnAccountNo = new global::System.Data.DataColumn("AccountNo", typeof(string), null, global::System.Data.MappingType.Element);
@@ -605,17 +605,17 @@ namespace CMS.Main {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ORNo {
+            public int OR {
                 get {
                     try {
-                        return ((int)(this[this.tabledtReceipt.ORNoColumn]));
+                        return ((int)(this[this.tabledtReceipt.ORColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ORNo\' in table \'dtReceipt\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'OR\' in table \'dtReceipt\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledtReceipt.ORNoColumn] = value;
+                    this[this.tabledtReceipt.ORColumn] = value;
                 }
             }
             
@@ -701,14 +701,14 @@ namespace CMS.Main {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsORNoNull() {
-                return this.IsNull(this.tabledtReceipt.ORNoColumn);
+            public bool IsORNull() {
+                return this.IsNull(this.tabledtReceipt.ORColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetORNoNull() {
-                this[this.tabledtReceipt.ORNoColumn] = global::System.Convert.DBNull;
+            public void SetORNull() {
+                this[this.tabledtReceipt.ORColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

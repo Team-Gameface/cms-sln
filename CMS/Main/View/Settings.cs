@@ -18,6 +18,7 @@ namespace CMS.Main.View
         public Boolean batchOpen = false;
         public Boolean companyProfileOpen = false;
         public Boolean userOpen = false;
+        public Boolean backupRestoreOpen = false;
 
         public Settings(View.CMSDashboard cms)
         {
@@ -38,6 +39,10 @@ namespace CMS.Main.View
             if (userOpen)
             {
                 userOpen = false;
+            }
+            if (backupRestoreOpen)
+            {
+                backupRestoreOpen = false;
             }
             if (!batchOpen)
             {
@@ -63,6 +68,10 @@ namespace CMS.Main.View
             {
                 userOpen = false;
             }
+            if (backupRestoreOpen)
+            {
+                backupRestoreOpen = false;
+            }
             if (!companyProfileOpen)
             {
                 companyProfileOpen = true;
@@ -86,6 +95,10 @@ namespace CMS.Main.View
             if (userOpen)
             {
                 userOpen = false;
+            }
+            if (backupRestoreOpen)
+            {
+                backupRestoreOpen = false;
             }
             if (!savingsOpen)
             {
@@ -111,6 +124,10 @@ namespace CMS.Main.View
             {
                 savingsOpen = false;
             }
+            if (backupRestoreOpen)
+            {
+                backupRestoreOpen = false;
+            }
             if (!userOpen)
             {
                 userOpen = true;
@@ -118,6 +135,34 @@ namespace CMS.Main.View
                 CMS.Settings.UserManagement u = new CMS.Settings.UserManagement();
                 u.Dock = DockStyle.Fill;
                 this.panelSettings.Controls.Add(u);
+            }
+        }
+
+        private void btnBackupRestore_Click(object sender, EventArgs e)
+        {
+            if (batchOpen)
+            {
+                batchOpen = false;
+            }
+            if (companyProfileOpen)
+            {
+                companyProfileOpen = false;
+            }
+            if (savingsOpen)
+            {
+                savingsOpen = false;
+            }
+            if (userOpen)
+            {
+                userOpen = false;
+            }
+            if (!backupRestoreOpen)
+            {
+                backupRestoreOpen = true;
+                this.panelSettings.Controls.Clear();
+                CMS.Settings.BackupRestore b = new CMS.Settings.BackupRestore();
+                b.Dock = DockStyle.Fill;
+                this.panelSettings.Controls.Add(b);
             }
         }
     }

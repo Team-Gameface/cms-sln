@@ -48,6 +48,7 @@ namespace CMS
                 Main.CompanyData.CellphoneNo = reader[5].ToString();
                 Main.CompanyData.Email = reader[6].ToString();
             }
+            reader.Close();
         }
 
         public void setCompanyData()
@@ -117,6 +118,7 @@ namespace CMS
                 {
                     lblInvalid.Visible = true;
                 }
+                rd.Close();
             }
             catch (SqlException)
             {

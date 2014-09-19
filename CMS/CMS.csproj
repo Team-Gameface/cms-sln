@@ -640,6 +640,12 @@
     <Compile Include="Savings\Transaction\View\TimeDepositWithdrawal.Designer.cs">
       <DependentUpon>TimeDepositWithdrawal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings\BackupRestore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\BackupRestore.Designer.cs">
+      <DependentUpon>BackupRestore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings\BatchProcessAutomation.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -900,6 +906,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Savings\Transaction\View\TimeDepositWithdrawal.resx">
       <DependentUpon>TimeDepositWithdrawal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\BackupRestore.resx">
+      <DependentUpon>BackupRestore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings\BatchProcessAutomation.resx">
       <DependentUpon>BatchProcessAutomation.cs</DependentUpon>
@@ -1203,11 +1212,14 @@
     <None Include="img\buttons\All\Next.png" />
     <None Include="img\buttons\All\Backward.png" />
     <None Include="img\buttons\All\Forward.png" />
+    <None Include="img\buttons\All\Backup.png" />
     <Content Include="img\buttons\All\Passbook.png" />
     <None Include="img\buttons\All\Previous.png" />
     <Content Include="img\buttons\All\Proceed.png" />
     <None Include="img\buttons\All\ReportView.png" />
+    <None Include="img\buttons\All\Restore.png" />
     <Content Include="img\buttons\All\ViewSignature.png" />
+    <None Include="img\buttons\Settings\BackupRestore.png" />
     <Content Include="img\buttons\Settings\BatchProcess.png" />
     <Content Include="img\buttons\Settings\CompanyProfile.png" />
     <None Include="img\buttons\Dashboard\Home.png" />

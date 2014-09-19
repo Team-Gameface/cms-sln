@@ -84,7 +84,6 @@ namespace CMS.Settings
                     ts.RootFolder.RegisterTaskDefinition(taskNameSavingsInterest, tdMainBal);
                     MessageBox.Show("Batch Process Automation Schedule Save Sucess.", "Batch Process Automation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     execLogger("Update");
-                    this.Dispose();
                 }
                 catch (Exception ex)
                 {

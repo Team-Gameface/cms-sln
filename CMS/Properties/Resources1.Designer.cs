@@ -93,6 +93,26 @@ namespace CMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Backup {
+            get {
+                object obj = ResourceManager.GetObject("Backup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackupRestore {
+            get {
+                object obj = ResourceManager.GetObject("BackupRestore", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Backward {
             get {
                 object obj = ResourceManager.GetObject("Backward", resourceCulture);
@@ -286,6 +306,16 @@ namespace CMS.Properties {
         internal static System.Drawing.Bitmap ReportView {
             get {
                 object obj = ResourceManager.GetObject("ReportView", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Restore {
+            get {
+                object obj = ResourceManager.GetObject("Restore", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -35,6 +35,7 @@
             this.btnBatchProcess = new System.Windows.Forms.Button();
             this.btnCompany = new System.Windows.Forms.Button();
             this.btnUserManagement = new System.Windows.Forms.Button();
+            this.btnBackupRestore = new System.Windows.Forms.Button();
             this.panelSettings = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -68,6 +69,7 @@
             this.flowSwitchboard.Controls.Add(this.btnBatchProcess);
             this.flowSwitchboard.Controls.Add(this.btnCompany);
             this.flowSwitchboard.Controls.Add(this.btnUserManagement);
+            this.flowSwitchboard.Controls.Add(this.btnBackupRestore);
             this.flowSwitchboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowSwitchboard.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowSwitchboard.Location = new System.Drawing.Point(0, 0);
@@ -151,6 +153,25 @@
             this.btnUserManagement.UseVisualStyleBackColor = false;
             this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
             // 
+            // btnBackupRestore
+            // 
+            this.btnBackupRestore.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBackupRestore.BackColor = System.Drawing.Color.Crimson;
+            this.btnBackupRestore.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnBackupRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackupRestore.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackupRestore.ForeColor = System.Drawing.Color.White;
+            this.btnBackupRestore.Image = global::CMS.Properties.Resources.BackupRestore;
+            this.btnBackupRestore.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBackupRestore.Location = new System.Drawing.Point(3, 347);
+            this.btnBackupRestore.Name = "btnBackupRestore";
+            this.btnBackupRestore.Size = new System.Drawing.Size(170, 80);
+            this.btnBackupRestore.TabIndex = 19;
+            this.btnBackupRestore.Text = "Backup/Restore Database";
+            this.btnBackupRestore.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnBackupRestore.UseVisualStyleBackColor = false;
+            this.btnBackupRestore.Click += new System.EventHandler(this.btnBackupRestore_Click);
+            // 
             // panelSettings
             // 
             this.panelSettings.BackColor = System.Drawing.Color.Honeydew;
@@ -188,6 +209,7 @@
         private System.Windows.Forms.Button btnBatchProcess;
         private System.Windows.Forms.Button btnCompany;
         private System.Windows.Forms.Button btnUserManagement;
+        private System.Windows.Forms.Button btnBackupRestore;
 
     }
 }

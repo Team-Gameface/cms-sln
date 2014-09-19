@@ -35,8 +35,17 @@ namespace CMS.Loan_Management.Maintenance.View
 
             this.btnAdd.Enabled = true;
             this.btnEdit.Enabled = true;
-            this.gbAmnesty.Enabled = false;
             this.clbLoanType.Items.Clear();
+
+            this.startDate.Enabled = false;
+            this.endDate.Enabled = false;
+            this.clbDateTo.Enabled = false;
+            this.udOverdue.Enabled = false;
+            this.cbDuration.Enabled = false;
+            this.chbWaiveInterest.Enabled = false;
+            this.chbWaivePenalties.Enabled = false;
+            this.chbStatus.Enabled = false;
+            this.clbLoanType.Enabled = false;
         }
 
         public void enableFunction()
@@ -55,7 +64,15 @@ namespace CMS.Loan_Management.Maintenance.View
             this.btnEdit.Enabled = false;
             this.btnSave.Enabled = true;
             this.btnCancel.Enabled = true;
-            this.gbAmnesty.Enabled = true;
+
+            this.startDate.Enabled = true;
+            this.udOverdue.Enabled = true;
+            this.clbDateTo.Enabled = true;
+            this.cbDuration.Enabled = true;
+            this.chbWaiveInterest.Enabled = true;
+            this.chbWaivePenalties.Enabled = true;
+            this.chbStatus.Enabled = true;
+            this.clbLoanType.Enabled = true;
         }
 
         public void setClbDateTo()

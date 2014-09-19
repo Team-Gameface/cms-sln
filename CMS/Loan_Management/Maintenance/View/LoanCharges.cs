@@ -25,12 +25,17 @@ namespace CMS.Loan_Management.Maintenance.View
         {
             this.txtName.Clear();
             this.txtAmount.Clear();
-            gbCharge.Enabled = false;
             this.chbStatus.CheckState = CheckState.Unchecked;
             this.clbLoanType.Items.Clear();
             this.cbOption.SelectedIndex = -1;
             this.btnSave.Enabled = false;
             this.btnCancel.Enabled = false;
+
+            txtName.Enabled = false;
+            txtAmount.Enabled = false;
+            cbOption.Enabled = false;
+            chbStatus.Enabled = false;
+            clbLoanType.Enabled = false;
 
             this.btnAdd.Enabled = true;
             this.btnEdit.Enabled = true;
@@ -43,7 +48,6 @@ namespace CMS.Loan_Management.Maintenance.View
         {
             this.txtName.Clear();
             this.txtAmount.Clear();
-            gbCharge.Enabled = true;
             this.cbOption.SelectedIndex = -1;
             this.clbLoanType.Items.Clear();
             this.btnAdd.Enabled = false;
@@ -54,9 +58,12 @@ namespace CMS.Loan_Management.Maintenance.View
             this.btnRetrieve.Visible = false;
             txtSearch.Enabled = false;
 
+            txtName.Enabled = true;
+            txtAmount.Enabled = true;
+            cbOption.Enabled = true;
+            chbStatus.Enabled = true;
+            clbLoanType.Enabled = true;
         }
-
-
 
         public void setBtnAddEventHandler(EventHandler e)
         {
@@ -161,6 +168,7 @@ namespace CMS.Loan_Management.Maintenance.View
             this.dataLoanCharge.DataSource = ds.Tables[0];
             this.dataLoanCharge.Columns[0].Visible = false;
             this.dataLoanCharge.Columns[4].Visible = false;
+            this.dataLoanCharge.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         public void setAmount(Double d)

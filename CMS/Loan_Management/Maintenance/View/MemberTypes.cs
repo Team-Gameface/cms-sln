@@ -53,6 +53,8 @@ namespace CMS.Loan_Management.Maintenance.View
             this.dataMemberType.DataSource = ds.Tables[0];
             dataMemberType.Columns[0].Visible = false;
             dataMemberType.Columns[8].Visible = false;
+            dataMemberType.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataMemberType.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         public String getTypeName()

@@ -81,6 +81,7 @@ namespace CMS.Loan_Management.Maintenance.View
             this.dataSchedFees.DataSource = ds.Tables[0];
             this.dataSchedFees.Columns[0].Visible = false;
             this.dataSchedFees.Columns[4].Visible = false;
+            this.dataSchedFees.Columns["Amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataSchedFees.Columns["Amount"].DefaultCellStyle.Format = "c";
             CultureInfo ph = new CultureInfo("en-PH");
             this.dataSchedFees.Columns["Amount"].DefaultCellStyle.FormatProvider = ph;

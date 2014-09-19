@@ -24,7 +24,6 @@ namespace CMS.Loan_Management.Maintenance.View
             this.cbGrace.CheckState = CheckState.Unchecked;
             this.txtName.Clear();
             this.txtAmount.Clear();
-            gbPenalty.Enabled = false;
             this.gpUD.Value = 0;
             this.durationUD.Value = 0;
             this.chbStatus.CheckState = CheckState.Unchecked;
@@ -34,6 +33,17 @@ namespace CMS.Loan_Management.Maintenance.View
             this.cbDeduction.SelectedIndex = -1;
             this.btnSave.Enabled = false;
             this.btnCancel.Enabled = false;
+
+            this.txtName.Enabled = false;
+            this.cbGrace.Enabled = false;
+            this.gpUD.Enabled = false;
+            this.txtAmount.Enabled = false;
+            this.cbAmountStatus.Enabled = false;
+            this.cbDeduction.Enabled = false;
+            this.durationUD.Enabled = false;
+            this.cbDurationStatus.Enabled = false;
+            this.chbStatus.Enabled = false;
+            this.clbLoanType.Enabled = false;
 
             this.btnAdd.Enabled = true;
             this.btnEdit.Enabled = true;
@@ -48,8 +58,6 @@ namespace CMS.Loan_Management.Maintenance.View
             this.cbGrace.CheckState = CheckState.Unchecked;
             this.txtName.Clear();
             this.txtAmount.Clear();
-            gbPenalty.Enabled = true;
-            gpUD.Enabled = false;
             this.cbAmountStatus.SelectedIndex = -1;
             this.cbDurationStatus.SelectedIndex = -1;
             this.cbDeduction.SelectedIndex = -1;
@@ -64,6 +72,16 @@ namespace CMS.Loan_Management.Maintenance.View
             this.btnRetrieve.Visible = false;
             this.cbDeduction.Enabled = false;
             txtSearch.Enabled = false;
+
+            this.txtName.Enabled = true;
+            this.cbGrace.Enabled = true;
+            this.txtAmount.Enabled = true;
+            this.cbAmountStatus.Enabled = true;
+            this.cbDeduction.Enabled = true;
+            this.durationUD.Enabled = true;
+            this.cbDurationStatus.Enabled = true;
+            this.chbStatus.Enabled = true;
+            this.clbLoanType.Enabled = true;
         }
 
 
@@ -199,6 +217,8 @@ namespace CMS.Loan_Management.Maintenance.View
             this.dataPenalties.DataSource = ds.Tables[0];
             this.dataPenalties.Columns[0].Visible = false;
             this.dataPenalties.Columns[7].Visible = false;
+            this.dataPenalties.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataPenalties.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         public void setAmount(Double d)

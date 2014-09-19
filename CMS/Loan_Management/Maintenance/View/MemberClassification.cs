@@ -78,6 +78,7 @@ namespace CMS.Loan_Management.Maintenance.View
             this.dataMemberClass.DataSource = ds.Tables[0];
             this.dataMemberClass.Columns[0].Visible = false;
             this.dataMemberClass.Columns[6].Visible = false;
+            this.dataMemberClass.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         public string getStatusDesc()

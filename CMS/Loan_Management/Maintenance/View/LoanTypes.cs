@@ -300,10 +300,12 @@ namespace CMS.Loan_Management.Maintenance.View
             this.dataGridView.DataSource = ds.Tables[0];
             this.dataGridView.Columns[0].Visible = false;
             this.dataGridView.Columns[9].Visible = false;
+            this.dataGridView.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridView.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridView.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridView.Columns[4].DefaultCellStyle.Format = "c";
             CultureInfo ph = new CultureInfo("en-PH");
             this.dataGridView.Columns[4].DefaultCellStyle.FormatProvider = ph;
-
         }
 
         public DataGridViewRow getSelected()

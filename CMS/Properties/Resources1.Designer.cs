@@ -93,6 +93,16 @@ namespace CMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Backward {
+            get {
+                object obj = ResourceManager.GetObject("Backward", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BatchProcess {
             get {
                 object obj = ResourceManager.GetObject("BatchProcess", resourceCulture);
@@ -166,6 +176,16 @@ namespace CMS.Properties {
         internal static System.Drawing.Bitmap Edit {
             get {
                 object obj = ResourceManager.GetObject("Edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Forward {
+            get {
+                object obj = ResourceManager.GetObject("Forward", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

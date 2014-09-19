@@ -1205,11 +1205,6 @@ namespace CMS.Main.View
             this.txtMemberName.TextChanged += e;
         }
 
-        public void setLinkClosePaymentEventHandler(EventHandler e)
-        {
-            this.linkClosePayments.Click += e;
-        }
-
         public void setTotalLoanBalance(double d) 
         {
             this.lblTotalLoanBalance.Text = d.ToString("N",CultureInfo.InvariantCulture);

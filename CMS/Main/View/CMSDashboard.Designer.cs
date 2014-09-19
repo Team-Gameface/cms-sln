@@ -152,7 +152,7 @@
             // 
             // btnPayments
             // 
-            this.btnPayments.BackColor = System.Drawing.Color.IndianRed;
+            this.btnPayments.BackColor = System.Drawing.Color.OrangeRed;
             this.btnPayments.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnPayments.FlatAppearance.BorderSize = 0;
             this.btnPayments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

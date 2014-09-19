@@ -1201,6 +1201,8 @@
     <None Include="img\buttons\All\Compute.png" />
     <None Include="img\buttons\All\Retrieve.png" />
     <None Include="img\buttons\All\Next.png" />
+    <None Include="img\buttons\All\Backward.png" />
+    <None Include="img\buttons\All\Forward.png" />
     <Content Include="img\buttons\All\Passbook.png" />
     <None Include="img\buttons\All\Previous.png" />
     <Content Include="img\buttons\All\Proceed.png" />

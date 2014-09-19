@@ -146,16 +146,11 @@ namespace CMS.Loan_Management.Maintenance.View
 
             this.btnRetrieve.Visible = false;
             this.btnSave.Enabled = false;
-            this.btnSave.BackColor = Color.Gray;
             this.btnCancel.Enabled = false;
-            this.btnCancel.BackColor = Color.Gray;
 
             this.btnAdd.Enabled = true;
-            this.btnAdd.BackColor = Color.Green;
             this.btnEdit.Enabled = true;
-            this.btnEdit.BackColor = Color.RoyalBlue;
             this.btnDelete.Enabled = true;
-            this.btnDelete.BackColor = Color.Firebrick;
         }
 
         public void enableFunction()
@@ -174,11 +169,8 @@ namespace CMS.Loan_Management.Maintenance.View
             this.checkStatus.CheckState = CheckState.Unchecked;
 
             this.btnAdd.Enabled = false;
-            this.btnAdd.BackColor = Color.Gray;
             this.btnEdit.Enabled = false;
-            this.btnEdit.BackColor = Color.Gray;
             this.btnDelete.Enabled = false;
-            this.btnDelete.BackColor = Color.Gray;
 
             this.txtTypeName.Enabled = true;
             this.groupAge.Enabled = true;
@@ -186,9 +178,7 @@ namespace CMS.Loan_Management.Maintenance.View
             this.checkStatus.Enabled = true;
 
             this.btnSave.Enabled = true;
-            this.btnSave.BackColor = Color.Green;
             this.btnCancel.Enabled = true;
-            this.btnCancel.BackColor = Color.WhiteSmoke;
         }
 
         public DataGridViewRow getSelected()
@@ -274,13 +264,11 @@ namespace CMS.Loan_Management.Maintenance.View
 
         public void errorServices()
         {
-
             groupAvailability.ForeColor = Color.Red;
         }
 
         public void errorAge()
         {
-
             groupAge.ForeColor = Color.Red;
         }
 
@@ -293,13 +281,11 @@ namespace CMS.Loan_Management.Maintenance.View
 
         public void resetServices()
         {
-
             groupAvailability.ForeColor = Color.Black;
         }
 
         public void resetAge()
         {
-
             groupAge.ForeColor = Color.Black;
         }
 

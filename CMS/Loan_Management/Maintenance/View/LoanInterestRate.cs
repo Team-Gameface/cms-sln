@@ -22,41 +22,43 @@ namespace CMS.Loan_Management.Maintenance.View
         {
             this.startDate.Value = DateTime.Now;
             this.cbLoanType.SelectedIndex=-1;
-            gbInterest.Enabled = false;
           //  this.chbStatus.CheckState = CheckState.Unchecked;
             this.txtInterest.Text = String.Empty;
             this.cbInterestStatus.SelectedIndex = -1;
             this.cbDuration.SelectedIndex = -1;
 
+            this.cbLoanType.Enabled = false;
+            this.txtInterest.Enabled = false;
+            this.cbInterestStatus.Enabled = false;
+            this.cbDuration.Enabled = false;
+            this.startDate.Enabled = false;
+
             this.btnSave.Enabled = false;
-            this.btnSave.BackColor = Color.Gray;
             this.btnCancel.Enabled = false;
-            this.btnCancel.BackColor = Color.Gray;
 
             this.btnAdd.Enabled = true;
-            this.btnAdd.BackColor = Color.Green;
             this.btnEdit.Enabled = true;
-            this.btnEdit.BackColor = Color.RoyalBlue;
             //this.btnDelete.Enabled = true;
 
         }
         public void enableFunction()
         {
-            this.cbLoanType.Enabled = true;
             this.startDate.Value = DateTime.Now;
             this.cbLoanType.SelectedIndex = -1;
-            gbInterest.Enabled = true;
             this.txtInterest.Text = String.Empty;
             this.cbInterestStatus.SelectedIndex = -1;
             this.cbDuration.SelectedIndex = -1;
+
+            this.cbLoanType.Enabled = true;
+            this.txtInterest.Enabled = true;
+            this.cbInterestStatus.Enabled = true;
+            this.cbDuration.Enabled = true;
+            this.startDate.Enabled = true;
+
             this.btnAdd.Enabled = false;
-            this.btnAdd.BackColor = Color.Gray;
             this.btnEdit.Enabled = false;
-            this.btnEdit.BackColor = Color.Gray;
             this.btnSave.Enabled = true;
-            this.btnSave.BackColor = Color.Green;
             this.btnCancel.Enabled = true;
-            this.btnCancel.BackColor = Color.WhiteSmoke;
            // this.btnDelete.Enabled = false;
         }
 
@@ -190,15 +192,6 @@ namespace CMS.Loan_Management.Maintenance.View
         {
             this.btnDelete.Click += e;
         }*/
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LoanInterestRate_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void txtInterest_KeyPress(object sender, KeyPressEventArgs e)
         {

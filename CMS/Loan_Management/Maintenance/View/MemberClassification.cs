@@ -138,16 +138,11 @@ namespace CMS.Loan_Management.Maintenance.View
             this.cbBasis.SelectedIndex = -1;
             this.btnRetrieve.Visible = false;
             this.btnSave.Enabled = false;
-            this.btnSave.BackColor = Color.Gray;
             this.btnCancel.Enabled = false;
-            this.btnCancel.BackColor = Color.Gray;
 
             this.btnAdd.Enabled = true;
-            this.btnAdd.BackColor = Color.Green;
             this.btnEdit.Enabled = true;
-            this.btnEdit.BackColor = Color.RoyalBlue;
             this.btnDelete.Enabled = true;
-            this.btnDelete.BackColor = Color.Firebrick;
             this.checkedMemberType.Enabled = false;
             this.txtStatusDesc.Enabled = false;
             this.checkStatus.Enabled = false;
@@ -173,15 +168,10 @@ namespace CMS.Loan_Management.Maintenance.View
             this.cbBasis.SelectedIndex = -1;
 
             this.btnAdd.Enabled = false;
-            this.btnAdd.BackColor = Color.Gray;
             this.btnEdit.Enabled = false;
-            this.btnEdit.BackColor = Color.Gray;
             this.btnDelete.Enabled = false;
-            this.btnDelete.BackColor = Color.Gray;
             this.btnSave.Enabled = true;
-            this.btnSave.BackColor = Color.Green;
             this.btnCancel.Enabled = true;
-            this.btnCancel.BackColor = Color.WhiteSmoke;
 
             this.checkedMemberType.Enabled = true;
             this.txtStatusDesc.Enabled = true;
@@ -302,29 +292,32 @@ namespace CMS.Loan_Management.Maintenance.View
 
         public void errorClassName()
         {
-
            lblName.ForeColor = Color.Red;
         }
 
         public void errorApplied()
         {
-
             lblApplied.ForeColor = Color.Red;
         }
 
         public void errorDeliqStatus()
         {
-
-           groupDeliqStatus.ForeColor = Color.Red;
+            groupDeliqStatus.ForeColor = Color.Red;
+            rbNone.ForeColor = SystemColors.ControlText;
+            rbDelinquent.ForeColor = SystemColors.ControlText;
+            numDelValue.ForeColor = SystemColors.ControlText;
+            cbDelUnits.ForeColor = SystemColors.ControlText;
+            label4.ForeColor = SystemColors.ControlText;
+            cbBasis.ForeColor = SystemColors.ControlText;
         }
-
         
         public void resetLabels()
         {
-
-            lblName.ForeColor = Color.Black;
-            lblApplied.ForeColor = Color.Black;
-            groupDeliqStatus.ForeColor = Color.Black;
+            lblName.ForeColor = SystemColors.ControlText;
+            lblApplied.ForeColor = Color.MediumBlue;
+            rbNone.ForeColor = SystemColors.ControlText;
+            rbDelinquent.ForeColor = SystemColors.ControlText;
+            groupDeliqStatus.ForeColor = Color.MediumBlue;
         }
 
         private void txtCopyPaste(object sender, KeyEventArgs e)

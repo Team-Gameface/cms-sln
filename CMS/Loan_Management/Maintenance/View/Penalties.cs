@@ -33,16 +33,11 @@ namespace CMS.Loan_Management.Maintenance.View
             this.cbDurationStatus.SelectedIndex = -1;
             this.cbDeduction.SelectedIndex = -1;
             this.btnSave.Enabled = false;
-            this.btnSave.BackColor = Color.Gray;
             this.btnCancel.Enabled = false;
-            this.btnCancel.BackColor = Color.Gray;
 
             this.btnAdd.Enabled = true;
-            this.btnAdd.BackColor = Color.Green;
             this.btnEdit.Enabled = true;
-            this.btnEdit.BackColor = Color.RoyalBlue;
             this.btnDelete.Enabled = true;
-            this.btnDelete.BackColor = Color.Firebrick;
             this.btnRetrieve.Visible = false;
             this.cbDeduction.Enabled = false;
             txtSearch.Enabled = true;
@@ -62,20 +57,13 @@ namespace CMS.Loan_Management.Maintenance.View
             this.durationUD.Value = 0;
             this.clbLoanType.Items.Clear();
             this.btnAdd.Enabled = false;
-            this.btnAdd.BackColor = Color.Gray;
             this.btnEdit.Enabled = false;
-            this.btnEdit.BackColor = Color.Gray;
             this.btnDelete.Enabled = false;
-            this.btnDelete.BackColor = Color.Gray;
             this.btnSave.Enabled = true;
-            this.btnSave.BackColor = Color.Green;
             this.btnCancel.Enabled = true;
-            this.btnCancel.BackColor = Color.WhiteSmoke;
             this.btnRetrieve.Visible = false;
             this.cbDeduction.Enabled = false;
             txtSearch.Enabled = false;
-
-
         }
 
 

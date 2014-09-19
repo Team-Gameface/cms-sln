@@ -120,16 +120,11 @@ namespace CMS.Loan_Management.Maintenance.View
             this.checkStatus.CheckState = CheckState.Unchecked;
             this.checkedMemberType.Items.Clear();
             this.btnSave.Enabled = false;
-            this.btnSave.BackColor = Color.Gray;
             this.btnCancel.Enabled = false;
-            this.btnCancel.BackColor = Color.Gray;
 
             this.btnAdd.Enabled = true;
-            this.btnAdd.BackColor = Color.Green;
             this.btnEdit.Enabled = true;
-            this.btnEdit.BackColor = Color.RoyalBlue;
             this.btnDelete.Enabled = true;
-            this.btnDelete.BackColor = Color.Firebrick;
             this.txtSearch.Enabled = true;
             this.btnRetrieve.Visible = false;
             this.checkedMemberType.Enabled = false;
@@ -147,15 +142,10 @@ namespace CMS.Loan_Management.Maintenance.View
             this.checkStatus.CheckState = CheckState.Unchecked;
             this.checkedMemberType.Items.Clear();
             this.btnAdd.Enabled = false;
-            this.btnAdd.BackColor = Color.Gray;
             this.btnEdit.Enabled = false;
-            this.btnEdit.BackColor = Color.Gray;
             this.btnDelete.Enabled = false;
-            this.btnDelete.BackColor = Color.Gray;
             this.btnSave.Enabled = true;
-            this.btnSave.BackColor = Color.Green;
             this.btnCancel.Enabled = true;
-            this.btnCancel.BackColor = Color.WhiteSmoke;
             this.checkedMemberType.Enabled = true;
             this.txtFeeDesc.Enabled = true;
             this.txtAmount.Enabled = true; 
@@ -302,7 +292,7 @@ namespace CMS.Loan_Management.Maintenance.View
         public void resetLabels()
         {
             lblFeeName.ForeColor = Color.Black;
-            lblApplied.ForeColor = Color.Black;
+            lblApplied.ForeColor = Color.MediumBlue;
             lblAmt.ForeColor = Color.Black;
         }
 

@@ -31,14 +31,10 @@ namespace CMS.Loan_Management.Maintenance.View
             this.chbWaiveInterest.Checked = false;
             this.chbWaivePenalties.Checked = false;
             this.btnSave.Enabled = false;
-            this.btnSave.BackColor = Color.Gray;
             this.btnCancel.Enabled = false;
-            this.btnCancel.BackColor = Color.Gray;
 
             this.btnAdd.Enabled = true;
-            this.btnAdd.BackColor = Color.Green;
             this.btnEdit.Enabled = true;
-            this.btnEdit.BackColor = Color.RoyalBlue;
             this.gbAmnesty.Enabled = false;
             this.clbLoanType.Items.Clear();
         }
@@ -56,13 +52,9 @@ namespace CMS.Loan_Management.Maintenance.View
             this.chbWaiveInterest.Checked = false;
             this.chbWaivePenalties.Checked = false;
             this.btnAdd.Enabled = false;
-            this.btnAdd.BackColor = Color.Gray;
             this.btnEdit.Enabled = false;
-            this.btnEdit.BackColor = Color.Gray;
             this.btnSave.Enabled = true;
-            this.btnSave.BackColor = Color.Green;
             this.btnCancel.Enabled = true;
-            this.btnCancel.BackColor = Color.WhiteSmoke;
             this.gbAmnesty.Enabled = true;
         }
 
@@ -80,7 +72,6 @@ namespace CMS.Loan_Management.Maintenance.View
             this.lblAndAbove.ForeColor = System.Drawing.Color.Black;
             this.lblWaive.ForeColor = System.Drawing.Color.Black;
             this.lblLoanType.ForeColor = System.Drawing.Color.Black;
-
         }
 
         public void cbShowArchive_CheckStateChanged(EventHandler e)

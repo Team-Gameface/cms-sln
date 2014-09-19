@@ -32,6 +32,7 @@ namespace CMS.Loan_Management.Maintenance.View
             cbMinimumStatus.Enabled = false;
             cbMaximumStatus.SelectedIndex = -1;
             cbMaximumStatus.Enabled = false;
+            chbMaximumPaymentDur.CheckState = CheckState.Unchecked;
             txtMaxAmt.Clear();
             txtMaxAmt.Enabled = false;
             comakersUD.Value = 0;
@@ -83,8 +84,6 @@ namespace CMS.Loan_Management.Maintenance.View
             this.btnDelete.Enabled = false;
             this.btnSave.Enabled = true;
             this.btnCancel.Enabled = true;
-            
-        
         }
 
         public void setAllLabelsToBlack() {
@@ -538,6 +537,21 @@ namespace CMS.Loan_Management.Maintenance.View
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void txtMaxAmt_TextChanged(object sender, EventArgs e)
+        {
+            int selectionStart = this.txtMaxAmt.SelectionStart;
+            this.txtMaxAmt.Text = this.getMaximumAmount().ToString("N2", CultureInfo.InvariantCulture);
+            if (selectionStart == txtMaxAmt.Text.Length - 2)
+            {
+                this.txtMaxAmt.SelectionStart = txtMaxAmt.Text.Length - 2;
+            }
+            else if (selectionStart == txtMaxAmt.Text.Length - 1)
+            {
+                this.txtMaxAmt.SelectionStart = txtMaxAmt.Text.Length - 1;
+            }
+            else this.txtMaxAmt.SelectionStart = txtMaxAmt.Text.Length - 3;
         }
 
     }

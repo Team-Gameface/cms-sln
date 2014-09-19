@@ -939,13 +939,6 @@ namespace CMS.Savings.Maintenance.View
             {
                 this.txtInitDeposit.SelectionStart = this.txtInitDeposit.Text.Length - 3;
             }
-
-            if (e.KeyChar == '.')
-            {
-                e.Handled = true;
-                this.txtInterestRate.Text = this.getInterestRate().ToString();
-                this.txtInterestRate.SelectionStart = this.txtInterestRate.Text.Length - 2;
-            }
         }
     }
 }

@@ -415,6 +415,7 @@
             this.txtMaxAmt.Size = new System.Drawing.Size(154, 29);
             this.txtMaxAmt.TabIndex = 22;
             this.txtMaxAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMaxAmt.TextChanged += new System.EventHandler(this.txtMaxAmt_TextChanged);
             this.txtMaxAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMaxAmt_KeyDown);
             this.txtMaxAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaxAmt_KeyPress);
             // 

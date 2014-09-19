@@ -103,17 +103,20 @@ namespace CMS.Utilities.View
 
         public void setLoanReceivable(double d)
         {
-            this.txtLoanReceivable.Text = d.ToString("N", CultureInfo.InvariantCulture);
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.txtLoanReceivable.Text = d.ToString("c", ph);
         }
 
         public void setCharge(double d)
         {
-            this.txtCharges.Text = d.ToString("N", CultureInfo.InvariantCulture);
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.txtCharges.Text = d.ToString("c", ph);
         }
 
         public void setInterest(double d)
         {
-            this.txtInterestRate.Text = d.ToString("N", CultureInfo.InvariantCulture);
+            CultureInfo ph = new CultureInfo("en-PH");
+            this.txtInterestRate.Text = d.ToString("c", ph);
         }
 
         public void setMaturityDate(String s) 
@@ -297,11 +300,16 @@ namespace CMS.Utilities.View
 
         private void txtLoanReceivable_TextChanged(object sender, EventArgs e)
         {
-            double loanReceivable = double.Parse(this.txtLoanReceivable.Text);
-            double charge = double.Parse(this.txtCharges.Text);
-            double interest = double.Parse(this.txtInterestRate.Text);
+            double netLoan = 0;
+            try
+            {
+                double loanReceivable = double.Parse(this.txtLoanReceivable.Text);
+                double charge = double.Parse(this.txtCharges.Text);
+                double interest = double.Parse(this.txtInterestRate.Text);
 
-            double netLoan = loanReceivable - charge - interest;
+                netLoan = loanReceivable - charge - interest;
+            }
+            catch (Exception) { }
             CultureInfo ph = new CultureInfo("en-PH");
             this.txtNetLoan.Text = netLoan.ToString("c", ph);
         }

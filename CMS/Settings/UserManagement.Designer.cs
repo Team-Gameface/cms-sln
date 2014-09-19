@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -71,10 +72,11 @@
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.lblDetails);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.ForestGreen;
             this.groupBox1.Location = new System.Drawing.Point(9, 255);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(730, 233);
+            this.groupBox1.Size = new System.Drawing.Size(730, 244);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add/Edit User";
@@ -88,7 +90,7 @@
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = global::CMS.Properties.Resources.Save;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(515, 193);
+            this.btnSave.Location = new System.Drawing.Point(518, 203);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 35);
             this.btnSave.TabIndex = 31;
@@ -104,7 +106,7 @@
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Image = global::CMS.Properties.Resources.Cancel;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(621, 193);
+            this.btnCancel.Location = new System.Drawing.Point(624, 203);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 35);
             this.btnCancel.TabIndex = 27;
@@ -121,7 +123,9 @@
             this.groupBox4.Controls.Add(this.txtUsername);
             this.groupBox4.Controls.Add(this.lblUsername);
             this.groupBox4.Controls.Add(this.lblPassword);
-            this.groupBox4.Location = new System.Drawing.Point(373, 24);
+            this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.ForeColor = System.Drawing.Color.ForestGreen;
+            this.groupBox4.Location = new System.Drawing.Point(378, 32);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(343, 126);
             this.groupBox4.TabIndex = 17;
@@ -131,10 +135,12 @@
             // checkShow
             // 
             this.checkShow.AutoSize = true;
+            this.checkShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkShow.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkShow.ForeColor = System.Drawing.Color.Firebrick;
             this.checkShow.Location = new System.Drawing.Point(269, 63);
             this.checkShow.Name = "checkShow";
-            this.checkShow.Size = new System.Drawing.Size(68, 24);
+            this.checkShow.Size = new System.Drawing.Size(65, 24);
             this.checkShow.TabIndex = 22;
             this.checkShow.Text = "show?";
             this.checkShow.UseVisualStyleBackColor = true;
@@ -145,6 +151,7 @@
             this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboType.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboType.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboType.FormattingEnabled = true;
             this.comboType.Items.AddRange(new object[] {
             "Staff",
@@ -161,6 +168,7 @@
             // 
             this.lblUserType.AutoSize = true;
             this.lblUserType.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserType.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblUserType.Location = new System.Drawing.Point(11, 97);
             this.lblUserType.Name = "lblUserType";
             this.lblUserType.Size = new System.Drawing.Size(73, 20);
@@ -170,6 +178,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtPassword.Location = new System.Drawing.Point(94, 61);
             this.txtPassword.MaxLength = 50;
             this.txtPassword.Name = "txtPassword";
@@ -180,6 +189,7 @@
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtUsername.Location = new System.Drawing.Point(94, 28);
             this.txtUsername.MaxLength = 50;
             this.txtUsername.Name = "txtUsername";
@@ -190,6 +200,7 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblUsername.Location = new System.Drawing.Point(11, 31);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(75, 20);
@@ -200,6 +211,7 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblPassword.Location = new System.Drawing.Point(11, 64);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(70, 20);
@@ -216,7 +228,9 @@
             this.groupBox3.Controls.Add(this.lblFirst);
             this.groupBox3.Controls.Add(this.lblLast);
             this.groupBox3.Controls.Add(this.txtMiddleName);
-            this.groupBox3.Location = new System.Drawing.Point(6, 24);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.Color.ForestGreen;
+            this.groupBox3.Location = new System.Drawing.Point(11, 32);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(361, 118);
             this.groupBox3.TabIndex = 8;
@@ -226,6 +240,7 @@
             // txtPosition
             // 
             this.txtPosition.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPosition.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtPosition.Location = new System.Drawing.Point(134, 82);
             this.txtPosition.MaxLength = 50;
             this.txtPosition.Name = "txtPosition";
@@ -236,6 +251,7 @@
             // 
             this.lblPosition.AutoSize = true;
             this.lblPosition.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPosition.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblPosition.Location = new System.Drawing.Point(36, 85);
             this.lblPosition.Name = "lblPosition";
             this.lblPosition.Size = new System.Drawing.Size(92, 20);
@@ -245,6 +261,7 @@
             // txtFirstName
             // 
             this.txtFirstName.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFirstName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtFirstName.Location = new System.Drawing.Point(124, 28);
             this.txtFirstName.MaxLength = 50;
             this.txtFirstName.Name = "txtFirstName";
@@ -255,6 +272,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Firebrick;
             this.label1.Location = new System.Drawing.Point(248, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 15);
@@ -264,6 +282,7 @@
             // txtLastName
             // 
             this.txtLastName.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtLastName.Location = new System.Drawing.Point(6, 28);
             this.txtLastName.MaxLength = 50;
             this.txtLastName.Name = "txtLastName";
@@ -274,6 +293,7 @@
             // 
             this.lblFirst.AutoSize = true;
             this.lblFirst.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFirst.ForeColor = System.Drawing.Color.Firebrick;
             this.lblFirst.Location = new System.Drawing.Point(131, 58);
             this.lblFirst.Name = "lblFirst";
             this.lblFirst.Size = new System.Drawing.Size(71, 15);
@@ -284,6 +304,7 @@
             // 
             this.lblLast.AutoSize = true;
             this.lblLast.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLast.ForeColor = System.Drawing.Color.Firebrick;
             this.lblLast.Location = new System.Drawing.Point(17, 58);
             this.lblLast.Name = "lblLast";
             this.lblLast.Size = new System.Drawing.Size(69, 15);
@@ -293,6 +314,7 @@
             // txtMiddleName
             // 
             this.txtMiddleName.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMiddleName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMiddleName.Location = new System.Drawing.Point(242, 28);
             this.txtMiddleName.MaxLength = 50;
             this.txtMiddleName.Name = "txtMiddleName";
@@ -303,7 +325,7 @@
             // 
             this.lblDetails.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetails.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblDetails.Location = new System.Drawing.Point(9, 153);
+            this.lblDetails.Location = new System.Drawing.Point(14, 161);
             this.lblDetails.Name = "lblDetails";
             this.lblDetails.Size = new System.Drawing.Size(703, 39);
             this.lblDetails.TabIndex = 25;
@@ -331,6 +353,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.ForestGreen;
             this.label3.Location = new System.Drawing.Point(4, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
@@ -373,17 +396,26 @@
             // 
             this.dataUser.AllowUserToAddRows = false;
             this.dataUser.AllowUserToDeleteRows = false;
-            this.dataUser.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataUser.AllowUserToOrderColumns = true;
+            this.dataUser.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataUser.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataUser.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataUser.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataUser.Location = new System.Drawing.Point(9, 45);
             this.dataUser.MultiSelect = false;

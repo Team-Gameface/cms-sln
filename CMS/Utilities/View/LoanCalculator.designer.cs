@@ -47,6 +47,7 @@
             this.lblAmount = new System.Windows.Forms.Label();
             this.lblLoanType = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblCharges = new System.Windows.Forms.Label();
             this.lblMaturityDate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblNoOfAmortizations = new System.Windows.Forms.Label();
@@ -62,7 +63,6 @@
             this.lblNetLoan = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblCharges = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -89,6 +89,7 @@
             this.groupBox1.Controls.Add(this.lblAmount);
             this.groupBox1.Controls.Add(this.lblLoanType);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.ForestGreen;
             this.groupBox1.Location = new System.Drawing.Point(12, 57);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(563, 177);
@@ -109,6 +110,7 @@
             // 
             this.lblDateApproval.AutoSize = true;
             this.lblDateApproval.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateApproval.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblDateApproval.Location = new System.Drawing.Point(11, 104);
             this.lblDateApproval.Name = "lblDateApproval";
             this.lblDateApproval.Size = new System.Drawing.Size(45, 21);
@@ -149,7 +151,7 @@
             // 
             this.lblStatePaymentDuration.AutoSize = true;
             this.lblStatePaymentDuration.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatePaymentDuration.ForeColor = System.Drawing.Color.Green;
+            this.lblStatePaymentDuration.ForeColor = System.Drawing.Color.Firebrick;
             this.lblStatePaymentDuration.Location = new System.Drawing.Point(290, 69);
             this.lblStatePaymentDuration.Name = "lblStatePaymentDuration";
             this.lblStatePaymentDuration.Size = new System.Drawing.Size(43, 17);
@@ -159,7 +161,9 @@
             // cbTerms
             // 
             this.cbTerms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTerms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbTerms.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTerms.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbTerms.FormattingEnabled = true;
             this.cbTerms.Location = new System.Drawing.Point(368, 98);
             this.cbTerms.Name = "cbTerms";
@@ -169,7 +173,9 @@
             // cbDurationStatus
             // 
             this.cbDurationStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDurationStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbDurationStatus.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDurationStatus.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbDurationStatus.FormattingEnabled = true;
             this.cbDurationStatus.Items.AddRange(new object[] {
             "week/s",
@@ -185,6 +191,7 @@
             // 
             this.udPaymentDuration.ContextMenuStrip = this.contextMenuBlank;
             this.udPaymentDuration.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.udPaymentDuration.ForeColor = System.Drawing.SystemColors.ControlText;
             this.udPaymentDuration.Location = new System.Drawing.Point(368, 28);
             this.udPaymentDuration.Name = "udPaymentDuration";
             this.udPaymentDuration.Size = new System.Drawing.Size(54, 29);
@@ -200,6 +207,7 @@
             // 
             this.txtLoanAmount.ContextMenuStrip = this.contextMenuBlank;
             this.txtLoanAmount.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoanAmount.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtLoanAmount.Location = new System.Drawing.Point(101, 63);
             this.txtLoanAmount.Name = "txtLoanAmount";
             this.txtLoanAmount.Size = new System.Drawing.Size(179, 29);
@@ -211,7 +219,9 @@
             // cbLoanType
             // 
             this.cbLoanType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLoanType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbLoanType.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLoanType.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbLoanType.FormattingEnabled = true;
             this.cbLoanType.Location = new System.Drawing.Point(101, 28);
             this.cbLoanType.Name = "cbLoanType";
@@ -222,6 +232,7 @@
             // 
             this.lblTerms.AutoSize = true;
             this.lblTerms.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTerms.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblTerms.Location = new System.Drawing.Point(289, 104);
             this.lblTerms.Name = "lblTerms";
             this.lblTerms.Size = new System.Drawing.Size(56, 21);
@@ -232,6 +243,7 @@
             // 
             this.lblDuration.AutoSize = true;
             this.lblDuration.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDuration.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblDuration.Location = new System.Drawing.Point(288, 31);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(74, 21);
@@ -242,6 +254,7 @@
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAmount.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblAmount.Location = new System.Drawing.Point(11, 66);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(69, 21);
@@ -252,6 +265,7 @@
             // 
             this.lblLoanType.AutoSize = true;
             this.lblLoanType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoanType.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblLoanType.Location = new System.Drawing.Point(11, 31);
             this.lblLoanType.Name = "lblLoanType";
             this.lblLoanType.Size = new System.Drawing.Size(84, 21);
@@ -261,6 +275,7 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox2.Controls.Add(this.lblCharges);
             this.groupBox2.Controls.Add(this.lblMaturityDate);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.lblNoOfAmortizations);
@@ -276,10 +291,10 @@
             this.groupBox2.Controls.Add(this.lblNetLoan);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.lblCharges);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.ForestGreen;
             this.groupBox2.Location = new System.Drawing.Point(12, 240);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(554, 292);
@@ -287,10 +302,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Loan Proceeds Breakdown";
             // 
+            // lblCharges
+            // 
+            this.lblCharges.AutoSize = true;
+            this.lblCharges.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCharges.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblCharges.Location = new System.Drawing.Point(118, 168);
+            this.lblCharges.Name = "lblCharges";
+            this.lblCharges.Size = new System.Drawing.Size(55, 17);
+            this.lblCharges.TabIndex = 28;
+            this.lblCharges.Text = "Charges:";
+            // 
             // lblMaturityDate
             // 
             this.lblMaturityDate.AutoSize = true;
             this.lblMaturityDate.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaturityDate.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblMaturityDate.Location = new System.Drawing.Point(319, 81);
             this.lblMaturityDate.Name = "lblMaturityDate";
             this.lblMaturityDate.Size = new System.Drawing.Size(51, 21);
@@ -301,6 +328,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(41, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 21);
@@ -311,6 +339,7 @@
             // 
             this.lblNoOfAmortizations.AutoSize = true;
             this.lblNoOfAmortizations.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoOfAmortizations.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblNoOfAmortizations.Location = new System.Drawing.Point(319, 25);
             this.lblNoOfAmortizations.Name = "lblNoOfAmortizations";
             this.lblNoOfAmortizations.Size = new System.Drawing.Size(51, 21);
@@ -321,6 +350,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(41, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(166, 21);
@@ -330,6 +360,7 @@
             // txtAmortizationAmount
             // 
             this.txtAmortizationAmount.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAmortizationAmount.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtAmortizationAmount.Location = new System.Drawing.Point(323, 49);
             this.txtAmortizationAmount.MaxLength = 20;
             this.txtAmortizationAmount.Name = "txtAmortizationAmount";
@@ -343,6 +374,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label9.Location = new System.Drawing.Point(41, 52);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(172, 21);
@@ -365,6 +397,7 @@
             // 
             this.lblApprovedAmount.AutoSize = true;
             this.lblApprovedAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApprovedAmount.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblApprovedAmount.Location = new System.Drawing.Point(41, 133);
             this.lblApprovedAmount.Name = "lblApprovedAmount";
             this.lblApprovedAmount.Size = new System.Drawing.Size(132, 21);
@@ -398,6 +431,7 @@
             // txtLoanReceivable
             // 
             this.txtLoanReceivable.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoanReceivable.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtLoanReceivable.Location = new System.Drawing.Point(323, 130);
             this.txtLoanReceivable.MaxLength = 20;
             this.txtLoanReceivable.Name = "txtLoanReceivable";
@@ -412,6 +446,7 @@
             // 
             this.lblInterestRate.AutoSize = true;
             this.lblInterestRate.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInterestRate.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblInterestRate.Location = new System.Drawing.Point(118, 199);
             this.lblInterestRate.Name = "lblInterestRate";
             this.lblInterestRate.Size = new System.Drawing.Size(50, 17);
@@ -443,21 +478,12 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Firebrick;
             this.label7.Location = new System.Drawing.Point(82, 168);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 17);
             this.label7.TabIndex = 27;
             this.label7.Text = "less:";
-            // 
-            // lblCharges
-            // 
-            this.lblCharges.AutoSize = true;
-            this.lblCharges.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCharges.Location = new System.Drawing.Point(118, 168);
-            this.lblCharges.Name = "lblCharges";
-            this.lblCharges.Size = new System.Drawing.Size(55, 17);
-            this.lblCharges.TabIndex = 28;
-            this.lblCharges.Text = "Charges:";
             // 
             // label8
             // 
@@ -483,6 +509,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.ForestGreen;
             this.label3.Location = new System.Drawing.Point(13, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
@@ -494,6 +521,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(579, 551);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox2);

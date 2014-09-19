@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CollectionReport));
-            this.label1 = new System.Windows.Forms.Label();
             this.btnPreview = new System.Windows.Forms.Button();
             this.grpTransType = new System.Windows.Forms.GroupBox();
             this.rbShare = new System.Windows.Forms.RadioButton();
@@ -55,6 +54,7 @@
             this.cbDateTo = new System.Windows.Forms.CheckBox();
             this.dateFrom = new System.Windows.Forms.DateTimePicker();
             this.lblFrom = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpTransType.SuspendLayout();
             this.grpLoanTypesSort.SuspendLayout();
             this.panelLoan.SuspendLayout();
@@ -65,29 +65,19 @@
             this.grpDatesTransaction.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(305, 25);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Reports - Daily Collection Report";
-            // 
             // btnPreview
             // 
             this.btnPreview.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPreview.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPreview.Font = new System.Drawing.Font("Segoe UI Semibold", 10.75F, System.Drawing.FontStyle.Bold);
+            this.btnPreview.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPreview.ForeColor = System.Drawing.Color.White;
-            this.btnPreview.Location = new System.Drawing.Point(260, 383);
+            this.btnPreview.Image = global::CMS.Properties.Resources.ReportView;
+            this.btnPreview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPreview.Location = new System.Drawing.Point(435, 305);
             this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(92, 32);
+            this.btnPreview.Size = new System.Drawing.Size(105, 35);
             this.btnPreview.TabIndex = 24;
             this.btnPreview.Text = "Preview";
             this.btnPreview.UseVisualStyleBackColor = false;
@@ -98,22 +88,26 @@
             this.grpTransType.Controls.Add(this.rbShare);
             this.grpTransType.Controls.Add(this.rbMiscFees);
             this.grpTransType.Controls.Add(this.rbLoan);
-            this.grpTransType.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.grpTransType.Location = new System.Drawing.Point(18, 148);
+            this.grpTransType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grpTransType.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpTransType.ForeColor = System.Drawing.Color.MediumBlue;
+            this.grpTransType.Location = new System.Drawing.Point(12, 172);
             this.grpTransType.Name = "grpTransType";
-            this.grpTransType.Size = new System.Drawing.Size(334, 101);
-            this.grpTransType.TabIndex = 28;
+            this.grpTransType.Size = new System.Drawing.Size(539, 69);
+            this.grpTransType.TabIndex = 7;
             this.grpTransType.TabStop = false;
-            this.grpTransType.Text = "Transaction Type:";
+            this.grpTransType.Text = "Transaction Type";
             // 
             // rbShare
             // 
-            this.rbShare.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbShare.AutoSize = true;
-            this.rbShare.Location = new System.Drawing.Point(24, 76);
+            this.rbShare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbShare.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbShare.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.rbShare.Location = new System.Drawing.Point(313, 32);
             this.rbShare.Name = "rbShare";
-            this.rbShare.Size = new System.Drawing.Size(195, 23);
-            this.rbShare.TabIndex = 26;
+            this.rbShare.Size = new System.Drawing.Size(215, 25);
+            this.rbShare.TabIndex = 10;
             this.rbShare.TabStop = true;
             this.rbShare.Text = "Share Capital Contributions";
             this.rbShare.UseVisualStyleBackColor = true;
@@ -121,12 +115,14 @@
             // 
             // rbMiscFees
             // 
-            this.rbMiscFees.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbMiscFees.AutoSize = true;
-            this.rbMiscFees.Location = new System.Drawing.Point(24, 51);
+            this.rbMiscFees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbMiscFees.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMiscFees.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.rbMiscFees.Location = new System.Drawing.Point(147, 32);
             this.rbMiscFees.Name = "rbMiscFees";
-            this.rbMiscFees.Size = new System.Drawing.Size(143, 23);
-            this.rbMiscFees.TabIndex = 26;
+            this.rbMiscFees.Size = new System.Drawing.Size(160, 25);
+            this.rbMiscFees.TabIndex = 9;
             this.rbMiscFees.TabStop = true;
             this.rbMiscFees.Text = "Miscellaneous Fees";
             this.rbMiscFees.UseVisualStyleBackColor = true;
@@ -134,12 +130,14 @@
             // 
             // rbLoan
             // 
-            this.rbLoan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbLoan.AutoSize = true;
-            this.rbLoan.Location = new System.Drawing.Point(24, 28);
+            this.rbLoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbLoan.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbLoan.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.rbLoan.Location = new System.Drawing.Point(12, 32);
             this.rbLoan.Name = "rbLoan";
-            this.rbLoan.Size = new System.Drawing.Size(121, 23);
-            this.rbLoan.TabIndex = 26;
+            this.rbLoan.Size = new System.Drawing.Size(129, 25);
+            this.rbLoan.TabIndex = 8;
             this.rbLoan.TabStop = true;
             this.rbLoan.Text = "Loan Payments";
             this.rbLoan.UseVisualStyleBackColor = true;
@@ -147,23 +145,25 @@
             // 
             // grpLoanTypesSort
             // 
-            this.grpLoanTypesSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpLoanTypesSort.Controls.Add(this.cbLoanTypesSort);
             this.grpLoanTypesSort.Controls.Add(this.rbLoanTypesDescending);
             this.grpLoanTypesSort.Controls.Add(this.rbLoanTypesAscending);
-            this.grpLoanTypesSort.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.grpLoanTypesSort.Location = new System.Drawing.Point(7, 4);
+            this.grpLoanTypesSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grpLoanTypesSort.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpLoanTypesSort.ForeColor = System.Drawing.Color.MediumBlue;
+            this.grpLoanTypesSort.Location = new System.Drawing.Point(3, 3);
             this.grpLoanTypesSort.Name = "grpLoanTypesSort";
-            this.grpLoanTypesSort.Size = new System.Drawing.Size(291, 83);
-            this.grpLoanTypesSort.TabIndex = 28;
+            this.grpLoanTypesSort.Size = new System.Drawing.Size(290, 90);
+            this.grpLoanTypesSort.TabIndex = 20;
             this.grpLoanTypesSort.TabStop = false;
-            this.grpLoanTypesSort.Text = "Sort by:";
+            this.grpLoanTypesSort.Text = "Sort by";
             // 
             // cbLoanTypesSort
             // 
-            this.cbLoanTypesSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbLoanTypesSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLoanTypesSort.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbLoanTypesSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbLoanTypesSort.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLoanTypesSort.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbLoanTypesSort.FormattingEnabled = true;
             this.cbLoanTypesSort.Items.AddRange(new object[] {
             "Transaction Time",
@@ -171,31 +171,35 @@
             "Member Name",
             "Loan Type",
             "OR Number"});
-            this.cbLoanTypesSort.Location = new System.Drawing.Point(23, 24);
+            this.cbLoanTypesSort.Location = new System.Drawing.Point(23, 29);
             this.cbLoanTypesSort.Name = "cbLoanTypesSort";
-            this.cbLoanTypesSort.Size = new System.Drawing.Size(251, 25);
-            this.cbLoanTypesSort.TabIndex = 25;
+            this.cbLoanTypesSort.Size = new System.Drawing.Size(251, 29);
+            this.cbLoanTypesSort.TabIndex = 21;
             // 
             // rbLoanTypesDescending
             // 
-            this.rbLoanTypesDescending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbLoanTypesDescending.AutoSize = true;
-            this.rbLoanTypesDescending.Location = new System.Drawing.Point(135, 55);
+            this.rbLoanTypesDescending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbLoanTypesDescending.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbLoanTypesDescending.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.rbLoanTypesDescending.Location = new System.Drawing.Point(132, 64);
             this.rbLoanTypesDescending.Name = "rbLoanTypesDescending";
-            this.rbLoanTypesDescending.Size = new System.Drawing.Size(98, 23);
-            this.rbLoanTypesDescending.TabIndex = 26;
+            this.rbLoanTypesDescending.Size = new System.Drawing.Size(108, 25);
+            this.rbLoanTypesDescending.TabIndex = 23;
             this.rbLoanTypesDescending.TabStop = true;
             this.rbLoanTypesDescending.Text = "Descending";
             this.rbLoanTypesDescending.UseVisualStyleBackColor = true;
             // 
             // rbLoanTypesAscending
             // 
-            this.rbLoanTypesAscending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbLoanTypesAscending.AutoSize = true;
-            this.rbLoanTypesAscending.Location = new System.Drawing.Point(23, 55);
+            this.rbLoanTypesAscending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbLoanTypesAscending.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbLoanTypesAscending.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.rbLoanTypesAscending.Location = new System.Drawing.Point(27, 64);
             this.rbLoanTypesAscending.Name = "rbLoanTypesAscending";
-            this.rbLoanTypesAscending.Size = new System.Drawing.Size(90, 23);
-            this.rbLoanTypesAscending.TabIndex = 26;
+            this.rbLoanTypesAscending.Size = new System.Drawing.Size(99, 25);
+            this.rbLoanTypesAscending.TabIndex = 22;
             this.rbLoanTypesAscending.TabStop = true;
             this.rbLoanTypesAscending.Text = "Ascending";
             this.rbLoanTypesAscending.UseVisualStyleBackColor = true;
@@ -204,39 +208,41 @@
             // 
             this.panelLoan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelLoan.Controls.Add(this.grpLoanTypesSort);
-            this.panelLoan.Location = new System.Drawing.Point(18, 255);
+            this.panelLoan.Location = new System.Drawing.Point(12, 247);
             this.panelLoan.Name = "panelLoan";
-            this.panelLoan.Size = new System.Drawing.Size(304, 109);
+            this.panelLoan.Size = new System.Drawing.Size(300, 100);
             this.panelLoan.TabIndex = 32;
             // 
             // panelMiscFees
             // 
             this.panelMiscFees.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelMiscFees.Controls.Add(this.grpMiscFeesSort);
-            this.panelMiscFees.Location = new System.Drawing.Point(18, 255);
+            this.panelMiscFees.Location = new System.Drawing.Point(12, 247);
             this.panelMiscFees.Name = "panelMiscFees";
-            this.panelMiscFees.Size = new System.Drawing.Size(304, 108);
+            this.panelMiscFees.Size = new System.Drawing.Size(300, 100);
             this.panelMiscFees.TabIndex = 32;
             // 
             // grpMiscFeesSort
             // 
-            this.grpMiscFeesSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpMiscFeesSort.Controls.Add(this.cbMiscFeesSort);
             this.grpMiscFeesSort.Controls.Add(this.rbMiscFeesDescending);
             this.grpMiscFeesSort.Controls.Add(this.rbMiscFeesAscending);
-            this.grpMiscFeesSort.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.grpMiscFeesSort.Location = new System.Drawing.Point(6, 18);
+            this.grpMiscFeesSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grpMiscFeesSort.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpMiscFeesSort.ForeColor = System.Drawing.Color.MediumBlue;
+            this.grpMiscFeesSort.Location = new System.Drawing.Point(3, 3);
             this.grpMiscFeesSort.Name = "grpMiscFeesSort";
-            this.grpMiscFeesSort.Size = new System.Drawing.Size(291, 83);
-            this.grpMiscFeesSort.TabIndex = 28;
+            this.grpMiscFeesSort.Size = new System.Drawing.Size(290, 90);
+            this.grpMiscFeesSort.TabIndex = 11;
             this.grpMiscFeesSort.TabStop = false;
-            this.grpMiscFeesSort.Text = "Sort by:";
+            this.grpMiscFeesSort.Text = "Sort by";
             // 
             // cbMiscFeesSort
             // 
-            this.cbMiscFeesSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbMiscFeesSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMiscFeesSort.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbMiscFeesSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbMiscFeesSort.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMiscFeesSort.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbMiscFeesSort.FormattingEnabled = true;
             this.cbMiscFeesSort.Items.AddRange(new object[] {
             "Transaction Time",
@@ -244,31 +250,35 @@
             "Member Name",
             "Description",
             "OR Number"});
-            this.cbMiscFeesSort.Location = new System.Drawing.Point(23, 24);
+            this.cbMiscFeesSort.Location = new System.Drawing.Point(23, 29);
             this.cbMiscFeesSort.Name = "cbMiscFeesSort";
-            this.cbMiscFeesSort.Size = new System.Drawing.Size(251, 25);
-            this.cbMiscFeesSort.TabIndex = 25;
+            this.cbMiscFeesSort.Size = new System.Drawing.Size(251, 29);
+            this.cbMiscFeesSort.TabIndex = 12;
             // 
             // rbMiscFeesDescending
             // 
-            this.rbMiscFeesDescending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbMiscFeesDescending.AutoSize = true;
-            this.rbMiscFeesDescending.Location = new System.Drawing.Point(135, 55);
+            this.rbMiscFeesDescending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbMiscFeesDescending.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMiscFeesDescending.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.rbMiscFeesDescending.Location = new System.Drawing.Point(132, 64);
             this.rbMiscFeesDescending.Name = "rbMiscFeesDescending";
-            this.rbMiscFeesDescending.Size = new System.Drawing.Size(98, 23);
-            this.rbMiscFeesDescending.TabIndex = 26;
+            this.rbMiscFeesDescending.Size = new System.Drawing.Size(108, 25);
+            this.rbMiscFeesDescending.TabIndex = 14;
             this.rbMiscFeesDescending.TabStop = true;
             this.rbMiscFeesDescending.Text = "Descending";
             this.rbMiscFeesDescending.UseVisualStyleBackColor = true;
             // 
             // rbMiscFeesAscending
             // 
-            this.rbMiscFeesAscending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbMiscFeesAscending.AutoSize = true;
-            this.rbMiscFeesAscending.Location = new System.Drawing.Point(23, 55);
+            this.rbMiscFeesAscending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbMiscFeesAscending.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMiscFeesAscending.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.rbMiscFeesAscending.Location = new System.Drawing.Point(27, 64);
             this.rbMiscFeesAscending.Name = "rbMiscFeesAscending";
-            this.rbMiscFeesAscending.Size = new System.Drawing.Size(90, 23);
-            this.rbMiscFeesAscending.TabIndex = 26;
+            this.rbMiscFeesAscending.Size = new System.Drawing.Size(99, 25);
+            this.rbMiscFeesAscending.TabIndex = 13;
             this.rbMiscFeesAscending.TabStop = true;
             this.rbMiscFeesAscending.Text = "Ascending";
             this.rbMiscFeesAscending.UseVisualStyleBackColor = true;
@@ -277,61 +287,67 @@
             // 
             this.panelShare.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelShare.Controls.Add(this.grpShareSort);
-            this.panelShare.Location = new System.Drawing.Point(18, 256);
+            this.panelShare.Location = new System.Drawing.Point(12, 247);
             this.panelShare.Name = "panelShare";
-            this.panelShare.Size = new System.Drawing.Size(304, 110);
+            this.panelShare.Size = new System.Drawing.Size(300, 100);
             this.panelShare.TabIndex = 33;
             // 
             // grpShareSort
             // 
-            this.grpShareSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpShareSort.Controls.Add(this.cbShareSort);
             this.grpShareSort.Controls.Add(this.rbShareDescending);
             this.grpShareSort.Controls.Add(this.rbShareAscending);
-            this.grpShareSort.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.grpShareSort.Location = new System.Drawing.Point(5, 7);
+            this.grpShareSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grpShareSort.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpShareSort.ForeColor = System.Drawing.Color.MediumBlue;
+            this.grpShareSort.Location = new System.Drawing.Point(3, 3);
             this.grpShareSort.Name = "grpShareSort";
-            this.grpShareSort.Size = new System.Drawing.Size(291, 83);
-            this.grpShareSort.TabIndex = 28;
+            this.grpShareSort.Size = new System.Drawing.Size(290, 90);
+            this.grpShareSort.TabIndex = 16;
             this.grpShareSort.TabStop = false;
-            this.grpShareSort.Text = "Sort by:";
+            this.grpShareSort.Text = "Sort by";
             // 
             // cbShareSort
             // 
-            this.cbShareSort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbShareSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbShareSort.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbShareSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbShareSort.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbShareSort.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbShareSort.FormattingEnabled = true;
             this.cbShareSort.Items.AddRange(new object[] {
             "Transaction Time",
             "Member Account No",
             "Member Name",
             "OR Number"});
-            this.cbShareSort.Location = new System.Drawing.Point(23, 24);
+            this.cbShareSort.Location = new System.Drawing.Point(23, 29);
             this.cbShareSort.Name = "cbShareSort";
-            this.cbShareSort.Size = new System.Drawing.Size(251, 25);
-            this.cbShareSort.TabIndex = 25;
+            this.cbShareSort.Size = new System.Drawing.Size(251, 29);
+            this.cbShareSort.TabIndex = 17;
             // 
             // rbShareDescending
             // 
-            this.rbShareDescending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbShareDescending.AutoSize = true;
-            this.rbShareDescending.Location = new System.Drawing.Point(135, 55);
+            this.rbShareDescending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbShareDescending.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbShareDescending.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.rbShareDescending.Location = new System.Drawing.Point(132, 64);
             this.rbShareDescending.Name = "rbShareDescending";
-            this.rbShareDescending.Size = new System.Drawing.Size(98, 23);
-            this.rbShareDescending.TabIndex = 26;
+            this.rbShareDescending.Size = new System.Drawing.Size(108, 25);
+            this.rbShareDescending.TabIndex = 19;
             this.rbShareDescending.TabStop = true;
             this.rbShareDescending.Text = "Descending";
             this.rbShareDescending.UseVisualStyleBackColor = true;
             // 
             // rbShareAscending
             // 
-            this.rbShareAscending.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbShareAscending.AutoSize = true;
-            this.rbShareAscending.Location = new System.Drawing.Point(23, 55);
+            this.rbShareAscending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbShareAscending.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbShareAscending.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.rbShareAscending.Location = new System.Drawing.Point(27, 64);
             this.rbShareAscending.Name = "rbShareAscending";
-            this.rbShareAscending.Size = new System.Drawing.Size(90, 23);
-            this.rbShareAscending.TabIndex = 26;
+            this.rbShareAscending.Size = new System.Drawing.Size(99, 25);
+            this.rbShareAscending.TabIndex = 18;
             this.rbShareAscending.TabStop = true;
             this.rbShareAscending.Text = "Ascending";
             this.rbShareAscending.UseVisualStyleBackColor = true;
@@ -343,67 +359,85 @@
             this.grpDatesTransaction.Controls.Add(this.cbDateTo);
             this.grpDatesTransaction.Controls.Add(this.dateFrom);
             this.grpDatesTransaction.Controls.Add(this.lblFrom);
-            this.grpDatesTransaction.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.grpDatesTransaction.Location = new System.Drawing.Point(18, 47);
+            this.grpDatesTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grpDatesTransaction.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpDatesTransaction.ForeColor = System.Drawing.Color.MediumBlue;
+            this.grpDatesTransaction.Location = new System.Drawing.Point(12, 57);
             this.grpDatesTransaction.Name = "grpDatesTransaction";
-            this.grpDatesTransaction.Size = new System.Drawing.Size(334, 90);
-            this.grpDatesTransaction.TabIndex = 34;
+            this.grpDatesTransaction.Size = new System.Drawing.Size(539, 109);
+            this.grpDatesTransaction.TabIndex = 2;
             this.grpDatesTransaction.TabStop = false;
-            this.grpDatesTransaction.Text = "Date/s of Transaction:";
+            this.grpDatesTransaction.Text = "Date/s of Transaction";
             // 
             // dateTo
             // 
-            this.dateTo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTo.Location = new System.Drawing.Point(82, 53);
+            this.dateTo.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTo.Location = new System.Drawing.Point(166, 67);
             this.dateTo.Name = "dateTo";
-            this.dateTo.Size = new System.Drawing.Size(233, 25);
-            this.dateTo.TabIndex = 23;
+            this.dateTo.Size = new System.Drawing.Size(266, 29);
+            this.dateTo.TabIndex = 6;
             // 
             // cbDateTo
             // 
-            this.cbDateTo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbDateTo.AutoSize = true;
-            this.cbDateTo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbDateTo.Location = new System.Drawing.Point(7, 55);
+            this.cbDateTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbDateTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDateTo.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cbDateTo.Location = new System.Drawing.Point(91, 72);
             this.cbDateTo.Name = "cbDateTo";
-            this.cbDateTo.Size = new System.Drawing.Size(46, 23);
-            this.cbDateTo.TabIndex = 23;
-            this.cbDateTo.Text = "To:";
+            this.cbDateTo.Size = new System.Drawing.Size(43, 25);
+            this.cbDateTo.TabIndex = 5;
+            this.cbDateTo.Text = "To";
             this.cbDateTo.UseVisualStyleBackColor = true;
             this.cbDateTo.CheckedChanged += new System.EventHandler(this.cbDateTo_CheckedChanged);
             // 
             // dateFrom
             // 
-            this.dateFrom.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateFrom.Location = new System.Drawing.Point(82, 24);
+            this.dateFrom.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateFrom.Location = new System.Drawing.Point(166, 32);
             this.dateFrom.Name = "dateFrom";
-            this.dateFrom.Size = new System.Drawing.Size(233, 25);
-            this.dateFrom.TabIndex = 22;
+            this.dateFrom.Size = new System.Drawing.Size(266, 29);
+            this.dateFrom.TabIndex = 4;
             // 
             // lblFrom
             // 
-            this.lblFrom.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblFrom.AutoSize = true;
-            this.lblFrom.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lblFrom.Location = new System.Drawing.Point(25, 32);
+            this.lblFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFrom.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblFrom.Location = new System.Drawing.Point(90, 38);
             this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Size = new System.Drawing.Size(41, 17);
-            this.lblFrom.TabIndex = 18;
-            this.lblFrom.Text = "From:";
+            this.lblFrom.Size = new System.Drawing.Size(47, 21);
+            this.lblFrom.TabIndex = 3;
+            this.lblFrom.Text = "From";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(498, 45);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Reports - Daily Collection Report";
             // 
             // CollectionReport
             // 
+            this.AcceptButton = this.btnPreview;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(367, 427);
+            this.ClientSize = new System.Drawing.Size(559, 356);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.grpDatesTransaction);
             this.Controls.Add(this.grpTransType);
             this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.panelShare);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelMiscFees);
             this.Controls.Add(this.panelLoan);
+            this.Controls.Add(this.panelMiscFees);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(575, 395);
             this.Name = "CollectionReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Daily Collection Report";
@@ -427,7 +461,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.GroupBox grpTransType;
         private System.Windows.Forms.RadioButton rbMiscFees;
@@ -453,5 +486,6 @@
         private System.Windows.Forms.CheckBox cbDateTo;
         private System.Windows.Forms.DateTimePicker dateFrom;
         private System.Windows.Forms.Label lblFrom;
+        private System.Windows.Forms.Label label1;
     }
 }

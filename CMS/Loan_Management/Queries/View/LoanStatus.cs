@@ -160,8 +160,5 @@ namespace CMS.Loan_Management.Queries.View
 
             }
         }
-
-
-        
     }
 }

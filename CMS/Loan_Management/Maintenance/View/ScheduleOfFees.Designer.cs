@@ -309,7 +309,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(505, 45);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Maintenance - Miscelleneous Fee";
+            this.label2.Text = "Maintenance - Miscellaneous Fee";
             // 
             // btnDelete
             // 

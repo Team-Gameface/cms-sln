@@ -301,12 +301,6 @@
     <Compile Include="Loan_Management\Reports\View\LoanReleasesViewer.designer.cs">
       <DependentUpon>LoanReleasesViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Loan_Management\Reports\View\PerformanceReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Loan_Management\Reports\View\PerformanceReport.Designer.cs">
-      <DependentUpon>PerformanceReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="Loan_Management\Reports\View\PerformanceReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -777,9 +771,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Loan_Management\Reports\View\LoanReleasesViewer.resx">
       <DependentUpon>LoanReleasesViewer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Loan_Management\Reports\View\PerformanceReport.resx">
-      <DependentUpon>PerformanceReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Loan_Management\Reports\View\PerformanceReportViewer.resx">
       <DependentUpon>PerformanceReportViewer.cs</DependentUpon>

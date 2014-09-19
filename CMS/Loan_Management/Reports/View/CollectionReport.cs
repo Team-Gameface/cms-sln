@@ -269,8 +269,5 @@ namespace CMS.Loan_Management.Reports.View
             this.btnPreview.Click += e;
 
         }
-
-
-
     }
 }

@@ -1240,7 +1240,13 @@
     <Content Include="img\icons\SV.ico" />
     <Content Include="img\icons\TDCalc.ico" />
     <Content Include="img\menu\LoanBackground.png" />
+    <Content Include="img\menu\MaintenanceBlue.png" />
+    <Content Include="img\menu\MaintenanceRed.png" />
+    <Content Include="img\menu\QueriesReportsBlue.png" />
+    <Content Include="img\menu\QueriesReportsRed.png" />
     <Content Include="img\menu\SavingsBackground.png" />
+    <Content Include="img\menu\TransactionBlue.png" />
+    <Content Include="img\menu\TransactionRed.png" />
     <Content Include="img\signimg.jpg" />
   </ItemGroup>
   <ItemGroup>

@@ -45,7 +45,6 @@
             this.autoCollapse = new System.Windows.Forms.CheckBox();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.statusMain = new System.Windows.Forms.StatusStrip();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
@@ -285,24 +284,17 @@
             this.statusMain.BackColor = System.Drawing.Color.ForestGreen;
             this.statusMain.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripProgressBar1,
             this.lblDateTime});
             this.statusMain.Location = new System.Drawing.Point(0, 694);
             this.statusMain.Name = "statusMain";
             this.statusMain.Size = new System.Drawing.Size(611, 35);
             this.statusMain.TabIndex = 3;
             // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 29);
-            // 
             // lblDateTime
             // 
             this.lblDateTime.ForeColor = System.Drawing.Color.White;
             this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(494, 30);
+            this.lblDateTime.Size = new System.Drawing.Size(565, 30);
             this.lblDateTime.Spring = true;
             this.lblDateTime.Text = "DateTime";
             this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -460,7 +452,6 @@
         private System.Windows.Forms.PictureBox pictureUser;
         private System.Windows.Forms.FlowLayoutPanel panelSwitchboard;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel lblDateTime;
 
     }

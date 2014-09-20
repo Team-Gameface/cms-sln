@@ -253,6 +253,26 @@ namespace CMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MaintenanceBlue {
+            get {
+                object obj = ResourceManager.GetObject("MaintenanceBlue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MaintenanceRed {
+            get {
+                object obj = ResourceManager.GetObject("MaintenanceRed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Next {
             get {
                 object obj = ResourceManager.GetObject("Next", resourceCulture);
@@ -296,6 +316,26 @@ namespace CMS.Properties {
         internal static System.Drawing.Bitmap Proceed {
             get {
                 object obj = ResourceManager.GetObject("Proceed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QueriesReportsBlue {
+            get {
+                object obj = ResourceManager.GetObject("QueriesReportsBlue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QueriesReportsRed {
+            get {
+                object obj = ResourceManager.GetObject("QueriesReportsRed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -386,6 +426,26 @@ namespace CMS.Properties {
         internal static System.Drawing.Bitmap signimg {
             get {
                 object obj = ResourceManager.GetObject("signimg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TransactionBlue {
+            get {
+                object obj = ResourceManager.GetObject("TransactionBlue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TransactionRed {
+            get {
+                object obj = ResourceManager.GetObject("TransactionRed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

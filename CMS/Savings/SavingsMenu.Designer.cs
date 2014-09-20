@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SavingsMenu));
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuMaintenance = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +66,6 @@
             this.statusStrip.BackColor = System.Drawing.Color.Firebrick;
             this.statusStrip.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.progressBar,
             this.statusDateTime});
             this.statusStrip.Location = new System.Drawing.Point(0, 532);
             this.statusStrip.Name = "statusStrip";
@@ -75,17 +73,11 @@
             this.statusStrip.TabIndex = 3;
             this.statusStrip.Text = "statusStrip1";
             // 
-            // progressBar
-            // 
-            this.progressBar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(100, 24);
-            // 
             // statusDateTime
             // 
             this.statusDateTime.ForeColor = System.Drawing.Color.White;
             this.statusDateTime.Name = "statusDateTime";
-            this.statusDateTime.Size = new System.Drawing.Size(667, 25);
+            this.statusDateTime.Size = new System.Drawing.Size(738, 25);
             this.statusDateTime.Spring = true;
             this.statusDateTime.Text = "DateTime";
             this.statusDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -109,8 +101,9 @@
             this.toolStripSeparator1,
             this.itemInterestRates,
             this.itemTimeDepositWithdrawal});
+            this.menuMaintenance.Image = global::CMS.Properties.Resources.MaintenanceRed;
             this.menuMaintenance.Name = "menuMaintenance";
-            this.menuMaintenance.Size = new System.Drawing.Size(130, 25);
+            this.menuMaintenance.Size = new System.Drawing.Size(146, 25);
             this.menuMaintenance.Text = "&MAINTENANCE";
             // 
             // itemSavingsAccountTypes
@@ -149,8 +142,9 @@
             this.itemTimeDepositWith,
             this.toolStripSeparator3,
             this.itemMemberTermination});
+            this.menuTransaction.Image = global::CMS.Properties.Resources.TransactionRed;
             this.menuTransaction.Name = "menuTransaction";
-            this.menuTransaction.Size = new System.Drawing.Size(125, 25);
+            this.menuTransaction.Size = new System.Drawing.Size(141, 25);
             this.menuTransaction.Text = "&TRANSACTION";
             // 
             // itemOpenAccount
@@ -204,8 +198,9 @@
             this.itemStatementOfAccount,
             this.toolStripSeparator4,
             this.itemDailyTransactionLog});
+            this.menuQueriesReports.Image = global::CMS.Properties.Resources.QueriesReportsRed;
             this.menuQueriesReports.Name = "menuQueriesReports";
-            this.menuQueriesReports.Size = new System.Drawing.Size(186, 25);
+            this.menuQueriesReports.Size = new System.Drawing.Size(202, 25);
             this.menuQueriesReports.Text = "&QUERIES AND REPORTS";
             // 
             // itemStatementOfAccount
@@ -260,7 +255,6 @@
 
         private System.Windows.Forms.Timer timerDateTime;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripProgressBar progressBar;
         private System.Windows.Forms.ToolStripStatusLabel statusDateTime;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuMaintenance;

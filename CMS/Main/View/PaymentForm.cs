@@ -545,9 +545,11 @@ namespace CMS.Main.View
             this.txtTotalAmount.Text = totalAmount.ToString("c",ph);
         }
 
-        public double getTotalAmount() {
+        public double getTotalAmount()
+        {
+            CultureInfo ph = new CultureInfo("en-PH");
             String stotalAmount = this.txtTotalAmount.Text;
-            return double.Parse(stotalAmount.ToString(),NumberStyles.Currency);  
+            return double.Parse(stotalAmount.ToString(),NumberStyles.Currency, ph);  
         }
 
 
@@ -643,14 +645,14 @@ namespace CMS.Main.View
             {
                 try
                 {
+                    CultureInfo ph = new CultureInfo("en-PH");
                     double amountPaid = double.Parse(this.txtAmount.Text);
                     String stotalAmount = this.txtTotalAmount.Text;
-                    double totalAmount = double.Parse(stotalAmount.ToString(),NumberStyles.Currency);
+                    double totalAmount = double.Parse(stotalAmount.ToString(), NumberStyles.Currency, ph);
                     
                     if (amountPaid >= totalAmount)
                     {
                         double change = amountPaid - totalAmount;
-                        CultureInfo ph = new CultureInfo("en-PH");
                         this.txtChange.Text = change.ToString("c",ph);
                         this.btnSave.Enabled = true;
 
@@ -829,9 +831,10 @@ namespace CMS.Main.View
             catch (Exception) { return 0; }
         }
 
-        public double getAmortizationChange() 
+        public double getAmortizationChange()
         {
-            return double.Parse(this.txtAMChange.Text,NumberStyles.Currency);
+            CultureInfo ph = new CultureInfo("en-PH");
+            return double.Parse(this.txtAMChange.Text,NumberStyles.Currency, ph);
         }
 
         public double getAmountTendered() 
@@ -996,12 +999,12 @@ namespace CMS.Main.View
                 {
                     try
                     {
+                        CultureInfo ph = new CultureInfo("en-PH");
                         double amountPaid = double.Parse(this.txtAMAmountTendered.Text);
-                        double totalAmount = double.Parse(this.txtTotalAmortization.Text, NumberStyles.Currency);
+                        double totalAmount = double.Parse(this.txtTotalAmortization.Text, NumberStyles.Currency, ph);
                         if (amountPaid >= totalAmount)
                         {
                             double change = amountPaid - totalAmount;
-                            CultureInfo ph = new CultureInfo("en-PH");
                             this.txtAMChange.Text = change.ToString("c", ph);
                             this.btnSave.Enabled = true;
                             int i = this.dataAmortization.Rows.Count;
@@ -1020,7 +1023,6 @@ namespace CMS.Main.View
                             else
                             {
                                 double change = 0.00;
-                                CultureInfo ph = new CultureInfo("en-PH");
                                 this.txtAMChange.Text = change.ToString("c", ph);
                                 this.btnSave.Enabled = true;
                             }

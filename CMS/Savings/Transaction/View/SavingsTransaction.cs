@@ -97,7 +97,8 @@ namespace CMS.Savings.Transaction.View
         {
             try
             {
-                return double.Parse(this.txtAmount.Text);
+                CultureInfo ph = new CultureInfo("en-PH");
+                return double.Parse(this.txtAmount.Text.ToString(), NumberStyles.Currency, ph);
             }
             catch (Exception) { return 0.00; }
         }
@@ -148,7 +149,8 @@ namespace CMS.Savings.Transaction.View
 
         public double getAccountBalance()
         {
-            return double.Parse(this.txtAccountBalance.Text.ToString());
+            CultureInfo ph = new CultureInfo("en-PH");
+            return double.Parse(this.txtAccountBalance.Text.ToString(), NumberStyles.Currency, ph);
         }
 
         public void setDataAccountHolder(DataSet ds)

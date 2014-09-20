@@ -362,7 +362,7 @@ namespace CMS.Main.Model
         public DataSet searchMemberByLName(String Name)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "Select distinct Member.AccountNo as 'Account No.', concat (Member.FirstName,' ',member.LastName) as 'Name', MEMBER_TYPE.Description from MEMBER, MEMBER_TYPE, LOAN_INFORMATION WHERE MEMBER.AccountNo = LOAN_INFORMATION.AccountNo and MEMBER.MemberTypeNo = MEMBER_TYPE.MemberTypeNo AND LOAN_INFORMATION.isCleared = 0 and (LOAN_AMORTIZATION.isPaid = 0 or LOAN_AMORTIZATION.Penalty is NOT NULL OR LOAN_INFORMATION.Interest is Not null) AND concat(Member.FirstName,' ',Member.LastName) like(@MemberName)";
+            String sql = "Select distinct Member.AccountNo as 'Account No.', concat (Member.FirstName,' ',member.LastName) as 'Name', MEMBER_TYPE.Description from MEMBER, MEMBER_TYPE, LOAN_INFORMATION, LOAN_AMORTIZATION WHERE MEMBER.AccountNo = LOAN_INFORMATION.AccountNo and LOAN_INFORMATION.LoanApplicationId = LOAN_AMORTIZATION.LoanApplicationId and MEMBER.MemberTypeNo = MEMBER_TYPE.MemberTypeNo AND LOAN_INFORMATION.isCleared = 0 and (LOAN_AMORTIZATION.isPaid = 0 or LOAN_AMORTIZATION.Penalty is NOT NULL OR LOAN_INFORMATION.Interest is Not null) and Member.AccountNo not in (Select AccountNo from Termination) AND concat(Member.FirstName,' ',Member.LastName) like(@MemberName)";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             Name = "%" + Name + "%";
             parameters.Add("@MemberName", Name);
@@ -373,7 +373,7 @@ namespace CMS.Main.Model
         public DataSet searchMemberByLAccount(String accountNo)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "Select distinct Member.AccountNo as 'Account No.', concat (Member.FirstName,' ',member.LastName) as 'Name', MEMBER_TYPE.Description from MEMBER, MEMBER_TYPE, LOAN_INFORMATION WHERE MEMBER.AccountNo = LOAN_INFORMATION.AccountNo and MEMBER.MemberTypeNo = MEMBER_TYPE.MemberTypeNo AND LOAN_INFORMATION.isCleared = 0 and (LOAN_AMORTIZATION.isPaid = 0 or LOAN_AMORTIZATION.Penalty is NOT NULL OR LOAN_INFORMATION.Interest is Not null) and Member.AccountNo like(@AccountNo)";
+            String sql = "Select distinct Member.AccountNo as 'Account No.', concat (Member.FirstName,' ',member.LastName) as 'Name', MEMBER_TYPE.Description from MEMBER, MEMBER_TYPE, LOAN_INFORMATION, LOAN_AMORTIZATION WHERE MEMBER.AccountNo = LOAN_INFORMATION.AccountNo and LOAN_INFORMATION.LoanApplicationId = LOAN_AMORTIZATION.LoanApplicationId and MEMBER.MemberTypeNo = MEMBER_TYPE.MemberTypeNo AND LOAN_INFORMATION.isCleared = 0 and (LOAN_AMORTIZATION.isPaid = 0 or LOAN_AMORTIZATION.Penalty is NOT NULL OR LOAN_INFORMATION.Interest is Not null) and Member.AccountNo not in (Select AccountNo from Termination) and Member.AccountNo like(@AccountNo)";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             accountNo = "%" + accountNo + "%";
             parameters.Add("@AccountNo", accountNo);

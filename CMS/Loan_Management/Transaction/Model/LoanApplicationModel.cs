@@ -377,7 +377,7 @@ namespace CMS.Loan_Management.Transaction.Model
         {
 
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "Select distinct Member.AccountNo as 'Account No.', concat(Member.FirstName,' ',Member.MiddleName,' ',Member.LastName) as 'Name', MEMBER_TYPE.Description as 'Member Type', MEMBER_TYPE.MemberTypeNo from Member, Member_Type, Payment where Member.MemberTypeNo=Member_Type.MemberTypeNo and Member.AccountNo = Payment.AccountNo and Member_Type.hasLoan=1 and Member_Type.MinimumAge >= 18 and Member.Status=1 and Payment.PaymentType = 'Membership' and Payment.isFullyPaid = 1 and Member.AccountNo not in (Select AccountNo from Termination) AND concat(Member.FirstName,' ',Member.MiddleName,' ',Member.LastName) LIKE(@memberName)";
+            String sql = "Select distinct Member.AccountNo as 'Account No.', concat(Member.FirstName,' ',Member.MiddleName,' ',Member.LastName) as 'Name', MEMBER_TYPE.Description as 'Member Type', MEMBER_TYPE.MemberTypeNo from Member, Member_Type where Member.MemberTypeNo=Member_Type.MemberTypeNo and Member_Type.hasLoan=1 and Member.Status=1 and Member.AccountNo not in (Select AccountNo from Termination) AND concat(Member.FirstName,' ',Member.MiddleName,' ',Member.LastName) LIKE(@memberName)";
             memberName = "%" + memberName + "%";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@memberName", memberName);
@@ -389,7 +389,7 @@ namespace CMS.Loan_Management.Transaction.Model
         {
 
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "Select distinct Member.AccountNo as 'Account No.', concat(Member.FirstName,' ',Member.MiddleName,' ',Member.LastName) as 'Name', MEMBER_TYPE.Description as 'Member Type', MEMBER_TYPE.MemberTypeNo from Member, Member_Type, Payment where Member.MemberTypeNo=Member_Type.MemberTypeNo and Member.AccountNo = Payment.AccountNo and Member_Type.hasLoan=1 and Member_Type.MinimumAge >= 18 and Member.Status=1 and Payment.PaymentType = 'Membership' and Payment.isFullyPaid = 1 and Member.AccountNo not in (Select AccountNo from Termination) AND Member.AccountNo LIKE(@accountNo)";
+            String sql = "Select distinct Member.AccountNo as 'Account No.', concat(Member.FirstName,' ',Member.MiddleName,' ',Member.LastName) as 'Name', MEMBER_TYPE.Description as 'Member Type', MEMBER_TYPE.MemberTypeNo from Member, Member_Type where Member.MemberTypeNo=Member_Type.MemberTypeNo and Member_Type.hasLoan=1 and Member.Status=1 and Member.AccountNo not in (Select AccountNo from Termination) AND Member.AccountNo LIKE(@accountNo)";
             accountNo = "%" + accountNo + "%";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@accountNo", accountNo);

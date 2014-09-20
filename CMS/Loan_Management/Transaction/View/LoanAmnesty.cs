@@ -441,12 +441,30 @@ namespace CMS.Loan_Management.Transaction.View
 
         private void rbAccountNo_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (rbAccountNo.Checked == true)
+            {
+                this.txtAccountNo.Enabled = true;
+                this.txtMemberName.Clear();
+                this.txtMemberName.Enabled = false;
+            }
+            else 
+            {
+                this.txtAccountNo.Clear();
+            }
         }
 
         private void rbMemberName_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (rbMemberName.Checked == true)
+            {
+                this.txtMemberName.Enabled = true;
+                this.txtAccountNo.Clear();
+                this.txtAccountNo.Enabled = false;
+            }
+            else
+            {
+                this.txtMemberName.Clear();
+            }
         }
 
         private void txtPWaived_KeyPress(object sender, KeyPressEventArgs e)

@@ -115,6 +115,72 @@ namespace CMS.Main.View
             this.rbNone.Checked = false;
         }
 
+        public void clearMiscellaneousFields() 
+        {
+            this.setTotalLoanBalance(0);
+            this.setTotalPenalties(0);
+            this.setTotalInterest(0);
+            this.setSLTotalLoanBalance(0);
+            this.setSLTotalPenalties(0);
+            this.setSLTotalInterest(0);
+            this.lblTLB.Visible = false;
+            this.lblSL.Visible = false;
+            this.lblTotalLoanBalance.Visible = false;
+            this.lblSLTotalLoanBalance.Visible = false;
+            this.lblTP.Visible = false;
+            this.lblTotalPenalties.Visible = false;
+            this.lblSLTotalPenalties.Visible = false;
+            this.lblTI.Visible = false;
+            this.lblTotalInterest.Visible = false;
+            this.lblSLTotalInterest.Visible = false ;
+            this.lblNTLB.Visible = false;
+            this.lblNetTotalLoanBalance.Visible = false;
+            this.lblSLNetTotalLoanBalance.Visible = false;
+            this.btnMoveAll.Enabled = false;
+            this.btnMoveBackAll.Enabled = false;
+            this.btnMoveBackSelected.Enabled = false;
+            this.btnMoveSelected.Enabled = false;
+            this.btnSave.Enabled = false;
+            this.dataSearch.ClearSelection();
+            this.dataFee.DataSource = null;
+            this.dataFee.Columns.Clear();
+            this.dataAddedFee.Rows.Clear();
+            this.txtAccountNo.Clear();
+            this.txtMemberName.Clear();
+            this.txtAmount.Clear();
+            this.txtTotalAmount.Clear();
+            this.txtChange.Clear();
+            this.rbAccountNo.Checked = false;
+            this.rbMemberName.Checked = false;
+            this.txtAccountNo.Enabled = false;
+            this.txtMemberName.Enabled = false;
+            this.txtAMAmountTendered.Clear();
+            this.txtAMChange.Clear();
+            this.txtAmountDue.Text = "0.00";
+            this.setPenalty(0.00);
+            this.setInterest(0.00);
+            this.setTotalAmortization(0.00);
+            this.dataLoan.Enabled = true;
+            this.dataAmortization.Enabled = true;
+            this.txtPenaltyList.Clear();
+            this.dataAmortization.DataSource = null;
+            this.dataAmortization.Rows.Clear();
+            this.dataAmortization.Columns.Clear();
+            this.dataLoan.ClearSelection();
+            this.cbLoanType.Enabled = false;
+            this.cbLoanType.DataSource = null;
+            this.chbPayAll.Checked = false;
+            this.chbPayAll.Enabled = true;
+            this.chbDeductToNext.Enabled = false;
+            this.rbAddToSavings.Enabled = false;
+            this.rbAddToShareCapital.Enabled = false;
+            this.rbNone.Enabled = false;
+            this.chbDeductToNext.Checked = false;
+            this.rbAddToSavings.Checked = false;
+            this.rbAddToShareCapital.Checked = false;
+            this.rbNone.Checked = false;
+        }
+
         public void clearTendered() 
         {
             this.btnSave.Enabled = false;
@@ -131,27 +197,22 @@ namespace CMS.Main.View
                 groupMembership.Show();
                 groupLoan.Hide();
                 groupUnpaidLoans.Hide();
-                hideLoanDetails();
+                this.lblSL.Visible = false;
+                this.lblTLB.Visible = false;
+                this.lblTotalLoanBalance.Visible = false;
+                this.lblTP.Visible = false;
+                this.lblTotalPenalties.Visible = false;
+                this.lblTI.Visible = false;
+                this.lblTotalInterest.Visible = false;
+                this.lblNTLB.Visible = false;
+                this.lblNetTotalLoanBalance.Visible = false;
+                this.lblSLTotalLoanBalance.Visible = false;
+                this.lblSLTotalPenalties.Visible = false;
+                this.lblSLTotalInterest.Visible = false;
+                this.lblSLNetTotalLoanBalance.Visible = false;
                 this.classGridSearch(this.paymentModel.selectActiveMembershipUnpaid());
                 if (this.paymentModel.checkEmpty != 0) this.noRowsSelected();
             }
-        }
-
-        public void hideLoanDetails()
-        {
-            this.lblSL.Visible = false;
-            this.lblTLB.Visible = false;
-            this.lblTotalLoanBalance.Visible = false;
-            this.lblTP.Visible = false;
-            this.lblTotalPenalties.Visible = false;
-            this.lblTI.Visible = false;
-            this.lblTotalInterest.Visible = false;
-            this.lblNTLB.Visible = false;
-            this.lblNetTotalLoanBalance.Visible = false;
-            this.lblSLTotalLoanBalance.Visible = false;
-            this.lblSLTotalPenalties.Visible = false;
-            this.lblSLTotalInterest.Visible = false;
-            this.lblSLNetTotalLoanBalance.Visible = false;
         }
 
         private void radioLoan_CheckedChanged(object sender, EventArgs e)
@@ -648,7 +709,7 @@ namespace CMS.Main.View
                     CultureInfo ph = new CultureInfo("en-PH");
                     double amountPaid = double.Parse(this.txtAmount.Text);
                     String stotalAmount = this.txtTotalAmount.Text;
-                    double totalAmount = double.Parse(stotalAmount.ToString(), NumberStyles.Currency, ph);
+                    double totalAmount = double.Parse(stotalAmount.ToString(),NumberStyles.Currency,ph);
                     
                     if (amountPaid >= totalAmount)
                     {
@@ -834,7 +895,7 @@ namespace CMS.Main.View
         public double getAmortizationChange()
         {
             CultureInfo ph = new CultureInfo("en-PH");
-            return double.Parse(this.txtAMChange.Text,NumberStyles.Currency, ph);
+            return double.Parse(this.txtAMChange.Text,NumberStyles.Currency,ph);
         }
 
         public double getAmountTendered() 
@@ -940,6 +1001,10 @@ namespace CMS.Main.View
 
         private void txtAMAmountTendered_KeyPress(object sender, KeyPressEventArgs e)
         {
+            this.chbDeductToNext.Enabled = false; 
+            this.rbAddToShareCapital.Enabled = false;
+            this.rbAddToSavings.Enabled = false; 
+            this.rbNone.Enabled = false;
             if ((e.KeyChar < '0' || e.KeyChar > '9') && (e.KeyChar != '\b') && (e.KeyChar != '.'))
             {
                 e.Handled = true;
@@ -1002,29 +1067,36 @@ namespace CMS.Main.View
                         CultureInfo ph = new CultureInfo("en-PH");
                         double amountPaid = double.Parse(this.txtAMAmountTendered.Text);
                         double totalAmount = double.Parse(this.txtTotalAmortization.Text, NumberStyles.Currency, ph);
-                        if (amountPaid >= totalAmount)
+                        if (totalAmount == 0)
                         {
-                            double change = amountPaid - totalAmount;
-                            this.txtAMChange.Text = change.ToString("c", ph);
-                            this.btnSave.Enabled = true;
-                            int i = this.dataAmortization.Rows.Count;
-                            if (amountPaid != totalAmount)
-                            {
-                                if (i != 0 && i!=1) { this.chbDeductToNext.Enabled = true; }
-                                this.rbAddToShareCapital.Enabled = true; this.rbAddToSavings.Enabled = true; this.rbNone.Enabled = true;
-                            }
+                            MessageBox.Show("Please enter right amount.", "INVALID INPUT", MessageBoxButtons.OK, MessageBoxIcon.Error); this.txtAMAmountTendered.Clear();
                         }
                         else
                         {
-                            if (this.getIfPenaltyListIsEmpty("Amnestied") == false) 
+                            if (amountPaid >= totalAmount)
                             {
-                                MessageBox.Show("Insufficient amount.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                double change = amountPaid - totalAmount;
+                                this.txtAMChange.Text = change.ToString("c", ph);
+                                this.btnSave.Enabled = true;
+                                int i = this.dataAmortization.Rows.Count;
+                                if (amountPaid != totalAmount)
+                                {
+                                    if (i != 0 && i != 1) { this.chbDeductToNext.Enabled = true; }
+                                    this.rbAddToShareCapital.Enabled = true; this.rbAddToSavings.Enabled = true; this.rbNone.Enabled = true;
+                                }
                             }
                             else
                             {
-                                double change = 0.00;
-                                this.txtAMChange.Text = change.ToString("c", ph);
-                                this.btnSave.Enabled = true;
+                                if (this.getIfPenaltyListIsEmpty("Amnestied") == false)
+                                {
+                                    MessageBox.Show("Insufficient amount.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else
+                                {
+                                    double change = 0.00;
+                                    this.txtAMChange.Text = change.ToString("c", ph);
+                                    this.btnSave.Enabled = true;
+                                }
                             }
                         }
                     }

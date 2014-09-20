@@ -484,7 +484,13 @@ namespace CMS.Main.Controller
     
 
 
-        public void btnClear(object args, EventArgs e) {
+        public void btnClear(object args, EventArgs e) 
+        {
+            if (this.payment.getPaymentType() == "Miscellaneous") 
+            {
+                this.payment.clearMiscellaneousFields();
+            }
+            else
             this.payment.clearLoanFields();
         }
 
@@ -539,7 +545,7 @@ namespace CMS.Main.Controller
                     execLogger("Processed Miscellaneous - OR# '" + this.paymentModel.ORNo + "'");
                     this.payment.classGridSearch(this.paymentModel.selectActiveMembershipUnpaid());
                     this.payment.totAmt = 0.00;
-                    this.payment.clearLoanFields();
+                    this.payment.clearMiscellaneousFields();
                 }
                 else
                 {
@@ -563,7 +569,7 @@ namespace CMS.Main.Controller
                 double slBalance = this.payment.getSLTotalLoanBalance();
                 double slPenalty = this.payment.getSLTotalPenalties();
                 double slInterest = this.payment.getSLTotalInterest();
-
+                Boolean check = false;
                 this.paymentModel.amountPaid = paidAmount;
                 int isfullyPaid = 0;
 
@@ -576,13 +582,14 @@ namespace CMS.Main.Controller
                             if (change >= double.Parse(rows.Cells[2].Value.ToString()))
                             {
                                 MessageBox.Show("Change is still >= of unchecked amortization amount. Please check them.","Loan Payment",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                check = true;
                                 break;
                             }
                         }
                     }
                 }
 
-                else
+                if(!check)
                 {
                     if (this.payment.getIfPenaltyListIsEmpty("Amnestied") == true)
                     {

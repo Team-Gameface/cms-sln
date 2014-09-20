@@ -236,6 +236,7 @@
             this.rbMemberName.TabIndex = 8;
             this.rbMemberName.Text = "Member Name:";
             this.rbMemberName.UseVisualStyleBackColor = true;
+            this.rbMemberName.CheckedChanged += new System.EventHandler(this.rbMemberName_CheckedChanged);
             // 
             // rbAccountNo
             // 
@@ -251,6 +252,7 @@
             this.rbAccountNo.TabStop = true;
             this.rbAccountNo.Text = "Account Number:";
             this.rbAccountNo.UseVisualStyleBackColor = true;
+            this.rbAccountNo.CheckedChanged += new System.EventHandler(this.rbAccountNo_CheckedChanged);
             // 
             // txtTotalLoanBalance
             // 

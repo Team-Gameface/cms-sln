@@ -13,6 +13,7 @@ namespace CMS.Loan_Management.Transaction.Controller
 {
     class LoanApplicationController
     {
+        Main.Logger logger = new Main.Logger();
         double loanBal = 0, totPen = 0;
         Transaction.Model.LoanApplicationModel loanApplicationModel;
         Transaction.View.LoanApplication loanApplication;
@@ -1467,7 +1468,15 @@ namespace CMS.Loan_Management.Transaction.Controller
                 }
 
                 }
+
+                DataSet ds = this.loanApplicationModel.selectLoanDetails(this.loanApplicationModel.loanApplicationId);
+                DataSet dsStaff = this.loanApplicationModel.getStaff(Main.UserData.userId, "dtStaff");
+                DataSet dsMgr = this.loanApplicationModel.getManager("dtManager");
+                DataSet dsCreditChair = this.loanApplicationModel.getChair("dtCreditChair");
+                View.VoucherViewer voucherViewer = new View.VoucherViewer(ds, this.loanApplicationModel.getCompanyProfile("dtLogo"), this.loanApplicationModel.selectCharges(this.loanApplicationModel.loanApplicationId, "dtCharges"), dsStaff, dsMgr, dsCreditChair);
+                MessageBox.Show("Charge: " + this.loanApplicationModel.selectCharges(this.loanApplicationModel.loanApplicationId, "dtCharges").Tables[0].Rows.Count.ToString());
                 MessageBox.Show("Loan processing successful", "LOAN INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                execLogger("Processed Loan for Account No. '" + finalAccountNo + "'");
                 this.loanApplication.disableFunction();
                 this.loanApplication.enableDataActiveMember();
                 this.loanApplication.clearSelectionActiveMember();
@@ -1495,13 +1504,19 @@ namespace CMS.Loan_Management.Transaction.Controller
                 maturityDate = DateTime.Now;
             }
         }//end applyloan
-    
-
-
-
-
-
-
-    
+        public void execLogger(String ModuleActivity)
+        {
+            logger.clear();
+            logger.Module = "Transaction - Loan Information";
+            logger.Activity = ModuleActivity;
+            if (logger.insertLog() > 0)
+            {
+                Console.WriteLine("Logged");
+            }
+            else
+            {
+                Console.WriteLine("Not Logged");
+            }
+        }    
     }
 }

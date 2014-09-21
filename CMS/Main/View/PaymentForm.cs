@@ -131,22 +131,27 @@ namespace CMS.Main.View
                 groupMembership.Show();
                 groupLoan.Hide();
                 groupUnpaidLoans.Hide();
-                this.lblSL.Visible = false;
-                this.lblTLB.Visible = false;
-                this.lblTotalLoanBalance.Visible = false;
-                this.lblTP.Visible = false;
-                this.lblTotalPenalties.Visible = false;
-                this.lblTI.Visible = false;
-                this.lblTotalInterest.Visible = false;
-                this.lblNTLB.Visible = false;
-                this.lblNetTotalLoanBalance.Visible = false;
-                this.lblSLTotalLoanBalance.Visible = false;
-                this.lblSLTotalPenalties.Visible = false;
-                this.lblSLTotalInterest.Visible = false;
-                this.lblSLNetTotalLoanBalance.Visible = false;
+                hideLoanDetails();
                 this.classGridSearch(this.paymentModel.selectActiveMembershipUnpaid());
                 if (this.paymentModel.checkEmpty != 0) this.noRowsSelected();
             }
+        }
+
+        public void hideLoanDetails()
+        {
+            this.lblSL.Visible = false;
+            this.lblTLB.Visible = false;
+            this.lblTotalLoanBalance.Visible = false;
+            this.lblTP.Visible = false;
+            this.lblTotalPenalties.Visible = false;
+            this.lblTI.Visible = false;
+            this.lblTotalInterest.Visible = false;
+            this.lblNTLB.Visible = false;
+            this.lblNetTotalLoanBalance.Visible = false;
+            this.lblSLTotalLoanBalance.Visible = false;
+            this.lblSLTotalPenalties.Visible = false;
+            this.lblSLTotalInterest.Visible = false;
+            this.lblSLNetTotalLoanBalance.Visible = false;
         }
 
         private void radioLoan_CheckedChanged(object sender, EventArgs e)

@@ -843,7 +843,6 @@ namespace CMS.Loan_Management.Transaction.View
         {
             if (this.acctholder1.Image == null)
             {
-                MessageBox.Show("A1 null");
                 return null;
             }
             else
@@ -862,8 +861,6 @@ namespace CMS.Loan_Management.Transaction.View
         {
             if (this.acctholder2.Image == null)
             {
-                MessageBox.Show("A2 null");
-
                 return null;
             }
             else
@@ -882,8 +879,6 @@ namespace CMS.Loan_Management.Transaction.View
         {
             if (this.acctholder3.Image == null)
             {
-                MessageBox.Show("A3 null");
-
                 return null;
             }
             else
@@ -902,8 +897,6 @@ namespace CMS.Loan_Management.Transaction.View
         {
             if (this.guardian1.Image == null)
             {
-                MessageBox.Show("G1 null");
-
                 return null;
             }
             else
@@ -922,8 +915,6 @@ namespace CMS.Loan_Management.Transaction.View
         {
             if (this.guardian2.Image == null)
             {
-                MessageBox.Show("G2 null");
-
                 return null;
             }
             else
@@ -942,8 +933,6 @@ namespace CMS.Loan_Management.Transaction.View
         {
             if (this.guardian3.Image == null)
             {
-                MessageBox.Show("G3 null");
-
                 return null;
             }
             else

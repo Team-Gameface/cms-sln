@@ -172,6 +172,7 @@ namespace CMS.Main.Controller
                     {
                         if (DateTime.Parse(pair.Key) > DateTime.Parse(last))
                         {
+                            hasInterest = true;
                             double finalInterest = 0;
                             double grantedLoanAmount = this.paymentModel.selectGrantedLoanAmount(lappId);
                             String[] paymentDur = this.paymentModel.selectPaymentDurationPerApplication(lappId).Split(' ');
@@ -720,7 +721,9 @@ namespace CMS.Main.Controller
                         {
                             execLogger("Added Share Capital from OR# '" + this.paymentModel.ORNo + "'");
                         }
+
                     }
+
                     if (checkSavings)
                     {
                         String[] bal = this.paymentModel.selectMaxOR().Split(' ');

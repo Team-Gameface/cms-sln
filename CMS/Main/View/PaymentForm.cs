@@ -36,14 +36,15 @@ namespace CMS.Main.View
             groupUnpaidLoans.Hide();
             groupLoan.Hide();
             rbLoan.Checked = true;
-           
-
         }
 
+        
         public void disableSavingsOption()
         {
             rbAddToSavings.Enabled = false;
+            rbAddToSavings.Checked = false;
         }
+
 
         public void noRowsSelected()
         {
@@ -336,11 +337,7 @@ namespace CMS.Main.View
 
         public DataGridViewRow getSelected()
         {
-            try
-            {
-                return this.dataSearch.SelectedRows[0];
-            }
-            catch (Exception) { return null; }            
+            return this.dataSearch.SelectedRows[0];
         }
 
         public DataGridViewRow getSelectedLoan()
@@ -681,14 +678,11 @@ namespace CMS.Main.View
             this.txtTotalAmount.Clear();
             totAmt = 0;
             DataGridViewRow selectedData = this.getSelected();
-            if (selectedData != null)
-            {
-                String accountNo = selectedData.Cells["Account No."].Value.ToString();
+            String accountNo = selectedData.Cells["Account No."].Value.ToString();
 
-
+     
                 //String memberType = selectedData.Cells["Member Type"].Value.ToString();
                 this.classGridFee(this.paymentModel.selectFeesPerMemberType(accountNo));
-            }
         }
 
         private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -1099,13 +1093,21 @@ namespace CMS.Main.View
                         {
                             if (amountPaid >= totalAmount)
                             {
+                                            int count = 0;
+                                            foreach (DataGridViewRow rows in this.dataAmortization.Rows)
+                                            {
+                                                if ((Boolean)(rows.Cells[0] as DataGridViewCheckBoxCell).Value == true)
+                                                {
+                                                    count++;
+                                                }
+                                            }
                                 double change = amountPaid - totalAmount;
                                 this.txtAMChange.Text = change.ToString("c", ph);
                                 this.btnSave.Enabled = true;
                                 int i = this.dataAmortization.Rows.Count;
                                 if (amountPaid != totalAmount)
                                 {
-                                    if (i != 0 && i != 1) { this.chbDeductToNext.Enabled = true; }
+                                    if (i!=count) { this.chbDeductToNext.Enabled = true; }
                                     this.rbAddToShareCapital.Enabled = true; this.rbAddToSavings.Enabled = true; this.rbNone.Enabled = true;
                                 }
                             }

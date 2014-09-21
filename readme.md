@@ -5,11 +5,15 @@ Cooperative Management System Source Code
 WHAT'S WORKING
 ============================================================
 - Maintenance (Complete Validation)
-- Transaction
-- Queries
-- Reports
+- Transaction (Complete Validation)
+- Queries and Reports
 - Utilities
 - Settings
+
+============================================================
+KNOWN BUGS
+============================================================
+- Loan and Time Deposit Calculator Disposing
 
 HOW TO USE
 ============================================================

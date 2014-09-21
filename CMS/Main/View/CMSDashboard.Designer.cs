@@ -294,7 +294,7 @@
             // 
             this.lblDateTime.ForeColor = System.Drawing.Color.White;
             this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(565, 30);
+            this.lblDateTime.Size = new System.Drawing.Size(596, 30);
             this.lblDateTime.Spring = true;
             this.lblDateTime.Text = "DateTime";
             this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -310,7 +310,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(138, 103);
+            this.label3.Location = new System.Drawing.Point(138, 106);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(281, 25);
             this.label3.TabIndex = 14;
@@ -329,11 +329,12 @@
             // 
             // lblCompanyName
             // 
-            this.lblCompanyName.Font = new System.Drawing.Font("Segoe UI Semibold", 23.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompanyName.AutoSize = true;
+            this.lblCompanyName.Font = new System.Drawing.Font("Segoe UI Semibold", 24.25F, System.Drawing.FontStyle.Bold);
             this.lblCompanyName.ForeColor = System.Drawing.Color.White;
-            this.lblCompanyName.Location = new System.Drawing.Point(137, 3);
+            this.lblCompanyName.Location = new System.Drawing.Point(135, 22);
             this.lblCompanyName.Name = "lblCompanyName";
-            this.lblCompanyName.Size = new System.Drawing.Size(453, 68);
+            this.lblCompanyName.Size = new System.Drawing.Size(261, 45);
             this.lblCompanyName.TabIndex = 11;
             this.lblCompanyName.Text = "Company Name";
             this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -363,10 +364,10 @@
             // panelCompany
             // 
             this.panelCompany.BackColor = System.Drawing.Color.ForestGreen;
+            this.panelCompany.Controls.Add(this.label2);
             this.panelCompany.Controls.Add(this.pictureLogo);
             this.panelCompany.Controls.Add(this.label3);
             this.panelCompany.Controls.Add(this.lblCompanyName);
-            this.panelCompany.Controls.Add(this.label2);
             this.panelCompany.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCompany.Location = new System.Drawing.Point(0, 0);
             this.panelCompany.Name = "panelCompany";

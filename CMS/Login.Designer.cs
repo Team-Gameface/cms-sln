@@ -51,9 +51,9 @@
             // 
             this.lblCompanyName.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompanyName.ForeColor = System.Drawing.Color.ForestGreen;
-            this.lblCompanyName.Location = new System.Drawing.Point(145, 38);
+            this.lblCompanyName.Location = new System.Drawing.Point(144, 16);
             this.lblCompanyName.Name = "lblCompanyName";
-            this.lblCompanyName.Size = new System.Drawing.Size(369, 62);
+            this.lblCompanyName.Size = new System.Drawing.Size(373, 100);
             this.lblCompanyName.TabIndex = 1;
             this.lblCompanyName.Text = "Company Name";
             this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -63,7 +63,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(146, 109);
+            this.label2.Location = new System.Drawing.Point(146, 116);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(354, 28);
             this.label2.TabIndex = 2;

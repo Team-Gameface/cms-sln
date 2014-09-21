@@ -17,6 +17,8 @@ namespace CMS.Main.View
         Model.PaymentModel paymentModel = new Model.PaymentModel();
 
         double totalInterest = 0, totalPenalty = 0;
+        public Boolean ifBtnCheck = false;
+
         public PaymentForm()
         {
             InitializeComponent();
@@ -38,6 +40,11 @@ namespace CMS.Main.View
 
         }
 
+        public void disableSavingsOption()
+        {
+            rbAddToSavings.Enabled = false;
+        }
+
         public void noRowsSelected()
         {
             dataSearch.Rows[0].Selected = false;
@@ -50,6 +57,7 @@ namespace CMS.Main.View
 
         public void clearLoanFields()
         {
+            ifBtnCheck = false;
             this.setTotalLoanBalance(0);
             this.setTotalPenalties(0);
             this.setTotalInterest(0);
@@ -103,8 +111,10 @@ namespace CMS.Main.View
             this.dataLoan.ClearSelection();
             this.cbLoanType.Enabled = false;
             this.cbLoanType.DataSource = null;
-            this.chbPayAll.Checked = false;
-            this.chbPayAll.Enabled = true;
+            this.btnCheck.Enabled = false;
+            this.txtNoOfAmortization.Value = 0;
+            this.txtNoOfAmortization.Enabled = false;
+            this.lblNoOfAmortizations.Visible = false;
             this.chbDeductToNext.Enabled = false;
             this.rbAddToSavings.Enabled = false;
             this.rbAddToShareCapital.Enabled = false;
@@ -117,6 +127,7 @@ namespace CMS.Main.View
 
         public void clearMiscellaneousFields() 
         {
+            ifBtnCheck = false;
             this.setTotalLoanBalance(0);
             this.setTotalPenalties(0);
             this.setTotalInterest(0);
@@ -169,8 +180,10 @@ namespace CMS.Main.View
             this.dataLoan.ClearSelection();
             this.cbLoanType.Enabled = false;
             this.cbLoanType.DataSource = null;
-            this.chbPayAll.Checked = false;
-            this.chbPayAll.Enabled = true;
+            this.lblNoOfAmortizations.Visible = false;
+            this.btnCheck.Enabled = false;
+            this.txtNoOfAmortization.Value = 0;
+            this.txtNoOfAmortization.Enabled = false;
             this.chbDeductToNext.Enabled = false;
             this.rbAddToSavings.Enabled = false;
             this.rbAddToShareCapital.Enabled = false;
@@ -323,7 +336,11 @@ namespace CMS.Main.View
 
         public DataGridViewRow getSelected()
         {
-            return this.dataSearch.SelectedRows[0];
+            try
+            {
+                return this.dataSearch.SelectedRows[0];
+            }
+            catch (Exception) { return null; }            
         }
 
         public DataGridViewRow getSelectedLoan()
@@ -664,11 +681,14 @@ namespace CMS.Main.View
             this.txtTotalAmount.Clear();
             totAmt = 0;
             DataGridViewRow selectedData = this.getSelected();
-            String accountNo = selectedData.Cells["Account No."].Value.ToString();
+            if (selectedData != null)
+            {
+                String accountNo = selectedData.Cells["Account No."].Value.ToString();
 
-     
+
                 //String memberType = selectedData.Cells["Member Type"].Value.ToString();
                 this.classGridFee(this.paymentModel.selectFeesPerMemberType(accountNo));
+            }
         }
 
         private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -1005,6 +1025,10 @@ namespace CMS.Main.View
             this.rbAddToShareCapital.Enabled = false;
             this.rbAddToSavings.Enabled = false; 
             this.rbNone.Enabled = false;
+            this.chbDeductToNext.Checked = false;
+            this.rbAddToShareCapital.Checked = false;
+            this.rbAddToSavings.Checked = false;
+            this.rbNone.Checked = false;
             if ((e.KeyChar < '0' || e.KeyChar > '9') && (e.KeyChar != '\b') && (e.KeyChar != '.'))
             {
                 e.Handled = true;
@@ -1122,7 +1146,11 @@ namespace CMS.Main.View
             this.txtPenalty.Text = "0.00";
             this.txtInterest.Text = "0.00";
             this.clearPenaltyList();
-            this.chbPayAll.Checked = false;
+            this.btnCheck.Enabled = true;
+            this.ifBtnCheck = false;
+            this.txtNoOfAmortization.Enabled = true;
+            this.txtNoOfAmortization.Value = 0;
+            this.lblNoOfAmortizations.Visible = false;
             int i = this.getCBLoanTypeIndex();
             if (i == -1) { this.dataAmortization.DataSource = null; this.setLoanAmortizationAmount(0); }
             else
@@ -1134,6 +1162,9 @@ namespace CMS.Main.View
                     try
                     {
                         this.classGridAmortization(this.paymentModel.selectAmortizations(this.dataLoan[0, row].Value.ToString(), this.getTypeOfLoan(), this.getLoanMaturityDate()));
+                        this.lblNoOfAmortizations.Text = Convert.ToString(this.dataAmortization.Rows.Count);
+                        this.lblNoOfAmortizations.Visible = true;
+                        this.txtNoOfAmortization.Maximum = this.dataAmortization.Rows.Count;
                         this.clearSelectionDataAmortization();
                         this.setSLTotalLoanBalance(this.paymentModel.selectRemainingBalance(Convert.ToInt32(this.dataAmortization.Rows[0].Cells[4].Value)));
                         this.classGridAmortization2(this.paymentModel.selectAmortizations(this.dataLoan[0, row].Value.ToString(), this.getTypeOfLoan(), this.getLoanMaturityDate()));
@@ -1197,7 +1228,9 @@ namespace CMS.Main.View
                 else
                 {
                     this.setPenaltyList("Amnestied");
-                    this.chbPayAll.Enabled = false;
+                    this.btnCheck.Enabled = false;
+                    this.txtNoOfAmortization.Enabled = false;
+                    this.lblNoOfAmortizations.Visible = false;
                     String[] money = this.paymentModel.selectCurrentLoanBalance(int.Parse(isAmnestized[1])).Split(' ');
                     double penalty = double.Parse(money[0]);
                     double interest = double.Parse(money[1]);
@@ -1228,50 +1261,14 @@ namespace CMS.Main.View
             this.dataAmortization.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
 
-        public Boolean getPayAll() 
+        public int getNoOfAmortizations() 
         {
-            if (chbPayAll.Checked == true) { return true; }
-            else { return false; }
+            return Convert.ToInt32(this.txtNoOfAmortization.Value);
         }
 
         private void chbPayAll_CheckedChanged(object sender, EventArgs e)
         {
-            this.txtPenalty.Text = "0.00";
-            this.txtInterest.Text = "0.00";
-            if (chbPayAll.Checked == true)
-            {
-                foreach (DataGridViewRow rows in this.dataAmortization.Rows)
-                {
-                    rows.Selected = true;
-                    (rows.Cells[0] as DataGridViewCheckBoxCell).Value = true;
-                    rows.Selected = false;
-                }
-            }
 
-            else 
-            {
-                this.txtPenaltyList.Clear();
-                this.setLoanAmortizationAmount(0);
-                this.setPenalty(0);
-                this.setInterest(0);
-                this.txtAMAmountTendered.Clear();
-
-                try
-                {
-                    int row = this.dataLoan.SelectedRows[0].Index;
-                    this.dataAmortization.DataSource = null;
-                    this.classGridAmortization(this.paymentModel.selectAmortizations(this.dataLoan[0, row].Value.ToString(), this.getTypeOfLoan(), this.getLoanMaturityDate()));
-                    this.clearSelectionDataAmortization();
-                }
-                catch (Exception) { }
-               
-                /*foreach (DataGridViewRow rows in this.dataAmortization.Rows)
-                {
-                    rows.Selected = true;
-                    (rows.Cells[0] as DataGridViewCheckBoxCell).Value = false;
-                    rows.Selected = false;
-                }*/
-            }
         }
 
         public void txtAccountNo_TextChanged(EventHandler e)
@@ -1584,6 +1581,65 @@ namespace CMS.Main.View
                 }
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ifBtnCheck = true;
+            this.txtPenalty.Text = "0.00";
+            this.txtInterest.Text = "0.00";
+
+            int noOfAmortization = this.getNoOfAmortizations() - 1;
+
+            try
+            {
+                int row = this.dataLoan.SelectedRows[0].Index;
+                this.dataAmortization.DataSource = null;
+                this.classGridAmortization(this.paymentModel.selectAmortizations(this.dataLoan[0, row].Value.ToString(), this.getTypeOfLoan(), this.getLoanMaturityDate()));
+                this.clearSelectionDataAmortization();
+            }
+            catch (Exception) { }
+
+                foreach (DataGridViewRow rows in this.dataAmortization.Rows)
+                {
+                    if (rows.Index <= noOfAmortization)
+                    {
+                        rows.Selected = true;
+                        (rows.Cells[0] as DataGridViewCheckBoxCell).Value = true;
+                        rows.Selected = false;
+                    }
+                }
+
+                if (this.txtNoOfAmortization.Text.Equals("0"))
+                {
+                    this.txtPenaltyList.Clear();
+                    this.txtAmountDue.Text = "0.00";
+                    this.setPenalty(0);
+                    this.setInterest(0);
+                    this.txtAMAmountTendered.Clear();
+                }
+            
+        }
+
+        public int getNoOfAmortizationsChecked()
+        {
+            int count = 0;
+            foreach (DataGridViewRow rows in this.dataAmortization.Rows)
+            {
+                if ((Boolean)(rows.Cells[0] as DataGridViewCheckBoxCell).Value == true)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        private void txtNoOfAmortization_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPayment = new System.Windows.Forms.GroupBox();
             this.rbMembership = new System.Windows.Forms.RadioButton();
             this.rbLoan = new System.Windows.Forms.RadioButton();
@@ -83,12 +82,12 @@
             this.lblAddPenalty = new System.Windows.Forms.Label();
             this.lblAmountDue = new System.Windows.Forms.Label();
             this.dataAmortization2 = new System.Windows.Forms.DataGridView();
-            this.chbPayAll = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbLoanType = new System.Windows.Forms.ComboBox();
             this.dataAmortization = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.groupUnpaidLoans = new System.Windows.Forms.GroupBox();
+            this.lblNoOfAmortizations = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupMembership = new System.Windows.Forms.GroupBox();
@@ -110,6 +109,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnCheck = new System.Windows.Forms.Button();
+            this.txtNoOfAmortization = new System.Windows.Forms.NumericUpDown();
             this.groupPayment.SuspendLayout();
             this.groupSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLoan)).BeginInit();
@@ -122,6 +124,7 @@
             this.groupMembership.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataAddedFee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataFee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNoOfAmortization)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPayment
@@ -420,14 +423,14 @@
             this.dataLoan.BackgroundColor = System.Drawing.Color.Silver;
             this.dataLoan.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataLoan.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataLoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataLoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataLoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataLoan.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataLoan.Location = new System.Drawing.Point(6, 92);
@@ -447,23 +450,15 @@
             this.dataSearch.BackgroundColor = System.Drawing.Color.Silver;
             this.dataSearch.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataSearch.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataSearch.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataSearch.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataSearch.Location = new System.Drawing.Point(6, 92);
             this.dataSearch.Name = "dataSearch";
@@ -757,34 +752,20 @@
             this.dataAmortization2.AllowUserToDeleteRows = false;
             this.dataAmortization2.AllowUserToOrderColumns = true;
             this.dataAmortization2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataAmortization2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataAmortization2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataAmortization2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataAmortization2.Location = new System.Drawing.Point(34, 96);
             this.dataAmortization2.Name = "dataAmortization2";
             this.dataAmortization2.Size = new System.Drawing.Size(340, 177);
             this.dataAmortization2.TabIndex = 33;
             this.dataAmortization2.Visible = false;
-            // 
-            // chbPayAll
-            // 
-            this.chbPayAll.AutoSize = true;
-            this.chbPayAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chbPayAll.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPayAll.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chbPayAll.Location = new System.Drawing.Point(492, 65);
-            this.chbPayAll.Name = "chbPayAll";
-            this.chbPayAll.Size = new System.Drawing.Size(74, 25);
-            this.chbPayAll.TabIndex = 31;
-            this.chbPayAll.Text = "Pay All";
-            this.chbPayAll.UseVisualStyleBackColor = true;
-            this.chbPayAll.CheckedChanged += new System.EventHandler(this.chbPayAll_CheckedChanged);
             // 
             // label4
             // 
@@ -819,14 +800,14 @@
             this.dataAmortization.BackgroundColor = System.Drawing.Color.Silver;
             this.dataAmortization.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataAmortization.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataAmortization.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataAmortization.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataAmortization.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataAmortization.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.dataAmortization.Location = new System.Drawing.Point(6, 96);
@@ -841,7 +822,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label3.Location = new System.Drawing.Point(13, 56);
+            this.label3.Location = new System.Drawing.Point(24, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 21);
             this.label3.TabIndex = 29;
@@ -850,9 +831,12 @@
             // groupUnpaidLoans
             // 
             this.groupUnpaidLoans.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupUnpaidLoans.Controls.Add(this.txtNoOfAmortization);
+            this.groupUnpaidLoans.Controls.Add(this.btnCheck);
+            this.groupUnpaidLoans.Controls.Add(this.label14);
+            this.groupUnpaidLoans.Controls.Add(this.lblNoOfAmortizations);
             this.groupUnpaidLoans.Controls.Add(this.dataAmortization2);
             this.groupUnpaidLoans.Controls.Add(this.label13);
-            this.groupUnpaidLoans.Controls.Add(this.chbPayAll);
             this.groupUnpaidLoans.Controls.Add(this.dataAmortization);
             this.groupUnpaidLoans.Controls.Add(this.label5);
             this.groupUnpaidLoans.Controls.Add(this.label3);
@@ -866,6 +850,17 @@
             this.groupUnpaidLoans.TabIndex = 25;
             this.groupUnpaidLoans.TabStop = false;
             this.groupUnpaidLoans.Text = "Unpaid Loans";
+            // 
+            // lblNoOfAmortizations
+            // 
+            this.lblNoOfAmortizations.AutoSize = true;
+            this.lblNoOfAmortizations.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoOfAmortizations.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lblNoOfAmortizations.Location = new System.Drawing.Point(4, 56);
+            this.lblNoOfAmortizations.Name = "lblNoOfAmortizations";
+            this.lblNoOfAmortizations.Size = new System.Drawing.Size(19, 21);
+            this.lblNoOfAmortizations.TabIndex = 34;
+            this.lblNoOfAmortizations.Text = "n";
             // 
             // label13
             // 
@@ -970,14 +965,14 @@
             this.dataAddedFee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataAddedFee.BackgroundColor = System.Drawing.Color.Silver;
             this.dataAddedFee.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataAddedFee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataAddedFee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dataAddedFee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataAddedFee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -1097,14 +1092,14 @@
             this.dataFee.BackgroundColor = System.Drawing.Color.Silver;
             this.dataFee.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataFee.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataFee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataFee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataFee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataFee.Location = new System.Drawing.Point(8, 53);
             this.dataFee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1173,6 +1168,35 @@
             this.btnClear.Text = "&Cancel";
             this.btnClear.UseVisualStyleBackColor = false;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label14.Location = new System.Drawing.Point(474, 67);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(104, 21);
+            this.label14.TabIndex = 36;
+            this.label14.Text = "amortizations";
+            // 
+            // btnCheck
+            // 
+            this.btnCheck.Location = new System.Drawing.Point(366, 64);
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.Size = new System.Drawing.Size(58, 29);
+            this.btnCheck.TabIndex = 38;
+            this.btnCheck.Text = "Check";
+            this.btnCheck.UseVisualStyleBackColor = true;
+            this.btnCheck.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtNoOfAmortization
+            // 
+            this.txtNoOfAmortization.Location = new System.Drawing.Point(430, 66);
+            this.txtNoOfAmortization.Name = "txtNoOfAmortization";
+            this.txtNoOfAmortization.Size = new System.Drawing.Size(43, 27);
+            this.txtNoOfAmortization.TabIndex = 39;
+            this.txtNoOfAmortization.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoOfAmortization_KeyPress);
+            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1208,6 +1232,7 @@
             this.groupMembership.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataAddedFee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataFee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNoOfAmortization)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1240,7 +1265,6 @@
         public System.Windows.Forms.DataGridView dataAmortization;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtInterest;
-        private System.Windows.Forms.CheckBox chbPayAll;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbLoanType;
         private System.Windows.Forms.DataGridView dataSearch;
@@ -1288,6 +1312,10 @@
         private System.Windows.Forms.DataGridView dataAmortization2;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label lblNoOfAmortizations;
+        private System.Windows.Forms.Button btnCheck;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown txtNoOfAmortization;
 
 
 

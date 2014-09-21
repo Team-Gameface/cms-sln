@@ -49,7 +49,7 @@ namespace CMS.Main.Model
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sqlSelect = "Select min(AmortizationId) from LOAN_AMORTIZATION where LoanApplicationId =" + "'" +loanApplicationId + "'";
-            int id = Convert.ToInt32(dal.executeDataSet(sqlSelect));
+            int id = Convert.ToInt32(dal.executeScalar(sqlSelect));
             return id;
         }
 
@@ -57,7 +57,7 @@ namespace CMS.Main.Model
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sqlSelect = "Select LoanApplicationId from loan_information where loan_information.accountNo=" + "'" + accountNo + "' and loan_information.loantypeid=" + "'" + loanTypeId + "' and loan_information.maturitydate =" + "'" + duedate + "'";
-            int id = Convert.ToInt32(dal.executeDataSet(sqlSelect));
+            int id = Convert.ToInt32(dal.executeScalar(sqlSelect));
             return id;
         }
 

@@ -397,8 +397,8 @@ namespace CMS.Main.Controller
         {
             if (e.RowIndex >= 0)
             {
-                int rowsCount = this.payment.dataAmortization.Rows.Count-1;
-                if ((this.payment.getPayAll() && (Boolean)(this.payment.dataAmortization.Rows[rowsCount].Cells[0] as DataGridViewCheckBoxCell).Value == true) || !this.payment.getPayAll()) { this.showPenaltiesWithoutEvent(); }
+                int noOfAmortization = this.payment.getNoOfAmortizations() - 1;
+                if ((this.payment.ifBtnCheck && (Boolean)(this.payment.dataAmortization.Rows[noOfAmortization].Cells[0] as DataGridViewCheckBoxCell).Value == true) || !this.payment.ifBtnCheck) { this.showPenaltiesWithoutEvent(); }
             }
         }
     
@@ -465,6 +465,7 @@ namespace CMS.Main.Controller
                     execLogger("Processed Miscellaneous - OR# '" + this.paymentModel.ORNo + "'");
                     this.payment.classGridSearch(this.paymentModel.selectActiveMembershipUnpaid());
                     this.payment.totAmt = 0.00;
+                    this.payment.ifBtnCheck = false;
                     this.payment.clearMiscellaneousFields();
                 }
                 else
@@ -490,6 +491,7 @@ namespace CMS.Main.Controller
                 double slPenalty = this.payment.getSLTotalPenalties();
                 double slInterest = this.payment.getSLTotalInterest();
                 Boolean check = false;
+                Boolean checkSavings = true;
                 this.paymentModel.amountPaid = paidAmount;
                 int isfullyPaid = 0;
 
@@ -688,18 +690,25 @@ namespace CMS.Main.Controller
                     if (this.payment.getAddToSavings() == true)
                     {
                         double excessAmount = this.payment.getAmortizationChange();
-                        if (this.paymentModel.countSavingsAccount(accountNo) > 1)
+                        if (this.paymentModel.countSavingsAccount(accountNo) > 0)
                         {
-                            new View.SavingsAccountSelection(this.paymentModel, this.paymentModel.selectSavingsAccounts(accountNo), excessAmount);
+                            if (this.paymentModel.countSavingsAccount(accountNo) > 1)
+                            {
+                                new View.SavingsAccountSelection(this.paymentModel, this.paymentModel.selectSavingsAccounts(accountNo), excessAmount);
+                            }
+                            else
+                            {
+                                String savingsAccountNo = this.paymentModel.selectSavingsAccount(accountNo);
+                                int result = this.paymentModel.insertSavingsTransaction(savingsAccountNo, excessAmount);
+                                if (result > 0)
+                                {
+                                    execLogger("Added Savings from OR# '" + this.paymentModel.ORNo + "'");
+                                }
+                            }
                         }
                         else
                         {
-                            String savingsAccountNo = this.paymentModel.selectSavingsAccount(accountNo);
-                            int result = this.paymentModel.insertSavingsTransaction(savingsAccountNo, excessAmount);
-                            if (result > 0)
-                            {
-                                execLogger("Added Savings from OR# '" + this.paymentModel.ORNo + "'");
-                            }
+                            checkSavings = false;
                         }
                     }
 
@@ -711,25 +720,32 @@ namespace CMS.Main.Controller
                         {
                             execLogger("Added Share Capital from OR# '" + this.paymentModel.ORNo + "'");
                         }
-
                     }
+                    if (checkSavings)
+                    {
+                        String[] bal = this.paymentModel.selectMaxOR().Split(' ');
+                        double recentAmt = double.Parse(bal[0]);
+                        double recentPen = double.Parse(bal[1]);
+                        double recentInt = double.Parse(bal[2]);
 
-                    String[] bal = this.paymentModel.selectMaxOR().Split(' ');
-                    double recentAmt = double.Parse(bal[0]);
-                    double recentPen = double.Parse(bal[1]);
-                    double recentInt = double.Parse(bal[2]);
+                        this.paymentModel.insertPaymentBalance(this.paymentModel.ORNo, slBalance - recentAmt, slPenalty - recentPen, slInterest - recentInt);
+                        DataSet ds;
+                        ds = paymentModel.getReceiptDetails(this.paymentModel.ORNo);
+                        View.ReceiptViewer receiptViewer = new View.ReceiptViewer(ds, paymentModel.getCompanyProfile("dtLogo"));
 
-                    this.paymentModel.insertPaymentBalance(this.paymentModel.ORNo, slBalance - recentAmt, slPenalty - recentPen, slInterest - recentInt);
-                    DataSet ds;
-                    ds = paymentModel.getReceiptDetails(this.paymentModel.ORNo);
-                    View.ReceiptViewer receiptViewer = new View.ReceiptViewer(ds, paymentModel.getCompanyProfile("dtLogo"));
-
-                    MessageBox.Show("Transaction successful.", "Amortization Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    execLogger("Processed Loan Payment - OR# '" + this.paymentModel.ORNo + "'");
-                    this.payment.classGridLoanSearch(this.paymentModel.selectActiveMemberWithLoan());
-                    this.payment.clearLoanFields();
-                    totalPenalty = 0;
-                    totalInterest = 0;
+                        MessageBox.Show("Transaction successful.", "Amortization Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        execLogger("Processed Loan Payment - OR# '" + this.paymentModel.ORNo + "'");
+                        this.payment.classGridLoanSearch(this.paymentModel.selectActiveMemberWithLoan());
+                        this.payment.clearLoanFields();
+                        totalPenalty = 0;
+                        totalInterest = 0;
+                        this.payment.ifBtnCheck = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Member doesn't have Savings Account. Please select other action for change", "Amortization Payment", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        this.payment.disableSavingsOption();
+                    }
                 }
             }
         }

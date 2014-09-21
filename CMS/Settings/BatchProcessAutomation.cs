@@ -81,7 +81,7 @@ namespace CMS.Settings
                     }
                     ts.RootFolder.RegisterTaskDefinition(taskNameDormant, tdDormant);
                     ts.RootFolder.RegisterTaskDefinition(taskNameMaintainingBalance, tdMainBal);
-                    ts.RootFolder.RegisterTaskDefinition(taskNameSavingsInterest, tdMainBal);
+                    ts.RootFolder.RegisterTaskDefinition(taskNameSavingsInterest, tdSavingsInterest);
                     MessageBox.Show("Batch Process Automation Schedule Save Sucess.", "Batch Process Automation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     execLogger("Update");
                 }

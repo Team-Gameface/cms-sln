@@ -67,15 +67,14 @@ namespace CMS.Savings.Transaction.Controller
             }
             this.timeDepositWithdrawal.setStatus(status);
             int timeElapsed = Convert.ToInt32((DateTime.Now - timeDepositWithdrawalModel.getStartDate(certNo)).TotalDays);
-            String converter = this.timeDepositWithdrawalModel.getInterest(timeElapsed, principal).ToString("#.##");
+            String converter = this.timeDepositWithdrawalModel.getInterest(Convert.ToInt32((this.timeDepositWithdrawalModel.getMaturityDate(certNo) - timeDepositWithdrawalModel.getStartDate(certNo)).TotalDays), principal).ToString("#.##");
             double interest = 0.00;
             try
             {
                 interest = Convert.ToDouble(converter);
             }
             catch (Exception) { }
-            int noDays = Convert.ToInt32(this.timeDepositWithdrawalModel.getDaysElapsed(timeElapsed, principal));
-            converter = (noDays / 360.00).ToString("#.##");
+            converter = (timeElapsed / 360.00).ToString("#.##");
             double multiplier = 0.00;
             try
             {
@@ -114,20 +113,14 @@ namespace CMS.Savings.Transaction.Controller
                     penalty = Convert.ToDouble(converter);
                 }
                 catch (Exception) { }
-                converter = (interest * (penalty / 100.00)).ToString("#.##");
+                converter = (penalty / 100.00).ToString("#.##");
                 double penaltyValue = 0.00;
                 try
                 {
                     penaltyValue = Convert.ToDouble(converter);
                 }
                 catch (Exception) { }
-                converter = (noDays / 360.00).ToString("#.##");
-                try
-                {
-                    multiplier = Convert.ToDouble(converter);
-                }
-                catch (Exception) { }
-                converter = (principal * (penaltyValue / 100.00) * multiplier).ToString("#.##");
+                converter = (interestEarned * penaltyValue).ToString("#.##");
                 double penaltyAmount = 0.00;
                 try
                 {

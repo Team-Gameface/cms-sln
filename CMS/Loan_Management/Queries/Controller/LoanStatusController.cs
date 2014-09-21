@@ -45,51 +45,55 @@ namespace CMS.Loan_Management.Queries.Controller
         }
 
         private void dataGridPayment(object sender, DataGridViewCellEventArgs e) {
-            totalBalance = 0;
-            this.loanStatusModel.loanApplicationId = Convert.ToInt32(this.loanStatus.getSelected().Cells[0].Value.ToString());
-            int loanTypeId = Convert.ToInt32(this.loanStatus.getSelected().Cells[1].Value.ToString());
-            String accountNo = this.loanStatus.getSelected().Cells[2].Value.ToString();;
-            this.loanStatus.paymentGrid(this.loanStatusModel.selectPaymentsMade());
-            DataTable ds = this.loanStatusModel.selectLoanStatus().Tables[0];
-            foreach (DataRow dr in ds.Rows)
+            try
             {
-
-                this.loanStatus.setDateGranted(DateTime.Parse(dr[0].ToString()).ToShortDateString());
-                this.loanStatus.setMaturity(DateTime.Parse(dr[1].ToString()).ToShortDateString());
-                this.loanStatus.setLoanAmount(Convert.ToDouble(dr[2]));
-
-                bool isCleared = bool.Parse(dr[3].ToString());
-                bool isAmnestied = bool.Parse(dr[4].ToString());
-
-                if (isCleared)
-                    this.loanStatus.setStatus("Cleared");
-                else if (isAmnestied)
-                    this.loanStatus.setStatus("Amnestied");
-                else if (!(isCleared) && DateTime.Compare(DateTime.Now, DateTime.Parse(dr[1].ToString())) > 0)
-                    this.loanStatus.setStatus("Delinquent");
-                else
-                    this.loanStatus.setStatus("Active");
-
-                this.loanStatus.setAmortizations(this.loanStatusModel.selectAmortizationsPaid().Tables[0].Rows[0][0].ToString());
-
-                try
+                totalBalance = 0;
+                this.loanStatusModel.loanApplicationId = Convert.ToInt32(this.loanStatus.getSelected().Cells[0].Value.ToString());
+                int loanTypeId = Convert.ToInt32(this.loanStatus.getSelected().Cells[1].Value.ToString());
+                String accountNo = this.loanStatus.getSelected().Cells[2].Value.ToString(); ;
+                this.loanStatus.paymentGrid(this.loanStatusModel.selectPaymentsMade());
+                DataTable ds = this.loanStatusModel.selectLoanStatus().Tables[0];
+                foreach (DataRow dr in ds.Rows)
                 {
-                    String[] amnestyBal = this.loanStatusModel.selectLoanBalanceFromAmnestied(this.loanStatusModel.loanApplicationId).Split(' ');
-                    totalBalance += Convert.ToDouble(amnestyBal[0]);
-                    totalBalance += Convert.ToDouble(amnestyBal[1]);
-                    totalBalance += Convert.ToDouble(amnestyBal[2]);
+
+                    this.loanStatus.setDateGranted(DateTime.Parse(dr[0].ToString()).ToShortDateString());
+                    this.loanStatus.setMaturity(DateTime.Parse(dr[1].ToString()).ToShortDateString());
+                    this.loanStatus.setLoanAmount(Convert.ToDouble(dr[2]));
+
+                    bool isCleared = bool.Parse(dr[3].ToString());
+                    bool isAmnestied = bool.Parse(dr[4].ToString());
+
+                    if (isCleared)
+                        this.loanStatus.setStatus("Cleared");
+                    else if (isAmnestied)
+                        this.loanStatus.setStatus("Amnestied");
+                    else if (!(isCleared) && DateTime.Compare(DateTime.Now, DateTime.Parse(dr[1].ToString())) > 0)
+                        this.loanStatus.setStatus("Delinquent");
+                    else
+                        this.loanStatus.setStatus("Active");
+
+                    this.loanStatus.setAmortizations(this.loanStatusModel.selectAmortizationsPaid().Tables[0].Rows[0][0].ToString());
+
+                    try
+                    {
+                        String[] amnestyBal = this.loanStatusModel.selectLoanBalanceFromAmnestied(this.loanStatusModel.loanApplicationId).Split(' ');
+                        totalBalance += Convert.ToDouble(amnestyBal[0]);
+                        totalBalance += Convert.ToDouble(amnestyBal[1]);
+                        totalBalance += Convert.ToDouble(amnestyBal[2]);
+                    }
+                    catch (Exception) { totalBalance += 0; }
+
+                    double balFromRegLoans = this.loanStatusModel.selectRemainingBalance(this.loanStatusModel.loanApplicationId);
+                    totalBalance += balFromRegLoans;
+
+                    this.getInterestAndPenalty(this.loanStatusModel.loanApplicationId, loanTypeId, accountNo);
+
+                    this.loanStatus.setBalance(totalBalance);
+
+                    this.loanStatus.enableCollaterals();
                 }
-                catch (Exception) { totalBalance += 0; }
-
-                double balFromRegLoans = this.loanStatusModel.selectRemainingBalance(this.loanStatusModel.loanApplicationId);
-                totalBalance += balFromRegLoans;
-
-                this.getInterestAndPenalty(this.loanStatusModel.loanApplicationId,loanTypeId, accountNo);
-
-                this.loanStatus.setBalance(totalBalance);
-
-                this.loanStatus.enableCollaterals();
             }
+            catch (Exception) { }
 
         }
 
@@ -124,149 +128,73 @@ namespace CMS.Loan_Management.Queries.Controller
                     String interestRateStatus = interest[0];
                     double interestRate = Convert.ToDouble(interest[1]);
                     String per = interest[2];
-
+                    if (per == "month") interestRate *= 12;
                     if (interestRateStatus == "%") { interestRate *= 0.01; }
 
-
-                    if (per == "month")
+                    for (String a = interestDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(1)).ToString())
                     {
-                        for (String a = interestDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(1)).ToString())
-                        {
-                            listOfInterestDates.Add(a, 0);
-                        }
-
-                        foreach (KeyValuePair<String, int> pair in listOfInterestDates)
-                        {
-                            String firstDate = DateTime.Parse(pair.Key).AddDays(-1).ToString();
-                            String secondDate = DateTime.Parse(pair.Key).AddMonths(1).ToString();
-                            int i = this.loanStatusModel.selectPaymentDatesWithInterestRates(lappId, firstDate, secondDate);
-
-                            if (i > 0)
-                            {
-                                finalListOfInterestDates.Add(pair.Key, 0);
-                            }
-                        }
-
-                        String last = String.Empty;
-                        try
-                        {
-                            last = finalListOfInterestDates.Keys.Last();
-                        }
-                        catch (Exception) { last = maturityDate; }
-                        foreach (KeyValuePair<String, int> pair in listOfInterestDates)
-                        {
-                            if (DateTime.Parse(pair.Key) > DateTime.Parse(last))
-                            {
-                                double finalInterest = 0;
-                                double grantedLoanAmount = this.loanStatusModel.selectGrantedLoanAmount(lappId);
-                                String[] paymentDur = this.loanStatusModel.selectPaymentDurationPerApplication(lappId).Split(' ');
-                                int pdValue = int.Parse(paymentDur[0]);
-                                String pdStatus = paymentDur[1];
-                                if (interestRateStatus == "%")
-                                {
-                                    if (pdStatus == "week/s")
-                                    {
-                                        finalInterest = grantedLoanAmount * ((interestRate / 4) * pdValue);
-                                    }
-                                    else if (pdStatus == "month/s")
-                                    {
-                                        finalInterest = grantedLoanAmount * interestRate * pdValue;
-                                    }
-                                    else if (pdStatus == "year/s")
-                                    {
-                                        finalInterest = grantedLoanAmount * interestRate * 12 * pdValue;
-                                    }
-                                }
-
-                                else if (interestRateStatus == "Php")
-                                {
-                                    if (pdStatus == "week/s")
-                                    {
-                                        finalInterest = (interestRate / 4) * pdValue;
-                                    }
-                                    else if (pdStatus == "month/s")
-                                    {
-                                        finalInterest = interestRate * pdValue;
-                                    }
-                                    else if (pdStatus == "year/s")
-                                    {
-                                        finalInterest = interestRate * 12 * pdValue;
-                                    }
-                                }
-                                totalInterest += finalInterest;
-                            }
-                        }
-
+                        listOfInterestDates.Add(a, 0);
                     }
 
-                    else if (per == "annum")
+                    foreach (KeyValuePair<String, int> pair in listOfInterestDates)
                     {
-                        for (String a = interestDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddYears(1)).ToString())
-                        {
-                            listOfInterestDates.Add(a, 0);
-                        }
+                        String firstDate = DateTime.Parse(pair.Key).AddDays(-1).ToString();
+                        String secondDate = DateTime.Parse(pair.Key).AddMonths(1).ToString();
+                        int i = this.loanStatusModel.selectPaymentDatesWithInterestRates(lappId, firstDate, secondDate);
 
-                        foreach (KeyValuePair<String, int> pair in listOfInterestDates)
+                        if (i > 0)
                         {
-                            String firstDate = DateTime.Parse(pair.Key).AddDays(-1).ToString();
-                            String secondDate = DateTime.Parse(pair.Key).AddYears(1).ToString();
-                            int i = this.loanStatusModel.selectPaymentDatesWithInterestRates(lappId, firstDate, secondDate);
-
-                            if (i > 0)
-                            {
-                                finalListOfInterestDates.Add(pair.Key, 0);
-                            }
-                        }
-
-                        String last = String.Empty;
-                        try
-                        {
-                            last = finalListOfInterestDates.Keys.Last();
-                        }
-                        catch (Exception) { last = maturityDate; }
-                        foreach (KeyValuePair<String, int> pair in listOfInterestDates)
-                        {
-                            if (DateTime.Parse(pair.Key) > DateTime.Parse(last))
-                            {
-                                double finalInterest = 0;
-                                double grantedLoanAmount = this.loanStatusModel.selectGrantedLoanAmount(lappId);
-                                String[] paymentDur = this.loanStatusModel.selectPaymentDurationPerApplication(lappId).Split(' ');
-                                int pdValue = int.Parse(paymentDur[0]);
-                                String pdStatus = paymentDur[1];
-                                if (interestRateStatus == "%")
-                                {
-                                    if (pdStatus == "week/s")
-                                    {
-                                        finalInterest = grantedLoanAmount * ((interestRate / 52) * pdValue);
-                                    }
-                                    else if (pdStatus == "month/s")
-                                    {
-                                        finalInterest = grantedLoanAmount * ((interestRate / 12) * pdValue);
-                                    }
-                                    else if (pdStatus == "year/s")
-                                    {
-                                        finalInterest = grantedLoanAmount * interestRate * pdValue;
-                                    }
-                                }
-                                else if (interestRateStatus == "Php")
-                                {
-                                    if (pdStatus == "week/s")
-                                    {
-                                        finalInterest = (interestRate / 52) * pdValue;
-                                    }
-                                    else if (pdStatus == "month/s")
-                                    {
-                                        finalInterest = (interestRate / 12) * pdValue;
-                                    }
-                                    else if (pdStatus == "year/s")
-                                    {
-                                        finalInterest = interestRate * pdValue;
-                                    }
-                                }
-                                totalInterest += finalInterest;
-                            }
+                            finalListOfInterestDates.Add(pair.Key, 0);
                         }
                     }
+
+                    String last = String.Empty;
+                    try
+                    {
+                        last = finalListOfInterestDates.Keys.Last();
+                    }
+                    catch (Exception) { last = maturityDate; }
+                    foreach (KeyValuePair<String, int> pair in listOfInterestDates)
+                    {
+                        if (DateTime.Parse(pair.Key) > DateTime.Parse(last))
+                        {
+                            double finalInterest = 0;
+                            double grantedLoanAmount = this.loanStatusModel.selectGrantedLoanAmount(lappId);
+                            String[] paymentDur = this.loanStatusModel.selectPaymentDurationPerApplication(lappId).Split(' ');
+                            int pdValue = int.Parse(paymentDur[0]);
+                            String pdStatus = paymentDur[1];
+
+                            if (pdStatus == "week/s")
+                            {
+                                pdValue *= 4;
+                            }
+                            else if (pdStatus == "month/s")
+                            {
+                                pdValue *= 1;
+
+                            }
+                            else if (pdStatus == "year/s")
+                            {
+                                pdValue /= 12;
+
+                            }
+
+                            if (interestRateStatus == "%")
+                            {
+                                finalInterest = grantedLoanAmount * (interestRate / 12) * pdValue;
+
+                            }
+
+                            else if (interestRateStatus == "Php")
+                            {
+
+                                finalInterest = (interestRate / 12) * pdValue;
+
+                            }
+                            totalInterest += finalInterest;
+                        }
+                    }
+
                 }
 
                 totalBalance += totalInterest;

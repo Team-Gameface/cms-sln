@@ -80,7 +80,7 @@ namespace CMS.Settings
                 DailyTrigger dtBackup = new DailyTrigger();
                 dtBackup.DaysInterval = 1;
                 dtBackup.StartBoundary = timeSchedule.Value;
-                tdBackup.Actions.Add(new ExecAction(@"C:\CMS\BatchProcess\checkDormant.bat"));
+                tdBackup.Actions.Add(new ExecAction(@"C:\CMS\Backup\performBackup.bat"));
                 tdBackup.Triggers.Add(dtBackup);
 
                 try

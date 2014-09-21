@@ -109,7 +109,6 @@ namespace CMS.Loan_Management.Transaction.Controller
         {
             totalInterest = 0;
 
-
             Dictionary<String, int> listOfInterestDates = new Dictionary<String, int>();
             Dictionary<String, int> finalListOfInterestDates = new Dictionary<String, int>();
             int lappId = Convert.ToInt32(this.loanApplication.dataAmortization.Rows[0].Cells[4].Value);
@@ -122,18 +121,15 @@ namespace CMS.Loan_Management.Transaction.Controller
             String maturityDate = this.loanApplicationModel.selectMaturityDate(lappId);
             String interestDate = (DateTime.Parse(maturityDate).AddDays(1)).ToString();
             String[] interest = this.loanApplicationModel.selectInterestPerLoanType(this.loanApplication.getTypeOfLoan()).Split(' ');
-
+            String[] paymentDur = this.loanApplicationModel.selectPaymentDurationPerApplication(lappId).Split(' ');
             if (DateTime.Now > DateTime.Parse(maturityDate) && interest[0] != "")
             {
                 String interestRateStatus = interest[0];
                 double interestRate = Convert.ToDouble(interest[1]);
                 String per = interest[2];
-
+                if (per == "month") interestRate *= 12;
                 if (interestRateStatus == "%") { interestRate *= 0.01; }
-
-
-                if (per == "month")
-                {
+                
                     for (String a = interestDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(1)).ToString())
                     {
                         listOfInterestDates.Add(a, 0);
@@ -163,116 +159,42 @@ namespace CMS.Loan_Management.Transaction.Controller
                         {
                             double finalInterest = 0;
                             double grantedLoanAmount = this.loanApplicationModel.selectGrantedLoanAmount(lappId);
-                            String[] paymentDur = this.loanApplicationModel.selectPaymentDurationPerApplication(lappId).Split(' ');
                             int pdValue = int.Parse(paymentDur[0]);
                             String pdStatus = paymentDur[1];
+
+                            if (pdStatus == "week/s")
+                            {
+                                pdValue *= 4;
+                            }
+                            else if (pdStatus == "month/s")
+                            {
+                                pdValue *= 1;
+
+                            }
+                            else if (pdStatus == "year/s")
+                            {
+                                pdValue /= 12;
+
+                            }
+
                             if (interestRateStatus == "%") 
                             {
-                                if (pdStatus == "week/s") 
-                                {
-                                    finalInterest = grantedLoanAmount * ((interestRate/4)*pdValue); 
-                                }
-                                else if (pdStatus == "month/s") 
-                                { 
-                                    finalInterest = grantedLoanAmount * interestRate * pdValue;
-                                }
-                                else if (pdStatus == "year/s") 
-                                {
-                                    finalInterest = grantedLoanAmount * interestRate * 12 * pdValue;
-                                }
+                                finalInterest = grantedLoanAmount * (interestRate / 12) * pdValue;
+                               
                             }
                             
                             else if (interestRateStatus == "Php") 
                             {
-                                if (pdStatus == "week/s")
-                                {
-                                    finalInterest = (interestRate / 4) * pdValue;
-                                }
-                                else if (pdStatus == "month/s")
-                                {
-                                    finalInterest = interestRate * pdValue;
-                                }
-                                else if (pdStatus == "year/s")
-                                {
-                                    finalInterest = interestRate * 12 * pdValue;
-                                }
+                
+                                finalInterest = (interestRate/12) * pdValue;
+
                             }
                             totalInterest += finalInterest;
                             this.loanApplication.setPenaltyList("Interest Rate: " + pair.Key + "- Php " + finalInterest);
                         }
                     }
 
-                }
-
-                else if (per == "annum")
-                {
-                    for (String a = interestDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddYears(1)).ToString())
-                    {
-                        listOfInterestDates.Add(a, 0);
-                    }
-
-                    foreach (KeyValuePair<String, int> pair in listOfInterestDates)
-                    {
-                        String firstDate = DateTime.Parse(pair.Key).AddDays(-1).ToString();
-                        String secondDate = DateTime.Parse(pair.Key).AddYears(1).ToString();
-                        int i = this.loanApplicationModel.selectPaymentDatesWithInterestRates(lappId, firstDate, secondDate);
-
-                        if (i > 0)
-                        {
-                            finalListOfInterestDates.Add(pair.Key, 0);
-                        }
-                    }
-
-                    String last = String.Empty;
-                    try
-                    {
-                        last = finalListOfInterestDates.Keys.Last();
-                    }
-                    catch (Exception) { last = maturityDate; }
-                    foreach (KeyValuePair<String, int> pair in listOfInterestDates)
-                    {
-                        if (DateTime.Parse(pair.Key) > DateTime.Parse(last))
-                        {
-                            double finalInterest = 0;
-                            double grantedLoanAmount = this.loanApplicationModel.selectGrantedLoanAmount(lappId);
-                            String[] paymentDur = this.loanApplicationModel.selectPaymentDurationPerApplication(lappId).Split(' ');
-                            int pdValue = int.Parse(paymentDur[0]);
-                            String pdStatus = paymentDur[1];
-                            if (interestRateStatus == "%") 
-                            {
-                                if (pdStatus == "week/s")
-                                {
-                                    finalInterest = grantedLoanAmount * ((interestRate / 52) * pdValue);
-                                }
-                                else if (pdStatus == "month/s")
-                                {
-                                    finalInterest = grantedLoanAmount * ((interestRate/12) * pdValue);
-                                }
-                                else if (pdStatus == "year/s")
-                                {
-                                    finalInterest = grantedLoanAmount * interestRate * pdValue;
-                                } 
-                            }
-                            else if (interestRateStatus == "Php") 
-                            {
-                                if (pdStatus == "week/s")
-                                {
-                                    finalInterest = (interestRate / 52) * pdValue;
-                                }
-                                else if (pdStatus == "month/s")
-                                {
-                                    finalInterest = (interestRate / 12) * pdValue;
-                                }
-                                else if (pdStatus == "year/s")
-                                {
-                                    finalInterest = interestRate * pdValue;
-                                }  
-                            }
-                            totalInterest += finalInterest;
-                            this.loanApplication.setPenaltyList("Interest Rate: " + pair.Key + "- Php " + finalInterest);
-                        }
-                    }
-                }
+                
             }
 
             if (this.loanApplication.getIfPenaltyListIsEmpty("Interest Rate"))
@@ -552,34 +474,41 @@ namespace CMS.Loan_Management.Transaction.Controller
             if (ir != String.Empty)
             {
                 String[] interestRate = ir.Split(' ');
+                double iRate = double.Parse(interestRate[0]);
                 if (interestRate[1] == "Php")
                 {
+                    if (interestRate[2] == "month")
+                        iRate *= 12;
+
                     if (pdStatus == "week/s")
                     {
-                        interest = (double.Parse(interestRate[0]) / 52) * pdValue;
+                        interest = (iRate / 52) * pdValue;
                     }
                     else if (pdStatus == "month/s")
                     {
-                        interest = (double.Parse(interestRate[0]) / 12) * pdValue;
+                        interest = (iRate / 12) * pdValue;
                     }
                     else if (pdStatus == "year/s")
                     {
-                        interest = double.Parse(interestRate[0]) * pdValue;
+                        interest = iRate * pdValue;
                     }  
                 }
                 else if (interestRate[1] == "%")
                 {
+                    if (interestRate[2] == "month")
+                        iRate *= 12;
+
                     if (pdStatus == "week/s")
                     {
-                        interest = this.loanApplication.getAmount() * (((double.Parse(interestRate[0]) / 100) / 52) * pdValue);
+                        interest = this.loanApplication.getAmount() * (((iRate / 100) / 52) * pdValue);
                     }
                     else if (pdStatus == "month/s")
                     {
-                        interest = this.loanApplication.getAmount() * (((double.Parse(interestRate[0]) / 100) / 12) * pdValue);
+                        interest = this.loanApplication.getAmount() * (((iRate / 100) / 12) * pdValue);
                     }
                     else if (pdStatus == "year/s")
                     {
-                        interest = this.loanApplication.getAmount() * (double.Parse(interestRate[0]) / 100) * pdValue;
+                        interest = this.loanApplication.getAmount() * (iRate / 100) * pdValue;
                     }
                 }
             }
@@ -649,23 +578,22 @@ namespace CMS.Loan_Management.Transaction.Controller
         public void addChargesFunc() 
         {
             double finalCharge = 0;
-            CheckedListBox.CheckedItemCollection charges = this.loanApplication.getCheckedCharges();
+            DataTable dt  = this.loanApplicationModel.selectActiveCharges(this.loanApplication.getTypeOfLoan()).Tables[0];
 
-            foreach (String s in charges)
+            foreach (DataRow dr in dt.Rows)
             {
-                String[] initAmount = s.Split('-');
-                String[] finalAmount = initAmount[1].Split(' ');
-                if (initAmount[1].Contains("Php"))
+                
+                if (dr[3].ToString().Contains("Php"))
                 {
-                    finalCharge += double.Parse(finalAmount[1]);
+                    finalCharge += double.Parse(dr[1].ToString());
                 }
-                else if (initAmount[1].Contains("% of loan"))
+                else if (dr[3].ToString().Contains("% of loan"))
                 {
-                    finalCharge = finalCharge + ((double.Parse(finalAmount[1]) / 100) * this.loanApplication.getAmount());
+                    finalCharge = finalCharge + ((double.Parse(dr[1].ToString()) / 100) * this.loanApplication.getAmount());
                 }
-                else if (initAmount[1].Contains("% of amortization"))
+                else if (dr[3].ToString().Contains("% of amortization"))
                 {
-                    finalCharge = finalCharge + ((double.Parse(finalAmount[1]) / 100) * amortizationAmt);
+                    finalCharge = finalCharge + ((double.Parse(dr[1].ToString()) / 100) * amortizationAmt);
                 }
 
             }

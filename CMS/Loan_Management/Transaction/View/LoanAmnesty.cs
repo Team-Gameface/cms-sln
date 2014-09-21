@@ -182,6 +182,12 @@ namespace CMS.Loan_Management.Transaction.View
             this.txtLoanDetails.AppendText(Environment.NewLine);
         }
 
+        public void clearLoanDetails() {
+
+            txtLoanDetails.Clear();
+        
+        }
+
         public String getPurpose()
         {
             return this.txtPurpose.Text;

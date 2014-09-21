@@ -200,34 +200,36 @@ namespace CMS.Utilities.Controller
                 if (ir != String.Empty)
                 {
                     String[] interestRate = ir.Split(' ');
+                    double iRate = double.Parse(interestRate[0]);
+                    if (interestRate[2] == "month") iRate *= 12;
                     if (interestRate[1] == "Php")
                     {
                         if (duration == "week/s")
                         {
-                            interest = (double.Parse(interestRate[0]) / 52) * value;
+                            interest = (iRate / 52) * value;
                         }
                         else if (duration == "month/s")
                         {
-                            interest = (double.Parse(interestRate[0]) / 12) * value;
+                            interest = (iRate / 12) * value;
                         }
                         else if (duration == "year/s")
                         {
-                            interest = double.Parse(interestRate[0]) * value;
+                            interest = iRate * value;
                         }
                     }
                     else if (interestRate[1] == "%")
                     {
                         if (duration == "week/s")
                         {
-                            interest = loanAmount * (((double.Parse(interestRate[0]) / 100) / 52) * value);
+                            interest = loanAmount * (((iRate / 100) / 52) * value);
                         }
                         else if (duration == "month/s")
                         {
-                            interest = loanAmount * (((double.Parse(interestRate[0]) / 100) / 12) * value);
+                            interest = loanAmount * (((iRate / 100) / 12) * value);
                         }
                         else if (duration == "year/s")
                         {
-                            interest = loanAmount * (double.Parse(interestRate[0]) / 100) * value;
+                            interest = loanAmount * (iRate / 100) * value;
                         }
                     }
                 }

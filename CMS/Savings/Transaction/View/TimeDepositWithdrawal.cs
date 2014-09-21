@@ -96,7 +96,8 @@ namespace CMS.Savings.Transaction.View
 
         public double getDepositAmount()
         {
-            return double.Parse(this.txtDeposit.Text.ToString());
+            CultureInfo ph = new CultureInfo("en-PH");
+            return double.Parse(this.txtGross.Text.ToString(), NumberStyles.Currency, ph);
         }
 
         public void setInterest(String s)
@@ -131,7 +132,8 @@ namespace CMS.Savings.Transaction.View
 
         public double getGross()
         {
-            return double.Parse(this.txtGross.Text.ToString());
+            CultureInfo ph = new CultureInfo("en-PH");
+            return double.Parse(this.txtGross.Text.ToString(),NumberStyles.Currency,ph);
         }
 
         public void setPenalty(String s)
@@ -148,7 +150,8 @@ namespace CMS.Savings.Transaction.View
 
         public double getPenalty()
         {
-            return double.Parse(this.txtPenalty.Text.ToString());
+            CultureInfo ph = new CultureInfo("en-PH");
+            return double.Parse(this.txtPenalty.Text.ToString(),NumberStyles.Currency,ph);
         }
 
         public void setTotal(String s)
@@ -165,7 +168,8 @@ namespace CMS.Savings.Transaction.View
 
         public double getTotal()
         {
-            return double.Parse(this.txtTotal.Text.ToString());
+            CultureInfo ph = new CultureInfo("en-PH");
+            return double.Parse(this.txtTotal.Text.ToString(), NumberStyles.Currency, ph);
         }
 
         public void setMaturity(String s)

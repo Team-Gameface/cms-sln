@@ -56,6 +56,14 @@ namespace CMS.Loan_Management.Transaction.Model
             catch (Exception) { return 0; }
         }
 
+        public double selectRemainingBalance(int loanApplicationId)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "Select sum(Amount) from loan_amortization where isPaid = 0 and LoanApplicationId = " + "'" + loanApplicationId + "'";
+            double amount = Convert.ToDouble(dal.executeScalar(sql));
+            return amount;
+        }
+
         public DataSet searchMemberByMemberName(String memberName, int duration, String durationStatus)
         {
 

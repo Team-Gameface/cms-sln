@@ -267,13 +267,10 @@ namespace CMS.Loan_Management.Reports.Controller
                 String interestRateStatus = interest[0];
                 double interestRate = Convert.ToDouble(interest[1]);
                 String per = interest[2];
-
+                if (per == "month") interestRate *= 12;
                 if (interestRateStatus == "%") { interestRate *= 0.01; }
-
-
-                if (per == "month")
-                {
-                    for (String a = interestDate; DateTime.Parse(a) <= DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom); a = (DateTime.Parse(a).AddMonths(1)).ToString())
+                
+                    for (String a = interestDate; DateTime.Parse(a) <= DateTime.Now; a = (DateTime.Parse(a).AddMonths(1)).ToString())
                     {
                         listOfInterestDates.Add(a, 0);
                     }
@@ -305,111 +302,37 @@ namespace CMS.Loan_Management.Reports.Controller
                             String[] paymentDur = this.scheduleOfDelinquentsModel.selectPaymentDurationPerApplication(lappId).Split(' ');
                             int pdValue = int.Parse(paymentDur[0]);
                             String pdStatus = paymentDur[1];
-                            if (interestRateStatus == "%")
+
+                            if (pdStatus == "week/s")
                             {
-                                if (pdStatus == "week/s")
-                                {
-                                    finalInterest = grantedLoanAmount * ((interestRate / 4) * pdValue);
-                                }
-                                else if (pdStatus == "month/s")
-                                {
-                                    finalInterest = grantedLoanAmount * interestRate * pdValue;
-                                }
-                                else if (pdStatus == "year/s")
-                                {
-                                    finalInterest = grantedLoanAmount * interestRate * 12 * pdValue;
-                                }
+                                pdValue *= 4;
+                            }
+                            else if (pdStatus == "month/s")
+                            {
+                                pdValue *= 1;
+
+                            }
+                            else if (pdStatus == "year/s")
+                            {
+                                pdValue /= 12;
+
                             }
 
-                            else if (interestRateStatus == "Php")
+                            if (interestRateStatus == "%") 
                             {
-                                if (pdStatus == "week/s")
-                                {
-                                    finalInterest = (interestRate / 4) * pdValue;
-                                }
-                                else if (pdStatus == "month/s")
-                                {
-                                    finalInterest = interestRate * pdValue;
-                                }
-                                else if (pdStatus == "year/s")
-                                {
-                                    finalInterest = interestRate * 12 * pdValue;
-                                }
+                                finalInterest = grantedLoanAmount * (interestRate / 12) * pdValue;
+                               
+                            }
+                            
+                            else if (interestRateStatus == "Php") 
+                            {
+                
+                                finalInterest = (interestRate/12) * pdValue;
+
                             }
                             miniInterest += finalInterest;
                         }
                     }
-
-                }
-
-                else if (per == "annum")
-                {
-                    for (String a = interestDate; DateTime.Parse(a) <= DateTime.Parse(this.scheduleOfDelinquentsModel.dateFrom); a = (DateTime.Parse(a).AddYears(1)).ToString())
-                    {
-                        listOfInterestDates.Add(a, 0);
-                    }
-
-                    foreach (KeyValuePair<String, int> pair in listOfInterestDates)
-                    {
-                        String firstDate = DateTime.Parse(pair.Key).AddDays(-1).ToString();
-                        String secondDate = DateTime.Parse(pair.Key).AddYears(1).ToString();
-                        int i = this.scheduleOfDelinquentsModel.selectPaymentDatesWithInterestRates(lappId, firstDate, secondDate);
-
-                        if (i > 0)
-                        {
-                            finalListOfInterestDates.Add(pair.Key, 0);
-                        }
-                    }
-
-                    String last = String.Empty;
-                    try
-                    {
-                        last = finalListOfInterestDates.Keys.Last();
-                    }
-                    catch (Exception) { last = maturityDate; }
-                    foreach (KeyValuePair<String, int> pair in listOfInterestDates)
-                    {
-                        if (DateTime.Parse(pair.Key) > DateTime.Parse(last))
-                        {
-                            double finalInterest = 0;
-                            double grantedLoanAmount = this.scheduleOfDelinquentsModel.selectGrantedLoanAmount(lappId);
-                            String[] paymentDur = this.scheduleOfDelinquentsModel.selectPaymentDurationPerApplication(lappId).Split(' ');
-                            int pdValue = int.Parse(paymentDur[0]);
-                            String pdStatus = paymentDur[1];
-                            if (interestRateStatus == "%")
-                            {
-                                if (pdStatus == "week/s")
-                                {
-                                    finalInterest = grantedLoanAmount * ((interestRate / 52) * pdValue);
-                                }
-                                else if (pdStatus == "month/s")
-                                {
-                                    finalInterest = grantedLoanAmount * ((interestRate / 12) * pdValue);
-                                }
-                                else if (pdStatus == "year/s")
-                                {
-                                    finalInterest = grantedLoanAmount * interestRate * pdValue;
-                                }
-                            }
-                            else if (interestRateStatus == "Php")
-                            {
-                                if (pdStatus == "week/s")
-                                {
-                                    finalInterest = (interestRate / 52) * pdValue;
-                                }
-                                else if (pdStatus == "month/s")
-                                {
-                                    finalInterest = (interestRate / 12) * pdValue;
-                                }
-                                else if (pdStatus == "year/s")
-                                {
-                                    finalInterest = interestRate * pdValue;
-                                }
-                            }
-                            miniInterest += finalInterest;
-                        }
-                    }
-                }
             }
 
 

@@ -227,7 +227,7 @@ namespace CMS.Loan_Management.Transaction.Model
         public String selectInterestRate(int loanTypeId)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "Select concat(InterestRateValue,' ',InterestRateStatus) as 'Interest Rate' from LOAN_INTEREST_RATE where isArchived = 0 and loanTypeId =" + "'" + loanTypeId + "'";
+            String sql = "Select concat(InterestRateValue,' ',InterestRateStatus,' ',Per) as 'Interest Rate' from LOAN_INTEREST_RATE where isArchived = 0 and loanTypeId =" + "'" + loanTypeId + "'";
             String interest = Convert.ToString(dal.executeScalar(sql));
             return interest;
         }

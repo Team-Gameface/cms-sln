@@ -1108,6 +1108,7 @@ namespace CMS.Main.View
                                 if (amountPaid != totalAmount)
                                 {
                                     if (i!=count) { this.chbDeductToNext.Enabled = true; }
+                                    if (i != 0) { this.chbDeductToNext.Enabled = true; }
                                     this.rbAddToShareCapital.Enabled = true; this.rbAddToSavings.Enabled = true; this.rbNone.Enabled = true;
                                 }
                             }

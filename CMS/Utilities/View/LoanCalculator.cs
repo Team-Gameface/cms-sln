@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -301,16 +301,16 @@ namespace CMS.Utilities.View
         private void txtLoanReceivable_TextChanged(object sender, EventArgs e)
         {
             double netLoan = 0;
+            CultureInfo ph = new CultureInfo("en-PH");
             try
             {
-                double loanReceivable = double.Parse(this.txtLoanReceivable.Text);
-                double charge = double.Parse(this.txtCharges.Text);
-                double interest = double.Parse(this.txtInterestRate.Text);
+                double loanReceivable = double.Parse(this.txtLoanReceivable.Text, NumberStyles.Currency, ph);
+                double charge = double.Parse(this.txtCharges.Text, NumberStyles.Currency, ph);
+                double interest = double.Parse(this.txtInterestRate.Text, NumberStyles.Currency, ph);
 
                 netLoan = loanReceivable - charge - interest;
             }
             catch (Exception) { }
-            CultureInfo ph = new CultureInfo("en-PH");
             this.txtNetLoan.Text = netLoan.ToString("c", ph);
         }
     }

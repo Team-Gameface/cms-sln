@@ -609,6 +609,7 @@ namespace CMS.Main.Controller
                             if (paidAmount >= amount && this.payment.getDeductToNextAmortization() == false)
                             {
                                 nadagdag = paidAmount - amount;
+                                this.paymentModel.updateLoanPenalty(Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
                                 this.paymentModel.updateLoanInterest(Convert.ToInt32(this.payment.dataAmortization.Rows[0].Cells[4].Value));
                             }
                             if (this.payment.getDeductToNextAmortization())

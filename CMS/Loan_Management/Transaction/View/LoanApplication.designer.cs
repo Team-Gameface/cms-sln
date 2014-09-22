@@ -2234,7 +2234,6 @@
         private System.Windows.Forms.Button btnAddComaker;
         private System.Windows.Forms.Button btnSaveComaker;
         private System.Windows.Forms.Button btnCancelComaker;
-        private System.Windows.Forms.CheckBox chbLoanBalance;
         private System.Windows.Forms.TextBox txtInterestRate;
         private System.Windows.Forms.Label lblInterestRate;
         private System.Windows.Forms.TextBox txtPenalty;
@@ -2248,6 +2247,7 @@
         public System.Windows.Forms.Label lblNetLoan;
         private System.Windows.Forms.Label lblCharges;
         private System.Windows.Forms.Label lblApprovedAmount;
+        public System.Windows.Forms.CheckBox chbLoanBalance;
 
     }
 }

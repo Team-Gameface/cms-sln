@@ -628,6 +628,13 @@ namespace CMS.Main.Model
             dal.executeScalar(updateAmo);
         }
 
+        public void updateLoanPenalty(int applicationid)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String selectapp = "Update LOAN_AMORTIZATION set Penalty = NULL where LoanApplicationId=" + "'" + applicationid + "'";
+            dal.executeScalar(selectapp);
+        }
+
         public void updateLoanInterest(int applicationid) 
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);

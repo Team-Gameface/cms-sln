@@ -883,6 +883,7 @@ namespace CMS.Loan_Management.Transaction.Controller
                 }
             }
             this.interestRateFunc();
+            this.loanApplication.chbLoanBalance.Checked = true;
         }
         
         public void btnCollateralPrevious(object args, EventArgs e)

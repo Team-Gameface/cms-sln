@@ -695,7 +695,7 @@ namespace CMS.Main.Controller
                         {
                             if (this.paymentModel.countSavingsAccount(accountNo) > 1)
                             {
-                                new View.SavingsAccountSelection(this.paymentModel, this.paymentModel.selectSavingsAccounts(accountNo), excessAmount);
+                                new View.SavingsAccountSelection(this.paymentModel, this.paymentModel.selectSavingsAccounts(accountNo), excessAmount).ShowDialog();
                             }
                             else
                             {

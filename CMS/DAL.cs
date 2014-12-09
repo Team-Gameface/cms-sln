@@ -268,5 +268,9 @@ namespace CMS
             }
         }//destructor
 
+        public void Close()
+        {
+            this.conn.Close();
+        }
     }
 }

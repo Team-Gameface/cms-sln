@@ -171,8 +171,7 @@ namespace CMS.Savings.Transaction.View
                 amount = double.Parse(s);
             }
             catch (Exception) { }
-            CultureInfo ph = new CultureInfo("en-PH");
-            this.txtNetRefunds.Text = amount.ToString("c", ph);
+            this.txtNetRefunds.Text = amount.ToString();
         }
 
         public void restrictTerminate() {
@@ -359,8 +358,7 @@ namespace CMS.Savings.Transaction.View
 
         public double getNetRefunds()
         {
-            CultureInfo ph = new CultureInfo("en-PH");
-            return double.Parse(txtNetRefunds.Text.ToString(), NumberStyles.Currency, ph);
+            return double.Parse(txtNetRefunds.Text.ToString());
         }
 
         private void rbVLeave_CheckedChanged(object sender, EventArgs e)

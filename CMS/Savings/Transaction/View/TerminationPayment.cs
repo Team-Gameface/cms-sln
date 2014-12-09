@@ -48,9 +48,9 @@ namespace CMS.Savings.Transaction.View
 
         private void btnProceed_Click(object sender, EventArgs e)
         {
-            if (this.terminationModel.insertTermination(reason, details, accountNo) == 1)
+            if (this.terminationModel.insertTermination(reason, details, accountNo) > 0)
             {
-                if (this.terminationModel.clearLoans(accountNo, terminationController.arrAppId, terminationController.arrBalance, terminationController.arrPenalty, terminationController.arrInterest) == 1)
+                if (this.terminationModel.clearLoans(accountNo, terminationController.arrAppId, terminationController.arrBalance, terminationController.arrPenalty, terminationController.arrInterest) > 0)
                 {
                     MessageBox.Show("Member Termination Success.", "Membership Termination", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     terminationController.totalPenalty = 0;

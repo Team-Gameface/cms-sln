@@ -73,9 +73,9 @@ namespace CMS.Savings.Transaction.Controller
                 String reason = this.termination.getReason();
                 String details = this.termination.getDetails();
                 double totalRefundables = this.termination.getShareCapital();
-                double netRefunds = totalRefundables - this.termination.getNetRefunds();
+                double netRefunds = this.termination.getNetRefunds();
                 CultureInfo ph = new CultureInfo("en-PH");
-                if (netRefunds < 0)
+                if (netRefunds <= 0)
                 {
                     DialogResult dr = MessageBox.Show("Member still has to pay " + netRefunds.ToString("c", ph) + " to continue termination. Proceed?", "Member Termination", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
                     if (dr == DialogResult.Yes)

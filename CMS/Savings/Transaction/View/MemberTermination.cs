@@ -224,7 +224,8 @@ namespace CMS.Savings.Transaction.View
 
         public double getShareCapital()
         {
-            return Double.Parse(this.txtSCapBalance.Text);
+            CultureInfo ph = new CultureInfo("en-PH");
+            return Double.Parse(this.txtSCapBalance.Text, NumberStyles.Currency, ph);
         }
 
         public String getSavings()
@@ -236,7 +237,8 @@ namespace CMS.Savings.Transaction.View
         public double getLoanBalance()
         {
 
-            return Double.Parse(this.txtLoanBalance.Text);
+            CultureInfo ph = new CultureInfo("en-PH");
+            return Double.Parse(this.txtLoanBalance.Text, NumberStyles.Currency, ph);
         
         }
 
@@ -357,7 +359,8 @@ namespace CMS.Savings.Transaction.View
 
         public double getNetRefunds()
         {
-            return double.Parse(txtNetRefunds.Text.ToString());
+            CultureInfo ph = new CultureInfo("en-PH");
+            return double.Parse(txtNetRefunds.Text.ToString(), NumberStyles.Currency, ph);
         }
 
         private void rbVLeave_CheckedChanged(object sender, EventArgs e)

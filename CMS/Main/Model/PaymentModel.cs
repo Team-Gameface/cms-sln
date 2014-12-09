@@ -50,6 +50,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sqlSelect = "Select min(AmortizationId) from LOAN_AMORTIZATION where LoanApplicationId =" + "'" +loanApplicationId + "'";
             int id = Convert.ToInt32(dal.executeScalar(sqlSelect));
+            dal.Close();
             return id;
         }
 
@@ -58,6 +59,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sqlSelect = "Select LoanApplicationId from loan_information where loan_information.accountNo=" + "'" + accountNo + "' and loan_information.loantypeid=" + "'" + loanTypeId + "' and loan_information.maturitydate =" + "'" + duedate + "'";
             int id = Convert.ToInt32(dal.executeScalar(sqlSelect));
+            dal.Close();
             return id;
         }
 
@@ -66,6 +68,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select concat(Amount,' ',Penalty,' ',Interest) from PAYMENT where ORNo = (Select max(ORNo) from Payment)";
             String bal = Convert.ToString(dal.executeScalar(sql));
+            dal.Close();
             return bal;
         }
 
@@ -76,6 +79,7 @@ namespace CMS.Main.Model
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
                 String sqlSelect = "Select sum(Interest) from loan_information where AccountNo = " + "'" + accountNo + "'";
                 double interest = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                dal.Close();
                 return interest;
             }
             catch (Exception) { return 0; }
@@ -88,6 +92,7 @@ namespace CMS.Main.Model
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
                 String sqlSelect = "Select sum(Penalty) from loan_information, loan_amortization where loan_information.loanapplicationid=loan_amortization.loanapplicationid and AccountNo = " + "'" + accountNo + "'";
                 double penalty = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                dal.Close();
                 return penalty;
             }
             catch (Exception) { return 0; }
@@ -98,6 +103,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT TOP 1 CompanyName,AccreditationNo,CompanyAddress,CompanyLogo,Telephone,Cellphone,Email FROM COMPANY WHERE status = 1 ORDER BY dateCreated desc";
             DataSet ds = dal.executeDataSet(sql, src);
+            dal.Close();
             return ds;
         }
 
@@ -106,6 +112,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sqlSelect = "Select AmortizationId from loan_amortization where LoanApplicationId = " + "'" + applicationId + "' and AmortizationDueDate =" + "'" + duedate + "'";
             int amortizationId = Convert.ToInt32(dal.executeScalar(sqlSelect));
+            dal.Close();
             return amortizationId;
         }
 
@@ -114,6 +121,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select isAmnestized from LOAN_INFORMATION where LoanApplicationId = " + "'" + lappId + "'";
             Boolean isAm = Convert.ToBoolean(dal.executeScalar(sql));
+            dal.Close();
             return isAm;
         }
 
@@ -124,6 +132,7 @@ namespace CMS.Main.Model
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
                 String sql = "Select sum(Penalty) from LOAN_AMORTIZATION, LOAN_INFORMATION where LOAN_INFORMATION.LoanApplicationId = LOAN_AMORTIZATION.LoanApplicationId AND LOAN_INFORMATION.AccountNo ="+"'"+accountNo+"' and LOAN_INFORMATION.LoanTypeId ="+"'"+loanTypeId+"' and MaturityDate ="+"'"+maturity+"'";
                 double bal = Convert.ToDouble(dal.executeScalar(sql));
+                dal.Close();
                 return bal;
             }
             catch (Exception)
@@ -139,6 +148,7 @@ namespace CMS.Main.Model
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
                 String sql = "Select LOAN_INFORMATION.Interest from LOAN_INFORMATION where AccountNo ="+"'"+accountNo+"' and LoanTypeId ="+"'"+loanTypeId+"' and MaturityDate = "+"'"+ maturity + "'";
                 double bal = Convert.ToDouble(dal.executeScalar(sql));
+                dal.Close();
                 return bal;
             }
             catch (Exception)
@@ -154,6 +164,7 @@ namespace CMS.Main.Model
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
                 String sql = "Select sum(Loan_Amortization.Amount) from LOAN_INFORMATION, LOAN_AMORTIZATION where Loan_Information.LoanApplicationId = Loan_Amortization.LoanApplicationId and Loan_Amortization.isPaid = 0 and Loan_Information.AccountNo= " + "'" + accountNo + "'";
                 double bal = Convert.ToDouble(dal.executeScalar(sql));
+                dal.Close();
                 return bal;
             }
             catch (Exception) 
@@ -167,6 +178,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select concat(Penalty-(Penalty*(WaivedPenaltyPercentage/100)),' ',Interest-(Interest*(WaivedInterestPercentage/100)),' ', LoanBalance) from LOAN_INFORMATION_AMNESTY where LoanApplicationId = " + "'" + lappId + "'";
             String bal = Convert.ToString(dal.executeScalar(sql));
+            dal.Close();
             return bal;
         }
 
@@ -175,6 +187,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select concat(isAmnestized,' ',LoanApplicationId) from LOAN_INFORMATION where isCleared = 0 and AccountNo ="+"'"+accountNo+"' and LoanTypeId ="+"'"+loanTypeId+"' and MaturityDate = "+"'"+ maturityDate + "'";
             String isAmnestized = Convert.ToString(dal.executeScalar(sql));
+            dal.Close();
             return isAmnestized;
         }
 
@@ -183,6 +196,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select concat(PaymentDurationValue,' ',PaymentDurationStatus) from LOAN_INFORMATION where LoanApplicationId =" + "'" + loanApplicationId + "'";
             String paymentDuration = Convert.ToString(dal.executeScalar(sql));
+            dal.Close();
             return paymentDuration;
         }
 
@@ -191,6 +205,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select count(ORNo) from PAYMENT where hasInterest = 1 and LoanApplicationId = "+"'"+loanApplicationId+"'"+" and PaymentDate between "+"'"+firstDate+"'"+ "and " + "'" + secondDate + "'";
             int i = Convert.ToInt32(dal.executeScalar(sql));
+            dal.Close();
             return i;
         }
 
@@ -199,6 +214,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select MaturityDate from LOAN_INFORMATION where LoanApplicationId = " + "'" + loanApplicationId + "'";
             String mdate = Convert.ToString(dal.executeScalar(sql));
+            dal.Close();
             return mdate;
         }
 
@@ -207,6 +223,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select concat(InterestRateStatus,' ',InterestRateValue,' ',Per) from LOAN_INTEREST_RATE where (CURRENT_TIMESTAMP >= ActivationDate) and isArchived = 0 and LoanTypeId =" + "'" + loanTypeId + "'";
             String interest = Convert.ToString(dal.executeScalar(sql));
+            dal.Close();
             return interest;
         }
 
@@ -215,6 +232,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select LOAN_TYPE.LoanTypeId, concat(LOAN_TYPE.LoanTypeName,'@',Loan_INFORMATION.MaturityDate) as 'LoanTypeName' from LOAN_TYPE, LOAN_INFORMATION where LOAN_TYPE.LoanTypeId = LOAN_INFORMATION.LoanTypeId and LOAN_INFORMATION.isCleared = 0 and LOAN_INFORMATION.AccountNo = " + "'" +accountNo + "'";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -223,6 +241,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select LOAN_TYPE.LoanTypeId, Loan_INFORMATION.MaturityDate from LOAN_TYPE, LOAN_INFORMATION where LOAN_TYPE.LoanTypeId = LOAN_INFORMATION.LoanTypeId and LOAN_INFORMATION.isCleared = 0 and LOAN_INFORMATION.AccountNo = " + "'" + accountNo + "'";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -231,6 +250,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select sum(Amount) from loan_amortization where isPaid = 0 and LoanApplicationId = " + "'" + loanApplicationId + "'";
             double amount = Convert.ToDouble(dal.executeScalar(sql));
+            dal.Close();
             return amount;
         }
 
@@ -241,6 +261,7 @@ namespace CMS.Main.Model
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
                 String sql = "Select sum(loan_amortization.Amount) from loan_amortization, loan_information where loan_information.loanapplicationid=loan_amortization.loanapplicationid and loan_amortization.isPaid = 0 and LOAN_INFORMATION.AccountNo = " + "'" + accountNo + "' and LOAN_INFORMATION.MaturityDate =" + "'" + maturityDate + "' and LOAN_INFORMATION.LoanTypeId =" + "'" + loanTypeId + "'";
                 double amount = Convert.ToDouble(dal.executeScalar(sql));
+                dal.Close();
                 return amount;
             }
             catch (Exception) { return 0.00; }
@@ -251,6 +272,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select ApprovedAmount from LOAN_INFORMATION where loanapplicationid = " + "'" + loanApplicationId + "'";
             double amount = Convert.ToDouble(dal.executeScalar(sql));
+            dal.Close();
             return amount;
         }
 
@@ -259,6 +281,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select distinct LOAN_AMORTIZATION.Amount, LOAN_INFORMATION.PaymentDurationStatus from LOAN_AMORTIZATION, LOAN_INFORMATION WHERE LOAN_AMORTIZATION.LoanApplicationId = LOAN_INFORMATION.LoanApplicationId and LOAN_INFORMATION.LoanApplicationId = " + "'" + loanApplicationId + "'";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -268,6 +291,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select PenaltyName, GracePeriod, Amount, AmountStatus, Penalty.Deduction, DurationValue, DurationStatus from Penalty, LOAN_TYPE_PENALTY where Penalty.PenaltyId = LOAN_TYPE_PENALTY.PenaltyId and Penalty.Status = 1 and Penalty.isArchived=0 and LOAN_TYPE_PENALTY.LoanTypeId = " + "'" + loanTypeId + "'";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -276,6 +300,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select LOAN_AMORTIZATION.isPaid as 'Check to Pay', (Select count(AmortizationId) from LOAN_INFORMATION, LOAN_AMORTIZATION WHERE LOAN_INFORMATION.LoanApplicationId=LOAN_AMORTIZATION.LoanApplicationId and LOAN_INFORMATION.isCleared = 0 and LOAN_AMORTIZATION.isPaid = 1 and LOAN_INFORMATION.AccountNo = " + "'" + accountNo + "'" + " and LOAN_INFORMATION.LoanTypeId = " + "'" + loanTypeId + "'" + ")+ row_number() OVER (PARTITION BY LOAN_AMORTIZATION.LoanApplicationId ORDER BY LOAN_AMORTIZATION.LoanApplicationId) Amortization#, LOAN_AMORTIZATION.Amount as 'Amount(Php)', LOAN_AMORTIZATION.AmortizationDueDate as 'Due Date', Loan_Information.LoanApplicationId from LOAN_INFORMATION, LOAN_AMORTIZATION WHERE LOAN_INFORMATION.LoanApplicationId=LOAN_AMORTIZATION.LoanApplicationId and LOAN_INFORMATION.isCleared = 0 and LOAN_INFORMATION.MaturityDate=" + "'" + maturityDate + "'" + " and LOAN_AMORTIZATION.isPaid = 0 and LOAN_INFORMATION.AccountNo = " + "'" + accountNo + "'" + " and LOAN_INFORMATION.LoanTypeId = " + "'" + loanTypeId + "'";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -286,6 +311,7 @@ namespace CMS.Main.Model
             String sqlct = "Select count(Member.AccountNo) from MEMBER, MEMBER_TYPE, LOAN_INFORMATION WHERE MEMBER.AccountNo = LOAN_INFORMATION.AccountNo and MEMBER.MemberTypeNo = MEMBER_TYPE.MemberTypeNo AND LOAN_INFORMATION.isCleared = 0;";
             DataSet ds = dal.executeDataSet(sql);
             checkEmpty = Convert.ToInt32(dal.executeScalar(sqlct));
+            dal.Close();
             return ds;
         }
 
@@ -296,6 +322,7 @@ namespace CMS.Main.Model
             String sqlct = "Select COUNT(Member.AccountNo) from Member, Member_Type where Member.MemberTypeNo=Member_Type.MemberTypeNo AND (AccountNo in (select accountNo from Fee, Member_Type, Member_Type_Fee,Member where Member.Status = 1 and Fee.FeeId=Member_Type_Fee.FeeId and Member_Type.MemberTypeNo=MEMBER_TYPE_FEE.MemberTypeNo and Member_type.MemberTypeNo = MEMBER.MemberTypeNo and Fee.isArchived=0 and Member_Type.MemberTypeNo= MEMBER.MemberTypeNo and Member.AccountNo not in (Select AccountNo from Termination)))";
             DataSet ds = dal.executeDataSet(sql);
             checkEmpty = Convert.ToInt32(dal.executeScalar(sqlct));
+            dal.Close();
             return ds;
         }
 
@@ -306,6 +333,7 @@ namespace CMS.Main.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@accountNo", AccountNo);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -316,6 +344,7 @@ namespace CMS.Main.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@accountNo", accountNo);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -326,6 +355,7 @@ namespace CMS.Main.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@AccountNo", AccountNo);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -334,6 +364,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Select FeeId as 'Fee Id', Description from Fee";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -345,6 +376,7 @@ namespace CMS.Main.Model
             Name = "%" + Name + "%";
             parameters.Add("@MemberName", Name);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -356,6 +388,7 @@ namespace CMS.Main.Model
             accountNo = "%" + accountNo + "%";
             parameters.Add("@AccountNo", accountNo);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -367,6 +400,7 @@ namespace CMS.Main.Model
             Name = "%" + Name + "%";
             parameters.Add("@MemberName", Name);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -378,6 +412,7 @@ namespace CMS.Main.Model
             accountNo = "%" + accountNo + "%";
             parameters.Add("@AccountNo", accountNo);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -389,6 +424,7 @@ namespace CMS.Main.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@ORNo", ORNo);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -430,6 +466,7 @@ namespace CMS.Main.Model
 
             }
             else return 0;
+            dal.Close();
             return resultFinal;
 
         }
@@ -440,6 +477,7 @@ namespace CMS.Main.Model
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
                 String sqlSelect = "Select Interest from loan_information where LoanApplicationId = " + "'" + applicationId + "'";
                 double interest = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                dal.Close();
                 return interest;
             }
             catch (Exception) { return 0; }
@@ -450,6 +488,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sqlSelect = "Select AmortizationId from LOAN_AMORTIZATION where Penalty is NOT NULL AND LoanApplicationId=" + "'" + applicationId + "'";
             DataSet ds = dal.executeDataSet(sqlSelect);
+            dal.Close();
             return ds;
         }
 
@@ -458,6 +497,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sqlSelect = "Select AmortizationId from loan_amortization, loan_information where loan_information.loanapplicationid=loan_amortization.loanapplicationid and LOAN_AMORTIZATION.Penalty IS NOT NULL and loan_information.accountNo="+"'"+accountNo+"' and loan_information.loantypeid=" + "'" + loanTypeId + "' and loan_information.maturitydate =" + "'" + duedate + "'";
             DataSet ds = dal.executeDataSet(sqlSelect);
+            dal.Close();
             return ds;
         }
 
@@ -468,6 +508,7 @@ namespace CMS.Main.Model
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
                 String sqlSelect = "Select sum(Loan_Amortization.Penalty) from LOAN_AMORTIZATION, loan_information where loan_information.loanapplicationid=loan_amortization.loanapplicationid and loan_information.accountNo=" + "'" + accountNo + "' and loan_information.loantypeid=" + "'" + loanTypeId + "' and loan_information.maturitydate =" + "'" + duedate + "'";
                 double penalty = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                dal.Close();
                 return penalty;
             }
             catch (Exception) { return 0; }
@@ -480,6 +521,7 @@ namespace CMS.Main.Model
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
                 String sqlSelect = "Select Penalty from LOAN_AMORTIZATION where AmortizationId=" + "'" + amortizationId+ "'";
                 double penalty = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                dal.Close();
                 return penalty;
             }
             catch (Exception) { return 0; }
@@ -492,6 +534,7 @@ namespace CMS.Main.Model
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
                 String sqlSelect = "Select sum(Penalty) from LOAN_AMORTIZATION where LoanApplicationId="+"'"+applicationId+"'";
                 double penalty = Convert.ToDouble(dal.executeScalar(sqlSelect));
+                dal.Close();
                 return penalty;
             }
             catch (Exception) { return 0; }
@@ -507,6 +550,7 @@ namespace CMS.Main.Model
 
             String updateAmount = "Update LOAN_AMORTIZATION set Amount=" + "'" + amount + "' where AmortizationId=" + "'" + amortizationId + "'";
             dal.executeScalar(updateAmount);
+            dal.Close();
         }
 
         public void insertAmortizationPenalty(double penalty, int applicationId, String duedate) 
@@ -517,6 +561,7 @@ namespace CMS.Main.Model
 
             String updateAmortization = "Update LOAN_AMORTIZATION set Penalty=" + "'" + penalty + "' where AmortizationId=" + "'" + amortizationId + "'";
             dal.executeScalar(updateAmortization);
+            dal.Close();
         }
 
         public void insertLoanInterest(double interest, int applicationId) 
@@ -524,6 +569,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String updateLoanInformation = "Update LOAN_INFORMATION set Interest=" + "'" + interest + "' where LoanApplicationId=" + "'" + applicationId + "'";
             int amortizationId = Convert.ToInt32(dal.executeScalar(updateLoanInformation));
+            dal.Close();
         }
 
         public void deductToNextAmortization(double excess, int lappId) 
@@ -583,6 +629,7 @@ namespace CMS.Main.Model
                     }
             }
 
+            dal.Close();
             }
             catch (Exception) { MessageBox.Show("Change was deducted to all amortizations. Exceeding amount is Php" + excess); }
 
@@ -603,6 +650,7 @@ namespace CMS.Main.Model
                 String updateAmo = "Update loan_amortization set Penalty ="+"'"+penalty+"' where AmortizationId ="+"'"+amortizationId+"'";
                 dal.executeScalar(updateAmo);
             }
+            dal.Close();
         }
 
         public void insertAmortizationPayment(int ORNo, int applicationId, String duedate, double amount) 
@@ -613,6 +661,7 @@ namespace CMS.Main.Model
 
             String insertAmoPayment = "Insert into PAYMENT_AMORTIZATION(ORNo, AmortizationId, Amount) VALUES (" +"'" + ORNo + "'"+", '" + amortizationId + "'"+", '" + amount + "')";
             dal.executeScalar(insertAmoPayment);
+            dal.Close();
         }
 
         public void clearLoan(String accountNo, int loanTypeId, String maturity) 
@@ -626,6 +675,7 @@ namespace CMS.Main.Model
 
             String updateAmo = "Update LOAN_AMORTIZATION set isPaid = 1, Penalty = NULL where LoanApplicationId = " + "'" + applicationId + "'";
             dal.executeScalar(updateAmo);
+            dal.Close();
         }
 
         public void updateLoanPenalty(int applicationid)
@@ -633,6 +683,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String selectapp = "Update LOAN_AMORTIZATION set Penalty = NULL where LoanApplicationId=" + "'" + applicationid + "'";
             dal.executeScalar(selectapp);
+            dal.Close();
         }
 
         public void updateLoanInterest(int applicationid) 
@@ -640,6 +691,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String selectapp = "Update LOAN_INFORMATION set Interest = NULL where LoanApplicationId=" + "'" + applicationid + "'";
             dal.executeScalar(selectapp);
+            dal.Close();
         }
 
         public String deductPenaltyAndInterest(double paidAmount, String accountNo, int loanTypeId, String maturity) 
@@ -703,7 +755,7 @@ namespace CMS.Main.Model
                     }
                 }
             }
-
+            dal.Close();
             return toPenalty + " " + toInterest;
         }
 
@@ -728,6 +780,7 @@ namespace CMS.Main.Model
             String selectMaxOR = "Select max(ORNo) from PAYMENT";
             int ORNo = Convert.ToInt32(dal.executeScalar(selectMaxOR));
             this.ORNo = ORNo;
+            dal.Close();
             return ORNo;
         }
         public int insertLoanPayment(String paymentType, String accountNo, int applicationId, double amount, double interest, double penalty, String duedate, Boolean hasInterest, int isFullyPaid, int isPaid)
@@ -773,9 +826,8 @@ namespace CMS.Main.Model
                 dal.executeScalar(sql6);
 
             }
-
+            dal.Close();
             return ORNo;
-
         }
 
         public int insertContribution(String accountNo, Double amount)
@@ -786,8 +838,8 @@ namespace CMS.Main.Model
             parameters.Add("@AccountNo", accountNo);
             parameters.Add("@amount", amount);
             int result = dal.executeNonQuery(sql, parameters);
+            dal.Close();
             return result;
-
         }
 
         public int insertSavingsTransaction(String AccountNo, double Amount)
@@ -810,6 +862,7 @@ namespace CMS.Main.Model
                 parameters2.Add("@Amount", Amount);
                 dal.executeNonQuery(sql2, parameters2);
             }
+            dal.Close();
             return result;
         }
 
@@ -825,6 +878,7 @@ namespace CMS.Main.Model
             {
                 i = int.Parse(read[0].ToString());
             }
+            dal.Close();
             return i;
         }
 
@@ -840,6 +894,7 @@ namespace CMS.Main.Model
             {
                 i = int.Parse(read[0].ToString());
             }
+            dal.Close();
             return i;
         }
 
@@ -850,6 +905,7 @@ namespace CMS.Main.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@accountNo", accountNo);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -865,6 +921,7 @@ namespace CMS.Main.Model
             {
                 s = read[0].ToString();
             }
+            dal.Close();
             return s;
         }
 
@@ -873,6 +930,7 @@ namespace CMS.Main.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "Insert into PAYMENT_BALANCE values ("+"'"+ORNo+"'"+","+"'"+balance+"'"+","+"'"+penalty+"'"+","+"'"+interest+"')";
             dal.executeScalar(sql);
+            dal.Close();
         }
     }
 }

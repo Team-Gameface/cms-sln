@@ -27,6 +27,7 @@ namespace CMS.Savings.Transaction.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT m.AccountNo AS 'Account No', CONCAT(LastName, ', ', FirstName, ' ', MiddleName) AS 'Member Name', CertificateNo AS 'Certificate No', DepositAmount AS 'Current Balance' FROM MEMBER m INNER JOIN TIME_DEPOSIT td ON m.AccountNo = td.AccountNo WHERE td.Status = 1";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -43,6 +44,8 @@ namespace CMS.Savings.Transaction.Model
             {
                 d = double.Parse(read[0].ToString());
             }
+            dal.Close();
+            read.Close();
             return d;
         }
 
@@ -59,6 +62,7 @@ namespace CMS.Savings.Transaction.Model
             {
                 i = int.Parse(read[0].ToString());
             }
+            dal.Close();
             return i;
         }
 
@@ -74,6 +78,8 @@ namespace CMS.Savings.Transaction.Model
             {
                 d = double.Parse(read[0].ToString());
             }
+            dal.Close();
+            read.Close();
             return d;
         }
 
@@ -89,6 +95,8 @@ namespace CMS.Savings.Transaction.Model
             {
                 d = double.Parse(read[0].ToString());
             }
+            dal.Close();
+            read.Close();
             return d;
         }
 
@@ -104,6 +112,8 @@ namespace CMS.Savings.Transaction.Model
             {
                 dt = DateTime.Parse(read[0].ToString());
             }
+            dal.Close();
+            read.Close();
             return dt;
         }
 
@@ -119,6 +129,8 @@ namespace CMS.Savings.Transaction.Model
             {
                 dt = DateTime.Parse(read[0].ToString());
             }
+            dal.Close();
+            read.Close();
             return dt;
         }
 
@@ -130,6 +142,7 @@ namespace CMS.Savings.Transaction.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@searchName", searchName);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -141,6 +154,7 @@ namespace CMS.Savings.Transaction.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@searchName", searchName);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -152,6 +166,7 @@ namespace CMS.Savings.Transaction.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@searchName", searchName);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -171,6 +186,7 @@ namespace CMS.Savings.Transaction.Model
                 parameters2.Add("@CertificateNo", this.CertificateNo);
                 dal.executeNonQuery(sql2, parameters2);
             }
+            dal.Close();
             return result;
         }
     }

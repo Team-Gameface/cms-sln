@@ -37,6 +37,7 @@ namespace CMS.Settings
             {
                 MessageBox.Show("Backup Failed.", "Backup and Restore Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            dal.Close();
         }
 
         private void btnRestore_Click(object sender, EventArgs e)
@@ -66,6 +67,7 @@ namespace CMS.Settings
                 {
                     MessageBox.Show("Restore Failed.", "Backup and Restore Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                dal.Close();
             }
         }
 

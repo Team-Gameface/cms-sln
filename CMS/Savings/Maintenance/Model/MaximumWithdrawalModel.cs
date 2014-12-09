@@ -26,6 +26,7 @@ namespace CMS.Savings.Maintenance.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT AccountTypeId, SavingsTypeName FROM SAVINGS_ACCOUNT_TYPE WHERE AccountTypeId NOT IN(SELECT AccountTypeId FROM MAXIMUM_WITHDRAWAL) AND isMaximumWithdrawal = 1 AND isArchived = 0";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -34,6 +35,7 @@ namespace CMS.Savings.Maintenance.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT m.AccountTypeId AS 'Account Type Id', SavingsTypeName AS 'Account Type', MaximumWithdrawal AS 'Maximum Withdrawal', m.Status, isArchived, m.DateCreated AS 'Date Created', m.DateModified AS 'Last Modified' FROM MAXIMUM_WITHDRAWAL m INNER JOIN SAVINGS_ACCOUNT_TYPE s ON m.AccountTypeId = s.AccountTypeId WHERE isArchived = 0";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -42,6 +44,7 @@ namespace CMS.Savings.Maintenance.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT m.AccountTypeId AS 'Account Type Id', SavingsTypeName AS 'Account Type', MaximumWithdrawal AS 'Maximum Withdrawal', m.Status, isArchived, m.DateCreated AS 'Date Created', m.DateModified AS 'Last Modified' FROM MAXIMUM_WITHDRAWAL m INNER JOIN SAVINGS_ACCOUNT_TYPE s ON m.AccountTypeId = s.AccountTypeId";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -54,6 +57,7 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@MaxWith", this.MaxWith);
             parameters.Add("@Status", this.Status);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -66,6 +70,7 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@MaxWith", this.MaxWith);
             parameters.Add("@Status", this.Status);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
     }

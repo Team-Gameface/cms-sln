@@ -45,6 +45,7 @@ namespace CMS.Savings.Maintenance.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT s.AccountTypeId AS 'Account Type Id', SavingsTypeName AS 'Savings Type Name', InitialDeposit AS 'Initial Deposit', MaximumWithdrawal AS 'Maximum Withdrawal', NoOfAccountHolders AS 'No of Account Holders', isMaintainingBalance AS 'Maintaining Balance', isDormancy AS 'Dormancy', isInterestRate AS 'Interest Rate', isArchived, DateCreated AS 'Date Created',	DateModified AS 'Last Modified', Status FROM SAVINGS_ACCOUNT_TYPE s WHERE isArchived = 0";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -53,6 +54,7 @@ namespace CMS.Savings.Maintenance.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT s.AccountTypeId AS 'Account Type Id', SavingsTypeName AS 'Savings Type Name', InitialDeposit AS 'Initial Deposit', MaximumWithdrawal AS 'Maximum Withdrawal', NoOfAccountHolders AS 'No of Account Holders', isMaintainingBalance AS 'Maintaining Balance', isDormancy AS 'Dormancy', isInterestRate AS 'Interest Rate', isArchived, DateCreated AS 'Date Created',	DateModified AS 'Last Modified', Status FROM SAVINGS_ACCOUNT_TYPE s";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -61,6 +63,7 @@ namespace CMS.Savings.Maintenance.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT MemberTypeNo, Description FROM MEMBER_TYPE WHERE hasSavings = 1 AND Status = 1 AND isArchived = 0";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -76,6 +79,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
 
@@ -86,6 +90,7 @@ namespace CMS.Savings.Maintenance.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@TypeId", TypeId);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -99,6 +104,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
 
@@ -127,6 +133,7 @@ namespace CMS.Savings.Maintenance.Model
                     dal.executeNonQuery(s, param);
                 }
             }
+            dal.Close();
             return result;
         }
 
@@ -139,6 +146,7 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@InterestRate", this.interestModel.InterestRate);
             parameters.Add("@MinRange", this.interestModel.MinRange);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -151,6 +159,7 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@InterestRate", this.interestModel.InterestRate);
             parameters.Add("@MinRange", this.interestModel.MinRange);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -161,6 +170,7 @@ namespace CMS.Savings.Maintenance.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@TypeId", TypeId);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
         
@@ -176,6 +186,7 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@Duration", this.maintainingBalanceModel.ServiceChargeDuration);
             parameters.Add("@DurationStatus", this.maintainingBalanceModel.ServiceChargeDurationStatus);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -191,6 +202,7 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@Duration", this.maintainingBalanceModel.ServiceChargeDuration);
             parameters.Add("@DurationStatus", this.maintainingBalanceModel.ServiceChargeDurationStatus);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -201,6 +213,7 @@ namespace CMS.Savings.Maintenance.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@TypeId", TypeId);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -217,6 +230,7 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@ChargeValue", this.dormancyModel.Charge);
             parameters.Add("@ChargeStatus", this.dormancyModel.ChargeStatus);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -233,6 +247,7 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@ChargeValue", this.dormancyModel.Charge);
             parameters.Add("@ChargeStatus", this.dormancyModel.ChargeStatus);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -243,6 +258,7 @@ namespace CMS.Savings.Maintenance.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@TypeId", TypeId);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -276,6 +292,7 @@ namespace CMS.Savings.Maintenance.Model
                     dal.executeNonQuery(s, param);
                 }
             }
+            dal.Close();
             return result;
         }
 
@@ -286,6 +303,7 @@ namespace CMS.Savings.Maintenance.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@TypeId", TypeId);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -296,6 +314,7 @@ namespace CMS.Savings.Maintenance.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@TypeId", TypeId);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -315,6 +334,7 @@ namespace CMS.Savings.Maintenance.Model
                 result[3] = read[4].ToString();
                 result[4] = read[5].ToString();
             }
+            dal.Close();
             return result;
         }
 
@@ -335,6 +355,7 @@ namespace CMS.Savings.Maintenance.Model
                 result[4] = read[5].ToString();
                 result[5] = read[6].ToString();
             }
+            dal.Close();
             return result;
         }
 
@@ -351,6 +372,7 @@ namespace CMS.Savings.Maintenance.Model
                 result[0] = read[1].ToString();
                 result[1] = read[2].ToString();
             }
+            dal.Close();
             return result;
         }
 
@@ -366,6 +388,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
 
@@ -381,6 +404,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
 
@@ -396,6 +420,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
     }

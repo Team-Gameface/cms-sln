@@ -29,6 +29,7 @@ namespace CMS.Savings.Maintenance.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT EarlyWithdrawalId, CONCAT(TermsElapsedFrom, '%') AS 'Term Elapsed From', CONCAT(TermsElapsedTo, '%') AS 'Term Elapsed To', CONCAT(InterestReduction, '%') AS 'Interest Reduction', Status, DateCreated, DateModified FROM EARLY_WITHDRAWAL";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -40,6 +41,7 @@ namespace CMS.Savings.Maintenance.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@searchName", searchName);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -53,6 +55,7 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@TermElapsedTo", this.TermElapsedTo);
             parameters.Add("@Status", this.Status);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -67,6 +70,7 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@Status", this.Status);
             parameters.Add("@EarlyWithdrawalId", EarlyWithdrawalId);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 
@@ -83,6 +87,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
 
@@ -100,6 +105,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
 
@@ -115,6 +121,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
 
@@ -131,6 +138,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
     }

@@ -31,6 +31,7 @@ namespace CMS.Savings.Transaction.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT AccountNo AS 'Account No', CONCAT(LastName, ', ', FirstName, ' ', MiddleName) AS 'Member Name' FROM MEMBER WHERE MemberTypeNo IN(SELECT MemberTypeNo FROM MEMBER_TYPE WHERE hasSavings = 1)";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -42,6 +43,7 @@ namespace CMS.Savings.Transaction.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@searchName", searchName);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -53,6 +55,7 @@ namespace CMS.Savings.Transaction.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@searchName", searchName);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -67,6 +70,8 @@ namespace CMS.Savings.Transaction.Model
                 String maxAcctNo = read[0].ToString().Split('-')[1];
                 i = Convert.ToInt32(maxAcctNo);
             }
+            dal.Close();
+            read.Close();
             return i + 1;
         }
 
@@ -80,6 +85,8 @@ namespace CMS.Savings.Transaction.Model
             {
                 d = double.Parse(read[0].ToString());
             }
+            dal.Close();
+            read.Close();
             return d;
         }
 
@@ -93,6 +100,7 @@ namespace CMS.Savings.Transaction.Model
             parameters.Add("@Amount", this.Amount);
             parameters.Add("@Maturity", this.Maturity);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
 
         }
@@ -104,6 +112,7 @@ namespace CMS.Savings.Transaction.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@CertNo", this.CertificateNo);
             DataSet ds = dal.executeDataSet(sql, parameters, src);
+            dal.Close();
             return ds;
         }
 
@@ -112,6 +121,7 @@ namespace CMS.Savings.Transaction.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT TOP 1 CompanyName,AccreditationNo,CompanyAddress,CompanyLogo,Telephone,Cellphone,Email FROM COMPANY WHERE status = 1 ORDER BY dateCreated desc";
             DataSet ds = dal.executeDataSet(sql, src);
+            dal.Close();
             return ds;
         }
 
@@ -120,6 +130,7 @@ namespace CMS.Savings.Transaction.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT TOP 1 CONCAT(FirstName,' ',MiddleName,' ',LastName) AS 'Name', Position FROM SYSTEM_USERS WHERE UserType = 'Manager' ORDER BY DateCreated desc";
             DataSet ds = dal.executeDataSet(sql, src);
+            dal.Close();
             return ds;
         }
 

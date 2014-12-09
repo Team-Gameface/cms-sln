@@ -156,6 +156,7 @@ namespace CMS.Settings
                 {
                     MessageBox.Show("Company Profile Save Failed.", "Company Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                dal.Close();
             }
             else
             {

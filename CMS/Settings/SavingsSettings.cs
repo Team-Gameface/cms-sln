@@ -48,6 +48,7 @@ namespace CMS.Settings
             {
                 i = int.Parse(read[0].ToString());
             }
+            dal.Close();
             return i;
         }
 
@@ -90,6 +91,7 @@ namespace CMS.Settings
                             dataMemberType.Columns[0].Visible = false;
                             execLogger("Update");
                         }
+                        dal.Close();
                     }
                     else
                     {
@@ -106,6 +108,7 @@ namespace CMS.Settings
                             dataMemberType.Columns[0].Visible = false;
                             execLogger("Update");
                         }
+                        dal.Close();
                     }
                 }
                 else

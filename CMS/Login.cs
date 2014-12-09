@@ -49,6 +49,7 @@ namespace CMS
                 Main.CompanyData.Email = reader[6].ToString();
             }
             reader.Close();
+            dal.Close();
         }
 
         public void setCompanyData()
@@ -119,6 +120,7 @@ namespace CMS
                     lblInvalid.Visible = true;
                 }
                 rd.Close();
+                conn.Close();
             }
             catch (SqlException)
             {

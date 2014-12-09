@@ -19,6 +19,7 @@ namespace CMS.Utilities.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT LogTime AS 'Log Time', Activity, Module, CONCAT(s.LastName, ', ', s.FirstName, ' (', a.UserId , ')') AS ' User' FROM AUDIT_LOG a INNER JOIN SYSTEM_USERS s ON a.UserId = s.UserId";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -30,6 +31,7 @@ namespace CMS.Utilities.Model
             user = "%" + user + "%";
             parameters.Add("@Name", user);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -43,6 +45,7 @@ namespace CMS.Utilities.Model
             parameters.Add("@from", from);
             parameters.Add("@to", to);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -55,6 +58,7 @@ namespace CMS.Utilities.Model
             parameters.Add("@Name", user);
             parameters.Add("@Type", type);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -69,6 +73,7 @@ namespace CMS.Utilities.Model
             parameters.Add("@from", from);
             parameters.Add("@to", to);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
     }

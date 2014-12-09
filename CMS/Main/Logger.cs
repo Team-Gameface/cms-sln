@@ -26,6 +26,7 @@ namespace CMS.Main
             parameters.Add("@Module", this.Module);
             parameters.Add("@UserId", Main.UserData.userId);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
 

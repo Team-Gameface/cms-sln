@@ -31,6 +31,7 @@ namespace CMS.Savings.Transaction.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT DISTINCT sa.SavingsAccountNo AS 'Account No', CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName) AS 'Account Holder', SavingsTypeName AS 'Savings Type', sa.AccountTypeId, Balance FROM SAVINGS_ACCOUNT sa INNER JOIN MEMBER_SAVINGS_ACCOUNT msa ON sa.SavingsAccountNo = msa.SavingsAccountNo INNER JOIN SAVINGS_ACCOUNT_TYPE sat ON sa.AccountTypeId = sat.AccountTypeId INNER JOIN MEMBER m ON msa.MemberAccountNo = m.AccountNo WHERE sa.Status = 1";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -42,6 +43,7 @@ namespace CMS.Savings.Transaction.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@searchName", searchName);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -57,6 +59,7 @@ namespace CMS.Savings.Transaction.Model
             {
                 d = double.Parse(read[0].ToString());
             }
+            dal.Close();
             return d;
         }
 
@@ -72,6 +75,7 @@ namespace CMS.Savings.Transaction.Model
             {
                 d = double.Parse(read[0].ToString());
             }
+            dal.Close();
             return d;
         }
 
@@ -83,6 +87,7 @@ namespace CMS.Savings.Transaction.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@accountNo", accountNo);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -98,6 +103,7 @@ namespace CMS.Savings.Transaction.Model
             {
                 i = int.Parse(read[0].ToString());
             }
+            dal.Close();
             return i;
         }
 
@@ -132,6 +138,7 @@ namespace CMS.Savings.Transaction.Model
                     dal.executeNonQuery(sql2, parameters2);
                 }
             }
+            dal.Close();
             return result;
         }
 
@@ -145,6 +152,7 @@ namespace CMS.Savings.Transaction.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i + 1;
         }
 
@@ -155,6 +163,7 @@ namespace CMS.Savings.Transaction.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@PassbookNo", activePassbookNo);
             dal.executeNonQuery(sql, parameters);
+            dal.Close();
         }
 
         public int insertSavingsPassbook(int newPassbook, String accountNo)
@@ -165,6 +174,7 @@ namespace CMS.Savings.Transaction.Model
             parameters.Add("@SavingsPassbookNo", newPassbook);
             parameters.Add("@SavingsAccountNo", accountNo);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
+            dal.Close();
             return result;
         }
     }

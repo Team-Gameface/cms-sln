@@ -22,6 +22,7 @@ namespace CMS.Utilities.Model
             {
                 d = double.Parse(read[0].ToString());
             }
+            dal.Close();
             return d;
         }
 
@@ -38,6 +39,7 @@ namespace CMS.Utilities.Model
             {
                 i = int.Parse(read[0].ToString());
             }
+            dal.Close();
             return i;
         }
     }

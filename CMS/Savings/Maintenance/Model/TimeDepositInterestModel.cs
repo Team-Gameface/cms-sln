@@ -31,6 +31,7 @@ namespace CMS.Savings.Maintenance.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT InterestId, NoDays AS 'No of Days', MinimumRange AS 'Minimum Range', MaximumRange AS 'Maximum Range', InterestRate AS 'Interest Rate', Status, DateCreated, DateModified FROM TIME_DEPOSIT_INTEREST";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -42,6 +43,7 @@ namespace CMS.Savings.Maintenance.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@SearchName", searchName);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -56,6 +58,7 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@MaximumRange", this.MaximumRange);
             parameters.Add("@Status", this.Status);
             int result = dal.executeNonQuery(sql, parameters);
+            dal.Close();
             return result;
         }
 
@@ -71,6 +74,7 @@ namespace CMS.Savings.Maintenance.Model
             parameters.Add("@Status", this.Status);
             parameters.Add("@Id", Id);
             int result = dal.executeNonQuery(sql, parameters);
+            dal.Close();
             return result;
         }
 
@@ -87,6 +91,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
 
@@ -104,6 +109,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
 
@@ -121,6 +127,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
 
@@ -139,6 +146,7 @@ namespace CMS.Savings.Maintenance.Model
             {
                 i = (int)read[0];
             }
+            dal.Close();
             return i;
         }
     }

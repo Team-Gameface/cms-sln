@@ -33,6 +33,7 @@ namespace CMS.Savings.Reports.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT AccountTypeId AS 'TypeId', SavingsTypeName AS 'SavingsType' FROM SAVINGS_ACCOUNT_TYPE WHERE isArchived = 0 AND Status = 1";
             DataSet ds = dal.executeDataSet(sql);
+            dal.Close();
             return ds;
         }
 
@@ -40,7 +41,8 @@ namespace CMS.Savings.Reports.Model
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT TOP 1 CompanyName,AccreditationNo,CompanyAddress,CompanyLogo,Telephone,Cellphone,Email FROM COMPANY WHERE status = 1 ORDER BY dateCreated desc";
-            DataSet ds = dal.executeDataSet(sql,src);
+            DataSet ds = dal.executeDataSet(sql, src);
+            dal.Close();
             return ds;
         }
 
@@ -51,6 +53,7 @@ namespace CMS.Savings.Reports.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@UserId", userId);
             DataSet ds = dal.executeDataSet(sql, parameters, src);
+            dal.Close();
             return ds;
         }
 
@@ -59,6 +62,7 @@ namespace CMS.Savings.Reports.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT TOP 1 CONCAT(FirstName,' ',MiddleName,' ',LastName) AS 'Name', Position FROM SYSTEM_USERS WHERE UserType = 'Manager' ORDER BY DateCreated desc";
             DataSet ds = dal.executeDataSet(sql, src);
+            dal.Close();
             return ds;
         }
 
@@ -67,6 +71,7 @@ namespace CMS.Savings.Reports.Model
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
             String sql = "SELECT TOP 1 CONCAT(FirstName,' ',MiddleName,' ',LastName) AS 'Name', Position FROM SYSTEM_USERS WHERE UserType = 'Chairman - Credit Committee' ORDER BY DateCreated desc";
             DataSet ds = dal.executeDataSet(sql, src);
+            dal.Close();
             return ds;
         }
 
@@ -77,7 +82,8 @@ namespace CMS.Savings.Reports.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@dateFrom", dateFrom);
             parameters.Add("@dateTo", dateTo);
-            DataSet ds = dal.executeDataSet(sql,parameters,srcDataSet);
+            DataSet ds = dal.executeDataSet(sql, parameters, srcDataSet);
+            dal.Close();
             return ds;
 
         }
@@ -90,6 +96,7 @@ namespace CMS.Savings.Reports.Model
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@dateFrom", dateFrom);
             DataSet ds = dal.executeDataSet(sql, parameters, srcDataSet);
+            dal.Close();
             return ds;
 
         }

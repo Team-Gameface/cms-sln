@@ -361,6 +361,7 @@ namespace CMS.Settings
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@Id", Main.UserData.userId);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -373,6 +374,7 @@ namespace CMS.Settings
             parameters.Add("@Id", Main.UserData.userId);
             parameters.Add("@searchName", searchName);
             DataSet ds = dal.executeDataSet(sql, parameters);
+            dal.Close();
             return ds;
         }
 
@@ -388,6 +390,7 @@ namespace CMS.Settings
             {
                 i = int.Parse(read[0].ToString());
             }
+            dal.Close();
             return i;
         }
 
@@ -403,6 +406,7 @@ namespace CMS.Settings
             {
                 i = int.Parse(read[0].ToString());
             }
+            dal.Close();
             return i;
         }
 
@@ -418,6 +422,7 @@ namespace CMS.Settings
             {
                 i = int.Parse(read[0].ToString());
             }
+            dal.Close();
             return i;
         }
 
@@ -433,6 +438,7 @@ namespace CMS.Settings
             {
                 i = int.Parse(read[0].ToString());
             }
+            dal.Close();
             return i;
         }
 
@@ -449,6 +455,7 @@ namespace CMS.Settings
             {
                 i = int.Parse(read[0].ToString());
             }
+            dal.Close();
             return i;
         }
 
@@ -481,6 +488,7 @@ namespace CMS.Settings
                 parameters.Add("@Type", "Chairman - Audit Committee");
             }
             int result = dal.executeNonQuery(sql, parameters);
+            dal.Close();
             return result;
         }
 
@@ -513,6 +521,7 @@ namespace CMS.Settings
                 parameters.Add("@Type", "Chairman - Audit Committee");
             }
             int result = dal.executeNonQuery(sql, parameters);
+            dal.Close();
             return result;
         }
 
@@ -532,6 +541,7 @@ namespace CMS.Settings
                     i = int.Parse(number);
                 }
             }
+            dal.Close();
             return i + 1;
         }
 

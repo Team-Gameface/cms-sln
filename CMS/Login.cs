@@ -20,10 +20,39 @@ namespace CMS
 
         public Login()
         {
-            InitializeComponent();
-            checkCompanyProfile();
-            setCompanyData();
-            lblInvalid.Visible = false;
+            if (checkConnection())
+            {
+                InitializeComponent();
+                checkCompanyProfile();
+                setCompanyData();
+                lblInvalid.Visible = false;
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Database Connection is Not Configured Correctly. Configure Now?" + Environment.NewLine + "Contact System Administrator for Configuration.", "Cooperative Management System", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+                if (result == DialogResult.Yes)
+                {
+                    this.Hide();
+                    new ConnectionManager().ShowDialog();
+                }
+                else
+                {
+                    this.Dispose();
+                    Environment.Exit(0);
+                }
+            }
+        }
+
+        public Boolean checkConnection()
+        {
+            if (ConfigurationManager.ConnectionStrings["CMS"].ConnectionString == String.Empty)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public void checkCompanyProfile()

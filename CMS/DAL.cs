@@ -44,7 +44,17 @@ namespace CMS
             }
         }//constructor
 
-       
+       public void TestConnection()
+        {
+            if (conn.State == ConnectionState.Open)
+            {
+                MessageBox.Show("Database Connection Success.", "Connection Manager", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Database Connection Failed.", "Connection Manager", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         /**
          *This method is used for executing sql statements

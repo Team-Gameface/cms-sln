@@ -977,6 +977,10 @@
     <None Include="AuditChairDataSet.xss">
       <DependentUpon>AuditChairDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Backup\performBackup.bat" />
+    <None Include="BatchProcess\checkDormant.bat" />
+    <None Include="BatchProcess\checkMaintainingBalance.bat" />
+    <None Include="BatchProcess\checkSavingsInterest.bat" />
     <None Include="CreditChairDataSet.xsc">
       <DependentUpon>CreditChairDataSet.xsd</DependentUpon>
     </None>
@@ -1301,6 +1305,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Backup\ScheduledBackup\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

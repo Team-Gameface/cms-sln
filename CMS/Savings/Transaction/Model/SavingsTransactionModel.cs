@@ -47,6 +47,26 @@ namespace CMS.Savings.Transaction.Model
             return ds;
         }
 
+        public DataSet getCompanyProfile(String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT TOP 1 CompanyName,AccreditationNo,CompanyAddress,CompanyLogo,Telephone,Cellphone,Email FROM COMPANY WHERE status = 1 ORDER BY dateCreated desc";
+            DataSet ds = dal.executeDataSet(sql, src);
+            dal.Close();
+            return ds;
+        }
+
+        public DataSet getStaff(String userId, String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT CONCAT(FirstName,' ',MiddleName,' ',LastName) AS 'Name', Position FROM SYSTEM_USERS WHERE NOT (UserType = 'Superuser') AND UserId = @UserId";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            parameters.Add("@UserId", userId);
+            DataSet ds = dal.executeDataSet(sql, parameters, src);
+            dal.Close();
+            return ds;
+        }
+
         public double selectMaintainingBalance(int AccountType)
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
@@ -136,6 +156,7 @@ namespace CMS.Savings.Transaction.Model
                     parameters2.Add("@SavingsAccountNo", this.AccountNo);
                     parameters2.Add("@Amount", this.Amount);
                     dal.executeNonQuery(sql2, parameters2);
+
                 }
             }
             dal.Close();
@@ -176,6 +197,17 @@ namespace CMS.Savings.Transaction.Model
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));
             dal.Close();
             return result;
+        }
+
+
+        public DataSet getDepositDetails(String src)
+        {
+            DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+            String sql = "SELECT TOP 1 st.TransactionId AS 'TransId', sa.SavingsAccountNo AS 'AccountNo', STUFF((SELECT ';' + CONCAT(m.LastName,', ', m.FirstName, ' ', m.MiddleName) AS [text()] FROM MEMBER m, MEMBER_SAVINGS_ACCOUNT msa WHERE m.AccountNo = msa.MemberAccountNo AND sa.SavingsAccountNo = msa.SavingsAccountNo FOR XML PATH('')),1,1,'') AS 'AccountName', st.DateCreated, st.Amount FROM SAVINGS_ACCOUNT sa INNER JOIN SAVINGS_ACCOUNT_TYPE sat ON sa.AccountTypeId  = sat.AccountTypeId INNER JOIN SAVINGS_TRANSACTION st ON sa.SavingsAccountNo = st.SavingsAccountNo WHERE st.TransactionMode = 'Deposit' ORDER BY st.DateCreated DESC";
+            Dictionary<String, Object> parameters = new Dictionary<string, object>();
+            DataSet ds = dal.executeDataSet(sql, parameters, src);
+            dal.Close();
+            return ds;
         }
     }
 }

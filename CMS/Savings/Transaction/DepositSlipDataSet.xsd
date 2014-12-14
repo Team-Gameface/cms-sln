@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DepositSlipDataSet" targetNamespace="http://tempuri.org/DepositSlipDataSet.xsd" xmlns:mstns="http://tempuri.org/DepositSlipDataSet.xsd" xmlns="http://tempuri.org/DepositSlipDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DepositSlipDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DepositSlipDataSet" msprop:Generator_UserDSName="DepositSlipDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtDepoSlip" msprop:Generator_TableClassName="dtDepoSlipDataTable" msprop:Generator_TableVarName="tabledtDepoSlip" msprop:Generator_RowChangedName="dtDepoSlipRowChanged" msprop:Generator_TablePropName="dtDepoSlip" msprop:Generator_RowDeletingName="dtDepoSlipRowDeleting" msprop:Generator_RowChangingName="dtDepoSlipRowChanging" msprop:Generator_RowEvHandlerName="dtDepoSlipRowChangeEventHandler" msprop:Generator_RowDeletedName="dtDepoSlipRowDeleted" msprop:Generator_RowClassName="dtDepoSlipRow" msprop:Generator_UserTableName="dtDepoSlip" msprop:Generator_RowEvArgName="dtDepoSlipRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TransId" msprop:Generator_ColumnVarNameInTable="columnTransId" msprop:Generator_ColumnPropNameInRow="TransId" msprop:Generator_ColumnPropNameInTable="TransIdColumn" msprop:Generator_UserColumnName="TransId" type="xs:int" />
+              <xs:element name="AccountNo" msprop:Generator_ColumnVarNameInTable="columnAccountNo" msprop:Generator_ColumnPropNameInRow="AccountNo" msprop:Generator_ColumnPropNameInTable="AccountNoColumn" msprop:Generator_UserColumnName="AccountNo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AccountName" msprop:Generator_ColumnVarNameInTable="columnAccountName" msprop:Generator_ColumnPropNameInRow="AccountName" msprop:Generator_ColumnPropNameInTable="AccountNameColumn" msprop:Generator_UserColumnName="AccountName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TransDate" msprop:Generator_ColumnVarNameInTable="columnTransDate" msprop:Generator_ColumnPropNameInRow="TransDate" msprop:Generator_ColumnPropNameInTable="TransDateColumn" msprop:Generator_UserColumnName="TransDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

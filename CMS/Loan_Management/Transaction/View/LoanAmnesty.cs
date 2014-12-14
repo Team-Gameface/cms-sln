@@ -270,6 +270,12 @@ namespace CMS.Loan_Management.Transaction.View
             return double.Parse(this.txtGrossLoanBalance.Text);
         }
 
+        public void setLoanApplied(String s)
+        {
+            this.txtLoanApplied.Text = s;
+        }
+
+
         public void setWaivedInterest(double d)
         {
             this.txtWaiveInterest.Text = d.ToString("N2", CultureInfo.InvariantCulture);

@@ -64,6 +64,7 @@
             this.lblSelectedLoanDetails = new System.Windows.Forms.Label();
             this.lblSelectLoan = new System.Windows.Forms.Label();
             this.tabAmnestyApproval = new System.Windows.Forms.TabPage();
+            this.txtLoanApplied = new System.Windows.Forms.TextBox();
             this.btnApprovalPrevious = new System.Windows.Forms.Button();
             this.dateApproved = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -98,6 +99,7 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblDateApproval = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnApplyAmnesty = new System.Windows.Forms.Button();
@@ -488,7 +490,7 @@
             this.lblReasonForApplying.ForeColor = System.Drawing.Color.MediumBlue;
             this.lblReasonForApplying.Location = new System.Drawing.Point(19, 236);
             this.lblReasonForApplying.Name = "lblReasonForApplying";
-            this.lblReasonForApplying.Size = new System.Drawing.Size(195, 25);
+            this.lblReasonForApplying.Size = new System.Drawing.Size(196, 25);
             this.lblReasonForApplying.TabIndex = 26;
             this.lblReasonForApplying.Text = "* Reason for applying";
             // 
@@ -517,9 +519,11 @@
             // tabAmnestyApproval
             // 
             this.tabAmnestyApproval.BackColor = System.Drawing.Color.Honeydew;
+            this.tabAmnestyApproval.Controls.Add(this.txtLoanApplied);
             this.tabAmnestyApproval.Controls.Add(this.btnApprovalPrevious);
             this.tabAmnestyApproval.Controls.Add(this.dateApproved);
             this.tabAmnestyApproval.Controls.Add(this.groupBox2);
+            this.tabAmnestyApproval.Controls.Add(this.label3);
             this.tabAmnestyApproval.Controls.Add(this.lblDateApproval);
             this.tabAmnestyApproval.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.tabAmnestyApproval.Location = new System.Drawing.Point(4, 30);
@@ -528,6 +532,19 @@
             this.tabAmnestyApproval.Size = new System.Drawing.Size(752, 414);
             this.tabAmnestyApproval.TabIndex = 2;
             this.tabAmnestyApproval.Text = "Amnesty Approval Details";
+            // 
+            // txtLoanApplied
+            // 
+            this.txtLoanApplied.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoanApplied.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtLoanApplied.Location = new System.Drawing.Point(71, 12);
+            this.txtLoanApplied.MaxLength = 6;
+            this.txtLoanApplied.Name = "txtLoanApplied";
+            this.txtLoanApplied.ReadOnly = true;
+            this.txtLoanApplied.Size = new System.Drawing.Size(314, 29);
+            this.txtLoanApplied.TabIndex = 36;
+            this.txtLoanApplied.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIWaived_KeyDown);
+            this.txtLoanApplied.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPWaived_KeyPress);
             // 
             // btnApprovalPrevious
             // 
@@ -897,7 +914,7 @@
             this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(376, 95);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(268, 21);
+            this.label25.Size = new System.Drawing.Size(269, 21);
             this.label25.TabIndex = 53;
             this.label25.Text = "Penalty-condoned Loan Breakdown";
             // 
@@ -921,6 +938,16 @@
             this.label7.Size = new System.Drawing.Size(136, 21);
             this.label7.TabIndex = 38;
             this.label7.Text = "* Interests Waived";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(18, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 21);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Loan:";
             // 
             // lblDateApproval
             // 
@@ -981,7 +1008,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(784, 591);
+            this.ClientSize = new System.Drawing.Size(792, 603);
             this.Controls.Add(this.btnApplyAmnesty);
             this.Controls.Add(this.btnCancelAmnesty);
             this.Controls.Add(this.label5);
@@ -1088,5 +1115,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnApplyAmnesty;
         private System.Windows.Forms.Button btnCancelAmnesty;
+        private System.Windows.Forms.TextBox txtLoanApplied;
+        private System.Windows.Forms.Label label3;
     }
 }

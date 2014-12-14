@@ -175,7 +175,7 @@ namespace CMS.Loan_Management.Transaction.Controller
             this.loanAmnesty.setLoanDetails("Maturity Date: " + loanInfo[3]);
             this.loanAmnesty.setLoanDetails("Amortizations Paid: Php" + this.loanAmnestyModel.selectAmortizationsPaid(lappId).ToString("N", CultureInfo.InvariantCulture));
             this.loanAmnesty.setLoanDetails("Current Balance: Php" + this.loanAmnestyModel.selectCurrentBalance(lappId).ToString("N", CultureInfo.InvariantCulture));
-
+            this.loanAmnesty.setLoanApplied("LOAN ID " + lappId + " - " + loanInfo[0] + " (" + loanInfo[3] + ")");
             this.loanAmnesty.setLoanAmount(this.loanAmnestyModel.selectCurrentBalance(lappId));
 
             totalPenalty = 0;

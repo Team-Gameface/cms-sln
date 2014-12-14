@@ -87,7 +87,7 @@
     <Compile Include="ConnectionManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConnectionManager.Designer.cs">
+    <Compile Include="ConnectionManager.designer.cs">
       <DependentUpon>ConnectionManager.cs</DependentUpon>
     </Compile>
     <Compile Include="CreditChairDataSet.Designer.cs">
@@ -528,6 +528,17 @@
       <DependentUpon>DailyTransactionLogViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Savings\Transaction\Controller\TerminationController.cs" />
+    <Compile Include="Savings\Transaction\DepositSlip.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DepositSlip.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Savings\Transaction\DepositSlipDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DepositSlipDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Savings\Transaction\Model\TerminationModel.cs" />
     <Compile Include="Savings\Transaction\TimeDepositCertificate.cs">
       <AutoGen>True</AutoGen>
@@ -539,6 +550,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TimeDepositDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Savings\Transaction\View\DepositSlipViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Savings\Transaction\View\DepositSlipViewer.Designer.cs">
+      <DependentUpon>DepositSlipViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Savings\Transaction\View\MemberTermination.cs">
       <SubType>Form</SubType>
@@ -865,9 +882,16 @@
     <EmbeddedResource Include="Savings\Reports\View\DailyTransactionLogViewer.resx">
       <DependentUpon>DailyTransactionLogViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Savings\Transaction\DepositSlip.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DepositSlip.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Savings\Transaction\TimeDepositCertificate.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>TimeDepositCertificate.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Savings\Transaction\View\DepositSlipViewer.resx">
+      <DependentUpon>DepositSlipViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Savings\Transaction\View\MemberTermination.resx">
       <DependentUpon>MemberTermination.cs</DependentUpon>
@@ -1165,6 +1189,17 @@
     </None>
     <None Include="Savings\Reports\SavingsTransactionLogDataSet.xss">
       <DependentUpon>SavingsTransactionLogDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Savings\Transaction\DepositSlipDataSet.xsc">
+      <DependentUpon>DepositSlipDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Savings\Transaction\DepositSlipDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DepositSlipDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Savings\Transaction\DepositSlipDataSet.xss">
+      <DependentUpon>DepositSlipDataSet.xsd</DependentUpon>
     </None>
     <None Include="Savings\Transaction\TimeDepositDataSet.xsc">
       <DependentUpon>TimeDepositDataSet.xsd</DependentUpon>

@@ -58,10 +58,9 @@ namespace CMS.Loan_Management.Reports.Model
 
             }
             inLoanTypes = inLoanTypes.Substring(1);
-            MessageBox.Show(inLoanTypes);
 
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT li.DateApproved AS 'DateApproved', li.AccountNo AS 'AccountNo', CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName) AS 'Name', lt.LoanTypeName AS 'LoanType', li.ApprovedAmount AS 'Amount', li.MaturityDate AS 'MaturityDate' FROM LOAN_INFORMATION li INNER JOIN MEMBER m ON li.AccountNo = m.AccountNo INNER JOIN LOAN_TYPE lt ON lt.LoanTypeId = li.LoanTypeId where CONVERT(Date,li.DateApproved) >= @dateFrom AND CONVERT(Date,li.DateApproved) <= @dateTo AND li.LoanTypeId IN (" + inLoanTypes + ") ORDER BY " + sortBy + " " + order;
+            String sql = "SELECT li.DateApproved AS 'DateApproved', li.AccountNo AS 'AccountNo', CONCAT(m.LastName, ', ', m.FirstName, ' ', m.MiddleName) AS 'Name', lt.LoanTypeName AS 'LoanType', li.NetLoanProceeds AS 'Amount', li.MaturityDate AS 'MaturityDate' FROM LOAN_INFORMATION li INNER JOIN MEMBER m ON li.AccountNo = m.AccountNo INNER JOIN LOAN_TYPE lt ON lt.LoanTypeId = li.LoanTypeId where CONVERT(Date,li.DateApproved) >= @dateFrom AND CONVERT(Date,li.DateApproved) <= @dateTo AND li.LoanTypeId IN (" + inLoanTypes + ") ORDER BY " + sortBy + " " + order;
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@dateFrom", dateFrom);
             parameters.Add("@dateTo", dateTo);

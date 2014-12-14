@@ -37,7 +37,6 @@ namespace CMS
                 updateConfigFile(strCon, masterCon);
                 ConfigurationManager.RefreshSection("connectionStrings");
                 DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-                MessageBox.Show(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString + " ----------- " + ConfigurationManager.ConnectionStrings["master"].ConnectionString);
                 dal.TestConnection();
                 dal.Close();
             }

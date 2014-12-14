@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -192,6 +193,9 @@ namespace CMS.Savings.Transaction.Controller
                 this.savingsTransactionModel.PassbookNo = this.savingsTransactionModel.selectActivePassbook(this.savingsTransaction.getSavingsAccountNo());
                 if (this.savingsTransactionModel.insertSavingsTransaction() == 1)
                 {
+                    DataSet ds = this.savingsTransactionModel.getDepositDetails("dtDepSlip");
+                    DataSet dsStaff = this.savingsTransactionModel.getStaff(Main.UserData.userId, "dtStaff");
+                    View.DepositSlipViewer depSlipViewer = new View.DepositSlipViewer(ds, this.savingsTransactionModel.getCompanyProfile("dtLogo"), dsStaff);
                     MessageBox.Show("Transaction Success.", "Savings Transaction", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     execLogger(this.savingsTransaction.getComboTransaction() + "(" + this.savingsTransaction.getAmount() + ") - " + this.savingsTransactionModel.AccountNo);
                     this.savingsTransaction.clearAll();

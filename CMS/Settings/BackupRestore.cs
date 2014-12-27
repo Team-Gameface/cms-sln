@@ -26,7 +26,7 @@ namespace CMS.Settings
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["master"].ConnectionString);
             String sql = "BACKUP DATABASE CMS TO DISK = @path";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
-            parameters.Add("@path", @"C:\CMS\Backup\db-backup_" + DateTime.Now.ToString("dd-mm-yyyy_hh-mm-ss-tt") + ".bak");
+            parameters.Add("@path", @"C:\Team-Gameface\CMS\Backup\db-backup_" + DateTime.Now.ToString("dd-mm-yyyy_hh-mm-ss-tt") + ".bak");
             int result = dal.executeNonQuery(sql, parameters);
             if (result != 0)
             {
@@ -45,7 +45,7 @@ namespace CMS.Settings
             OpenFileDialog openDialog = new OpenFileDialog();
             openDialog.Title = "Choose Backup File";
             openDialog.Filter = "Backup Files (*.bak) | *.bak";
-            openDialog.InitialDirectory = @"C:\CMS\Backup\";
+            openDialog.InitialDirectory = @"C:\Team-Gameface\CMS\Backup\";
             if (openDialog.ShowDialog() == DialogResult.OK)
             {
                 String fileName = openDialog.FileName.ToString();
@@ -82,7 +82,7 @@ namespace CMS.Settings
                 DailyTrigger dtBackup = new DailyTrigger();
                 dtBackup.DaysInterval = 1;
                 dtBackup.StartBoundary = timeSchedule.Value;
-                tdBackup.Actions.Add(new ExecAction(@"C:\CMS\Backup\performBackup.bat"));
+                tdBackup.Actions.Add(new ExecAction(@"C:\Team-Gameface\CMS\Backup\performBackup.bat"));
                 tdBackup.Triggers.Add(dtBackup);
 
                 try

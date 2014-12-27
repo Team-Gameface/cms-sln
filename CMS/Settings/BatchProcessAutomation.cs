@@ -33,7 +33,7 @@ namespace CMS.Settings
                 DailyTrigger dtDormant = new DailyTrigger();
                 dtDormant.DaysInterval = 1;
                 dtDormant.StartBoundary = timeDormant.Value;
-                tdDormant.Actions.Add(new ExecAction(@"C:\CMS\BatchProcess\checkDormant.bat"));
+                tdDormant.Actions.Add(new ExecAction(@"C:\Team-Gameface\CMS\BatchProcess\checkDormant.bat"));
                 tdDormant.Triggers.Add(dtDormant);
 
                 //for Maintaining Balances Scheduling
@@ -44,7 +44,7 @@ namespace CMS.Settings
                 DailyTrigger dtMainBal = new DailyTrigger();
                 dtMainBal.DaysInterval = 1;
                 dtMainBal.StartBoundary = timeMainBal.Value;
-                tdMainBal.Actions.Add(new ExecAction(@"C:\CMS\BatchProcess\checkMaintainingBalance.bat"));
+                tdMainBal.Actions.Add(new ExecAction(@"C:\Team-Gameface\CMS\BatchProcess\checkMaintainingBalance.bat"));
                 tdMainBal.Triggers.Add(dtMainBal);
 
                 //for Savings Interest Scheduling
@@ -55,7 +55,7 @@ namespace CMS.Settings
                 DailyTrigger dtSavingsInterest = new DailyTrigger();
                 dtSavingsInterest.DaysInterval = 1;
                 dtSavingsInterest.StartBoundary = timeInterest.Value;
-                tdSavingsInterest.Actions.Add(new ExecAction(@"C:\CMS\BatchProcess\checkSavingsInterest.bat"));
+                tdSavingsInterest.Actions.Add(new ExecAction(@"C:\Team-Gameface\CMS\BatchProcess\checkSavingsInterest.bat"));
                 tdSavingsInterest.Triggers.Add(dtSavingsInterest);
 
                 try

@@ -10,6 +10,12 @@ Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "CMSSetup", "CMSSetup\CMSSet
 		{419035BD-6DAE-4C32-8C04-51939A1A897A} = {419035BD-6DAE-4C32-8C04-51939A1A897A}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SetupBackground", "SetupBackground", "{F6C81079-764C-44F8-8689-FC299787F444}"
+	ProjectSection(SolutionItems) = preProject
+		SetupBackground\banner.jpg = SetupBackground\banner.jpg
+		SetupBackground\welcome.jpg = SetupBackground\welcome.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU

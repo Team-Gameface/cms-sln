@@ -67,6 +67,19 @@ namespace CMS
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            StringBuilder Con = new StringBuilder("Data Source=");
+            Con.Append(txtServer.Text);
+            Con.Append(";Initial Catalog=");
+            Con.Append(txtDatabase.Text);
+            Con.Append(";Integrated Security=True;");
+            string strCon = Con.ToString();
+            StringBuilder Con2 = new StringBuilder("Data Source=");
+            Con2.Append(txtServer.Text);
+            Con2.Append(";Initial Catalog=master");
+            Con2.Append(";Integrated Security=True;");
+            String masterCon = Con2.ToString();
+            updateConfigFile(strCon, masterCon);
+            ConfigurationManager.RefreshSection("connectionStrings");
             this.Hide();
             new Login().ShowDialog();
             this.Dispose();

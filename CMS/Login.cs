@@ -45,13 +45,29 @@ namespace CMS
 
         public Boolean checkConnection()
         {
-            if (ConfigurationManager.ConnectionStrings["CMS"].ConnectionString == String.Empty)
+            try
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
+                con.Open();
+                if (ConfigurationManager.ConnectionStrings["CMS"].ConnectionString == String.Empty)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (con.State != ConnectionState.Open)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception)
             {
                 return false;
-            }
-            else
-            {
-                return true;
             }
         }
 

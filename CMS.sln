@@ -12,8 +12,8 @@ Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "CMSSetup", "CMSSetup\CMSSet
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SetupBackground", "SetupBackground", "{F6C81079-764C-44F8-8689-FC299787F444}"
 	ProjectSection(SolutionItems) = preProject
-		SetupBackground\banner.jpg = SetupBackground\banner.jpg
-		SetupBackground\welcome.jpg = SetupBackground\welcome.jpg
+		D:\CMS\Release\CMSSetup\banner.jpg = D:\CMS\Release\CMSSetup\banner.jpg
+		D:\CMS\Release\CMSSetup\welcome.jpg = D:\CMS\Release\CMSSetup\welcome.jpg
 	EndProjectSection
 EndProject
 Global

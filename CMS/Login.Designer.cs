@@ -51,9 +51,9 @@
             // 
             this.lblCompanyName.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompanyName.ForeColor = System.Drawing.Color.ForestGreen;
-            this.lblCompanyName.Location = new System.Drawing.Point(144, 16);
+            this.lblCompanyName.Location = new System.Drawing.Point(146, 25);
             this.lblCompanyName.Name = "lblCompanyName";
-            this.lblCompanyName.Size = new System.Drawing.Size(373, 100);
+            this.lblCompanyName.Size = new System.Drawing.Size(373, 80);
             this.lblCompanyName.TabIndex = 1;
             this.lblCompanyName.Text = "Company Name";
             this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -61,24 +61,24 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 20F);
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(146, 116);
+            this.label2.Location = new System.Drawing.Point(146, 105);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(354, 28);
+            this.label2.Size = new System.Drawing.Size(122, 37);
             this.label2.TabIndex = 2;
-            this.label2.Text = "COOPERATIVE MANAGEMENT SYSTEM";
+            this.label2.Text = "COLOSIS";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Firebrick;
-            this.label3.Location = new System.Drawing.Point(147, 144);
+            this.label3.Location = new System.Drawing.Point(149, 143);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(253, 23);
+            this.label3.Size = new System.Drawing.Size(349, 23);
             this.label3.TabIndex = 3;
-            this.label3.Text = "(Savings and Loan Management)";
+            this.label3.Text = "Generic Loan and Savings Information System";
             // 
             // panel1
             // 

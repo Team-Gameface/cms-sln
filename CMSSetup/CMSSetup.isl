@@ -52,7 +52,7 @@
 	<summary>
 		<codepage>1252</codepage>
 		<title>Installation Database</title>
-		<subject>CMS</subject>
+		<subject>COLOSIS</subject>
 		<author>##ID_STRING2##</author>
 		<keywords>Installer,MSI,Database</keywords>
 		<comments>Contact:  Your local administrator</comments>
@@ -1156,7 +1156,7 @@
 		<row><td>ISYourDataBaseDir</td><td>INSTALLDIR</td><td>Database</td><td/><td>0</td><td/></row>
 		<row><td>LocalAppDataFolder</td><td>TARGETDIR</td><td>.:LocalA~1|LocalAppData</td><td/><td>0</td><td/></row>
 		<row><td>MyPicturesFolder</td><td>TARGETDIR</td><td>.:MyPict~1|MyPictures</td><td/><td>0</td><td/></row>
-		<row><td>NEW_DIRECTORY2</td><td>TEAM_GAMEFACE</td><td>CMS</td><td/><td>0</td><td/></row>
+		<row><td>NEW_DIRECTORY2</td><td>TEAM_GAMEFACE</td><td>COLOSIS</td><td/><td>0</td><td/></row>
 		<row><td>NetHoodFolder</td><td>TARGETDIR</td><td>.:NetHood</td><td/><td>0</td><td/></row>
 		<row><td>PersonalFolder</td><td>TARGETDIR</td><td>.:Personal</td><td/><td>0</td><td/></row>
 		<row><td>PrimaryVolumePath</td><td>TARGETDIR</td><td>.:Primar~1|PrimaryVolumePath</td><td/><td>0</td><td/></row>
@@ -3473,7 +3473,7 @@
 		<row><td>IDS_PROGMSG_XML_UPDATE_FILE</td><td>1033</td><td>Updating XML file %s...</td><td>0</td><td/><td>1981961067</td></row>
 		<row><td>IDS_SETUPEXE_EXPIRE_MSG</td><td>1033</td><td>This setup works until %s. The setup will now exit.</td><td>0</td><td/><td>1981961067</td></row>
 		<row><td>IDS_SETUPEXE_LAUNCH_COND_E</td><td>1033</td><td>This setup was built with an evaluation version of InstallShield and can only be launched from setup.exe.</td><td>0</td><td/><td>1981961067</td></row>
-		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>CMS</td><td>0</td><td/><td>1981996299</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>COLOSIS</td><td>0</td><td/><td>1361254656</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>1981961067</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>1981961067</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>1981961067</td></row>
@@ -3762,10 +3762,10 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>1981961067</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1981961067</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>1981961067</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://team-gameface.github.io</td><td>0</td><td/><td>-526173999</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://team-gameface.github.io</td><td>0</td><td/><td>1361305824</td></row>
 		<row><td>ID_STRING2</td><td>1033</td><td>Team-Gameface</td><td>0</td><td/><td>-526168528</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Technical Support Team</td><td>0</td><td/><td>1981969291</td></row>
-		<row><td>ID_STRING4</td><td>1033</td><td>http://team-gameface.github.io</td><td>0</td><td/><td>-526173999</td></row>
+		<row><td>ID_STRING4</td><td>1033</td><td>http://team-gameface.github.io</td><td>0</td><td/><td>1361305824</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>CMS</td><td>0</td><td/><td>1981996299</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>1981961067</td></row>
 	</table>
@@ -3877,6 +3877,14 @@
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;VSSolutionFolder&gt;\CMS\img\icon.ico</td><td>0</td></row>
 		<row><td>_253255E8837F4934B1E54CF527CCE9FF.exe</td><td/><td>C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\CMS.exe</td><td>0</td></row>
+		<row><td>_58928C627C8B4642B79543D2E0186C38.exe</td><td/><td>C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\COLOSIS.exe</td><td>0</td></row>
+		<row><td>_5A52F729F2EF4D2EAE2120321EE0C610.exe</td><td/><td>C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\COLOSIS.exe</td><td>0</td></row>
+		<row><td>_659864908F7448888764165BB89A1E99.exe</td><td/><td>C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\COLOSIS.exe</td><td>0</td></row>
+		<row><td>_861FEC51557342C4B41EACE89F1D7B77.exe</td><td/><td>C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\COLOSIS.exe</td><td>0</td></row>
+		<row><td>_96031EC066114E4083A1942E1D9D7B65.exe</td><td/><td>C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\COLOSIS.exe</td><td>0</td></row>
+		<row><td>_B9C2E258315E48C5B53B72F599465F81.exe</td><td/><td>C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\COLOSIS.exe</td><td>0</td></row>
+		<row><td>_D46D07534C124E92B5F2C53A7C447CB9.exe</td><td/><td>C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\COLOSIS.exe</td><td>0</td></row>
+		<row><td>_DEC782705BB04355A7D1A5D46133F4F4.exe</td><td/><td>C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\COLOSIS.exe</td><td>0</td></row>
 		<row><td>_E769B97D5A434C86966DB5CA5C7CDDB5.exe</td><td/><td>C:\Users\Levin\Documents\GitHub\Team-Gameface\cms-sln\CMS\bin\Debug\CMS.exe</td><td>0</td></row>
 	</table>
 
@@ -4391,8 +4399,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]CMS.Primary output</td><td/></row>
 		<row><td>ProductCode</td><td>{4724B068-B3FE-4707-A451-9B7B2EB97141}</td><td/></row>
-		<row><td>ProductName</td><td>CMS</td><td/></row>
-		<row><td>ProductVersion</td><td>1.02.0000</td><td/></row>
+		<row><td>ProductName</td><td>COLOSIS</td><td/></row>
+		<row><td>ProductVersion</td><td>1.03.0000</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>

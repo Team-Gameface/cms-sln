@@ -67,9 +67,9 @@
             this.statusStrip.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusDateTime});
-            this.statusStrip.Location = new System.Drawing.Point(0, 532);
+            this.statusStrip.Location = new System.Drawing.Point(0, 539);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(784, 30);
+            this.statusStrip.Size = new System.Drawing.Size(792, 30);
             this.statusStrip.TabIndex = 3;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -77,7 +77,7 @@
             // 
             this.statusDateTime.ForeColor = System.Drawing.Color.White;
             this.statusDateTime.Name = "statusDateTime";
-            this.statusDateTime.Size = new System.Drawing.Size(738, 25);
+            this.statusDateTime.Size = new System.Drawing.Size(777, 25);
             this.statusDateTime.Spring = true;
             this.statusDateTime.Text = "DateTime";
             this.statusDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -91,7 +91,7 @@
             this.menuQueriesReports});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(784, 29);
+            this.menuStrip.Size = new System.Drawing.Size(792, 29);
             this.menuStrip.TabIndex = 7;
             // 
             // menuMaintenance
@@ -228,7 +228,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::CMS.Properties.Resources.SavingsBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(792, 569);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.DoubleBuffered = true;

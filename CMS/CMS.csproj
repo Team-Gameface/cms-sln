@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CMS</RootNamespace>
-    <AssemblyName>CMS</AssemblyName>
+    <AssemblyName>COLOSIS</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>img\icon.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -1261,6 +1261,7 @@
     <None Include="img\buttons\All\Backward.png" />
     <None Include="img\buttons\All\Forward.png" />
     <None Include="img\buttons\All\Backup.png" />
+    <Content Include="icon.ico" />
     <Content Include="img\buttons\All\Passbook.png" />
     <None Include="img\buttons\All\Previous.png" />
     <Content Include="img\buttons\All\Proceed.png" />
@@ -1279,10 +1280,10 @@
     <None Include="img\buttons\Utilities\AccountSettings.png" />
     <Content Include="img\defaultimg.jpg" />
     <None Include="img\login_splash.png" />
-    <Content Include="img\icon.ico" />
     <Content Include="img\buttons\Dashboard\Loan_Management.png" />
     <Content Include="img\buttons\Dashboard\Payments.png" />
     <Content Include="img\buttons\Dashboard\Savings.png" />
+    <Content Include="img\icon.ico" />
     <Content Include="img\icons\LM.ico" />
     <Content Include="img\icons\LoanCalc.ico" />
     <Content Include="img\icons\SV.ico" />

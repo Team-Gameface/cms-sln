@@ -69,16 +69,16 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.LimeGreen;
+            this.panelMenu.Controls.Add(this.btnShow);
             this.panelMenu.Controls.Add(this.panelSwitchboard);
             this.panelMenu.Controls.Add(this.linkSignout);
             this.panelMenu.Controls.Add(this.lblUserRole);
             this.panelMenu.Controls.Add(this.lblUser);
-            this.panelMenu.Controls.Add(this.btnShow);
             this.panelMenu.Controls.Add(this.autoCollapse);
             this.panelMenu.Controls.Add(this.pictureUser);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelMenu.Location = new System.Drawing.Point(611, 0);
+            this.panelMenu.Location = new System.Drawing.Point(619, 0);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(173, 729);
             this.panelMenu.TabIndex = 1;
@@ -287,14 +287,14 @@
             this.lblDateTime});
             this.statusMain.Location = new System.Drawing.Point(0, 694);
             this.statusMain.Name = "statusMain";
-            this.statusMain.Size = new System.Drawing.Size(611, 35);
+            this.statusMain.Size = new System.Drawing.Size(619, 35);
             this.statusMain.TabIndex = 3;
             // 
             // lblDateTime
             // 
             this.lblDateTime.ForeColor = System.Drawing.Color.White;
             this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(596, 30);
+            this.lblDateTime.Size = new System.Drawing.Size(604, 30);
             this.lblDateTime.Spring = true;
             this.lblDateTime.Text = "DateTime";
             this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -312,9 +312,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(138, 106);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(281, 25);
+            this.label3.Size = new System.Drawing.Size(386, 25);
             this.label3.TabIndex = 14;
-            this.label3.Text = "(Savings and Loan Management)";
+            this.label3.Text = "Generic Loan and Savings Information System";
             // 
             // label2
             // 
@@ -323,9 +323,9 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(137, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(378, 32);
+            this.label2.Size = new System.Drawing.Size(109, 32);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Cooperative Management System";
+            this.label2.Text = "COLOSIS";
             // 
             // lblCompanyName
             // 
@@ -357,7 +357,7 @@
             // 
             this.splitContainer.Panel2.Controls.Add(this.panelHome);
             this.splitContainer.Panel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.splitContainer.Size = new System.Drawing.Size(611, 694);
+            this.splitContainer.Size = new System.Drawing.Size(619, 694);
             this.splitContainer.SplitterDistance = 139;
             this.splitContainer.TabIndex = 17;
             // 
@@ -371,7 +371,7 @@
             this.panelCompany.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCompany.Location = new System.Drawing.Point(0, 0);
             this.panelCompany.Name = "panelCompany";
-            this.panelCompany.Size = new System.Drawing.Size(611, 139);
+            this.panelCompany.Size = new System.Drawing.Size(619, 139);
             this.panelCompany.TabIndex = 1;
             // 
             // pictureLogo
@@ -392,7 +392,7 @@
             this.panelHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHome.Location = new System.Drawing.Point(0, 0);
             this.panelHome.Name = "panelHome";
-            this.panelHome.Size = new System.Drawing.Size(611, 551);
+            this.panelHome.Size = new System.Drawing.Size(619, 551);
             this.panelHome.TabIndex = 0;
             // 
             // CMSDashboard
@@ -400,15 +400,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 729);
+            this.ClientSize = new System.Drawing.Size(792, 729);
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.statusMain);
             this.Controls.Add(this.panelMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(800, 766);
+            this.MinimumSize = new System.Drawing.Size(800, 726);
             this.Name = "CMSDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cooperative Management System";
+            this.Text = "COLOSIS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();

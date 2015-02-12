@@ -175,7 +175,14 @@ namespace CMS.Loan_Management.Maintenance.View
 
         public DataGridViewRow getSelected()
         {
-            return this.dataInterest.SelectedRows[0];
+            try
+            {
+                return this.dataInterest.SelectedRows[0];
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public void setBtnAddEventHandler(EventHandler e)
@@ -277,11 +284,14 @@ namespace CMS.Loan_Management.Maintenance.View
         public void getSelectedData() 
         {
             DataGridViewRow selectedData = this.getSelected();
-            this.btnEdit.Enabled = true;
-
-            if (bool.Parse(selectedData.Cells["isArchived"].Value.ToString()))
+            if (selectedData != null)
             {
-                this.btnEdit.Enabled = false;
+                this.btnEdit.Enabled = true;
+
+                if (bool.Parse(selectedData.Cells["isArchived"].Value.ToString()))
+                {
+                    this.btnEdit.Enabled = false;
+                }
             }
         }
 

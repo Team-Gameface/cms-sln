@@ -99,7 +99,7 @@ namespace CMS.Loan_Management.Maintenance.Model
         {
 
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "UPDATE Member_Type SET isArchived = 1 WHERE MemberTypeNo = @TypeNo; UPDATE MINIMUM_CAPITAL_CONTRIBUTION SET isArchived=1 WHERE MemberTypeNo = @TypeNo";
+            String sql = "UPDATE Member_Type SET isArchived = 1 WHERE MemberTypeNo = @TypeNo;";
             Dictionary<String, Object> parameters = new Dictionary<string, object>();
             parameters.Add("@TypeNo", TypeNo);
             int result = Convert.ToInt32(dal.executeNonQuery(sql, parameters));

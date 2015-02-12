@@ -31,7 +31,7 @@ namespace CMS.Settings
         public DataSet selectSavingsSettings()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT mt.MemberTypeNo, mt.Description AS 'Member Type', ISNULL(msas.NoSavingsAccount, 1) AS 'No of Allowed Savings Account' FROM MEMBER_TYPE mt LEFT OUTER JOIN MEMBER_SAVINGS_ACCOUNT_SETTINGS msas ON mt.MemberTypeNo = msas.MemberTypeNo";
+            String sql = "SELECT mt.MemberTypeNo, mt.Description AS 'Member Type', ISNULL(msas.NoSavingsAccount, 1) AS 'No of Allowed Savings Account' FROM MEMBER_TYPE mt LEFT OUTER JOIN MEMBER_SAVINGS_ACCOUNT_SETTINGS msas ON mt.MemberTypeNo = msas.MemberTypeNo WHERE mt.isArchived = 0";
             DataSet ds = dal.executeDataSet(sql);
             return ds;
         }

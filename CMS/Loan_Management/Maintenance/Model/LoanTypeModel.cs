@@ -91,7 +91,7 @@ namespace CMS.Loan_Management.Maintenance.Model
         public DataSet selectAllLoanTypes()
         {
             DAL dal = new DAL(ConfigurationManager.ConnectionStrings["CMS"].ConnectionString);
-            String sql = "SELECT LoanTypeId as 'Loan Type Id', LoanTypeName as 'Loan Type Name', concat(MinimumPaymentDuration,' ',MinPDStatus) as 'Minimum Payment Duration', concat(MaximumPaymentDuration,' ',MaxPDStatus) as 'Maximum Payment Duration', MaxLoanableAmtFixed as 'Maximum Loan (Fixed)', MaxLoanableAmtShareCap as 'Maximum Loan (Share Capital)', Deduction, CoMaker, isCollateral, Status as 'Active', isArchived FROM LOAN_TYPE";
+            String sql = "SELECT LoanTypeId as 'Loan Type Id', LoanTypeName as 'Loan Type Name', concat(MinimumPaymentDuration,' ',MinPDStatus) as 'Minimum Payment Duration', concat(MaximumPaymentDuration,' ',MaxPDStatus) as 'Maximum Payment Duration', MaxLoanableAmtFixed as 'Maximum Loan (Fixed)', MaxLoanableAmtShareCap as 'Maximum Loan (Share Capital)', CoMaker, isCollateral, Status as 'Active', isArchived FROM LOAN_TYPE";
             DataSet ds = dal.executeDataSet(sql);
             return ds;
         }
